@@ -56,6 +56,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
    Por la documentacion que he encontrado se debe a que el procesador de la raspberry es de tipo ARM.
 	 While the Raspberry Pi includes a 64 bit processor, the RaspbianOS is built on a 32 bit kernel and is not a supported configuration for these installers. We recommend using 64 bit linux distribution such as Ubuntu for Raspberry PI.  
 	
+	    cd miniforge3/bin
 	    source activate myenv
 	    source deactivate  
 	
