@@ -75,4 +75,4 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 
 * 2/2/22  
 	* Sigo sin ser capaz de ejecutar un fichero que tenga import RPi.GPIO, probando:  
-	* pip install [lgpio](https://ubuntu.com/tutorials/gpio-on-raspberry-pi#1-overview), error: AttributeError: module 'lgpio' has no attribute 'gpiochip_open'
+	* ~~pip install [lgpio](https://ubuntu.com/tutorials/gpio-on-raspberry-pi#1-overview)~~, error: AttributeError: module 'lgpio' has no attribute 'gpiochip_open'
