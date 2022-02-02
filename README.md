@@ -71,4 +71,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 
 * 1/2/22  
 	- Dado que la Raspberry se me quedaba pillada simplemente al intentar abrir o cerrar una aplicación y tenía que estar apagandola y encenciendola a lo "bruto" encontré una posible solución que es sustituir en el fichero **/boot/firmware/config.txt** la línea **dtoverlay=vc4-kms-v3d** por **dtoverlay=vc4-fkms-v3d** ([enlace](https://bugs.launchpad.net/ubuntu/+source/linux-raspi/+bug/1946368))  
-	- sudo apt install python3-rpi.gpio  (para que no de error hay que ejecutarlo con sudo).
+	- ~~sudo apt install python3-rpi.gpio  (para que no de error hay que ejecutarlo con sudo).~~
+
+* 2/2/22  
+	* Sigo sin ser capaz de ejecutar un fichero que tenga import RPi.GPIO, probando:  
+	* pip install [lgpio](https://ubuntu.com/tutorials/gpio-on-raspberry-pi#1-overview), error: AttributeError: module 'lgpio' has no attribute 'gpiochip_open'
