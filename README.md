@@ -76,3 +76,16 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 * 2/2/22  
 	* Sigo sin ser capaz de ejecutar un fichero que tenga import RPi.GPIO, probando:  
 	* ~~pip install [lgpio](https://ubuntu.com/tutorials/gpio-on-raspberry-pi#1-overview)~~, error: AttributeError: module 'lgpio' has no attribute 'gpiochip_open'
+
+* 3/2/22
+	* He vuelto a intentar instalar con **pip3 install lgpio**  
+  	  Ya que por la documentacion del enlace creo que RPi.GPIO no puedo instalarmelo. El problema (por lo que he entendido) es que para poder acceder a los pines (ejecutar gpiochip_open(0)) es necesario ser root, sin embargo al instalarlo (como he dicho antes) y ejecutar **sudo python LDR_data_lgpio.py**, sudo no es "consciente" de que tiene instalado lgpio por lo tanto da error de que no existe ningún módulo lgpio.  
+	  Al fichero que intento ejecutar (LDR_data_lgpio.py) le he cambiado de propietario a root:  
+	  
+	  ```
+	     sudo chown root:root LDR_data_lgpio.py
+	     sudo chmod u+s LDR_data_lgpio.py
+	     sudo chmod g+s LDR_data_lgpio.py
+	  ```
+	 Y le he puesto un setuid de forma que al ejecutar, ejecute con los permisos del propietario del fichero que es root.  
+	 Pero sigo igual, con el mismo error.  
