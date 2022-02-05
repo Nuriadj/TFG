@@ -108,4 +108,5 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	     make
 	  ```
 	  
-	 Con make me saltan muchos errores el último es make: *** [<builtin>: lgGpio.o] Error 1
+	 Con make me saltan muchos errores el último es make: *** [<builtin>: lgGpio.o] Error 1.  
+	 No he hecho unisntall de ninguno de estos conda install.
