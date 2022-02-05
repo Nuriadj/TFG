@@ -89,3 +89,23 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	  ```
 	 Y le he puesto un setuid de forma que al ejecutar, ejecute con los permisos del propietario del fichero que es root.  
 	 Pero sigo igual, con el mismo error.  
+	 
+* 4/2/22
+	* He estado probando a ejecutar los ficheros haciendo que sean sudo pero que mantenga las variables (el entorno) de myenv, peor no he conseguido nada.
+	  He instalado y desinstalado varias veces lgpio de diferentes formas.  
+	 
+* 5/2/22  
+	* He intentado instalar lgpio de otra forma siguiendo este [enlace](http://abyz.me.uk/lg/download.html).  
+	  He ejecutado: 
+	  
+	  ```
+	     conda install swig
+	     wget http://abyz.me.uk/lg/lg.zip
+	     unzip lg.zip
+	     cd lg
+	     conda install make
+	     conda install gcc
+	     make
+	  ```
+	  
+	 Con make me saltan muchos errores el último es make: *** [<builtin>: lgGpio.o] Error 1
