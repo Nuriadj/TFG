@@ -91,7 +91,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	 Pero sigo igual, con el mismo error.  
 	 
 * 4/2/22
-	* He estado probando a ejecutar los ficheros haciendo que sean sudo pero que mantenga las variables (el entorno) de myenv, peor no he conseguido nada.
+	* He estado probando a ejecutar los ficheros haciendo que sean sudo pero que mantenga las variables (el entorno) de myenv, pero no he conseguido nada.
 	  He instalado y desinstalado varias veces lgpio de diferentes formas.  
 	 
 * 5/2/22  
@@ -109,7 +109,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	  ```
 	  
 	 Con make me saltan muchos errores el último es make: *** [<builtin>: lgGpio.o] Error 1.  
-	 No he hecho unisntall de ninguno de estos conda install.
+	 He hecho uninstall de todos de estos conda install.
 
 * 6/2/22
 	
