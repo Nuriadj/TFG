@@ -110,3 +110,29 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	  
 	 Con make me saltan muchos errores el último es make: *** [<builtin>: lgGpio.o] Error 1.  
 	 No he hecho unisntall de ninguno de estos conda install.
+
+* 6/2/22
+	
+	* Posible solución a la instalación de Lgpio, pasos que he seguido:  
+	
+		1.Instalación lgpio: ```sudo apt-get install python3-lgpio```  
+		2.Mover ficheros:  
+	  
+| File | FROM | TO |
+|------|------|----|
+|lgpio-0.1.0.1.egg-info| /usr/lib/python3/dist-packages/lgpio-0.1.0.1.egg-info | /home/nuria/miniforge3/env/myenv/lib/python3.9/site-packages/lgpio-0.1.0.1.egg-info |  
+| lgpio.py | /usr/lib/python3/dist-packages/lgpio.py | /home/nuria/miniforge3/env/myenv/lib/python3.9/site-packages/lgpio.py |
+| _lgpio.cpython-39-aarch64-linux-gnu.so | /usr/lib/python3/dist-packages/_lgpio.cpython-39-aarch64-linux-gnu.so | /home/nuria/miniforge3/env/myenv/lib/python3.9/site-packages/_lgpio.cpython-39-aarch64-linux-gnu.so |
+| lgpio.cpython-39.pyc | /usr/lib/python3/dist-packages/__pycache__/lgpio.cpython-39.pyc | /home/nuria/miniforge3/env/myenv/lib/python3.9/site-packages/__pycache__/lgpio.cpython-39.pyc |
+| liblgpio1 | /usr/share/doc/liblgpio1 | /home/nuria/miniforge3/env/myenv/share/doc/liblgpio1 |
+| python3-lgpio | /usr/share/doc/python3-lgpio | /home/nuria/miniforge3/env/myenv/share/doc/python3-lgpio |
+	
+Los últimos dos "movimientos" creo que no son necesarios.  
+
+Ahora, para poder ejecutar el fichero que quiera utilizar lgpio hay que ejecutar:  
+	```
+	sudo env "PATH=$PATH" python file.py
+	```
+	
+3.Una vez copiados todos los ficheros necesarios desinstalo python3-lgpio: ```sudo apt remove python3-lgpio```
+		
