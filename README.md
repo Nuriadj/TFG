@@ -59,6 +59,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	    cd miniforge3/bin/
 	    source activate myenv
 	    source deactivate  
+	 
+    O  
+	
+	    conda activate myenv
+	    conda deactivate  
+	 
 	
 	- Instalado:  
 		- numpy (dio error al principio y tuve que ejecutar: sudo dpkg --configure -a)
