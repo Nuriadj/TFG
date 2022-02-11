@@ -150,5 +150,6 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 
 **TO DO Memoria:**  
 	Repasar estado del arte: Miniconda poner algo sobre que ofrece un mayor control sobre el entorno en el que se desarrolla el programa, respecto a los paquetes que se instalan. Además permite "compartir" el entorno de forma que se puede replicar ese enotorno virtual en otra máquina.  
-	Cambiar Miniconda!!! es **Miniforge3** !!
-	¿Por qué lgpio?
+	~~Cambiar Miniconda!!! es **Miniforge3** !!~~  
+	~~¿Por qué lgpio?~~  
+	Pasar el desarrollo de los problemas de de instalación (miniconda, RPi.GPIO...) Al Anexo.  
