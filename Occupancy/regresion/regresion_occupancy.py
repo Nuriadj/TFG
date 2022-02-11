@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.metrics import mean_squared_error, r2_score
 
 
 dataset = pd.read_csv('Occupancy.csv', header= 0)
@@ -67,4 +68,4 @@ for i in range(len(y_test)):
 
 print("Correct: ",correct, " Wrong: ",wrong, "TOTAL: ",len(y_test))
 print("TOTAL CORRECT :",correct/(len(y_test)))
-
+print("Mean squared error: %2.f"% mean_squared_error(y_test,pred))
