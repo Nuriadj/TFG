@@ -149,7 +149,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	* He añadido al Latex el paquete comment, \usepackage{comment}. He comentado unas figuras en la seccion de arquitectura general.
 * 11/2/22
 	* Reunión con tutores.
-	* Crear un nuevo entorno virtual llamado occupancy con Python 3.9.
+	* Crear un nuevo entorno virtual llamado **occupancy** con Python 3.9.
 	* ``` 
 		conda install scikit-learn  
 		conda install pandas  
