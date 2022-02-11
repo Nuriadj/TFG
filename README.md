@@ -153,6 +153,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	* ``` 
 		conda install scikit-learn  
 		conda install pandas  
+		conda install matplotlib    
 	* Tengo que crear tres modelos:
 		- Regresión Logistica.
 		- Máquinas de soporte vectorial.
