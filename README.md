@@ -147,7 +147,15 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 * 9/2/22
 	* He probado (por si acaso) a instalar lgpio con pip3 install lgpio y luego ejecutar el .py con el comando de antes (sudo env ....) pero no va dice que lgpio has no attribute 'gpiochip_open'  
 	* He añadido al Latex el paquete comment, \usepackage{comment}. He comentado unas figuras en la seccion de arquitectura general.
-
+* 11/2/22
+	* Reunión con tutores.
+	* Crear un nuevo entorno virtual llamado occupancy con Python 3.9.
+	* ``` conda install scikit-learn```  
+	* Tengo que crear tres modelos:
+		- Regresión Logistica.
+		- Máquinas de soporte vectorial.
+		- Gradient tree boosting.
+	
 **TO DO Memoria:**  
 	Repasar estado del arte: Miniconda poner algo sobre que ofrece un mayor control sobre el entorno en el que se desarrolla el programa, respecto a los paquetes que se instalan. Además permite "compartir" el entorno de forma que se puede replicar ese enotorno virtual en otra máquina.  
 	~~Cambiar Miniconda!!! es **Miniforge3** !!~~  
