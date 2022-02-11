@@ -150,7 +150,9 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 * 11/2/22
 	* Reunión con tutores.
 	* Crear un nuevo entorno virtual llamado occupancy con Python 3.9.
-	* ``` conda install scikit-learn```  
+	* ``` 
+		conda install scikit-learn  
+		conda install pandas  
 	* Tengo que crear tres modelos:
 		- Regresión Logistica.
 		- Máquinas de soporte vectorial.
