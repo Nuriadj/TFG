@@ -158,6 +158,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		- Regresión Logistica.
 		- Máquinas de soporte vectorial.
 		- Gradient tree boosting.
+	* Primer modelo de regresion logística, tiene un porcentaje de acierto de más del 90%.
 	
 **TO DO Memoria:**  
 	Repasar estado del arte: Miniconda poner algo sobre que ofrece un mayor control sobre el entorno en el que se desarrolla el programa, respecto a los paquetes que se instalan. Además permite "compartir" el entorno de forma que se puede replicar ese enotorno virtual en otra máquina.  
