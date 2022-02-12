@@ -175,6 +175,24 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	* **Primer modelo con Gradient tree boosting, con Accuracy: más del 98%, Precision: 96%, Recall: 99% en unos 7 (casi ocho) segundos.**
 		
+	* Nuevo entorno virtual **jupiter**  
+		```
+		conda install ipython  
+		conda install jupyter  
+		conda install jupyterlab
+		conda install numpy  
+		conda install scipy  
+		conda install matplotlib  
+		conda install pandas  
+		conda install scikit-learn  
+		```  
+	
+	Ctr+Enter para hacer run de todas las cells.  
+	Insertar una nueva celda debajo Esc+b.  
+	
+	* Ejecutando el código de regresión logística en Jupyter Notebook el tiempo total es de 1.38s y mismos porcentajes.  
+	* Ejecutando el código de máquinas de soporte vectorial en Jupyter Notebook el tiempo total es de 2s y mismos porcentajes.  
+	* Ejecutando el código de Gradient tree boosting en Jupyter Notebook el tiempo total es de casi 4s y mismos porcentajes.  
 	
 	
 **TO DO Memoria:**  
