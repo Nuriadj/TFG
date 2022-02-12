@@ -158,7 +158,19 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		- Regresión Logistica.
 		- Máquinas de soporte vectorial.
 		- Gradient tree boosting.
-	* Primer modelo de regresion logística, tiene un porcentaje de acierto de más del 90% en unos 8 segundos.
+	* **Primer modelo de regresion logística, tiene un porcentaje de acierto de más del 97% en unos 8 segundos.**
+
+* 12/2/22
+	* Accuracy= (True positive + True Negative)/(True positive+ True Negative + False Positive + False Negative)  
+	* Precision= (True positive)/(True positive + False positive)  
+	
+	* **Primer modelo de máquina de soporte vectorial, con un porcentaje de acierto (en los datos de test) de más del 97% en unos 9 segundos.**
+		Con el counter que aparece en este código se puede comprobar que el stratify lo esté haciendo bien (el numero de cada elemento sea el correcto por  ejemplo se de 1 hay 100 ejemplos y queremos que el 70% de los datos totales sean de entrenamiento, el stratify debería de hacer que hubiese (100*70%)/100% (regla de tres).
+		El random_state sirve para que siempre salgan en el mismo orden los valores (se mezclan pero siempre en el mismo orden).
+		
+		He comprobado que al hacerlo sin el stratify tambien consigue porcentajes muy buenos (del estílo anterior) ya que consigue (más o menos) la misma proporcion de 0 y 1 que usando el stratify. Los 0 rondan los 11000 y los 1 los 3300 (en cantidad, es decir hay 3300 unos y 11000 ceros).
+		
+	
 	
 **TO DO Memoria:**  
 	Repasar estado del arte: Miniconda poner algo sobre que ofrece un mayor control sobre el entorno en el que se desarrolla el programa, respecto a los paquetes que se instalan. Además permite "compartir" el entorno de forma que se puede replicar ese enotorno virtual en otra máquina.  
