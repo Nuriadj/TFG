@@ -3,6 +3,7 @@ from sklearn import datasets, metrics
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import cross_val_score
 import pandas as pd
 import numpy as np
 
@@ -19,7 +20,7 @@ y= dataset['Occupancy'].values#la salida
 #y = dataset.iloc[:,-1].values
 
 #-- 70% train 30% test y estratificado--
-x_train, x_test, y_train, y_test = train_test_split(x,y, train_size= 0.7, stratify=y)
+x_train, x_test, y_train, y_test = train_test_split(x,y, test_size= 0.30, stratify=y)
 
 # -- Comprobar las proporciones de 0 y 1----
 """#print(y_train)
@@ -75,6 +76,9 @@ print("TOTAL CORRECT :",correct/(len(y_test)))
 #print("Mean squared error: %2.f"% mean_squared_error(y_test, pred))"""
 #-------------------------------------
 
+scores = cross_val_score(l_regr, x, y, cv= 5)
+print("Cross, validation ", scores)
+
 accuracy = metrics.accuracy_score(y_test, occup_pred)*100
 print("Accuracy: ","{:.1f}".format(accuracy),"%")
 #Lo mismo: 
@@ -84,4 +88,5 @@ precision = metrics.precision_score(y_test, occup_pred)*100
 print("Precision: ","{:.1f}".format(precision),"%")
 recall = metrics.recall_score(y_test, occup_pred)*100
 print("Recall: ","{:.1f}".format(recall),"%")
+
 
