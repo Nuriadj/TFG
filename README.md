@@ -207,3 +207,4 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	~~Cambiar Miniconda!!! es **Miniforge3** !!~~  
 	~~¿Por qué lgpio?~~  
 	Pasar el desarrollo de los problemas de de instalación (miniconda, RPi.GPIO...) Al Anexo.  
+	Estado del arte meter las librerías de scikit-learn, pandas, jupyter-notebook?
