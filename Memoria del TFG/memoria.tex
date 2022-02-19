@@ -539,6 +539,8 @@ Se puede utilizar para ofrecer el contenido de correos electrónicos, código, e
 \label{sec:objetivo-general} % identificador de subsección (no se muestra, es para poder referenciarla)
 
 
+El objetivo de este Trabajo de Fin de Grado es comprobar la capacidad y eficiencia de una Raspberry Pi 4 para entrenar modelos de aprendizaje automático.\\
+
 Aquí vendría el objetivo general en una frase:
 Mi Trabajo Fin de Grado/Master consiste en crear de una herramienta de análisis de los comentarios jocosos en repositorios de software libre alojados en la plataforma GitHub.
 
@@ -639,9 +641,9 @@ También existe la posibilidad de poner notas al pie de página, por ejemplo, un
 \section{Dispositivo Hardware: Raspberry Pi 4 Modelo B} 
 \label{sec:seccion1}
 
-Raspberry Pi es un ordenador de bajo coste y tamaño reducido desarrollado por Raspberry Pi Foundation. Este dispositivo se puede emplear en  multitud de aplicaciones pero su principal objetivo es hacer accesible la informática a todos los usuarios. A parte de poder realizar todas las tareas que se esperan de un ordenador también puede interactuar con el entorno a través de sensores conectados a sus pines GPIO.
+Raspberry Pi es un ordenador de bajo coste y tamaño reducido desarrollado por Raspberry Pi Foundation. Este dispositivo se puede emplear en  multitud de aplicaciones pero su principal objetivo es hacer accesible la informática a todos los usuarios. A parte de poder realizar todas las tareas que se esperan de un ordenador, también puede interactuar con el entorno a través de sensores conectados a sus pines GPIO.
 
-El sistema operativo que ofrece es Raspbian Pi OS, que es una versión adaptada de Debian. Sin embargo permite utilizar otros sistemas.
+El sistema operativo que ofrece es Raspbian Pi OS, una versión adaptada de Debian. Sin embargo permite utilizar otros sistemas.
 
 Desde su primer lanzamiento se han ido desarrollando y comercializado nuevos modelos. En este proyecto se utilizará la última versión de estos dispositivos denominado como Raspberry Pi 4 Modelo B con 4GB de RAM.
 
@@ -662,8 +664,8 @@ Desde su primer lanzamiento se han ido desarrollando y comercializado nuevos mod
 \end{table}
 \end{comment}
 
-\section{Entorno de desarrollo: Miniforge}
-\label{sec:entorno_de_desarrollo}
+\section{Gestor de paquetes: Miniforge}
+\label{sec:gestor_de_paquetes}
 
 %%-- El comando \gls{} permite incluir términos en el glosario, para luego reunirlos todos
 %%-- en una tabla al comienzo o al final del documento, junto con sus definiciones.
@@ -672,7 +674,12 @@ Miniforge es un instalador mínimo de conda especifico de conda-forge, que permi
 
 Miniconda es un instalador mínimo de conda, que procede de conda, un sistema de gestión de paquetes y entornos virtuales. Mediante él se instala una pequeña versión de arranque de Anaconda que incluye solo conda, Python, los paquetes de los que dependen y otros pocos paquetes útiles como pueden ser pip, zlib...
 
-Ofrece casi lo mismo que Anaconda pero es mucho más ligero, lo que lo hace idóneo para poder desarrollar el proyecto en el dispositivo utilizado. Además de que permite tener un mayor control sobre los paquetes que se instalan y ser más sencillo replicar un entorno concreto.
+Ofrece casi lo mismo que Anaconda pero es mucho más ligero, lo que lo hace idóneo para poder desarrollar el proyecto en el dispositivo utilizado. Además, facilita la replicación de un entorno concreto ya que permite tener un mayor control y orden sobre los paquetes que se instalan.
+
+\section{Entorno de desarrollo: Jupyter-notebook}
+\label{sec:entorno_de_desarrollo}
+
+Jupyter-notebook es una aplicación web de código abierto desarrollada por la organización Proyecto Jupyter. Permite crear y compartir documentos computacionales que siguen un esquema versionado y una lista ordenada de celdas de entrada y de salida. Estas celdas pueden contener código, texto en formato Markdown, fórmulas matemáticas y ecuaciones, o también contenido multimedia. Estas celdas se pueden ejecutar para visualizar los datos y ver los resultados de salida. Además se puede utilizar tanto remotamente como en local.
 
 
 \begin{comment}
@@ -710,17 +717,9 @@ Eso sí, normalmente aconsejo no poner código, sino diagramas.
 
 Para poder desarrollar correctamente este trabajo es necesario preparar adecuadamente el entorno, una vez acondicionado todo se dará pie al motivo principal de esta investigación.
 
-El primer paso para esto fue montar adecuadamente la Raspberry Pi conforme las instrucciones lo indican añadiendo el ventilador, carcasa... Una vez está listo el hardware hay que instalar el software necesario para la aplicación de modelos de machine learning.
+El primer paso para esto fue montar adecuadamente la Raspberry Pi conforme las instrucciones de Okdo\footnote{\url{https://www.okdo.com/getstarted/}}, empresa de la que procede el kit con el hardware necesario para el proyecto. Una vez está listo el hardware hay que instalar el software necesario para la aplicación de modelos de machine learning.
 
-Una de las prioridades fue instalar el gestor de paquetes Miniconda de forma que permitiese crear un entorno virtual con una versión de Python superior a la 3.7. Sin embargo, debido a la arquitectura de 32-bit empleada por el sistema operativo instalado por defecto en la Raspberry (Raspbian Pi OS), no era posible instalar una versión de Python superior a la 3.6, pues para esas versiones se requería una arquitectura de 64-bit.
-
-Por lo que fue necesario instalar Ubuntu 21.10 cuya arquitectura es de 64-bit. Aún así, tampoco se pudo instalar Miniconda con una versión de Python 3.8 o 3.9. La solución recayó en instalar Miniforge que instala un administrador de paquetes conda, muy similar a la función que desempeña Miniconda.
-
-Una vez creado el entorno virtual con una verisón de Python igual a la 3.9, se procedió a intentar acceder a los pines GPIO desde este mismo entorno. Para poder acceder a ellos comunmente siempre se ha utilizado un paquete denominado RPi.GPIO, pero hay que tener en cuenta que los métodos utilizados por dicho paquete para la comunicación con los pines de la Raspberry, dejaron de funcionar en versiones de kernels de Linux iguales o superiores a la 5.11. La versión de kernel utilizada en este trabajo es la 5.13, por tanto la librería GPIO no puede resolver la comunicación con los pines.
-
-Para versiones de Ubuntu iguales o superiores a la 21.04, existe un nuevo paquete denominado como LGPIO que implementa las funciones necesarias para poder acceder a los pines. Para poder utilizar este paquete dentro del entorno virtual creado, fue necesario instalarlo primeramente fuera de este, utilizando sudo apt-get install y moviendo manualmente los ficheros instalados dentro del directorio del entorno virtual. Con esto, y ejecutando el fichero con permisos de root, finalmente se puede acceder a los pines y por lo tanto leer o escribir en ellos.\\
-Cuando se quiere instalar un paquete dentro del entorno se utilizan los comandos conda install o bien pip3 install, sin embargo, por ninguno de estos dos medios se pudo obtener LGPIO de forma funcional.\\
-
+Empezando por cambiar el sistema operativo, en vez de utilizar el que viene por defecto, Raspbian Pi OS, se instaló Ubuntu 21.10.
 
 \section{Arquitectura general} 
 \label{sec:arquitectura}
@@ -766,9 +765,23 @@ Si utilizas una base de datos, no te olvides de incluir también un diagrama de 
 
 \textbf{Atención}: Este capítulo se introdujo como requisito en 2019.
 
+\begin{comment}
 Describe los experimentos y casos de test que tuviste que implementar para validar tus resultados. 
 Incluye también los resultados de validación que permiten afirmar que tus resultados son correctos.
+\end{comment}
 
+La primera prueba realizada para observar el comportamiento de la Raspberry, a la hora de entrenar para generar un modelo de aprendizaje automático, fue tratar de generar mediante scripts de Python tres diferentes modelos de clasificación binaria por medio de aprendizaje supervisado, basados en regresión logística, máquinas de soporte vectorial y gradient tree boosting.
+
+Para ello se utilizó el data set de Room Occupancy detection data, obtenido de Kaggle\cite{DataSetOccuapncy}, que contiene unas 20560 muestras. Cada ejemplo tiene medidas de temperatura, humedad, CO2 y luz de una habitación de oficina de unos quince metros cuadrados. Como salida se proporcionaba si en base a esas medidas la sala se encuentra en un determinado instante ocupada por personas o no. 
+
+Para generar los modelos se dividió el set de datos en dos partes, una primera parte para entrenar (que contenía el 70\% de ejemplos del set de datos original) y otra para comprobar la eficiencia del modelo a la hora de clasificar si la estancia está ocupada o no. En esta segunda parte se utilizó el 30\% de muestras restantes del set de datos original, que no se han usado para el entrenamiento y por lo tanto el modelo nunca los ha visto, son totalmente nuevos para el. Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. Por lo tanto, si esta división se realiza de forma aleatoria puede darse el caso en el que a la hora de entrenar apenas haya ejemplos de habitación ocupada, haciendo que el modelo tuviese un acierto bajo al realizar las clasificaciones. Debido a esto la división se realizó de forma estratificada, para que hubiese la misma proporcion de datos de una clase u otra que en el set de datos original. De esta forma nos aseguramos que a la hora de tanto entrenar, como de comprobar el modelo generado, se tenga ejemplos de ambas clases en la misma proporción que aparecen en el set de datos original.
+
+Con esta división y preparación de los datos, los tres modelos se pudieron generar sin problemas utilizando las librerías de scikit-learn y pandas. Todos conseguían una accuracy superior al 90\%, el tiempo de ejecución era de unos cinco segundos salvo para gradient tree boosting, que tardaba unos siete segundos.
+
+Dado que no hubo ningún tipo de problema con la ejecución de los scripts, se procedió a realizar los mismos modelos pero utilizando esta vez Jupyter-notebook. Con esto la Raspberry pudo seguir ejecutando los algoritmos sin problemas. 
+
+Se añadió un poco más de dificultad a la Raspberry haciendo que los algoritmos utilizasen validación cruzada, es decir, que dentro del set de datos de entrenamiento (compuesto, una vez más, por el 70\% de ejemplos del set de datos original) se hace una subdivisión en otros cinco sets para entrenar y probar el modelo. Una vez realizada la validación cruzada se vuelve a probar la eficiencia del modelo haciendo que clasifique el 30\% de datos de la división original, datos que nunca ha visto ni entrenado con ellos. Los resultados de esta prueba siguieron siendo muy buenos (el acierto seguía estando por encima del 90\%). Sin embargo, en el caso de máquinas de soporte vectorial y gradient tree boosting los tiempos de ejecución aumentaron, con SVM la ejecución llega a los siete segundos de media, y para gradient tree boosting a unos dieciseis segundos.
+ 
 \section{Incorporación de código en la memoria}
 
 Es bastante habitual que se reproduzcan fragmentos de código en la memoria de un TFG/TFM.
@@ -886,6 +899,19 @@ Aquí viene lo que has aprendido en el Trabajo Fin de Grado/Máster.
 Ningún proyecto ni software se termina, así que aquí vienen ideas y funcionalidades que estaría bien tener implementadas en el futuro.
 
 Es un apartado que sirve para dar ideas de cara a futuros TFGs/TFMs.
+
+\chapter{Anexo}
+\label{chap:anexo}
+
+En la preparación del entorno para el desarrollo de este proyecto surgieron algunas dificultades.\\
+Como se comenta en el capítulo 3 uno de los primeros pasos fue instalar Miniforge, pero antes de instalar este gestor de paquetes se intentó utilizar Miniconda, de forma que permitiese crear un entorno virtual con una versión de Python superior a la 3.7. Sin embargo, debido a la arquitectura de 32-bit empleada por el sistema operativo instalado por defecto en la Raspberry (Raspbian Pi OS), no era posible instalar una versión de Python superior a la 3.6 por medio de Miniconda, pues para esas versiones se requería una arquitectura de 64-bit.
+
+Por lo que fue necesario instalar Ubuntu 21.10 cuya arquitectura es de 64-bit. Aún así, tampoco se pudo instalar Miniconda con una versión de Python 3.8 o 3.9. La solución recayó en instalar Miniforge que proporciona un administrador de paquetes conda, muy similar a la función que desempeña Miniconda.
+
+Una vez creado el entorno virtual con una verisón de Python igual a la 3.9, se procedió a intentar acceder a los pines GPIO desde este mismo entorno. Para poder acceder a ellos comunmente siempre se ha utilizado un paquete denominado RPi.GPIO, pero hay que tener en cuenta que los métodos utilizados por dicho paquete para la comunicación con los pines de la Raspberry, dejaron de funcionar en versiones de kernels de Linux iguales o superiores a la 5.11. La versión de kernel utilizada en este trabajo es la 5.13, por tanto la librería GPIO no puede resolver la comunicación con los pines.
+
+Para versiones de Ubuntu iguales o superiores a la 21.04, existe un nuevo paquete denominado como LGPIO que implementa las funciones necesarias para poder acceder a los pines. Para poder utilizar este paquete dentro del entorno virtual creado, fue necesario instalarlo primeramente fuera de este, utilizando sudo apt-get install y moviendo manualmente los ficheros instalados dentro del directorio del entorno virtual. Con esto, y ejecutando el fichero con permisos de root, finalmente se puede acceder a los pines y por lo tanto leer o escribir en ellos.\\
+Cuando se quiere instalar un paquete dentro del entorno se utilizan los comandos conda install o bien pip3 install, sin embargo, por ninguno de estos dos medios se pudo obtener LGPIO de forma funcional.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
