@@ -235,6 +235,15 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		conda install scikit-learn  
 		```  
 		
+	* Stressberry 1 cpu:  
+		- regression (stress= 300, idling= 150) cross: 22 segundos  
+		- SVM (stress= 300, idling= 150) cross: 6 segundos  
+		- gradient tree boosting (stress= 300, idling= 150) cross: 16 segundos  
+	
+	* Stressberry 2 cpu:  
+		- regression (stress= 300, idling= 150) cross: 16 segundos  
+		- SVM (stress= 300, idling= 150) cross: 6 segundos  
+		- gradient tree boosting (stress= 300, idling= 150) cross: 15 segundos  
 		
 	
 	
