@@ -244,6 +244,11 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		- regression (stress= 300, idling= 150) cross: 16 segundos  
 		- SVM (stress= 300, idling= 150) cross: 6 segundos  
 		- gradient tree boosting (stress= 300, idling= 150) cross: 15 segundos  
+	
+	* Stressberry 4 cpu:  
+		- regression (stress= 300, idling= 150) cross: 14 segundos (varía mucho desde 6 seg hasta 24 seg)
+		- SVM (stress= 300, idling= 150) cross: 6 segundos  
+		- gradient tree boosting (stress= 300, idling= 150) cross: 16 segundos  
 		
 	
 	
