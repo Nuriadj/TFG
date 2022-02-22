@@ -200,6 +200,42 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	* En regresión logistica aún con un train size muy pequeño (0.001 que son 20 ejemplos) la accuracy sigue siendo del 90%.Y con 0.0005, que son 10 ejemplos la accuracy baja a más o menos el 85% (aun que todavía hay veces que está por encima del 90%).  
 	* He hecho cross validation y sigue teniendo porcentajes altos de accuracy (superiores al 90%)
 	
+* 22/2/22
+	* He cambiado la validación cruzada de StratifiedKFold a KFold directamente. Obteniendo igualmente muy buenos resultados Regresión tarda unos 1 segundo (wall time, si iramos CPU son unos 4 segundos), SVM 6-7 segundos y gradient tree boosting 16 segundos.  
+	* El tiempo en Jupyter notebook que interesa es el Wall time que muestra el verdadero tiempo que ha pasado para ejecutar esa cell.  
+	* En el enviroment **jupiter** he instalado stressberry:  
+		```
+		sudo apt install stress  
+		pip3 install stressberry --user  
+		sudo apt update  
+		sudo apt upgrade  
+		sudo usermod -aG video <username>  
+		Hacer logout  
+		```
+	[Ejecutar](https://peakd.com/hive-163521/@themarkymark/how-to-stress-test-your-raspberry-pi) con: /home/nuria/.local/bin/stressberry-run -d {tiempo en segundos estresada} -i {segundos idle} -c {numero de cpus a estresar} name.out  
+	La Raspberry tiene 4 Cpus. ¿Hacer tres niveles comenzando estresando una (nivel bajo), medio (estresando 2) y alto estresando las 4?  
+	En **mi portátil blanco** descomento en .bashrc desde  
+		__conda_setup="$('/home/nuriadj/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"  
+	hasta  
+		unset __conda_setup  
+	
+	Crear un nuevo enviroment llamado tfg
+		```
+		conda create --name tfg python=3.9
+		```
+	Instalo:  
+	```
+		conda install ipython  
+		conda install jupyter  
+		conda install jupyterlab
+		conda install numpy  
+		conda install scipy  
+		conda install matplotlib  
+		conda install pandas  
+		conda install scikit-learn  
+		```  
+		
+		
 	
 	
 # **TO DO Memoria:**  
@@ -213,4 +249,5 @@ Repasar estado del arte: Miniconda poner algo sobre que ofrece un mayor control 
 ~~Cambiar Miniconda!!! es **Miniforge3** !!~~  
 ~~¿Por qué lgpio?~~  
 Pasar el desarrollo de los problemas de de instalación (miniconda, RPi.GPIO...) Al Anexo.  
-Estado del arte meter las librerías de scikit-learn, pandas, jupyter-notebook?
+Estado del arte meter las librerías de scikit-learn, pandas, jupyter-notebook?  
+Comentar en la memoria que dado que es un gran número de ejemplos no es necesario utilizar stratified a pesar de que haya menor número de muestras en una clase que en otra. Mirar otra vez como he explicado lo de validación cruzada.
