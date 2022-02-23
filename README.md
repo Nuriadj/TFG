@@ -257,7 +257,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		- Gradient tree boosting unos 5 segundos.  
 	* He vuelto a hacer pruebas con stressberry, esta vez para stress=120 e idling= 60. En el caso de regression he obtenido resultados muy similares.  
 	Para SVM igual, en todos los casos el tiempo que atarda es casi siempre 6 segundos.  
-	Para Gradient tree boosting (para una cpu se queda todo el rato en 15 segundos mas o menos)
+	Para Gradient tree boosting (para una y dos cpu se queda todo el rato en 15 segundos mas o menos) FALTA PRUEBA PARA 4 CPUS (y volver a mirar los resultados de regresion).
 		
 	
 	
