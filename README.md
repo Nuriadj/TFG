@@ -233,7 +233,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		conda install matplotlib  
 		conda install pandas  
 		conda install scikit-learn  
-		```  
+	```  
 		
 	* Stressberry 1 cpu:  
 		- regression (stress= 300, idling= 150) cross: 22 segundos  
@@ -241,14 +241,23 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		- gradient tree boosting (stress= 300, idling= 150) cross: 16 segundos  
 	
 	* Stressberry 2 cpu:  
-		- regression (stress= 300, idling= 150) cross: 16 segundos  
+		- regression (stress= 300, idling= 150) cross: 20 segundos  
 		- SVM (stress= 300, idling= 150) cross: 6 segundos  
 		- gradient tree boosting (stress= 300, idling= 150) cross: 15 segundos  
 	
 	* Stressberry 4 cpu:  
-		- regression (stress= 300, idling= 150) cross: 14 segundos (varía mucho desde 6 seg hasta 24 seg)
+		- regression (stress= 300, idling= 150) cross: 15 segundos.
 		- SVM (stress= 300, idling= 150) cross: 6 segundos  
 		- gradient tree boosting (stress= 300, idling= 150) cross: 16 segundos  
+* 23/2/22
+	
+	* Pruebas bajo condiciones normales en mi portátil:  
+		- Regression tarda 711 milisegundos - 1 segundo (mismos valores de Accuracy, Precision, Recall más o menos).  
+		- SVM tarda 1.7 segundos (mismos valores).  
+		- Gradient tree boosting unos 5 segundos.  
+	* He vuelto a hacer pruebas con stressberry, esta vez para stress=120 e idling= 60. En el caso de regression he obtenido resultados muy similares.  
+	Para SVM igual, en todos los casos el tiempo que atarda es casi siempre 6 segundos.  
+	Para Gradient tree boosting (para una cpu se queda todo el rato en 15 segundos mas o menos)
 		
 	
 	
