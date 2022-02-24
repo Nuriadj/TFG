@@ -201,7 +201,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	* He hecho cross validation y sigue teniendo porcentajes altos de accuracy (superiores al 90%)
 	
 * 22/2/22
-	* He cambiado la validación cruzada de StratifiedKFold a KFold directamente. Obteniendo igualmente muy buenos resultados Regresión tarda unos 1 segundo (wall time, si iramos CPU son unos 4 segundos), SVM 6-7 segundos y gradient tree boosting 16 segundos.  
+	* He cambiado la validación cruzada de StratifiedKFold a KFold directamente. Obteniendo igualmente muy buenos resultados Regresión tarda unos 1 segundo (wall time, si miramos CPU son unos 4 segundos), SVM 6-7 segundos y gradient tree boosting 16 segundos.  
 	* El tiempo en Jupyter notebook que interesa es el Wall time que muestra el verdadero tiempo que ha pasado para ejecutar esa cell.  
 	* En el enviroment **jupiter** he instalado stressberry:  
 		```
@@ -252,13 +252,29 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 * 23/2/22
 	
 	* Pruebas bajo condiciones normales en mi portátil:  
-		- Regression tarda 711 milisegundos - 1 segundo (mismos valores de Accuracy, Precision, Recall más o menos).  
-		- SVM tarda 1.7 segundos (mismos valores).  
-		- Gradient tree boosting unos 5 segundos.  
+		- Regression tarda 711 milisegundos - 1 segundo (mismos valores de Accuracy, Precision, Recall más o menos) Wall time unos 200 ms.  
+		- SVM tarda 1.7 segundos (mismos valores) Wall time= 1.6 seg.  
+		- Gradient tree boosting unos 5 segundos, Wall time unos 5 segundos.  
 	* He vuelto a hacer pruebas con stressberry, esta vez para stress=120 e idling= 60. En el caso de regression he obtenido resultados muy similares.  
 	Para SVM igual, en todos los casos el tiempo que atarda es casi siempre 6 segundos.  
-	Para Gradient tree boosting (para una y dos cpu se queda todo el rato en 15 segundos mas o menos) FALTA PRUEBA PARA 4 CPUS (y volver a mirar los resultados de regresion).
-		
+	Para Gradient tree boosting (para una, dos y cuatro cpu se queda todo el rato en 15 segundos mas o menos).
+	
+* 24/2/22
+	* Instalado git con ```sudo apt install git```  
+	
+	En Raspberry (total CPU time) con Jupyter-notebook:
+	
+	| Modelo | Idle | Bajo | Medio | Alto |
+	|--------|------|------|-------|------|
+	|Regresión logística| 5 seg | 22 seg | 20 seg | 15 seg|
+	|SVM | 5 seg | 6 seg | 6 seg | 6 seg|
+	|Gradient tree boosting | 16 seg | 16 seg | 15 seg | 16 seg|  
+	
+	* Wall time is the actual amount of time taken to perform a job
+	
+	* Wall time Regresion, idle = 1 seg, 1 cpu= 10 seg, 2 cpu= 12 seg, 4 cpu= 8 seg.  
+	  Wall time SVM, idle= 6 seg, 1 cpu= 6 seg, 2 cpu= 6 seg, 4 cpu= 6 seg.  
+	  Wall time Gradient tree, idle= 16 seg, 1 cpu= 16 seg , 2 cpu= 16 seg , 4 cpu= 15 seg.
 	
 	
 # **TO DO Memoria:**  
