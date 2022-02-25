@@ -274,7 +274,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	* Wall time is the actual amount of time taken to perform a job
 	
-	* Wall time Regresion, idle = 1 seg, 1 cpu= 10 seg, 2 cpu= 12 seg, 4 cpu= 8 seg.  
+	* Wall time Regresion, idle = 1 seg, 1 cpu= 8 seg, 2 cpu= 10 seg, 4 cpu= 7 seg.  
 	  Wall time SVM, idle= 6 seg, 1 cpu= 6 seg, 2 cpu= 6 seg, 4 cpu= 6 seg.  
 	  Wall time Gradient tree, idle= 16 seg, 1 cpu= 16 seg , 2 cpu= 16 seg , 4 cpu= 15 seg.
 	
