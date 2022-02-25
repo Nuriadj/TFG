@@ -260,7 +260,9 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	Para Gradient tree boosting (para una, dos y cuatro cpu se queda todo el rato en 15 segundos mas o menos).
 	
 * 24/2/22
-	* Instalado git con ```sudo apt install git```  
+	* Instalado git en la Raspberry con ```sudo apt install git```  
+	
+	* He estado probando tambien con stress= 900 e idle= 150
 	
 	En Raspberry (total CPU time) con Jupyter-notebook:
 	
@@ -276,6 +278,21 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	  Wall time SVM, idle= 6 seg, 1 cpu= 6 seg, 2 cpu= 6 seg, 4 cpu= 6 seg.  
 	  Wall time Gradient tree, idle= 16 seg, 1 cpu= 16 seg , 2 cpu= 16 seg , 4 cpu= 15 seg.
 	
+* 25/2/22
+	
+	* Pruebas stressberry sin usar Jupyter-notebook (desde el entorno ocuppancy) stress 300 idle 150:
+		- 1 CPU  
+			Regresión real 13 seg, user 30 seg  
+			SVM real 10 seg, user 9 seg  
+			Gradient tree real 19 seg, user 18 seg  
+		
+		- 2 CPU  
+			Regresión real 14 seg, user 25 seg  
+			SVM real 10 seg, user 9 seg  
+			Gradient tree real 19 seg, user 18 seg  
+		
+		- 4 CPU  
+	
 	
 # **TO DO Memoria:**  
 	
@@ -290,3 +307,5 @@ Repasar estado del arte: Miniconda poner algo sobre que ofrece un mayor control 
 Pasar el desarrollo de los problemas de de instalación (miniconda, RPi.GPIO...) Al Anexo.  
 Estado del arte meter las librerías de scikit-learn, pandas, jupyter-notebook?  
 Comentar en la memoria que dado que es un gran número de ejemplos no es necesario utilizar stratified a pesar de que haya menor número de muestras en una clase que en otra. Mirar otra vez como he explicado lo de validación cruzada.
+	
+(Sobre la estratificación: Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran cantidad de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que el set de entrenamiento siempre tendrá la cantidad de muestras necesarias de ambas clases para entrenar correctamente. )
