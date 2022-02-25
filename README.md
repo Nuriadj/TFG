@@ -293,6 +293,26 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		
 		- 4 CPU  
 	
+	Desordenando las ejecuciones (punto 1 reunión 23/2/22):  
+	
+	| Modelo | Idle | Bajo | Medio | Alto |
+	|--------|------|------|-------|------|
+	|Regresión logística| 5 seg | 22 seg | 20 seg | 12 seg|
+	|SVM | 5 seg | 6 seg | 6 seg | 6 seg|
+	|Gradient tree boosting | 16 seg | 15 seg | 15 seg | 15.5 seg|
+	|Random forest | 3 seg | 3 seg | 3 seg | 3 seg|  
+	
+	**Instalo en mi portátil stress**
+		```
+		sudo apt install stress  
+		```  
+	| Modelo | Idle | Bajo | Medio | Alto |
+	|--------|------|------|-------|------|
+	|Regresión logística| 700 ms | 700 ms | 900 ms | 1 seg|
+	|SVM | 1 seg | 1.6 seg | 1.8 seg | 3 seg|
+	|Gradient tree boosting | 5 seg | 5 seg | 7 seg | 10 seg|
+	|Random forest | 800 ms | 800 ms | 850 ms | 1.3 seg| 
+	
 	
 # **TO DO Memoria:**  
 	
