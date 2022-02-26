@@ -311,7 +311,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|--------|------|------|-------|------|
 	|Regresión logística| 5 seg | 22 seg | 20 seg | 12 seg|
 	|SVM | 5 seg | 6 seg | 6 seg | 6 seg|
-	|Gradient tree boosting | 16 seg | 15 seg | 15 seg | 15.5 seg|  
+	|Gradient tree boosting | 16 seg | 15 seg | 15 seg | 15.5 seg|
+	|Random forest | 12 seg | 12.3 seg | 12 seg | 12 seg |
 	
 	**Wall time**  
 	
@@ -319,7 +320,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|--------|------|------|-------|------|
 	|Regresión logística| 1 seg | 8 seg | 10 seg | 7 seg|
 	|SVM | 6 seg | 6 seg | 6 seg | 6 seg|
-	|Gradient tree boosting | 16 seg | 16 seg | 15 seg | 16 seg|  
+	|Gradient tree boosting | 16 seg | 16 seg | 15 seg | 16 seg|
+	|Random forest | 12 seg | 12.3 seg | 12 seg | 12 seg |
 	
 	**Instalo en mi portátil stress**
 		```
@@ -335,6 +337,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Regresión logística| 700 ms | 700 ms | 900 ms | 1 seg|
 	|SVM | 1.5 seg | 1.6 seg | 1.8 seg | 3-5 seg|
 	|Gradient tree boosting | 5 seg | 5 seg | 6 seg | 10 seg|
+	|Random forest | 3.4 seg | 3.3 seg | 5 seg | 8 seg |
 	
 	**Wall time**  
 	
@@ -343,6 +346,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Regresión logística| 180 ms | 180 ms | 200 ms | 320 ms|
 	|SVM | 1.5 seg | 1.6 seg | 1.8 seg | 3-5 seg|
 	|Gradient tree boosting | 5 seg | 5 seg | 6 seg | 10 seg|
+	|Random forest| 3.4 seg | 3.3 seg | 5 seg | 8 seg |
 	
 	
 	Wall time:
@@ -425,6 +429,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	| 3 | 950 ms // **350 ms** | 1 seg // **350 ms** | 1.4 seg // **540 ms** | 2 seg // **800 ms** |
 	| 4 |  1 seg // **310 ms** | 1 seg // **330 ms** | 1.5 seg // **515 ms** | 2 seg // **650 ms** |  
 	
+	* En la Raspberry he probado a utilizar en vez de stressberry usar stress
 	
 # **TO DO Memoria:**  
 	
