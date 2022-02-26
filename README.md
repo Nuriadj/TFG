@@ -272,7 +272,15 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|SVM | 5 seg | 6 seg | 6 seg | 6 seg|
 	|Gradient tree boosting | 16 seg | 16 seg | 15 seg | 16 seg|  
 	
-	* Wall time is the actual amount of time taken to perform a job
+	* Wall time is the actual amount of time taken to perform a job  
+	
+	En Raspberry (Wall time):  
+	
+	| Modelo | Idle | Bajo | Medio | Alto |
+	|--------|------|------|-------|------|
+	|Regresión logística| 1 seg | 8 seg | 10 seg | 7 seg|
+	|SVM | 6 seg | 6 seg | 6 seg | 6 seg|
+	|Gradient tree boosting | 16 seg | 16 seg | 15 seg | 16 seg| 
 	
 	* Wall time Regresion, idle = 1 seg, 1 cpu= 8 seg, 2 cpu= 10 seg, 4 cpu= 7 seg.  
 	  Wall time SVM, idle= 6 seg, 1 cpu= 6 seg, 2 cpu= 6 seg, 4 cpu= 6 seg.  
@@ -293,26 +301,121 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		
 		- 4 CPU  
 	
-	Desordenando las ejecuciones (punto 1 reunión 23/2/22):  
+	Desordenando las ejecuciones (punto 1 reunión 23/2/22)  
+	
+	CROSS VALIDATION **Raspberry**:  
+	
+	**CPU time**:  
 	
 	| Modelo | Idle | Bajo | Medio | Alto |
 	|--------|------|------|-------|------|
 	|Regresión logística| 5 seg | 22 seg | 20 seg | 12 seg|
 	|SVM | 5 seg | 6 seg | 6 seg | 6 seg|
-	|Gradient tree boosting | 16 seg | 15 seg | 15 seg | 15.5 seg|
-	|Random forest | 3 seg | 3 seg | 3 seg | 3 seg|  
+	|Gradient tree boosting | 16 seg | 15 seg | 15 seg | 15.5 seg|  
+	
+	**Wall time**  
+	
+	| Modelo | Idle | Bajo | Medio | Alto |
+	|--------|------|------|-------|------|
+	|Regresión logística| 1 seg | 8 seg | 10 seg | 7 seg|
+	|SVM | 6 seg | 6 seg | 6 seg | 6 seg|
+	|Gradient tree boosting | 16 seg | 16 seg | 15 seg | 16 seg|  
 	
 	**Instalo en mi portátil stress**
 		```
 		sudo apt install stress  
 		```  
+	
+	CROSS VALIDATION **Portátil**:  
+	
+	**CPU time**  
+	
 	| Modelo | Idle | Bajo | Medio | Alto |
 	|--------|------|------|-------|------|
 	|Regresión logística| 700 ms | 700 ms | 900 ms | 1 seg|
-	|SVM | 1 seg | 1.6 seg | 1.8 seg | 3 seg|
-	|Gradient tree boosting | 5 seg | 5 seg | 7 seg | 10 seg|
-	|Random forest | 800 ms | 800 ms | 850 ms | 1.3 seg| 
+	|SVM | 1.5 seg | 1.6 seg | 1.8 seg | 3-5 seg|
+	|Gradient tree boosting | 5 seg | 5 seg | 6 seg | 10 seg|
 	
+	**Wall time**  
+	
+	| Modelo | Idle | Bajo | Medio | Alto |
+	|--------|------|------|-------|------|
+	|Regresión logística| 180 ms | 180 ms | 200 ms | 320 ms|
+	|SVM | 1.5 seg | 1.6 seg | 1.8 seg | 3-5 seg|
+	|Gradient tree boosting | 5 seg | 5 seg | 6 seg | 10 seg|
+	
+	
+	Wall time:
+		Regresión idle 180 ms, 1 cpu 180 ms, 2 cpu 200 ms, 4 cpu 320 ms
+		SVM idle 1.5 seg, 1 cpu 1.6 seg, 2 cpu 1.8 seg, 4 cpu 3-5 seg
+		Gradient tree idle 5 seg, 1 cpu 5 seg, 2 cpu 5 seg, 4 cpu 10 seg
+		Random forest idle 750 ms, 1 cpu 800 ms, 2 cpu 1 seg, 4 cpu 1.9 seg
+	
+	* He generado el modelo de Random forest directamente sin validación cruzada.
+	
+* 26/2/22  
+	
+	SIN CROSS VALIDATION **Raspberry**:  
+	
+	**CPU time**  
+	
+	| Modelo | Idle | Bajo | Medio | Alto |
+	|--------|------|------|-------|------|
+	|Regresión logística|  1 seg | 4 seg | 4 seg | 3 seg |
+	|SVM | 1.9 seg | 2 seg | 2 seg | 2 seg |
+	|Gradient tree boosting | 4 seg | 4 seg | 4 seg | 4 seg |
+	|Random forest | 3 seg | 3 seg | 3 seg | 3 seg|  
+	
+	**Wall time**  
+	
+	| Modelo | Idle | Bajo | Medio | Alto |
+	|--------|------|------|-------|------|
+	|Regresión logística| 300 ms  | 2 seg | 2 seg | 1.6 seg |
+	|SVM | 1.9 seg | 2 seg | 2 seg | 2 seg |
+	|Gradient tree boosting | 4 seg | 4 seg | 4 seg | 4 seg |
+	|Random forest | 3 seg | 3 seg | 3 seg | 3 seg |  
+	
+	Regresion 1 cpu= 4 seg (cpu) 2 seg (wall time)  
+	
+	SIN CROSS VALIDATION **Portátil**:  
+	
+	**CPU time**  
+	
+	| Modelo | Idle | Bajo | Medio | Alto |
+	|--------|------|------|-------|------|
+	|Regresión logística| 130 ms | 160 ms | 180 ms | 280 ms |
+	|SVM | 570 ms | 600 ms | 830 ms  | 1.6 seg |
+	|Gradient tree boosting | 1.2 seg | 1.3 seg | 1.8 seg | 3 seg |
+	|Random forest | 750 ms | 800 ms | 1 seg | 1.9 seg|  
+	
+	**Wall time**  
+	
+	| Modelo | Idle | Bajo | Medio | Alto |
+	|--------|------|------|-------|------|
+	|Regresión logística| 30 ms | 50 ms | 55 ms | 80 ms |
+	|SVM | 570 ms | 600 ms | 830 ms | 1.6 seg |
+	|Gradient tree boosting | 1.2 seg | 1.3 seg | 1.8 seg | 3 seg |
+	| Random forest | 750 ms | 800 ms | 1 seg | 1.9 seg |  
+	
+	**Logistic regresion** (Cpu time//Wall time), en principio no tiene efecto segun la pregunta de [stack overflow](https://stackoverflow.com/questions/51318367/scikit-learn-multithreading) pero he querido comprobarlo, y parece que algo de efecto si que tiene.
+	
+	| N_JOBS | Idle | Bajo | Medio | Alto |
+	|--------|------|------|-------|------|
+	| 1 | 1 seg // 350 ms | 4 seg // 2 seg | 3.7 seg // 2 seg | 3.5 seg // 1.5 seg |
+	| 2 | 70 ms // 250 ms | 50 ms // 250 ms | 35 ms // 350 ms | 50 ms // 500 ms |
+	| 3 | 50 ms // 260 ms | 60 ms // 270 ms |  50 ms // 300 ms | 40 ms // 300 ms |
+	| 4 | 50 ms // 250 ms | 50 ms // 200 ms | 50 ms // 300 ms |  40 ms // 300 ms |
+	
+	1 cpu, 2 cpu muy variables (en general todos) (n_jpb= 4)
+	
+	**Random forest** (Cpu time // **Wall time**)  
+	
+	| N_JOBS | Idle | Bajo | Medio | Alto |
+	|--------|------|------|-------|------|
+	| 1 | 3 seg // **3 seg** | 3 seg // **3 seg** | 3 seg // **3 seg** | 3 seg // **3 seg** |
+	| 2 | 3.5 seg // **2 seg** | 3.5 seg // **2 seg** | 3.4 seg // **2.4 seg** | 3.3 seg // **2.6 seg** |
+	| 3 | 4 seg // **1.6 seg** | 4 seg // **2 seg** | 3.3 seg // **2 seg** | 3.5 seg // **3 seg** |
+	| 4 | 4.3 seg // **1.5 seg** | 4 seg // **2 seg** | 3.4 seg // **2 seg** | 3.4 seg // **3 seg** |  
 	
 # **TO DO Memoria:**  
 	
