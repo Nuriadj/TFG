@@ -408,7 +408,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	1 cpu, 2 cpu muy variables (en general todos) (n_jpb= 4)
 	
-	**Random forest** (Cpu time // **Wall time**)  
+	**Random forest** Raspberry (Cpu time // **Wall time**)  
 	
 	| N_JOBS | Idle | Bajo | Medio | Alto |
 	|--------|------|------|-------|------|
@@ -416,6 +416,15 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	| 2 | 3.5 seg // **2 seg** | 3.5 seg // **2 seg** | 3.4 seg // **2.4 seg** | 3.3 seg // **2.6 seg** |
 	| 3 | 4 seg // **1.6 seg** | 4 seg // **2 seg** | 3.3 seg // **2 seg** | 3.5 seg // **3 seg** |
 	| 4 | 4.3 seg // **1.5 seg** | 4 seg // **2 seg** | 3.4 seg // **2 seg** | 3.4 seg // **3 seg** |  
+	
+	**Random forest** Portátil (Cpu time // **Wall time**) 
+	| N_JOBS | Idle | Bajo | Medio | Alto |
+	|--------|------|------|-------|------|
+	| 1 | 750 ms // **750 ms** | 770 ms // **770 ms** | 800 ms // **800 ms** | 1.2 seg // **1.2 seg** |
+	| 2 | 850 ms // **450 ms** | 850 ms // **460 ms** | 900 ms // **550 ms**  | 2 seg // **1 seg** |
+	| 3 | 950 ms // **350 ms** | 1 seg // **350 ms** | 1.4 seg // **540 ms** | 2 seg // **800 ms** |
+	| 4 |  1 seg // **310 ms** | 1 seg // **330 ms** | 1.5 seg // **515 ms** | 2 seg // **650 ms** |  
+	
 	
 # **TO DO Memoria:**  
 	
