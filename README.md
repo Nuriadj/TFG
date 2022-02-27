@@ -429,7 +429,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	| 3 | 950 ms // **350 ms** | 1 seg // **350 ms** | 1.4 seg // **540 ms** | 2 seg // **800 ms** |
 	| 4 |  1 seg // **310 ms** | 1 seg // **330 ms** | 1.5 seg // **515 ms** | 2 seg // **650 ms** |  
 	
-	* En la Raspberry he probado a utilizar en vez de stressberry usar stress
+	* En la Raspberry he probado a utilizar en vez de stressberry usar stress pero por lo menos para regresión logística pasa lo mismo.  
 	
 # **TO DO Memoria:**  
 	
