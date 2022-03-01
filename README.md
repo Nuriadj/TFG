@@ -431,6 +431,28 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	* En la Raspberry he probado a utilizar en vez de stressberry usar stress pero por lo menos para regresión logística pasa lo mismo.  
 	
+* 1/3/22  
+	
+	* Pruebo a instalar stress-ng:  
+		```
+		sudo snap install stress-ng  
+		```
+	Consigo los mismos resultados, lo borro:  
+		```
+		sudo snap remove stress-ng  
+		```
+	
+	* Hoy la Raspberry esta mucho más lenta, por ejemplo ejecutar cross validation sin estresar ninguna cpu de gradient tree le ha costado 32 segundos, regresión lineal 8 seg. Apagandola y encendiendola parece que ha vuelto a la normalidad.  
+	
+	* Probar a instalar s-tui  
+		```
+		sudo apt install s-tui  
+		```
+	Obtengo los mismos resultados  
+		```
+		sudo apt remove s-tui  
+		```
+	
 # **TO DO Memoria:**  
 	
 **Para guardar la memoria en git:**  
