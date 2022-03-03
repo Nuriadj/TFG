@@ -451,7 +451,17 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	Obtengo los mismos resultados  
 		```
 		sudo apt remove s-tui  
-		```
+		```  
+* 3/3/22  
+	He vuelto a instalar stress-ng de otra forma  
+	```
+	sudo apt remove s-tui  
+	```  
+	Ejecutando:  
+	```
+	stress-ng --cpu 4 --cpu-method fft --timeout 60s 
+	```  
+	Con esto el gradient tree con 4 cpus incrementa un poco el tiempo a 18 seg. Sin embargo para el resto como regresión lineal no consigue ningún cambio.
 	
 # **TO DO Memoria:**  
 	
