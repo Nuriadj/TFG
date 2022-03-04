@@ -464,6 +464,15 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	Con esto el gradient tree con 4 cpus incrementa un poco el tiempo a 18 seg. Sin embargo para el resto como regresión lineal no consigue ningún cambio.  
 	(Tengo que desinstalar stress-ng, ya que no ha servido para no tenerlo instalado inecesariamente).  
 	
+* 4/3/22  
+	Como ejecutaba antes stressberry:  
+		```
+		/home/nuria/.local/bin/stressberry-run -n "My Test" -d 1800 -i 300 -c 4 mytest.out
+		```  
+	Ahora lo estoy ejecutando desde dentro del entorno virtual jupiter con:  
+		```
+		stressberry-run -d 60 -i 30 -c 4 mytest.out
+		```  
 	
 # **TO DO Memoria:**  
 	
