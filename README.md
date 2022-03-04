@@ -461,7 +461,9 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	```
 	stress-ng --cpu 4 --cpu-method fft --timeout 60s 
 	```  
-	Con esto el gradient tree con 4 cpus incrementa un poco el tiempo a 18 seg. Sin embargo para el resto como regresión lineal no consigue ningún cambio.
+	Con esto el gradient tree con 4 cpus incrementa un poco el tiempo a 18 seg. Sin embargo para el resto como regresión lineal no consigue ningún cambio.  
+	(Tengo que desinstalar stress-ng, ya que no ha servido para no tenerlo instalado inecesariamente).  
+	
 	
 # **TO DO Memoria:**  
 	
@@ -473,7 +475,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 Repasar estado del arte: Miniconda poner algo sobre que ofrece un mayor control sobre el entorno en el que se desarrolla el programa, respecto a los paquetes que se instalan. Además permite "compartir" el entorno de forma que se puede replicar ese enotorno virtual en otra máquina.  
 ~~Cambiar Miniconda!!! es **Miniforge3** !!~~  
 ~~¿Por qué lgpio?~~  
-Pasar el desarrollo de los problemas de de instalación (miniconda, RPi.GPIO...) Al Anexo.  
+- [x] Pasar el desarrollo de los problemas de de instalación (miniconda, RPi.GPIO...) Al Anexo.  
+	
 Estado del arte meter las librerías de scikit-learn, pandas, jupyter-notebook?  
 Comentar en la memoria que dado que es un gran número de ejemplos no es necesario utilizar stratified a pesar de que haya menor número de muestras en una clase que en otra. Mirar otra vez como he explicado lo de validación cruzada.
 	
