@@ -462,7 +462,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	stress-ng --cpu 4 --cpu-method fft --timeout 60s 
 	```  
 	Con esto el gradient tree con 4 cpus incrementa un poco el tiempo a 18 seg. Sin embargo para el resto como regresión lineal no consigue ningún cambio.  
-	(Tengo que desinstalar stress-ng, ya que no ha servido para no tenerlo instalado inecesariamente).  
+	([x] (Hecho) Tengo que desinstalar stress-ng, ya que no ha servido para no tenerlo instalado inecesariamente).  
 	
 * 4/3/22  
 	Como ejecutaba antes stressberry:  
@@ -473,6 +473,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		```
 		stressberry-run -d 60 -i 30 -c 4 mytest.out
 		```  
+	Pero sigo obteniendo los mismos resultados.
 	
 # **TO DO Memoria:**  
 	
