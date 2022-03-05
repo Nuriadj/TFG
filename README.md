@@ -455,7 +455,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 * 3/3/22  
 	He vuelto a instalar stress-ng de otra forma  
 	```
-	sudo apt remove s-tui  
+	sudo apt install stress-ng  
 	```  
 	Ejecutando:  
 	```
