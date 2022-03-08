@@ -473,8 +473,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		```
 		stressberry-run -d 60 -i 30 -c 4 mytest.out
 		```  
-	Pero sigo obteniendo los mismos resultados.
+	Pero sigo obteniendo los mismos resultados.  
 	
+* 8/3/22  
+	He probado ha abrir en firefox varias pestañas (6 en total) que estén reproduciendo vídeos (de música todos ellos). Con todos los vídeos en play el tiempo de ejecución para gradient tree boosting con cross validation es de 21 seg, (con 8 pestañas es de 22 seg). Con 8 pestañas de vídeos abiertas regresión lineal con validación cruzada tarda 9 segundos. Random forest con cross validation tarda 17 seg.  
+
+	Esta es la única forma (de momento) que en la Raspberry haya conseguido aumentar el tiempo de ejecución.
 # **TO DO Memoria:**  
 	
 **Para guardar la memoria en git:**  
