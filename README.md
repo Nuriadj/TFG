@@ -477,13 +477,13 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 * 8/3/22  
 	He probado ha abrir en firefox varias pestañas (6 en total) que estén reproduciendo vídeos (de música todos ellos). Con todos los vídeos en play el tiempo de ejecución para gradient tree boosting con cross validation es de 21 seg, (con 8 pestañas es de 22 seg). Con 8 pestañas de vídeos abiertas regresión logistica con validación cruzada tarda 9 segundos. Random forest con cross validation tarda 17 seg.  
+	Esta es la única forma (de momento) que en la Raspberry haya conseguido aumentar el tiempo de ejecución.  
 	
 * 9/2/22  
 	- Instalo htop utilizando ```sudo apt install htop```
 	- He tenido que hacer ```sudo apt install firefox``` ya que la otra que tenia de antes no habia forma de que fuese. Para ejecutar ahora firefox pongo en el terminal ```firefox```    
 	- Ejecuto ```stress -c 4 --timeout 60s``` mismos resultados cuando en htop se puede ver claramente que las cpus están al 100%  
 
-	Esta es la única forma (de momento) que en la Raspberry haya conseguido aumentar el tiempo de ejecución.
 # **TO DO Memoria:**  
 	
 **Para guardar la memoria en git:**  
