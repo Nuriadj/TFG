@@ -483,6 +483,13 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	- Instalo htop utilizando ```sudo apt install htop```
 	- He tenido que hacer ```sudo apt install firefox``` ya que la otra que tenia de antes no habia forma de que fuese. Para ejecutar ahora firefox pongo en el terminal ```firefox```    
 	- Ejecuto ```stress -c 4 --timeout 60s``` mismos resultados cuando en htop se puede ver claramente que las cpus están al 100%  
+	
+* 10/2/22  
+	- Me he fijado que al ejecutar stress en la Raspberry observando los datos que aporta htop, si nos fijamos en la columna de cpu (no las barritas horizontales), se puede ver que al ejecutar stress los procesos de stress se encuentran con cpu prácticamente al 100% peor cuando ejecuto uno de los modelos, los porcentajes de stress en la columna de cpu decrecen, siendo el proceso que ejecuta el modelo el que se encuentra al 100%.
+	Esto en el portátil no pasa cuando se estresan los porcesos de stress se mantienen al 100% independientemente de que se ejecute un modelo de aprendizaje o no. Esto estresando 4 cpus en Raspberry y portatil.  
+	
+	Si solo estreso dos cpus tanto los stress como el algorito se mantienen al 100% en la columna de cpu.
+	
 
 # **TO DO Memoria:**  
 	
