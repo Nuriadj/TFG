@@ -505,7 +505,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting | 5 seg | 5 seg | 7.6 seg | 12 seg| 12.5 seg | 12.5 seg |
 	|Random forest | 3 seg | 4 seg | 5 seg | 8 seg | 8.3 seg | 8.4 seg |
 	
-	Con esto lo único que saco es que tiene un comportamiento parecido a la Raspberry. lo único que como tiene 8 cpus se nota menos. Al principio la subida de tiempos es notable pero a partir de 4 cpus estresadas se estancan bastante los tiempos.
+	Con esto lo único que saco es que tiene un comportamiento parecido a la Raspberry, lo único que como tiene 8 cpus se nota menos. Al principio la subida de tiempos es notable pero a partir de 4 cpus estresadas se estancan bastante los tiempos.
 	
 
 # **TO DO Memoria:**  
