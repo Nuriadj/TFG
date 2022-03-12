@@ -488,7 +488,24 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	- Me he fijado que al ejecutar stress en la Raspberry observando los datos que aporta htop, si nos fijamos en la columna de cpu (no las barritas horizontales), se puede ver que al ejecutar stress los procesos de stress se encuentran con cpu prácticamente al 100% peor cuando ejecuto uno de los modelos, los porcentajes de stress en la columna de cpu decrecen, siendo el proceso que ejecuta el modelo el que se encuentra al 100%.
 	Esto en el portátil no pasa cuando se estresan los porcesos de stress se mantienen al 100% independientemente de que se ejecute un modelo de aprendizaje o no. Esto estresando 4 cpus en Raspberry y portatil.  
 	
-	Si solo estreso dos cpus tanto los stress como el algorito se mantienen al 100% en la columna de cpu.
+	Si solo estreso dos cpus tanto los stress como el algorito se mantienen al 100% en la columna de cpu.  
+	
+* 12/2/22  
+	
+	- Volviendo a hacer pruebas:  
+	
+	CROSS VALIDATION **Portátil**:  
+	
+	**CPU time**  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu | 6 cpus | 8 cpus |
+	|--------|------|------|-------|------|--------|--------|
+	|Regresión logística| 550 ms | 800 ms | 1 seg | 1.5 seg| 2-2.5 seg| 3.5 seg |
+	|SVM | 1.5 seg | 1.7 seg | 2.6 seg | 5 seg| 5 seg | 5 seg |
+	|Gradient tree boosting | 5 seg | 5 seg | 7.6 seg | 12 seg| 12.5 seg | 12.5 seg |
+	|Random forest | 3 seg | 4 seg | 5 seg | 8 seg | 8.3 seg | 8.4 seg |
+	
+	Con esto lo único que saco es que tiene un comportamiento parecido a la Raspberry. lo único que como tiene 8 cpus se nota menos. Al principio la subida de tiempos es notable pero a partir de 4 cpus estresadas se estancan bastante los tiempos.
 	
 
 # **TO DO Memoria:**  
