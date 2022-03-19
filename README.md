@@ -522,7 +522,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	- Ahora ya no solo tengo que mirar el tiempo que tarda el entrenamiento, ya que hay otras celdas que tambíen tardan varios segundos.  
 	
-	DataSet: **Kdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL** **CPU**
+	DataSet: **Kdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU)**
 	
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
 	|--------|------|------|-------|------|
@@ -531,7 +531,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting | | | | | 
 	|Random forest | | | | |  
 	
-	DataSet: **Kdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL** **WALL TIME**
+	DataSet: **Kdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL** **(WALL TIME)**
 	
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
 	|--------|------|------|-------|------|
