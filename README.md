@@ -511,16 +511,31 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	- Nuevo [dataSet](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_kddcup99.html#sklearn.datasets.fetch_kddcup99). La Raspberry está teniendo problemas para descargarselo, se ha quedado pillada. Voy a probar primero con el 10% y una vez que sepa descargarlo, leerlo y tratarlo pruebo con el total.  
 	No estoy siendo capaz de descargar el dataset, no se descargan csv se descargan ficheros binarios. Como no soy capaz de descargarla usando scikitlearn la voy a coger de [aqui](http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html), una vez descargado el archivo hay que descomprimirlo (gzip -d file).  
-	Con el 10% todo bien.  
-	Con el 100% no he podido, la propia Raspberry se queda un rato pillada y luego ella sola lo mata. He probado a ejecutarlo en el teminal (porque con notebook después de un rato pillada perdia la conexión con el kernel) pero después de estar pillada un rato aparece un mensaje de Killed y temina la ejecución. De momento haré las pruebas solo con el 10%.  
+	Con el 10% todo bien, he podido convertirlo en binario (código de [Download_dataSet](https://github.com/Nuriadj/TFG/blob/main/kdd_cup99/Download_dataSet.ipynb)).  
+	Con el 100% no he podido pasarlo a clasificación binaria, la propia Raspberry se queda un rato pillada y luego ella sola lo mata. He probado a ejecutarlo en el teminal (porque con notebook después de un rato pillada perdia la conexión con el kernel) pero después de estar pillada un rato aparece un mensaje de Killed y temina la ejecución. De momento haré las pruebas solo con el 10%.  
 	
-	- De ese 10% voy a utilizar el 70% para entrenar y 10% para validar. En la primera fila hay columnas que tienen valores extraños como 0.00.1 por lo que para quitarlo elimino la primera fila. Y quitar la primera columna que es el índice.  
+	- De ese 10% voy a utilizar el 70% para entrenar y 30% para validar. En la primera fila hay columnas que tienen valores extraños como 0.00.1 por lo que para quitarlo elimino la primera fila. Y quitar la primera columna que es el índice. He hecho que el csv que se guarda no contenga ni la cabecera ni el indice (primera fila y primera columna) ya está preparado para directamente utilizarlo. Esto se hace también en [Download_dataSet](https://github.com/Nuriadj/TFG/blob/main/kdd_cup99/Download_dataSet.ipynb)  
+ 
+	- Quito la columna 19 y 20 porque contienen todo el rato el mismo valor (en ambos casos el cero). Se pone axis= 1 para indicar que se quiere eliminar la columna 19 (no la fila) e inplace se pone a true para que la variable dataset sea "actualizada".  
 	
-	DataSet: **Kdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL**
+	- A la hora de entrenar el modelo da error, no converge las iteraciones llegan al máximo. He intentado [escalar los datos de entrenamiento](https://scikit-learn.org/stable/modules/preprocessing.html), pero con el ejemplo que ponen no es suficiente. Luego a parte de scalarlo aumento el máximo número de iteraciones a 400 (por defecto el máximo número de iteraciones es 100), he elegido ese número porque es el valor más bajo para el que he conseguido que converja el modelo en una solución **siempre**.  
+	
+	- Ahora ya no solo tengo que mirar el tiempo que tarda el entrenamiento, ya que hay otras celdas que tambíen tardan varios segundos.  
+	
+	DataSet: **Kdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL** **CPU**
 	
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
 	|--------|------|------|-------|------|
-	|Regresión logística|  |  |  | |
+	|Regresión logística| 55 seg | 65 seg |  | |
+	|SVM | | | | | 
+	|Gradient tree boosting | | | | | 
+	|Random forest | | | | |  
+	
+	DataSet: **Kdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL** **WALL TIME**
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 20 seg | 34 seg |  | |
 	|SVM | | | | | 
 	|Gradient tree boosting | | | | | 
 	|Random forest | | | | |
