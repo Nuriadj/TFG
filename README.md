@@ -507,6 +507,24 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	Con esto lo único que saco es que tiene un comportamiento parecido a la Raspberry, lo único que como tiene 8 cpus se nota menos. Al principio la subida de tiempos es notable pero a partir de 4 cpus estresadas se estancan bastante los tiempos.
 	
+* 19/2/22
+	
+	- Nuevo [dataSet](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_kddcup99.html#sklearn.datasets.fetch_kddcup99). La Raspberry está teniendo problemas para descargarselo, se ha quedado pillada. Voy a probar primero con el 10% y una vez que sepa descargarlo, leerlo y tratarlo pruebo con el total.  
+	No estoy siendo capaz de descargar el dataset, no se descargan csv se descargan ficheros binarios. Como no soy capaz de descargarla usando scikitlearn la voy a coger de [aqui](http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html), una vez descargado el archivo hay que descomprimirlo (gzip -d file).  
+	Con el 10% todo bien.  
+	Con el 100% no he podido, la propia Raspberry se queda un rato pillada y luego ella sola lo mata. He probado a ejecutarlo en el teminal (porque con notebook después de un rato pillada perdia la conexión con el kernel) pero después de estar pillada un rato aparece un mensaje de Killed y temina la ejecución. De momento haré las pruebas solo con el 10%.  
+	
+	- De ese 10% voy a utilizar el 70% para entrenar y 10% para validar. En la primera fila hay columnas que tienen valores extraños como 0.00.1 por lo que para quitarlo elimino la primera fila. Y quitar la primera columna que es el índice.  
+	
+	DataSet: **Kdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL**
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística|  |  |  | |
+	|SVM | | | | | 
+	|Gradient tree boosting | | | | | 
+	|Random forest | | | | |
+	
 
 # **TO DO Memoria:**  
 	
