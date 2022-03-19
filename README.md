@@ -1,7 +1,9 @@
 # TFG
 Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realizando
 
-# Bitácora
+# Bitácora  
+
+## Noviembre
 
 * 13/11/21  
     - He montado la Raspberry
@@ -19,7 +21,9 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
         Como lo he hecho yo es cuando hay luz salida a 0, cuando hay oscuridad salida a 1  
 	
   - Sensor Humedad:
-	      Si está a 1 es seco, si está a 0 húmedo
+	      Si está a 1 es seco, si está a 0 húmedo  
+	      
+## Diciembre	      
 	
 * 5/12/21  
 
@@ -40,7 +44,10 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		- scipy  
 		- pandas  
 		- matplotlibscikit-learn
-		- altair (con conda install -c conda-forge altair)
+		- altair (con conda install -c conda-forge altair)  
+
+
+## Enero
 		
 * 28/1/22  
 	- Instalación de Ubuntu en la Raspberry.  
@@ -73,7 +80,10 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		- pandas (conda install pandas)
 		- matplotlib (conda install matplotlib)
 		- altair (conda install altair)
-		- scikit-learn (conda install scikit-learn)
+		- scikit-learn (conda install scikit-learn)  
+
+
+## Febrero
 
 * 1/2/22  
 	- Dado que la Raspberry se me quedaba pillada simplemente al intentar abrir o cerrar una aplicación y tenía que estar apagandola y encenciendola a lo "bruto" encontré una posible solución que es sustituir en el fichero **/boot/firmware/config.txt** la línea **dtoverlay=vc4-kms-v3d** por **dtoverlay=vc4-fkms-v3d** ([enlace](https://bugs.launchpad.net/ubuntu/+source/linux-raspi/+bug/1946368))  
@@ -430,6 +440,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	| 4 |  1 seg // **310 ms** | 1 seg // **330 ms** | 1.5 seg // **515 ms** | 2 seg // **650 ms** |  
 	
 	* En la Raspberry he probado a utilizar en vez de stressberry usar stress pero por lo menos para regresión logística pasa lo mismo.  
+
+## Marzo	
 	
 * 1/3/22  
 	
