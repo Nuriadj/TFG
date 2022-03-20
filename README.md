@@ -547,18 +547,18 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
 	|--------|------|------|-------|------|
 	|Regresión logística| 64 seg | 74 seg | 70 seg | 64 seg |
-	|SVM | | | | | 
-	|Gradient tree boosting | | | | | 
-	|Random forest | | | | |  
+	|SVM | 77 seg | 76 seg | 76 seg | 77 seg | 
+	|Gradient tree boosting | 116 seg | 115 seg | 115 seg | 115 seg | 
+	|Random forest | 61 seg | 60 seg | 60 seg | 60 seg |  
 	
 	DataSet: **Kdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL** **(WALL TIME)**
 	
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
 	|--------|------|------|-------|------|
 	|Regresión logística| 31 seg | 39 seg | 44 seg | 43 seg |
-	|SVM | | | | | 
-	|Gradient tree boosting | | | | | 
-	|Random forest | | | | |  
+	|SVM | 78 seg | 76 seg | 76 seg | 77 seg | 
+	|Gradient tree boosting | 116 seg | 115 seg | 115 seg | 115 seg | 
+	|Random forest | 61 seg | 60 seg | 60 seg | 60 seg |  
 	
 
 # **TO DO Memoria:**  
