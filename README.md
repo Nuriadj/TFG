@@ -540,6 +540,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	- Voy a utilizar el time de linux para ver los tiempos (en vez de jupyter-notebook) porque ya son varias celdas en las que hay que mirar el tiempo y es más cómodo así. Real= wall time, user= cpu times user, sys= cpu times sys. El tiempo total de cpu es la suma de user y sys.  
 	
+	- Máquinas de soporte vectorial por defecto tiene un max limit -1, es decir no tiene limite.  
+	
 	DataSet: **Kdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU)**  
 	
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
