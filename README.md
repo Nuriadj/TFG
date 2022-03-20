@@ -534,11 +534,17 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	- Ahora ya no solo tengo que mirar el tiempo que tarda el entrenamiento, ya que hay otras celdas que tambíen tardan varios segundos.  
 	
-	DataSet: **Kdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU)**
+	- Recall y precision lo calculo repecto a la salida: normal.  
+	
+* 20/3/22  
+	
+	- Voy a utilizar el time de linux para ver los tiempos (en vez de jupyter-notebook) porque ya son varias celdas en las que hay que mirar el tiempo y es más cómodo así. Real= wall time, user= cpu times user, sys= cpu times sys. El tiempo total de cpu es la suma de user y sys.  
+	
+	DataSet: **Kdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU)**  
 	
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
 	|--------|------|------|-------|------|
-	|Regresión logística| 55 seg | 65 seg |  | |
+	|Regresión logística| 64 seg | 74 seg | 70 seg | 64 seg |
 	|SVM | | | | | 
 	|Gradient tree boosting | | | | | 
 	|Random forest | | | | |  
@@ -547,10 +553,10 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
 	|--------|------|------|-------|------|
-	|Regresión logística| 20 seg | 34 seg |  | |
+	|Regresión logística| 31 seg | 39 seg | 44 seg | 43 seg |
 	|SVM | | | | | 
 	|Gradient tree boosting | | | | | 
-	|Random forest | | | | |
+	|Random forest | | | | |  
 	
 
 # **TO DO Memoria:**  
