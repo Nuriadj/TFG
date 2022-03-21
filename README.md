@@ -553,7 +553,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting | 116 seg | 115 seg | 115 seg | 115 seg | 
 	|Random forest | 61 seg | 60 seg | 60 seg | 60 seg |  
 	
-	DataSet: **10% iKdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL** **(WALL TIME)**
+	DataSet: **10% Kdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL** **(WALL TIME)**
 	
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
 	|--------|------|------|-------|------|
