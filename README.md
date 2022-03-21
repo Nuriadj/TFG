@@ -530,7 +530,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
  
 	- Quito la columna 19 y 20 porque contienen todo el rato el mismo valor (en ambos casos el cero). Se pone axis= 1 para indicar que se quiere eliminar la columna 19 (no la fila) e inplace se pone a true para que la variable dataset sea "actualizada".  
 	
-	- Para hacer todo el tratamiento del dataSet he utilizao de referencia el siguiente [enlace](https://github.com/timeamagyar/kdd-cup-99-python/blob/master/kdd%20preprocessing.ipynb).  
+	- Para hacer todo el tratamiento del dataSet he utilizado de referencia el siguiente [enlace](https://github.com/timeamagyar/kdd-cup-99-python/blob/master/kdd%20preprocessing.ipynb).  
 	
 	- A la hora de entrenar el modelo da error, no converge las iteraciones llegan al máximo. He intentado [escalar los datos de entrenamiento](https://scikit-learn.org/stable/modules/preprocessing.html), pero con el ejemplo que ponen no es suficiente. Luego a parte de scalarlo aumento el máximo número de iteraciones a 400 (por defecto el máximo número de iteraciones es 100), he elegido ese número porque es el valor más bajo para el que he conseguido que converja el modelo en una solución **siempre**.  
 	
