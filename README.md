@@ -562,6 +562,26 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting | 116 seg | 115 seg | 115 seg | 115 seg | 
 	|Random forest | 61 seg | 60 seg | 60 seg | 60 seg |  
 	
+* 22/3/22  
+	
+	DataSet: **10% Kdd_cup99** Dispositivo: **Portátil** **SIN CROSS VAL** **(CPU)**  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 11 seg | 13 seg | 16 seg | 23 seg |
+	|SVM | 15 seg | 19 seg | 24 seg | 45 seg | 
+	|Gradient tree boosting | 22 seg | 26 seg | 39 seg | 53 seg | 
+	|Random forest | 9 seg | 11 seg | 13 seg | 24 seg |  
+	
+	DataSet: **10% Kdd_cup99** Dispositivo: **Portátil** **SIN CROSS VAL** **(WALL TIME)**
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 5 seg | 6 seg | 8 seg | 13 seg |
+	|SVM | 15 seg | 19 seg | 24 seg | 46 seg | 
+	|Gradient tree boosting | 22 seg | 26 seg | 39 seg | 53 seg | 
+	|Random forest | 9 seg | 11 seg | 13 seg | 24 seg |  
+	
 
 # **TO DO Memoria:**  
 	
