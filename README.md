@@ -582,6 +582,27 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting | 22 seg | 26 seg | 39 seg | 53 seg | 
 	|Random forest | 9 seg | 11 seg | 13 seg | 24 seg |  
 	
+* 23/2/22
+	
+	- Observar valor de la RAM para los diferentes modelos en diferentes niveles de estrés. Con el **10%** de datos de kdd y entrenando con el 70% de los mismos:  
+	
+	DataSet: **10% Kdd_cup99** Dispositivo: **Raspberry** **SIN CROSS VAL** **(Max RAM)**  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 1.37G | 1.38G | 1.46G | 1.50G |
+	|SVM | 1.46G | 1.54G? | | | 
+	|Gradient tree boosting | | | | | 
+	|Random forest | | | | |   
+	
+	- En regresión logística es verdad que con 4 cpus he llegado a ver ese valor, pero tras hacer varias ejecuciones lo normal es que no pase de los 1.37G más o menos. Con dos cpus igual, he visto ese valor pero tras varias ejecuciones no da valores tan altos (depende hay veces que se queda sobre los 1.3G y otras veces qeu aumenta incluso más que ese valor.
+	Eso si, cuando están todas las cpus al 100% (lo que comento en el siguiente punto (*)) la Mem se queda en 1.25G practicamente siempre (independientemente del número de cpus estresadas).
+	
+	- Una cosa que estoy viendo es que en regresión logśitica en idle al principio solo una cpu se pone al 100%, pero pasado unos intantes (y habiendo bajado un poco el valor de Mem) (*)las cuatro cpus se ponen al 100%. Estresando solo una, dos  cpu pasa igual, al principio solo están dos al 100% y pasado un rato se ponen todas al 100% hasta que finaliza la ejecución.
+	COn SVM NO pasa.
+	
+	- Otra cosa que creo que antes no pasaba es que hay veces que el valor del porcentaje de las cpu se ponen algunos en color rojo uando llegan a valores más grandes (mas del 90%).  
+	
 
 # **TO DO Memoria:**  
 	
