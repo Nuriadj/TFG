@@ -591,8 +591,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
 	|--------|------|------|-------|------|
 	|Regresión logística| 1.37G | 1.38G | 1.46G | 1.50G |
-	|SVM | 1.46G | 1.54G? | | | 
-	|Gradient tree boosting | | | | | 
+	|SVM | 1.42G | 1.42G | 1.42G | 1.42G | 
+	|Gradient tree boosting | 1.24G | 1.37G | 1.42G | 1.51G | 
 	|Random forest | | | | |   
 	
 	- En regresión logística es verdad que con 4 cpus he llegado a ver ese valor, pero tras hacer varias ejecuciones lo normal es que no pase de los 1.37G más o menos. Con dos cpus igual, he visto ese valor pero tras varias ejecuciones no da valores tan altos (depende hay veces que se queda sobre los 1.3G y otras veces qeu aumenta incluso más que ese valor.
@@ -602,6 +602,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	COn SVM NO pasa.
 	
 	- Otra cosa que creo que antes no pasaba es que hay veces que el valor del porcentaje de las cpu se ponen algunos en color rojo uando llegan a valores más grandes (mas del 90%).  
+	
+	- Gradient tree boosting se mantiene practicamente todo el rato en 1.24G, es verdad que momentaneamente hay más RAM ocupada (las que se ven en la tabla), pero prácticamente todo el rato se queda en 1.24G.  
 	
 
 # **TO DO Memoria:**  
