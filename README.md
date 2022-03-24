@@ -650,7 +650,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Regresión logística| 11 seg // **11 seg** | 17 seg // **12 seg** | 16 seg // **13 seg** | 13 seg // **12 seg** |
 	|SVM | 11 seg // **10 seg** | 11 seg // **10 seg** | 10 seg // **10 seg** | 11 seg // **11 seg** | 
 	|Gradient tree boosting | 12 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 
-	|Random forest | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // ** 11 seg** | 11 seg // **11 seg** |  
+	|Random forest | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** |  
 	
 
 # **TO DO Memoria:**  
