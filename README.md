@@ -540,7 +540,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 * 20/3/22  
 	
-	- Voy a utilizar el time de linux para ver los tiempos (en vez de jupyter-notebook) porque ya son varias celdas en las que hay que mirar el tiempo y es más cómodo así. Real= wall time, user= cpu times user, sys= cpu times sys. El tiempo total de cpu es la suma de user y sys.  
+	- Voy a utilizar el time de linux para ver los tiempos (en vez de jupyter-notebook) porque ya son varias celdas en las que hay que mirar el tiempo y es más cómodo así. [Real= wall time, user= cpu times user, sys= cpu times sys](https://blog.gceasy.io/2016/04/06/gc-logging-user-sys-real-which-time-to-use/). El tiempo total de cpu es la suma de user y sys.  
 	
 	- Máquinas de soporte vectorial por defecto tiene un max limit -1, es decir no tiene limite.  
 	
@@ -593,17 +593,64 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Regresión logística| 1.37G | 1.38G | 1.46G | 1.50G |
 	|SVM | 1.42G | 1.42G | 1.42G | 1.42G | 
 	|Gradient tree boosting | 1.24G | 1.37G | 1.42G | 1.51G | 
-	|Random forest | | | | |   
+	|Random forest | 1.34G | 1.37G | 1.38G | 1.38G |   
 	
-	- En regresión logística es verdad que con 4 cpus he llegado a ver ese valor, pero tras hacer varias ejecuciones lo normal es que no pase de los 1.37G más o menos. Con dos cpus igual, he visto ese valor pero tras varias ejecuciones no da valores tan altos (depende hay veces que se queda sobre los 1.3G y otras veces qeu aumenta incluso más que ese valor.
+	- En regresión logística es verdad que con 4 cpus he llegado a ver ese valor, pero tras hacer varias ejecuciones lo normal es que no pase de los 1.37G más o menos. Con dos cpus igual, he visto ese valor pero tras varias ejecuciones no da valores tan altos (depende hay veces que se queda sobre los 1.3G y otras veces que aumenta incluso más que ese valor.
 	Eso si, cuando están todas las cpus al 100% (lo que comento en el siguiente punto (*)) la Mem se queda en 1.25G practicamente siempre (independientemente del número de cpus estresadas).
 	
 	- Una cosa que estoy viendo es que en regresión logśitica en idle al principio solo una cpu se pone al 100%, pero pasado unos intantes (y habiendo bajado un poco el valor de Mem) (*)las cuatro cpus se ponen al 100%. Estresando solo una, dos  cpu pasa igual, al principio solo están dos al 100% y pasado un rato se ponen todas al 100% hasta que finaliza la ejecución.
-	COn SVM NO pasa.
+	Con SVM NO pasa.
 	
 	- Otra cosa que creo que antes no pasaba es que hay veces que el valor del porcentaje de las cpu se ponen algunos en color rojo uando llegan a valores más grandes (mas del 90%).  
 	
 	- Gradient tree boosting se mantiene practicamente todo el rato en 1.24G, es verdad que momentaneamente hay más RAM ocupada (las que se ven en la tabla), pero prácticamente todo el rato se queda en 1.24G.  
+	Lo mismo pasa con random forest, llega a alcanzar valores más altos pero se mantiene todo el rato prácticamente en 1.22G. Se pone a 1.25G cuando hay 1, 2 o 4 cpus estresadas.  
+	
+* 24/2/22  
+	
+	El fichero kdd_cup_10_perBinary.csv contiene un total de **494020** líneas.  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| | | | |
+	|SVM | | | | | 
+	|Gradient tree boosting | | | | | 
+	|Random forest | | | | |  
+	
+	
+	DataSet: El 10% de **10% Kdd_cup99** 
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 15 seg // **12 seg** | 26 seg // **16 seg** | 25 seg // **18 seg** | 22 seg // **17 seg** |
+	|SVM | 13 seg // **13 seg** | 13 seg // **13 seg** | 13 seg // **13 seg** | 13 seg // **13 seg** | 
+	|Gradient tree boosting | 20 seg // **20 seg**| 21 seg // **21 seg** | 20 seg // **20 seg** | 20 seg // **21 seg** | 
+	|Random forest | 14 seg // **14 seg**| 14 seg // **14 seg** | 14 seg // **14 seg** | 14 seg // **14 seg** |  
+	
+	- Como no veo cambios voy a seguir bajando, ahora solo voy a leer un 5% del csv.  
+	
+	DataSet: El 5% de **10% Kdd_cup99** 
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 13 seg // **11 seg** | 24 seg // **15 seg** | 22 seg // **16 seg**| 18 seg // **15 seg** |
+	|SVM | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 
+	|Gradient tree boosting | 15 seg // **15 seg**| 15 seg // **15 seg** | 15 seg // **15 seg** | 15 seg // **15 seg** | 
+	|Random forest | 13 seg // **12 seg** | 12 seg // **12 seg** | 12 seg // **12 seg** | 12 seg // **12 seg** |  
+	
+	- Sin cambios voy a probar con el 1% de los datos.  
+	
+	DataSet: El 1% de **10% Kdd_cup99** 
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 11 seg // **11 seg** | 17 seg // **12 seg** | 16 seg // **13 seg** | 13 seg // **12 seg** |
+	|SVM | 11 seg // **10 seg** | 11 seg // **10 seg** | 10 seg // **10 seg** | 11 seg // **11 seg** | 
+	|Gradient tree boosting | 12 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 
+	|Random forest | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // ** 11 seg** | 11 seg // **11 seg** |  
 	
 
 # **TO DO Memoria:**  
