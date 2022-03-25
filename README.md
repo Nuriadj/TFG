@@ -652,6 +652,44 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting | 12 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 
 	|Random forest | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** |  
 	
+* 25/2/22  
+	
+	- Voy a probar leyendo únicamente 50 líneas del csv.  
+	
+	DataSet: 50 líneas de **10% Kdd_cup99** 
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 11 seg // **11 seg** | 11 seg // **10 seg** | 11 seg // **10 seg** | 11 seg // **11 seg** |
+	|SVM | 11 seg // **10 seg** | 11 seg // **10 seg** | 11 seg // **10 seg** | 10seg // **10 seg** | 
+	|Gradient tree boosting | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 sef // **11 seg** | 
+	|Random forest | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** |   
+	
+	- Como me han sugerido los tutores voy a probar lo contrario, voy a aumentar el porcentaje.
+	Voy a empezar con el 15% dell csv.  
+	
+	DataSet: El 15% de **10% Kdd_cup99** 
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 19 seg // **13 seg** | 32 seg // **19 seg** | 30 seg // **21 seg** | 24 seg // **18 seg** |
+	|SVM | 15 seg // **15 seg** | 15 seg // **15 seg** | 15 seg // **15 seg** | 14 seg // **15 seg** | 
+	|Gradient tree boosting | 27 seg // **27 seg** | 26 seg // **27 seg** | 26 seg // **26 seg** | 26 seg // **27 seg** | 
+	|Random forest | 16 seg // **16 seg** | 16 seg // **16 seg** | 16 seg // **16 seg** | 16 seg // **16 seg** |  
+	
+	
+	DataSet: El 35% de **10% Kdd_cup99** 
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  	
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 28 seg // **17 seg** | 36 seg // **22 seg** | 36 seg // **25 seg** | 30 seg // **22 seg** |
+	|SVM | 25 seg // **24 seg** | 24 seg // **24 seg** | 24 seg // **24 seg** | 24 seg // **24 seg** | 
+	|Gradient tree boosting | 49 seg // **49 seg** | 49 seg // **49 seg** | 48 seg // **48 seg** | 48 seg // **49 seg** | 
+	|Random forest | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **26 seg** |  
+	
 
 # **TO DO Memoria:**  
 	
