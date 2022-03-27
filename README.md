@@ -694,7 +694,13 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	- He vuelto a probar stress-ng para 50 datos. He instalado stress-ng dentro del entorno de jupiter: ```sudo apt install stress-ng```. Parece que sigue saliendo lo mismo.    
 	
-
+	- He encontrado [este](https://github.com/GaetanoCarlucci/CPULoadGenerator/tree/Python3/) repo para estresar la cpu. Lo voy a probar también por si veo alguna diferencia. Voy a crearme un nuevo enviroment llamado stress_test, he instalado:  
+		- sudo apt install python3-matplotlib
+		- sudo apt install python3 pstuil (ya estaba instalado)
+		- sudo apt intall python3-click  (ya estaba instalado)
+	
+	Lo voy a eliminar para empezar desde 0 después de comer (volver a crear el enviroment...).  
+	
 # **TO DO Memoria:**  
 	
 **Para guardar la memoria en git:**  
