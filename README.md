@@ -701,7 +701,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	Lo voy a eliminar para empezar desde 0 después de comer (volver a crear el enviroment...).  
 	
-	Vuelvo a crearme un entorno con ```conda create --prefix ./stress_test python=3.6```` 
+	Vuelvo a crearme un entorno con ```conda create --prefix ./stress_test python=3.6```  
 	```conda activate /home/nuria/Documents/CPULoadGenerator/stress_test```
 	
 	He instalado en este entorno:
