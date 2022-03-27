@@ -701,6 +701,21 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	Lo voy a eliminar para empezar desde 0 después de comer (volver a crear el enviroment...).  
 	
+	Vuelvo a crearme un entorno con ```conda create --prefix ./stress_test python=3.6```` 
+	```conda activate /home/nuria/Documents/CPULoadGenerator/stress_test```
+	
+	He instalado en este entorno:
+		- conda install matplotlib
+		- conda install sutils
+		- conda install click
+	
+	(Instalé algo más al intentar intalar matplotlib con pip, algo como pip intall --upgrade setools pero como no he guardado el comitt que lo tenia no se exactamente.)
+	
+	Ejecutando ./CPULoadGenerator.py -? 1 -d 10 -c 0 parece que va. Pruebo a mirar los tiempos con los modelos.
+	Ahora no me acuerdo exactamente (volver a mirar mañana) pero al estresar 4 cpus con 5o lineas de csv los tiempos de cpu se quedaban igual pero los de wall time si crecian algo.
+	
+	Más o menos creo que esto era todo lo que tenía apuntado antes de apagar el ordenador sin hacer el commit.  
+	
 # **TO DO Memoria:**  
 	
 **Para guardar la memoria en git:**  
