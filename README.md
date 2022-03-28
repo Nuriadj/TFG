@@ -688,7 +688,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Regresión logística| 28 seg // **17 seg** | 36 seg // **22 seg** | 36 seg // **25 seg** | 30 seg // **22 seg** |
 	|SVM | 25 seg // **24 seg** | 24 seg // **24 seg** | 24 seg // **24 seg** | 24 seg // **24 seg** | 
 	|Gradient tree boosting | 49 seg // **49 seg** | 49 seg // **49 seg** | 48 seg // **48 seg** | 48 seg // **49 seg** | 
-	|Random forest | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **26 seg** |   
+	|Random forest | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **26 seg** |     
 	
 	
 * 27/3/22  
