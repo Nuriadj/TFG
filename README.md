@@ -690,11 +690,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting | 49 seg // **49 seg** | 49 seg // **49 seg** | 48 seg // **48 seg** | 48 seg // **49 seg** | 
 	|Random forest | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **26 seg** |   
 	
+	
 * 27/3/22  
 	
 	- He vuelto a probar stress-ng para 50 datos. He instalado stress-ng dentro del entorno de jupiter: ```sudo apt install stress-ng```. Parece que sigue saliendo lo mismo.    
 	
-	- He encontrado [este](https://github.com/GaetanoCarlucci/CPULoadGenerator/tree/Python3/) repo para estresar la cpu. Lo voy a probar también por si veo alguna diferencia. Voy a crearme un nuevo enviroment llamado stress_test, he instalado:  
+	- He encontrado [este](https://github.com/GaetanoCarlucci/CPULoadGenerator/tree/Python3/) repo para estresar la cpu, encontre este repo opr medio de [esta](https://stackoverflow.com/questions/35312756/how-can-i-simulate-cpu-and-memory-stress-in-python) pregunta. De este repo solo quiero clonarme la rama de python 3 ```git clone --branch Python3 https://github.com/GaetanoCarlucci/CPULoadGenerator.git```. Lo voy a probar también por si veo alguna diferencia. Voy a crearme un nuevo enviroment llamado stress_test, he instalado:  
 		- sudo apt install python3-matplotlib
 		- sudo apt install python3 pstuil (ya estaba instalado)
 		- sudo apt intall python3-click  (ya estaba instalado)
@@ -711,10 +712,36 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	(Instalé algo más al intentar intalar matplotlib con pip, algo como pip intall --upgrade setools pero como no he guardado el comitt que lo tenia no se exactamente.)
 	
-	Ejecutando ./CPULoadGenerator.py -? 1 -d 10 -c 0 parece que va. Pruebo a mirar los tiempos con los modelos.
+	Ejecutando ./CPULoadGenerator.py -l 1 -d 10 -c 0 parece que va. Pruebo a mirar los tiempos con los modelos.
 	Ahora no me acuerdo exactamente (volver a mirar mañana) pero al estresar 4 cpus con 5o lineas de csv los tiempos de cpu se quedaban igual pero los de wall time si crecian algo.
 	
 	Más o menos creo que esto era todo lo que tenía apuntado antes de apagar el ordenador sin hacer el commit.  
+	
+* 28/3/22  
+	
+	Para activar el entorno stress_test: ```coda activate /home/nuria/Documents/CPULoadGenerator/stress_test```
+	
+	DataSet: 50 líneas de **10% Kdd_cup99** 
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **13 seg** |
+	|SVM | 11 seg // **10 seg** | 11 seg // **10 seg** | 11 seg // **11 seg** | 11 seg // **14 seg** | 
+	|Gradient tree boosting | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **14 seg** | 
+	|Random forest | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **14 seg** |  
+	
+	
+	DataSet: El 35% de **10% Kdd_cup99** 
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  	
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 28 seg // **17 seg** | 41 seg // **23 seg**| 35 seg // **24 seg**| 30 seg // **27 seg**|
+	|SVM | 25 seg // **24 seg** | 26 seg // **24 seg** | 24 seg // **25 seg**| 25 seg // **32 seg** | 
+	|Gradient tree boosting | 49 seg // **49 seg** | 49 seg // **49 seg** | 49 seg // **49 seg** | 49 seg // **63 seg** | 
+	|Random forest | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **34 seg** |  
+	
 	
 # **TO DO Memoria:**  
 	
