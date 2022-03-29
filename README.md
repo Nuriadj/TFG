@@ -420,7 +420,9 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	| 3 | 50 ms // 260 ms | 60 ms // 270 ms |  50 ms // 300 ms | 40 ms // 300 ms |
 	| 4 | 50 ms // 250 ms | 50 ms // 200 ms | 50 ms // 300 ms |  40 ms // 300 ms |
 	
-	1 cpu, 2 cpu muy variables (en general todos) (n_jpb= 4)
+	1 cpu, 2 cpu muy variables (en general todos) (n_job= 4)
+	
+	[n_jobs](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html), el número de trabajos que se ejecutan en paralelo. Con n_jobs= 1 solo dejamos a una cpu trabajar, con n_jobs= 4 se utilizan 4 cpus. 
 	
 	**Random forest** Raspberry (Cpu time // **Wall time**)  
 	
@@ -438,6 +440,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	| 2 | 850 ms // **450 ms** | 850 ms // **460 ms** | 900 ms // **550 ms**  | 2 seg // **1 seg** |
 	| 3 | 950 ms // **350 ms** | 1 seg // **350 ms** | 1.4 seg // **540 ms** | 2 seg // **800 ms** |
 	| 4 |  1 seg // **310 ms** | 1 seg // **330 ms** | 1.5 seg // **515 ms** | 2 seg // **650 ms** |  
+	
+	- Con mayor número de n_jobs wall time disminuye mientras que el de cpu aumenta.
 	
 	* En la Raspberry he probado a utilizar en vez de stressberry usar stress pero por lo menos para regresión logística pasa lo mismo.  
 
@@ -759,6 +763,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|SVM | 25 seg // **24 seg** | 25 seg // **25 seg** | 26 seg // **26 seg** | 25 seg // **33 seg** | 
 	
 	Lo mismo.
+	
+	- Si estreso (por ejemplo) 6 cpus consigo aparentemente que el Wall time aumente, sin embargo el cpu se mantiene (seguir probando esto).  
 			
 	
 	
