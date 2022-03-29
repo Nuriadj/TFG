@@ -742,6 +742,25 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting | 49 seg // **49 seg** | 49 seg // **49 seg** | 49 seg // **49 seg** | 49 seg // **63 seg** | 
 	|Random forest | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **34 seg** |  
 	
+* 29/2/22  
+	
+	- Voy a volver a hacer pruebas pero esta vez ejecutando el stress en el mismo terminal que ejecuto python (por probar), para ello:  
+		```cd Documents/TFG/kdd_99/l_regresion```
+		```conda activate jupiter```
+		```sudo stress -c 4 -t 120s > /dev/null 2>&1 &```
+		```time python LRegresion.py```  
+	
+	DataSet: El 35% de **10% Kdd_cup99** 
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  	
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 28 seg // **17 seg** | 38 seg // **22 seg**| 38 seg // **24 seg** | 35 seg // **29 seg** |
+	|SVM | 25 seg // **24 seg** | 25 seg // **25 seg** | 26 seg // **26 seg** | 25 seg // **33 seg** | 
+	
+	Lo mismo.
+			
+	
 	
 # **TO DO Memoria:**  
 	
