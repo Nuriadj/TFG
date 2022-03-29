@@ -6,6 +6,7 @@
 
 import csv
 import pandas as pd
+import random
 from sklearn import metrics
 from sklearn import preprocessing
 from sklearn.metrics import confusion_matrix
@@ -19,7 +20,11 @@ from collections import Counter
 # In[ ]:
 
 
-dataset = pd.read_csv('/home/nuria/Documents/TFG/kdd_cup99/kddcup_10_perBinary.csv', header= None)
+n= 494020
+s= 172907 # Leer solo el 35%
+skip= sorted(random.sample(range(n),n-s))
+dataset = pd.read_csv('/home/nuria/Documents/TFG/kdd_cup99/kddcup_10_perBinary.csv', header= None, skiprows=skip)
+print("Leido un: ",(len(dataset)*100)/n,"% del csv")
 headers = list(dataset.columns.values)
 
 
