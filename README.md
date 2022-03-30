@@ -769,12 +769,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 * 30/2/22  
 	- [Porque el cpu time es más grande que el wall time](https://stackoverflow.com/questions/17843622/benchmarking-cpu-time-bigger-than-wall-time) (por si sirve en algún momento).  
 	- [What you can learn from different ratios](https://pythonspeed.com/articles/blocking-cpu-or-io/#:~:text=Wall%20clock%20time%20measures%20how,seconds%20the%20CPU%20was%20busy.)  
-	It’s easier to express the possible relationship as a ratio of (CPU time) / (wall clock time), which is to say CPU/second.  
+	*It’s easier to express the possible relationship as a ratio of (CPU time) / (wall clock time), which is to say CPU/second.*  
 
-	If this is a single-threaded process:  
+	*If this is a single-threaded process:*  
 
-	* CPU/second ≈ 1: The process spent all of its time using the CPU. A faster CPU will likely make the program run faster.  
-	* CPU/second < 1: The lower the number, the more of its time the process spent waiting (for the network, or the harddrive, or locks, or other processes to release the CPU, or just sleeping). E.g. if CPU/second is 0.75, 25% of the time was spent waiting.  
+	* *CPU/second ≈ 1: The process spent all of its time using the CPU. A faster CPU will likely make the program run faster.*  
+	* *CPU/second < 1: The lower the number, the more of its time the process spent waiting (for the network, or the harddrive, or locks, or other processes to release the CPU, or just sleeping). E.g. if CPU/second is 0.75, 25% of the time was spent waiting.*  
 	
 # **TO DO Memoria:**  
 	
