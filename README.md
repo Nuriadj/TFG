@@ -495,12 +495,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	He probado ha abrir en firefox varias pestañas (6 en total) que estén reproduciendo vídeos (de música todos ellos). Con todos los vídeos en play el tiempo de ejecución para gradient tree boosting con cross validation es de 21 seg, (con 8 pestañas es de 22 seg). Con 8 pestañas de vídeos abiertas regresión logistica con validación cruzada tarda 9 segundos. Random forest con cross validation tarda 17 seg.  
 	Esta es la única forma (de momento) que en la Raspberry haya conseguido aumentar el tiempo de ejecución.  
 	
-* 9/2/22  
+* 9/3/22  
 	- Instalo htop utilizando ```sudo apt install htop```
 	- He tenido que hacer ```sudo apt install firefox``` ya que la otra que tenia de antes no habia forma de que fuese. Para ejecutar ahora firefox pongo en el terminal ```firefox```    
 	- Ejecuto ```stress -c 4 --timeout 60s``` mismos resultados cuando en htop se puede ver claramente que las cpus están al 100%  
 	
-* 10/2/22  
+* 10/3/22  
 	- Me he fijado que al ejecutar stress en la Raspberry observando los datos que aporta htop, si nos fijamos en la columna de cpu (no las barritas horizontales), se puede ver que al ejecutar stress los procesos de stress se encuentran con cpu prácticamente al 100% peor cuando ejecuto uno de los modelos, los porcentajes de stress en la columna de cpu decrecen, siendo el proceso que ejecuta el modelo el que se encuentra al 100%.
 	Esto en el portátil no pasa cuando se estresan los porcesos de stress se mantienen al 100% independientemente de que se ejecute un modelo de aprendizaje o no. Esto estresando 4 cpus en Raspberry y portatil.  
 	
@@ -523,7 +523,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	Con esto lo único que saco es que tiene un comportamiento parecido a la Raspberry, lo único que como tiene 8 cpus se nota menos. Al principio la subida de tiempos es notable pero a partir de 4 cpus estresadas se estancan bastante los tiempos.
 	
-* 19/2/22
+* 19/3/22
 	
 	- Nuevo [dataSet](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_kddcup99.html#sklearn.datasets.fetch_kddcup99). La Raspberry está teniendo problemas para descargarselo, se ha quedado pillada. Voy a probar primero con el 10% y una vez que sepa descargarlo, leerlo y tratarlo pruebo con el total.  
 	No estoy siendo capaz de descargar el dataset, no se descargan csv se descargan ficheros binarios. Como no soy capaz de descargarla usando scikitlearn la voy a coger de [aqui](http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html), una vez descargado el archivo hay que descomprimirlo (gzip -d file).  
@@ -586,7 +586,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting | 22 seg | 26 seg | 39 seg | 53 seg | 
 	|Random forest | 9 seg | 11 seg | 13 seg | 24 seg |  
 	
-* 23/2/22
+* 23/3/22
 	
 	- Observar valor de la RAM para los diferentes modelos en diferentes niveles de estrés. Con el **10%** de datos de kdd y entrenando con el 70% de los mismos:  
 	
@@ -610,7 +610,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	- Gradient tree boosting se mantiene practicamente todo el rato en 1.24G, es verdad que momentaneamente hay más RAM ocupada (las que se ven en la tabla), pero prácticamente todo el rato se queda en 1.24G.  
 	Lo mismo pasa con random forest, llega a alcanzar valores más altos pero se mantiene todo el rato prácticamente en 1.22G. Se pone a 1.25G cuando hay 1, 2 o 4 cpus estresadas.  
 	
-* 24/2/22  
+* 24/3/22  
 	
 	El fichero kdd_cup_10_perBinary.csv contiene un total de **494020** líneas.  
 	
@@ -656,7 +656,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting | 12 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 
 	|Random forest | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** |  
 	
-* 25/2/22  
+* 25/3/22  
 	
 	- Voy a probar leyendo únicamente 50 líneas del csv.  
 	
@@ -746,7 +746,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting | 49 seg // **49 seg** | 49 seg // **49 seg** | 49 seg // **49 seg** | 49 seg // **63 seg** | 
 	|Random forest | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **34 seg** |  
 	
-* 29/2/22  
+* 29/3/22  
 	
 	- Voy a volver a hacer pruebas pero esta vez ejecutando el stress en el mismo terminal que ejecuto python (por probar), para ello:  
 		```cd Documents/TFG/kdd_99/l_regresion```
@@ -766,7 +766,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	- Si estreso (por ejemplo) 6 cpus consigo aparentemente que el Wall time aumente, sin embargo el cpu se mantiene (seguir probando esto).  
 			
-* 30/2/22  
+* 30/3/22  
 	- [Porque el cpu time es más grande que el wall time](https://stackoverflow.com/questions/17843622/benchmarking-cpu-time-bigger-than-wall-time) (por si sirve en algún momento).  
 	- [What you can learn from different ratios](https://pythonspeed.com/articles/blocking-cpu-or-io/#:~:text=Wall%20clock%20time%20measures%20how,seconds%20the%20CPU%20was%20busy.)  
 	*It’s easier to express the possible relationship as a ratio of (CPU time) / (wall clock time), which is to say CPU/second.*  
@@ -775,6 +775,17 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 
 	* *CPU/second ≈ 1: The process spent all of its time using the CPU. A faster CPU will likely make the program run faster.*  
 	* *CPU/second < 1: The lower the number, the more of its time the process spent waiting (for the network, or the harddrive, or locks, or other processes to release the CPU, or just sleeping). E.g. if CPU/second is 0.75, 25% of the time was spent waiting.*  
+	
+## Abril  
+			  
+* 2/4/22  
+	
+	- Estoy comprobando la temperatura que tiene la raspberry al ejecutar con diferentes niveles de estrés. Se supone que cuando la Rspberry alcanza 85ºC diminuye la frecuencia de las cpus para poder bajar la temperatura (info [aquí](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#measuring-temperatures)).   
+			  
+	*All Raspberry Pi models perform a degree of thermal management to avoid overheating under heavy load. The SoCs have an internal temperature sensor, which software on the GPU polls to ensure that temperatures do not exceed a predefined limit; this is 85°C on all models. It is possible to set this to a lower value, but not to a higher one. As the device approaches the limit, various frequencies and sometimes voltages used on the chip (ARM, GPU) are reduced. This reduces the amount of heat generated, keeping the temperature under control.*  
+			  
+	Para 4 cpus estresadas en regresión lineal llega a los 47 ºC. Si se ejecuta varias veces seguidas llega a unos 54ºC.  
+	Con gradient se queda en unos 53ºC, de seguido llega a unos 55ºC.  
 	
 # **TO DO Memoria:**  
 	
