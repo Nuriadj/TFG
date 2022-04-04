@@ -809,7 +809,16 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Regresión logística| 28 seg // **21 seg**| 27 seg // **22 seg** | 26 seg // **22 seg** | 26 seg // **23 seg** |
 	|Random forest | 18 seg // **14 seg** | 17 seg // **14 seg** | 16 seg // **14 seg** | 16 seg // **15 seg** |  		
 			  
-	Random forest no he ejecutado todo (solo para 1 y 4 cpus estresadas) pero viendo los resultados de esto supongo que van a volver a salir los mismos tiempos en los diferentes casos.  		  
+	Random forest no he ejecutado todo (solo para 1 y 4 cpus estresadas) pero viendo los resultados de esto supongo que van a volver a salir los mismos tiempos en los diferentes casos.  
+			  
+	n_jobs= 1  
+	DataSet: El 10% de **10% Kdd_cup99**  
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  			  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 16 seg // **13 seg** | |||
+	|Random forest |||||  	
 	
 # **TO DO Memoria:**  
 	
