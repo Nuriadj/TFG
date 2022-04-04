@@ -786,6 +786,19 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 			  
 	Para 4 cpus estresadas en regresión lineal llega a los 47 ºC. Si se ejecuta varias veces seguidas llega a unos 54ºC.  
 	Con gradient se queda en unos 53ºC, de seguido llega a unos 55ºC.  
+			  
+* 4/4/22  
+	
+	n_jobs= -1  
+	DataSet: El 10% de **10% Kdd_cup99**  
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  			  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 28 seg // **23 seg**| 27 seg // **22 seg** | 26 seg // **22 seg** | 26 seg // **23 seg** |
+	|Random forest | 18 seg // **14 seg** | 17 seg // **14 seg** | 16 seg // **14 seg** | 16 seg // **15 seg** |  
+			  
+	Ni máquinas de soporte vectorial ni gradient tree boosting permiten paralelización, por lo tanto [no tienen parámetro n_jobs](https://github.com/scikit-learn/scikit-learn/issues/8026).    
 	
 # **TO DO Memoria:**  
 	
