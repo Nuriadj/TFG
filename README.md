@@ -780,7 +780,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 			  
 * 2/4/22  
 	
-	- Estoy comprobando la temperatura que tiene la raspberry al ejecutar con diferentes niveles de estrés. Se supone que cuando la Rspberry alcanza 85ºC diminuye la frecuencia de las cpus para poder bajar la temperatura (info [aquí](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#measuring-temperatures)).   
+	- Estoy comprobando la temperatura que tiene la raspberry al ejecutar con diferentes niveles de estrés. Se supone que cuando la Raspberry alcanza 85ºC diminuye la frecuencia de las cpus para poder bajar la temperatura (info [aquí](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#measuring-temperatures)).   
 			  
 	*All Raspberry Pi models perform a degree of thermal management to avoid overheating under heavy load. The SoCs have an internal temperature sensor, which software on the GPU polls to ensure that temperatures do not exceed a predefined limit; this is 85°C on all models. It is possible to set this to a lower value, but not to a higher one. As the device approaches the limit, various frequencies and sometimes voltages used on the chip (ARM, GPU) are reduced. This reduces the amount of heat generated, keeping the temperature under control.*  
 			  
