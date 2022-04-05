@@ -819,7 +819,20 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|--------|------|------|-------|------|
 	|Regresión logística| 16 seg // **13 seg** | 27 seg // **17 seg** | 27 seg // **19 seg** | 20 seg // **16 seg** |
 	|Random forest | 15 seg // **15 seg** | 14 seg // **14 seg** | 15 seg // **15 seg** | 14 seg // **14 seg** |  	
+			  
+			  
+	n_jobs= NO poniendolo
+	DataSet: El 10% de **10% Kdd_cup99**  
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  			  
 	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 16 seg // **13 seg** | 26 seg // **16 seg** | 26 seg // **18 seg** | 20 seg // **16 seg** |
+	|Random forest | 14 seg // **14 seg** | 14 seg // **14 seg** | 14 seg // **14 seg** | 14 seg // **14 seg** |  	
+			  
+	
+			  
+			  
 # **TO DO Memoria:**  
 	
 **Para guardar la memoria en git:**  
