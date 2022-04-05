@@ -821,7 +821,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Random forest | 15 seg // **15 seg** | 14 seg // **14 seg** | 15 seg // **15 seg** | 14 seg // **14 seg** |  	
 			  
 			  
-	n_jobs= NO poniendolo
+	n_jobs= NO poniendolo  
 	DataSet: El 10% de **10% Kdd_cup99**  
 	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  			  
 	
