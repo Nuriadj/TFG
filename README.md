@@ -817,8 +817,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
 	|--------|------|------|-------|------|
-	|Regresión logística| 16 seg // **13 seg** | |||
-	|Random forest |||||  	
+	|Regresión logística| 16 seg // **13 seg** | 27 seg // **17 seg** | 27 seg // **19 seg** | 20 seg // **16 seg** |
+	|Random forest | 15 seg // **15 seg** | 14 seg // **14 seg** | 15 seg // **15 seg** | 14 seg // **14 seg** |  	
 	
 # **TO DO Memoria:**  
 	
