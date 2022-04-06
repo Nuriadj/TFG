@@ -830,13 +830,38 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
 	|--------|------|------|-------|------|
-	|Regresión logística| 16 seg // **13 seg** | 26 seg // **16 seg** | 26 seg // **18 seg** | 20 seg // **16 seg** |
+	|Regresión logística| 15 seg // **12 seg** | 26 seg // **16 seg** | 26 seg // **18 seg** | 20 seg // **16 seg** |
 	|Random forest | 14 seg // **14 seg** | 14 seg // **14 seg** | 14 seg // **14 seg** | 14 seg // **14 seg** |  	
 			  
 	
 * 6/4/22  
 	
-	- no es lo mismo indicar n_jobs = 4 que n_jobs = -1, ya que n_jobs = -1 lo que dice es "the task will use all of the cores available on your system.". El matiz está en la palabra "available", esto no es seguro que signifique todos.		  
+	- No es lo mismo indicar n_jobs = 4 que n_jobs = -1, ya que n_jobs = -1 lo que dice es "the task will use all of the cores available on your system.". El matiz está en la palabra "available", esto no es seguro que signifique todos.	
+			  
+	- Voy a ejecutar n_jobs= 1 y n_jobs= 8 en el portátil para observar los tiempos que se obtienen (lo hago hasta con 8 cpus estresadas por ver como se comportan con el portátil totalmente estresado):	
+			  
+	n_jobs= 1  
+	DataSet: El 10% de **10% Kdd_cup99**  
+	Dispositivo: **Portátil** **SIN CROSS VAL** **(CPU // WALL TIME)**  			  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu | 8 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 3 seg // **2 seg** | 3 seg // **2 seg** | 4 seg // **3 seg** | 6 seg // **5 seg** | 8 seg // **7 seg** |
+	|Random forest | 2 seg // **2 seg** | 2 seg // **2 seg** | 3 seg // **3 seg** | 6 seg // **6 seg** | 6 seg // ** 7 sseg** | 	
+			  
+	
+	n_jobs= 4 
+	DataSet: El 10% de **10% Kdd_cup99**  
+	Dispositivo: **Portátil** **SIN CROSS VAL** **(CPU // WALL TIME)**  			  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu | 8 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 4 seg // **3 seg** | 4-5 seg // **3 seg**  | 6 seg // **4 seg** | 10 seg // **7 seg** | 10 seg // **9 seg** |
+	|Random forest | 2 seg // **2 seg** | 2-3 seg // **2 seg** | 4 seg // **3 seg** | 6 seg // **5 seg** | 6 seg // **7 seg**  | 			
+			  
+	- En regresión logistica con 1 cpu estresada al principio da valores de Cpu time= 4 seg, Wall time= 3 seg, pero pasados unos 30 seg (más o menos) los tiempos ascienden a Cpu time= 5 seg, Wall time= 3 seg y de ahí no incrementan más. Luego para obtener los verdaderos tiempos lo que hago es que **una vez ejecutado stress dejo que pasen unos cuantos segundos hasta recoger los datos**. En regresión logísitca con 2 cpus estresadas pasa un poco igual al inicio la cpu time esta sobre los 4 seg para luego ascender y mantenerse en los 6 seg.  
+	Lo mismo pasa con random forest para 1 cpu al principio el CPu time son 2 seg y después de pasar unos cuantos segundos se queda en 3 seg.		  
+			  
 			  
 			  
 # **TO DO Memoria:**  
