@@ -831,6 +831,9 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Random forest | 14 seg // **14 seg** | 14 seg // **14 seg** | 14 seg // **14 seg** | 14 seg // **14 seg** |  	
 			  
 	
+* 6/4/22  
+	
+	- no es lo mismo indicar n_jobs = 4 que n_jobs = -1, ya que n_jobs = -1 lo que dice es "the task will use all of the cores available on your system.". El matiz está en la palabra "available", esto no es seguro que signifique todos.		  
 			  
 			  
 # **TO DO Memoria:**  
