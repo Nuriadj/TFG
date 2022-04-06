@@ -847,7 +847,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu | 8 cpu |
 	|--------|------|------|-------|------|---------|
 	|Regresión logística| 3 seg // **2 seg** | 3 seg // **2 seg** | 4 seg // **3 seg** | 6 seg // **5 seg** | 8 seg // **7 seg** |
-	|Random forest | 2 seg // **2 seg** | 2 seg // **2 seg** | 3 seg // **3 seg** | 6 seg // **6 seg** | 6 seg // ** 7 sseg** | 	
+	|Random forest | 2 seg // **2 seg** | 2 seg // **2 seg** | 3 seg // **3 seg** | 6 seg // **6 seg** | 6 seg // **7 seg** | 	
 			  
 	
 	n_jobs= 4  
