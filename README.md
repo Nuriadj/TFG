@@ -50,9 +50,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 ## Enero
 		
 * 28/1/22  
-	- Instalación de Ubuntu en la Raspberry.  
+	- [Instalación de Ubuntu en la Raspberry](https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4). Pasos del 1 al 3.  
   
-  - Ha sido necesario debido a que con el sistema operativo anterior (RaspbianOS) no se podía conseguir una versión de Python superior a la 3.6, esto era consecuencia de que la arquitectura utilizada por el antiguo SO era de 32-bit mientras que para poder instalar Python 3.8 o 3.9 era necesario tener una de 64-bit.
+  	 Ha sido necesario debido a que con el sistema operativo anterior (RaspbianOS) no se podía conseguir una versión de Python superior a la 3.6, esto era consecuencia de que la arquitectura utilizada por el antiguo SO era de 32-bit mientras que para poder instalar Python 3.8 o 3.9 era necesario tener una de 64-bit.  
+	 
+	 - El otro problema que tuve es que no sé por qué razón el teclado no me dejaba escribir en el terminal ni en ninguna otra aplicación, solo me dejaba escribir para hacer log in. Por medio de una pregunta en el foro de Raspberry pude solucionarlo, os adjunto el enlace a la página con la solución https://forums.raspberrypi.com/viewtopic.php?t=310293 (el penúltimo post es el que seguí).
+ 
 
 * 31/1/22  
 
@@ -851,4 +854,7 @@ Repasar estado del arte: Miniconda poner algo sobre que ofrece un mayor control 
 Estado del arte meter las librerías de scikit-learn, pandas, jupyter-notebook?  
 Comentar en la memoria que dado que es un gran número de ejemplos no es necesario utilizar stratified a pesar de que haya menor número de muestras en una clase que en otra. Mirar otra vez como he explicado lo de validación cruzada.
 	
-(Sobre la estratificación: Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran cantidad de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que el set de entrenamiento siempre tendrá la cantidad de muestras necesarias de ambas clases para entrenar correctamente. )
+(Sobre la estratificación: Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran cantidad de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que el set de entrenamiento siempre tendrá la cantidad de muestras necesarias de ambas clases para entrenar correctamente. )  
+			  
+- Añadir al estado del arte el sistema operativo que se utiliza: Ubuntu 20.10  
+- Añadir como se instaló o por lo menos hacer referencia al enlace que se utilizó para intstalarlo (día 28/1/22)  			  
