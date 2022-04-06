@@ -792,7 +792,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 			  
 * 4/4/22  
 	
-	- **CORREO:** Parece que a menos que indiques de forma explícita cuántos cores quieres utilizar, sólo se utiliza uno, por lo que esto explicaría que los tiempos fueran iguales para todos los niveles de saturación: "This configuration argument allows you to specify the number of cores to use for the task. The default is None, which will use a single core."		  
+	- **CORREO 4/4/2022:** Parece que a menos que indiques de forma explícita cuántos cores quieres utilizar, sólo se utiliza uno, por lo que esto explicaría que los tiempos fueran iguales para todos los niveles de saturación: "This configuration argument allows you to specify the number of cores to use for the task. The default is None, which will use a single core."		  
 	
 	n_jobs= -1  
 	DataSet: El 10% de **10% Kdd_cup99**  
