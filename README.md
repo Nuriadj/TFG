@@ -884,5 +884,5 @@ Comentar en la memoria que dado que es un gran número de ejemplos no es necesar
 	
 (Sobre la estratificación: Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran cantidad de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que el set de entrenamiento siempre tendrá la cantidad de muestras necesarias de ambas clases para entrenar correctamente. )  
 			  
-- Añadir al estado del arte el sistema operativo que se utiliza: Ubuntu 20.10  
+- Añadir al estado del arte el sistema operativo que se utiliza: Ubuntu 21.10  
 - Añadir como se instaló o por lo menos hacer referencia al enlace que se utilizó para intstalarlo (día 28/1/22)  			  
