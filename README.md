@@ -860,8 +860,11 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Random forest | 2 seg // **2 seg** | 2-3 seg // **2 seg** | 4 seg // **3 seg** | 6 seg // **5 seg** | 6 seg // **7 seg**  | 			
 			  
 	- En regresión logistica con 1 cpu estresada al principio da valores de Cpu time= 4 seg, Wall time= 3 seg, pero pasados unos 30 seg (más o menos) los tiempos ascienden a Cpu time= 5 seg, Wall time= 3 seg y de ahí no incrementan más. Luego para obtener los verdaderos tiempos lo que hago es que **una vez ejecutado stress dejo que pasen unos cuantos segundos hasta recoger los datos**. En regresión logísitca con 2 cpus estresadas pasa un poco igual al inicio la cpu time esta sobre los 4 seg para luego ascender y mantenerse en los 6 seg.  
-	Lo mismo pasa con random forest para 1 cpu al principio el CPu time son 2 seg y después de pasar unos cuantos segundos se queda en 3 seg.		  
+	Lo mismo pasa con random forest para 1 cpu al principio el CPu time son 2 seg y después de pasar unos cuantos segundos se queda en 3 seg.  
 			  
+	- ¿Por qué n_job= 1 más rápido que n_jobs= 4? [the reason n_jobs>1 is even more slow than n_jobs=1 is because of the cost to distribute resources for multiprocessing.](https://stackoverflow.com/questions/36250555/why-scikit-learn-neighbors-is-slower-with-n-jobs-1-and-forkserver). Otro [enlace](https://stats.stackexchange.com/questions/268828/why-is-random-forest-classifier-slower-when-n-jobs-increases) que explica esto.	 
+	
+	- Sabiendo esto he probado a ver si se cumplía utilizando el 100% del **10% Kdd_cup99**. Sin embargo aún utilizando todas esas filas el tiempo sigue aumentando con n_jobs= 4.  
 			  
 			  
 # **TO DO Memoria:**  
