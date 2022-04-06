@@ -50,9 +50,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 ## Enero
 		
 * 28/1/22  
-	- Instalación de Ubuntu en la Raspberry.  
+	- [Instalación de Ubuntu en la Raspberry](https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4). Pasos del 1 al 3.  
   
-  - Ha sido necesario debido a que con el sistema operativo anterior (RaspbianOS) no se podía conseguir una versión de Python superior a la 3.6, esto era consecuencia de que la arquitectura utilizada por el antiguo SO era de 32-bit mientras que para poder instalar Python 3.8 o 3.9 era necesario tener una de 64-bit.
+  	 Ha sido necesario debido a que con el sistema operativo anterior (RaspbianOS) no se podía conseguir una versión de Python superior a la 3.6, esto era consecuencia de que la arquitectura utilizada por el antiguo SO era de 32-bit mientras que para poder instalar Python 3.8 o 3.9 era necesario tener una de 64-bit.  
+	 
+	 - El otro problema que tuve es que no sé por qué razón el teclado no me dejaba escribir en el terminal ni en ninguna otra aplicación, solo me dejaba escribir para hacer log in. Por medio de una pregunta en el foro de Raspberry pude solucionarlo, os adjunto el enlace a la página con la solución https://forums.raspberrypi.com/viewtopic.php?t=310293 (el penúltimo post es el que seguí).
+ 
 
 * 31/1/22  
 
@@ -420,7 +423,9 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	| 3 | 50 ms // 260 ms | 60 ms // 270 ms |  50 ms // 300 ms | 40 ms // 300 ms |
 	| 4 | 50 ms // 250 ms | 50 ms // 200 ms | 50 ms // 300 ms |  40 ms // 300 ms |
 	
-	1 cpu, 2 cpu muy variables (en general todos) (n_jpb= 4)
+	1 cpu, 2 cpu muy variables (en general todos) (n_job= 4)
+	
+	[n_jobs](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html), el número de trabajos que se ejecutan en paralelo. Con n_jobs= 1 solo dejamos a una cpu trabajar, con n_jobs= 4 se utilizan 4 cpus. 
 	
 	**Random forest** Raspberry (Cpu time // **Wall time**)  
 	
@@ -438,6 +443,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	| 2 | 850 ms // **450 ms** | 850 ms // **460 ms** | 900 ms // **550 ms**  | 2 seg // **1 seg** |
 	| 3 | 950 ms // **350 ms** | 1 seg // **350 ms** | 1.4 seg // **540 ms** | 2 seg // **800 ms** |
 	| 4 |  1 seg // **310 ms** | 1 seg // **330 ms** | 1.5 seg // **515 ms** | 2 seg // **650 ms** |  
+	
+	- Con mayor número de n_jobs wall time disminuye mientras que el de cpu aumenta.
 	
 	* En la Raspberry he probado a utilizar en vez de stressberry usar stress pero por lo menos para regresión logística pasa lo mismo.  
 
@@ -491,12 +498,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	He probado ha abrir en firefox varias pestañas (6 en total) que estén reproduciendo vídeos (de música todos ellos). Con todos los vídeos en play el tiempo de ejecución para gradient tree boosting con cross validation es de 21 seg, (con 8 pestañas es de 22 seg). Con 8 pestañas de vídeos abiertas regresión logistica con validación cruzada tarda 9 segundos. Random forest con cross validation tarda 17 seg.  
 	Esta es la única forma (de momento) que en la Raspberry haya conseguido aumentar el tiempo de ejecución.  
 	
-* 9/2/22  
+* 9/3/22  
 	- Instalo htop utilizando ```sudo apt install htop```
 	- He tenido que hacer ```sudo apt install firefox``` ya que la otra que tenia de antes no habia forma de que fuese. Para ejecutar ahora firefox pongo en el terminal ```firefox```    
 	- Ejecuto ```stress -c 4 --timeout 60s``` mismos resultados cuando en htop se puede ver claramente que las cpus están al 100%  
 	
-* 10/2/22  
+* 10/3/22  
 	- Me he fijado que al ejecutar stress en la Raspberry observando los datos que aporta htop, si nos fijamos en la columna de cpu (no las barritas horizontales), se puede ver que al ejecutar stress los procesos de stress se encuentran con cpu prácticamente al 100% peor cuando ejecuto uno de los modelos, los porcentajes de stress en la columna de cpu decrecen, siendo el proceso que ejecuta el modelo el que se encuentra al 100%.
 	Esto en el portátil no pasa cuando se estresan los porcesos de stress se mantienen al 100% independientemente de que se ejecute un modelo de aprendizaje o no. Esto estresando 4 cpus en Raspberry y portatil.  
 	
@@ -519,7 +526,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	Con esto lo único que saco es que tiene un comportamiento parecido a la Raspberry, lo único que como tiene 8 cpus se nota menos. Al principio la subida de tiempos es notable pero a partir de 4 cpus estresadas se estancan bastante los tiempos.
 	
-* 19/2/22
+* 19/3/22
 	
 	- Nuevo [dataSet](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_kddcup99.html#sklearn.datasets.fetch_kddcup99). La Raspberry está teniendo problemas para descargarselo, se ha quedado pillada. Voy a probar primero con el 10% y una vez que sepa descargarlo, leerlo y tratarlo pruebo con el total.  
 	No estoy siendo capaz de descargar el dataset, no se descargan csv se descargan ficheros binarios. Como no soy capaz de descargarla usando scikitlearn la voy a coger de [aqui](http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html), una vez descargado el archivo hay que descomprimirlo (gzip -d file).  
@@ -582,7 +589,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting | 22 seg | 26 seg | 39 seg | 53 seg | 
 	|Random forest | 9 seg | 11 seg | 13 seg | 24 seg |  
 	
-* 23/2/22
+* 23/3/22
 	
 	- Observar valor de la RAM para los diferentes modelos en diferentes niveles de estrés. Con el **10%** de datos de kdd y entrenando con el 70% de los mismos:  
 	
@@ -606,7 +613,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	- Gradient tree boosting se mantiene practicamente todo el rato en 1.24G, es verdad que momentaneamente hay más RAM ocupada (las que se ven en la tabla), pero prácticamente todo el rato se queda en 1.24G.  
 	Lo mismo pasa con random forest, llega a alcanzar valores más altos pero se mantiene todo el rato prácticamente en 1.22G. Se pone a 1.25G cuando hay 1, 2 o 4 cpus estresadas.  
 	
-* 24/2/22  
+* 24/3/22  
 	
 	El fichero kdd_cup_10_perBinary.csv contiene un total de **494020** líneas.  
 	
@@ -652,7 +659,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting | 12 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 
 	|Random forest | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** | 11 seg // **11 seg** |  
 	
-* 25/2/22  
+* 25/3/22  
 	
 	- Voy a probar leyendo únicamente 50 líneas del csv.  
 	
@@ -742,7 +749,96 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting | 49 seg // **49 seg** | 49 seg // **49 seg** | 49 seg // **49 seg** | 49 seg // **63 seg** | 
 	|Random forest | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **26 seg** | 26 seg // **34 seg** |  
 	
+* 29/3/22  
 	
+	- Voy a volver a hacer pruebas pero esta vez ejecutando el stress en el mismo terminal que ejecuto python (por probar), para ello:  
+		```cd Documents/TFG/kdd_99/l_regresion```
+		```conda activate jupiter```
+		```sudo stress -c 4 -t 120s > /dev/null 2>&1 &```
+		```time python LRegresion.py```  
+	
+	DataSet: El 35% de **10% Kdd_cup99** 
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  	
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 28 seg // **17 seg** | 38 seg // **22 seg**| 38 seg // **24 seg** | 35 seg // **29 seg** |
+	|SVM | 25 seg // **24 seg** | 25 seg // **25 seg** | 26 seg // **26 seg** | 25 seg // **33 seg** | 
+	
+	Lo mismo.
+	
+	- Si estreso (por ejemplo) 6 cpus consigo aparentemente que el Wall time aumente, sin embargo el cpu se mantiene (seguir probando esto).  
+			
+* 30/3/22  
+	- [Porque el cpu time es más grande que el wall time](https://stackoverflow.com/questions/17843622/benchmarking-cpu-time-bigger-than-wall-time) (por si sirve en algún momento).  
+	- [What you can learn from different ratios](https://pythonspeed.com/articles/blocking-cpu-or-io/#:~:text=Wall%20clock%20time%20measures%20how,seconds%20the%20CPU%20was%20busy.)  
+	*It’s easier to express the possible relationship as a ratio of (CPU time) / (wall clock time), which is to say CPU/second.*  
+
+	*If this is a single-threaded process:*  
+
+	* *CPU/second ≈ 1: The process spent all of its time using the CPU. A faster CPU will likely make the program run faster.*  
+	* *CPU/second < 1: The lower the number, the more of its time the process spent waiting (for the network, or the harddrive, or locks, or other processes to release the CPU, or just sleeping). E.g. if CPU/second is 0.75, 25% of the time was spent waiting.*  
+	
+## Abril  
+			  
+* 2/4/22  
+	
+	- Estoy comprobando la temperatura que tiene la raspberry al ejecutar con diferentes niveles de estrés. Se supone que cuando la Raspberry alcanza 85ºC diminuye la frecuencia de las cpus para poder bajar la temperatura (info [aquí](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#measuring-temperatures)).   
+			  
+	*All Raspberry Pi models perform a degree of thermal management to avoid overheating under heavy load. The SoCs have an internal temperature sensor, which software on the GPU polls to ensure that temperatures do not exceed a predefined limit; this is 85°C on all models. It is possible to set this to a lower value, but not to a higher one. As the device approaches the limit, various frequencies and sometimes voltages used on the chip (ARM, GPU) are reduced. This reduces the amount of heat generated, keeping the temperature under control.*  
+			  
+	Para 4 cpus estresadas en regresión lineal llega a los 47 ºC. Si se ejecuta varias veces seguidas llega a unos 54ºC.  
+	Con gradient se queda en unos 53ºC, de seguido llega a unos 55ºC.  
+			  
+* 4/4/22  
+	
+	n_jobs= -1  
+	DataSet: El 10% de **10% Kdd_cup99**  
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  			  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 28 seg // **23 seg**| 27 seg // **22 seg** | 26 seg // **22 seg** | 26 seg // **23 seg** |
+	|Random forest | 18 seg // **14 seg** | 17 seg // **14 seg** | 16 seg // **14 seg** | 16 seg // **15 seg** |  
+			  
+	Ni máquinas de soporte vectorial ni gradient tree boosting permiten paralelización, por lo tanto [no tienen parámetro n_jobs](https://github.com/scikit-learn/scikit-learn/issues/8026).    
+			  
+	n_jobs= 4  
+	DataSet: El 10% de **10% Kdd_cup99**  
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  			  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 28 seg // **21 seg**| 27 seg // **22 seg** | 26 seg // **22 seg** | 26 seg // **23 seg** |
+	|Random forest | 18 seg // **14 seg** | 17 seg // **14 seg** | 16 seg // **14 seg** | 16 seg // **15 seg** |  		
+			  
+	Random forest no he ejecutado todo (solo para 1 y 4 cpus estresadas) pero viendo los resultados de esto supongo que van a volver a salir los mismos tiempos en los diferentes casos.  
+			  
+	n_jobs= 1  
+	DataSet: El 10% de **10% Kdd_cup99**  
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  			  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 16 seg // **13 seg** | 27 seg // **17 seg** | 27 seg // **19 seg** | 20 seg // **16 seg** |
+	|Random forest | 15 seg // **15 seg** | 14 seg // **14 seg** | 15 seg // **15 seg** | 14 seg // **14 seg** |  	
+			  
+			  
+	n_jobs= NO poniendolo  
+	DataSet: El 10% de **10% Kdd_cup99**  
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  			  
+	
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 16 seg // **13 seg** | 26 seg // **16 seg** | 26 seg // **18 seg** | 20 seg // **16 seg** |
+	|Random forest | 14 seg // **14 seg** | 14 seg // **14 seg** | 14 seg // **14 seg** | 14 seg // **14 seg** |  	
+			  
+	
+* 6/4/22  
+	
+	- no es lo mismo indicar n_jobs = 4 que n_jobs = -1, ya que n_jobs = -1 lo que dice es "the task will use all of the cores available on your system.". El matiz está en la palabra "available", esto no es seguro que signifique todos.		  
+			  
+			  
 # **TO DO Memoria:**  
 	
 **Para guardar la memoria en git:**  
@@ -758,4 +854,7 @@ Repasar estado del arte: Miniconda poner algo sobre que ofrece un mayor control 
 Estado del arte meter las librerías de scikit-learn, pandas, jupyter-notebook?  
 Comentar en la memoria que dado que es un gran número de ejemplos no es necesario utilizar stratified a pesar de que haya menor número de muestras en una clase que en otra. Mirar otra vez como he explicado lo de validación cruzada.
 	
-(Sobre la estratificación: Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran cantidad de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que el set de entrenamiento siempre tendrá la cantidad de muestras necesarias de ambas clases para entrenar correctamente. )
+(Sobre la estratificación: Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran cantidad de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que el set de entrenamiento siempre tendrá la cantidad de muestras necesarias de ambas clases para entrenar correctamente. )  
+			  
+- Añadir al estado del arte el sistema operativo que se utiliza: Ubuntu 20.10  
+- Añadir como se instaló o por lo menos hacer referencia al enlace que se utilizó para intstalarlo (día 28/1/22)  			  
