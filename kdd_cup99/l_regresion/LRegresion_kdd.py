@@ -3,7 +3,7 @@
 
 # In[254]:
 
-
+from time import time
 import csv
 import pandas as pd
 import random
@@ -18,8 +18,10 @@ from collections import Counter
 
 # In[255]:
 
+start= time()
+
 n= 494020
-s= 172907 # Leer solo el 35%
+s= 49402 # Leer solo el 10%
 skip= sorted(random.sample(range(n),n-s))
 dataset = pd.read_csv('/home/nuria/Documents/TFG/kdd_cup99/kddcup_10_perBinary.csv', header= None, skiprows=skip)
 print("Leido un: ",(len(dataset)*100)/n,"% del csv")
@@ -79,7 +81,7 @@ x_test_scaled = scaler.transform(x_test)
 
 # In[262]:
 
-l_regr= LogisticRegression(max_iter= 400)
+l_regr= LogisticRegression(max_iter= 400, n_jobs= 4)
 # Entrenamiento
 l_regr.fit(x_scaled, y_train)
 # Prediccion
@@ -96,6 +98,11 @@ print("Precision: ","{:.1f}".format(precision),"%")
 recall = metrics.recall_score(y_test, occup_pred, pos_label='normal.')*100
 print("Recall: ","{:.1f}".format(recall),"%")
 
+
+end= time()
+t_time= end-start
+
+print("Total time: ",t_time)
 
 # In[264]:
 

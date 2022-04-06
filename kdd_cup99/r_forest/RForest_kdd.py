@@ -20,7 +20,7 @@ from collections import Counter
 
 
 n= 494020
-s= 172907 # Leer solo el 35%
+s= 49402 # Leer solo el 10%
 skip= sorted(random.sample(range(n),n-s))
 dataset = pd.read_csv('/home/nuria/Documents/TFG/kdd_cup99/kddcup_10_perBinary.csv', header= None, skiprows=skip)
 print("Leido un: ",(len(dataset)*100)/n,"% del csv")
@@ -77,7 +77,7 @@ x_test_scaled = scaler.transform(x_test)
 # In[ ]:
 
 
-r_forest= RandomForestClassifier()
+r_forest= RandomForestClassifier(n_jobs= 4)
 r_forest.fit(x_scaled, y_train)
 occup_pred = r_forest.predict(x_test_scaled)
 
