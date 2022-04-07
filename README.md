@@ -892,6 +892,16 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|--------|---------------|----------------|
 	|Regresión logística| 44 seg // **19 seg** | 76 seg // **72 seg** |  
 	|Random forest | 42 seg // **43 seg**| 172 seg // **31 seg** |  
+	
+	- Voy a intentar ver cual es el máximo % del fichero total que puedo leer. El máximo que he podido leer es el 50% unas 2470100 líneas.  
+	
+	**50% Kdd_cup99** Portátil
+	| Modelo | Idle n_jobs= 1 | Idle n_jobs= 8 |
+	|--------|---------------|----------------|
+	|Regresión logística| 55 seg // **23 seg** | 98 seg // **95 seg** |  
+	|Random forest | 52 seg // **53 seg**| 218 seg // **41 seg** |  
+	
+	Con n_jobs= 8 no veo que se pongan todas las cpus al 100% en regresión logística. Con random forest si.
 			  
 # **TO DO Memoria:**  
 	
