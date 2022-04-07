@@ -880,13 +880,13 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	**20% Kdd_cup99**
 	| Modelo | Idle n_jobs= 1 | Idle n_jobs= 8 |
-	|--------|---------------|----------------|----------------|
+	|--------|---------------|----------------|
 	|Regresión logística| 23 seg // **10 seg** | 37 seg // **34 seg** |  
 	|Random forest | 19 seg // **19 seg** | 77 seg // **15 seg** |  
 	
 	**40% Kdd_cup99**
 	| Modelo | Idle n_jobs= 1 | Idle n_jobs= 8 |
-	|--------|---------------|----------------|----------------|
+	|--------|---------------|----------------|
 	|Regresión logística| 44 seg // **19 seg** | 76 seg // **72 seg** |  
 	|Random forest | 42 seg // **43 seg**| 172 seg // **31 seg** |  
 			  
