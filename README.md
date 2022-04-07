@@ -866,8 +866,29 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 			  
 	- ¿Por qué n_job= 1 más rápido que n_jobs= 4? [the reason n_jobs>1 is even more slow than n_jobs=1 is because of the cost to distribute resources for multiprocessing.](https://stackoverflow.com/questions/36250555/why-scikit-learn-neighbors-is-slower-with-n-jobs-1-and-forkserver). Otro [enlace](https://stats.stackexchange.com/questions/268828/why-is-random-forest-classifier-slower-when-n-jobs-increases) que explica esto.	 
 	
-	- Sabiendo esto he probado a ver si se cumplía utilizando el 100% del **10% Kdd_cup99**. Sin embargo aún utilizando todas esas filas el tiempo sigue aumentando con n_jobs= 4.  
+	- Sabiendo esto he probado a ver si se cumplía utilizando el 100% del **10% Kdd_cup99**. Sin embargo aún utilizando todas esas filas el tiempo sigue aumentando con n_jobs= 4 en el caso de regresión logísitica.
+	En random forest con el 100% del **10% Kdd_cup99** pasa lo mismo.
 			  
+	| Modelo | Idle n_jobs= 1| Idle n_jobs= 4 | Idle n_jobs= 8 |
+	|--------|---------------|----------------|----------------|
+	|Regresión logística| 12 seg // **5 seg** | 24 seg // **13 seg** | 18 seg // **16 seg** |  
+	|Random forest | 10 seg // **10 seg**  | 18 seg // **7 seg** | 36 seg // **8 seg** |  
+	
+	- Intentando descargarme el 100% de Kdd_cup99 (en el portátil) los datos me los he descargado de [aquí](https://www.kaggle.com/datasets/galaxyh/kdd-cup-1999-data?select=kddcup.data.gz). Cambio el nombre del fichero de kddcup.data a kddcup.csv.
+	Ejecuto Download_dataSet.py (poner la direccion del fichero correcta) para combertirlo en clasificacion binaria. De momento **NO** puedo al ejecutarlo me aparece Killed.
+	Pruebo a intentar combertir el 20% de los datos. Para saber cuanto es el 20% hago regla de tres, si 10% -----> 494020, 20% -------> x, y de la misma forma que lo hago en los modelos lo he hecho en Download_dataSet.py. El 20% del fichero total son unas 979500 líneas  
+	
+	**20% Kdd_cup99**
+	| Modelo | Idle n_jobs= 1 | Idle n_jobs= 8 |
+	|--------|---------------|----------------|----------------|
+	|Regresión logística| 23 seg // **10 seg** | 37 seg // **34 seg** |  
+	|Random forest | 19 seg // **19 seg** | 77 seg // **15 seg** |  
+	
+	**40% Kdd_cup99**
+	| Modelo | Idle n_jobs= 1 | Idle n_jobs= 8 |
+	|--------|---------------|----------------|----------------|
+	|Regresión logística| 44 seg // **19 seg** | 76 seg // **72 seg** |  
+	|Random forest | 42 seg // **43 seg**| 172 seg // **31 seg** |  
 			  
 # **TO DO Memoria:**  
 	
@@ -887,4 +908,5 @@ Comentar en la memoria que dado que es un gran número de ejemplos no es necesar
 (Sobre la estratificación: Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran cantidad de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que el set de entrenamiento siempre tendrá la cantidad de muestras necesarias de ambas clases para entrenar correctamente. )  
 			  
 - Añadir al estado del arte el sistema operativo que se utiliza: Ubuntu 21.10  
-- Añadir como se instaló o por lo menos hacer referencia al enlace que se utilizó para intstalarlo (día 28/1/22)  			  
+- Añadir como se instaló o por lo menos hacer referencia al enlace que se utilizó para intstalarlo (día 28/1/22)  
+- Añadir todo lo que he descubierto sobre n_jobs, SMP...	
