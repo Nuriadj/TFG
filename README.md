@@ -870,7 +870,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	En random forest con el 100% del **10% Kdd_cup99** pasa lo mismo.
 	
 * 7/4/22  	
-			  
+	
+	**10% Kdd_cup99** Portátil
 	| Modelo | Idle n_jobs= 1| Idle n_jobs= 4 | Idle n_jobs= 8 |
 	|--------|---------------|----------------|----------------|
 	|Regresión logística| 12 seg // **5 seg** | 24 seg // **13 seg** | 18 seg // **16 seg** |  
@@ -880,13 +881,13 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	Ejecuto Download_dataSet.py (poner la direccion del fichero correcta) para combertirlo en clasificacion binaria. De momento **NO** puedo al ejecutarlo me aparece Killed.
 	Pruebo a intentar combertir el 20% de los datos. Para saber cuanto es el 20% hago regla de tres, si 10% -----> 494020, 20% -------> x, y de la misma forma que lo hago en los modelos lo he hecho en Download_dataSet.py. El 20% del fichero total son unas 979500 líneas  
 	
-	**20% Kdd_cup99**
+	**20% Kdd_cup99** Portátil
 	| Modelo | Idle n_jobs= 1 | Idle n_jobs= 8 |
 	|--------|---------------|----------------|
 	|Regresión logística| 23 seg // **10 seg** | 37 seg // **34 seg** |  
 	|Random forest | 19 seg // **19 seg** | 77 seg // **15 seg** |  
 	
-	**40% Kdd_cup99**
+	**40% Kdd_cup99** Portátil
 	| Modelo | Idle n_jobs= 1 | Idle n_jobs= 8 |
 	|--------|---------------|----------------|
 	|Regresión logística| 44 seg // **19 seg** | 76 seg // **72 seg** |  
