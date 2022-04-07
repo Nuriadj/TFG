@@ -868,6 +868,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	- Sabiendo esto he probado a ver si se cumplía utilizando el 100% del **10% Kdd_cup99**. Sin embargo aún utilizando todas esas filas el tiempo sigue aumentando con n_jobs= 4 en el caso de regresión logísitica.
 	En random forest con el 100% del **10% Kdd_cup99** pasa lo mismo.
+	
+* 7/4/22  	
 			  
 	| Modelo | Idle n_jobs= 1| Idle n_jobs= 4 | Idle n_jobs= 8 |
 	|--------|---------------|----------------|----------------|
