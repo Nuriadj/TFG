@@ -891,7 +891,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	| Modelo | Idle n_jobs= 1 | Idle n_jobs= 8 |
 	|--------|---------------|----------------|
 	|Regresión logística| 44 seg // **19 seg** | 76 seg // **72 seg** |  
-	|Random forest | 42 seg // **43 seg**| 172 seg // **31 seg** |  
+	|Random forest | 42 seg // **43 seg** | 172 seg // **31 seg** |  
 	
 	- Voy a intentar ver cual es el máximo % del fichero total que puedo leer. El máximo que he podido leer es el 50% unas 2470100 líneas.  
 	
@@ -899,9 +899,19 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	| Modelo | Idle n_jobs= 1 | Idle n_jobs= 8 |
 	|--------|---------------|----------------|
 	|Regresión logística| 55 seg // **23 seg** | 98 seg // **95 seg** |  
-	|Random forest | 52 seg // **53 seg**| 218 seg // **41 seg** |  
+	|Random forest | 52 seg // **53 seg** | 218 seg // **41 seg** |  
 	
-	Con n_jobs= 8 no veo que se pongan todas las cpus al 100% en regresión logística. Con random forest si.
+	Con n_jobs= 8 no veo que se pongan todas las cpus al 100% en regresión logística. Con random forest si.  
+	
+	- En la Raspberry no puedo leer el 50% del total, se muere el proceso. El 40% del fichero si, unas 1976080 líneas.  
+	
+	**40% Kdd_cup99** Raspberry
+	| Modelo | Idle n_jobs= 1 | Idle n_jobs= 4 |
+	|--------|---------------|----------------|
+	|Regresión logística| 4 min 24 seg // **2 min 32 seg** | 6 min 17 seg // **7 min 14 seg** |  
+	|Random forest | 3 min 59 seg // **4 min 31 seg**| 7 min 2 seg // **3 min 8 seg** |  
+	
+	Con regresion logistica en la Raspberry pasa lo mismo, a pesar de poner n_jobs= 4 solo está utilizando una cpu. Con Random forest si se ponen todas las cpus al 100%. 
 			  
 # **TO DO Memoria:**  
 	
