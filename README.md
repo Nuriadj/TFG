@@ -917,10 +917,10 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	- Creo que a Regresión logística no le afecta el n_jobs porque es binomial para que sea multithreading tendría que ser multiclase.  
 		[sklearn.LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)  
-		*n_jobs=int, default=None  
+		- *n_jobs=int, default=None  
 		Number of CPU cores used when parallelizing over classes if multi_class=’ovr’”.*  
 	
-		*multi_class{‘auto’, ‘ovr’, ‘multinomial’}, default=’auto’  
+		- *multi_class{‘auto’, ‘ovr’, ‘multinomial’}, default=’auto’  
 		If the option chosen is ‘ovr’, then a binary problem is fit for each label*
 			  
 # **TO DO Memoria:**  
