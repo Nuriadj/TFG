@@ -936,6 +936,11 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Random forest | 18 seg // **14 seg** | 17 seg // **14 seg** | 16 seg // **14 seg** | 16 seg // **15 seg** |  
 	
 	(Habría que hacer una tabla con todos los tiempos para el 40% Kdd_cup99 con todos los modelos)  
+	
+	**40% Kdd_cup99** Raspberry
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Random forest | 7 min 13 seg // **3 min 12 seg** | 5 min 32 seg // **3 min 31 seg** | 4 min 46 seg // **3 min 57 seg** | 5 min // **4 min 3 seg** | 
 		
 			  
 # **TO DO Memoria:**  
