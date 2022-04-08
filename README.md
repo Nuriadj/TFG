@@ -911,7 +911,17 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Regresión logística| 4 min 24 seg // **2 min 32 seg** | 6 min 17 seg // **7 min 14 seg** |  
 	|Random forest | 3 min 59 seg // **4 min 31 seg**| 7 min 2 seg // **3 min 8 seg** |  
 	
-	Con regresion logistica en la Raspberry pasa lo mismo, a pesar de poner n_jobs= 4 solo está utilizando una cpu. Con Random forest si se ponen todas las cpus al 100%. 
+	Con regresion logistica en la Raspberry pasa lo mismo, a pesar de poner n_jobs= 4 solo está utilizando una cpu. Con Random forest si se ponen todas las cpus al 100%.  
+	
+* 8/4/22  
+	
+	- Creo que a Regresión logística no le afecta el n_jobs porque es binomial para que sea multithreading tendría que ser multiclase.  
+		[sklearn.LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)  
+		*n_jobs=int, default=None  
+		Number of CPU cores used when parallelizing over classes if multi_class=’ovr’”.*  
+	
+		*multi_class{‘auto’, ‘ovr’, ‘multinomial’}, default=’auto’  
+		If the option chosen is ‘ovr’, then a binary problem is fit for each label*
 			  
 # **TO DO Memoria:**  
 	
