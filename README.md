@@ -927,6 +927,15 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	-¿Por que cpu time incrementa con n_jobs mayores? [Respuesta](https://stackoverflow.com/questions/58998202/does-multithreading-increase-cpu-time#:~:text=For%20multiple%20cores%2C%20CPU%20time,but%20wall%20time%20may%20decrease.)   
 	*For multiple cores, CPU time is measured as the total CPU time for all cores. So if you have a program with multiple threads, and if those threads are scheduled on multiple cores, the CPU time will increase, but wall time may decrease.*   
+	
+	- Tiempos estresando en diferentes niveles con el valor n_jobs= 4.    
+		
+	**10% Kdd_cup99** Raspberry
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Random forest | 18 seg // **14 seg** | 17 seg // **14 seg** | 16 seg // **14 seg** | 16 seg // **15 seg** |  
+	
+	(Habría que hacer una tabla con todos los tiempos para el 40% Kdd_cup99 con todos los modelos)  
 		
 			  
 # **TO DO Memoria:**  
