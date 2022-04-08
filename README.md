@@ -922,6 +922,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 		- *multi_class{‘auto’, ‘ovr’, ‘multinomial’}, default=’auto’  
 		If the option chosen is ‘ovr’, then a binary problem is fit for each label*
+	
+	- [Enlace](https://unix.stackexchange.com/questions/40694/why-real-time-can-be-lower-than-user-time) con infromación a cerca de que significa cuando wall time es mayor o menos que cpu. Puede ser útil para saber lo que está pasando.  
+	
+	-¿Por que cpu time incrementa con n_jobs mayores? [Respuesta](https://stackoverflow.com/questions/58998202/does-multithreading-increase-cpu-time#:~:text=For%20multiple%20cores%2C%20CPU%20time,but%20wall%20time%20may%20decrease.)   
+	*For multiple cores, CPU time is measured as the total CPU time for all cores. So if you have a program with multiple threads, and if those threads are scheduled on multiple cores, the CPU time will increase, but wall time may decrease.*   
+		
 			  
 # **TO DO Memoria:**  
 	
