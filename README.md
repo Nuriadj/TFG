@@ -1,5 +1,7 @@
 # TFG
-Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realizando
+Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realizando  
+
+[DataSets de clasificación](https://epistasislab.github.io/pmlb/), seleccionar task con clasificacion. Pinchar 2 veces en las flechitas junto al título de la columna n_observations salen lo más grandes ordenados de mayor a menor.
 
 # Bitácora  
 
@@ -530,12 +532,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	- Nuevo [dataSet](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_kddcup99.html#sklearn.datasets.fetch_kddcup99). La Raspberry está teniendo problemas para descargarselo, se ha quedado pillada. Voy a probar primero con el 10% y una vez que sepa descargarlo, leerlo y tratarlo pruebo con el total.  
 	No estoy siendo capaz de descargar el dataset, no se descargan csv se descargan ficheros binarios. Como no soy capaz de descargarla usando scikitlearn la voy a coger de [aqui](http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html), una vez descargado el archivo hay que descomprimirlo (gzip -d file).  
-	Con el 10% todo bien, he podido convertirlo en binario (código de [Download_dataSet](https://github.com/Nuriadj/TFG/blob/main/kdd_cup99/Download_dataSet.ipynb)).  
+	Con el 10% todo bien, he podido convertirlo en binario (código de [Download_dataSet](https://github.com/Nuriadj/TFG/blob/main/kdd_cup99/Download_dataSet.ipynb)). Para convertirlo en binario mire [aquí](https://github.com/uptodiff/kdd-cup-99-Analysis-machine-learning-python/blob/master/kdd_binary_classification_naive_bayes.py)   
 	Con el 100% no he podido pasarlo a clasificación binaria, la propia Raspberry se queda un rato pillada y luego ella sola lo mata. He probado a ejecutarlo en el teminal (porque con notebook después de un rato pillada perdia la conexión con el kernel) pero después de estar pillada un rato aparece un mensaje de Killed y temina la ejecución. De momento haré las pruebas solo con el 10%.  
 	
 	- De ese 10% voy a utilizar el 70% para entrenar y 30% para validar. En la primera fila hay columnas que tienen valores extraños como 0.00.1 por lo que para quitarlo elimino la primera fila. Y quitar la primera columna que es el índice. He hecho que el csv que se guarda no contenga ni la cabecera ni el indice (primera fila y primera columna) ya está preparado para directamente utilizarlo. Esto se hace también en [Download_dataSet](https://github.com/Nuriadj/TFG/blob/main/kdd_cup99/Download_dataSet.ipynb)  
  
-	- Quito la columna 19 y 20 porque contienen todo el rato el mismo valor (en ambos casos el cero). Se pone axis= 1 para indicar que se quiere eliminar la columna 19 (no la fila) e inplace se pone a true para que la variable dataset sea "actualizada".  
+	- Quito la columna 19 y 20 porque contienen todo el rato el mismo valor (en ambos casos el cero). Se pone axis= 1 para indicar que se quiere eliminar la columna 19 (no la fila) e inplace se pone a true para que la variable dataset sea "actualizada". Transformo los datos categoricos (strings a otro valor, o eso he entendido) y se quitan las filas que se repiten.   
 	
 	- Para hacer todo el tratamiento del dataSet he utilizado de referencia el siguiente [enlace](https://github.com/timeamagyar/kdd-cup-99-python/blob/master/kdd%20preprocessing.ipynb).  
 	
@@ -945,7 +947,9 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 
 * 9/4/22  
 	
-	- **Cambiar la forma en la que se hace la clasificación por medio de máquinas de soporte vectorial ya que en la codumentación de [SVC])(https://scikit--learn-org.translate.goog/stable/modules/generated/sklearn.svm.SVC.html?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=sc) dice que puede no ser áctico más allá de decenas de miles de muestras. Utilizar en su lugar [SVC Linear](https://scikit--learn-org.translate.goog/stable/modules/generated/sklearn.svm.LinearSVC.html?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=sc#sklearn.svm.LinearSVC)**
+	- **Cambiar la forma en la que se hace la clasificación por medio de máquinas de soporte vectorial ya que en la codumentación de [SVC])(https://scikit--learn-org.translate.goog/stable/modules/generated/sklearn.svm.SVC.html?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=sc) dice que puede no ser práctico más allá de decenas de miles de muestras. Utilizar en su lugar [SVC Linear](https://scikit--learn-org.translate.goog/stable/modules/generated/sklearn.svm.LinearSVC.html?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=sc#sklearn.svm.LinearSVC)**  
+	
+	- Redacción de la memoria  
 		
 			  
 # **TO DO Memoria:**  
@@ -970,5 +974,6 @@ Comentar en la memoria que dado que es un gran número de ejemplos no es necesar
 - Añadir los resultados de las primeas pruebas, que bajo diferentes niveles de saturacion los tiempos no tenían mucho sentido, que se probo con un nuevo dataSet...	
 - Añadir todo lo que he descubierto sobre n_jobs, SMP...  
 - ¿Debería de explicar brevemente en qué consisten cada uno de los modelos de aprendizaje automático utilizados?  
-		
+- ¿Debería de poner el modelo de portatil que utilizo para comparar los tiempos?
+	
 - Volver a hacer los calculos de el tiempo que tarda en idle para cada uno de los modelos sin validación cruzada, para ponerlo que no se si los tiempos que he puesto están bien.  
