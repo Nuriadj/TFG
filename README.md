@@ -940,7 +940,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	**40% Kdd_cup99** Raspberry
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
 	|--------|------|------|-------|------|
-	|Random forest | 7 min 13 seg // **3 min 12 seg** | 5 min 32 seg // **3 min 31 seg** | 4 min 46 seg // **3 min 57 seg** | 5 min // **4 min 3 seg** | 
+	|Random forest | 7 min 13 seg // **3 min 12 seg** | 5 min 32 seg // **3 min 31 seg** | 4 min 46 seg // **3 min 57 seg** | 5 min // **4 min 3 seg** |   
+	
+
+* 9/4/22  
+	
+	- **Cambiar la forma en la que se hace la clasificación por medio de máquinas de soporte vectorial ya que en la codumentación de [SVC])(https://scikit--learn-org.translate.goog/stable/modules/generated/sklearn.svm.SVC.html?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=sc) dice que puede no ser áctico más allá de decenas de miles de muestras. Utilizar en su lugar [SVC Linear](https://scikit--learn-org.translate.goog/stable/modules/generated/sklearn.svm.LinearSVC.html?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=sc#sklearn.svm.LinearSVC)**
 		
 			  
 # **TO DO Memoria:**  
