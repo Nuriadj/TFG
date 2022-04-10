@@ -325,7 +325,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	| Modelo | Idle | Bajo | Medio | Alto |
 	|--------|------|------|-------|------|
 	|Regresión logística| 5 seg | 22 seg | 20 seg | 12 seg|
-	|SVM | 5 seg | 6 seg | 6 seg | 6 seg|
+	|SVM | 6 seg | 6 seg | 6 seg | 6 seg|
 	|Gradient tree boosting | 16 seg | 15 seg | 15 seg | 15.5 seg|
 	|Random forest | 12 seg | 12.3 seg | 12 seg | 12 seg |
 	
@@ -959,11 +959,49 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	- He cambiado SVC a LinearSVC pero (a diferencia del otro) me está pidiendo que incremente el máximo número de iteraciones. El otro en max_iter tenía un -1 con lo que hacía todas las iteraciones que necesitase (no tenía limite).    
 	
-	- Resumen de lo de las línea del fichero:
-		El 10% de kdd_cup_99 tiene un total de 494020. Por ello podemos suponer que el dataset completo tiene un total de 4940200.
+	- Resumen de lo de las línea del fichero:  
+		El 10% de kdd_cup_99 tiene un total de 494020. Por ello podemos suponer que el dataset completo tiene un total de 4940200.  
 		Al tratar (convertir a binrario y tartar los datos) el fichero que se guarda como Clean tiene un total de 145584 líneas limpias y listas para entrenar con ellas.  
+		El dataset obtenido de leer el 40% de los datos, una vez convertido a binario y limpiado tiene un total de 479473 líneas.  
+		El dataset obtenido de leer el 20% de los datos, una vez convertido a binario y limpiado tiene un total de 262379 líneas.  
 	
 	- A la hora de realizar las pruebas en la Raspberry comprobar que ambos csv tengan el mismo número de líneas. Para que estén en las mismas condiciones.  
+	
+	~~Con el 40% de los datos 479473 líneas no es capaz de entrenarlo (llega a el máximo) para regresión Logísitca. Los tiempos que ha devuelto (sin llegar a entrenar completamente) son de Wall time= 8 min 7 seg, Cpu time 8 min.~~ Luego voy a probar primero con un dataSet más pequeño, porque si no va a ser imposible sacar los tiempos estresado.  
+	
+	Con un 20% se supone que si se nota el efecto de n_jobs, puesto que para n_jobs= 1 Wall time= 1 min 40 seg, Cpu time= 1 min 39 seg. Y para n_jobs= 4, Wall time= 1 min 3 seg, Cpu time= 3 min 19 seg.  
+	
+	DataSet: El 20% de **Kdd_cup99** 
+	Dispositivo: **Raspberry** **SIN CROSS VAL** **(CPU // WALL TIME)**  
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 1 min 36 seg // **38 seg** | 1 min 48 seg // **50 seg** | 1 min 33 seg // **56 seg** | 1 min 34 seg // **57 seg** |
+	|SVM | 2 min 15 seg // **2 min 16 seg** | 2 min 17 seg // **2 min 18 seg** | 2 min 12 seg // **2 min 12 seg** | 2 min 18 seg // **2 min 18 seg** | 
+	|Gradient tree boosting | 3 min 19 seg // **3 min 20 seg** | 3 min 19 seg // **3 min 20 seg** | 3 min 15 seg // **3 min 15 seg** | 3 min 16 seg // **3 min 17 seg** | 
+	|Random forest | 3 min 4 seg // **1 min 3 seg** | 2 min 30 seg // **1 min 5 seg ** | 2 min 3 seg // **1 min 10 seg** | 2 min 10 seg // **1 min 18 seg** |  
+	
+	En regresión logistica si pongo n_jobs= 4 solo utiliza una cpu. Si no pongo nada de n_jobs utiliza todas, todas se ponen al 100%. Si pongo n_jobs= 1 utiliza todas. Si pongo n_jobs= 2 solo utiliza una. [Relacionado](https://github.com/scikit-learn/scikit-learn/issues/8883) otro [enlace](https://stackoverflow.com/questions/39620185/sklearn-logistic-regression-with-n-jobs-1-doesnt-actually-parallelize) que ya he linkeado anteriormente.  
+	Si pongo:  
+	```
+	from joblib import parallel_backend  
+	...
+	with parallel_backend('threading', n_jobs= 4):
+		l_regr= LogisticRegression(max_iter= 400)
+		l_regr.fit(x_scaled, y_train)
+		...
+		print("Total time", t_time)
+	```  
+	Mismos tiempos
+	
+	Respecto a la tabla anterior en Random forest el Wall time si va incrementando pero el cpu time no.  
+	
+	Con el 40% n_jobs= 1, Wall time 3 min 20 seg, Cpu time 3 min 22 seg. Con n_jobs= 4, Wall time= 2 min 8 seg, Cpu time= 6 min 37 seg.   
+	
+	**40% Kdd_cup99** Raspberry
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Random forest | 6 min 37 seg // **2 min 8 seg** | 5 min 32 seg // **2 min 16 seg** | 4 min 20 seg // **2 min 25 seg** | 4 min 34 seg // **2 min 38 seg** |   
+	
 		
 			  
 # **TO DO Memoria:**  
@@ -989,6 +1027,7 @@ Comentar en la memoria que dado que es un gran número de ejemplos no es necesar
 - Añadir todo lo que he descubierto sobre n_jobs, SMP...  
 - ¿Debería de explicar brevemente en qué consisten cada uno de los modelos de aprendizaje automático utilizados?  
 - ¿Debería de poner el modelo de portatil que utilizo para comparar los tiempos?
-- Cambiar en la memoria la explicación de ocmo y donde hago la limpieza de kdd_cup99.  
+- Cambiar en la memoria la explicación de como y donde hago la limpieza de kdd_cup99.  
+- Lo de que n_jobs= -1 solo utilice los cores avaible solo lo he visto en la pag que me paso la profe, pero en la documentación no veo que digan nada de eso.
 	
 - Volver a hacer los calculos de el tiempo que tarda en idle para cada uno de los modelos sin validación cruzada, para ponerlo que no se si los tiempos que he puesto están bien.  
