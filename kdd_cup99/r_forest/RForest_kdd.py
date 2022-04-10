@@ -19,43 +19,12 @@ from collections import Counter
 # In[ ]:
 
 
-n= 494020
-s= 49402 # Leer solo el 10%
+n= 145584
+s= 145584 # Leer solo el 10%
 skip= sorted(random.sample(range(n),n-s))
-dataset = pd.read_csv('/home/nuria/Documents/TFG/kdd_cup99/kddcup_10_perBinary.csv', header= None, skiprows=skip)
+dataset = pd.read_csv('/home/nuriadj/Documents/TFG/kdd_cup99/kddcup_10_perClean.csv', header= None, skiprows=skip)
 print("Leido un: ",(len(dataset)*100)/n,"% del csv")
 headers = list(dataset.columns.values)
-
-
-# In[ ]:
-
-
-#Eliminar datos Redundantes
-dataset.drop(dataset.columns[19], axis= 1, inplace= True)
-dataset.drop(dataset.columns[20], axis= 1, inplace= True)
-
-
-# In[ ]:
-
-
-#Las tres primeras columnas contienen strings
-
-dataset[1] = dataset[1].astype('category')
-dataset[2] = dataset[2].astype('category')
-dataset[3] = dataset[3].astype('category')
-cat_columns = dataset.select_dtypes(['category']).columns
-dataset[cat_columns] = dataset[cat_columns].apply(lambda x: x.cat.codes)
-
-
-# In[ ]:
-
-
-#Eliminar duplicados
-dataset.drop_duplicates(subset=None, keep='first', inplace=True)
-
-
-# In[ ]:
-
 
 x= dataset.iloc[:, :-1].values
 y= dataset.iloc[:, 39].values
@@ -77,7 +46,7 @@ x_test_scaled = scaler.transform(x_test)
 # In[ ]:
 
 
-r_forest= RandomForestClassifier(n_jobs= 4)
+r_forest= RandomForestClassifier(n_jobs= 8)
 r_forest.fit(x_scaled, y_train)
 occup_pred = r_forest.predict(x_test_scaled)
 

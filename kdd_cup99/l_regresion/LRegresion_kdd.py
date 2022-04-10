@@ -20,48 +20,14 @@ from collections import Counter
 
 start= time()
 
-n= 494020
-s= 49402 # Leer solo el 10%
+
+n= 145584 # número de lineas limpias del 10% del fichero total
+s= 145584 # Leer solo el 100%
 skip= sorted(random.sample(range(n),n-s))
-dataset = pd.read_csv('/home/nuria/Documents/TFG/kdd_cup99/kddcup_10_perBinary.csv', header= None, skiprows=skip)
+dataset = pd.read_csv('/home/nuriadj/Documents/TFG/kdd_cup99/kddcup_10_perClean.csv', header= None, skiprows=skip)
 print("Leido un: ",(len(dataset)*100)/n,"% del csv")
 headers = list(dataset.columns.values)
 #print(headers)")
-
-
-# In[256]:
-
-
-#for i in range(41):
-#    print("\\ni: ",i,"\\n",dataset[i].value_counts())
-
-#Eliminar datos Redundantes
-dataset.drop(dataset.columns[19], axis= 1, inplace= True)
-dataset.drop(dataset.columns[20], axis= 1, inplace= True)
-
-
-# In[257]:
-
-
-#Las tres primeras columnas contienen strings
-
-dataset[1] = dataset[1].astype('category')
-dataset[2] = dataset[2].astype('category')
-dataset[3] = dataset[3].astype('category')
-cat_columns = dataset.select_dtypes(['category']).columns
-dataset[cat_columns] = dataset[cat_columns].apply(lambda x: x.cat.codes)
-#print("\\nafter:\\n",pd.DataFrame(dataset, columns=[0]).dtypes)')
-
-
-# In[258]:
-
-
-#Eliminar duplicados
-dataset.drop_duplicates(subset=None, keep='first', inplace=True)
-#print(dataset)")
-
-
-# In[260]:
 
 
 x= dataset.iloc[:, :-1].values
@@ -81,7 +47,7 @@ x_test_scaled = scaler.transform(x_test)
 
 # In[262]:
 
-l_regr= LogisticRegression(max_iter= 400, n_jobs= 4)
+l_regr= LogisticRegression(max_iter= 400, n_jobs= 1)
 # Entrenamiento
 l_regr.fit(x_scaled, y_train)
 # Prediccion
