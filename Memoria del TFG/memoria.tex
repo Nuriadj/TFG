@@ -647,6 +647,8 @@ El sistema operativo que ofrece es Raspbian Pi OS, una versión adaptada de Debi
 
 Desde su primer lanzamiento se han ido desarrollando y comercializado nuevos modelos. En este proyecto se utilizará la última versión de estos dispositivos denominado como Raspberry Pi 4 Modelo B con 4GB de RAM.
 
+Dicho modelo posee un total de cuatro cores físicos y otros cuatro lógicos. Otro detalle destacable de la Raspberry para el desarrollo de este trabajo es que posee una arquitectura SMP (Symmetric Multi-Processing), un tipo de arquitectura de computador en el que las unidades de procesamiento comparten una única memoria central por lo que permite que cualquier procesador trabaje en cualquier tarea sin importar su localización en memoria. 
+
 \begin{comment}
 
 \begin{table}
@@ -663,6 +665,16 @@ Desde su primer lanzamiento se han ido desarrollando y comercializado nuevos mod
  \end{center}
 \end{table}
 \end{comment}
+
+\section{Sistema Operativo: Ubuntu 21.10} 
+\label{sec:sistema_operativo}
+
+El sistema operativo Ubuntu es una distribución de código abierto basada en Debian, está compuesto de software normalmente distribuido bajo una licencia libre o de código abierto. La empresa responsable de su creación y mantenimiento es Canonical, una empresa de programación de ordenadores con base en Reino Unido fundada por el empresario Mark Shuttleworth.
+
+La primera versión de Ubuntu fue la 4.10 lanzada el 20 de Octubre de 2004. A partir de la versión 13.4 las versiones estables sin soporte a largo plazo se liberan cada seis meses, y Canonical proporciona soporte técnico y actualizaciones de seguridad durante 9 meses. Las versiones LTS (Long Term Support) ofrecen un soporte técnico durante 5 años a partir de la fecha de lanzamiento.
+
+La última versión fue lanzada el 14 de Octubre de 2021, que es la versión Ubuntu 21.10. Dicha versión utiliza el kernel 5.13, con cambios y mejoras para componentes que daban problemas. También tiene un nuevo instalador, escrito desde cero en Flutter, que facilita la instalación del sistema operativo. Una de las novedades más importantes es que actualiza su escritorio a GNOME 40.
+
 
 \section{Gestor de paquetes: Miniforge}
 \label{sec:gestor_de_paquetes}
@@ -745,14 +757,75 @@ Eso sí, normalmente aconsejo no poner código, sino diagramas.
 
 Para poder desarrollar correctamente este trabajo es necesario preparar adecuadamente el entorno, una vez acondicionado todo se dará pie al motivo principal de esta investigación.
 
-El primer paso para esto fue montar adecuadamente la Raspberry Pi conforme las instrucciones de Okdo\footnote{\url{https://www.okdo.com/getstarted/}}, empresa de la que procede el kit con el hardware utilizado en el proyecto.\\
+El primer paso para esto fue montar adecuadamente la Raspberry Pi conforme las instrucciones de Okdo\footnote{\url{https://www.okdo.com/getstarted/}}, empresa de la que procede el kit con el hardware utilizado en el proyecto.
 
 Una vez está listo el hardware hay que instalar el software necesario para la generación de modelos de machine learning.
-Comenzando por cambiar el sistema operativo, en vez de utilizar el que viene por defecto, Raspbian Pi OS, se instaló Ubuntu 21.10.
+Comenzando por cambiar el sistema operativo, en vez de utilizar el que viene por defecto, Raspbian Pi OS, se instaló Ubuntu 21.10\footnote{\url{https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4}}.
 
-A continuación se instaló Miniforge, por el cual se crea un entorno virtual donde se instalaron todos los paquetes necesarios para el proyecto como son scikit-learn, pandas, jupyter-notebook, stressberry...Estos paquetes permitirán desarrollar modelos de aprendizaje automático y poder ponerlos a prueba bajo diferentes estados de la Raspberry.
+A continuación se instaló Miniforge, por el cual se crea un entorno virtual donde se instalaron todos los paquetes necesarios para el proyecto como son scikit-learn, pandas, jupyter-notebook, stressberry... Estos paquetes permitirán desarrollar modelos de aprendizaje automático y poder ponerlos a prueba bajo diferentes estados de la Raspberry.
+
+\section{Modelos de aprendizaje automático}
+
+Con el entorno preparado se generaron mediante scripts de Python cuatro modelos diferentes de aprendizaje supervisado para realizar una clasificación binaria, utilizando la libreía scikit-learn para generar un modelo de regresión logística, otro de máquinas de soporte vectorial, gradient boosting y un último de Random forest.
+
+\subsection{Regresión logística}
+
+Modelo de aprendizaje supervisado que realiza tareas de clasificación binaria. Esta técnica busca una función acotada (normalmente entre 0 y 1) que divida los datos de ambas clases de forma bien diferenciada.
+
+En scikit-learn por medio la función LogisticRegression\cite{LogisticRegressionDoc}, que pertenece a la librería \textit{sklearn.linear\_model}, se puede generar un modelo de este tipo de aprendizaje automático para entrenarlo y posteriormente predecir con él. 
+
+Entre los parámetros que se pueden asignar a esta función hay dos que son destacables. El primero de ellos es \textit{max\_iter}, máximo número de iteraciones que se permiten para encontrar la solución que converja, por defecto tiene un valor igual a 100. Por otra párte está el parámetro \textit{n\_jobs}, que permite declarar el número de cpus que se desean utilizar para paralelizar el proceso. Sin embargo, la asignación de este valor solo tiene efecto si se realiza una clasificación multiclase, de lo contrario utilizará un único core independientemente del valor asignado.
+
+\subsection{Máquinas de soporte vectorial}
+
+Modelo de aprendizaje supervisado utilizado para resolver tareas de clasificación binaria, aun que existen máquinas de vector soporte para resolver problemas de regresión o de clasificación multiclase. Se basa en la generación de un hiperplano que separe de forma óptima los puntos de una clase respecto de otra. Es decir, que exista la máxima distancia entre el hiperplano y los puntos más cercanos a este.
+
+Por medio de la función \cite{SVMDocumentation}<--(CAMBIAR), se puede generar un modelo de aprendizaje utilizando esta técnica. En esta ocasión este método no soporta multiprcesamiento, por lo tanto la máquina que lo ejecute solo podrá usar un core tanto en el entrenamiento como en la predicción.
+
+\subsection{Gradient boosting}
+
+Técnica de aprendizaje supervisado que se utiliza tanto para problemas de regresión como de clasificación. S e basa en la combinación de modelos predictivos débilos, normalmente árboles de decisión, para crear un modelo predictivo fuerte. Se generan árboles de decisión de forma secuncial, haciendo que cada árbol corrija los errores del árbol anterior. De forma general suelen ser árboles de un máximo de tres niveles de profundidad.
+
+En esta coasión el método que crea este modelo es GradientBoostingClassifier\cite{GradientTreeBDoc}, que se encuentra dentro de la librería \textit{sklearn.esemble}. Al igual que para la función de máquinas de soporte vectorial, este modelo no soporta multiprocesamiento y por lo tanto solo se utilizará una cpu para entrenar y predecir con este modelo.
+
+\subsection{Random forest}
+
+Random forest se puede usar tanto en problemas de clasificación como de regresión. Utiliza un conjunto de árboles de decisión con bagging, es decir, los árboles de decisión se generan de forma paralela. Al combinar sus resultados unos errores se compensan con otros, obteniendo una predicción que generaliza mejor.
+
+En scikit-learn utilizando la función RandomForestClassifier\cite{RandomForestDoc}, que también está dentro de la librería \textit{sklearn.esemble}, se puede generar un modelo de aprendizaje utilizando esta técnica.
+
+Para este método existe un parámetro destacable denominado \textit{n\_jobs}, que permite declarar el número de cpus que se desean utilizar para paralelizar el proceso. Para que se note el efecto de este parámetro es necesario que el conjunto de datos con el que se desea entrenar sea grande. De lo contrario el coste de distribuir los recursos entre el número de cores indicados es más elevado que ejecutarlo todo en una única cpu y por lo tanto los tiempos de ejecución serían más elevados a mayor número definido en este parámetro.
+Por defecto si no se declara este parámetro utilizará un único core. Además se pueden asignar valores negativos, en caso de igualar \textit{n\_jobs} a -1 se utilizarán todos los cores disponibles en ese momento. De la misma forma se utiliza este parámetro en el caso de Regresión logística.
+
+\section{DataSet: Room Occupacy}
+
+Para realizar la clasificación en un inicio se utilizó el data set de Room Occupancy detection data\cite{DataSetOccupancy}, obtenido de Kaggle, que contiene unas 20560 muestras. Cada ejemplo tiene las medidas de temperatura, humedad, CO2 y luz de una habitación de oficina de unos quince metros cuadrados. La última columna de cada fila indica la clase a la que pertenece la muestra. En este caso, al ser una clasificación binaria esta última columna solo puede tener dos valores, cero o uno. Si para un ejemplo contiene un uno significa que para esos valores sensados la habitación está ocupada. Si por el contrario hay un valor de cero la sala está vacia. 
+
+Para generar los modelos se dividió el set de datos en dos partes, una primera parte para entrenar (que contenía el 70\% de ejemplos del set de datos original) y otra para comprobar la eficiencia del modelo a la hora de clasificar si la estancia está ocupada o no. En esta segunda parte se utilizó el 30\% restante de muestras del set de datos original, que no se utilizaban en el entrenamiento y por lo tanto el modelo nunca los había visto, son totalmente nuevos para el.\\
+Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran número de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que hay una alta probabilidad de que el set de entrenamiento siempre tenga como mínimo la cantidad de muestras necesarias de ambas clases para entrenar correctamente. Aun así, la división se realizó de forma estratificada, para que hubiese la misma proporcion de datos de una clase u otra, que en el set de datos original. Y de esta forma nos aseguramos que a la hora de tanto entrenar, como de comprobar el modelo generado, se tengan ejemplos de ambas clases en la misma proporción que aparecen en el set de datos original.
+
+Con esta división y preparación de los datos, los tres modelos se pudieron generar sin problemas utilizando las librerías de scikit-learn y pandas. Todos conseguían una accuracy superior al 90\%, el tiempo de ejecución era de unos cinco segundos salvo para gradient tree boosting, que tardaba unos siete segundos.
+
+\subsection{Validación cruzada}
+
+Se añadió un poco más de dificultad a la Raspberry haciendo que los algoritmos utilizasen validación cruzada, es decir, que dentro del set de datos de entrenamiento (compuesto, una vez más, por el 70\% de ejemplos del set de datos original) se hace una subdivisión en otros cinco sets para entrenar y probar el modelo con cada uno de ellos. 
+Una vez realizada la validación cruzada se vuelve a probar la eficiencia del modelo haciendo que clasifique el 30\% de datos de la división original, son datos que nunca ha visto ni entrenado con ellos. El objetivo de realizar una validacion cruzada es garantizar que los resultados que obtengamos sean independientes de la partición entre datos de entrenamiento y datos de validación. Los resultados de esta prueba siguieron siendo muy buenos (el acierto seguía estando por encima del 90\%). Y mientras que en el modelo de regresión logística el tiempo de ejecución se mantuvo más o menos igual, en el caso de las máquinas de soporte vectorial y gradient tree boosting los tiempos de ejecución aumentaron. Con SVM la ejecución llega a los siete segundos de media, y para gradient tree boosting a unos dieciseis segundos.
 
 
+\section{DataSet: KddCup99}
+
+Al realizar algunas pruebas para comprobar el comportamiento de la Raspberry ante diferentes situaciones de estrés (tal y como se explicará más adelante) los resultados obtenidos no encajaban del todo con lo esperado. Luego para tratar de comprender mejor lo que estaba pasando se decidió usar un dataset más grande que el anterior.
+
+El dataset elegido fue KDD Cup 1999 Datadata\cite{DataSetOccupancy}, que lo obtuve una vez más desde Kaggle. Se utilizó tanto el fichero \textit{kddcup.data.gz} como \textit{kddcup.data\_10\_percent.gz}. Una vez descargados se descomprimieron y convirtieron a clase binaria puesto que este dataSet contiene varias clases. 
+Para ello se utilizó el fichero \textit{Download\_dataSet.py}. En dicho programa se leía o bien el dataSet que contenía el diez porciento del dataSet total o se utilizaba el dataSet completo para poder leer algo más que el diez porciento de los datos. En el caso de la Raspberry el máximo de datos que era capaz de leer sin que el proceso muriera era el cuarenta porciento del fichero, en el portátil era un cincuenta porciento.
+
+Para leer otro porcentaje que no fuese el diez porciento se utilizaba una regla de tres para saber la cantidad de datos que se querían leer, pues sabiendo que el diez porciento contenía 494020 líneas, se podía obtener aproximadamente a cuantas líneas equivaldría otro porcentaje.
+
+Para leer estos dataSets se utilizó la librería pandas. Una vez leídos los datos se convertía de multiclase a clase binaria reemplazando todas las clases (excepto la clase \textit{normal.}) por la clase \textit{attack}. Una vez realizada la transformación se guardan los datos modificados en un csv mediante la función \textit{to\_csv}, proporcionada por pandas, sin guardar la cabecera ni el indice de forma que al utilizar los datos guardados para el entrenamiento de los modelos haya que preocuparse por estos valores.
+
+Una vez guardado el dataSet de clasificación binaria desde cada uno de los modelos que se quieran entrenar deberá ser leído de nuevo el dataSet. Además a estos datos habrá que realizarles un pequeño tratamiento para que el modelo pueda entrenar adecaudamente con ellos. Lo primero que se hace es eliminar la columna 19 y 20 ya que están contienen todo el rato el mismo valor que es cero. A continuación se transforman los datos categóricos y por último se eliminan las filas duplicadas. Con este tratamiento los datos están listos para poder utilizarse en el entrenamiento y predicción del modelo.
+
+Al igual que en el dataSet de Room Occupancy se utiliza el 70\% de los datos para entrenar y el 30\% para validar.
 
 \section{Arquitectura general} 
 \label{sec:arquitectura}
@@ -803,24 +876,8 @@ Describe los experimentos y casos de test que tuviste que implementar para valid
 Incluye también los resultados de validación que permiten afirmar que tus resultados son correctos.
 \end{comment}
 
-La primera prueba realizada para observar el comportamiento de la Raspberry al generar un modelo de aprendizaje automático, fue intentar generar mediante scripts de Python tres modelos diferentes de aprendizaje supervisado para realizar una clasificación binaria, basados en regresión logística, máquinas de soporte vectorial y gradient tree boosting.
-
-Para ello se utilizó el data set de Room Occupancy detection data, obtenido de Kaggle\cite{DataSetOccuapncy}, que contiene unas 20560 muestras. Cada ejemplo tiene las medidas de temperatura, humedad, CO2 y luz de una habitación de oficina de unos quince metros cuadrados. La última columna de cada fila indica la clase a la que pertenece la muestra. En este caso, al ser una clasificación binaria esta última columna solo puede tener dos valores, cero o uno. Si para un ejemplo contiene un uno significa que para esos valores sensados la habitación está ocupada. Si por el contrario hay un valor de cero la sala está vacia. 
-
-Para generar los modelos se dividió el set de datos en dos partes, una primera parte para entrenar (que contenía el 70\% de ejemplos del set de datos original) y otra para comprobar la eficiencia del modelo a la hora de clasificar si la estancia está ocupada o no. En esta segunda parte se utilizó el 30\% restante de muestras del set de datos original, que no se utilizaban en el entrenamiento y por lo tanto el modelo nunca los había visto, son totalmente nuevos para el.\\
-Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran número de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que hay una alta probabilidad de que el set de entrenamiento siempre tenga como mínimo la cantidad de muestras necesarias de ambas clases para entrenar correctamente. Aun así, la división se realizó de forma estratificada, para que hubiese la misma proporcion de datos de una clase u otra, que en el set de datos original. Y de esta forma nos aseguramos que a la hora de tanto entrenar, como de comprobar el modelo generado, se tengan ejemplos de ambas clases en la misma proporción que aparecen en el set de datos original.
-
-Con esta división y preparación de los datos, los tres modelos se pudieron generar sin problemas utilizando las librerías de scikit-learn y pandas. Todos conseguían una accuracy superior al 90\%, el tiempo de ejecución era de unos cinco segundos salvo para gradient tree boosting, que tardaba unos siete segundos.
-
-Dado que no hubo ningún tipo de problema con la ejecución de los scripts, se procedió a realizar los mismos modelos pero utilizando esta vez Jupyter-notebook. Con esto la Raspberry pudo seguir ejecutando los algoritmos sin problemas. 
-
-Se añadió un poco más de dificultad a la Raspberry haciendo que los algoritmos utilizasen validación cruzada, es decir, que dentro del set de datos de entrenamiento (compuesto, una vez más, por el 70\% de ejemplos del set de datos original) se hace una subdivisión en otros cinco sets para entrenar y probar el modelo con cada uno de ellos. 
-Una vez realizada la validación cruzada se vuelve a probar la eficiencia del modelo haciendo que clasifique el 30\% de datos de la división original, son datos que nunca ha visto ni entrenado con ellos. El objetivo de realizar una validacion cruzada es garantizar que los resultados que obtengamos sean independientes de la partición entre datos de entrenamiento y datos de validación. Los resultados de esta prueba siguieron siendo muy buenos (el acierto seguía estando por encima del 90\%). Y mientras que en el modelo de regresión logística el tiempo de ejecución se mantuvo más o menos igual, en el caso de las máquinas de soporte vectorial y gradient tree boosting los tiempos de ejecución aumentaron. Con SVM la ejecución llega a los siete segundos de media, y para gradient tree boosting a unos dieciseis segundos.
-
-Con estos modelos generados se procedió a comprobar la eficiencia de la Raspberry a la hora de generarlos. Para ello se definieron tres niveles de saturación: el nivel bajo consistía en estresar una única cpu, el nivel medio, dos cpus y por último en el nivel alto se estrasaban todas las cpus de la Raspberry, es decir, cuatro cpus. 
+Con estos modelos de aprendizaje se procedió a comprobar la eficiencia de la Raspberry a la hora de generarlos. Para ello se definieron tres niveles de saturación: el nivel bajo consistía en estresar una única cpu, el nivel medio, dos cpus y por último en el nivel alto se estrasaban todas las cpus de la Raspberry, es decir, cuatro cpus. 
 Para estresar las cpus se utilizó el comando stress que permite estresar, durante el tiempo que se le indique, el número de cpus que se comanden.
-
-A los tres modelos anteriormente generados se sumó un cuarto basado en Random forest tree, realizando tanto una versión que utilizaba validación cruzada como sin ella. El motivo de añadir este modelo fue para ayudar a comprobar si el comportamiento de la Raspberry bajo diferentes niveles de saturación era más o menos lo esperado para cada uno de los modelos, puesto que sabemos que a mayor cantidad de cpus estresadas Random tree forest debería de aumentar su tiempo de ejecución.
 
 Una vez obtenidos los tiempos de ejecución de cada uno de los algoritmos, para diferentes niveles de estrés, se realizó la misma prueba utilizando un portátil. De esta forma se puede comparar la capacidad de la Raspberry frente a un dispositivo con mayor capacidad.
  
