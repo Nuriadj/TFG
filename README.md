@@ -997,11 +997,19 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	Con el 40% n_jobs= 1, Wall time 3 min 20 seg, Cpu time 3 min 22 seg. Con n_jobs= 4, Wall time= 2 min 8 seg, Cpu time= 6 min 37 seg.   
 	
+	n_jobs= 4  
 	**40% Kdd_cup99** Raspberry
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
 	|--------|------|------|-------|------|
 	|Random forest | 6 min 37 seg // **2 min 8 seg** | 5 min 32 seg // **2 min 16 seg** | 4 min 20 seg // **2 min 25 seg** | 4 min 34 seg // **2 min 38 seg** |   
 	
+	n_jobs= 2  
+	**40% Kdd_cup99** Raspberry
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Random forest | 4 min 20 seg // **2 min 24 seg** | 4 min 14 seg // **2 min 22 seg** | 4 min 14 seg // **2 min 27 seg** | 4 min 11 seg // **2 min 37 seg** |     
+	
+	Cuando ejecuto n_jobs= 2 aparecen tres procesos en htop. Cuando ejecuto n_jobs= 4 aparecen 5 procesos.
 		
 			  
 # **TO DO Memoria:**  
