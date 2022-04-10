@@ -947,9 +947,23 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 
 * 9/4/22  
 	
-	- **Cambiar la forma en la que se hace la clasificación por medio de máquinas de soporte vectorial ya que en la codumentación de [SVC])(https://scikit--learn-org.translate.goog/stable/modules/generated/sklearn.svm.SVC.html?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=sc) dice que puede no ser práctico más allá de decenas de miles de muestras. Utilizar en su lugar [SVC Linear](https://scikit--learn-org.translate.goog/stable/modules/generated/sklearn.svm.LinearSVC.html?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=sc#sklearn.svm.LinearSVC)**  
+	- ~~**Cambiar la forma en la que se hace la clasificación por medio de máquinas de soporte vectorial ya que en la codumentación de [SVC])(https://scikit--learn-org.translate.goog/stable/modules/generated/sklearn.svm.SVC.html?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=sc) dice que puede no ser práctico más allá de decenas de miles de muestras. Utilizar en su lugar [SVC Linear](https://scikit--learn-org.translate.goog/stable/modules/generated/sklearn.svm.LinearSVC.html?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=sc#sklearn.svm.LinearSVC)**~~ Lo dejo como estaba porque a pesar de lo que pone tarda bastante más utilizando LinearSVC que SVC a secas.  
 	
 	- Redacción de la memoria  
+	
+* 10/4/22  
+	
+	- He conseguido que la limpieza del dataSet se haga en Download_dataSet.py. Pero me he dado cuenta de que se eliminan 365501 líneas porque están repetidas. En cambio limpiandolo dentro de el código del modelo se eliminan 367814 líneas del csv kddcup_10_perBinary (más o menos las mismas, teniendo en cuenta de que Clean contiene un 10% del total no del kffcup_10_per.data).  
+	
+	- Hay que volver a obtener los tiempos para este dataSet ya tratado.
+	
+	- He cambiado SVC a LinearSVC pero (a diferencia del otro) me está pidiendo que incremente el máximo número de iteraciones. El otro en max_iter tenía un -1 con lo que hacía todas las iteraciones que necesitase (no tenía limite).    
+	
+	- Resumen de lo de las línea del fichero:
+		El 10% de kdd_cup_99 tiene un total de 494020. Por ello podemos suponer que el dataset completo tiene un total de 4940200.
+		Al tratar (convertir a binrario y tartar los datos) el fichero que se guarda como Clean tiene un total de 145584 líneas limpias y listas para entrenar con ellas.  
+	
+	- A la hora de realizar las pruebas en la Raspberry comprobar que ambos csv tengan el mismo número de líneas. Para que estén en las mismas condiciones.  
 		
 			  
 # **TO DO Memoria:**  
@@ -970,10 +984,11 @@ Comentar en la memoria que dado que es un gran número de ejemplos no es necesar
 (Sobre la estratificación: Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran cantidad de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que el set de entrenamiento siempre tendrá la cantidad de muestras necesarias de ambas clases para entrenar correctamente. )  
 			  
 - [x] Añadir al estado del arte el sistema operativo que se utiliza: Ubuntu 21.10  
-- Añadir como se instaló o por lo menos hacer referencia al enlace que se utilizó para intstalarlo (día 28/1/22)  
-- Añadir los resultados de las primeas pruebas, que bajo diferentes niveles de saturacion los tiempos no tenían mucho sentido, que se probo con un nuevo dataSet...	
+- [x] Añadir como se instaló o por lo menos hacer referencia al enlace que se utilizó para intstalarlo (día 28/1/22)  
+- Añadir los resultados de las primeas pruebas, que bajo diferentes niveles de saturacion los tiempos no tenían mucho sentido, que se probó con un nuevo dataSet...	
 - Añadir todo lo que he descubierto sobre n_jobs, SMP...  
 - ¿Debería de explicar brevemente en qué consisten cada uno de los modelos de aprendizaje automático utilizados?  
 - ¿Debería de poner el modelo de portatil que utilizo para comparar los tiempos?
+- Cambiar en la memoria la explicación de ocmo y donde hago la limpieza de kdd_cup99.  
 	
 - Volver a hacer los calculos de el tiempo que tarda en idle para cada uno de los modelos sin validación cruzada, para ponerlo que no se si los tiempos que he puesto están bien.  
