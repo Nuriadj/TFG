@@ -978,7 +978,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Regresión logística| 1 min 36 seg // **38 seg** | 1 min 48 seg // **50 seg** | 1 min 33 seg // **56 seg** | 1 min 34 seg // **57 seg** |
 	|SVM | 2 min 15 seg // **2 min 16 seg** | 2 min 17 seg // **2 min 18 seg** | 2 min 12 seg // **2 min 12 seg** | 2 min 18 seg // **2 min 18 seg** | 
 	|Gradient tree boosting | 3 min 19 seg // **3 min 20 seg** | 3 min 19 seg // **3 min 20 seg** | 3 min 15 seg // **3 min 15 seg** | 3 min 16 seg // **3 min 17 seg** | 
-	|Random forest | 3 min 4 seg // **1 min 3 seg** | 2 min 30 seg // **1 min 5 seg ** | 2 min 3 seg // **1 min 10 seg** | 2 min 10 seg // **1 min 18 seg** |  
+	|Random forest | 3 min 4 seg // **1 min 3 seg** | 2 min 30 seg // **1 min 5 seg** | 2 min 3 seg // **1 min 10 seg** | 2 min 10 seg // **1 min 18 seg** |  
 	
 	En regresión logistica si pongo n_jobs= 4 solo utiliza una cpu. Si no pongo nada de n_jobs utiliza todas, todas se ponen al 100%. Si pongo n_jobs= 1 utiliza todas. Si pongo n_jobs= 2 solo utiliza una. [Relacionado](https://github.com/scikit-learn/scikit-learn/issues/8883) otro [enlace](https://stackoverflow.com/questions/39620185/sklearn-logistic-regression-with-n-jobs-1-doesnt-actually-parallelize) que ya he linkeado anteriormente.  
 	Si pongo:  
