@@ -1009,7 +1009,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|--------|------|------|-------|------|
 	|Random forest | 4 min 20 seg // **2 min 24 seg** | 4 min 14 seg // **2 min 22 seg** | 4 min 14 seg // **2 min 27 seg** | 4 min 11 seg // **2 min 37 seg** |     
 	
-	Cuando ejecuto n_jobs= 2 aparecen tres procesos en htop. Cuando ejecuto n_jobs= 4 aparecen 5 procesos.
+	Cuando ejecuto n_jobs= 2 aparecen tres procesos en htop. Cuando ejecuto n_jobs= 4 aparecen 5 procesos.  
+	
+* 20/4/22  
+	
+	* [Multiprocessong vs Multithreading](https://www.indeed.com/career-advice/career-development/multithreading-vs-multiprocessing#:~:text=Multiprocessing%20uses%20two%20or%20more,threads%20from%20a%20single%20process.)  
+	* [Regresión logística n_jobs solo afecta si es milticlase](https://stackoverflow.com/questions/69762314/multiprocessing-in-logistic-regression-in-python)
 		
 			  
 # **TO DO Memoria:**  
