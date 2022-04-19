@@ -1014,7 +1014,21 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 * 20/4/22  
 	
 	* [Multiprocessong vs Multithreading](https://www.indeed.com/career-advice/career-development/multithreading-vs-multiprocessing#:~:text=Multiprocessing%20uses%20two%20or%20more,threads%20from%20a%20single%20process.)  
-	* [Regresión logística n_jobs solo afecta si es milticlase](https://stackoverflow.com/questions/69762314/multiprocessing-in-logistic-regression-in-python)
+	* [Regresión logística n_jobs solo afecta si es milticlase](https://stackoverflow.com/questions/69762314/multiprocessing-in-logistic-regression-in-python)  
+	
+	n_jobs= 8  
+	**40% Kdd_cup99** Portátil
+	| Modelo | Idle | 2 cpu | 4 cpu | 8 cpu |
+	|--------|------|------|-------|------|
+	|Random forest | 2 min 40 seg // **28 seg** | 2 min 12 seg // **29 seg** | 2 min 1 seg // **34 seg** | 2 min 23 seg // **57 seg** |   
+	
+	n_jobs= 4  
+	**40% Kdd_cup99** Portátil
+	| Modelo | Idle | 2 cpu | 4 cpu | 8 cpu |
+	|--------|------|------|-------|------|
+	|Random forest | 1 min 25 seg // **26 seg** | 1 min 35 seg // **29 seg** | 1 min 42 seg // **36 seg** | 2 min 15 seg // **1 min 4 seg** |   
+	
+	n_jobs= 4 debería de tardar más porque dispone de menos cores para poder ejecutar el programa. Cpu time tiene que ser menor porque en n_jobs se está contando la suma de los tiempos de las 8 cpus y en n_jobs solo se suman 4 tiempos.    
 		
 			  
 # **TO DO Memoria:**  
