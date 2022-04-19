@@ -1029,6 +1029,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Random forest | 1 min 25 seg // **26 seg** | 1 min 35 seg // **29 seg** | 1 min 42 seg // **36 seg** | 2 min 15 seg // **1 min 4 seg** |   
 	
 	n_jobs= 4 debería de tardar más porque dispone de menos cores para poder ejecutar el programa. Cpu time tiene que ser menor porque en n_jobs se está contando la suma de los tiempos de las 8 cpus y en n_jobs solo se suman 4 tiempos.    
+	
+	Dando mayor prioridad al stress en la Raspberry ejecutando sudo nice -n -5 stress -c 4 -t 200s sigo obteniendo los mismos resultados.  
 		
 			  
 # **TO DO Memoria:**  
