@@ -1031,7 +1031,29 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	n_jobs= 4 debería de tardar más porque dispone de menos cores para poder ejecutar el programa. Cpu time tiene que ser menor porque en n_jobs se está contando la suma de los tiempos de las 8 cpus y en n_jobs solo se suman 4 tiempos.    
 	
 	Dando mayor prioridad al stress en la Raspberry ejecutando sudo nice -n -5 stress -c 4 -t 200s sigo obteniendo los mismos resultados.  
+	
+* 20/4/22  
+	
+	* Ejecutando Random forest con n_jobs= 8 en idle el máximo valor que obtengo al ejecutar el código en la columna CPU% de htop es de 400 ~(entre todos los procesos que aparecen, 5 en total, el primero tiene un valor de 400 el resto tiene valor de 100 luego en total esta usando 800). Entre físicas y lógicas la Raspberry tiene un total de 8 cpus.~
+	Sin embargo cuando hago lo mismo estresando las cuatro cpus lo el valor máximo es de 200 ~(entre todos los procesos de Random forest que aparecen, que son 5, suman un total de 400)~. ~Sumandole los porcesos de stress da unos 600~ (ya que los procesos de stress bajan a estar sobre el 50 cada uno) [Info relacionada](https://superuser.com/questions/575202/understanding-top-command-in-unix/575330#575330):  
+	
+	*%CPU -- CPU Usage : The percentage of your CPU that is being used by the process. By default, top displays this as a percentage of a single CPU. On multi-core systems, you can have percentages that are greater than 100%. For example, if 3 cores are at 60% use, top will show a CPU use of 180%.*  
+	Otro [enlace](https://superuser.com/questions/457624/why-is-the-top-command-showing-a-cpu-usage-of-799) que puede ser útil:  
+
+	*The scale used by top is 100% when a core is fully used. Or when one core is 20% and a second one is 80%. This lead to strange results on multicore computers because it easely can exceed 100%. If you have 8 cores, then top can display from 0% (idle system) to 800% (full power).*  
+
+	*Your program is just using your 4 cores with hyperthreading (so 8 virtual cores) at maximum capacity. So top gives you nearly 8 x 100% = 800%.*
+	
+	* Con n_jobs= 2 en idle el primer proceso esta a 200 y los otros dos se quedan en 100, luego usa un total de 300 (3 cpus al 100%). Cuando se estresan las 4 cpus pasa lo mismo.  
+	
+	* De todas formas siempre los procesos de RForest ocupan más cpu que stress. Stress llega a bajar cada uno de los cuatro procesos (en casod e estresar las cuatro cpus) a un 50, en vez de estar a 100.
+	
+	* **A no ser que el primer proceso sea el que cuente de verdad, entonces tiene más sentido porque así en el caso de n_jobs= 4 estaría usando todas al 100% y n_jobs= 2 dos al 100%** Pero al estresar las 4 para n_jobs= 4 en en realidad solo está usando 2 ya que tiene que lidiar con los estreses que como son 4 procesos al 50% de cpu están usando en total dos cpus enteras solo para ellos. Luego con n_jobs= 4 RandomForest usa en total la mitad de las cpus y stress la otra mitad.    
 		
+	Luego usar más cores no está beneficiando la ejecución al revés la hace más lenta que cuando utiliza solo dos cores. Si nos fijamos bien en realidad los tiempos para cuando se estresan 2 y 4 cpus en n_jobs= 4 para la Raspberry son los mismos que para n_jobs= 2, porque en cuanto para ese valor de n_jobs y cpus estresadas hemos alcanzado el máximo de recursos que se pueden usar en la Raspberry.  
+	Si ponemos n_jobs= 2 y 2 cpus estresadas una vez más RForest usara 2 cpus y stress otras 2 en total, si n_jobs= 2 y 3 cpus estresadas da igual porque va a ser otra vez lo mismo no hay más recursos que se puedan usar (lo pruebo y los resultados son RForest usa unos 200 y entre todos los stress suman 200 (80+60+60)).  
+	
+	* Ahora tengo que entender por qué en idle con 4 cores tarda más que con 2. Respuesta?: Es como cuando hice las pruebas para diferentes valores de n_jobs a mayor número de cores mayor el tiempo de ejecución. 
 			  
 # **TO DO Memoria:**  
 	
