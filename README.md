@@ -1062,7 +1062,11 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		- Para los modelos de regresión lineal, máquinas de soporte vectorial y gradient tree boosting. Los tres modelos son monocore, es decir, que solo pueden usar una cpu (no se pueden dividir) luego en realidad solo le está afectando cuando se estresa una cpu puesto que aun que se estresen más cpus a los modelos no les importa porque tienen que seguir lidiando exacatmanete con la misma carga que cuando solo se estresa una cpu.  
 	
 		- El modelo random forest si que modifica su comportamiento con más cpus estresadas. Pero aparece con más tiempo de cpu cuando está idle porque es ese en el único instante en que realmente todas las cpus están a su disposición. Cuando se estrese alguna cpu la Raspberry tendrá que lidiar a la vez con los stress y con el algoritmo. En el caso de estresar 4 cores tanto stress como el modelo usarán cada uno en total dos cpus (a pesar de que stress se le comanda estresar dos cpus como random forest también quiere usar 4 cpus se las distribuyen de esta forma).  
-			  
+	
+	* En Regresion logisitica aunque aparezcan las 4 cpus saturadas sollo está usando unas 2-3 porque la cpu devuelve para ese proceso valor entre 200 y 300 (esto si no pongo nada de n_jobs). Con n_jobs= 4 solo usa un core pero el nombre del proceso cambia se pasa a llamar /home/nuria/miniforge3/envs/juìter/bin/pyhton -m joblib.external.locky.backend.popen_loky_posix --process-name LokyProcess --pipe 13.  Tarda mucho tiempo asignando n_jobs=4 en total 8 min Wall time y 8 min 7 seg Cpu time. Al parecer n_jobs en regression logisitica está limitado a cross validation o algo así:  
+	[*n_jobs parameter was limited to cross validation*](https://stackoverflow.com/questions/39969230/how-to-enable-multicore-processing-with-sklearn-logisticregression)  
+	
+	
 # **TO DO Memoria:**  
 	
 **Para guardar la memoria en git:**  
