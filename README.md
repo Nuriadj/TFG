@@ -1053,7 +1053,15 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	Luego usar más cores no está beneficiando la ejecución al revés la hace más lenta que cuando utiliza solo dos cores. Si nos fijamos bien en realidad los tiempos para cuando se estresan 2 y 4 cpus en n_jobs= 4 para la Raspberry son los mismos que para n_jobs= 2, porque en cuanto para ese valor de n_jobs y cpus estresadas hemos alcanzado el máximo de recursos que se pueden usar en la Raspberry.  
 	Si ponemos n_jobs= 2 y 2 cpus estresadas una vez más RForest usara 2 cpus y stress otras 2 en total, si n_jobs= 2 y 3 cpus estresadas da igual porque va a ser otra vez lo mismo no hay más recursos que se puedan usar (lo pruebo y los resultados son RForest usa unos 200 y entre todos los stress suman 200 (80+60+60)).  
 	
-	* Ahora tengo que entender por qué en idle con 4 cores tarda más que con 2. Respuesta?: Es como cuando hice las pruebas para diferentes valores de n_jobs a mayor número de cores mayor el tiempo de ejecución. 
+	* Ahora tengo que entender por qué en idle con 4 cores tarda más que con 2. Respuesta?: Es como cuando hice las pruebas para diferentes valores de n_jobs a mayor número de cores mayor el tiempo de ejecución.  
+	
+* 22/4/22  
+	
+	* Conclusiones de stress con los modelos de aprendizaje:  
+	
+		- Para los modelos de regresión lineal, máquinas de soporte vectorial y gradient tree boosting. Los tres modelos son monocore, es decir, que solo pueden usar una cpu (no se pueden dividir) luego en realidad solo le está afectando cuando se estresa una cpu puesto que aun que se estresen más cpus a los modelos no les importa porque tienen que seguir lidiando exacatmanete con la misma carga que cuando solo se estresa una cpu.  
+	
+		- El modelo random forest si que modifica su comportamiento con más cpus estresadas. Pero aparece con más tiempo de cpu cuando está idle porque es ese en el único instante en que realmente todas las cpus están a su disposición. Cuando se estrese alguna cpu la Raspberry tendrá que lidiar a la vez con los stress y con el algoritmo. En el caso de estresar 4 cores tanto stress como el modelo usarán cada uno en total dos cpus (a pesar de que stress se le comanda estresar dos cpus como random forest también quiere usar 4 cpus se las distribuyen de esta forma).  
 			  
 # **TO DO Memoria:**  
 	
