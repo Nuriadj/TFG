@@ -48,6 +48,10 @@
 \usepackage[a4paper, left=2.5cm, right=2.5cm, top=3cm, bottom=3cm]{geometry}
 %%-- Activar esta línea y comentar la anterior en modo borrador, para comentarios al margen
 %\usepackage[a4paper, left=2.5cm, right=2.5cm, top=3cm, bottom=3cm, marginparwidth=60pt]{geometry}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{array}
+    \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 
 %%-- Hay que cargarlo antes que las traducciones
 \usepackage{listing}                    % Listados de código
@@ -804,12 +808,13 @@ Para realizar la clasificación en un inicio se utilizó el data set de Room Occ
 Para generar los modelos se dividió el set de datos en dos partes, una primera parte para entrenar (que contenía el 70\% de ejemplos del set de datos original) y otra para comprobar la eficiencia del modelo a la hora de clasificar si la estancia está ocupada o no. En esta segunda parte se utilizó el 30\% restante de muestras del set de datos original, que no se utilizaban en el entrenamiento y por lo tanto el modelo nunca los había visto, son totalmente nuevos para el.\\
 Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran número de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que hay una alta probabilidad de que el set de entrenamiento siempre tenga como mínimo la cantidad de muestras necesarias de ambas clases para entrenar correctamente. Aun así, la división se realizó de forma estratificada, para que hubiese la misma proporcion de datos de una clase u otra, que en el set de datos original. Y de esta forma nos aseguramos que a la hora de tanto entrenar, como de comprobar el modelo generado, se tengan ejemplos de ambas clases en la misma proporción que aparecen en el set de datos original.
 
-Con esta división y preparación de los datos, los tres modelos se pudieron generar sin problemas utilizando las librerías de scikit-learn y pandas. Todos conseguían una accuracy superior al 90\%, el tiempo de ejecución era de unos cinco segundos salvo para gradient tree boosting, que tardaba unos siete segundos.
+Con esta división y preparación de los datos, los tres modelos se pudieron generar sin problemas utilizando las librerías de scikit-learn y pandas. Todos conseguían una accuracy superior al 90\%, el tiempo de ejecución era de un segundo para regresión logística, dos segundos tardaba el modelo de máquinas de soporte vectorial y gradient tree boosting y random forest eran los que más tardaban con un tiempo de cuatro y tres segundos respectivamente.
 
 \subsection{Validación cruzada}
 
 Se añadió un poco más de dificultad a la Raspberry haciendo que los algoritmos utilizasen validación cruzada, es decir, que dentro del set de datos de entrenamiento (compuesto, una vez más, por el 70\% de ejemplos del set de datos original) se hace una subdivisión en otros cinco sets para entrenar y probar el modelo con cada uno de ellos. 
-Una vez realizada la validación cruzada se vuelve a probar la eficiencia del modelo haciendo que clasifique el 30\% de datos de la división original, son datos que nunca ha visto ni entrenado con ellos. El objetivo de realizar una validacion cruzada es garantizar que los resultados que obtengamos sean independientes de la partición entre datos de entrenamiento y datos de validación. Los resultados de esta prueba siguieron siendo muy buenos (el acierto seguía estando por encima del 90\%). Y mientras que en el modelo de regresión logística el tiempo de ejecución se mantuvo más o menos igual, en el caso de las máquinas de soporte vectorial y gradient tree boosting los tiempos de ejecución aumentaron. Con SVM la ejecución llega a los siete segundos de media, y para gradient tree boosting a unos dieciseis segundos.
+Una vez realizada la validación cruzada se vuelve a probar la eficiencia del modelo haciendo que clasifique el 30\% de datos de la división original, son datos que nunca ha visto ni entrenado con ellos. El objetivo de realizar una validacion cruzada es garantizar que los resultados que obtengamos sean independientes de la partición entre datos de entrenamiento y datos de validación. Los resultados de esta prueba siguieron siendo muy buenos (el acierto seguía estando por encima del 90\%). 
+En cuanto a los tiempos de ejecución el modelo de regresión logística incrementó el tiempo de ejecución siendo de cinco segundos. Para el modelo de máquinas de soporte vectorial el tiempo es de seis segundos. Random forest tarda en entrenar unos doce segundos. Y por último, el que más tiempo tarda es gradient tree boosting con un tiempo de diez y seis segundos. 
 
 
 \section{DataSet: KddCup99}
@@ -821,9 +826,7 @@ Para ello se utilizó el fichero \textit{Download\_dataSet.py}. En dicho program
 
 Para leer otro porcentaje que no fuese el diez porciento se utilizaba una regla de tres para saber la cantidad de datos que se querían leer, pues sabiendo que el diez porciento contenía 494020 líneas, se podía obtener aproximadamente a cuantas líneas equivaldría otro porcentaje.
 
-Para leer estos dataSets se utilizó la librería pandas. Una vez leídos los datos se convertía de multiclase a clase binaria reemplazando todas las clases (excepto la clase \textit{normal.}) por la clase \textit{attack}. Una vez realizada la transformación se guardan los datos modificados en un csv mediante la función \textit{to\_csv}, proporcionada por pandas, sin guardar la cabecera ni el indice de forma que al utilizar los datos guardados para el entrenamiento de los modelos haya que preocuparse por estos valores.
-
-Una vez guardado el dataSet de clasificación binaria desde cada uno de los modelos que se quieran entrenar deberá ser leído de nuevo el dataSet. Además a estos datos habrá que realizarles un pequeño tratamiento para que el modelo pueda entrenar adecaudamente con ellos. Lo primero que se hace es eliminar la columna 19 y 20 ya que están contienen todo el rato el mismo valor que es cero. A continuación se transforman los datos categóricos y por último se eliminan las filas duplicadas. Con este tratamiento los datos están listos para poder utilizarse en el entrenamiento y predicción del modelo.
+Para leer estos dataSets se utilizó la librería pandas. Una vez leídos los datos se convertía de multiclase a clase binaria reemplazando todas las clases (excepto la clase \textit{normal.}) por la clase \textit{attack}. Una vez realizada la transformación se realiza un pequeño tratamiento a los datos para que cada modelo pueda entrenar adecuadamente con ellos. Este tratamiento se hace en el mismo fichero que lee los datos (\textit{Download\_dataSet.py}). En este fichero lo primero que se hace es eliminar la columna 19 y 20 ya que estas contienen todo el rato el mismo valor que es cero. A continuación se transforman los datos categóricos y por último se eliminan las filas duplicadas. Con este tratamiento los datos se guardan utilizando la función \textit{to\_csv} que proporciona pandas y se guarda el nuevo set de datos tratados sin la cabecera ni el índice, de forma que desde el códifo de cada uno de los modelos los datos estén listos para poder ser utilizados.
 
 Al igual que en el dataSet de Room Occupancy se utiliza el 70\% de los datos para entrenar y el 30\% para validar.
 
@@ -878,6 +881,46 @@ Incluye también los resultados de validación que permiten afirmar que tus resu
 
 Con estos modelos de aprendizaje se procedió a comprobar la eficiencia de la Raspberry a la hora de generarlos. Para ello se definieron tres niveles de saturación: el nivel bajo consistía en estresar una única cpu, el nivel medio, dos cpus y por último en el nivel alto se estrasaban todas las cpus de la Raspberry, es decir, cuatro cpus. 
 Para estresar las cpus se utilizó el comando stress que permite estresar, durante el tiempo que se le indique, el número de cpus que se comanden.
+
+Cada vez que se estresaba con uno de estos niveles se ejecutaba consecutivamente uno de estos modelos y mediante el comando time de Linux se obtenía el tiempo que tardaban en ejecutar cada uno de los modelos para diferentes cargas computacionales.
+
+El comando time devuelve el tiempo de usuario, que es la cantidad de tiempo que se ha gastado el proceso en modo usuario. El Sys time es el tiempo de CPU invertido en el kernel dentro del proceso. Con estos dos tiempos se puede obtener el Cpu time, el tiempo total que ha utilizado la CPU para completar la ejecución del proceso. Por otra parte time también proporciona el real time, el tiempo que ha tardado en ejecutar el proceso como si lo hubiesemos cronometrado con un reloj, este tiempo es igual que el Wall time.
+
+Para cada uno de los modelos se obtuvieron resultados de tiempos diferentes. En el caso de máquinas de soporte vectorial y gradient tree boosting scikit-learn no admite multi-threading, por lo que a pesar de estresar una, dos o cuatro cpus siempre devolverán el mismo tiempo puesto que estos modelos solo pueden utilizar una única cpu para ejecutar.
+
+Por otro lado regresión logística puede utilizar varios cores si se le indica mediante el parámetro n\_jobs. Pero dado que estamos en un problema de clasificación binaria este valor no tendrá ningún efecto aumentar o disminuir el número de cpus estresadas.
+
+Por último, random forest admite también el parámetro n\_jobs que en este caso si que afecta a como ejecuta el modelo independientemente de si es un problema de clasificación binaria o no. Por lo tanto habrá que hacer que el parámetro n\_jobs sea igual al número de cores del dispositivo, que en este caso serán cuatro. De esta forma al hacer que diferentes números de cpu se estresen se verá un cambio en los tiempos.
+Hay que tener en cuenta que el tiempo de Cpu que devuelva el comando time es la suma de los tiempos de cpu que ha utilizado cada uno de los cores, por lo tanto si se intenta ir incrementando poco a poco el valor de n\_jobs (permitiendo que más cores puedan ser utilizados en el proceso) el tiempo de Cpu incrementará aun que el Wall time decremente.
+
+Por otra parte hay que destacar un aspecto importante de el comando stress. Dicho comando estresará el número de cpus que se le pasan como argumento siempre que se pueda. En el momento en el que tenga que compartir cpu con otros procesos que también necesitan utilizar los cores, stress reducirá el número de cpus a estresar para que el otro proceso también pueda ejecutar. Por ejemplo, al estresar cuatro cores cuando se quiere ejecutar el modelo de máquinas de soporte vectorial, si se comprueban los valores de cpu (por medio del comando htop) que utiliza cada uno de los procesos, a pesar de que stress tiene cuatro procesos la suma de lo que utiliza la cpu cada uno de ellos es igual a un total de tres cores. Mientras que el proceso del modelo utiliza una cpu.
+
+Otro ejemplo de esto puede ser el caso en el caso en el que a Random forest se le iguale el parámetro n\_jobs a cuatro (para que utilice todas los cores de los que dispone la Raspberry) y se ejecute stress para estresar las cuatro cpus, si observamos mediante el comando htop los procesos, se podrá ver como se distribuyen los cores para que puedan ejecutar a la vez tanto los procesos de stress como los del modelo de aprendizaje. Por lo tanto stress utilizará en total dos cpus y Random forest hará lo mismo, a pesar de que a ambos se les indicó que utilizasen todas las cpus de la Raspberry.
+
+Por lo tanto stress, en el caso de los modelos monocores, se ajustará para que estos puedan usar lo que necesitan. Y en Random forest llegan a un acuerdo para que ambos puedan usar lo máximo posible.
+
+Los resultados obtenidos para el data set de Kdd\_cup99 son los siguientes: 
+
+\begin{center}
+\begin{adjustbox}{width=\textwidth}
+\renewcommand{\arraystretch}{2}
+    \begin{tabular}{ | c | c | c | c | c | c | c | c | c |}
+    \hline
+     \multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 cpu}} & \multicolumn{2}{|c|}{\textbf{2 cpu}} & \multicolumn{2}{|c|}{\textbf{4 cp}}\\[2ex]
+     \cline{2-9}
+      & Cpu time & Wall time & Cpu time & Wall time & Cpu time & Wall time & Cpu time & Wall time\\[2ex]
+     \hline
+     Regresión logísitca & 1 min 36 seg & 38 seg & 1 min 48 seg & 50 seg & 1 min 33 seg & 56 seg & 1 min 34 seg & 57 seg \\[2ex]
+     \hline
+ SVM & 2 min 19 seg & 2 min 16 seg & 2 min 17 seg & 2 min 18 seg & 2 min 12 seg & 2 min 12 seg & 2 min 18 seg & 2 min 18 seg\\[2ex]
+ \hline
+ Gradient tree boosting & 3 min 19 seg & 3 min 20 seg & 3 min 19 seg & 3 min 20 seg & 3 min 15 seg & 3 min 15 seg & 3 min 16 seg & 3 min 17 seg\\[2ex]
+ \hline
+ Random forest & 3 min 4 seg & 1 min 3 seg & 2 min 30 seg & 1 min 5 seg & 2 min 3 seg & 1 min 10 sef & 2 min 10 seg & 1 min 18 seg\\[2ex]
+ \hline
+    \end{tabular}
+\end{adjustbox}
+\end{center}
 
 Una vez obtenidos los tiempos de ejecución de cada uno de los algoritmos, para diferentes niveles de estrés, se realizó la misma prueba utilizando un portátil. De esta forma se puede comparar la capacidad de la Raspberry frente a un dispositivo con mayor capacidad.
  
@@ -1015,7 +1058,7 @@ Cuando se quiere instalar un paquete dentro del entorno se utilizan los comandos
 
 También dentro del entorno creado se instaló todo lo necesario para realizar este proyecto. Entre estos paquetes se instaló la librería de scikit-learn que tiene algoritmos para generar modelos de clasificación, regresión, clustering y reducción de la dimensionalidad. Así como pandas que tiene todas las funcionalidades necesarias para el análisis de datos como pueden ser: cargar, modelar, analizar, manipular y preparar los datos.
 
-Además se instaló stressberry, un paquete para hacer pruebas de temperatura bajo diferentes cargas computacionales mostrando los resultados obtenidos por medio de plots. En este caso, dicho paquete se utilizará para poder someter a la Raspberry a diferentes niveles de estrés y de este modo ver su capacidad para entrenar modelos de aprendizaje automático. Para poder ejecutar stressberry hay que tener en cuenta que el usuario que ejecute este comando debe pertenecer al grupo video, de lo contrario la ejecución dará error.
+Además se instaló stress, un paquete para hacer pruebas bajo diferentes cargas computacionales mostrando los resultados obtenidos por medio de plots. En este caso, dicho paquete se utilizará para poder someter a la Raspberry a diferentes niveles de estrés y de este modo ver su capacidad para entrenar modelos de aprendizaje automático. Para poder ejecutar stressberry hay que tener en cuenta que el usuario que ejecute este comando debe pertenecer al grupo video, de lo contrario la ejecución dará error.
 
 A parte de poder comprobar la capacidad de la Raspberry para ejecutar estos programas bajo diferentes cargas computacionales, también permitirá comparar los tiempos de ejecución con respecto a los tiempos que alcanzan dichos programas en un portátil corriente.
 
