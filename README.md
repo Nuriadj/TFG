@@ -1077,7 +1077,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	* Probar el dataSet de Occupancy para n_jobs= 4 en Random forest, por ver si cambian los valores. Son tan pocos los datos de este dataset que no hay apenas diferencia.   
 	
-	n_jobs= 4  	
+	n_jobs= 4  
+	
 	**Occupancy** Raspberry SIN Cross validation
 	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
 	|--------|------|------|-------|------|
