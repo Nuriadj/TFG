@@ -1073,7 +1073,22 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	* Para n_jobs de LOgisitc Regression que todavía no termino de entender muy bien:  
 	
 		[*Number of CPU cores used during the cross-validation loop*](https://stackoverflow.com/questions/20894671/speeding-up-sklearn-logistic-regression)  
-		[*If your data does not have more than two classes, setting the n_jobs argument is virtually useless.*](https://stackoverflow.com/questions/69762314/multiprocessing-in-logistic-regression-in-python)
+		[*If your data does not have more than two classes, setting the n_jobs argument is virtually useless.*](https://stackoverflow.com/questions/69762314/multiprocessing-in-logistic-regression-in-python)  
+	
+	* Probar el dataSet de Occupancy para n_jobs= 4 en Random forest, por ver si cambian los valores. Son tan pocos los datos de este dataset que no hay apenas diferencia.   
+	
+	n_jobs= 4  	
+	**Occupancy** Raspberry SIN Cross validation
+	| Modelo | Idle | 1 cpu | 2 cpu | 4 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 9 seg // **8 seg** | 12 seg // **9 seg** | 11 seg // **9 seg** | 11 seg // **9 seg** |
+	|SVM | 7 seg // **6 seg** | 6 seg // **6 seg** | 6 seg // **6 seg** | 6 seg // **6 seg** | 
+	|Gradient tree boosting | 8 seg // **8 seg** | 8 seg // **8 seg** | 8 seg // **8 seg** | 8 seg // **8 seg** | 
+	|Random forest | 9 seg // **6 seg** | 8 seg // **6 seg** | 8 seg // **6 seg** | 8 seg // **7 seg**|  
+	
+	En Random forest apenas se nota la diferencia porque el data set es muy pequeño.  
+	
+	
 
 	
 	
