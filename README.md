@@ -1068,6 +1068,14 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	- En el portátil pasa lo mismo para n_jobs= 8 y estresar 8 cpus. Al final el modelo usa 4 cores y los stress (la suma de todos también).  
 	
+* 23/4/22  
+	
+	* Para n_jobs de LOgisitc Regression que todavía no termino de entender muy bien:  
+	
+		[*Number of CPU cores used during the cross-validation loop*](https://stackoverflow.com/questions/20894671/speeding-up-sklearn-logistic-regression)  
+		[*If your data does not have more than two classes, setting the n_jobs argument is virtually useless.*](https://stackoverflow.com/questions/69762314/multiprocessing-in-logistic-regression-in-python)
+
+	
 	
 # **TO DO Memoria:**  
 	
