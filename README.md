@@ -1089,7 +1089,9 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	En Random forest apenas se nota la diferencia porque el data set es muy pequeño.  
 	
+* 25/4/22  
 	
+	- En Random forest cuando n_jobs= 4 y se estresan 2 cpus en realidad el modelo solo va a usar dos cpus (y stress las otras dos).  
 
 	
 	
