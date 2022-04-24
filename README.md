@@ -1059,7 +1059,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	* Conclusiones de stress con los modelos de aprendizaje:  
 	
-		- Para los modelos de regresión lineal, máquinas de soporte vectorial y gradient tree boosting. Los tres modelos son monocore, es decir, que solo pueden usar una cpu (no se pueden dividir) ~luego en realidad solo le está afectando cuando se estresa una cpu puesto que aun que se estresen más cpus a los modelos no les importa porque tienen que seguir lidiando exacatmanete con la misma carga que cuando solo se estresa una cpu~. Estos tiempos son los mismos siempre porque stress siempre les "deja espacio" apra que puedan ejecutar, es decir que si a máquinas de soporte vectorial estresamos 4 cpus, en realidad por medio de htop vemos que los cuatro procesos de stress están usando en total 3 cores, dejando la cuarta a el modelo para que pueda ejecutar.    
+		- Para los modelos de regresión lineal, máquinas de soporte vectorial y gradient tree boosting. Los tres modelos son monocore, es decir, que solo pueden usar una cpu (no se pueden dividir) ~luego en realidad solo le está afectando cuando se estresa una cpu puesto que aun que se estresen más cpus a los modelos no les importa porque tienen que seguir lidiando exacatmanete con la misma carga que cuando solo se estresa una cpu~. Estos tiempos son los mismos siempre porque stress siempre les "deja espacio" para que puedan ejecutar, es decir que si a máquinas de soporte vectorial estresamos 4 cpus, en realidad por medio de htop vemos que los cuatro procesos de stress están usando en total 3 cores, dejando la cuarta a el modelo para que pueda ejecutar.    
 	
 		- El modelo random forest si que modifica su comportamiento con más cpus estresadas. Pero aparece con más tiempo de cpu cuando está idle porque es ese en el único instante en que realmente todas las cpus están a su disposición. Cuando se estrese alguna cpu la Raspberry tendrá que lidiar a la vez con los stress y con el algoritmo. En el caso de estresar 4 cores tanto stress como el modelo usarán cada uno en total dos cpus (a pesar de que stress se le comanda estresar dos cpus como random forest también quiere usar 4 cpus se las distribuyen de esta forma).  
 	
@@ -1095,12 +1095,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	n_jobs= 8  
 	**20% Kdd_cup99** Portátil
-	| Modelo | Idle | 2 cpu | 4 cpu | 8 cpu |
-	|--------|------|------|-------|------|
-	|Regresión logística| 58 seg // **30 seg** | 1 min 7 seg // **36 seg** | 1 min 23 seg // **47 seg** | 1 min 46 seg // **1 min 22 seg** |
-	|SVM | 31 seg // **31 seg** | 47 seg // **47 seg** | 1 min 21 seg // **1 min 21 seg** | 1 min 32 seg // **1 min 34 seg** | 
-	|Gradient tree boosting |  42 seg // **42 seg** | 56 seg // **57 seg** | 1 min 30 seg // **1 min 30 seg** | 1 min 42 seg // **1 min 58 seg** | 
-	|Random forest | 1 min 15 seg // **13 seg** | 1 min 1 seg // **15 seg** | 1 min 1 seg // **21 seg** | 59 seg // **26 seg** |    
+	| Modelo | Idle | 2 cpu | 4 cpu | 6 cpus | 8 cpu |
+	|--------|------|------|--------|--------|-------|
+	|Regresión logística| 58 seg // **30 seg** | 1 min 7 seg // **36 seg** | 1 min 23 seg // **47 seg** | 1 min 30 seg // **47 seg** | 1 min 46 seg // **1 min 22 seg** |
+	|SVM | 31 seg // **31 seg** | 47 seg // **47 seg** | 1 min 21 seg // **1 min 21 seg** | 1 min 25 seg // **1 min 25 seg** | 1 min 32 seg // **1 min 34 seg** | 
+	|Gradient tree boosting |  42 seg // **42 seg** | 56 seg // **57 seg** | 1 min 30 seg // **1 min 30 seg** | 1 min 26 seg // **1 min 27 seg** | 1 min 42 seg // **1 min 58 seg** | 
+	|Random forest | 1 min 15 seg // **13 seg** | 1 min 1 seg // **15 seg** | 1 min 1 seg // **21 seg** | 1 min 1 seg // **25 seg** | 59 seg // **26 seg** |    
 	
 	Regresión logística en el portátil (idle, 2 cpus, 4cpus estresadas) usa dos cores. Con 8 cpus en el comando stress utiliza más o menos 6 cores para esta tarea y otros dos para el modelo (más o menos porque en el portátil si que hay otros procesos que tambien consumen cpu a diferencia de en la Raspberry).  
 	
