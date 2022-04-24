@@ -1070,7 +1070,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 * 23/4/22  
 	
-	* Para n_jobs de LOgisitc Regression que todavía no termino de entender muy bien:  
+	* Para n_jobs de Logisitc Regression que todavía no termino de entender muy bien:  
 	
 		[*Number of CPU cores used during the cross-validation loop*](https://stackoverflow.com/questions/20894671/speeding-up-sklearn-logistic-regression)  
 		[*If your data does not have more than two classes, setting the n_jobs argument is virtually useless.*](https://stackoverflow.com/questions/69762314/multiprocessing-in-logistic-regression-in-python)  
@@ -1091,8 +1091,28 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 * 25/4/22  
 	
-	- En Random forest cuando n_jobs= 4 y se estresan 2 cpus en realidad el modelo solo va a usar dos cpus (y stress las otras dos).  
-
+	- En Random forest cuando n_jobs= 4 y se estresan 2 cpus en realidad el modelo solo va a usar dos cpus (y stress las otras dos).   
+	
+	n_jobs= 8  
+	**20% Kdd_cup99** Portátil
+	| Modelo | Idle | 2 cpu | 4 cpu | 8 cpu |
+	|--------|------|------|-------|------|
+	|Regresión logística| 58 seg // **30 seg** | 1 min 7 seg // **36 seg** | 1 min 23 seg // **47 seg** | 1 min 46 seg // **1 min 22 seg** |
+	|SVM | 31 seg // **31 seg** | 47 seg // **47 seg** | 1 min 21 seg // **1 min 21 seg** | 1 min 32 seg // **1 min 55 seg** | 
+	|Gradient tree boosting |  42 seg // **42 seg** | 56 seg // **57 seg** | 1 min 30 seg // **1 min 30 seg** | 1 min 42 seg // **1 min 58 seg** | 
+	|Random forest | 1 min 15 seg // **13 seg** | 1 min 1 seg // **15 seg** | 1 min 1 seg // **21 seg** | 59 seg // **26 seg** |    
+	
+	Regresión logística en el portátil (idle, 2 cpus, 4cpus estresadas) usa dos cores. Con 8 cpus en el comando stress utiliza más o menos 6 cores para esta tarea y otros dos para el modelo (más o menos porque en el portátil si que hay otros procesos que tambien consumen cpu a diferencia de en la Raspberry).  
+	
+	En Gradient tree boosting oc n 8 cores estresados no llega a usar el modelo una cpu all completo se quea en el 86% más o menos, hay ratos que si sube al 90-96% pero no se mantiene en ese porcentaje casi nada (al contrario de lo que pasa en la Raspberry).  
+	
+	En Random forest con n_jobs= 8 y dos cpus estresadas, los procesos de stress usan en total 2 cores y el modelo 6. Con 4 estresadas el modelo usa en total 5 cores y stress 3. Al intentar estresar las 8 las cpus se dividen en 4 para el modelo y 4 para los procesos de stress.  
+	
+	Si se hace la division de los tiempos entre el verdadero número de cores (que se comenta justo en el párrafo anterior) que utilizan si se ve que ascienden los tiempos:  
+	
+		Si se divide 1 min 1 seg /6 cores = 10 seg por cada core.  
+		Si se divide 1 min 1 seg /5 cores = 12 seg por cada core.  
+		Si se divide 59 seg / 4 cores = 15 seg por cada core.  
 	
 	
 # **TO DO Memoria:**  
