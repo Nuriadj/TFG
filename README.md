@@ -1136,7 +1136,7 @@ Comentar en la memoria que dado que es un gran número de ejemplos no es necesar
 - [x] Añadir como se instaló o por lo menos hacer referencia al enlace que se utilizó para intstalarlo (día 28/1/22)  
 - Añadir los resultados de las primeas pruebas, que bajo diferentes niveles de saturacion los tiempos no tenían mucho sentido, que se probó con un nuevo dataSet...	
 - Añadir todo lo que he descubierto sobre n_jobs, SMP...  
-- ¿Debería de explicar brevemente en qué consisten cada uno de los modelos de aprendizaje automático utilizados?  
+- ¿Debería de explicar brevemente en qué consisten cada uno de los modelos de aprendizaje automático utilizados?¿Debería de ponerlo en el estado del arte o en el capítulo de desarrollo del trabajo?    
 - ¿Debería de poner el modelo de portatil que utilizo para comparar los tiempos?
 - Cambiar en la memoria la explicación de como y donde hago la limpieza de kdd_cup99.  
 - Lo de que n_jobs= -1 solo utilice los cores avaible solo lo he visto en la pag que me paso la profe, pero en la documentación no veo que digan nada de eso.
