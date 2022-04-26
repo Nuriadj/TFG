@@ -1114,6 +1114,23 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 		Si se divide 1 min 1 seg /5 cores = 12 seg por cada core.  
 		Si se divide 59 seg / 4 cores = 15 seg por cada core.  
 	
+* 26/4/22  
+	
+	Día horrible, no se por qué a dejado de funcionar lgpio en en el enviroment myenv y no había forma de que funcionase ni entiendo lo que ha pasado. El error que daba es: ImportError:liblgpio.so.1: cannot open shared object file: No such file or directory. 
+	
+	* He creado otro entorno 
+		```conda create --name lgpio python=3.9  
+		conda activate lgpio  
+		conda install numpy  
+		sudo apt-get install python3-lgpio
+		(Mover todos los paquetes como expliqué en la tabla)  
+		sudo env "PATH=$PATH" python LDR_data_lgpio.py
+		```
+	
+	Y ha vuelto a ir.
+	
+	Lo que hay en la variable PATH (aun que este no haya sido el problema en el otro entorno pero por si acaso): /home/nuria/miniforge3/envs/lgpio/bin:/home/nuria/miniforge/condabin:/home/nuria/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+	
 	
 # **TO DO Memoria:**  
 	
