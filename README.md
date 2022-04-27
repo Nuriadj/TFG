@@ -1136,6 +1136,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	Generando un fichero que se llama read_timer, que estará leyendo los sensores hasta que se pulse CTR-C. Añade tiempo y la medida de un sensor (lo he estado probando con el de la luz). Voy a poner state= 1 - state para que cuando haya un 1 signifique que hay luz y un 0 cuando no la haya.  
 	
+	* Buscando explicación a por qué el portátil incrementa el tiempo. La Raspberry tiene un thread por core, el portátil tiene dos threads por core (no creo que tenga que ver con esto pero bueno).  
+	
 # **TO DO Memoria:**  
 	
 **Para guardar la memoria en git:**  
