@@ -1132,6 +1132,10 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	Lo que hay en la variable PATH (aun que este no haya sido el problema en el otro entorno pero por si acaso): /home/nuria/miniforge3/envs/lgpio/bin:/home/nuria/miniforge/condabin:/home/nuria/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
 	
 	
+* 27/4/22  
+	
+	Generando un fichero que se llama read_timer, que estará leyendo los sensores hasta que se pulse CTR-C. Añade tiempo y la medida de un sensor (lo he estado probando con el de la luz). Voy a poner state= 1 - state para que cuando haya un 1 signifique que hay luz y un 0 cuando no la haya.  
+	
 # **TO DO Memoria:**  
 	
 **Para guardar la memoria en git:**  
