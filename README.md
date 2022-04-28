@@ -1138,6 +1138,22 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	* Buscando explicación a por qué el portátil incrementa el tiempo. La Raspberry tiene un thread por core, el portátil tiene dos threads por core (no creo que tenga que ver con esto pero bueno).  
 	
+* 28/4/22  
+	
+	* Estoy mirando la frecuancia a la que ejecutan cada una de las cpus estresadas e idle mediante el comando:
+	
+	```
+	watch -n.1 "sudo cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq && sudo cat /sys/devices/system/cpu/cpu1/cpufreq/cpuinfo_cur_freq && sudo cat /sys/devices/system/cpu/cpu2/cpufreq/cpuinfo_cur_freq && sudo cat /sys/devices/system/cpu/cpu3/cpufreq/cpuinfo_cur_freq
+	```
+	
+	En idle los cuatro cores tienen una frecuencia de 1300000-1500000, pero prácticamente todo el rato se encuentra en 150000. Este es el máximo de frecuencia al que puede ir la Raspberry luego stress no puede aumentar este valor. Puede ser esta la razón por la que los tiempos se mantienen iguales mientras que en e portátil si crecen?.  
+	
+	En el portatil ejecutando:  
+	```watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"```
+	
+	En idle están todas entre 900-1000 MHz. Si estreso 2 cores más o menos están todas sobre los 1800-2500 MHz. Con cuatro cores estresados 1700-1800 MHz. Con seis cores 1600-1800 MHz. Ocho cores 1600-1700 MHz.  
+
+	
 # **TO DO Memoria:**  
 	
 **Para guardar la memoria en git:**  
