@@ -1138,15 +1138,20 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	* Buscando explicación a por qué el portátil incrementa el tiempo. La Raspberry tiene un thread por core, el portátil tiene dos threads por core (no creo que tenga que ver con esto pero bueno).  
 	
+	* Lo que puede estar pasando para que cambien los tiempos de ejecución en el portátil es que cuando se estrese este causando que el proceso del modelo tenga menos frecuencia (de cpu) de ejecución haciendo que tarde más en terminar la tarea. (Tenía esto apuntado pero no se que ha pasado)
+	La frecuencia del portátil media es de 850 MHz, la mínima de 400 MHz y la máxima de 3600 MHz.  
+	Mientras que en la Raspberry no tenemos frecuencia media pero la mínima de 600 MHZ y la máxima es de 1500 MHz.  
+	
 * 28/4/22  
 	
-	* Estoy mirando la frecuancia a la que ejecutan cada una de las cpus estresadas e idle mediante el comando:
+	* Estoy mirando la frecuencia a la que ejecutan cada una de las cpus estresadas en idle en Raspberry mediante el comando:
 	
 	```
 	watch -n.1 "sudo cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq && sudo cat /sys/devices/system/cpu/cpu1/cpufreq/cpuinfo_cur_freq && sudo cat /sys/devices/system/cpu/cpu2/cpufreq/cpuinfo_cur_freq && sudo cat /sys/devices/system/cpu/cpu3/cpufreq/cpuinfo_cur_freq
 	```
+	*cpuinfo_cur_freq :*&nbsp;&nbsp;&nbsp;&nbsp;*Current frequency of the CPU as obtained from the hardware, in KHz. This is the frequency the CPU actually runs at.*  
 	
-	En idle los cuatro cores tienen una frecuencia de 1300000-1500000, pero prácticamente todo el rato se encuentra en 150000. Este es el máximo de frecuencia al que puede ir la Raspberry luego stress no puede aumentar este valor. Puede ser esta la razón por la que los tiempos se mantienen iguales mientras que en e portátil si crecen?.  
+	En idle los cuatro cores tienen una frecuencia de 1300000-1500000 KHz (luego unos 1300-1500 MHz), pero prácticamente todo el rato se encuentra en 150000. Este es el máximo de frecuencia al que puede ir la Raspberry luego stress no puede aumentar este valor. Puede ser esta la razón por la que los tiempos se mantienen iguales mientras que en e portátil si crecen?.  
 	
 	En el portatil ejecutando:  
 	```watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"```
