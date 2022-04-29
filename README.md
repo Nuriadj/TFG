@@ -1157,6 +1157,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	```watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"```
 	
 	En idle están todas entre 900-1000 MHz. Si estreso 2 cores más o menos están todas sobre los 1800-2500 MHz. Con cuatro cores estresados 1700-1800 MHz. Con seis cores 1600-1800 MHz. Ocho cores 1600-1700 MHz.  
+	
+* 29/4/22  
+	
+	* Si ejecuto uno de los modelos en idle puedover que la cpu que lleva el proceso(que se ven en htop cual es) aumenta la frecuancia de ejecución hasta 3000-3330 MHz.  
+	CUando hago stress todas las frecuencias "suben" no solo las de los cores que lo están ejecutando.  
+	Los tiempos que obtuve ayer sobre stress tienen sentido porque cuanto más stress menos frecuencia porque...
 
 	
 # **TO DO Memoria:**  
