@@ -1161,7 +1161,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 * 29/4/22  
 	
 	* Si ejecuto uno de los modelos en idle puedover que la cpu que lleva el proceso(que se ven en htop cual es) aumenta la frecuancia de ejecución hasta 3000-3330 MHz.  
-	CUando hago stress todas las frecuencias "suben" no solo las de los cores que lo están ejecutando.  
+	Cuando hago stress todas las frecuencias "suben" no solo las de los cores que lo están ejecutando.  
 	Los tiempos que obtuve ayer sobre stress tienen sentido porque cuanto más stress menos frecuencia porque...
 
 	
@@ -1192,3 +1192,21 @@ Comentar en la memoria que dado que es un gran número de ejemplos no es necesar
 - Lo de que n_jobs= -1 solo utilice los cores avaible solo lo he visto en la pag que me paso la profe, pero en la documentación no veo que digan nada de eso.
 	
 - Volver a hacer los calculos de el tiempo que tarda en idle para cada uno de los modelos sin validación cruzada, para ponerlo que no se si los tiempos que he puesto están bien.  
+	
+	**Tutoría 29/2/22:**  
+	
+	- Memoria:   
+		* Antes de explicar los difrentes componenetes hacer un apartado del contexto teórico de Raspberry y ML. ML en IoT, proyectos en los que se utilizar ML...  
+		* Estado del arte. Fusionar dentro de sistema operativo la sección de el entorno de paquetes.  
+		* Dentro del apartado de Python hacer subsecciones para Jupiter, librerías...  
+		* A futuro habrá que añadir un apartado para describir los sensores que se han utilizado.  
+
+		* En el capítulo 3 poner lo  pirmero el apartado de arquitectura general y en este apartado hacer primero una generalización, poner un poco en contexto. En que consiste el proyecto, añadir un diagrama que explique la estructura general.  
+		* Explicación más profunda de los modelos usados (me ayuda Felipe).  
+		* Al final del capítulo 3 poner las características del entorno de pruebas, es decir, características del PC y Raspberry.    
+
+		* Capítulo 4: 1. Experimentos con la Raspberry, 2. Experimentos con el PC, 3. Comparativas (ayudandome de tablas, pedir ayuda a Felipe).     
+
+	- Hacer script para ejecutar todos los modelos consecutivamente y guardar en un fichero los tiempos (hacerlo probando con el dataset de Ocuppancy para tardar menos).    
+
+	- Hacer una página web estática con los objetivos del proyecto, donde se indique donde está el código, resultados...A poder ser en inglés.   
