@@ -642,16 +642,21 @@ Compila el fichero \texttt{memoria.tex} (\texttt{pdflatex memoria.tex}), añade 
 
 También existe la posibilidad de poner notas al pie de página, por ejemplo, una para indicarte que visite la página del GSyC\footnote{\url{http://gsyc.es}}.
 
+En este apartado se reaizará una breve descripción del dispositivo principal, que es motivo de esta investigación. También se expondrá todo el software que se ha necesitado instalar para poder implementar los modelos y ponerlos a prueba.
+
 \section{Dispositivo Hardware: Raspberry Pi 4 Modelo B} 
 \label{sec:seccion1}
 
-Raspberry Pi es un ordenador de bajo coste y tamaño reducido desarrollado por Raspberry Pi Foundation. Este dispositivo se puede emplear en  multitud de aplicaciones pero su principal objetivo es hacer accesible la informática a todos los usuarios. A parte de poder realizar todas las tareas que se esperan de un ordenador, también puede interactuar con el entorno a través de sensores conectados a sus pines GPIO.
+Raspberry Pi\footnote{\url{https://www.raspberrypi.org/}} es un ordenador de bajo coste y tamaño reducido desarrollado por Raspberry Pi Foundation. Este dispositivo se puede emplear en  multitud de aplicaciones pero su principal objetivo es hacer accesible la informática a todos los usuarios. A parte de poder realizar todas las tareas que se esperan de un ordenador, también puede interactuar con el entorno a través de sensores conectados a sus pines GPIO.
 
 El sistema operativo que ofrece es Raspbian Pi OS, una versión adaptada de Debian. Sin embargo permite utilizar otros sistemas.
 
 Desde su primer lanzamiento se han ido desarrollando y comercializado nuevos modelos. En este proyecto se utilizará la última versión de estos dispositivos denominado como Raspberry Pi 4 Modelo B con 4GB de RAM.
 
 Dicho modelo posee un total de cuatro cores físicos y otros cuatro lógicos. Otro detalle destacable de la Raspberry para el desarrollo de este trabajo es que posee una arquitectura SMP (Symmetric Multi-Processing), un tipo de arquitectura de computador en el que las unidades de procesamiento comparten una única memoria central por lo que permite que cualquier procesador trabaje en cualquier tarea sin importar su localización en memoria. 
+
+Es uno de los dispositivos más populares en la actualidad ya que brinda un sinfín de posibilidades a pesar de su pequeño tamaño. Específicamente dentro de el campo de aprendizaje automático se podrían desarrollar multitud de aplicaciones gracias a la interacción que tiene con el entorno por medio de los sensores y actuadores que se pueden conectar. Por ello, en este trabajo de investigación se busca examinar el rendimiento de este pequeño ordenador y comprobar hasta donde se podría llegar con él, dentro del campo del aprendizaje automático. 
+
 
 \begin{comment}
 
@@ -673,7 +678,7 @@ Dicho modelo posee un total de cuatro cores físicos y otros cuatro lógicos. Ot
 \section{Sistema Operativo: Ubuntu 21.10} 
 \label{sec:sistema_operativo}
 
-El sistema operativo Ubuntu es una distribución de código abierto basada en Debian, está compuesto de software normalmente distribuido bajo una licencia libre o de código abierto. La empresa responsable de su creación y mantenimiento es Canonical, una empresa de programación de ordenadores con base en Reino Unido fundada por el empresario Mark Shuttleworth.
+El sistema operativo Ubuntu\footnote{\url{https://ubuntu.com/}} es una distribución de código abierto basada en Debian, está compuesto de software normalmente distribuido bajo una licencia libre o de código abierto. La empresa responsable de su creación y mantenimiento es Canonical, una empresa de programación de ordenadores con base en Reino Unido fundada por el empresario Mark Shuttleworth.
 
 La primera versión de Ubuntu fue la 4.10 lanzada el 20 de Octubre de 2004. A partir de la versión 13.4 las versiones estables sin soporte a largo plazo se liberan cada seis meses, y Canonical proporciona soporte técnico y actualizaciones de seguridad durante 9 meses. Las versiones LTS (Long Term Support) ofrecen un soporte técnico durante 5 años a partir de la fecha de lanzamiento.
 
@@ -688,7 +693,7 @@ La última versión fue lanzada el 14 de Octubre de 2021, que es la versión Ubu
 
 Miniforge es un instalador mínimo de conda especifico de conda-forge, que permite instalar el manejador de paquetes conda con una serie de configuraciones predifinidas. Es muy similar a un instalador de Miniconda.
 
-Miniconda, al igual que Miniforge, es un instalador mínimo de conda, un sistema de gestión de paquetes y entornos virtuales. Mediante él se instala una pequeña versión de arranque de Anaconda que incluye solo conda, Python, los paquetes de los que dependen y otros pocos paquetes útiles como pueden ser pip, zlib...
+Miniconda es un sistema de gestión de paquetes y entornos virtuales. Mediante él se instala una pequeña versión de arranque de Anaconda que incluye solo conda, Python, los paquetes de los que dependen y otros pocos paquetes útiles como pueden ser pip, zlib...
 
 Ofrece casi lo mismo que Anaconda pero es mucho más ligero, lo que lo hace idóneo para poder desarrollar el proyecto en el dispositivo utilizado. Además, facilita la replicación de un entorno concreto ya que permite tener un mayor control y orden sobre los paquetes que se instalan. 
 
@@ -702,7 +707,7 @@ Estas celdas pueden contener código, texto en formato Markdown, fórmulas matem
 \section{Lenguaje de programación: Python}
 \label{sec:lenguaje_de_programación}
 
-Python es un lenguaje de programación que nace a principios de los años 90 gracias al informático holandés Guido Van Rossum. Su objetivo era crear un lenguaje de programación que fuera fácil de aprender, escribir y entender.
+Python\footnote{\url{https://www.python.org/}} es un lenguaje de programación que nace a principios de los años 90 gracias al informático holandés Guido Van Rossum. Su objetivo era crear un lenguaje de programación que fuera fácil de aprender, escribir y entender.
 
 Es un lenguaje de alto nivel, interactivo, interpretado y orientado a objetos. Al ser interpretado permite poder ejecutarlo sin necesidad de compilarlo previamente, reduciendo el tiempo entre la escritura y la ejecución del código.
 Además es multiplataforma y de código abierto lo que ha ayudado a que Python sea el lenguaje con mayor crecimiento y uno de los más utilizados en la actualidad.  
@@ -711,18 +716,18 @@ Entre los campos en los que más se emplea este lenguaje se encuentra la intelig
 
 \section{Librerías}
 \label{sec:Librerías}
-Para el desarrollo del proyecto se utilizaron varias librerías que permitiesen la creación de códigos de aprendizaje automático. A continuación se hace mención a las principales y más importantes.
+Para el desarrollo del proyecto se utilizaron varias librerías que permitiesen la creación de códigos de aprendizaje automático. A continuación se hace mención de las principales y más importantes.
 
 \subsection{Scikit-learn}
 \label{subsec:Scikit-learn}
-Scikit-Learn es una librería, escrita principalmente en Python, que cuenta con algoritmos de clasificación, regresión, clustering y reducción de dimensionalidad. Fue inicialmente desarrollada por David Cournapeau como proyecto de Google Summer of code en 2007.
+Scikit-Learn\footnote{\url{https://scikit-learn.org/stable/}} es una librería, escrita principalmente en Python, que cuenta con algoritmos de clasificación, regresión, clustering y reducción de dimensionalidad. Fue inicialmente desarrollada por David Cournapeau como proyecto de Google Summer of code en 2007.
 
 La gran variedad de algoritmos y utilidades de Scikit-learn la convierten en una herramienta muy eficaz para generar aplicaciones de aprendizaje automático.
 
 \subsection{Pandas}
 \label{subsec:Pandas}
 
-Pandas es una librería de Python de código abierto especializada en el manejo y análisis de estructuras de datos. Es muy útil en el ámbito de Data Science y Machine Learning, ya que ofrece unas estructuras muy poderosas y flexibles que facilitan la manipulación y tratamiento de datos.
+Pandas\footnote{\url{https://pandas.pydata.org/}} es una librería de Python de código abierto especializada en el manejo y análisis de estructuras de datos. Es muy útil en el ámbito de Data Science y Machine Learning, ya que ofrece unas estructuras muy poderosas y flexibles que facilitan la manipulación y tratamiento de datos.
 
 Tiene todas las funcionalidades necesarias para el análisis de datos como pueden ser: cargar, modelar, analizar, manipular y preparar los datos.
 
@@ -752,10 +757,14 @@ Además de por su perfil colaborativo, Overleaf destaca porque, pese a que en La
 \label{chap:diseño}
 
 
+\begin{comment}
 Aquí viene todo lo que has hecho tú (tecnológicamente). 
 Puedes entrar hasta el detalle. 
 Es la parte más importante de la memoria, porque describe lo que has hecho tú.
 Eso sí, normalmente aconsejo no poner código, sino diagramas.
+\end{comment}
+
+En este capítulo se realiza una descipción detallada sobre las instalaciones necesarias para poder realizar el trabajo, una breve explicación sobre los modelos de aprendizaje que se implementaron así como los data sets utilizados.
 
 \section{Configuración del entorno}
 
@@ -768,15 +777,17 @@ Comenzando por cambiar el sistema operativo, en vez de utilizar el que viene por
 
 A continuación se instaló Miniforge, por el cual se crea un entorno virtual donde se instalaron todos los paquetes necesarios para el proyecto como son scikit-learn, pandas, jupyter-notebook, stressberry... Estos paquetes permitirán desarrollar modelos de aprendizaje automático y poder ponerlos a prueba bajo diferentes estados de la Raspberry.
 
+En el Anexo de esta memoria se podrá encontrar en mayor detalle las dificultades y las soluciones a estos problemas encontrados a la hora de realizar todo lo comentado en este apartado.
+
 \section{Modelos de aprendizaje automático}
 
-Con el entorno preparado se generaron mediante scripts de Python cuatro modelos diferentes de aprendizaje supervisado para realizar una clasificación binaria, utilizando la libreía scikit-learn para generar un modelo de regresión logística, otro de máquinas de soporte vectorial, gradient boosting y un último de Random forest.
+Con el entorno preparado se generaron mediante scripts de Python cuatro modelos diferentes de aprendizaje supervisado para realizar una clasificación binaria. Utilizando la libreía scikit-learn para generar un modelo de Regresión logística, otro de Máquinas de soporte vectorial, Gradient boosting y un último de Random forest.
 
 \subsection{Regresión logística}
 
 Modelo de aprendizaje supervisado que realiza tareas de clasificación binaria. Esta técnica busca una función acotada (normalmente entre 0 y 1) que divida los datos de ambas clases de forma bien diferenciada.
 
-En scikit-learn por medio la función LogisticRegression\cite{LogisticRegressionDoc}, que pertenece a la librería \textit{sklearn.linear\_model}, se puede generar un modelo de este tipo de aprendizaje automático para entrenarlo y posteriormente predecir con él. 
+En scikit-learn por medio la función LogisticRegression\cite{LogisticRegressionDoc}, que pertenece a la librería \textit{sklearn.linear\_model}, se puede generar este modelo de aprendizaje automático para entrenarlo y posteriormente predecir con él. 
 
 Entre los parámetros que se pueden asignar a esta función hay dos que son destacables. El primero de ellos es \textit{max\_iter}, máximo número de iteraciones que se permiten para encontrar la solución que converja, por defecto tiene un valor igual a 100. Por otra párte está el parámetro \textit{n\_jobs}, que permite declarar el número de cpus que se desean utilizar para paralelizar el proceso. Sin embargo, la asignación de este valor solo tiene efecto si se realiza una clasificación multiclase, de lo contrario utilizará un único core independientemente del valor asignado.
 
@@ -784,13 +795,15 @@ Entre los parámetros que se pueden asignar a esta función hay dos que son dest
 
 Modelo de aprendizaje supervisado utilizado para resolver tareas de clasificación binaria, aun que existen máquinas de vector soporte para resolver problemas de regresión o de clasificación multiclase. Se basa en la generación de un hiperplano que separe de forma óptima los puntos de una clase respecto de otra. Es decir, que exista la máxima distancia entre el hiperplano y los puntos más cercanos a este.
 
-Por medio de la función \cite{SVMDocumentation}<--(CAMBIAR), se puede generar un modelo de aprendizaje utilizando esta técnica. En esta ocasión este método no soporta multiprcesamiento, por lo tanto la máquina que lo ejecute solo podrá usar un core tanto en el entrenamiento como en la predicción.
+Por medio de la función SVC \cite{SVMDocumentation}, se puede generar un modelo de aprendizaje utilizando esta técnica. En esta ocasión este método no soporta multiprcesamiento, por lo tanto la máquina que lo ejecute solo podrá usar un core tanto en el entrenamiento como en la predicción.
 
 \subsection{Gradient boosting}
 
-Técnica de aprendizaje supervisado que se utiliza tanto para problemas de regresión como de clasificación. S e basa en la combinación de modelos predictivos débilos, normalmente árboles de decisión, para crear un modelo predictivo fuerte. Se generan árboles de decisión de forma secuncial, haciendo que cada árbol corrija los errores del árbol anterior. De forma general suelen ser árboles de un máximo de tres niveles de profundidad.
+Técnica de aprendizaje supervisado que se utiliza tanto para problemas de regresión como de clasificación. Se basa en la combinación de modelos predictivos débiles, normalmente árboles de decisión, para crear un modelo predictivo fuerte. Los árboles de decisión son uno de los algoritmos más utilizados para la toma de decisiones debido a su sencilla implementación y fácil interpretación. Dado un conjunto de datos se crean diagramas lógicos que sirven para representar una serie de condiciones sucesivas para resolver un problema. 
 
-En esta coasión el método que crea este modelo es GradientBoostingClassifier\cite{GradientTreeBDoc}, que se encuentra dentro de la librería \textit{sklearn.esemble}. Al igual que para la función de máquinas de soporte vectorial, este modelo no soporta multiprocesamiento y por lo tanto solo se utilizará una cpu para entrenar y predecir con este modelo.
+En Gradient boosting se generan árboles de decisión de forma secuencial, haciendo que cada árbol corrija los errores del árbol anterior. De forma general suelen ser árboles de un máximo de tres niveles de profundidad.
+
+En esta ocasión el método que crea este modelo es GradientBoostingClassifier\cite{GradientTreeBDoc}, que se encuentra dentro de la librería \textit{sklearn.esemble}. Al igual que para la función de máquinas de soporte vectorial, este modelo no soporta multiprocesamiento y por lo tanto solo se utilizará una cpu para entrenar y predecir con este modelo.
 
 \subsection{Random forest}
 
@@ -798,17 +811,39 @@ Random forest se puede usar tanto en problemas de clasificación como de regresi
 
 En scikit-learn utilizando la función RandomForestClassifier\cite{RandomForestDoc}, que también está dentro de la librería \textit{sklearn.esemble}, se puede generar un modelo de aprendizaje utilizando esta técnica.
 
-Para este método existe un parámetro destacable denominado \textit{n\_jobs}, que permite declarar el número de cpus que se desean utilizar para paralelizar el proceso. Para que se note el efecto de este parámetro es necesario que el conjunto de datos con el que se desea entrenar sea grande. De lo contrario el coste de distribuir los recursos entre el número de cores indicados es más elevado que ejecutarlo todo en una única cpu y por lo tanto los tiempos de ejecución serían más elevados a mayor número definido en este parámetro.
-Por defecto si no se declara este parámetro utilizará un único core. Además se pueden asignar valores negativos, en caso de igualar \textit{n\_jobs} a -1 se utilizarán todos los cores disponibles en ese momento. De la misma forma se utiliza este parámetro en el caso de Regresión logística.
+Para este método existe un parámetro destacable denominado \textit{n\_jobs}, que permite declarar el número de cpus que se desean utilizar para paralelizar el proceso. Para que se note el efecto de este parámetro es necesario que el conjunto de datos con el que se desea entrenar sea grande. De lo contrario el coste de distribuir los recursos entre el número de cores indicados es más elevado que ejecutarlo todo en una única cpu, y por lo tanto los tiempos de ejecución serían más elevados a mayor número definido en este parámetro.
+
+Por defecto si no se declara este parámetro utilizará un único core. Además se pueden asignar valores negativos, en caso de igualar \textit{n\_jobs} a -1 se utilizarán todos los cores disponibles en ese momento. De la misma forma se utiliza este parámetro en el caso de Regresión logística cuando se busca entreanr un problemas de clasificación multiclase.
 
 \section{DataSet: Room Occupacy}
 
-Para realizar la clasificación en un inicio se utilizó el data set de Room Occupancy detection data\cite{DataSetOccupancy}, obtenido de Kaggle, que contiene unas 20560 muestras. Cada ejemplo tiene las medidas de temperatura, humedad, CO2 y luz de una habitación de oficina de unos quince metros cuadrados. La última columna de cada fila indica la clase a la que pertenece la muestra. En este caso, al ser una clasificación binaria esta última columna solo puede tener dos valores, cero o uno. Si para un ejemplo contiene un uno significa que para esos valores sensados la habitación está ocupada. Si por el contrario hay un valor de cero la sala está vacia. 
+Para realizar la clasificación en un inicio se utilizó el data set de Room Occupancy detection data\cite{DataSetOccupancy}, obtenido de Kaggle, que contiene unas 20560 muestras. Tal y como su nombre indica, este dataset proporcionará información sobre si una habitación se encuentra en un determinado instante ocupada o no. Cada ejemplo tiene las medidas de temperatura, humedad, CO2 y luz de una habitación de oficina de unos quince metros cuadrados. La última columna de cada fila indica la clase a la que pertenece la muestra. En este caso, al ser una clasificación binaria esta última columna solo puede tener dos valores, cero o uno. Si para un ejemplo contiene un uno significa que para esos valores sensados la habitación está ocupada. Si por el contrario hay un valor de cero la sala está vacia. 
 
-Para generar los modelos se dividió el set de datos en dos partes, una primera parte para entrenar (que contenía el 70\% de ejemplos del set de datos original) y otra para comprobar la eficiencia del modelo a la hora de clasificar si la estancia está ocupada o no. En esta segunda parte se utilizó el 30\% restante de muestras del set de datos original, que no se utilizaban en el entrenamiento y por lo tanto el modelo nunca los había visto, son totalmente nuevos para el.\\
+Para generar los modelos se dividió el set de datos en dos partes, una primera parte para entrenar (que contenía el 70\% de ejemplos del set de datos original) y otra para comprobar la eficiencia del modelo a la hora de clasificar si la estancia está ocupada o no, un set de datos de prueba. En esta segunda parte se utilizó el 30\% restante de muestras del set de datos original, que no se utilizaban en el entrenamiento y por lo tanto el modelo nunca los había visto, son totalmente nuevos para él.
+
 Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran número de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que hay una alta probabilidad de que el set de entrenamiento siempre tenga como mínimo la cantidad de muestras necesarias de ambas clases para entrenar correctamente. Aun así, la división se realizó de forma estratificada, para que hubiese la misma proporcion de datos de una clase u otra, que en el set de datos original. Y de esta forma nos aseguramos que a la hora de tanto entrenar, como de comprobar el modelo generado, se tengan ejemplos de ambas clases en la misma proporción que aparecen en el set de datos original.
 
-Con esta división y preparación de los datos, los tres modelos se pudieron generar sin problemas utilizando las librerías de scikit-learn y pandas. Todos conseguían una accuracy superior al 90\%, el tiempo de ejecución era de un segundo para regresión logística, dos segundos tardaba el modelo de máquinas de soporte vectorial y gradient tree boosting y random forest eran los que más tardaban con un tiempo de cuatro y tres segundos respectivamente.
+Con esta división y preparación de los datos, los tres modelos se pudieron generar sin problemas utilizando las librerías de scikit-learn y pandas. Para valorar la ediciencia del entrenamiento se pueden obtener tres valores diferentes: \textit{accuracy}, \textit{precision} y \textit{recall}. Gracias a la librería \textit{metrics} de scikit-learn se pueden obtener respectivamente estos valores por medio de las funciones \textit{accuracy\_score}, \textit{precision\_score} y \textit{recall\_score}. A estos métodos se les pasa como argumentos la variable que contiene los valores de la salida del set de datos de prueba (generada, como se ha comentado anteriormente, con el 30\% de los datos originales), y como segundo argumento el propio modelo generado (después de entrenarlo). A continuación se detalla que significan cada uno de esto valores, siendo TP igual a verdaderos positivos, TN verdaderos negativos, FP falsos positivos y FN falsos negativos.
+
+El valor de \textit{accuracy} representa el porcentaje total de aciertos. 
+
+\begin{equation*}
+ \mbox{Accuracy} = \frac{(TP + TN)}{(TP + TN + FP + FN)}
+\end{equation*}
+
+Por otra parte \textit{precision} es el porcentaje que se obtiene de dividir el verdadero número de positivos (en este caso el uno o positivo representa que la habitación está ocupada) entre todos los positivos que se han asignado (sean correctos o no), cuanto más alto sea este valor menor error habrá cometido al asignar habitaciones ocupadas. 
+
+\begin{equation*}
+ \mbox{Precision} = \frac{TP}{(TP + FP)}
+\end{equation*}
+
+Por último, para obtener el valor de \textit{recall} se dividen el número de verdaderos positivos entre la suma de los verdaderos positivos más los que son positivo y ha asignado como negativos. 
+
+\begin{equation*}
+ \mbox{Recall} = \frac{TP}{(TP + FN)}
+\end{equation*}
+
+Todos conseguían un \textit{accuracy}, \textit{precision} y \textit{recall} superior al 90\%, el tiempo de ejecución era de un segundo para regresión logística, dos segundos tardaba el modelo de máquinas de soporte vectorial y gradient tree boosting y random forest eran los que más tardaban con un tiempo de cuatro y tres segundos respectivamente.
 
 \subsection{Validación cruzada}
 
@@ -824,9 +859,29 @@ Al realizar algunas pruebas para comprobar el comportamiento de la Raspberry ant
 El dataset elegido fue KDD Cup 1999 Datadata\cite{DataSetOccupancy}, que lo obtuve una vez más desde Kaggle. Se utilizó tanto el fichero \textit{kddcup.data.gz} como \textit{kddcup.data\_10\_percent.gz}. Una vez descargados se descomprimieron y convirtieron a clase binaria puesto que este dataSet contiene varias clases. 
 Para ello se utilizó el fichero \textit{Download\_dataSet.py}. En dicho programa se leía o bien el dataSet que contenía el diez porciento del dataSet total o se utilizaba el dataSet completo para poder leer algo más que el diez porciento de los datos. En el caso de la Raspberry el máximo de datos que era capaz de leer sin que el proceso muriera era el cuarenta porciento del fichero, en el portátil era un cincuenta porciento.
 
-Para leer otro porcentaje que no fuese el diez porciento se utilizaba una regla de tres para saber la cantidad de datos que se querían leer, pues sabiendo que el diez porciento contenía 494020 líneas, se podía obtener aproximadamente a cuantas líneas equivaldría otro porcentaje.
+Para obtener otro porcentaje de dataSet que no fuese el diez porciento se utilizaba una regla de tres para saber la cantidad de datos que se querían leer, pues sabiendo que el diez porciento contenía 494020 líneas, se podía obtener aproximadamente a cuantas líneas equivaldría otro porcentaje.
 
-Para leer estos dataSets se utilizó la librería pandas. Una vez leídos los datos se convertía de multiclase a clase binaria reemplazando todas las clases (excepto la clase \textit{normal.}) por la clase \textit{attack}. Una vez realizada la transformación se realiza un pequeño tratamiento a los datos para que cada modelo pueda entrenar adecuadamente con ellos. Este tratamiento se hace en el mismo fichero que lee los datos (\textit{Download\_dataSet.py}). En este fichero lo primero que se hace es eliminar la columna 19 y 20 ya que estas contienen todo el rato el mismo valor que es cero. A continuación se transforman los datos categóricos y por último se eliminan las filas duplicadas. Con este tratamiento los datos se guardan utilizando la función \textit{to\_csv} que proporciona pandas y se guarda el nuevo set de datos tratados sin la cabecera ni el índice, de forma que desde el códifo de cada uno de los modelos los datos estén listos para poder ser utilizados.
+Para leer estos dataSets se utilizó la función \textit{read\_csv} de la librería pandas. Una vez leídos los datos se convertía de multiclase a clase binaria reemplazando todas las clases (excepto la clase \textit{normal.}) por la clase \textit{attack}. El código que realiza estas tareas se puede ver en Código 3.1.
+
+\begin{listing}[h!]\begin{comment}
+\begin{listing}[H]
+\end{listing}
+\end{comment}
+    \caption{Lectura del dataset y conversion a clase binaria.}{}
+    \label{lst:1}
+    \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
+#Lectura csv
+n= 4940200 # número total de líneas
+s= 988040 # Leer solo el 20\%
+skip= sorted(random.sample(range(n),n-s))
+dataset = pd.read_csv('/home/nuriadj/Documents/TFG/kdd_cup99/kddcup.data', skiprows=skip)
+
+#Conversión multiclase a binaria
+dataset['normal.'] = dataset['normal.'].replace(['back.', 'buffer_overflow.', 'ftp_write.', 'guess_passwd.', 'imap.', 'ipsweep.', 'land.', 'loadmodule.', 'multihop.', 'neptune.', 'nmap.', 'perl.', 'phf.', 'pod.', 'portsweep.', 'rootkit.', 'satan.', 'smurf.', 'spy.', 'teardrop.', 'warezclient.', 'warezmaster.'], 'attack')
+    \end{minted}
+\end{listing}
+
+Una vez realizada la transformación se hace un pequeño tratamiento a los datos para que cada modelo pueda entrenar adecuadamente y más fácilmente con ellos. Este tratamiento se ejecuta en el mismo programa que lee los datos (\textit{Download\_dataSet.py}). En este fichero lo primero que se hace es eliminar la columna 19 y 20 ya que estas contienen todo el rato el mismo valor que es cero. A continuación se transforman los datos categóricos y por último se eliminan las filas duplicadas. Con este tratamiento los datos se guardan utilizando la función \textit{to\_csv} que proporciona pandas y se guarda el nuevo set de datos tratados sin la cabecera ni el índice, de forma que desde el códifo de cada uno de los modelos los datos estén listos para poder ser utilizados.
 
 Al igual que en el dataSet de Room Occupancy se utiliza el 70\% de los datos para entrenar y el 30\% para validar.
 
@@ -884,7 +939,7 @@ Para estresar las cpus se utilizó el comando stress que permite estresar, duran
 
 Cada vez que se estresaba con uno de estos niveles se ejecutaba consecutivamente uno de estos modelos y mediante el comando time de Linux se obtenía el tiempo que tardaban en ejecutar cada uno de los modelos para diferentes cargas computacionales.
 
-El comando time devuelve el tiempo de usuario, que es la cantidad de tiempo que se ha gastado el proceso en modo usuario. El Sys time es el tiempo de CPU invertido en el kernel dentro del proceso. Con estos dos tiempos se puede obtener el Cpu time, el tiempo total que ha utilizado la CPU para completar la ejecución del proceso. Por otra parte time también proporciona el real time, el tiempo que ha tardado en ejecutar el proceso como si lo hubiesemos cronometrado con un reloj, este tiempo es igual que el Wall time.
+El comando time devuelve tres valores. Uno de ellos es el tiempo de usuario, que es la cantidad de tiempo que se ha gastado el proceso en modo usuario. El Sys time es el tiempo de CPU invertido en el kernel dentro del proceso. Con estos dos tiempos se puede obtener el Cpu time, el tiempo total que ha utilizado la CPU para completar la ejecución del proceso. Por otra parte time también proporciona el real time, el tiempo que ha tardado en ejecutar el proceso como si lo hubiesemos cronometrado con un reloj, este tiempo es igual que el Wall time.
 
 Para cada uno de los modelos se obtuvieron resultados de tiempos diferentes. En el caso de máquinas de soporte vectorial y gradient tree boosting scikit-learn no admite multi-threading, por lo que a pesar de estresar una, dos o cuatro cpus siempre devolverán el mismo tiempo puesto que estos modelos solo pueden utilizar una única cpu para ejecutar.
 
@@ -899,30 +954,44 @@ Otro ejemplo de esto puede ser el caso en el caso en el que a Random forest se l
 
 Por lo tanto stress, en el caso de los modelos monocores, se ajustará para que estos puedan usar lo que necesitan. Y en Random forest llegan a un acuerdo para que ambos puedan usar lo máximo posible.
 
-Los resultados obtenidos para el data set de Kdd\_cup99 son los siguientes: 
+Los resultados obtenidos para el veinte por ciento del data set de Kdd\_cup99 son los siguientes: 
 
+\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{center}
 \begin{adjustbox}{width=\textwidth}
 \renewcommand{\arraystretch}{2}
-    \begin{tabular}{ | c | c | c | c | c | c | c | c | c |}
+\newcolumntype{a}{>{\columncolor{lightgray}}c}
+    \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
     \hline
-     \multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 cpu}} & \multicolumn{2}{|c|}{\textbf{2 cpu}} & \multicolumn{2}{|c|}{\textbf{4 cp}}\\[2ex]
-     \cline{2-9}
-      & Cpu time & Wall time & Cpu time & Wall time & Cpu time & Wall time & Cpu time & Wall time\\[2ex]
-     \hline
-     Regresión logísitca & 1 min 36 seg & 38 seg & 1 min 48 seg & 50 seg & 1 min 33 seg & 56 seg & 1 min 34 seg & 57 seg \\[2ex]
-     \hline
- SVM & 2 min 19 seg & 2 min 16 seg & 2 min 17 seg & 2 min 18 seg & 2 min 12 seg & 2 min 12 seg & 2 min 18 seg & 2 min 18 seg\\[2ex]
- \hline
- Gradient tree boosting & 3 min 19 seg & 3 min 20 seg & 3 min 19 seg & 3 min 20 seg & 3 min 15 seg & 3 min 15 seg & 3 min 16 seg & 3 min 17 seg\\[2ex]
- \hline
- Random forest & 3 min 4 seg & 1 min 3 seg & 2 min 30 seg & 1 min 5 seg & 2 min 3 seg & 1 min 10 sef & 2 min 10 seg & 1 min 18 seg\\[2ex]
- \hline
+    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 cpu}} & \multicolumn{2}{|c|}{\textbf{2 cpu}} & \multicolumn{2}{|c|}{\textbf{4 cp}}\\[2ex]
+    \cline{2-9}
+     & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
+    \hline
+    Regresión logísitca & 1 min 36 seg & 38 seg & 1 min 48 seg & 50 seg & 1 min 33 seg & 56 seg & 1 min 34 seg & 57 seg \\[2ex]
+    \hline
+    SVM & 2 min 19 seg & 2 min 16 seg & 2 min 17 seg & 2 min 18 seg & 2 min 12 seg & 2 min 12 seg & 2 min 18 seg & 2 min 18 seg\\[2ex]
+    \hline
+    Gradient boosting & 3 min 19 seg & 3 min 20 seg & 3 min 19 seg & 3 min 20 seg & 3 min 15 seg & 3 min 15 seg & 3 min 16 seg & 3 min 17 seg\\[2ex]
+    \hline
+    Random forest & 3 min 4 seg & 1 min 3 seg & 2 min 30 seg & 1 min 5 seg & 2 min 3 seg & 1 min 10 sef & 2 min 10 seg & 1 min 18 seg\\[2ex]
+    \hline
     \end{tabular}
 \end{adjustbox}
 \end{center}
 
-Una vez obtenidos los tiempos de ejecución de cada uno de los algoritmos, para diferentes niveles de estrés, se realizó la misma prueba utilizando un portátil. De esta forma se puede comparar la capacidad de la Raspberry frente a un dispositivo con mayor capacidad.
+Como se puede observar en la anterior tabla los tiempos de regresión logísitca, Máquinas de soporte vectorial (SVM) y Gradient boosting apenas varían. Es en Random forest donde se puede ver en idle un tiempo bastante mayor que para el resto de cargas (por los motivos vistos anteriormente) para dos y cuatro cores estresados los tiempos serán prácticamente los mismos porque en el fondo stress estará estresando el mismo número de cpus y el modelo usará también el mismo número de cores.
+
+Una vez obtenidos los tiempos de ejecución de cada uno de los algoritmos, para diferentes niveles de estrés, se realizó la misma prueba utilizando un portátil. De esta forma se puede comparar la eficiencia de la Raspberry frente a un dispositivo con mayor capacidad.
+
+El portátil que se utilizó para estas pruebas tenía un total de ocho cpus físicas y cuatro logicas. Es por ello que los parámetros de bajo, medio y alto de carga computacional cambiaron para poner más o menos en la misma situación al portátil y a la Raspberry. Por lo tanto en el portátil el nivel bajo de carga será estresar dos de sus cpus, el nivel medio cuatro y el alto los ocho cores de los que dispone la máquina.
+ 
+Ejecutando el comando stress conforme a estos nivels podremos observar que los tiempos que se obtienen en el portátil disminuyen bastante con respecto a los que conseguía la Raspberry. 
+
+Otro aspecto destacable de los tiempos en el portátil es que estos aumentaban a medida que se estresaba un mayor número de cores a pesar de que los tres primeros procesos siguen siendo monocores. Esto se debe a otro dato que no había tenido en cuenta hasta el momento que es la frecuencia con la que ejecutan las cpus.
+
+En la Raspberry la frecuencia máxima a las que pueden ir los cores es de 1500 MHz mientras que en el portátil es de 3600 MHz. Este aumento de velocidad de frecuencia explicaría por qué en el portátil los tiempos son menores, porque pueden llegar a ir a más velocidad los porcesos. Pero sigue sin dejar claro por qué los tiempos incrementan.
+
+Ejecutando el siguiente comando: podía observar la frecuencia en KHz a la que ejecutaban cada uno de los cores en la Raspberry. Observando que incluso estando en estado idle los cores ejecutaban a la máxima frecuencia, luego esto es otra de las razones por la que los tiempos no incrementan con stress, porque no pueden ir a más velocidad los cores. 
  
 \section{Incorporación de código en la memoria}
 
@@ -1019,8 +1088,12 @@ Para eso, en Linux tenemos aspell, que se ejecuta de la siguiente manera desde l
 Aquí viene lo que has aprendido durante el Grado/Máster y que has aplicado en el TFG/TFM. Una buena idea es poner las asignaturas más relacionadas y comentar en un párrafo los conocimientos y habilidades puestos en práctica.
 
 \begin{enumerate}
-  \item a
-  \item b
+    \item \textbf{Fundamentos de la programación}. Fue el primer contacto que tuve con el mundo de la programación, en la que pude aprender lo básico de la programación mediante Python.
+
+    \item \textbf{Sensores y actuadores}. En esta asignatura tuve la oportunidad de utilizar una Raspberry por primera vez en mi vida. Además aprendí lo necesario para poder saber como obtener información de los sensores por medio de los puertos gpio.
+    
+    \item \textbf{Aprendizaje automático}. Esta asignatura desperó en mi el interés sobre el aprendizaje automático y la gran cantidad de posibilidades que este nos ofrece. Pude aquirir conociemintos sobre los principales tipos de aprendizaje, así como varios modelos de cada uno de estos tipos como por ejemplo Regresión Logísitca, Árboles de decisión, Redes neuronales...
+
 \end{enumerate}
 
 
