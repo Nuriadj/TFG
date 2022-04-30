@@ -1213,6 +1213,6 @@ Comentar en la memoria que dado que es un gran número de ejemplos no es necesar
 
 		* Capítulo 4: 1. Experimentos con la Raspberry, 2. Experimentos con el PC, 3. Comparativas (ayudandome de tablas, pedir ayuda a Felipe).     
 
-	[x] Hacer script para ejecutar todos los modelos consecutivamente y guardar en un fichero los tiempos (hacerlo probando con el dataset de Ocuppancy para tardar menos).    
+	- [x] Hacer script para ejecutar todos los modelos consecutivamente y guardar en un fichero los tiempos (hacerlo probando con el dataset de Ocuppancy para tardar menos).    
 
 	- Hacer una página web estática con los objetivos del proyecto, donde se indique donde está el código, resultados...A poder ser en inglés.   
