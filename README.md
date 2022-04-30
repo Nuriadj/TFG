@@ -1165,8 +1165,11 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	Los tiempos que obtuve ayer sobre stress tienen sentido porque cuanto más stress menos frecuencia porque...  
 	
 	* El script que va a ejecutar todos los modelos lo escibo en jupyter-notebook. Para ejecutarlo:  
-	```ipython file.ipbn dataset_name```
-
+	```ipython file.ipbn dataset_name```  
+	
+* 30/4/22    
+	
+	* Terminar programa pc_test. Voy a añadir los tiempos obtenidos al ejecutar este programa a la tabla de Overleaf. 
 	
 # **TO DO Memoria:**  
 	
