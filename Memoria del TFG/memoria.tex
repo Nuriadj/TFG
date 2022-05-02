@@ -648,7 +648,34 @@ En este apartado se reaizará una breve descripción del dispositivo principal, 
 \section{Machine Learning e IoT}
 \label{sec:machine_learning}
 
-El Machine Learning es una disciplina  del campo de la Inteligencia Artificial, dota a los ordenadores de la capacidad de identificar patrones en datos masivos y elaborar predicciones
+El objetivo princicpal de este trabajo de investigación es conocer si la Raspberry es un dispositivo lo suficntemente potente para realizar tareas de Machine learning es por ello que primero debemos tener claros estos conceptos para poder() 
+
+ Machine Learning o aprendizaje automático, es una disciplina del campo de la Inteligencia Artificial que permite a las máquinas aprender sin ser explícitamente programadas para ello. Para aprender utilizan algoritmos que permiten a los ordenadores identificar los patrones que existen en grandes cantidades de datos y utilizar estos patrones para poder elaborar predicciones del futuro. Estos algoritmos de Machine Learning se divide en tres categorías: 
+
+\begin{itemize}
+    \item \textbf{Aprendizaje supervisado}. En este tipo de aprendizaje se le proporciona al algoritmo un conjunto de datos de entrada y la salida correcta que le corresponde a cada dato de entrada. De esta forma el programa puede "aprender" la relación que existe entre la salida y el conjunto de entradas. Dependiendo del tipo de salida podremos encontrar dos clases de modelos: modelos de regresión y clasificación.
+    
+    Si la salida es un valor numérico continuo, estaríamos ante un problema de regresión en el que se busca obtener la recta que mejor se ajusta a los datos de entrada para poder predecir otros valores. Si, en cambio, la salida es una etiqueta de clase, es decir un valor discreto, se correspondería a un problema de clasificación, en los que se busca estimar a qué clase pertenecen los datos de entrada.
+    
+    \item \textbf{Aprendizaje no supervisado}. Al algoritmo de aprendizaje se le proporciona únicamente el conjunto de datos de entrada, sin ningún tipo de dato de salida. El objetivo es que el método de aprendizaje utilizado detecte posibles patrones de interés en el conjunto de datos proporcionados. 
+    
+    Hay principalmente dos tipos de problemas que estos algoritmos tratan de resolver. Uno de ellos es el  clustering (o segmentación), que sirve para encontrar diferentes grupos dentro de los datos de entrada. El segundo tipo de problemas es reducir la dimensionalidad de los datos, es decir, reducir el número de características del conjunto de datos de entrada asumiendo que muchas de ellas son redundantes y por lo tanto no aportan información nueva.
+    
+    \item \textbf{Aprendizaje por refuerzo}. El algoritmo aprende a desarrollar la tarea que se le asigna a base de un esquema de recompensas y penalizaciones ante las decisiones que toma el algoritmo en cada una de las iteraciones.
+\end{itemize}
+
+Gracias a que estos algoritmos pueden estar aprendiendo constantemente de nuevos datos pueden ir perfeccionando su comportamiento lo que hace que las técnicas de Machine Learning sean cada vez son más importantes debido a la multitud de aplicaciones que se le pueden dar en campos como la robótica, vehículos autónomos, diagnósticos médicos, markenting....
+
+Uno de los campos en los que es de gran importancia estas técnicas es en los proyectos de IoT (Internet of Things). El Internet de las cosas (o Internet of Things) es la interconexión de sensores y dispositivos como por ejemplo pueden ser los electrodomésticos, termostátos, coches, ropa... A través de una red por medio de la cual todos ellos pueden interaccionar y compartir datos. En estos casos se utiliza Machine Learning para generar, por medio de todos estos datos recopilados, nuevos modelos de aprendizaje automático cuyas predicciones se pueden usar para poder actuar sobre el entorno. Las posibles aplicaciones que ofrece esto son prácticamente infinitas, algunos ejemplos pueden ser:
+
+\begin{itemize}
+    \item Riego de plantas. Tomando medidas de luz, humedad, temperatura...Por medio de ML se puede automatizar el riego de las plantas.
+    \item Sistema antirobo.
+    \item Telemedicina. Por medio de dispositivos que lleve puesto encima el paciente se puede tener un control sobre su estado de salud e incluso hacer diagnósticos anticipados.
+    \item 
+\end{itemize}
+
+En este proyecto utilizaremos algoritmos de aprendizaje supervisado para realizar problemas de clasificación binaria, es decir, solo existen dos clases a las que pueden pertenecer los datos.
 
 \section{Dispositivo Hardware: Raspberry Pi 4 Modelo B}
 \label{sec:dispositivo_hardware}
@@ -661,7 +688,7 @@ Desde su primer lanzamiento se han ido desarrollando y comercializado nuevos mod
 
 Dicho modelo posee un total de cuatro cores físicos y otros cuatro lógicos. Otro detalle destacable de la Raspberry para el desarrollo de este trabajo es que posee una arquitectura SMP (Symmetric Multi-Processing), un tipo de arquitectura de computador en el que las unidades de procesamiento comparten una única memoria central por lo que permite que cualquier procesador trabaje en cualquier tarea sin importar su localización en memoria. 
 
-Es uno de los dispositivos más populares en la actualidad ya que brinda un sinfín de posibilidades a pesar de su pequeño tamaño. Específicamente dentro de el campo de aprendizaje automático se podrían desarrollar multitud de aplicaciones gracias a la interacción que tiene con el entorno por medio de los sensores y actuadores que se pueden conectar. Por ello, en este trabajo de investigación se busca examinar el rendimiento de este pequeño ordenador y comprobar hasta donde se podría llegar con él, dentro del campo del aprendizaje automático. 
+Es uno de los dispositivos más populares en la actualidad ya que brinda un sinfín de posibilidades a pesar de su pequeño tamaño. Específicamente dentro de el campo de aprendizaje automático e IoT se podrían desarrollar multitud de aplicaciones gracias a la interacción que tiene con el entorno por medio de los sensores y actuadores que se pueden conectar. Por ello, en este trabajo de investigación se busca examinar el rendimiento de este pequeño ordenador y comprobar hasta donde se podría llegar con él, dentro del campo del aprendizaje automático. 
 
 
 \begin{comment}
@@ -776,6 +803,12 @@ En este capítulo se realiza una descipción detallada sobre las instalaciones n
 \label{sec:arquitectura}
 
 Antes de adentrarnos en una explicación en mayor profundadida de lo que se desarrolla en este proyecto
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=14cm, keepaspectratio]{img/arquitectura_general.png}
+  \caption{Estructura de los experimentos}\label{fig:arquitectura}
+\end{figure}
 
 Si tu proyecto es un software, siempre es bueno poner la arquitectura (que es cómo se estructura tu programa a ``vista de pájaro'').
 
@@ -968,7 +1001,7 @@ En caso de querer someter a la Raspberry a un nivel mayor de carga computacional
 
 
 \subsection{Programa para las pruebas: raspberry\_test.ipynb}
-\label{subsec:programa_pruebas}
+\label{subsec:programa_pruebas_raspberry}
 
 Para realizar las pruebas en la Raspberry de forma más sencilla se creó un programa llamado \textit{raspberry\_test.ipynb}. Dicho programa necesita como único argumento el data set con el que se desea hacer el experimento para que pueda realizar su función correctamente.
 
@@ -1065,7 +1098,7 @@ En la figura~\ref{figura:stress_rForest} vemos que el proceso de Random forest e
 
 Sabiendo esto, los niveles de prueba medio y alto obtienen prácticamente los mismos tiempos puesto que al tratar de ejecutar a al vez tanto el proceso de stress como el del modelo se están pidiendo usar más cores de los que hay. En consecuencia la Raspberry tendrá que dividir los recursos de los que dispone equitativamente entre ambos procesos. Por lo que en el fondo stress estará estresando el mismo número de cpus tanto en el nivel medio como en el alto y al proceso del modelo le sucederá lo mismo, utilizará el mismo número de cores tanto en un caso como en el otro. En el nivel intemedio, donde se estresan dos cores, el modelo no podrá utilizar las cuatro cpus que se le indican con n\_jobs puesto que estaría superando el número de cores que tiene la Raspberry. De modo que la Raspberry dividirá los recursos haciendo que stress pueda ejecutar en dos cores, y por lo tanto el modelo de aprendizaje dispondrá únicamente de las otras dos cpus para su ejecución. Mientras que en el nivel más alto de carga la Raspberry dividirá las cuatro cpus para darle la mitad de ellas a la ejecución de \textit{stress} y la otra mitad al modelo, haciendo que ambas utilicen el máximo de cores posibles.
 
-Otro aspecto de las ejecuciónes en la Raspberry  que será relevante más adelante, es la frecuencia a la que ejecutan los core. Utilizando el comando \textit{lscpu} de Linux, se puede obtener información relevante sobre los cores como por ejemplo la frecuencia máxima y mínima a la que pueden ejecutar que en el caso de la Raspberry la mínima será igual a 600MHz y la máxima 1500MHz. 
+Otro aspecto de las ejecuciónes en la Raspberry  que será relevante más adelante, es la frecuencia a la que ejecutan los core. Utilizando el comando \textit{lscpu} de Linux, se puede obtener información relevante sobre los cores como por ejemplo la frecuencia máxima y mínima a la que pueden ejecutar, que en el caso de la Raspberry la mínima será igual a 600MHz y la máxima 1500MHz. 
 
 Para saber la frecuencia de cada uno de los cores en tiempo real se puede ejecutar el comando:\\
 
@@ -1077,21 +1110,29 @@ Para saber la frecuencia de cada uno de los cores en tiempo real se puede ejecut
    sudo cat /sys/devices/system/cpu/cpu3/cpufreq/cpuinfo_cur_freq"
 \end{lstlisting}
 
-Mostrará las frecuencias de ejecución de los cores cada 0.1 segundos. Si utilizamos dicho comando para ver las frecuencias cuando la Raspberry está Idle podremos ver que todas las cpus están sobre los 1500MHz. Por lo tanto todos los cores se encuentran a la máxima velocidad a la que pueden ejecutar y por ello stress no puede provocar que ejecuten a una velocidad mayor.
+Mostrará las frecuencias de ejecución de los cores cada 0.1 segundos. Si utilizamos dicho comando para ver las frecuencias cuando la Raspberry está tanto Idle como estresada podremos ver que todas las cpus están sobre los 1500MHz. Por lo tanto todos los cores siempre están ejecutando a la máxima velocidad que pueden.
 
 \section{Experimentos en el portátil}
 \label{sec:experimentos_en_portatil}
 
 Las mismas pruebas que se realizaron en la Raspberry se llevaron a cabo en un portátil. De esta forma se podrán comparar los tiempos de ejecución en un dispositivo de mayor capacidad y sabremos cuanto dista el comportamiento de la Raspberry del de esta máquina.
 
-El portátil que se utilizó para estas pruebas tenía un total de ocho cpus físicas. Es por ello que los parámetros de bajo, medio y alto de carga computacional cambiaron para poner más o menos en la misma situación al portátil y a la Raspberry. Por lo tanto en el portátil el nivel bajo de carga será estresar dos de sus cpus, el nivel medio cuatro y el alto los ocho cores de los que dispone la máquina.
+El portátil que se utilizó para estas pruebas tenía un total de ocho cpus físicas. Es por ello que, salvo el nivel Idle, los cores de los niveles bajo, medio y alto de carga computacional cambiaron para poner más o menos en la misma situación al portátil y a la Raspberry. Por lo tanto en el portátil el nivel bajo de carga será estresar dos de sus cpus, el nivel medio cuatro y el alto los ocho cores de los que dispone la máquina. 
 
-Para realizar las pruebas se ha creado un programa llamado \textit{pc\_test.ipynb} que al igual que el fichero \textit{raspberry\_test.ipynb} ejecuta cada uno de los modelos con los diferentes niveles de estrés y guarda los datos obtenidos un nuevo fichero que crea el programa con el formato Pc\_nombreDataSet\_results.txt. Al igual que en \textit{raspberry\_test.ipynb} este programa creará dos procesos uno ejecutará stress (cuando se necesite) y el otro los modelos que se encuentran dentro de la carpeta Modelos. Todos los ficheros que generan los modelos son los mismos que en la Raspberry salvo el de Random Forest que tiene un fichero específico para el portátil puesto que en este caso el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
+\subsection{Programa para las pruebas: pc\_test.ipynb}
+\label{subsec:programa_pruebas_pc}
 
-Los resultados de la ejecución del comando stress conforme a estos nivels podremos se pueden observar en la tabla 4.2. Como se puede apreciar los tiempos que se obtienen en el portátil disminuyen bastante con respecto a los que conseguía la Raspberry. 
+Para realizar las pruebas se ha creado un programa llamado \textit{pc\_test.ipynb} que al igual que el fichero \textit{raspberry\_test.ipynb} ejecuta cada uno de los modelos con los diferentes niveles de estrés y guarda los datos obtenidos en un nuevo fichero que crea el programa con el formato Pc\_nombreDataSet\_results.txt.
+
+Utilizará dos bucles anidados, tal y como se hacia en \textit{raspberry\_test.ipynb}, para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \textit{raspberry\_test.ipynb} ya que como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará si es necesario dos procesos, uno ejecutará stress (cuando se desee estresar alguna cpu) y el otro los modelos que se encuentran dentro de la carpeta \textit{"Modelos"}. Todos los ficheros que generan los modelos de aprendizaje son los mismos que en la Raspberry salvo el de Random Forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
+
+\subsection{Resultados}
+\label{subsec:resultados_pc}
+
+Los resultados de la ejecución del comando stress conforme a estos nivels podremos se pueden observar en la tabla~\ref{tab:times_portatil}. Como se puede apreciar los tiempos que se obtienen en el portátil disminuyen bastante con respecto a los que conseguía la Raspberry. 
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-\begin{table}
+\begin{table}[h!]
 \begin{adjustbox}{width=\textwidth}
 \renewcommand{\arraystretch}{2}
 \newcolumntype{a}{>{\columncolor{lightgray}}c}
@@ -1104,7 +1145,7 @@ Los resultados de la ejecución del comando stress conforme a estos nivels podre
     \hline
     Regresión logísitca & 18 seg & 7 seg & 21 seg & 8 seg & 29 seg & 13 seg & 48 seg & 27 seg \\[2ex]
     \hline
-    SVM & 31 seg & 31 seg & 43 seg & 243 seg & 58 seg & 58 seg & 1 min 22 seg & 1 min 32 seg\\[2ex]
+    SVM & 31 seg & 31 seg & 43 seg & 43 seg & 58 seg & 58 seg & 1 min 22 seg & 1 min 32 seg\\[2ex]
     \hline
     Gradient boosting & 41 seg & 41 seg & 54 seg & 54 seg & 1 min 27 seg & 1 min 27 seg & 1 min 29 seg & 1 min 41 seg\\[2ex]
     \hline
@@ -1118,9 +1159,9 @@ Los resultados de la ejecución del comando stress conforme a estos nivels podre
 
 Otro aspecto destacable de los tiempos en el portátil es que estos aumentaban a medida que se estresaba un mayor número de cores a pesar de que los tres primeros procesos siguen siendo monocores. Esto se debe a otro dato que no había tenido en cuenta hasta el momento que es la frecuencia con la que ejecutan las cpus.
 
-En la Raspberry la frecuencia máxima a las que pueden ir los cores es de 1500 MHz mientras que en el portátil es de 3600 MHz. Este aumento de velocidad de frecuencia explicaría por qué en el portátil los tiempos son menores, porque pueden llegar a ir a más velocidad los procesos.
+En el portátil la frecuanci máxima a la que pueden ejecutar los cores es de 3600 MHz. Este aumento de velocidad de frecuencia explicaría por qué en el portátil los tiempos son menores, porque pueden llegar a ir a más velocidad los procesos.
 
-Ejecutando el siguiente comando: podía observar la frecuencia en KHz a la que ejecutaban cada uno de los cores en la Raspberry. Observando que incluso estando en estado idle los cores ejecutaban a la máxima frecuencia, luego esto es otra de las razones por la que los tiempos no incrementan con stress, porque no pueden ir a más velocidad los cores. Mientras que en el pórtatil las frecuencias si variaban al ejecutar stress.
+Ejecutando el siguiente comando: . Mientras que en el pórtatil las frecuencias si variaban al ejecutar stress.
  
 \section{Incorporación de código en la memoria}
 
