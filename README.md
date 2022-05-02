@@ -1169,7 +1169,26 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 * 30/4/22    
 	
-	* Terminar programa pc_test. Voy a añadir los tiempos obtenidos al ejecutar este programa a la tabla de Overleaf. 
+	* Terminar programa pc_test. Voy a añadir los tiempos obtenidos al ejecutar este programa a la tabla de Overleaf.   
+	
+
+## Mayo  
+	
+* 2/5/22  
+	
+	* Redactando memoria todo desde el sábado.  
+	
+	* Tabla de los tiempos que obtueba al ejecutar el pc_test.  
+	
+	n_jobs= 8  
+	**20% Kdd_cup99** Portátil
+	| Modelo | Idle | 2 cpu | 4 cpu | 8 cpu |
+	|--------|------|------|--------|-------|
+	|Regresión logística| 18 seg // **7 seg** | 21 seg // **8 seg** | 29 seg // **14 seg** | 48 seg // **27 seg** |
+	|SVM | 31 seg // **31 seg** | 43 seg // **43 seg** | 58 seg // **58 seg** | 1 min 22 seg // **1 min 32 seg** |
+	|Gradient tree boosting |  41 seg // **41 seg** | 54 seg // **54 seg** | 1 min 27 seg // **1 min 27 seg** | 1 min 28 seg // **1 min 41 seg** |
+	|Random forest | 1 min 16 seg // **13 seg** | 1 min 5 seg // **15 seg** | 58 seg // **19 seg** | 54 seg // **23 seg** |   
+	
 	
 # **TO DO Memoria:**  
 	
