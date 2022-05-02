@@ -1162,7 +1162,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	* Si ejecuto uno de los modelos en idle puedover que la cpu que lleva el proceso(que se ven en htop cual es) aumenta la frecuancia de ejecución hasta 3000-3330 MHz.  
 	Cuando hago stress todas las frecuencias "suben" no solo las de los cores que lo están ejecutando.  
-	Los tiempos que obtuve ayer sobre stress tienen sentido porque cuanto más stress menos frecuencia porque...  
+	Los tiempos que obtuve ayer sobre stress tienen sentido porque cuanto más stress menos frecuencia porque... (edición 2/5/22: porque hay más procesos intentando hacer cosas y por lo tanto para que todos puedan ejececutar cada vez hay más espcacio de tiempo entre que le dejan hacer algo y el siguiente instante, porque todos está más ocupado. Cuantas más tareas tengamos menos tiempo tendrá el núcleo para ejecutar cada una de ellas.) 
 	
 	* El script que va a ejecutar todos los modelos lo escibo en jupyter-notebook. Para ejecutarlo:  
 	```ipython file.ipbn dataset_name```  
