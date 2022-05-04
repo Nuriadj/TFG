@@ -1191,7 +1191,9 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 * 4/5/22  
 	
-	Para poder utilizar el pc_test con Occupancy hay que quitar la primera columna y la cabecera, para que esté listo el dataSet para entrenar con él. Además el pos_label para precision y recall habría que cogerlo asignando label= y_test[0] porque sino el parámetro '.normal' no está en el dataSet de Occupancy.  
+	Para poder utilizar el pc_test con Occupancy hay que quitar la primera columna y la cabecera, para que esté listo el dataSet para entrenar con él. Además el pos_label para precision y recall habría que cogerlo asignando label= y[0] porque sino el parámetro '.normal' no está en el dataSet de Occupancy. Se utiliza la y[0] para que todos los modelos hagan los calculos de accuracy, precision, recall respecto a la misma clase.  
+	
+	*Probar el código con esta modificación.  
 	
 	
 # **TO DO Memoria:**  
