@@ -1189,6 +1189,10 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	|Gradient tree boosting |  41 seg // **41 seg** | 54 seg // **54 seg** | 1 min 27 seg // **1 min 27 seg** | 1 min 28 seg // **1 min 41 seg** |
 	|Random forest | 1 min 16 seg // **13 seg** | 1 min 5 seg // **15 seg** | 58 seg // **19 seg** | 54 seg // **23 seg** |   
 	
+* 4/5/22  
+	
+	Para poder utilizar el pc_test con Occupancy hay que quitar la primera columna y la cabecera, para que esté listo el dataSet para entrenar con él. Además el pos_label para precision y recall habría que cogerlo asignando label= y_test[0] porque sino el parámetro '.normal' no está en el dataSet de Occupancy.  
+	
 	
 # **TO DO Memoria:**  
 	
