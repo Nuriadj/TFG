@@ -648,34 +648,75 @@ En este apartado se reaizará una breve descripción del dispositivo principal, 
 \section{Machine Learning e IoT}
 \label{sec:machine_learning}
 
-El objetivo princicpal de este trabajo de investigación es conocer si la Raspberry es un dispositivo lo suficntemente potente para realizar tareas de Machine learning es por ello que primero debemos tener claros estos conceptos para poder() 
+El objetivo princicpal de este trabajo de investigación es conocer si la Raspberry es un dispositivo lo suficientemente potente para realizar tareas de Machine learning es por ello que primero debemos tener claros estos conceptos para poder entender el proyecto.
 
- Machine Learning o aprendizaje automático, es una disciplina del campo de la Inteligencia Artificial que permite a las máquinas aprender sin ser explícitamente programadas para ello. Para aprender utilizan algoritmos que permiten a los ordenadores identificar los patrones que existen en grandes cantidades de datos y utilizar estos patrones para poder elaborar predicciones del futuro. Estos algoritmos de Machine Learning se divide en tres categorías: 
+ Machine Learning o aprendizaje automático, es una disciplina del campo de la Inteligencia Artificial que permite a las máquinas aprender sin ser explícitamente programadas para ello. Para aprender utilizan algoritmos que permiten a los ordenadores identificar los patrones que existen en grandes cantidades de datos y utilizar estos patrones para poder elaborar predicciones del futuro. 
+ 
+ Los datos que se proporcionan al algoritmo normalmente son ficheros con varias filas y columnas. Cada fila representa un ejemplo de datos que se pasa al modelo para entrenar. Mientras que si posee varías columnas significa que hay varios valores que definen un ejemplo, se dice que estas columnas son las caracterísitcas del dataSet. 
+ 
+ Un ejemplo de lo que contiene un dataSet es la tabla~\ref{tab:my_dataSet}, donde se proporciona información sobre cuando un niño va a jugar a la pelota o no. En este caso tendríamos tres características (previsión, temperatura y amigos), la columna jugar es la decisión que tome el niño ante los valores de esas caracterísitcas. Por lo tnato, cada fila define una situación diferente, es decir es un ejemplo de lo que puede suceder.
+ 
+ \begin{table}[]
+     \centering
+     \begin{tabular}{| c | c | c | c |}
+            \hline
+          Previsión & Temperatura & Amigos & Jugar\\
+          \hline
+           Soleado &  25 ºC & 2 & Si \\
+           \hline
+           Lluvioso &  12 ºC & 0 & No\\
+           \hline
+           Nublado &  18 ºC & 4 & Si\\
+           \hline
+     \end{tabular}
+     \caption{Ejemplo de un dataSet}
+     \label{tab:my_dataSet}
+ \end{table}
+ 
+ Los algoritmos de Machine Learning se dividen en tres categorías: 
 
 \begin{itemize}
-    \item \textbf{Aprendizaje supervisado}. En este tipo de aprendizaje se le proporciona al algoritmo un conjunto de datos de entrada y la salida correcta que le corresponde a cada dato de entrada. De esta forma el programa puede "aprender" la relación que existe entre la salida y el conjunto de entradas. Dependiendo del tipo de salida podremos encontrar dos clases de modelos: modelos de regresión y clasificación.
+    \item \textbf{Aprendizaje supervisado}. En este tipo de aprendizaje se le proporciona al algoritmo un conjunto de datos de entrada con su salida correspondiente. De esta forma el programa puede "aprender" la relación que existe entre la salida y el conjunto de entradas. Dependiendo del tipo de salida podremos encontrar dos clases de modelos: modelos de regresión o de clasificación.
     
-    Si la salida es un valor numérico continuo, estaríamos ante un problema de regresión en el que se busca obtener la recta que mejor se ajusta a los datos de entrada para poder predecir otros valores. Si, en cambio, la salida es una etiqueta de clase, es decir un valor discreto, se correspondería a un problema de clasificación, en los que se busca estimar a qué clase pertenecen los datos de entrada.
+    Si la salida es un valor numérico continuo, estaríamos ante un problema de regresión en el que se busca obtener la recta que mejor se ajusta a los datos de entrada para poder predecir otros valores. Si, en cambio, la salida es una etiqueta de clase, es decir un valor discreto, se correspondería a un problema de clasificación, en los que se busca estimar a qué clase pertenecen los datos de entrada. 
     
-    \item \textbf{Aprendizaje no supervisado}. Al algoritmo de aprendizaje se le proporciona únicamente el conjunto de datos de entrada, sin ningún tipo de dato de salida. El objetivo es que el método de aprendizaje utilizado detecte posibles patrones de interés en el conjunto de datos proporcionados. 
+    Un ejemplo de este último tipo se puede ver en la Figura~\ref{fig:a_supervisado}, donde cada una de las formas serían las entradas y las etiquetas de: triángulo, cuadrado o círculo serían la salidas, cada dato de entrada tiene asignada una de estas etiquetas. Todo esto formaría lo que se denomina dataSet que es el conjunto de datos que se pasan al modelo para entrenar y poder encontrar esas relaciones entre entradas y salidas. En este caso cuando al modelo se le pregunte a qué clase pertenece una figura (del mismo tipo que ha visto durante el entrenamiento), si es lo suficientemente robusto, debería de ser capaz de identificarlo como un cuadrado.
     
-    Hay principalmente dos tipos de problemas que estos algoritmos tratan de resolver. Uno de ellos es el  clustering (o segmentación), que sirve para encontrar diferentes grupos dentro de los datos de entrada. El segundo tipo de problemas es reducir la dimensionalidad de los datos, es decir, reducir el número de características del conjunto de datos de entrada asumiendo que muchas de ellas son redundantes y por lo tanto no aportan información nueva.
+    \begin{figure}[h!]
+      \centering
+      \includegraphics[width=12cm, keepaspectratio]{img/a_supervisado.png}
+      \caption{Estructura aprendizaje supervisado para clasificación.}\label{fig:a_supervisado}
+    \end{figure}
     
-    \item \textbf{Aprendizaje por refuerzo}. El algoritmo aprende a desarrollar la tarea que se le asigna a base de un esquema de recompensas y penalizaciones ante las decisiones que toma el algoritmo en cada una de las iteraciones.
+    Existen multitud de modelos de Machine Learning que sirven para resolver problemas mediante aprendizaje supervisado, como por ejemplo algoritmos de Regresión logística, Árboles de decisión, Máquinas de soporte vectorial...
+    
+    \item \textbf{Aprendizaje no supervisado}. Al algoritmo de aprendizaje se le proporciona únicamente el conjunto de datos de entrada, sin ningún tipo de dato de salida. El objetivo es que el método de aprendizaje utilizado detecte posibles patrones de interés en el conjunto de datos de entrada. 
+    
+    \begin{figure}[h!]
+      \centering
+      \includegraphics[width=12cm, keepaspectratio]{img/a_no_supervisado.png}
+      \caption{Estructura aprendizaje no supervisado para segmentación.}\label{fig:a_no_supervisado}
+    \end{figure}
+    
+    Hay principalmente dos tipos de tareas que estos algoritmos tratan de realizar. Una de ellas es el clustering (o segmentación), que sirve para encontrar diferentes grupos dentro de los datos de entrada. En la Figura~\ref{fig:a_no_supervisado} se muestra un ejemplo esquemático de la ejecución de un problema de este estilo, donde una vez más las entradas serían cada una de las formas pero en esta ocasión no están etiquetadas como veíamos en la Figura~\ref{fig:a_supervisado}. El modelo en esta ocasión, viendo las características de cada uno de los datos, los agrupará en diferentes clases.
+    
+    La otra misión que pueden tener este tipo de aprendizaje es reducir la dimensionalidad de los datos, es decir, reducir el número de características del conjunto de datos de entrada asumiendo que muchas de ellas son redundantes y por lo tanto no aportan información nueva.
+    
+    Al igual que en aprendizaje supervisado existen varios algoritmos que buscan resolver estas tareas, como por ejemplo el método KNN, K-Means...
+    
+    \item \textbf{Aprendizaje por refuerzo}. El algoritmo aprende a desarrollar la tarea que se le asigna a base de un esquema de recompensas y penalizaciones ante las decisiones que toma el programa en cada una de las iteraciones.
 \end{itemize}
 
-Gracias a que estos algoritmos pueden estar aprendiendo constantemente de nuevos datos pueden ir perfeccionando su comportamiento lo que hace que las técnicas de Machine Learning sean cada vez son más importantes debido a la multitud de aplicaciones que se le pueden dar en campos como la robótica, vehículos autónomos, diagnósticos médicos, markenting....
+Gracias a que estos algoritmos pueden estar aprendiendo constantemente de nuevos datos consiguen ir perfeccionando su comportamiento, lo que hace que las técnicas de Machine Learning sean cada vez más importantes debido a la multitud de aplicaciones que se le pueden dentro de la robótica, los vehículos autónomos, diagnósticos médicos, markenting....
 
-Uno de los campos en los que es de gran importancia estas técnicas es en los proyectos de IoT (Internet of Things). El Internet de las cosas (o Internet of Things) es la interconexión de sensores y dispositivos como por ejemplo pueden ser los electrodomésticos, termostátos, coches, ropa... A través de una red por medio de la cual todos ellos pueden interaccionar y compartir datos. En estos casos se utiliza Machine Learning para generar, por medio de todos estos datos recopilados, nuevos modelos de aprendizaje automático cuyas predicciones se pueden usar para poder actuar sobre el entorno. Las posibles aplicaciones que ofrece esto son prácticamente infinitas, algunos ejemplos pueden ser:
+Uno de los campos en los que son de gran importancia estas técnicas es en los proyectos de IoT (Internet of Things). El Internet de las cosas (o Internet of Things) es la interconexión de sensores y dispositivos, como por ejemplo pueden ser los electrodomésticos, termostátos, coches, ropa... Todos ellos se conectan a través de una red por medio de la cual pueden interaccionar y compartir datos. En estos casos se utiliza Machine Learning para generar, por medio de todos estos datos recopilados, nuevos modelos de aprendizaje automático cuyas predicciones se pueden usar para poder actuar sobre el entorno. Las posibles aplicaciones que ofrece esto son prácticamente infinitas, algunos ejemplos pueden ser:
 
 \begin{itemize}
     \item Riego de plantas. Tomando medidas de luz, humedad, temperatura...Por medio de ML se puede automatizar el riego de las plantas.
-    \item Sistema antirobo.
-    \item Telemedicina. Por medio de dispositivos que lleve puesto encima el paciente se puede tener un control sobre su estado de salud e incluso hacer diagnósticos anticipados.
-    \item 
+    \item Sistema antirobo. 
+    \item Telemedicina. Por medio de dispositivos que lleve puesto el paciente se puede tener un control sobre su estado de salud e incluso hacer diagnósticos anticipados.
+    \item Control de luces. Apagar o encender de forma totalmente autónoma las luces si hay o no una persona en la habitación.
 \end{itemize}
-
-En este proyecto utilizaremos algoritmos de aprendizaje supervisado para realizar problemas de clasificación binaria, es decir, solo existen dos clases a las que pueden pertenecer los datos.
 
 \section{Dispositivo Hardware: Raspberry Pi 4 Modelo B}
 \label{sec:dispositivo_hardware}
@@ -686,9 +727,9 @@ El sistema operativo que ofrece es Raspbian Pi OS, una versión adaptada de Debi
 
 Desde su primer lanzamiento se han ido desarrollando y comercializado nuevos modelos. En este proyecto se utilizará la última versión de estos dispositivos denominado como Raspberry Pi 4 Modelo B con 4GB de RAM.
 
-Dicho modelo posee un total de cuatro cores físicos y otros cuatro lógicos. Otro detalle destacable de la Raspberry para el desarrollo de este trabajo es que posee una arquitectura SMP (Symmetric Multi-Processing), un tipo de arquitectura de computador en el que las unidades de procesamiento comparten una única memoria central por lo que permite que cualquier procesador trabaje en cualquier tarea sin importar su localización en memoria. 
+Dicho modelo posee un total de cuatro cores físicos y cuatro lógicos. Otro detalle destacable de la Raspberry para el desarrollo de este trabajo es que posee una arquitectura SMP (Symmetric Multi-Processing), un tipo de arquitectura de computador en el que las unidades de procesamiento comparten una única memoria central, lo que permite que cualquier procesador trabaje en cualquier tarea sin importar su localización en memoria. 
 
-Es uno de los dispositivos más populares en la actualidad ya que brinda un sinfín de posibilidades a pesar de su pequeño tamaño. Específicamente dentro de el campo de aprendizaje automático e IoT se podrían desarrollar multitud de aplicaciones gracias a la interacción que tiene con el entorno por medio de los sensores y actuadores que se pueden conectar. Por ello, en este trabajo de investigación se busca examinar el rendimiento de este pequeño ordenador y comprobar hasta donde se podría llegar con él, dentro del campo del aprendizaje automático. 
+Actualmente es uno de los dispositivos más populares ya que brinda un sinfín de posibilidades a pesar de su pequeño tamaño. Específicamente dentro de el campo de aprendizaje automático e IoT se podrían desarrollar multitud de aplicaciones gracias a la interacción que tiene con el entorno por medio de los sensores y actuadores que se pueden conectar. Por ello, en este trabajo de investigación se busca examinar el rendimiento de este pequeño ordenador y comprobar hasta donde se podría llegar con él, dentro del campo del aprendizaje automático. 
 
 
 \begin{comment}
@@ -735,17 +776,20 @@ Ofrece casi lo mismo que Anaconda pero es mucho más ligero, lo que lo hace idó
 
 Python\footnote{\url{https://www.python.org/}} es un lenguaje de programación que nace a principios de los años 90 gracias al informático holandés Guido Van Rossum. Su objetivo era crear un lenguaje de programación que fuera fácil de aprender, escribir y entender.
 
-Es un lenguaje de alto nivel, interactivo, interpretado y orientado a objetos. Al ser interpretado permite poder ejecutarlo sin necesidad de compilarlo previamente, reduciendo el tiempo entre la escritura y la ejecución del código.
-Además es multiplataforma y de código abierto lo que ha ayudado a que Python sea el lenguaje con mayor crecimiento y uno de los más utilizados en la actualidad.  
+Es un lenguaje de alto nivel (sencillo de leer y escribir debido a su similitud con el lenguaje humano), interactivo, interpretado y orientado a objetos. Al ser interpretado permite poder ejecutarlo sin necesidad de compilarlo previamente, reduciendo el tiempo entre la escritura y la ejecución del código. Utiliza módulos y paquetes, lo que fomenta la modularidad y la reutilización de código. 
+
+Además es multiplataforma y de código abierto, por lo tanto gratuito, lo que ha ayudado a que Python sea el lenguaje con mayor crecimiento y uno de los más utilizados en la actualidad.  
 
 Entre los campos en los que más se emplea este lenguaje se encuentra la inteligencia artificial, big data, machine learning y data science entre otros, ya que facilita la creación de códigos entendibles de rápido aprendizaje como los que son necesarios en este tipo de proyectos.
 
 \subsection{Entorno de desarrollo: Jupyter-notebook}
 \label{subsec:entorno_de_desarrollo}
 
-Jupyter-notebook es una aplicación web de código abierto desarrollada por la organización Proyecto Jupyter. Permite crear y compartir documentos computacionales que siguen un esquema versionado y una lista ordenada de celdas de entrada y salida.
+Jupyter-notebook es una aplicación web lanzada en 2015, de código abierto desarrollada por la organización Proyecto Jupyter. Permite crear y compartir documentos computacionales que siguen un esquema versionado y una lista ordenada de celdas de entrada y salida.
 
-Estas celdas pueden contener código, texto en formato Markdown, fórmulas matemáticas y ecuaciones, o también contenido multimedia. Cada celda se pueden ejecutar para visualizar los datos y ver los resultados de salida. Además se puede utilizar tanto remotamente como en local.
+Estas celdas pueden contener código, texto en formato Markdown, fórmulas matemáticas y ecuaciones, o también contenido multimedia. Cada celda se puede ejecutar para visualizar los datos y ver los resultados de salida. Los documentos creados en Jupyter pueden exportarse en otros formatos como PDF, Python o HTML. Además se puede utilizar tanto remotamente como en local.
+
+Los dos componentes principales de Jupyter Notebook son un conjunto de núcleos (intérpretes) y el Dashboard. Es compatible con 49 núcleos que permiten trabajar en diferentes lenguajes como R, Julia, C++ o Java. Sin embargo, el kernel que utiliza por defecto es IPython para programar con Python. 
 
 \subsection{Librerías}
 \label{subsec:Librerías}
@@ -797,18 +841,27 @@ Es la parte más importante de la memoria, porque describe lo que has hecho tú.
 Eso sí, normalmente aconsejo no poner código, sino diagramas.
 \end{comment}
 
-En este capítulo se realiza una descipción detallada sobre las instalaciones necesarias para poder realizar el trabajo, una breve explicación sobre los modelos de aprendizaje que se implementaron así como los data sets utilizados.
+En este capítulo se realiza una descipción detallada sobre la arquitecura del proyecto, las instalaciones necesarias para poder realizar el trabajo, una breve explicación sobre los modelos de aprendizaje que se implementaron así como los data sets utilizados.
 
 \section{Arquitectura general} 
 \label{sec:arquitectura}
 
-Antes de adentrarnos en una explicación en mayor profundadida de lo que se desarrolla en este proyecto
+Ante la gran importancia que están adquiriendo las aplicaciones de Machine Learning e IoT en las últimas decadas, este proyecto busca examinar la capacidad de la Raspberry para utilizarla como un dispositivo en el que se puedan implementar y desarrollar este tipo de tareas. El pequeño tamaño, su bajo coste y su capacidad de interacción con el entorno hacen que la Raspberry sea una buena opción para algoritmos con estos fines. 
+
+Sin embargo, no nos podemos fiar únicamente de las apariencias. Hay que averiguar si verdaderamente un dispositivo como este, con menos recursos que un ordenador común, puede llevar a cabo tareas de este estilo con éxito.
+
+Para ello, y como se explicará en mayor detalle en los siguientes capítulos, pondremos a prueba a la máquina con diferentes pruebas. En la Figura~\ref{fig:arquitectura} se puede visualizar un esquema general de en qué consisten dichas pruebas. Como se puede ver en esta figura los experimentos se llevarán a cabo tanto en la Raspberry como en un portátil para poder comparar los resultados y comprender mejor los resultados obtenidos en la Raspberry.
+
 
 \begin{figure}[h!]
   \centering
   \includegraphics[width=14cm, keepaspectratio]{img/arquitectura_general.png}
   \caption{Estructura de los experimentos}\label{fig:arquitectura}
 \end{figure}
+
+Como se explicó en la sección~\ref{sec:machine_learning} hay varios tipos de aprendizaje automático y dentro de cada clase existen aún más métodos para resolver un mismo problema de formas diferentes. En este proyecto utilizaremos algoritmos de aprendizaje supervisado para realizar problemas de clasificación binaria, es decir, solo existen dos clases a las que pueden pertenecer los datos. Concretamente (y como se puede ver en la Figura~\ref{fig:arquitectura}) se utilizarán cuatro algoritmos de Machine Learning que son: Regresión logística, Máquinas de soporte vectorial, Gradient boosting y Random forest.
+
+Antes de adentrarnos en una explicación en mayor profundadida de lo que se desarrolla en este proyecto
 
 Si tu proyecto es un software, siempre es bueno poner la arquitectura (que es cómo se estructura tu programa a ``vista de pájaro'').
 
@@ -818,7 +871,7 @@ Y eso quiere decir que quizás no lo haga donde lo hemos puesto\ldots
 Eso no es malo.
 A veces queda un poco raro, pero es la filosofía de \LaTeX: tú al contenido, que yo me encargo de la maquetación.
 
-\begin{comment}
+\begin{comment}[]
 \begin{figure}
   \centering
   \includegraphics[width=9cm, keepaspectratio]{img/arquitectura.png}
@@ -849,18 +902,40 @@ El primer paso para esto fue montar adecuadamente la Raspberry Pi conforme las i
 Una vez está listo el hardware hay que instalar el software necesario para la generación de modelos de machine learning.
 Comenzando por cambiar el sistema operativo, en vez de utilizar el que viene por defecto, Raspbian Pi OS, se instaló Ubuntu 21.10\footnote{\url{https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4}}.
 
-A continuación se instaló Miniforge, por el cual se crea un entorno virtual donde se instalaron todos los paquetes necesarios para el proyecto como son scikit-learn, pandas, jupyter-notebook, stressberry... Estos paquetes permitirán desarrollar modelos de aprendizaje automático y poder ponerlos a prueba bajo diferentes estados de la Raspberry.
+A continuación se instaló Miniforge, por medio del cual se crea un entorno virtual donde se instalaron todos los paquetes necesarios para el proyecto como son scikit-learn, pandas, jupyter-notebook... Estos paquetes permitirán desarrollar modelos de aprendizaje automático y poder ponerlos a prueba bajo diferentes estados de la Raspberry.
 
-En el Anexo de esta memoria se podrá encontrar en mayor detalle las dificultades y las soluciones a estos problemas encontrados a la hora de realizar todo lo comentado en este apartado.
+En el Anexo de esta memoria se podrá encontrar en mayor detalle las dificultades y las soluciones a los problemas hallados a la hora de realizar todo lo comentado en este apartado.
 
 \section{Modelos de aprendizaje automático}
 
-Con el entorno preparado se generaron mediante scripts de Python cuatro modelos diferentes de aprendizaje supervisado para realizar una clasificación binaria. Utilizando la libreía scikit-learn para generar un modelo de Regresión logística, otro de Máquinas de soporte vectorial, Gradient boosting y un último de Random forest.
+Con el entorno preparado se generaron mediante scripts de Python cuatro modelos diferentes de aprendizaje supervisado para realizar una clasificación binaria. Utilizando la librería scikit-learn se generaron un modelo de Regresión logística, otro de Máquinas de soporte vectorial, Gradient boosting y un último de Random forest.
 
 \subsection{Regresión logística}
 \label{subsec:regresion_logistica}
 
-Modelo de aprendizaje supervisado que realiza tareas de clasificación binaria. Esta técnica busca una función acotada (normalmente entre 0 y 1) que divida los datos de ambas clases de forma bien diferenciada.
+Modelo de aprendizaje supervisado que realiza tareas de clasificación binaria. Esta técnica busca una función acotada (normalmente entre 0 y 1) que divida los datos de ambas clases de forma bien diferenciada. Normalmente dicha función se denomina como logística o sigmoide y se define de la siguiente forma:
+
+\begin{equation}
+    h_w(x^{(i)}) = \frac{1}{1 + e^{\sum_{j=0}^{d} w_j x_j^{(i)} }}
+\end{equation}
+
+Dicha expresión devolverá un valor entre cero y uno. Según lo próximo que este el valor a cero o uno pertenecerá a una clase u otra. 
+
+Los parámetros representados por $w_j$ son los pesos que utiliza la función para realizar la predicción. Cada peso está multiplicando a una caracerística, simbolizada mediante $x_j$. Luego, para conocer a qué clase pertenece el ejemplo $x^{(i)}$ habrá que realizar el sumatorio de todos los pesos multiplicados por sus respectivas caracterísitcas (desde la cero hasta la d-ésima). 
+
+Durante la fase de entrenamiento el modelo ajusta los pesos mediante un método de optimización, a fin de que las predicciones que se realicen mediante ellos tengan el mínimo error posible. Para obtener los valores óptimos de los pesos se utiliza el método de descenso por gradiente, mediante el cual se irán actualizando los valores de los pesos conforme vaya entrenando con más ejemplos. La función de descenso por gradiente se define de la siguiente manera:
+
+\begin{equation}
+    w_j = w_j - \alpha \frac{1}{n} \sum_{i= 1}^{n} (h_w(x^{(i)}) - y^{(i)}) x_j^{(i)}
+\end{equation}
+
+Para calcular los pesos utiliza el error que existe entre la salida predecida con los pesos estimados hasta ahora ($h_w(x^{(i)})$) y el valor real, es decir, la salida que verdaderamente corresponde a ese ejemplo ($y^{(i)}$). También es necesario definir el valor del ratio de aprendizaje ($\alpha$), si se le da un valor muy elevado puede llegar a no converger el modelo en ninguna solución.
+
+Se dará por finalizada la fase de aprendizaje cuando se consiga que los valores de los pesos minimicen una función de coste:
+
+\begin{equation}
+    J(w) = \frac{1}{2} \sum_{i= 1}^{n} {(h_w(x^{(i)}) - y^{(i)})}^2 
+\end{equation}
 
 En scikit-learn por medio la función LogisticRegression\cite{LogisticRegressionDoc}, que pertenece a la librería \textit{sklearn.linear\_model}, se puede generar este modelo de aprendizaje automático para entrenarlo y posteriormente predecir con él. 
 
@@ -901,25 +976,28 @@ Para generar los modelos se dividió el set de datos en dos partes, una primera 
 
 Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran número de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que hay una alta probabilidad de que el set de entrenamiento siempre tenga como mínimo la cantidad de muestras necesarias de ambas clases para entrenar correctamente. Aun así, la división se realizó de forma estratificada, para que hubiese la misma proporcion de datos de una clase u otra, que en el set de datos original. Y de esta forma nos aseguramos que a la hora de tanto entrenar, como de comprobar el modelo generado, se tengan ejemplos de ambas clases en la misma proporción que aparecen en el set de datos original.
 
-Con esta división y preparación de los datos, los tres modelos se pudieron generar sin problemas utilizando las librerías de scikit-learn y pandas. Para valorar la ediciencia del entrenamiento se pueden obtener tres valores diferentes: \textit{accuracy}, \textit{precision} y \textit{recall}. Gracias a la librería \textit{metrics} de scikit-learn se pueden obtener respectivamente estos valores por medio de las funciones \textit{accuracy\_score}, \textit{precision\_score} y \textit{recall\_score}. A estos métodos se les pasa como argumentos la variable que contiene los valores de la salida del set de datos de prueba (generada, como se ha comentado anteriormente, con el 30\% de los datos originales), y como segundo argumento el propio modelo generado (después de entrenarlo). A continuación se detalla que significan cada uno de esto valores, siendo TP igual a verdaderos positivos, TN verdaderos negativos, FP falsos positivos y FN falsos negativos.
+Con esta división y preparación de los datos, los tres modelos se pudieron generar sin problemas utilizando las librerías de scikit-learn y pandas. Para valorar la eficiencia del entrenamiento se pueden utilizar tres valores diferentes: \textit{accuracy}, \textit{precision} y \textit{recall}. Gracias a la librería \textit{metrics} de scikit-learn se pueden obtener estos valores por medio de las funciones \textit{accuracy\_score}, \textit{precision\_score} y \textit{recall\_score} respectivamente. A estos métodos se les pasa como argumentos la variable que contiene los valores de la salida del set de datos de prueba (generada, como se ha comentado anteriormente, con el 30\% de los datos originales), y como segundo argumento el propio modelo generado (después de entrenarlo). 
 
-El valor de \textit{accuracy} representa el porcentaje total de aciertos. 
+A continuación se detalla que significan cada uno de esto valores. Para ello se ha definido la siguiente terminología: TP es el número de verdaderos positivos, TN verdaderos negativos, FP falsos positivos y FN falsos negativos.
 
-\begin{equation*}
- \mbox{Accuracy} = \frac{(TP + TN)}{(TP + TN + FP + FN)}
-\end{equation*}
+El valor de \textit{accuracy} representa el porcentaje total de aciertos. Este dato se calcula por medio de la siguiente ecuación:
 
-Por otra parte \textit{precision} es el porcentaje que se obtiene de dividir el verdadero número de positivos (en este caso el uno o positivo representa que la habitación está ocupada) entre todos los positivos que se han asignado (sean correctos o no), cuanto más alto sea este valor menor error habrá cometido al asignar habitaciones ocupadas. 
+\begin{equation}
+ \boxed{\mbox{Accuracy} = \frac{(TP + TN)}{(TP + TN + FP + FN)}}
+\end{equation}
 
-\begin{equation*}
- \mbox{Precision} = \frac{TP}{(TP + FP)}
-\end{equation*}
+\textit{Precision} es el porcentaje que se obtiene al dividir el verdadero número de positivos (en este caso el valor positivo, o lo que es igual, el uno representa que la habitación está ocupada) entre todos los positivos que se han asignado (sean correctos o no). Cuanto más alto sea este valor menor error habrá cometido al asignar habitaciones ocupadas. DIcho valor viene dado por:
 
-Por último, para obtener el valor de \textit{recall} se dividen el número de verdaderos positivos entre la suma de los verdaderos positivos más los que son positivo y ha asignado como negativos. 
+\begin{equation}
+\label{eqn:accuracy} 
+ \boxed{\mbox{Precision} = \frac{TP}{(TP + FP)}}
+\end{equation}
 
-\begin{equation*}
- \mbox{Recall} = \frac{TP}{(TP + FN)}
-\end{equation*}
+Por último, para obtener el valor de \textit{recall} se dividen el número de verdaderos positivos entre la suma de los verdaderos positivos más los que son positivo y ha asignado como negativos. Siendo la fórmula por medio de la cual obtenemos este valor la siguiente:
+
+\begin{equation}
+ \boxed{\mbox{Recall} = \frac{TP}{(TP + FN)}}
+\end{equation}
 
 Todos conseguían un \textit{accuracy}, \textit{precision} y \textit{recall} superior al 90\%, el tiempo de ejecución era de un segundo para regresión logística, dos segundos tardaba el modelo de máquinas de soporte vectorial y gradient tree boosting y random forest eran los que más tardaban con un tiempo de cuatro y tres segundos respectivamente.
 
@@ -931,37 +1009,54 @@ En cuanto a los tiempos de ejecución el modelo de regresión logística increme
 
 
 \section{DataSet: KddCup99}
+\label{subsec:dataset_kddcup99}
 
 Al realizar algunas pruebas para comprobar el comportamiento de la Raspberry ante diferentes situaciones de estrés (tal y como se explicará más adelante) los resultados obtenidos no encajaban del todo con lo esperado. Luego para tratar de comprender mejor lo que estaba pasando se decidió usar un dataset más grande que el anterior.
 
-El dataset elegido fue KDD Cup 1999 Datadata\cite{DataSetOccupancy}, que lo obtuve una vez más desde Kaggle. Se utilizó tanto el fichero \textit{kddcup.data.gz} como \textit{kddcup.data\_10\_percent.gz}. Una vez descargados se descomprimieron y convirtieron a clase binaria puesto que este dataSet contiene varias clases. 
-Para ello se utilizó el fichero \textit{Download\_dataSet.py}. En dicho programa se leía o bien el dataSet que contenía el diez porciento del dataSet total o se utilizaba el dataSet completo para poder leer algo más que el diez porciento de los datos. En el caso de la Raspberry el máximo de datos que era capaz de leer sin que el proceso muriera era el cuarenta porciento del fichero, en el portátil era un cincuenta porciento.
+El dataset elegido fue KDD Cup 1999 Datadata\cite{DataSetOccupancy}, obtenido una vez más desde la página web de Kaggle. Se utilizó tanto el fichero \textit{kddcup.data.gz} como \textit{kddcup.data\_10\_percent.gz}. Una vez descargados se descomprimen y se ejecuta un programa para tratar los datos que contienen y poder utilizarlos en la generación de los modelos de Machine Learning.
 
-Para obtener otro porcentaje de dataSet que no fuese el diez porciento se utilizaba una regla de tres para saber la cantidad de datos que se querían leer, pues sabiendo que el diez porciento contenía 494020 líneas, se podía obtener aproximadamente a cuantas líneas equivaldría otro porcentaje.
+Al igual que en el dataSet de Room Occupancy para la generación de los modelos se utilizará el 70\% de los datos para entrenar y el 30\% para validar.
 
-Para leer estos dataSets se utilizó la función \textit{read\_csv} de la librería pandas. Una vez leídos los datos se convertía de multiclase a clase binaria reemplazando todas las clases (excepto la clase \textit{normal.}) por la clase \textit{attack}. El código que realiza estas tareas se puede ver en Código 3.1.
+\subsection{Preprocesamiento de kddCup99: prepare\_kddcup.ipynb}
 
-\begin{listing}[h!]\begin{comment}
-\begin{listing}[H]
-\end{listing}
-\end{comment}
+Este fichero permite leer las líneas de los dataSet descargados, procesar y guardar los datos en un nuevo fichero para que puedan usarlos los modelos.
+
+Para leer los datos se utiliza la función \textit{read\_csv} de pandas. Este programa no solo se usará para leer un dataSet al completo, sino que también podremos leer otra porción diferente de líneas. Es por esto que para que el programa ejecute correctamente hay que pasarle un número como único argumento, cuyo valor puede estar entre cero o cien. Este valor representa el porcentaje de datos que se desea leer. Un ejemplo de ejecución de este fichero para que lea el 50\% de los datos de kddCup99 es:\\
+
+\begin{lstlisting}[language=bash]
+    $ ipython Prepare_kddcup.ipynb 50
+\end{lstlisting}
+
+En el caso de \textit{kddcup.data} (que contiene más de un millón de líneas) interesa poder leer diferentes cantidades de datos del fichero puesto que tanto la Raspberry como el portátil no son capaces de leer este dataSet completo, los procesos morían antes de terminar. En el caso de la Raspberry el máximo de datos que es capaz de leer, sin que muera el proceso, es el cuarenta porciento del dataSet total mientras que el portátil llegaba al cincuenta porciento del total.
+
+Para leer otro porcentaje del dataSet total, que no fuese únicamente el diez porciento, se utiliza una regla de tres. Sabiendo que el diez porciento del data set (el fichero \textit{kddcup.data\_10\_percent}) contenía 494020 líneas, se podía obtener aproximadamente tanto a cuantas líneas equivaldría otro porcentaje como la cantidad total de líneas que debía tener el dataSet completo.
+
+La función \textit{random.sample} devuelve una lista que contiene valores numéricos aleatorios, para realizar esta función necesita que se le pasen dos argumentos. El primero de ellos es el valor máximo que puede aparecer en la lista, siendo el mínimo igual a cero. El segundo argumento es la longitud total de la lista, es decir, cuántos números aleatorios va a generar. Con este método se obtendrá una lista con valores aleatorios que se le asignará al parámetro skiprows de \textit{read\_csv}. Haciendo que todos esos datos, que representan números de líneas del fichero original, no se lean, consiguiendo hacer que se lea únicamente el porcentaje que ha pedido el usuario.
+
+La implementación de esto se puede ver en el Código~\ref{lst:prepare_kddcup}, donde \textit{total} es el valor máximo de líneas que hay en el fichero \textit{kddcup.data} (obtenido mediante la regla de tres comentado anteriormente), \textit{per\_lines} es el número de líneas que sí se desean leer (obtenido al aplicar una regla de tres al porcentaje que se ha pasado como argumento a \textit{prepare\_kddcup.ipynb}). Ambos valores los usa \textit{random.sample} para obtener líneas aleatorias, que se ordenarán utilizando \textit{sorted} para poder pasárselas a skiprows y por lo tanto no se leerán. 
+
+\begin{listing}[h!]
     \caption{Lectura del dataset y conversion a clase binaria.}{}
-    \label{lst:1}
+    \label{lst:prepare_kddcup}
     \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
-#Lectura csv
-n= 4940200 # número total de líneas
-s= 988040 # Leer solo el 20\%
-skip= sorted(random.sample(range(n),n-s))
-dataset = pd.read_csv('/home/nuriadj/Documents/TFG/kdd_cup99/kddcup.data', skiprows=skip)
+#Obtener número de lineas a leer
+total= 4940200 # numero de lineas aproximado del fichero kddcup.data
+per_lines= int((float(sys.argv[1])*total)/100)
+#Leer dataSet
+rm_lines= sorted(random.sample(range(total),total-per_lines))
+dataset = pd.read_csv('/home/nuriadj/Documents/TFG/kdd_cup99/kddcup.data', skiprows=rm_lines)
+print("Reading: %2.f" % round((len(dataset)*100)/total,2),"% of the csv")
 
 #Conversión multiclase a binaria
 dataset['normal.'] = dataset['normal.'].replace(['back.', 'buffer_overflow.', 'ftp_write.', 'guess_passwd.', 'imap.', 'ipsweep.', 'land.', 'loadmodule.', 'multihop.', 'neptune.', 'nmap.', 'perl.', 'phf.', 'pod.', 'portsweep.', 'rootkit.', 'satan.', 'smurf.', 'spy.', 'teardrop.', 'warezclient.', 'warezmaster.'], 'attack')
     \end{minted}
 \end{listing}
 
-Una vez realizada la transformación se hace un pequeño tratamiento a los datos para que cada modelo pueda entrenar adecuadamente y más fácilmente con ellos. Este tratamiento se ejecuta en el mismo programa que lee los datos (\textit{Download\_dataSet.py}). En este fichero lo primero que se hace es eliminar la columna 19 y 20 ya que estas contienen todo el rato el mismo valor que es cero. A continuación se transforman los datos categóricos y por último se eliminan las filas duplicadas. Con este tratamiento los datos se guardan utilizando la función \textit{to\_csv} que proporciona pandas y se guarda el nuevo set de datos tratados sin la cabecera ni el índice, de forma que desde el códifo de cada uno de los modelos los datos estén listos para poder ser utilizados.
+Otro aspecto relevante que hay que saber acerca de este dataSet es que contiene datos que pertenecen a varias clases. Por lo tanto, dado que estamos resolviendo problemas de clasificación binaria, habrá que hacer un tratamiento previo a la información que contiene el dataSet para que se puedan agrupar los datos en dos clases en vez de en múltiples.\\
+Este programa también hace esta conversión de multiclase a dos clases. Para ello, una vez leídos todos los datos se reemplazaban todas las clases (excepto la clase \textit{normal.}) por la clase \textit{attack}\cite{MulticlassToBinary}, de esta forma se conseguía tener solo dos clases. El código que realiza esta tarea se puede ver en Código~\ref{lst:prepare_kddcup}.
 
-Al igual que en el dataSet de Room Occupancy se utiliza el 70\% de los datos para entrenar y el 30\% para validar.
+Una vez realizada la transformación de multiclase a clase binaria, se hace un pequeño tratamiento a los datos para que cada modelo pueda entrenar adecuadamente y más fácilmente con ellos\cite{dataSetTreatment}. Para ello se elimina la columna 19 y 20, ya que estas contienen todo el rato el mismo valor, que es cero. A continuación se transforman los datos categóricos y por último se eliminan las filas duplicadas. Con este tratamiento los datos se guardan utilizando la función \textit{to\_csv} que proporciona pandas y se guarda el nuevo set de datos tratados sin la cabecera ni el índice, de forma que desde el código de cada uno de los modelos los datos estén listos para poder ser utilizados.
+
 
 \cleardoublepage
 
@@ -1004,6 +1099,8 @@ En caso de querer someter a la Raspberry a un nivel mayor de carga computacional
 \label{subsec:programa_pruebas_raspberry}
 
 Para realizar las pruebas en la Raspberry de forma más sencilla se creó un programa llamado \textit{raspberry\_test.ipynb}. Dicho programa necesita como único argumento el data set con el que se desea hacer el experimento para que pueda realizar su función correctamente.
+
+Hay que tener en cuenta que si se quiere usar este código, el dataSet que se quiera utilizar para entrenar debe de estar limpio, es decir, se le ha hecho un preprocesamiento para borrar características no deseadas o redundantes. Tampoco debe de tener cabecera. Si no se hace este preprocesamiento podrá dar error la ejecución.
 
 La misión de este código es ejecutar cada uno de los modelos de aprendizaje automático (que se utilizan en este proyecto) con los diferentes niveles de saturación comentados anteriormente. Para realizar esto se usan dos bucles anidados, el primero de ellos itera sobre los modelos que se desean poner a prueba. El segundo recorre una lista que contiene el número de cores que se desean estresar con cada uno de los modelos (ver código ~\ref{lst:funcion_principal_raspberry_test}). Si el valor sobre el que se está iterando de la lista es mayor que cero significa que se desea estresar cierto número de cpus, por lo tanto se llama a la función \textit{start\_stress} a la que se le pasa como argumento el número de cores a estresar y durante cuanto tiempo, con estos datos se encargará de crear un nuevo proceso para ejecutar el comando \textit{stress}.\\
 Por otra parte, independientemente del número de cores, siempre se llamará a la función \textit{model} que creará un nuevo proceso para ejecutar, utilizando el comando \textit{time} de Linux, uno de los ficheros que se encuentran dentro de la carpeta \textit{"Modelos"}. Cada uno de los ficheros que se encuentran dentro de dicha carpeta generará uno de los modelos de aprendizaje automático que se han explicado en este proyecto. 
@@ -1102,8 +1199,8 @@ Otro aspecto de las ejecuciónes en la Raspberry  que será relevante más adela
 
 Para saber la frecuencia de cada uno de los cores en tiempo real se puede ejecutar el comando:\\
 
-\begin{lstlisting}
-   watch -n.1 "
+\begin{lstlisting}[language=bash, showstringspaces=false]
+   $ watch -n.1 "
    sudo cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq && 
    sudo cat /sys/devices/system/cpu/cpu1/cpufreq/cpuinfo_cur_freq && 
    sudo cat /sys/devices/system/cpu/cpu2/cpufreq/cpuinfo_cur_freq && 
@@ -1115,7 +1212,7 @@ Mostrará las frecuencias de ejecución de los cores cada 0.1 segundos. Si utili
 \section{Experimentos en el portátil}
 \label{sec:experimentos_en_portatil}
 
-Las mismas pruebas que se realizaron en la Raspberry se llevaron a cabo en un portátil. De esta forma se podrán comparar los tiempos de ejecución en un dispositivo de mayor capacidad y sabremos cuanto dista el comportamiento de la Raspberry del de esta máquina.
+Las mismas pruebas que se realizaron en la Raspberry se llevaron a cabo en un portátil. De esta forma se podrán comparar los tiempos de ejecución en un dispositivo de mayor capacidad y sabremos cuanto dista el comportamiento de la Raspberry del de una máquina con mayor potencia.
 
 El portátil que se utilizó para estas pruebas tenía un total de ocho cpus físicas. Es por ello que, salvo el nivel Idle, los cores de los niveles bajo, medio y alto de carga computacional cambiaron para poner más o menos en la misma situación al portátil y a la Raspberry. Por lo tanto en el portátil el nivel bajo de carga será estresar dos de sus cpus, el nivel medio cuatro y el alto los ocho cores de los que dispone la máquina. 
 
@@ -1124,12 +1221,14 @@ El portátil que se utilizó para estas pruebas tenía un total de ocho cpus fí
 
 Para realizar las pruebas se ha creado un programa llamado \textit{pc\_test.ipynb} que al igual que el fichero \textit{raspberry\_test.ipynb} ejecuta cada uno de los modelos con los diferentes niveles de estrés y guarda los datos obtenidos en un nuevo fichero que crea el programa con el formato Pc\_nombreDataSet\_results.txt.
 
-Utilizará dos bucles anidados, tal y como se hacia en \textit{raspberry\_test.ipynb}, para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \textit{raspberry\_test.ipynb} ya que como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará si es necesario dos procesos, uno ejecutará stress (cuando se desee estresar alguna cpu) y el otro los modelos que se encuentran dentro de la carpeta \textit{"Modelos"}. Todos los ficheros que generan los modelos de aprendizaje son los mismos que en la Raspberry salvo el de Random Forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
+Al igual que en \textit{raspberry\_test.ipynb} el dataSet que se quiera utilizar para entrenar debe de haber sido preprocesado (en caso de que lo necesite) y no debe de tener cabecera, sino podrá dar error la ejecución.
+
+La función principal utilizará dos bucles anidados, tal y como se hacia en \textit{raspberry\_test.ipynb}, para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \textit{raspberry\_test.ipynb} ya que como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará (si es necesario) dos procesos, uno ejecutará stress (cuando se desee estresar alguna cpu) y el otro los modelos que se encuentran dentro de la carpeta \textit{"Modelos"}. Todos los ficheros que generan los modelos de aprendizaje son los mismos que en la Raspberry salvo el de Random Forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
 
 \subsection{Resultados}
 \label{subsec:resultados_pc}
 
-Los resultados de la ejecución del comando stress conforme a estos nivels podremos se pueden observar en la tabla~\ref{tab:times_portatil}. Como se puede apreciar los tiempos que se obtienen en el portátil disminuyen bastante con respecto a los que conseguía la Raspberry. 
+Los resultados de la ejecución del comando stress conforme a estos niveles se pueden observar en la tabla~\ref{tab:times_portatil}. Como se puede apreciar los tiempos que se obtienen en el portátil disminuyen bastante con respecto a los que conseguía la Raspberry. 
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[h!]
@@ -1157,11 +1256,26 @@ Los resultados de la ejecución del comando stress conforme a estos nivels podre
 \label{tab:times_portatil}
 \end{table}
 
-Otro aspecto destacable de los tiempos en el portátil es que estos aumentaban a medida que se estresaba un mayor número de cores a pesar de que los tres primeros procesos siguen siendo monocores. Esto se debe a otro dato que no había tenido en cuenta hasta el momento que es la frecuencia con la que ejecutan las cpus.
+Como se puede ver Random Forest es el modelo que más tiempo tarda cuando la máquina se encuentra en estado Idle. Esto se debe a las mismas razones dadas en la sección~\ref{subsec:resultados_raspberry}
 
-En el portátil la frecuanci máxima a la que pueden ejecutar los cores es de 3600 MHz. Este aumento de velocidad de frecuencia explicaría por qué en el portátil los tiempos son menores, porque pueden llegar a ir a más velocidad los procesos.
+Otro aspecto destacable de los tiempos en el portátil es que estos aumentaban a medida que se estresaba un mayor número de cores a pesar de que los tres primeros procesos siguen siendo monocores. Esto se debe a la frecuencia con la que ejecutan las cpus. En el portátil la frecuencia máxima a la que pueden ejecutar los cores es de 3600 MHz mientras que la mínima son 400 MHz. 
 
-Ejecutando el siguiente comando: . Mientras que en el pórtatil las frecuencias si variaban al ejecutar stress.
+Ejecutando el siguiente comando: 
+
+\begin{lstlisting}[language=bash, showstringspaces=false]
+  $ watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"
+\end{lstlisting}
+
+Se puede ver la frecuencia de ejecución de todos los cores cada 0.1 segundos. En esta ocasión al observar estas velocidades cuando se ejecutaban los algoritmos de aprendizaje automático se podía ver una variación en los valores dependiendo del nivel de estrés que se estuviese ejecutando. Luego esto explicaría porque en el caso del portátil los tiempos incrementan según aumentan el número de cores estresados. 
+
+\section{Comparación Raspberry vs Portátil}
+\label{sec:raspberry_vs_portatil}
+
+Lo primero que puede llamar la atención de ambas tablas es que la Raspberry, para los mismos modelos y los mismos datos, tarda más en ejecutar que el portátil. Esto se debe a que habiendo observado las frecuencias tanto de la Raspberry como del portátil vemos que la máxima velocidad a la que pueden ir los cores en la Raspberry es a 1500 MHz mientras que el portátil tiene su máximo en 3600 MHz, más del doble que la Raspberry. Luego esto permite que los procesos en el portátil puedan terminar antes que en la Raspberry siendo uno de los factores por los que puede que la Raspberry es más lenta que el portátil.
+
+Este aumento de velocidad de frecuencia explicaría por qué en el portátil los tiempos son menores, porque pueden llegar a ir a más velocidad los procesos.
+
+Sin embargo, a parte de la diferencia de los tiempos, todos los modelos tanto entrenando en la Raspberry como en el portátil alcanzaban un Accuracy, Precision y Recall mayor al 90\% prácticamente siempre.
  
 \section{Incorporación de código en la memoria}
 
