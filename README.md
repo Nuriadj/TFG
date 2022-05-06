@@ -1195,7 +1195,7 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	* [x] Probar el código con esta modificación. El modelo es demasiado rápido con lo que apenas se llegan a estresar los cores, no llegan al 100%.  
 	
-*6/5/22  
+* 6/5/22   
 	
 	Probar el nuevo sensor que me han dado para conectarlo voy a seguir este [enlace](https://projects.raspberrypi.org/en/projects/build-your-own-weather-station/2) Conexiones:  
 	
