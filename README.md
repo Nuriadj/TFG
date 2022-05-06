@@ -1199,16 +1199,21 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	Probar el nuevo sensor que me han dado para conectarlo voy a seguir este [enlace](https://projects.raspberrypi.org/en/projects/build-your-own-weather-station/2) Conexiones:  
 	
-	![image](https://user-images.githubusercontent.com/60139728/167155481-20b6bbfa-10f0-4e95-8cec-5c00da0244bd.png)
+	![image](https://user-images.githubusercontent.com/60139728/167155481-20b6bbfa-10f0-4e95-8cec-5c00da0244bd.png)  
 	
 	Voy a añadir al entorno de jupyter los ficheros necesarios para que pueda funcionar con lgpio.  
 	
-	**Instalando nuevos paquetes en el entorno de jupiter:  **
+	**Instalando nuevos paquetes en el entorno de jupiter:**  
+	
 	```
 	conda install smbus2
-	pip install bme280```
+	pip install bme280
+	```
 	
-	[enlace1](https://anaconda.org/conda-forge/smbus2). Seguir los pasos de [aquí](https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html) para poder acceder a i2c sin permisos de root.
+	[enlace1](https://anaconda.org/conda-forge/smbus2). Seguir los pasos de [aquí](https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html) para poder acceder a i2c sin permisos de root.  
+	
+	Tengo que instalar i2c-tools.  
+	Seguramente mañana tenga que volver a ejecutar una de las últimas lineas de [aquí](https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html) porque ya no tenga mi usuario permiso para ejecutar i2c.  
 	
 
 	
