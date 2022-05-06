@@ -1193,7 +1193,16 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	Para poder utilizar el pc_test con Occupancy hay que quitar la primera columna y la cabecera, para que esté listo el dataSet para entrenar con él. Además el pos_label para precision y recall habría que cogerlo asignando label= y[0] porque sino el parámetro '.normal' no está en el dataSet de Occupancy. Se utiliza la y[0] para que todos los modelos hagan los calculos de accuracy, precision, recall respecto a la misma clase.  
 	
-	* [x] Probar el código con esta modificación. El modelo es demasiado rápido con lo que apenas se llegan a estresar los cores, no llegan al 100%.    
+	* [x] Probar el código con esta modificación. El modelo es demasiado rápido con lo que apenas se llegan a estresar los cores, no llegan al 100%.  
+	
+*6/5/22  
+	
+	Probar el nuevo sensor que me han dado para conectarlo voy a seguir este [enlace](https://projects.raspberrypi.org/en/projects/build-your-own-weather-station/2) Conexiones:  
+	
+	![image](https://user-images.githubusercontent.com/60139728/167155481-20b6bbfa-10f0-4e95-8cec-5c00da0244bd.png)
+	
+	Voy a añadir al entorno de jupyter los ficheros necesarios para que pueda funcionar con lgpio.  
+
 	
 	
 # **TO DO Memoria:**  
