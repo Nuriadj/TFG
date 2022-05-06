@@ -1202,6 +1202,14 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	![image](https://user-images.githubusercontent.com/60139728/167155481-20b6bbfa-10f0-4e95-8cec-5c00da0244bd.png)
 	
 	Voy a añadir al entorno de jupyter los ficheros necesarios para que pueda funcionar con lgpio.  
+	
+	**Instalando nuevos paquetes en el entorno de jupiter:  **
+	```
+	conda install smbus2
+	pip install bme280```
+	
+	[enlace1](https://anaconda.org/conda-forge/smbus2). Seguir los pasos de [aquí](https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html) para poder acceder a i2c sin permisos de root.
+	
 
 	
 	
