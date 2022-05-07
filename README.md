@@ -1213,7 +1213,24 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	[enlace1](https://anaconda.org/conda-forge/smbus2). Seguir los pasos de [aquí](https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html) para poder acceder a i2c sin permisos de root.  
 	
 	Tengo que instalar i2c-tools.  
-	Seguramente mañana tenga que volver a ejecutar una de las últimas lineas de [aquí](https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html) porque ya no tenga mi usuario permiso para ejecutar i2c.  
+	Seguramente mañana tenga que volver a ejecutar una de las últimas lineas de [aquí](https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html) porque ya no tenga mi usuario permiso para ejecutar i2c.   
+	
+* 7/5/22  
+	
+	* Instalar i2c:  
+	```
+	sudo apt install i2c-tools
+	```
+	
+	* Comandos que he ido ejecutando:  
+	```
+	pip uninstall bme280
+	pip3 install RPi.bme280
+	```
+	
+	Con todo esto hecho ¡EJECUTA!  
+	```ipython read_bme280 bme280_data
+	```
 	
 
 	
