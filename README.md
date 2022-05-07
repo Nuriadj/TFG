@@ -1229,7 +1229,8 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	```
 	
 	Con todo esto hecho ¡EJECUTA!  
-	```ipython read_bme280.ipynb bme280_data
+	```
+	ipython read_bme280.ipynb bme280_data
 	```
 	
 	Para ejecutar con el sensor LDR:  
