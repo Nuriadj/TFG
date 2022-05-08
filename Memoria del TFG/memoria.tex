@@ -725,9 +725,9 @@ Raspberry Pi\footnote{\url{https://www.raspberrypi.org/}} es un ordenador de baj
 
 El sistema operativo que ofrece es Raspbian Pi OS, una versión adaptada de Debian. Sin embargo permite utilizar otros sistemas.
 
-Desde su primer lanzamiento se han ido desarrollando y comercializado nuevos modelos. En este proyecto se utilizará la última versión de estos dispositivos denominado como Raspberry Pi 4 Modelo B con 4GB de RAM.
+Desde su primer lanzamiento se han ido desarrollando y comercializado nuevos modelos. En este proyecto se utilizará la última versión de estos dispositivos denominado como Raspberry Pi 4 Modelo B con 4GB de RAM. Dicho modelo posee un total de 40 pines GPIO, 2 puertos micro HDMI y 4 puertos USB. Puede realizar conexiones inalámbricas ya que tiene Bluetooth 5.0 y Wi-Fi, aun que también puede utilizar Ethernet. Por último la alimentación viene dada por un cable USB de tipo C con el que puede alcanzar un total de 1.2 A.
 
-Dicho modelo posee un total de cuatro cores físicos y cuatro lógicos. Otro detalle destacable de la Raspberry para el desarrollo de este trabajo es que posee una arquitectura SMP (Symmetric Multi-Processing), un tipo de arquitectura de computador en el que las unidades de procesamiento comparten una única memoria central, lo que permite que cualquier procesador trabaje en cualquier tarea sin importar su localización en memoria. 
+Dicho modelo posee un procesador ARM Cortex-172 con un total de cuatro cores físicos y cuatro lógicos. Otro detalle destacable de la Raspberry para el desarrollo de este trabajo es que posee una arquitectura SMP (Symmetric Multi-Processing), un tipo de arquitectura de computador en el que las unidades de procesamiento comparten una única memoria central, lo que permite que cualquier procesador trabaje en cualquier tarea sin importar su localización en memoria. 
 
 Actualmente es uno de los dispositivos más populares ya que brinda un sinfín de posibilidades a pesar de su pequeño tamaño. Específicamente dentro de el campo de aprendizaje automático e IoT se podrían desarrollar multitud de aplicaciones gracias a la interacción que tiene con el entorno por medio de los sensores y actuadores que se pueden conectar. Por ello, en este trabajo de investigación se busca examinar el rendimiento de este pequeño ordenador y comprobar hasta donde se podría llegar con él, dentro del campo del aprendizaje automático. 
 
@@ -756,7 +756,7 @@ El sistema operativo Ubuntu\footnote{\url{https://ubuntu.com/}} es una distribuc
 
 La primera versión de Ubuntu fue la 4.10 lanzada el 20 de Octubre de 2004. A partir de la versión 13.4 las versiones estables sin soporte a largo plazo se liberan cada seis meses, y Canonical proporciona soporte técnico y actualizaciones de seguridad durante 9 meses. Las versiones LTS (Long Term Support) ofrecen un soporte técnico durante 5 años a partir de la fecha de lanzamiento.
 
-La última versión fue lanzada el 14 de Octubre de 2021, que es la versión Ubuntu 21.10. Dicha versión utiliza el kernel 5.13, con cambios y mejoras para componentes que daban problemas. También tiene un nuevo instalador, escrito desde cero en Flutter, que facilita la instalación del sistema operativo. Una de las novedades más importantes es que actualiza su escritorio a GNOME 40.
+La última versión fue lanzada el 14 de Octubre de 2021, que es la versión Ubuntu 21.10. Dicha versión utiliza el kernel 5.13, con cambios y mejoras para componentes que daban problemas. También tiene un nuevo instalador, escrito desde cero en Flutter, que facilita la instalación del sistema operativo. Una de las novedades más importantes es que actualiza su escritorio a GNOME 40. 
 
 
 \subsection{Gestor de paquetes: Miniforge}
@@ -822,16 +822,18 @@ En este proyecto también se utilizaron sensores para tomar medidas del entorno 
 \subsection{Fotoresistencia}
 \label{subsec:fotoresistencia}
 
-Esta resistencia también denominada como LDR por sus siglas en inglés Light Dependent Resistor, varía su resistencia dependiendo de la cantidad de luz que incida sobre su superficie. Funciona gracias al principio de la fotoconductividad que es un fenómeno óptico en el que la conductividad del material aumenta cuando la luz es absorvida. Luego cuando la luz cae sobre la resistencia los electrones son excitados lo que provoca que empiece a fluir cada vez más corriente a través del dispositivo, por lo tanto la resistencia del dispositivo dismimnuye. Por lo tanto cuando la LDR recibe luz, su resistencia será más baja y cuando esté a oscuras la resistencia será más alta.
+Esta resistencia también denominada como LDR por sus siglas en inglés Light Dependent Resistor, varía su resistencia dependiendo de la cantidad de luz que incida sobre su superficie. Funciona gracias al principio de la fotoconductividad que es un fenómeno óptico en el que la conductividad del material aumenta cuando la luz es absorvida. Luego cuando la luz cae sobre la resistencia los electrones son excitados lo que provoca que empiece a fluir cada vez más corriente a través del dispositivo, por lo tanto la resistencia del dispositivo dismimnuye. Por lo tanto cuando la LDR recibe luz, su resistencia será más baja y cuando esté a oscuras la resistencia será más alta. La resistencia del LDR está en torno a los $5 k\Omega$
 
-Para que la Raspberry pueda obtener el valor que sensa este dispositivo es necesario utilizar un convertidor. En este caso utilizaremos el HW-103 con el que al conectarlo a la Raspberry y el sensor podremos conseguir una señal digital. Cuando la Raspberry lea un cero significará que hay luz mientras que si lee un uno es que no hay luz.
+Para que la Raspberry pueda obtener el valor que sensa este dispositivo es necesario utilizar un conversor. En este caso utilizaremos el HW-103 con el que al conectarlo a la Raspberry y a el sensor podremos conseguir una señal digital. Cuando a la Raspberry le llegue un cero significará que hay luz mientras que si lee un uno es que no hay luz.
 
 \subsection{BME280}
 \label{subsec:bme280}
 
-El sensor BME280 integra en un mismo dispositivos un sensor de temperatura, presión atmosférica y humedad relativa. El rango de la temperatura va desde los -40 ºC hasta los 85 ºC, con una precisión de $\pm$ 0.5 ºC. El sensor de presión tiene un tango de entre 300 hPa y 1100 hPa. Por útlimo el rango de la humedad relativa va desde el 0 hasta el 100\%.
+El sensor BME280, desarrollado por Bosh, es un sensor desarrollado especialmente para aplicaciones móviles y prendas de vestir donde el tamaño y el bajo consumo de energía son elementos claves. Integra en un mismo dispositivo tres sensores diferentes que proveen medidas de alta precisión. Los tres sensores que posee son: uno de temperatura, otro de presión atmosférica y por último, humedad relativa. 
 
-Para comunicarse con la Raspberry se utiliza I2C. Tiene una tensión de funcionamiento de 3.3V.
+El rango de la temperatura va desde los $-40\, \mbox{ºC}$ hasta los $85\, \mbox{ºC}$, con una precisión de $\pm 0.5\, \mbox{ºC}$. El sensor de presión tiene un rango de entre $300 hPa$ y $1100 hPa$. Por útlimo el rango de la humedad relativa va desde el 0 hasta el 100\%.
+
+La comunicación con este sensor es muy sencilla ya que puede usar tanto I2C o SPI. Tiene una tensión de funcionamiento de $3.3V$. Y a pesar de que integra tres sensores diferentes su tamaño es pequeño, de $19x18 mm$.
 
 Este tipo de sensores se utilizan en aplicaciones como: monitorización del clima, automatización del hogar, sistemas de autopiloto para drones...
 
@@ -882,6 +884,16 @@ Para ello, y como se explicará en mayor detalle en los siguientes capítulos, p
 
 Como se explicó en la sección~\ref{sec:machine_learning} hay varios tipos de aprendizaje automático y dentro de cada clase existen aún más métodos para resolver un mismo problema de formas diferentes. En este proyecto utilizaremos algoritmos de aprendizaje supervisado para realizar problemas de clasificación binaria, es decir, solo existen dos clases a las que pueden pertenecer los datos. Concretamente (y como se puede ver en la Figura~\ref{fig:arquitectura}) se utilizarán cuatro algoritmos de Machine Learning que son: Regresión logística, Máquinas de soporte vectorial, Gradient boosting y Random forest.
 
+Aprovechando los puertos GPIO de los que está provista la Raspberry se utilizaron un par de sensores para poder generar un nuevo dataSet que utilizar para entrenar los modelos de aprendizaje automático.
+
+En la Figura~\ref{fig:esquema_sensores} se puede observar la estructura de como se lleva a cabo la recolección de información de los sensores por parte de la Raspeberry. Con todo conectado correctamente, se generará un nuevo fichero csv con los datos medidos durante el tiempo que el usuario haya estado ejecutando dicho programa. Dicho dataSet podrá utilizarse para entrenar los modelos de aprendizaje. Además mediante al información recogida se creará una figura que contiene los datos sensados en cada instante de tiempo.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=14cm, keepaspectratio]{img/esquema_sensores.png}
+  \caption{Estructura generación de un nuevo de dataSet}\label{fig:esquema_sensores}
+\end{figure}
+
 Antes de adentrarnos en una explicación en mayor profundadida de lo que se desarrolla en este proyecto
 
 Si tu proyecto es un software, siempre es bueno poner la arquitectura (que es cómo se estructura tu programa a ``vista de pájaro'').
@@ -923,9 +935,29 @@ El primer paso para esto fue montar adecuadamente la Raspberry Pi conforme las i
 Una vez está listo el hardware hay que instalar el software necesario para la generación de modelos de machine learning.
 Comenzando por cambiar el sistema operativo, en vez de utilizar el que viene por defecto, Raspbian Pi OS, se instaló Ubuntu 21.10\footnote{\url{https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4}}.
 
-A continuación se instaló Miniforge, por medio del cual se crea un entorno virtual donde se instalaron todos los paquetes necesarios para el proyecto como son scikit-learn, pandas, jupyter-notebook... Estos paquetes permitirán desarrollar modelos de aprendizaje automático y poder ponerlos a prueba bajo diferentes estados de la Raspberry.
+A continuación se instaló Miniforge, por medio del cual se crea un entorno virtual donde se instalaron todos los paquetes necesarios para el proyecto como son scikit-learn, pandas, jupyter-notebook... Estos paquetes permitirán desarrollar modelos de aprendizaje automático.
+
+Además se instaló stress, un comando de Linux que sirve para estresar durante un tiempo que se le indique el número de cpus que se le especifican. En este caso, dicho comando se utilizará para poder someter a la Raspberry a diferentes niveles de carga computacional y de este modo ver su capacidad para entrenar modelos de aprendizaje automático. 
 
 En el Anexo de esta memoria se podrá encontrar en mayor detalle las dificultades y las soluciones a los problemas hallados a la hora de realizar todo lo comentado en este apartado.
+
+
+\subsection{Conexión de los sensores}
+\label{subsec:conexion_sensores}
+
+Como se comentaba en el capítulo~\ref{sec:sensores}, en este proyecto se utilizaron en total dos sensores, un LDR y un sensor BME280. Para obtener las medidas sensadas hubo que conectar ambos tal y como se puede ver en la Figura~\ref{fig:circuito}.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=9cm, keepaspectratio]{img/circuito.png}
+  \caption{Conexiones de los sensores a la Raspberry.}\label{fig:circuito}
+\end{figure}
+
+En el caso del sensor BME280 se utiliza comunicación por I2C para poder leer las medidas de temperatura, humedad y presión, por eso está conectado a los pines dos y tres de la Raspberry. Mientras que el LDR se conecta al pin 10 para saber si hay luz o no.
+
+Para poder obtener los valores del LDR fue necesario instalar el paquete LGPIO, los detalles de su instalación se encuentran en el Anexo.
+
+Para la comunicación I2C hubo que instalar el paquete \textit{i2c-tools} en la Raspberry. Dentro del entorno de conda donde se desarrolla el proyecto se tuvieron que instalar además otros dos paquetes: \textit{smbus2} y \textit{RPi.bme280}.
 
 \section{Modelos de aprendizaje automático}
 
@@ -1100,6 +1132,92 @@ Este programa también hace esta conversión de multiclase a dos clases. Para el
 
 Una vez realizada la transformación de multiclase a clase binaria, se hace un pequeño tratamiento a los datos para que cada modelo pueda entrenar adecuadamente y más fácilmente con ellos\cite{dataSetTreatment}. Para ello se elimina la columna 19 y 20, ya que estas contienen todo el rato el mismo valor, que es cero. A continuación se transforman los datos categóricos y por último se eliminan las filas duplicadas. Con este tratamiento los datos se guardan utilizando la función \textit{to\_csv} que proporciona pandas y se guarda el nuevo set de datos tratados sin la cabecera ni el índice, de forma que desde el código de cada uno de los modelos los datos estén listos para poder ser utilizados.
 
+\section{Mi dataSet}
+\label{sec:mi_dataSet}
+
+A parte de los dataSets anteriores se creó uno a partir de la información recopilada por lo sensores mediante el programa \textit{read\_sensors.ipynb}. Este dataSet, con medidas de temperatura, humedad, presión y luz, busca generar un modelo que nos permita saber si la habitación está ocupada o no en un determinado instante, al igual que con el dataSet de Occupancy. 
+
+Para ello durante quince minutos se estuvieron tomando las medidas en una habitación de forma controlada, es decir, sabiendo en cada instante si la habitación estaba ocupada o no. Durante diferentes periodos de tiempo la habitación estuvo ocupada o vacía. Cuando la habitación estaba vacía algunas veces se cerraba la persiana de la habitación para que también tomase medidas bajo esta nueva condición.
+
+Una vez finalizados los quince minutos de la prueba se paraba el programa \textit{read\_sensors.ipynb}, se abría el nuevo csv generado y se añadia al csv una nueva columna que representa el estado de la habitación en cada instante, asignando un uno cuando estaba ocupada y un cero en el caso contrario.
+
+\subsection{read\_sensors.ipynb}
+\label{subsec_read_sensors}
+
+Como se ha comentado anteriormente este programa es el encargado de tomar las medidas de los sensores conectados a la Raspberry, guardarlas y generar con ellas un nuevo csv y una imagen, que muestra de forma gráfica los valores sensados en cada instante de tiempo para que visualmente sea más fácil interpretar lo que ha pasado en ese periodo de tiempo. 
+
+Para que pueda ejecutar correctamente es necesario que se le pase como argumento el nombre con el que se desea guardar el dataSet que se va a generar. Este argumento también se utilizará para nombrar la gráfica que genera el programa con el siguiente formato: \textit{Dara\_graph\_miDataSet}, siendo miDataSet el string que se haya pasado como argumento.
+
+
+Este programa necesita usar la comunicación I2C para obtener los valores del sensor BME280 pero también necesitará acceder directamente a los pines por medio de la librería LGPIO. Para poder acceder a dichos pines es necesario ejecutar el programa con permisos de root pero manteniendo el entorno conda actual (pues es donde se encuentran todas las librerías instalaldas), es por ello que para ejecutarlo habrá que utilizar la siguiente línea de comando:  
+
+
+\begin{lstlisting}[language=bash]
+    $ sudo env "PATH=$PATH" ipython read_sensors.ipynb miDataSet
+\end{lstlisting}
+
+Una vez ejecutado el programa, en la segunda celda de este se preprararán los puertos para poder leer los datos. 
+
+A continuación se quedará ejecutando indefinidamente un bucle while, que es el que se encarga de guardar los datos sensados cada un segundo. Dicho bucle se puede ver en el Código~\ref{lst:firstloop_read_sensor}. Una cosa destacable es que al valor de la luz (proporcionada por el LDR) siempre se le resta uno. Esto se hace así para que los datos se puedan interpretar mejor, puesto que cuando hay luz a la Raspberry le llega un cero. De esta forma cuando haya luz se guarda un uno en el fichero en vez de un cero. 
+Este bucle ejecutará hasta que el usuario haga Ctr-C en el terminal, de esta forma se indica que ya no se desean guardar más datos.
+
+\begin{listing}[h!]
+    \caption{Bucle que guarda los datos sensados.}{}
+    \label{lst:firstloop_read_sensor}
+    \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
+measures= [] #array que contiene los valores del sensor
+
+try:
+    while True:
+
+        bme280_data = bme280.sample(bus, address)
+        humidity= bme280_data.humidity
+        pressure= bme280_data.pressure
+        temp= bme280_data.temperature
+        
+        light= lgpio.gpio_read(h, LDR)
+        light= 1 - light
+        
+        measures.append([humidity, pressure, temp, light])
+        
+        print(humidity, pressure, temp, light)
+        time.sleep(1)
+except KeyboardInterrupt:
+   pass  
+    \end{minted}
+\end{listing}
+
+Una vez que este bucle ha finalizado se ejecuta otro que iterará sobre los datos guardados en la lista \textit{measures} para poder pintar esos valores en la gráfica que también devuelve este programa, dicho bucle se puede ver en el segmento de Código~\ref{lst:secondloop_read_sensor}. Hay dos cosas destacables de este bucle. La primera es que el valor de las presiones se divide entre diez. Esto se debe a que las presiones que devuelve el sensor BME280 son valores muy superiores a los que puede conseguir cualquiera de los otros sensores, por lo que en vez de devolver la medida en $hPa$ se divide entre diez para obtenerla en $KPa$ y de esta forma poder apreciar mejor los cambios sensados en todos los sensores.
+
+
+El segundo aspecto destacable es sobre el valor de la luz que se multiplica por cincuenta. Al igual que en el caso de las presiones esto se hace para que el cambio de estado entre oscuridad y luz sea apreciable en la gráfica, de lo contrario el salto entre ceros y unos no se podría notar en la gráfica.
+
+\begin{listing}[h!]
+    \caption{Bucle para generar la gráfica.}{}
+    \label{lst:secondloop_read_sensor}
+    \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
+hum= []
+temp= []
+pres= []
+light= []
+x= []
+
+for i in range(len(measures)):
+    hum.append(measures[i][0])
+    pres.append(measures[i][1]/10)
+    temp.append(measures[i][2])
+    light.append((measures[i][3]*50))#multiplico por 50 para verlo mejor en el plot
+    x.append(i)
+    \end{minted}
+\end{listing}
+
+Un ejemplo de la gráfica que genera este programa se puede observar en la Figura~\ref{fig:ejemplo_gráfica}. Donde el eje x representan los segundos que han pasado desde que comenzó a ejecutarse el código.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=11cm, keepaspectratio]{img/Data_graph_sensors_test3.png}
+  \caption{Ejemplo gráfica de las medidas de los sensores.}\label{fig:ejemplo_gráfica}
+\end{figure}
 
 \cleardoublepage
 
@@ -1445,7 +1563,7 @@ Es un apartado que sirve para dar ideas de cara a futuros TFGs/TFMs.
 \chapter{Anexo}
 \label{chap:anexo}
 
-En la preparación del entorno, para el desarrollo de este proyecto, surgieron algunas dificultades.\\
+En la preparación del entorno, para el desarrollo de este proyecto, surgieron algunas dificultades. En este capítulo se comentarán todos estos problemas y la solución que se halló a ellos.
 
 Como se comenta en el capítulo 3 uno de los primeros pasos fue la instalación de Miniforge, pero antes de intentar usar este gestor de paquetes se intentó instalar Miniconda en el sistema operativo que viene por defecto en la Raspberry (Raspbian Pi OS), de forma que permitiese crear un entorno virtual con una versión de Python superior a la 3.7. Sin embargo, debido a la arquitectura de 32-bit empleada por dicho sistema operativo, no era posible instalar una versión de Python superior a la 3.6 por medio de Miniconda, pues para esas versiones se requería una arquitectura de 64-bit.
 
@@ -1456,11 +1574,6 @@ Una vez creado el entorno virtual con una verisón de Python igual a la 3.9, se 
 Para versiones de Ubuntu iguales o superiores a la 21.04, existe un nuevo paquete llamado LGPIO que implementa las funciones necesarias para poder acceder a los pines. Para poder utilizar este paquete dentro del entorno virtual creado, fue necesario instalarlo primeramente fuera de este, utilizando sudo apt-get install para después mover manualmente los ficheros instalados dentro del directorio del entorno virtual. Con esto, y ejecutando el fichero con permisos de root, finalmente se puede acceder a los pines y por lo tanto leer o escribir en ellos.\\
 Cuando se quiere instalar un paquete dentro del entorno se utilizan los comandos conda install o bien pip3 install, sin embargo, por ninguno de estos dos medios se pudo obtener LGPIO de forma funcional.
 
-También dentro del entorno creado se instaló todo lo necesario para realizar este proyecto. Entre estos paquetes se instaló la librería de scikit-learn que tiene algoritmos para generar modelos de clasificación, regresión, clustering y reducción de la dimensionalidad. Así como pandas que tiene todas las funcionalidades necesarias para el análisis de datos como pueden ser: cargar, modelar, analizar, manipular y preparar los datos.
-
-Además se instaló stress, un paquete para hacer pruebas bajo diferentes cargas computacionales mostrando los resultados obtenidos por medio de plots. En este caso, dicho paquete se utilizará para poder someter a la Raspberry a diferentes niveles de estrés y de este modo ver su capacidad para entrenar modelos de aprendizaje automático. Para poder ejecutar stressberry hay que tener en cuenta que el usuario que ejecute este comando debe pertenecer al grupo video, de lo contrario la ejecución dará error.
-
-A parte de poder comprobar la capacidad de la Raspberry para ejecutar estos programas bajo diferentes cargas computacionales, también permitirá comparar los tiempos de ejecución con respecto a los tiempos que alcanzan dichos programas en un portátil corriente.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
