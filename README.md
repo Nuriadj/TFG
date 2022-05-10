@@ -1241,6 +1241,9 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	bme280 da la presión en hPa a kPa para que no dé unas medidas tan grandes
 	
 
+* 10/5/22  
+	
+	* Tengo que vovler a ejecutar las pruebas de pc_test y raspberry_test para obtener los valores en el formato nuevo. Esperar a que me contesten sobre como se consigue calcular el Accuracy trainning.
 	
 	
 # **TO DO Memoria:**  
