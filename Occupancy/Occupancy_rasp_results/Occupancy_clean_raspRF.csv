@@ -1,0 +1,7 @@
+Random Forest,Idle,1 stress,2 stress,4 stress
+Wall time (seconds),11.26,11.48,11.71,13.26
+Cpu time (seconds),14.88,14.13,13.32,13.58
+Trainning Accuracy (%),100.0,100.0,100.0,100.0
+Accuracy (%),99.2,99.0,99.2,99.1
+Precision (%),97.8,97.1,97.4,96.9
+Recall (%),98.7,98.7,99.3,99.4
