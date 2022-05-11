@@ -829,7 +829,7 @@ Para que la Raspberry pueda obtener el valor que sensa este dispositivo es neces
 \subsection{BME280}
 \label{subsec:bme280}
 
-El sensor BME280, desarrollado por Bosh, es un sensor desarrollado especialmente para aplicaciones móviles y prendas de vestir donde el tamaño y el bajo consumo de energía son elementos claves. Integra en un mismo dispositivo tres sensores diferentes que proveen medidas de alta precisión. Los tres sensores que posee son: uno de temperatura, otro de presión atmosférica y por último, humedad relativa. 
+El sensor BME280\footnote{\url{https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/}}, desarrollado por Bosh, es un sensor desarrollado especialmente para aplicaciones móviles y prendas de vestir donde el tamaño y el bajo consumo de energía son elementos claves. Integra en un mismo dispositivo tres sensores diferentes que proveen medidas de alta precisión. Los tres sensores que posee son: uno de temperatura, otro de presión atmosférica y por último, humedad relativa. 
 
 El rango de la temperatura va desde los $-40\, \mbox{ºC}$ hasta los $85\, \mbox{ºC}$, con una precisión de $\pm 0.5\, \mbox{ºC}$. El sensor de presión tiene un rango de entre $300 hPa$ y $1100 hPa$. Por útlimo el rango de la humedad relativa va desde el 0 hasta el 100\%.
 
@@ -894,7 +894,7 @@ En la Figura~\ref{fig:esquema_sensores} se puede observar la estructura de como 
   \caption{Estructura generación de un nuevo de dataSet}\label{fig:esquema_sensores}
 \end{figure}
 
-Antes de adentrarnos en una explicación en mayor profundadida de lo que se desarrolla en este proyecto
+Antes de adentrarnos en una explicación en mayor profundadidad de lo que se desarrolla en este proyecto
 
 Si tu proyecto es un software, siempre es bueno poner la arquitectura (que es cómo se estructura tu programa a ``vista de pájaro'').
 
@@ -957,7 +957,7 @@ En el caso del sensor BME280 se utiliza comunicación por I2C para poder leer la
 
 Para poder obtener los valores del LDR fue necesario instalar el paquete LGPIO, los detalles de su instalación se encuentran en el Anexo.
 
-Para la comunicación I2C hubo que instalar el paquete \textit{i2c-tools} en la Raspberry. Dentro del entorno de conda donde se desarrolla el proyecto se tuvieron que instalar además otros dos paquetes: \textit{smbus2} y \textit{RPi.bme280}.
+Para la comunicación I2C hubo que instalar el paquete \textit{i2c-tools} en la Raspberry. Para poder utilizar este paquete es necesario tener permisos de root, sin embargo se dieron permisos a un usuario de forma que no tuviese que ser root para poder ejecutarlo\footnote{\url{https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html}}. Dentro del entorno de conda donde se desarrolla el proyecto se tuvieron que instalar además otros dos paquetes: \textit{smbus2} y \textit{RPi.bme280}.
 
 \section{Modelos de aprendizaje automático}
 
@@ -1132,14 +1132,14 @@ Este programa también hace esta conversión de multiclase a dos clases. Para el
 
 Una vez realizada la transformación de multiclase a clase binaria, se hace un pequeño tratamiento a los datos para que cada modelo pueda entrenar adecuadamente y más fácilmente con ellos\cite{dataSetTreatment}. Para ello se elimina la columna 19 y 20, ya que estas contienen todo el rato el mismo valor, que es cero. A continuación se transforman los datos categóricos y por último se eliminan las filas duplicadas. Con este tratamiento los datos se guardan utilizando la función \textit{to\_csv} que proporciona pandas y se guarda el nuevo set de datos tratados sin la cabecera ni el índice, de forma que desde el código de cada uno de los modelos los datos estén listos para poder ser utilizados.
 
-\section{Mi dataSet}
+\section{Dataset: Mi dataSet}
 \label{sec:mi_dataSet}
 
 A parte de los dataSets anteriores se creó uno a partir de la información recopilada por lo sensores mediante el programa \textit{read\_sensors.ipynb}. Este dataSet, con medidas de temperatura, humedad, presión y luz, busca generar un modelo que nos permita saber si la habitación está ocupada o no en un determinado instante, al igual que con el dataSet de Occupancy. 
 
 Para ello durante quince minutos se estuvieron tomando las medidas en una habitación de forma controlada, es decir, sabiendo en cada instante si la habitación estaba ocupada o no. Durante diferentes periodos de tiempo la habitación estuvo ocupada o vacía. Cuando la habitación estaba vacía algunas veces se cerraba la persiana de la habitación para que también tomase medidas bajo esta nueva condición.
 
-Una vez finalizados los quince minutos de la prueba se paraba el programa \textit{read\_sensors.ipynb}, se abría el nuevo csv generado y se añadia al csv una nueva columna que representa el estado de la habitación en cada instante, asignando un uno cuando estaba ocupada y un cero en el caso contrario.
+Una vez finalizado el tiempo que se deseaba hacer la prueba se paraba el programa \textit{read\_sensors.ipynb}, se abría el nuevo csv generado y se añadia al csv una nueva columna que representa el estado de la habitación en cada instante, asignando un uno cuando estaba ocupada y un cero en el caso contrario.
 
 \subsection{read\_sensors.ipynb}
 \label{subsec_read_sensors}
@@ -1148,18 +1148,17 @@ Como se ha comentado anteriormente este programa es el encargado de tomar las me
 
 Para que pueda ejecutar correctamente es necesario que se le pase como argumento el nombre con el que se desea guardar el dataSet que se va a generar. Este argumento también se utilizará para nombrar la gráfica que genera el programa con el siguiente formato: \textit{Dara\_graph\_miDataSet}, siendo miDataSet el string que se haya pasado como argumento.
 
-
-Este programa necesita usar la comunicación I2C para obtener los valores del sensor BME280 pero también necesitará acceder directamente a los pines por medio de la librería LGPIO. Para poder acceder a dichos pines es necesario ejecutar el programa con permisos de root pero manteniendo el entorno conda actual (pues es donde se encuentran todas las librerías instalaldas), es por ello que para ejecutarlo habrá que utilizar la siguiente línea de comando:  
+Este programa necesita usar la comunicación I2C para obtener los valores del sensor BME280 pero también necesitará acceder directamente a los pines por medio de la librería LGPIO. Para poder utilizar LGPIO es necesario ejecutar el programa con permisos de root pero manteniendo el entorno conda actual (pues es donde se encuentran todas las librerías instalaldas), es por ello que para ejecutarlo habrá que utilizar la siguiente línea de comando:  
 
 
 \begin{lstlisting}[language=bash]
     $ sudo env "PATH=$PATH" ipython read_sensors.ipynb miDataSet
 \end{lstlisting}
 
-Una vez ejecutado el programa, en la segunda celda de este se preprararán los puertos para poder leer los datos. 
+Una vez ejecutado el programa, en la segunda celda de este, se preprararán los puertos para poder leer los datos. 
 
-A continuación se quedará ejecutando indefinidamente un bucle while, que es el que se encarga de guardar los datos sensados cada un segundo. Dicho bucle se puede ver en el Código~\ref{lst:firstloop_read_sensor}. Una cosa destacable es que al valor de la luz (proporcionada por el LDR) siempre se le resta uno. Esto se hace así para que los datos se puedan interpretar mejor, puesto que cuando hay luz a la Raspberry le llega un cero. De esta forma cuando haya luz se guarda un uno en el fichero en vez de un cero. 
-Este bucle ejecutará hasta que el usuario haga Ctr-C en el terminal, de esta forma se indica que ya no se desean guardar más datos.
+A continuación se quedará ejecutando indefinidamente un bucle while, que es el que se encarga de guardar los datos sensados cada un segundo. Dicho bucle se puede ver en el Código~\ref{lst:firstloop_read_sensor}. Algo destacable es que al valor de la luz (proporcionada por el LDR) siempre se le resta uno. Esto se hace así para que los datos se puedan interpretar mejor, puesto que cuando hay luz a la Raspberry le llega un cero. De esta forma cuando haya luz se guarda un uno en el fichero en vez de un cero. 
+Este bucle estará continuamente mostrando por el terminal las medidas tomadas hasta que el usuario haga Ctr-C , de esta forma se indica que ya no se desean guardar más datos.
 
 \begin{listing}[h!]
     \caption{Bucle que guarda los datos sensados.}{}
@@ -1187,10 +1186,10 @@ except KeyboardInterrupt:
     \end{minted}
 \end{listing}
 
-Una vez que este bucle ha finalizado se ejecuta otro que iterará sobre los datos guardados en la lista \textit{measures} para poder pintar esos valores en la gráfica que también devuelve este programa, dicho bucle se puede ver en el segmento de Código~\ref{lst:secondloop_read_sensor}. Hay dos cosas destacables de este bucle. La primera es que el valor de las presiones se divide entre diez. Esto se debe a que las presiones que devuelve el sensor BME280 son valores muy superiores a los que puede conseguir cualquiera de los otros sensores, por lo que en vez de devolver la medida en $hPa$ se divide entre diez para obtenerla en $KPa$ y de esta forma poder apreciar mejor los cambios sensados en todos los sensores.
+Una vez que este bucle ha finalizado, se ejecuta otro que iterará sobre los datos guardados en la lista \textit{measures} para poder pintar esos valores en la gráfica que devuelve este programa. Dicho bucle se puede ver en el segmento de Código~\ref{lst:secondloop_read_sensor}. Hay dos cosas destacables de este trozo de código. La primera es que el valor de las presiones se divide entre diez. Esto se debe a que las presiones que devuelve el sensor BME280 son valores muy superiores a los que puede conseguir cualquiera de los otros sensores, por lo que en vez de devolver la medida en $hPa$ se divide entre diez para obtenerla en $KPa$ y de esta forma poder apreciar mejor los cambios sensados en todos los sensores.
 
 
-El segundo aspecto destacable es sobre el valor de la luz que se multiplica por cincuenta. Al igual que en el caso de las presiones esto se hace para que el cambio de estado entre oscuridad y luz sea apreciable en la gráfica, de lo contrario el salto entre ceros y unos no se podría notar en la gráfica.
+El segundo aspecto destacable es sobre el valor de la luz, que se multiplica por cincuenta. Al igual que en el caso de las presiones esto se hace para que el cambio de estado entre oscuridad y luz sea apreciable en la gráfica, de lo contrario el salto entre ceros y unos apenas se podrían ver.
 
 \begin{listing}[h!]
     \caption{Bucle para generar la gráfica.}{}
@@ -1211,11 +1210,11 @@ for i in range(len(measures)):
     \end{minted}
 \end{listing}
 
-Un ejemplo de la gráfica que genera este programa se puede observar en la Figura~\ref{fig:ejemplo_gráfica}. Donde el eje x representan los segundos que han pasado desde que comenzó a ejecutarse el código.
+Un ejemplo de la gráfica que genera este programa se puede observar en la Figura~\ref{fig:ejemplo_gráfica}. Donde el eje x representan los minutos que han pasado desde que comenzó a ejecutarse el código.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=11cm, keepaspectratio]{img/Data_graph_sensors_test3.png}
+  \includegraphics[width=11cm, keepaspectratio]{img/occup_detec_15m.png}
   \caption{Ejemplo gráfica de las medidas de los sensores.}\label{fig:ejemplo_gráfica}
 \end{figure}
 
@@ -1270,36 +1269,50 @@ Por otra parte, independientemente del número de cores, siempre se llamará a l
     \caption{Función principal raspberry\_test.ipynb}{}
     \label{lst:funcion_principal_raspberry_test}
     \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
-    t= 200
-    list_cpus= [0,1,2,4]
-    dataSet= sys.argv[1]
-    name_dataset= "Raspberry_"+dataSet.split("/")[-1].split(".")[0]
-    f= open(name_dataset+'_results.txt', 'w+')
-    f.close()
-    
-    for i in range(4):
-        for j in list_cpus:
-            num_cores= j
-            if(j > 0):
-                pid_stress= start_stress(j, t)
-            else:
-                print("\nCpu Idle")
-            model(i)
-            if j > 0:
-                os.killpg(os.getpgid(pid_stress.pid), signal.SIGKILL)
+#Hacer una version que ejecute de seguido los modelos solo (sin stress)
+t= 200
+list_cpus= [0,1,2,4]
+dataSet= sys.argv[1]
+name_dataSet= dataSet.split("/")[-1].split(".csv")[0]
+
+lst_header= []
+lst_Wt= []
+lst_Ct= []
+lst_TAc= []
+lst_Ac= []
+lst_Pr= []
+lst_Re= []
+
+for i in range(4):
+    for j in list_cpus:
+        num_cores= j
+        
+        if(j > 0):
+            pid_stress= start_stress(j, t)
+        else:
+            print("\nCpu Idle")
             
-            print("Sleeping for 5 sec...\n")
-            time.sleep(5)
+        model_num= i    
+        model(model_num)
+        
+        if j > 0:
+            os.killpg(os.getpgid(pid_stress.pid), signal.SIGKILL)
+        
+        print("Sleeping for 5 sec...\n")
+        time.sleep(5)
     \end{minted}
 \end{listing}
 
-Cuando se completa la generación del modelo para uno de los niveles, los resultados de Cpu time, Wall time, Accuracy, Presisión y Recall se van guardando cada uno en su respectiva variable gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera una tabla mediante la función \textit{add\_data} con los resultados obtenidos en cada uno de los casos.
-Dicha tabla se guardará en un fichero que se encarga de crear \textit{raspberry\_test.ipynb}. Este fichero tendrá por nombre el siguiente formato: Raspberry\_nombreDataSet\_results.txt.
-Cada una de las tablas generadas por los modelos de aprendizaje serán guardadas en el mismo fichero.
+Cuando se completa la generación del modelo para uno de los niveles, los resultados de Cpu time, Wall time, Accuracy trainning (que es el valor de Accuracy para los mismos datos con los que se ha entrenado), Accuracy, Presisión y Recall se van guardando cada uno en su respectiva lista gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera una tabla mediante la función \textit{add\_data} con los resultados obtenidos en cada uno de los casos.
+Dicha tabla se guardará en un fichero que se encarga de crear \textit{raspberry\_test.ipynb}. Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión logísitca el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de soporte vectorial nombreDataSet\_raspSVM.csv. En total el programa creará cuatro csv diferentes, un por cada modelo
 
 Los nuevos procesos, comentados anteriormente, se crean utilizando la función \textit{Popen} de la librería \textit{subprocess}. Nótese que en el método \textit{model} (a diferencia de \textit{start\_stress}) esta función tiene añadido al final un \textit{.communicate()} de esta forma se parará la ejecución principal hasta que el proceso de \textit{Popen} termine. Si una vez terminado dicho proceso \textit{stress} sigue ejecutando se matará para poder comandar otro \textit{stress} sin tener que esperar a que se cumpla el tiempo de ejecución que le pasamos como argumento como se puede ver en el Código~\ref{lst:funcion_principal_raspberry_test}.
 
-\subsection{Resultados}
+
+\subsection{Resultados Occupancy}
+\label{subsec:resultados_raspberry}
+
+\subsection{Resultados kdd\_cup99}
 \label{subsec:resultados_raspberry}
 
 Los resultados obtenidos para el veinte por ciento del data set de Kdd\_cup99 son los siguientes: 
@@ -1380,13 +1393,13 @@ El portátil que se utilizó para estas pruebas tenía un total de ocho cpus fí
 \subsection{Programa para las pruebas: pc\_test.ipynb}
 \label{subsec:programa_pruebas_pc}
 
-Para realizar las pruebas se ha creado un programa llamado \textit{pc\_test.ipynb} que al igual que el fichero \textit{raspberry\_test.ipynb} ejecuta cada uno de los modelos con los diferentes niveles de estrés y guarda los datos obtenidos en un nuevo fichero que crea el programa con el formato Pc\_nombreDataSet\_results.txt.
+Para realizar las pruebas se ha creado un programa llamado \textit{pc\_test.ipynb} que al igual que el fichero \textit{raspberry\_test.ipynb} ejecuta cada uno de los modelos con los diferentes niveles de estrés y guarda los datos obtenidos en un nuevo fichero que crea el programa con el formato nombreDataSet\_pcMD.csv, siendo MD una vez más las siglas del modelo de aprendizaje automático. El programa generará un fichero diferente para cada modelo.
 
-Al igual que en \textit{raspberry\_test.ipynb} el dataSet que se quiera utilizar para entrenar debe de haber sido preprocesado (en caso de que lo necesite) y no debe de tener cabecera, sino podrá dar error la ejecución.
+Al igual que en \textit{raspberry\_test.ipynb} el dataSet que se quiera utilizar para entrenar debe de haber sido preprocesado (en caso de que lo necesite) y no debe de tener cabecera, sino dará error la ejecución.
 
 La función principal utilizará dos bucles anidados, tal y como se hacia en \textit{raspberry\_test.ipynb}, para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \textit{raspberry\_test.ipynb} ya que como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará (si es necesario) dos procesos, uno ejecutará stress (cuando se desee estresar alguna cpu) y el otro los modelos que se encuentran dentro de la carpeta \textit{"Modelos"}. Todos los ficheros que generan los modelos de aprendizaje son los mismos que en la Raspberry salvo el de Random Forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
 
-\subsection{Resultados}
+\subsection{Resultados kdd\_cup99}
 \label{subsec:resultados_pc}
 
 Los resultados de la ejecución del comando stress conforme a estos niveles se pueden observar en la tabla~\ref{tab:times_portatil}. Como se puede apreciar los tiempos que se obtienen en el portátil disminuyen bastante con respecto a los que conseguía la Raspberry. 
@@ -1432,9 +1445,7 @@ Se puede ver la frecuencia de ejecución de todos los cores cada 0.1 segundos. E
 \section{Comparación Raspberry vs Portátil}
 \label{sec:raspberry_vs_portatil}
 
-Lo primero que puede llamar la atención de ambas tablas es que la Raspberry, para los mismos modelos y los mismos datos, tarda más en ejecutar que el portátil. Esto se debe a que habiendo observado las frecuencias tanto de la Raspberry como del portátil vemos que la máxima velocidad a la que pueden ir los cores en la Raspberry es a 1500 MHz mientras que el portátil tiene su máximo en 3600 MHz, más del doble que la Raspberry. Luego esto permite que los procesos en el portátil puedan terminar antes que en la Raspberry siendo uno de los factores por los que puede que la Raspberry es más lenta que el portátil.
-
-Este aumento de velocidad de frecuencia explicaría por qué en el portátil los tiempos son menores, porque pueden llegar a ir a más velocidad los procesos.
+Lo primero que puede llamar la atención de ambas tablas es que la Raspberry, para los mismos modelos y los mismos datos, tarda más en ejecutar que el portátil. Esto se debe a que habiendo observado las frecuencias tanto de la Raspberry como del portátil vemos que la máxima velocidad a la que pueden ir los cores en la Raspberry es a 1500 MHz mientras que el portátil tiene su máximo en 3600 MHz, más del doble que la Raspberry. Luego esto permite que los procesos en el portátil puedan terminar antes que en la Raspberry siendo uno de los factores por los que la Raspberry puede ser más lenta que el portátil, ya que los cores pueden ir a mayor velocidad.
 
 Sin embargo, a parte de la diferencia de los tiempos, todos los modelos tanto entrenando en la Raspberry como en el portátil alcanzaban un Accuracy, Precision y Recall mayor al 90\% prácticamente siempre en todos los casos.
  
