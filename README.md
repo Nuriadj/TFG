@@ -1243,7 +1243,31 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 
 * 10/5/22  
 	
-	* Tengo que vovler a ejecutar las pruebas de pc_test y raspberry_test para obtener los valores en el formato nuevo. Esperar a que me contesten sobre como se consigue calcular el Accuracy trainning.
+	* Tengo que vovler a ejecutar las pruebas de pc_test y raspberry_test para obtener los valores en el formato nuevo. Esperar a que me contesten sobre como se consigue calcular el Accuracy trainning.  
+	
+* 14/5/22  
+	
+	* Validación cruzada NO da un modelo ya entrenado, simplemente ayuda a qeu veamos como de fiable es el modelo. Si se está sobreajustando, si actua de froma más o menos buenas para los diferentes trozos de datos. [Enlace](https://stackoverflow.com/questions/62954433/how-to-predict-with-the-test-dataset-while-using-cross-validation) para entender mejor esto. Luego cross validation solo me puede dar la media de la precisión de todos los subtrozos pero nada más. No sirve para entrenar.  
+	
+	***cross_val_score returns a score, it does not return a fitted model. So, in order to actually fit your model and get predictions on your test set (assuming of course that you are satisfied by the actual score returned by cross_val_score), you need to proceed in doing so as:***  
+	***random_forest.fit(X_train, y_train)***  
+	***pred = random_forest.predict(X_test)***  
+	
+	Otro [enlace](https://stats.stackexchange.com/questions/411290/how-to-use-a-cross-validated-model-for-prediction) en el apartado Thoughts about your use case.  
+	
+	
+	***Cross-validation is mainly used as a way to check for over-fit. Assuming you have determined the optimal hyper parameters of your classification technique (Let's assume random forest for now), you would then want to see if the model generalizes well across different test sets.***  
+	
+	***They key thing I was missing is that CV is not a method for training a model. It's only for evaluation.***
+	
+	Otra [respuesta](https://stats.stackexchange.com/questions/52274/how-to-choose-a-predictive-model-after-k-fold-cross-validation) que puede ser útil.   
+	
+	***But the purpose of cross-validation is not to come up with our final model. We don't use these 5 instances of our trained model to do any real prediction. For that we want to use all the data we have to come up with the best model possible. The purpose of cross-validation is model checking, not model building.***   
+	
+	***Now, say we have two models, say a linear regression model and a neural network. How can we say which model is better? We can do K-fold cross-validation and see which one proves better at predicting the test set points. But once we have used cross-validation to select the better performing model, we train that model (whether it be the linear regression or the neural network) on all the data. We don't use the actual model instances we trained during cross-validation for our final predictive model.***  
+
+
+	
 	
 	
 # **TO DO Memoria:**  
