@@ -645,7 +645,7 @@ También existe la posibilidad de poner notas al pie de página, por ejemplo, un
 
 En este apartado se reaizará una breve descripción del dispositivo principal, que es motivo de esta investigación. También se expondrá todo el software que se ha necesitado instalar para poder implementar los modelos y ponerlos a prueba.
 
-\section{Machine Learning e IoT}
+\section{Machine Learning}
 \label{sec:machine_learning}
 
 El objetivo princicpal de este trabajo de investigación es conocer si la Raspberry es un dispositivo lo suficientemente potente para realizar tareas de Machine learning es por ello que primero debemos tener claros estos conceptos para poder entender el proyecto.
@@ -682,7 +682,7 @@ El objetivo princicpal de este trabajo de investigación es conocer si la Raspbe
     
     Un ejemplo de este último tipo se puede ver en la Figura~\ref{fig:a_supervisado}, donde cada una de las formas serían las entradas y las etiquetas de: triángulo, cuadrado o círculo serían la salidas, cada dato de entrada tiene asignada una de estas etiquetas. Todo esto formaría lo que se denomina dataSet que es el conjunto de datos que se pasan al modelo para entrenar y poder encontrar esas relaciones entre entradas y salidas. En este caso cuando al modelo se le pregunte a qué clase pertenece una figura (del mismo tipo que ha visto durante el entrenamiento), si es lo suficientemente robusto, debería de ser capaz de identificarlo como un cuadrado.
     
-    \begin{figure}[h!]
+    \begin{figure}[]
       \centering
       \includegraphics[width=12cm, keepaspectratio]{img/a_supervisado.png}
       \caption{Estructura aprendizaje supervisado para clasificación.}\label{fig:a_supervisado}
@@ -692,7 +692,7 @@ El objetivo princicpal de este trabajo de investigación es conocer si la Raspbe
     
     \item \textbf{Aprendizaje no supervisado}. Al algoritmo de aprendizaje se le proporciona únicamente el conjunto de datos de entrada, sin ningún tipo de dato de salida. El objetivo es que el método de aprendizaje utilizado detecte posibles patrones de interés en el conjunto de datos de entrada. 
     
-    \begin{figure}[h!]
+    \begin{figure}[]
       \centering
       \includegraphics[width=12cm, keepaspectratio]{img/a_no_supervisado.png}
       \caption{Estructura aprendizaje no supervisado para segmentación.}\label{fig:a_no_supervisado}
@@ -709,16 +709,103 @@ El objetivo princicpal de este trabajo de investigación es conocer si la Raspbe
 
 Gracias a que estos algoritmos pueden estar aprendiendo constantemente de nuevos datos consiguen ir perfeccionando su comportamiento, lo que hace que las técnicas de Machine Learning sean cada vez más importantes debido a la multitud de aplicaciones que se le pueden dentro de la robótica, los vehículos autónomos, diagnósticos médicos, markenting....
 
-Uno de los campos en los que son de gran importancia estas técnicas es en los proyectos de IoT (Internet of Things). El Internet de las cosas (o Internet of Things) es la interconexión de sensores y dispositivos, como por ejemplo pueden ser los electrodomésticos, termostátos, coches, ropa... Todos ellos se conectan a través de una red por medio de la cual pueden interaccionar y compartir datos. En estos casos se utiliza Machine Learning para generar, por medio de todos estos datos recopilados, nuevos modelos de aprendizaje automático cuyas predicciones se pueden usar para poder actuar sobre el entorno. Las posibles aplicaciones que ofrece esto son prácticamente infinitas, algunos ejemplos pueden ser:
+\section{Modelos de aprendizaje automático}
+\label{sec:modelos_aautomatico}
+
+Aun que existen muchos algoritmos para generarmodelos de aprendizaje automático, en este proyecto vamos a utilizar concretamente cuatro, un de Regresión logística, otro de Máquinas de soporte vectorial, Gradient boosting y un último de Random forest. Para ello se utilizará la librería de scikit-learn, que veremos más adelante.
+
+\subsection{Regresión logística}
+\label{subsec:regresion_logistica}
+
+Modelo de aprendizaje supervisado que realiza tareas de clasificación binaria, es decir solo existen dos posibles clases. Esta técnica busca una función acotada (normalmente entre 0 y 1) que divida los datos de ambas clases de forma bien diferenciada. Normalmente dicha función se denomina como logística o sigmoide y se define de la siguiente forma:
+
+\begin{equation}
+    h_w(x^{(i)}) = \frac{1}{1 + e^{\sum_{j=0}^{d} w_j x_j^{(i)} }}
+\end{equation}
+
+Dicha expresión devolverá un valor entre cero y uno. Según lo próximo que este el valor a cero o uno pertenecerá a una clase u otra. 
+
+Los parámetros representados por $w$ son los pesos, unos valores númericos que utiliza la función para realizar la predicción. Cada peso está multiplicando a una caracerística, simbolizada mediante $x_j$. Luego, para conocer a qué clase pertenece el ejemplo $x^{(i)}$ habrá que aplicar la fórmula anterior, por lo que se tendrá que realizar el sumatorio de todos los pesos multiplicados por sus respectivas caracterísitcas (desde la cero hasta la d-ésima). 
+
+Durante la fase de entrenamiento el modelo ajusta los pesos mediante un método de optimización, a fin de que las predicciones que se realicen mediante ellos tengan el mínimo error posible. Para obtener los valores óptimos de los pesos se utiliza el método de descenso por gradiente, mediante el cual se irán actualizando los valores de los pesos conforme vaya entrenando con más ejemplos. La función de descenso por gradiente se define de la siguiente manera:
+
+\begin{equation}
+    w_j = w_j - \alpha \frac{1}{n} \sum_{i= 1}^{n} (h_w(x^{(i)}) - y^{(i)}) x_j^{(i)}
+\end{equation}
+
+Para calcular los pesos se utiliza el error que existe entre la salida predecida con los pesos estimados hasta ahora ($h_w(x^{(i)})$) y el valor real, es decir, la salida que verdaderamente corresponde a ese ejemplo ($y^{(i)}$). También es necesario definir el valor del ratio de aprendizaje ($\alpha$), si se le da un valor muy elevado puede llegar a no converger el modelo en ninguna solución. Esto se realiza para todos los valores de $j$, desde $j= 0$ hasta $j= d$, que es el número total de caracterísitcas.
+
+Se dará por finalizada la fase de aprendizaje cuando se consiga que los valores de los pesos minimicen una función de coste:
+
+\begin{equation}
+    J(w) = \frac{1}{2} \sum_{i= 1}^{n} {(h_w(x^{(i)}) - y^{(i)})}^2 
+\end{equation}
+
+
+\subsection{Máquinas de soporte vectorial}
+\label{subsec:maquitas_soporte_vectorial}
+
+Modelo de aprendizaje supervisado utilizado para resolver tareas de clasificación binaria, aun que existen máquinas de vector soporte para resolver problemas de regresión o de clasificación multiclase. Se basa en la generación de un hiperplano que separe de forma óptima los puntos de una clase respecto de otra. Es decir, que exista la máxima distancia entre el hiperplano y los puntos más cercanos a este, los puntos más cercanos al hiperplano de separación se deniminan como vectores soporte. Luego el hiperplano óptimo pasará justo por el medio de los vectores soporte de ambas clases.
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=10cm, keepaspectratio]{img/explicacion_svm.png}
+  \caption{Ejemplo clasificación con Máquinas de soporte vectorial}\label{fig:explicacion_svm}
+\end{figure}
+
+En la Figura~\ref{fig:explicacion_svm} se puede ver un ejemplo de separación óptimo entre ambas clases, siendo los círculos rodeados en amarillo los vectores soporte. Ambos tienen la máxima distancia posible con el hiperplano generado, que es capaz de separar perfectamente ambas. El hiperplano de separación se puede definir como una función lineal:
+
+\begin{equation}
+    h(x) = \sum_{i= 0}^{n} w_i x_i
+\end{equation}
+
+En esta ocasión también se utilizan unos pesos ($w$) para encontrar dicho hiperplano.
+
+Sin embargo, hay veces puede llegar a ser imposible hallar un hiperplano que divida correctamente las clases. Ante estos casos la resolución del problema se encuentra en aumentar la dimensionalidad de los datos para comprobar si en esa nueva dimensión existe un hiperplano capaz de separarlos adecuadamente.
+
+
+\subsection{Gradient boosting}
+\label{subsec:gradient_boosting}
+
+Técnica de aprendizaje supervisado que se utiliza tanto para problemas de regresión como de clasificación. Se basa en la combinación de modelos predictivos débiles, normalmente árboles de decisión, para crear un modelo predictivo fuerte. Los árboles de decisión son uno de los algoritmos más utilizados para la toma de decisiones debido a su sencilla implementación y fácil interpretación. Dado un conjunto de datos se crean diagramas lógicos que sirven para representar una serie de condiciones sucesivas para resolver un problema. Por ejemplo en la Figura~\ref{fig:ejemplo_adecision} hay representado un árbol de decisión que sirve para poder saber si podemos salir a la calle a correr. 
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=14cm, keepaspectratio]{img/ejemplo_adecision.png}
+  \caption{Ejemplo árbol de decisión.}\label{fig:ejemplo_adecision}
+\end{figure}
+
+En Gradient boosting se generan árboles de decisión de forma secuencial, haciendo que cada árbol corrija los errores del árbol anterior. De forma general suelen ser árboles de un máximo de tres niveles de profundidad.
+
+\subsection{Random forest}
+\label{subsec:random_forest}
+
+Random forest se puede usar tanto en problemas de clasificación como de regresión. Utiliza un conjunto de árboles de decisión que se generan de forma paralela. Cada uno de los árboles de decisión se entrena con un subconjunto aleatorio de los datos de entrenamiento. 
+
+Cuando se quiera, por ejemplo, estimar la clase a la que pertenece un dato cada uno de los árboles "votará" por la clase a la que cree que el dato pertenece. La clase con mayoría de votos es la predicción final del modelo. Por lo tanto, aumentando el número de árboles de decisión se aumenta la precisión del modelo. Con lo que se consigue construir un modelo robusto a partir de varios mdelos que no tienen por qué ser tan robustos.
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=14cm, keepaspectratio]{img/ejemplo_randomForest.png}
+  \caption{Ejemplo Random forest.}\label{fig:ejemplo_rforest}
+\end{figure}
+
+En la Figura~\ref{fig:ejemplo_rforest} podemos ver un ejemplo de Random forest, con el dataSet que se le pasa generará, en este caso, tres árboles de decisión a partir de subconjuntos aleatorios del dataSet original. Cuando se pretenda clasificar un nuevo dato cada árbol le asignará una clase a ese dato según lo que haya decidido. La clase que más se repite en este caso es la 2, luego esa será la clase a la que pertenezca el dato.
+
+\section{IoT}
+\label{sec:IoT}
+
+Uno de los campos en los que son de gran importancia las técnicas de aperndizaje automático es en los proyectos de IoT (Internet of Things). El Internet de las cosas (o Internet of Things) es la interconexión de sensores y dispositivos, como por ejemplo pueden ser los electrodomésticos, termostátos, coches, ropa... Todos ellos se conectan a través de una red por medio de la cual pueden interaccionar entre ellos y compartir datos sin necesidad de que un humano intervenga, esta red puede ser por cable, WiFi, Bluetooth etc. 
+
+Los conectados generan una gran cantidad de datos que llegan a una plataforma IoT que recolecta, procesa y analiza dichos datos.Utilizando Machine Learning se puede generar, por medio de todos estos datos recopilados, nuevos modelos de aprendizaje automático cuyas predicciones se pueden usar para poder actuar sobre el entorno. Las posibles aplicaciones que ofrece esto son prácticamente infinitas, algunos ejemplos pueden ser:
 
 \begin{itemize}
-    \item Riego de plantas. Tomando medidas de luz, humedad, temperatura...Por medio de ML se puede automatizar el riego de las plantas.
-    \item Sistema antirobo. 
+    \item Smart Homes. Permite que se puedan controlar varios de los dispositivos que hay comúnmente en los hogares haciendo que, por ejemplo, esté todo lo que necesite el usuario para cuando este llegue a casa.
     \item Telemedicina. Por medio de dispositivos que lleve puesto el paciente se puede tener un control sobre su estado de salud e incluso hacer diagnósticos anticipados.
-    \item Control de luces. Apagar o encender de forma totalmente autónoma las luces si hay o no una persona en la habitación.
+    \item Vehículos autónomos. Los vehículos puedan estar conectados a la red de tráfico en tiempo real para poder evitar accidentes.
 \end{itemize}
 
-\section{Dispositivo Hardware: Raspberry Pi 4 Modelo B}
+\section{Dispositivo con capacidad de cómputo limitada: Raspberry Pi 4 Modelo B}
 \label{sec:dispositivo_hardware}
 
 Raspberry Pi\footnote{\url{https://www.raspberrypi.org/}} es un ordenador de bajo coste y tamaño reducido desarrollado por Raspberry Pi Foundation. Este dispositivo se puede emplear en  multitud de aplicaciones pero su principal objetivo es hacer accesible la informática a todos los usuarios. A parte de poder realizar todas las tareas que se esperan de un ordenador, también puede interactuar con el entorno a través de sensores conectados a sus pines GPIO.
@@ -730,6 +817,30 @@ Desde su primer lanzamiento se han ido desarrollando y comercializado nuevos mod
 Dicho modelo posee un procesador ARM Cortex-172 con un total de cuatro cores físicos y cuatro lógicos. Otro detalle destacable de la Raspberry para el desarrollo de este trabajo es que posee una arquitectura SMP (Symmetric Multi-Processing), un tipo de arquitectura de computador en el que las unidades de procesamiento comparten una única memoria central, lo que permite que cualquier procesador trabaje en cualquier tarea sin importar su localización en memoria. 
 
 Actualmente es uno de los dispositivos más populares ya que brinda un sinfín de posibilidades a pesar de su pequeño tamaño. Específicamente dentro de el campo de aprendizaje automático e IoT se podrían desarrollar multitud de aplicaciones gracias a la interacción que tiene con el entorno por medio de los sensores y actuadores que se pueden conectar. Por ello, en este trabajo de investigación se busca examinar el rendimiento de este pequeño ordenador y comprobar hasta donde se podría llegar con él, dentro del campo del aprendizaje automático. 
+
+
+\section{Sensores}
+\label{sec:sensores}
+
+En este proyecto también se utilizaron sensores para tomar medidas del entorno y generar nustro propio dataSet con el que entrenar los modelos de aprendizaje automático. En concreto se utilizaron dos: una fotoresistencia (LDR) y un sensor BME280, a continuación se darán más detalles de ambos sensores.
+
+\subsection{Fotoresistencia}
+\label{subsec:fotoresistencia}
+
+Esta resistencia también denominada como LDR por sus siglas en inglés Light Dependent Resistor, varía su resistencia dependiendo de la cantidad de luz que incida sobre su superficie. Funciona gracias al principio de la fotoconductividad que es un fenómeno óptico en el que la conductividad del material aumenta cuando la luz es absorvida. Luego cuando la luz cae sobre la resistencia los electrones son excitados lo que provoca que empiece a fluir cada vez más corriente a través del dispositivo, por lo tanto la resistencia del dispositivo dismimnuye. Por lo tanto cuando la LDR recibe luz, su resistencia será más baja y cuando esté a oscuras la resistencia será más alta. La resistencia del LDR está en torno a los $5 k\Omega$
+
+Para que la Raspberry pueda obtener el valor que sensa este dispositivo es necesario utilizar un conversor. En este caso utilizaremos el HW-103 con el que al conectarlo a la Raspberry y a el sensor podremos conseguir una señal digital. Cuando a la Raspberry le llegue un cero significará que hay luz mientras que si lee un uno es que no hay luz.
+
+\subsection{BME280}
+\label{subsec:bme280}
+
+El sensor BME280\footnote{\url{https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/}}, desarrollado por Bosh, es un sensor desarrollado especialmente para aplicaciones móviles y prendas de vestir donde el tamaño y el bajo consumo de energía son elementos claves. Integra en un mismo dispositivo tres sensores diferentes que proveen medidas de alta precisión. Los tres sensores que posee son: uno de temperatura, otro de presión atmosférica y por último, humedad relativa. 
+
+El rango de la temperatura va desde los $-40\, \mbox{ºC}$ hasta los $85\, \mbox{ºC}$, con una precisión de $\pm 0.5\, \mbox{ºC}$. El sensor de presión tiene un rango de entre $300 hPa$ y $1100 hPa$. Por útlimo el rango de la humedad relativa va desde el 0 hasta el 100\%.
+
+La comunicación con este sensor es muy sencilla ya que puede usar tanto I2C o SPI. Tiene una tensión de funcionamiento de $3.3V$. Y a pesar de que integra tres sensores diferentes su tamaño es pequeño, de $19x18 mm$.
+
+Este tipo de sensores se utilizan en aplicaciones como: monitorización del clima, automatización del hogar, sistemas de autopiloto para drones...
 
 
 \begin{comment}
@@ -814,28 +925,6 @@ PyCharm es un \gls{ide} dedicado concretamente a la programación en Python y de
 Proporciona análisis de código, un depurador gráfico, una consola de Python integrada, control de versiones y, además, soporta desarrollo web con Django. Todas estas características lo convierten en un entorno completo e intuitivo, idóneo para el desarrollo de proyectos académicos como el que nos ocupa.
 \end{comment}
 
-\section{Sensores}
-\label{sec:sensores}
-
-En este proyecto también se utilizaron sensores para tomar medidas del entorno y generar nustro propio dataSet con el que entrenar los modelos de aprendizaje automático. En concreto se utilizaron dos: una fotoresistencia (LDR) y un sensor BME280, a continuación se darán más detalles de ambos sensores.
-
-\subsection{Fotoresistencia}
-\label{subsec:fotoresistencia}
-
-Esta resistencia también denominada como LDR por sus siglas en inglés Light Dependent Resistor, varía su resistencia dependiendo de la cantidad de luz que incida sobre su superficie. Funciona gracias al principio de la fotoconductividad que es un fenómeno óptico en el que la conductividad del material aumenta cuando la luz es absorvida. Luego cuando la luz cae sobre la resistencia los electrones son excitados lo que provoca que empiece a fluir cada vez más corriente a través del dispositivo, por lo tanto la resistencia del dispositivo dismimnuye. Por lo tanto cuando la LDR recibe luz, su resistencia será más baja y cuando esté a oscuras la resistencia será más alta. La resistencia del LDR está en torno a los $5 k\Omega$
-
-Para que la Raspberry pueda obtener el valor que sensa este dispositivo es necesario utilizar un conversor. En este caso utilizaremos el HW-103 con el que al conectarlo a la Raspberry y a el sensor podremos conseguir una señal digital. Cuando a la Raspberry le llegue un cero significará que hay luz mientras que si lee un uno es que no hay luz.
-
-\subsection{BME280}
-\label{subsec:bme280}
-
-El sensor BME280\footnote{\url{https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/}}, desarrollado por Bosh, es un sensor desarrollado especialmente para aplicaciones móviles y prendas de vestir donde el tamaño y el bajo consumo de energía son elementos claves. Integra en un mismo dispositivo tres sensores diferentes que proveen medidas de alta precisión. Los tres sensores que posee son: uno de temperatura, otro de presión atmosférica y por último, humedad relativa. 
-
-El rango de la temperatura va desde los $-40\, \mbox{ºC}$ hasta los $85\, \mbox{ºC}$, con una precisión de $\pm 0.5\, \mbox{ºC}$. El sensor de presión tiene un rango de entre $300 hPa$ y $1100 hPa$. Por útlimo el rango de la humedad relativa va desde el 0 hasta el 100\%.
-
-La comunicación con este sensor es muy sencilla ya que puede usar tanto I2C o SPI. Tiene una tensión de funcionamiento de $3.3V$. Y a pesar de que integra tres sensores diferentes su tamaño es pequeño, de $19x18 mm$.
-
-Este tipo de sensores se utilizan en aplicaciones como: monitorización del clima, automatización del hogar, sistemas de autopiloto para drones...
 
 \section{Redacción de la memoria: LaTeX/Overleaf}
 \label{sec:redaccion_de_la_memoria}
@@ -873,10 +962,10 @@ Ante la gran importancia que están adquiriendo las aplicaciones de Machine Lear
 
 Sin embargo, no nos podemos fiar únicamente de las apariencias. Hay que averiguar si verdaderamente un dispositivo como este, con menos recursos que un ordenador común, puede llevar a cabo tareas de este estilo con éxito.
 
-Para ello, y como se explicará en mayor detalle en los siguientes capítulos, pondremos a prueba a la máquina con diferentes pruebas. En la Figura~\ref{fig:arquitectura} se puede visualizar un esquema general de en qué consisten dichas pruebas. Como se puede ver en esta figura los experimentos se llevarán a cabo tanto en la Raspberry como en un portátil para poder comparar los resultados y comprender mejor los resultados obtenidos en la Raspberry.
+Para ello, y como se explicará en mayor detalle en los siguientes capítulos, pondremos a prueba a la máquina con diferentes test. En la Figura~\ref{fig:arquitectura} se puede visualizar un esquema general de en qué consisten dichas pruebas. Como se puede ver en esta figura los experimentos se llevarán a cabo tanto en la Raspberry como en un portátil para poder comparar y comprender mejor los resultados obtenidos en la Raspberry.
 
 
-\begin{figure}[h!]
+\begin{figure}[]
   \centering
   \includegraphics[width=14cm, keepaspectratio]{img/arquitectura_general.png}
   \caption{Estructura de los experimentos}\label{fig:arquitectura}
@@ -884,25 +973,17 @@ Para ello, y como se explicará en mayor detalle en los siguientes capítulos, p
 
 Como se explicó en la sección~\ref{sec:machine_learning} hay varios tipos de aprendizaje automático y dentro de cada clase existen aún más métodos para resolver un mismo problema de formas diferentes. En este proyecto utilizaremos algoritmos de aprendizaje supervisado para realizar problemas de clasificación binaria, es decir, solo existen dos clases a las que pueden pertenecer los datos. Concretamente (y como se puede ver en la Figura~\ref{fig:arquitectura}) se utilizarán cuatro algoritmos de Machine Learning que son: Regresión logística, Máquinas de soporte vectorial, Gradient boosting y Random forest.
 
-Aprovechando los puertos GPIO de los que está provista la Raspberry se utilizaron un par de sensores para poder generar un nuevo dataSet que utilizar para entrenar los modelos de aprendizaje automático.
+Aprovechando los puertos GPIO de los que está provista la Raspberry, en este proyecto también se utilizan un par de sensores para poder generar un nuevo dataSet con el que poder entrenar los modelos de aprendizaje automático. Estos dos sensores ue se utlizan son los que se mencionaron en el apartado~\ref{sec:sensores}
+.
+En la Figura~\ref{fig:esquema_sensores} se puede observar la estructura de como se lleva a cabo la recolección de información de los sensores por parte de la Raspeberry. Con todo conectado correctamente, se generará un nuevo fichero csv con los datos medidos durante el tiempo que el usuario haya estado ejecutando el programa que se puede ver en esta figura. Este dataSet podrá utilizarse para entrenar los modelos de aprendizaje. Además, mediante la información recogida se creará una figura que contiene los datos sensados en cada instante de tiempo.
 
-En la Figura~\ref{fig:esquema_sensores} se puede observar la estructura de como se lleva a cabo la recolección de información de los sensores por parte de la Raspeberry. Con todo conectado correctamente, se generará un nuevo fichero csv con los datos medidos durante el tiempo que el usuario haya estado ejecutando dicho programa. Dicho dataSet podrá utilizarse para entrenar los modelos de aprendizaje. Además mediante al información recogida se creará una figura que contiene los datos sensados en cada instante de tiempo.
-
-\begin{figure}[h!]
+\begin{figure}[]
   \centering
   \includegraphics[width=14cm, keepaspectratio]{img/esquema_sensores.png}
   \caption{Estructura generación de un nuevo de dataSet}\label{fig:esquema_sensores}
 \end{figure}
 
 Antes de adentrarnos en una explicación en mayor profundadidad de lo que se desarrolla en este proyecto
-
-Si tu proyecto es un software, siempre es bueno poner la arquitectura (que es cómo se estructura tu programa a ``vista de pájaro'').
-
-Por ejemplo, puedes verlo en la Figura~\ref{fig:arquitectura}.
-\LaTeX \ pone las figuras donde mejor cuadran. 
-Y eso quiere decir que quizás no lo haga donde lo hemos puesto\ldots
-Eso no es malo.
-A veces queda un poco raro, pero es la filosofía de \LaTeX: tú al contenido, que yo me encargo de la maquetación.
 
 \begin{comment}[]
 \begin{figure}
@@ -918,12 +999,14 @@ A veces queda un poco raro, pero es la filosofía de \LaTeX: tú al contenido, q
 \end{figure}
 \end{comment}
  
+\begin{comment}
 Recuerda que toda figura que añadas a tu memoria debe ser explicada.
 Sí, aunque te parezca evidente lo que se ve en la Figura~\ref{fig:arquitectura}, la figura en sí solamente es un apoyo a tu texto.
 Así que explica lo que se ve en la Figura, haciendo referencia a la misma tal y como ves aquí.
 Por ejemplo: En la Figura~\ref{fig:arquitectura} se puede ver que la estructura del \emph{parser} básico, que consta de seis componentes diferentes: los datos se obtienen de la red, y según el tipo de dato, se pasará a un \emph{parser} específico y bla, bla, bla\ldots
 
 Si utilizas una base de datos, no te olvides de incluir también un diagrama de entidad-relación.
+\end{comment}
 
 
 \section{Configuración del entorno}
@@ -932,7 +1015,7 @@ Para poder desarrollar correctamente este trabajo es necesario preparar adecuada
 
 El primer paso para esto fue montar adecuadamente la Raspberry Pi conforme las instrucciones de Okdo\footnote{\url{https://www.okdo.com/getstarted/}}, empresa de la que procede el kit con el hardware utilizado en el proyecto.
 
-Una vez está listo el hardware hay que instalar el software necesario para la generación de modelos de machine learning.
+Una vez está listo el hardware, hay que instalar el software necesario para la generación de modelos de Machine Learning.
 Comenzando por cambiar el sistema operativo, en vez de utilizar el que viene por defecto, Raspbian Pi OS, se instaló Ubuntu 21.10\footnote{\url{https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4}}.
 
 A continuación se instaló Miniforge, por medio del cual se crea un entorno virtual donde se instalaron todos los paquetes necesarios para el proyecto como son scikit-learn, pandas, jupyter-notebook... Estos paquetes permitirán desarrollar modelos de aprendizaje automático.
@@ -945,9 +1028,9 @@ En el Anexo de esta memoria se podrá encontrar en mayor detalle las dificultade
 \subsection{Conexión de los sensores}
 \label{subsec:conexion_sensores}
 
-Como se comentaba en el capítulo~\ref{sec:sensores}, en este proyecto se utilizaron en total dos sensores, un LDR y un sensor BME280. Para obtener las medidas sensadas hubo que conectar ambos tal y como se puede ver en la Figura~\ref{fig:circuito}.
+Como se comentaba en el capítulo~\ref{sec:sensores}, en este proyecto se utilizaron en total dos sensores, un LDR y un sensor BME280. Para obtener las medidas sensadas hubo que conectar ambos tal y como se puede ver en la Figura~\ref{fig:circuito}. En esta figura el sensor de la izquierda es el BME280, mientras que en la derecha se representa el conversor HW-103 conectado al LDR.
 
-\begin{figure}[h!]
+\begin{figure}[]
   \centering
   \includegraphics[width=9cm, keepaspectratio]{img/circuito.png}
   \caption{Conexiones de los sensores a la Raspberry.}\label{fig:circuito}
@@ -957,103 +1040,65 @@ En el caso del sensor BME280 se utiliza comunicación por I2C para poder leer la
 
 Para poder obtener los valores del LDR fue necesario instalar el paquete LGPIO, los detalles de su instalación se encuentran en el Anexo.
 
-Para la comunicación I2C hubo que instalar el paquete \textit{i2c-tools} en la Raspberry. Para poder utilizar este paquete es necesario tener permisos de root, sin embargo se dieron permisos a un usuario de forma que no tuviese que ser root para poder ejecutarlo\footnote{\url{https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html}}. Dentro del entorno de conda donde se desarrolla el proyecto se tuvieron que instalar además otros dos paquetes: \textit{smbus2} y \textit{RPi.bme280}.
+Para la comunicación I2C hubo que instalar el paquete \textit{i2c-tools} en la Raspberry. Para poder utilizar este paquete es necesario tener permisos de root, sin embargo se dieron permisos a un usuario de forma que no tuviese que ser root para poder ejecutarlo\footnote{\url{https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html}}. Dentro del entorno de conda donde se desarrolla el proyecto se tuvieron que instalar además otros dos paquetes: \textit{smbus2} y \textit{RPi.bme280}. Finalizadas estas instalaciones podremos leer la información proporcionada por los sensores.
 
-\section{Modelos de aprendizaje automático}
+\section{Generación de los modelos de Aprendizaje automático}
+\label{sec:generacion_modelos}
 
-Con el entorno preparado se generaron mediante scripts de Python cuatro modelos diferentes de aprendizaje supervisado para realizar una clasificación binaria. Utilizando la librería scikit-learn se generaron un modelo de Regresión logística, otro de Máquinas de soporte vectorial, Gradient boosting y un último de Random forest.
+Como se ha mencionado anteriormente, en este proyecto se utilizarán un total de cuatro algoritmos de aprendizaje automático. Los programas que se encargan de generar estos modelos se encuentran dentro de la carpeta \textit{Modelos} de este proyecto. Hay un fichero por cada modelo que se desea entrenar y poner a prueba.
 
-\subsection{Regresión logística}
-\label{subsec:regresion_logistica}
+Todos estos algortimos se han implementado utilizando la libreria de scikit-learn que proporciona todas las funcionalidades necesarias para ello. A la hora de ejecutarlos será necesario pasarles un único argumento que es el dataSet con el que se desea entrenar el modelo.
 
-Modelo de aprendizaje supervisado que realiza tareas de clasificación binaria, es decir solo existen dos posibles clases. Esta técnica busca una función acotada (normalmente entre 0 y 1) que divida los datos de ambas clases de forma bien diferenciada. Normalmente dicha función se denomina como logística o sigmoide y se define de la siguiente forma:
+A continuación se verán cada uno de estos ficheros y se explicará brevemente su contenido.
 
-\begin{equation}
-    h_w(x^{(i)}) = \frac{1}{1 + e^{\sum_{j=0}^{d} w_j x_j^{(i)} }}
-\end{equation}
+\begin{itemize}
 
-Dicha expresión devolverá un valor entre cero y uno. Según lo próximo que este el valor a cero o uno pertenecerá a una clase u otra. 
+\item \subsubsection{lRegression.ipynb}
+\label{subsubsec:lRegression}
 
-Los parámetros representados por $w$ son los pesos que utiliza la función para realizar la predicción. Cada peso está multiplicando a una caracerística, simbolizada mediante $x_j$. Luego, para conocer a qué clase pertenece el ejemplo $x^{(i)}$ habrá que aplicar la fórmula anterior y por lo tanto se tendrá que realizar el sumatorio de todos los pesos multiplicados por sus respectivas caracterísitcas (desde la cero hasta la d-ésima). 
+Este fichero entrenará un modelo de Regresión logísitca para el dataSet que se le pase como argumento.
 
-Durante la fase de entrenamiento el modelo ajusta los pesos mediante un método de optimización, a fin de que las predicciones que se realicen mediante ellos tengan el mínimo error posible. Para obtener los valores óptimos de los pesos se utiliza el método de descenso por gradiente, mediante el cual se irán actualizando los valores de los pesos conforme vaya entrenando con más ejemplos. La función de descenso por gradiente se define de la siguiente manera:
+En scikit-learn, por medio de la función LogisticRegression\cite{LogisticRegressionDoc} que pertenece a la librería \textit{sklearn.linear\_model}, se puede generar este modelo de aprendizaje automático para entrenarlo y posteriormente predecir con él. 
 
-\begin{equation}
-    w_j = w_j - \alpha \frac{1}{n} \sum_{i= 1}^{n} (h_w(x^{(i)}) - y^{(i)}) x_j^{(i)}
-\end{equation}
+Entre los parámetros que se pueden asignar a esta función hay dos que son destacables. El primero de ellos es \textit{max\_iter}, máximo número de iteraciones que se permiten para encontrar la solución que converja, por defecto tiene un valor igual a 100. En el caso de \textit{lRegression.ipynb} se igualó el valor \textit{max\_iter} a 400, pues es el valor mínimo necesario para que consiga encontrar una solución para algunos de los dataSets que vermos más adelante.
 
-Para calcular los pesos se utiliza el error que existe entre la salida predecida con los pesos estimados hasta ahora ($h_w(x^{(i)})$) y el valor real, es decir, la salida que verdaderamente corresponde a ese ejemplo ($y^{(i)}$). También es necesario definir el valor del ratio de aprendizaje ($\alpha$), si se le da un valor muy elevado puede llegar a no converger el modelo en ninguna solución. Esto se realiza para todos los valores de $j$, desde $j= 0$ hasta $j= d$, que es el número total de caracterísitcas.
+Por otra párte está el parámetro \textit{n\_jobs}, que permite declarar el número de cpus que se desean utilizar para paralelizar el proceso. Sin embargo, la asignación de este valor solo tiene efecto si se realiza una clasificación multiclase, de lo contrario utilizará un único core independientemente del valor asignado. Por lo que en este caso este parámetro no se utilizará.
 
-Se dará por finalizada la fase de aprendizaje cuando se consiga que los valores de los pesos minimicen una función de coste:
+\item \subsubsection{svm.ipynb} 
+\label{subsubsub:svm}
 
-\begin{equation}
-    J(w) = \frac{1}{2} \sum_{i= 1}^{n} {(h_w(x^{(i)}) - y^{(i)})}^2 
-\end{equation}
+En esta ocasión este fichero creará un modelo de Máqiunas de vector soporte. Para implementar este tipo de modelo de aprendizaje en scikit-learn se puede utilizar la función SVC \cite{SVMDocumentation}. En esta ocasión este método no soporta multiprcesamiento, por lo tanto la máquina que lo ejecute solo podrá usar un core tanto en el entrenamiento como en la predicción. 
 
-En scikit-learn por medio de la función LogisticRegression\cite{LogisticRegressionDoc}, que pertenece a la librería \textit{sklearn.linear\_model}, se puede generar este modelo de aprendizaje automático para entrenarlo y posteriormente predecir con él. 
+\item \subsubsection{gBoosting.ipynb} 
+\label{subsubsub:gBoosting}
 
-Entre los parámetros que se pueden asignar a esta función hay dos que son destacables. El primero de ellos es \textit{max\_iter}, máximo número de iteraciones que se permiten para encontrar la solución que converja, por defecto tiene un valor igual a 100. Por otra párte está el parámetro \textit{n\_jobs}, que permite declarar el número de cpus que se desean utilizar para paralelizar el proceso. Sin embargo, la asignación de este valor solo tiene efecto si se realiza una clasificación multiclase, de lo contrario utilizará un único core independientemente del valor asignado.
+Con este fichero se implementa un modelo de Gradient Boosting. En esta ocasión el método que crea este modelo es GradientBoostingClassifier\cite{GradientTreeBDoc}, que se encuentra dentro de la librería \textit{sklearn.esemble}. Al igual que para la función de máquinas de soporte vectorial, este modelo no soporta multiprocesamiento y por lo tanto solo se utilizará una cpu para entrenar y predecir con este modelo. 
+\item \subsubsection{rForest\_pc.ipynb // rForest\_pc.ipynb} 
+\label{subsubsub:rForest}
 
-\subsection{Máquinas de soporte vectorial}
-\label{subsec:maquitas_soporte_vectorial}
-
-Modelo de aprendizaje supervisado utilizado para resolver tareas de clasificación binaria, aun que existen máquinas de vector soporte para resolver problemas de regresión o de clasificación multiclase. Se basa en la generación de un hiperplano que separe de forma óptima los puntos de una clase respecto de otra. Es decir, que exista la máxima distancia entre el hiperplano y los puntos más cercanos a este, los puntos más cercanos al hiperplano de separación se deniminan como vectores soporte. Luego el hiperplano óptimo pasará justo por el medio de los vectores soporte de ambas clases.
-
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=10cm, keepaspectratio]{img/explicacion_svm.png}
-  \caption{Ejemplo clasificación con Máquinas de soporte vectorial}\label{fig:explicacion_svm}
-\end{figure}
-
-En la Figura~\ref{fig:explicacion_svm} se puede ver un ejemplo de separación óptimo entre ambas clases, siendo los círculos rodeados en amarillo los vectores soporte. Ambos tienen la máxima distancia posible con el hiperplano generado, que es capaz de separar perfectamente ambas. El hiperplano de separación se puede definir como una función lineal:
-
-\begin{equation}
-    h(x) = \sum_{i= 0}^{n} w_i x_i
-\end{equation}
-
-Utilizando una vez más unos pesos ($w$) para encontrar dicho hiperplano.
-
-Sin embargo, hay veces puede llegar a ser imposible hallar un hiperplano que divida correctamente las clases. Ante estos casos la resolución del problema se encuentra en aumentar la dimensionalidad de los datos para comprobar si en esa nueva dimensión existe un hiperplano capaz de separarlos adecuadamente.
-
-Para implementar este tipo de modelo de aprendizaje en scikit-learn se puede utilizar la función SVC \cite{SVMDocumentation}. En esta ocasión este método no soporta multiprcesamiento, por lo tanto la máquina que lo ejecute solo podrá usar un core tanto en el entrenamiento como en la predicción.
-
-\subsection{Gradient boosting}
-\label{subsec:gradient_boosting}
-
-Técnica de aprendizaje supervisado que se utiliza tanto para problemas de regresión como de clasificación. Se basa en la combinación de modelos predictivos débiles, normalmente árboles de decisión, para crear un modelo predictivo fuerte. Los árboles de decisión son uno de los algoritmos más utilizados para la toma de decisiones debido a su sencilla implementación y fácil interpretación. Dado un conjunto de datos se crean diagramas lógicos que sirven para representar una serie de condiciones sucesivas para resolver un problema. Por ejemplo en la Figura~\ref{fig:ejemplo_adecision} hay representado un árbol de decisión que sirve para poder saber si podemos salir a la calle a correr. 
-
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=14cm, keepaspectratio]{img/ejemplo_adecision.png}
-  \caption{Ejemplo árbol de decisión.}\label{fig:ejemplo_adecision}
-\end{figure}
-
-En Gradient boosting se generan árboles de decisión de forma secuencial, haciendo que cada árbol corrija los errores del árbol anterior. De forma general suelen ser árboles de un máximo de tres niveles de profundidad.
-
-En esta ocasión el método que crea este modelo es GradientBoostingClassifier\cite{GradientTreeBDoc}, que se encuentra dentro de la librería \textit{sklearn.esemble}. Al igual que para la función de máquinas de soporte vectorial, este modelo no soporta multiprocesamiento y por lo tanto solo se utilizará una cpu para entrenar y predecir con este modelo.
-
-\subsection{Random forest}
-\label{subsec:random_forest}
-
-Random forest se puede usar tanto en problemas de clasificación como de regresión. Utiliza un conjunto de árboles de decisión con bagging, es decir, los árboles de decisión se generan de forma paralela. Al combinar sus resultados unos errores se compensan con otros, obteniendo una predicción que generaliza mejor.
+Por último tendremos dos ficheros que crean un modelo basado en Random Forest.
 
 En scikit-learn utilizando la función RandomForestClassifier\cite{RandomForestDoc}, que también está dentro de la librería \textit{sklearn.esemble}, se puede generar un modelo de aprendizaje utilizando esta técnica.
 
 Para este método existe un parámetro destacable denominado \textit{n\_jobs}, que permite declarar el número de cpus que se desean utilizar para paralelizar el proceso. Para que se note el efecto de este parámetro es necesario que el conjunto de datos con el que se desea entrenar sea grande. De lo contrario el coste de distribuir los recursos entre el número de cores indicados es más elevado que ejecutarlo todo en una única cpu, y por lo tanto los tiempos de ejecución serían más elevados a mayor número definido en este parámetro.
 
-Por defecto si no se declara este parámetro utilizará un único core. Además se pueden asignar valores negativos, en caso de igualar \textit{n\_jobs} a -1 se utilizarán todos los cores disponibles en ese momento. De la misma forma se utiliza este parámetro en el caso de Regresión logística cuando se busca entreanr un problemas de clasificación multiclase.
+Por defecto si no se declara este parámetro utilizará un único core. Además se pueden asignar valores negativos, en caso de igualar \textit{n\_jobs} a -1 se utilizarán todos los cores disponibles en ese momento. De esta misma forma se utiliza este parámetro en Regresión logística cuando se busca entrenar un problemas de clasificación multiclase.
 
-\section{DataSet: Room Occupacy}
+En esta ocasión se han creado dos ficheros para generar este modelo, puesto que dependiendo de la máquina en la que se esté ejecutando este código el valor del parámetro \textit{n\_jobs} variará. 
 
-Para realizar la clasificación en un inicio se utilizó el data set de Room Occupancy detection data\cite{DataSetOccupancy}, obtenido de Kaggle, que contiene unas 20560 muestras. Tal y como su nombre indica, este dataset proporcionará información sobre si una habitación se encuentra en un determinado instante ocupada o no. Cada ejemplo tiene las medidas de temperatura, humedad, CO2 y luz de una habitación de oficina de unos quince metros cuadrados. La última columna de cada fila indica la clase a la que pertenece la muestra. En este caso, al ser una clasificación binaria esta última columna solo puede tener dos valores, cero o uno. Si para un ejemplo contiene un uno significa que para esos valores sensados la habitación está ocupada. Si por el contrario hay un valor de cero la sala está vacia. 
+\end{itemize}
 
-Para generar los modelos se dividió el set de datos en dos partes, una primera parte para entrenar (que contenía el 70\% de ejemplos del set de datos original) y otra para comprobar la eficiencia del modelo a la hora de clasificar si la estancia está ocupada o no, un set de datos de prueba. En esta segunda parte se utilizó el 30\% restante de muestras del set de datos original, que no se utilizaban en el entrenamiento y por lo tanto el modelo nunca los había visto, son totalmente nuevos para él.
+Estos ficheros imprimirán por el terminal cuatro valores diferentes que se utilizan para valorar la eficiencia del entrenamiento. Dichos valores son: \textit{accuracy}, \textit{accuracy trainning}, \textit{precision} y \textit{recall}. 
 
-Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran número de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que hay una alta probabilidad de que el set de entrenamiento siempre tenga como mínimo la cantidad de muestras necesarias de ambas clases para entrenar correctamente. Aun así, la división se realizó de forma estratificada, para que hubiese la misma proporcion de datos de una clase u otra, que en el set de datos original. Y de esta forma nos aseguramos que a la hora de tanto entrenar, como de comprobar el modelo generado, se tengan ejemplos de ambas clases en la misma proporción que aparecen en el set de datos original.
+A continuación se detalla qué significan cada uno de esto valores. Para ello se ha definido la siguiente terminología: TP es el número de verdaderos positivos, TN verdaderos negativos, FP falsos positivos y FN falsos negativos. Siendo los valores positivos los que pertenecen a una clase y los negativos la clase contraria. En este caso diremos que los valores positivos serán los que pertenecen a la clase uno y los negativos los que pertenece a la clase cero. 
 
-Con esta división y preparación de los datos, los tres modelos se pudieron generar sin problemas utilizando las librerías de scikit-learn y pandas. Para valorar la eficiencia del entrenamiento se pueden utilizar tres valores diferentes: \textit{accuracy}, \textit{precision} y \textit{recall}. Gracias a la librería \textit{metrics} de scikit-learn se pueden obtener estos valores por medio de las funciones \textit{accuracy\_score}, \textit{precision\_score} y \textit{recall\_score} respectivamente. A estos métodos se les pasa como argumentos la variable que contiene los valores de la salida del set de datos de prueba (generada, como se ha comentado anteriormente, con el 30\% de los datos originales), y como segundo argumento el propio modelo generado (después de entrenarlo). 
+Para esta explicación nos ayudaremos de la Figura~\ref{fig:explicacion_acc}. En la cual tenemos en total dieciocho datos, diez pertenecen a la clase de los positivos (zona de la izquierda de la figura) y ocho que son de la clase negativa. Los círculos grises representan donde ha colocado el modelo de Machine learning cada dato. Como vemos ha asignado cuatro como negativos pero en realidad son positivos (zona azul claro) y tres como positivos pero pertenecen realmente a los negativos (zona verde claro).
 
-A continuación se detalla que significan cada uno de esto valores. Para ello se ha definido la siguiente terminología: TP es el número de verdaderos positivos, TN verdaderos negativos, FP falsos positivos y FN falsos negativos.
+\begin{figure}[]
+  \centering
+  \includegraphics[width=10cm, keepaspectratio]{img/explicacion_acc.png}
+  \caption{Ejemplo de estimación de un modelo Machine Learning.}\label{fig:explicacion_acc}
+\end{figure}
 
 El valor de \textit{accuracy} representa el porcentaje total de aciertos. Este dato se calcula por medio de la siguiente ecuación:
 
@@ -1061,25 +1106,70 @@ El valor de \textit{accuracy} representa el porcentaje total de aciertos. Este d
  \boxed{\mbox{Accuracy} = \frac{(TP + TN)}{(TP + TN + FP + FN)}}
 \end{equation}
 
-\textit{Precision} es el porcentaje que se obtiene al dividir el verdadero número de positivos (en este caso el valor positivo, o lo que es igual, el uno representa que la habitación está ocupada) entre todos los positivos que se han asignado (sean correctos o no). Cuanto más alto sea este valor menor error habrá cometido al asignar habitaciones ocupadas. DIcho valor viene dado por:
+El \textit{trainning accuracy} es igual que el \textit{Accuracy}, lo único que cambia son los datos con los que se hacen los calculos.
+
+\textit{Precision} es el porcentaje que se obtiene al dividir el número de positivos que ha acertado (en este caso el valor positivo, o lo que es igual, la clase uno) entre todos los positivos que se han asignado (sean correctos o no). 
+
+Cuanto más alto sea este valor de \textit{precision} menor error habrá cometido al asignar erróneamente la clase uno. Dicho valor viene dado por:
 
 \begin{equation}
 \label{eqn:accuracy} 
  \boxed{\mbox{Precision} = \frac{TP}{(TP + FP)}}
 \end{equation}
 
-Por último, para obtener el valor de \textit{recall} se dividen el número de verdaderos positivos entre la suma de los verdaderos positivos más los que son positivo y ha asignado como negativos. Siendo la fórmula por medio de la cual obtenemos este valor la siguiente:
+Utilizando el ejemplo de la Figura~\ref{fig:explicacion_acc}, será dividir seis (que es el número de datos dentro de el color verde oscuro) entre la suma de esos más los que están en el color verde claro.
+
+Por último, para obtener el valor de \textit{recall} se dividen el número de verdaderos positivos entre la suma de los verdaderos positivos más los que son positivo y ha asignado como negativos. Es decir, se divide el número de veces que se ha asignado la clase uno entre la suma del número verdadero de datos que pertenecen a la clase uno más el número de veces que se ha estimado la clase uno pero en realidad los datos pertenecían a la clase cero. Siendo la fórmula por medio de la cual obtenemos este valor la siguiente:
 
 \begin{equation}
  \boxed{\mbox{Recall} = \frac{TP}{(TP + FN)}}
 \end{equation}
 
-Todos conseguían un \textit{accuracy}, \textit{precision} y \textit{recall} superior al 90\%, el tiempo de ejecución era de un segundo para regresión logística, dos segundos tardaba el modelo de máquinas de soporte vectorial y gradient tree boosting y random forest eran los que más tardaban con un tiempo de cuatro y tres segundos respectivamente.
+Según la Figura~\ref{fig:explicacion_acc} se dividirán el número de datos dentro de la zona verde oscuro entre la suma de esos más los que están en la zona azul claro.
+
+Gracias a la librería \textit{metrics} de scikit-learn se pueden obtener estos valores por medio de las funciones \textit{accuracy\_score}, \textit{precision\_score} y \textit{recall\_score}. 
+
+Pero para obtener estos valores es necesario ejecutar primero la función \textit{predict} a la que se le pasa como argumento el set de datos del que se desea realizar una predicción y devolverá las salidas que a estimado el modelo para cada una de las entradas, esto se puede ver en el Código~\ref{lst:get_APR}. Esta salida se les pasa como primer argumento a las funciones mecionadas antes  y como segundo argumento el propio modelo generado (después de entrenarlo). Salvo en el caso de \textit{trainning accuracy}, para el resto de valores habrá que utilizar las predicciones hechas sobre las entradas del 30\% de datos que se utilizan para probar el modelo. Para el \textit{accuracy trainning} necesitaremos las predicciones de los datos con los que ha entrenado el propio modelo.
+
+\begin{listing}[]
+    \caption{Obtención de los valores de Accuracy, Trainning, accuracy, Precision y Recall.}{}
+    \label{lst:get_APR}
+    \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
+occup_pred_train= l_regr.predict(x_scaled)
+occup_pred = l_regr.predict(x_test_scaled)    
+label= y[0]
+
+accuracy = metrics.accuracy_score(y_train, occup_pred_train)*100
+print("Trainning Accuracy: ","{:.1f}".format(accuracy),"%")
+
+accuracy = metrics.accuracy_score(y_test, occup_pred)*100
+print("Accuracy: ","{:.1f}".format(accuracy),"%")
+precision = metrics.precision_score(y_test, occup_pred, pos_label=label)*100
+print("Precision: ","{:.1f}".format(precision),"%")
+recall = metrics.recall_score(y_test, occup_pred, pos_label=label)*100
+print("Recall: ","{:.1f}".format(recall),"%")
+    \end{minted}
+\end{listing}
+
+Como se puede ver en el Código~\ref{lst:get_APR} para los valores de Precision y Recall se pasa un tercer parámetro, que es la clase respecto al que se desea calcular dichos valores. Ya que en vez de calcularlos para la clase positiva (como hemos visto anteriormente) se podrían calcular también respecto de la clase negativa.
+
+\section{DataSet: Room Occupacy}
+\label{sec:dataSet_Occupancy}
+
+Para realizar la clasificación en un inicio se utilizó el data set de Room Occupancy detection data\cite{DataSetOccupancy}, obtenido de Kaggle, que contiene unas 20560 muestras. Tal y como su nombre indica, este dataset proporcionará información sobre si una habitación se encuentra en un determinado instante ocupada o no. Cada ejemplo tiene las medidas de temperatura, humedad, CO2 y luz de una habitación de oficina de unos quince metros cuadrados. La última columna de cada fila indica la clase a la que pertenece la muestra. En este caso, al ser una clasificación binaria esta última columna solo puede tener dos valores, cero o uno. Si para un ejemplo contiene un uno significa que para esos valores sensados la habitación está ocupada. Si por el contrario hay un valor de cero la sala está vacia. 
+
+Para generar los modelos se dividió el set de datos en dos partes, una primera parte para entrenar (que contenía el 70\% de ejemplos del set de datos original) y otra para comprobar la eficiencia del modelo a la hora de clasificar si la estancia está ocupada o no, un set de datos de prueba. En esta segunda parte se utilizó el 30\% restante de muestras del set de datos original, que no se utilizaban en el entrenamiento y por lo tanto el modelo nunca los había visto, son totalmente nuevos para él.
+
+Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran número de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que hay una alta probabilidad de que el set de entrenamiento siempre tenga como mínimo la cantidad de muestras necesarias de ambas clases para entrenar correctamente. Aun así, la división se realizó de forma estratificada, para que hubiese la misma proporcion de datos de una clase u otra, que en el set de datos original. Y de esta forma nos aseguramos que a la hora de tanto entrenar, como de comprobar el modelo generado, se tengan ejemplos de ambas clases en la misma proporción que aparecen en el set de datos original.
+
+Con esta división y preparación de los datos, los cuatro modelos se pudieron generar sin problemas utilizando los programas que se encuentran dentro de la carpeta de \textit{"Modelos"}.  
+
+
 
 \subsection{Validación cruzada}
 
-Se añadió un poco más de dificultad a la Raspberry haciendo que los algoritmos utilizasen validación cruzada, es decir, que dentro del set de datos de entrenamiento (compuesto, una vez más, por el 70\% de ejemplos del set de datos original) se hace una subdivisión en otros cinco sets para entrenar y probar el modelo con cada uno de ellos. 
-Una vez realizada la validación cruzada se vuelve a probar la eficiencia del modelo haciendo que clasifique el 30\% de datos de la división original, son datos que nunca ha visto ni entrenado con ellos. El objetivo de realizar una validacion cruzada es garantizar que los resultados que obtengamos sean independientes de la partición entre datos de entrenamiento y datos de validación. Los resultados de esta prueba siguieron siendo muy buenos (el acierto seguía estando por encima del 90\%). 
+Para comprobar mejor la calidad de los modelos se utilizó validación cruzada, es decir, que dentro del set de datos de entrenamiento (compuesto, una vez más, por el 70\% de ejemplos del set de datos original) se hace una subdivisión en otros cinco sets para entrenar y probar el modelo con cada uno de ellos. 
+Una vez realizada la validación cruzada se vuelve a probar la eficiencia del modelo haciendo que clasifique el 30\% de datos de la división original, son datos que nunca ha visto ni entrenado con ellos. El objetivo de realizar una validacion cruzada es garantizar que los resultados que obtengamos sean independientes de la partición entre datos de entrenamiento y datos de validación. Los resultados de esta prueba siguieron siendo muy buenos (el acierto seguía estando por encima del 90\% en todos los subgrupos de datos de entrenamiento). 
 En cuanto a los tiempos de ejecución el modelo de regresión logística incrementó el tiempo de ejecución siendo de cinco segundos. Para el modelo de máquinas de soporte vectorial el tiempo es de seis segundos. Random forest tarda en entrenar unos doce segundos. Y por último, el que más tiempo tarda es gradient tree boosting con un tiempo de diez y seis segundos. 
 
 
@@ -1092,9 +1182,10 @@ El dataset elegido fue KDD Cup 1999 Datadata\cite{DataSetOccupancy}, obtenido un
 
 Al igual que en el dataSet de Room Occupancy para la generación de los modelos se utilizará el 70\% de los datos para entrenar y el 30\% para validar.
 
-\subsection{Preprocesamiento de kddCup99: prepare\_kddcup.ipynb}
+\subsection{Preprocesamiento de kddCup99}
+\label{subsec:preprocesamiento_kddcup}
 
-Este fichero permite leer las líneas de los dataSet descargados, procesar y guardar los datos en un nuevo fichero para que puedan usarlos los modelos.
+Para que este dataSet se pueda utilizar para entrenar a modelos de aprendizaje automático es necesario realizar un preprocesameinto a los datos que contiene. De esto se encarga el programa \textit{prepare\_kddcup.ipynb}.Este fichero permite leer las líneas de este dataSet, procesar y guardar los datos en un nuevo fichero para que puedan usarlos los modelos.
 
 Para leer los datos se utiliza la función \textit{read\_csv} de pandas. Este programa no solo se usará para leer un dataSet al completo, sino que también podremos leer otra porción diferente de líneas. Es por esto que para que el programa ejecute correctamente hay que pasarle un número como único argumento, cuyo valor puede estar entre cero o cien. Este valor representa el porcentaje de datos que se desea leer. Un ejemplo de ejecución de este fichero para que lea el 50\% de los datos de kddCup99 es:\\
 
@@ -1110,7 +1201,7 @@ La función \textit{random.sample} devuelve una lista que contiene valores numé
 
 La implementación de esto se puede ver en el Código~\ref{lst:prepare_kddcup}, donde \textit{total} es el valor máximo de líneas que hay en el fichero \textit{kddcup.data} (obtenido mediante la regla de tres comentado anteriormente), \textit{per\_lines} es el número de líneas que sí se desean leer (obtenido al aplicar una regla de tres al porcentaje que se ha pasado como argumento a \textit{prepare\_kddcup.ipynb}). Ambos valores los usa \textit{random.sample} para obtener líneas aleatorias, que se ordenarán utilizando \textit{sorted} para poder pasárselas a skiprows y por lo tanto no se leerán. 
 
-\begin{listing}[h!]
+\begin{listing}[]
     \caption{Lectura del dataset y conversion a clase binaria.}{}
     \label{lst:prepare_kddcup}
     \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
@@ -1127,7 +1218,7 @@ dataset['normal.'] = dataset['normal.'].replace(['back.', 'buffer_overflow.', 'f
     \end{minted}
 \end{listing}
 
-Otro aspecto relevante que hay que saber acerca de este dataSet es que contiene datos que pertenecen a varias clases. Por lo tanto, dado que estamos resolviendo problemas de clasificación binaria, habrá que hacer un tratamiento previo a la información que contiene el dataSet para que se puedan agrupar los datos en dos clases en vez de en múltiples.\\
+Otro aspecto relevante de este dataSet es que contiene datos que pertenecen a varias clases. Por lo tanto, dado que estamos resolviendo problemas de clasificación binaria, habrá que hacer un tratamiento previo a la información que contiene el dataSet para que se puedan agrupar los datos en dos clases en vez de en múltiples.\\
 Este programa también hace esta conversión de multiclase a dos clases. Para ello, una vez leídos todos los datos se reemplazaban todas las clases (excepto la clase \textit{normal.}) por la clase \textit{attack}\cite{MulticlassToBinary}, de esta forma se conseguía tener solo dos clases. El código que realiza esta tarea se puede ver en Código~\ref{lst:prepare_kddcup}.
 
 Una vez realizada la transformación de multiclase a clase binaria, se hace un pequeño tratamiento a los datos para que cada modelo pueda entrenar adecuadamente y más fácilmente con ellos\cite{dataSetTreatment}. Para ello se elimina la columna 19 y 20, ya que estas contienen todo el rato el mismo valor, que es cero. A continuación se transforman los datos categóricos y por último se eliminan las filas duplicadas. Con este tratamiento los datos se guardan utilizando la función \textit{to\_csv} que proporciona pandas y se guarda el nuevo set de datos tratados sin la cabecera ni el índice, de forma que desde el código de cada uno de los modelos los datos estén listos para poder ser utilizados.
@@ -1135,7 +1226,7 @@ Una vez realizada la transformación de multiclase a clase binaria, se hace un p
 \section{Dataset: Mi dataSet}
 \label{sec:mi_dataSet}
 
-A parte de los dataSets anteriores se creó uno a partir de la información recopilada por lo sensores mediante el programa \textit{read\_sensors.ipynb}. Este dataSet, con medidas de temperatura, humedad, presión y luz, busca generar un modelo que nos permita saber si la habitación está ocupada o no en un determinado instante, al igual que con el dataSet de Occupancy. 
+A parte de los dataSets anteriores se creó uno utilizando la información recopilada por lo sensores mediante el programa \textit{read\_sensors.ipynb}. Este dataSet, con medidas de temperatura, humedad, presión y luz, busca generar un modelo que nos permita saber si la habitación está ocupada o no en un determinado instante, al igual que sucedia con el dataSet de Occupancy. 
 
 Para ello durante quince minutos se estuvieron tomando las medidas en una habitación de forma controlada, es decir, sabiendo en cada instante si la habitación estaba ocupada o no. Durante diferentes periodos de tiempo la habitación estuvo ocupada o vacía. Cuando la habitación estaba vacía algunas veces se cerraba la persiana de la habitación para que también tomase medidas bajo esta nueva condición.
 
@@ -1160,7 +1251,7 @@ Una vez ejecutado el programa, en la segunda celda de este, se preprararán los 
 A continuación se quedará ejecutando indefinidamente un bucle while, que es el que se encarga de guardar los datos sensados cada un segundo. Dicho bucle se puede ver en el Código~\ref{lst:firstloop_read_sensor}. Algo destacable es que al valor de la luz (proporcionada por el LDR) siempre se le resta uno. Esto se hace así para que los datos se puedan interpretar mejor, puesto que cuando hay luz a la Raspberry le llega un cero. De esta forma cuando haya luz se guarda un uno en el fichero en vez de un cero. 
 Este bucle estará continuamente mostrando por el terminal las medidas tomadas hasta que el usuario haga Ctr-C , de esta forma se indica que ya no se desean guardar más datos.
 
-\begin{listing}[h!]
+\begin{listing}[]
     \caption{Bucle que guarda los datos sensados.}{}
     \label{lst:firstloop_read_sensor}
     \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
@@ -1191,7 +1282,7 @@ Una vez que este bucle ha finalizado, se ejecuta otro que iterará sobre los dat
 
 El segundo aspecto destacable es sobre el valor de la luz, que se multiplica por cincuenta. Al igual que en el caso de las presiones esto se hace para que el cambio de estado entre oscuridad y luz sea apreciable en la gráfica, de lo contrario el salto entre ceros y unos apenas se podrían ver.
 
-\begin{listing}[h!]
+\begin{listing}[]
     \caption{Bucle para generar la gráfica.}{}
     \label{lst:secondloop_read_sensor}
     \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
@@ -1212,7 +1303,7 @@ for i in range(len(measures)):
 
 Un ejemplo de la gráfica que genera este programa se puede observar en la Figura~\ref{fig:ejemplo_gráfica}. Donde el eje x representan los minutos que han pasado desde que comenzó a ejecutarse el código.
 
-\begin{figure}[h!]
+\begin{figure}[]
   \centering
   \includegraphics[width=11cm, keepaspectratio]{img/occup_detec_15m.png}
   \caption{Ejemplo gráfica de las medidas de los sensores.}\label{fig:ejemplo_gráfica}
@@ -1235,37 +1326,49 @@ Describe los experimentos y casos de test que tuviste que implementar para valid
 Incluye también los resultados de validación que permiten afirmar que tus resultados son correctos.
 \end{comment}
 
-En este capítulo comprobaremos la eficiencia de la Raspberry a la hora de generar los modelos comentados en el capítulo anterior para que se ajusten al dataSet kdd\_cup99 comentado anteriormente. Las pruebas consistirán en someter a la máquina a diferentes niveles de cargas computacionales para observar como lidia la Raspberry con la generación del modelo a la vez que con estas cargas.
+En este capítulo comprobaremos la eficiencia de la Raspberry a la hora de generar los modelos comentados en el capítulo anterior para que se ajusten los dataSets mencionados anteriormente. Las pruebas consistirán en someter a la máquina a diferentes niveles de cargas computacionales para observar como lidia la Raspberry con la generación del modelo a la vez que con estas cargas.
 Además nos ayudaremos de un portátil para poder comparar los resultados de ambos dispositivos.
 
-\section{Experimentos en la Raspberry}
-\label{sec:experimentos_en_raspberry}
+\section{Estructura de los experimientos}
+\label{sec:estructura_experimentos}
 
-Para comprobar la capacidad de la Raspberry para generar estos modelos se definieron cuatro niveles de saturación: el nivel "Idle" en el que no se somete a la máquina a ningún tipo de carga extra, el nivel bajo, que consistía en estresar una única cpu, el nivel medio, dos cpus y por último en el nivel alto se estrasaban todas las cpus de la Raspberry, es decir, cuatro cpus. 
-Para estresar las cpus se utilizó el comando \textit{stress} que permite estresar, durante el tiempo que se le indique, el número de cpus que se comanden.
+Para realizar los experimentos se definieron cuatro niveles de saturación, dependiendo del dispositivo en el que se ejecuten, las pruebas variarán un poco. 
 
-Luego cada uno de los modelos se sometía a estos cuatro niveles de carga. La medida que se utiliza para comparar los diferentes niveles es el tiempo que tarda cada uno de los modelos en terminar de ejecutar. Para obtener dicho tiempo se utiliza el comando \textit{time} de Linux, con el que se ejecutaba cada modelo de la siguiente forma:\\
+El primer nivel es el "Idle" en el que no se somete a la máquina a ningún tipo de carga extra, este es igual en ambos dispositivos. Salvo el primer nivel, el resto sí variarán ligeramente entre ambas máquinas.
+
+En el caso de la Raspberry el nivel bajo consiste en estresar una única cpu, el nivel medio dos cpus y por último en el nivel alto se estrasaban todas las cpus de la Raspberry, es decir, cuatro cpus. 
+
+Mientras que en el portátil, dado que este tiene un total de ocho cpus físicas, la cantidad de carga computacional a la que se somete este en los niveles bajo, medio y alto, cambia para poner más o menos en la misma situación a ambas máquinas. Por lo tanto en este caso el nivel bajo de carga será estresar dos de sus cpus, el nivel medio cuatro y el alto los ocho cores de los que dispone la máquina. De esta forma se podrán comparar los tiempos de ejecución en un dispositivo de mayor capacidad y sabremos cuanto dista el comportamiento de la Raspberry del de una máquina con mayor potencia.
+
+Cada uno de los códigos encargados de generar uno de los modelos se ejecutaban con estos cuatro niveles de carga. Para generar esta carga se usa el comando \textit{stress} que permite estresar, durante el tiempo que se le indique, el número de cpus que se comanden. 
+
+Una de las medidas que se utiliza para comparar los diferentes niveles es el tiempo que tarda cada uno de los modelos en terminar de ejecutar. Para obtener dicho tiempo se utiliza el comando \textit{time} de Linux, con el que se ejecutaba cada modelo de la siguiente forma:\\
 
 \begin{lstlisting}[language=bash]
   $ time ipython modelo.ipynb
 \end{lstlisting}
 
-El comando \textit{time} devuelve tres valores. Uno de ellos es el tiempo de usuario, que es la cantidad de tiempo que se ha gastado el proceso en modo usuario. El Sys time es el tiempo de CPU invertido en el kernel dentro del proceso. Con estos dos tiempos se puede obtener el Cpu time, el tiempo total que ha utilizado la CPU para completar la ejecución del proceso. Por otra parte time también proporciona el real time, el tiempo que ha tardado en ejecutar el proceso como si lo hubiesemos cronometrado con un reloj, este tiempo es igual que el Wall time. Es necesario entender esto para poder comprender los valores que nos devolverán los experimentos.
+El comando \textit{time} devuelve tres valores. Uno de ellos es el tiempo de usuario, que es la cantidad de tiempo que se ha gastado el proceso en modo usuario. El Sys time es el tiempo de CPU invertido en el kernel dentro del proceso. Con estos dos tiempos se puede obtener el Cpu time, el tiempo total que ha utilizado la CPU para completar la ejecución del proceso. Por otra parte time también proporciona el real time, que es el tiempo que ha tardado en ejecutar el proceso como si lo hubiesemos cronometrado con un reloj, este tiempo es el mismo que el Wall time. Es necesario entender esto para poder comprender los valores que nos devolverán los experimentos.
 
-En caso de querer someter a la Raspberry a un nivel mayor de carga computacional se ejecutaban paralelamente el comando \textit{stress} y el modelo.
+\subsection{Ejecución de los experimentos}
+\label{subsec:ejecucion_experimentos}
+
+Para realizar todas las pruebas, tal y como se han explicado, se creó un programa para cada una de las máquinas de forma que fuese más sencilla obtener los resultados de los experimentos. En el caso de la Raspberry este programa se denominó \textit{raspberry\_test.ipynb}. En el caso del portátil se nombró \textit{pc\_test.ipynb}. Dado que las puebas en ambos dispositivos son prácticamente las mismas, ambos programas ejecutan prácticamente lo mismo con pequeñas diferencias.
+
+Dichos programas necesitan como único argumento el data set con el que se desea hacer el experimento para que pueda realizar su función correctamente.
+Hay que tener en cuenta que este dataSet debe de estar limpio, es decir, que se le haya hecho un preprocesamiento para borrar características no deseadas o redundantes. Tampoco debe de tener cabecera. Si no se hace este preprocesamiento podrá dar error la ejecución.
+
+A continuación se desarrollará en mayor profundidad qué es lo que hace cada programa para realizar las pruebas.
 
 
-\subsection{Programa para las pruebas: raspberry\_test.ipynb}
-\label{subsec:programa_pruebas_raspberry}
+\subsubsection{raspberry\_test.ipynb}
+\label{subsubsec:programa_pruebas_raspberry}
 
-Para realizar las pruebas en la Raspberry de forma más sencilla se creó un programa llamado \textit{raspberry\_test.ipynb}. Dicho programa necesita como único argumento el data set con el que se desea hacer el experimento para que pueda realizar su función correctamente.
+La misión de este código es ejecutar cada uno de los modelos de aprendizaje automático (que se utilizan en este proyecto) con los diferentes niveles de saturación comentados anteriormente en la Raspberry. Para realizar esto se usan dos bucles anidados, el primero de ellos itera sobre los modelos que se desean poner a prueba. El segundo recorre una lista que contiene el número de cores que se desean estresar con cada uno de los modelos (ver código ~\ref{lst:funcion_principal_raspberry_test}). Si el valor sobre el que se está iterando de la lista es mayor que cero significa que se desea estresar cierto número de cpus, por lo tanto se llama a la función \textit{start\_stress} a la que se le pasa como argumento el número de cores a estresar y durante cuanto tiempo, con estos datos se encargará de crear un nuevo proceso para ejecutar el comando \textit{stress}.
 
-Hay que tener en cuenta que si se quiere usar este código, el dataSet que se quiera utilizar para entrenar debe de estar limpio, es decir, se le ha hecho un preprocesamiento para borrar características no deseadas o redundantes. Tampoco debe de tener cabecera. Si no se hace este preprocesamiento podrá dar error la ejecución.
+Por otra parte, independientemente del nivel de saturación de la prueba, siempre se llamará a la función \textit{model} que creará un nuevo proceso para ejecutar, utilizando el comando \textit{time} de Linux, uno de los ficheros que se encuentran dentro de la carpeta \textit{"Modelos"}. Cada uno de los ficheros que se encuentran dentro de dicha carpeta generará uno de los modelos de aprendizaje automático que se han explicado en este proyecto. 
 
-La misión de este código es ejecutar cada uno de los modelos de aprendizaje automático (que se utilizan en este proyecto) con los diferentes niveles de saturación comentados anteriormente. Para realizar esto se usan dos bucles anidados, el primero de ellos itera sobre los modelos que se desean poner a prueba. El segundo recorre una lista que contiene el número de cores que se desean estresar con cada uno de los modelos (ver código ~\ref{lst:funcion_principal_raspberry_test}). Si el valor sobre el que se está iterando de la lista es mayor que cero significa que se desea estresar cierto número de cpus, por lo tanto se llama a la función \textit{start\_stress} a la que se le pasa como argumento el número de cores a estresar y durante cuanto tiempo, con estos datos se encargará de crear un nuevo proceso para ejecutar el comando \textit{stress}.\\
-Por otra parte, independientemente del número de cores, siempre se llamará a la función \textit{model} que creará un nuevo proceso para ejecutar, utilizando el comando \textit{time} de Linux, uno de los ficheros que se encuentran dentro de la carpeta \textit{"Modelos"}. Cada uno de los ficheros que se encuentran dentro de dicha carpeta generará uno de los modelos de aprendizaje automático que se han explicado en este proyecto. 
-
-\begin{listing}[h!]
+\begin{listing}[]
     \caption{Función principal raspberry\_test.ipynb}{}
     \label{lst:funcion_principal_raspberry_test}
     \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
@@ -1303,22 +1406,34 @@ for i in range(4):
     \end{minted}
 \end{listing}
 
-Cuando se completa la generación del modelo para uno de los niveles, los resultados de Cpu time, Wall time, Accuracy trainning (que es el valor de Accuracy para los mismos datos con los que se ha entrenado), Accuracy, Presisión y Recall se van guardando cada uno en su respectiva lista gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera una tabla mediante la función \textit{add\_data} con los resultados obtenidos en cada uno de los casos.
-Dicha tabla se guardará en un fichero que se encarga de crear \textit{raspberry\_test.ipynb}. Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión logísitca el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de soporte vectorial nombreDataSet\_raspSVM.csv. En total el programa creará cuatro csv diferentes, un por cada modelo
+Cuando se completa la generación del modelo para uno de los niveles, los resultados de Cpu time, Wall time, Accuracy trainning (que es el valor de Accuracy para los mismos datos con los que se ha entrenado el modelo), Accuracy, Presisión y Recall se guardan cada uno en su respectiva lista gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera una tabla mediante la función \textit{add\_data} con los resultados obtenidos en cada uno de los casos.
+Dicha tabla se guardará en un fichero que se encarga de crear este programa. Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión logísitca el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de soporte vectorial será nombreDataSet\_raspSVM.csv. En total el programa creará cuatro csv diferentes, un por cada modelo
 
 Los nuevos procesos, comentados anteriormente, se crean utilizando la función \textit{Popen} de la librería \textit{subprocess}. Nótese que en el método \textit{model} (a diferencia de \textit{start\_stress}) esta función tiene añadido al final un \textit{.communicate()} de esta forma se parará la ejecución principal hasta que el proceso de \textit{Popen} termine. Si una vez terminado dicho proceso \textit{stress} sigue ejecutando se matará para poder comandar otro \textit{stress} sin tener que esperar a que se cumpla el tiempo de ejecución que le pasamos como argumento como se puede ver en el Código~\ref{lst:funcion_principal_raspberry_test}.
 
+\subsubsection{pc\_test.ipynb}
+\label{subsubsec:programa_pruebas_pc}
 
-\subsection{Resultados Occupancy}
-\label{subsec:resultados_raspberry}
+Este código es prácticamente idéntico al de \textit{rasp\_test.pynb} salvo pequeñas diferencias. Una de ellas es que en este caso el fichero que generará tras la ejecución de cada modelo tendrá el siguiente formato: nombreDataSet\_pcMD.csv, siendo MD una vez más las siglas del modelo de aprendizaje automático. 
 
-\subsection{Resultados kdd\_cup99}
-\label{subsec:resultados_raspberry}
+La función principal también utilizará dos bucles anidados para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \textit{raspberry\_test.ipynb} ya que como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará (si es necesario) dos procesos, uno ejecutará stress (cuando se desee estresar alguna cpu) y el otro uno de los modelos que se encuentran dentro de la carpeta \textit{"Modelos"}. Todos los ficheros que generan los modelos de aprendizaje son los mismos que en la Raspberry salvo el de Random Forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
 
-Los resultados obtenidos para el veinte por ciento del data set de Kdd\_cup99 son los siguientes: 
+
+\section{Experimetos con datos sintéticos}
+\label{sec:exp_dSinteticos}
+
+Como se comentó en el Capitulo~\ref{chap:diseño} en este proyecto se han utilizado varios dataSets. Dos de estos son ficheros con datos sintéticos, es decir, que no se han generado a través de las medidas de los sensores utilizados en este trabajo. A continuación se explicará en mayor detalle los resultados obtenidos por ambos en cada una de las máquinas.
+
+\subsection{Raspberry}
+\label{sub:rasp_sinteticos}
+
+\subsubsection{Resultados Occupancy dataSet}
+\label{subsubsec:occ_raspberry}
+
+Los tiempos de ejecución para la generación de estos modelos se pueden ver en la Tabla~\ref{tab:times_Occraspberry}
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-\begin{table}[H]
+\begin{table}[]
 \begin{adjustbox}{width=\textwidth}
 \renewcommand{\arraystretch}{2}
 \newcolumntype{a}{>{\columncolor{lightgray}}c}
@@ -1329,45 +1444,109 @@ Los resultados obtenidos para el veinte por ciento del data set de Kdd\_cup99 so
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
-    Regresión logísitca & 1 min 36 seg & 38 seg & 1 min 48 seg & 50 seg & 1 min 33 seg & 56 seg & 1 min 34 seg & 57 seg \\[2ex]
+    Regresión logísitca & 10 seg & 9.35 seg & 13.29 seg & 10.58 seg & 12 seg & 10.47 seg & 10.78 seg & 10 seg \\[2ex]
     \hline
-    SVM & 2 min 19 seg & 2 min 16 seg & 2 min 17 seg & 2 min 18 seg & 2 min 12 seg & 2 min 12 seg & 2 min 18 seg & 2 min 18 seg\\[2ex]
+    SVM & 11.8 seg & 11.6 seg & 11.9 seg & 11.88 seg & 11.85 seg & 11.8 seg & 11.6 seg & 11.75 seg\\[2ex]
     \hline
-    Gradient boosting & 3 min 19 seg & 3 min 20 seg & 3 min 19 seg & 3 min 20 seg & 3 min 15 seg & 3 min 15 seg & 3 min 16 seg & 3 min 17 seg\\[2ex]
+    Gradient boosting & 13 seg & 13 seg & 13.3 seg & 13.3 seg & 13 seg & 13 seg & 13 seg & 13 seg\\[2ex]
     \hline
-    Random forest & 3 min 4 seg & 1 min 3 seg & 2 min 30 seg & 1 min 5 seg & 2 min 3 seg & 1 min 10 seg & 2 min 10 seg & 1 min 18 seg\\[2ex]
+    Random forest & 14.8 seg & 11.2 seg & 14 seg & 11 seg & 13 seg & 11.7 seg & 13.58 seg & 13 seg\\[2ex]
     \hline
     \end{tabular}
 \end{adjustbox}
-\caption{Tiempos de generación de los modelos en Raspberry para diferentes niveles de saturación}
-\label{tab:times_raspberry}
+\caption{Resultados de los tiempos de ejecución para el Occupancy dataSet}
+\label{tab:times_Occraspberry}
 \end{table}
 
-Como se puede observar en la tabla anterior, los tiempos varian entre los diferentes modelos, siendo el de Regresión logística el que menos tiempo tarda en todos los casos.
+Los tiempos obtenidos para este dataSet no varían apenas entre los diferentes niveles de saturación, siendo el modelo de Regresión logítica el que menos tarda en entrenar en todos las pruebas. 
 
-Un aspecto destacable es que los tiempos de Regresión logísitca, Máquinas de soporte vectorial (SVM) y Gradient boosting apenas varían entre los diferentes niveles de estrés. En el caso de Máquinas de soporte vectorial y Gradient boosting esto se debe a que scikit-learn no admite multi-threading, por lo que a pesar de estresar una, dos o cuatro cpus siempre devolverán el mismo tiempo puesto que estos modelos solo pueden utilizar un único core para ejecutar.\\
-Regresión logística podría utilizar varios cores si se le indica mediante el parámetro n\_jobs. Pero dado que estamos en un problema de clasificación binaria este valor no tendrá ningún efecto al aumentar o disminuir el número de cpus estresadas como vimos en el apartado~\ref{subsec:regresion_logistica}.
+Para los modelos de Regresión logistica, Máquinas de soporte vectorial y Gradient boosting, es normal que no varíen apenas sus valores dado que tal y como se explicó en el Capítulo~\ref{chap:diseño} estos tres modelos son monocores, es decir, solo pueden ejecutar en una cpu. 
+
+Sin embargo el modelo de Random forest no terminaba de encajar del todo con lo espreado, es por ello que se decidió probar a ejecutar los modelos con un dataSet con mayor cantidad de datos. Con un dataSet de mayor tamaño se podrán observar mejor las razones por las que se devuelven estos tiempos.
+
+En cuanto a la precisión (Accuracy) en cada uno de los modelos se obtienen los resultados de la Tabla~\ref{tab:acc_Occraspberry}
+
+\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
+\begin{table}[]
+\begin{adjustbox}{width=\textwidth}
+\centering
+    \begin{tabular}{c  c  c  c  c  c}
+    \hline
+    Modelo & Accuracy trainning (\%) & Acuracy (\%) & & & \\
+    \cline{3-6}
+     &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
+     \hline
+     Regresión Logísitca & 98.9 & 98.9 & 98.8 & 98.9 & 98.9\\
+     SVM & 99.0 & 99.0 & 99.0 & 98.8 & 98.8\\
+     Gradient Boosting & 99.4 & 99.1 & 98.9 & 99.0 & 98.9\\
+     Random Forest & 100.0 & 99.2 & 99 & 99.2 & 99.1\\
+    \hline
+    \end{tabular}
+\end{adjustbox}
+\caption{Resultados de la precisión de los modelos para el Occupancy dataSet en Raspberry}
+\label{tab:acc_Occraspberry}
+\end{table}
+
+Como se puede ver en dicha tabla, en este caso la diferencia entre la precisión de los datos de entrenamiento y otros datos que no ha visto hasta entonces es muy similar. Luego los modelos que se están generando son bastente fiables puesto que todos están por encima del 90\% de precisión.
+
+\subsubsection{Resultados kdd\_cup99}
+\label{subsubsec:kdd_raspberry}
+
+Los resultados obtenidos para el veinte por ciento del data set de Kdd\_cup99 se encuentran en la Tabla~\ref{tab:times_kddraspberry}. En esta ocasión los tiempos de ejecución aumentarán respecto al dataSet de Occupancy puesto que este dataSet tienen muchas más líneas con las que entrenar (hay más de cuatro millones de líneas de diferencia entre ambos dataSets).
+
+\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
+\begin{table}[]
+\begin{adjustbox}{width=\textwidth}
+\renewcommand{\arraystretch}{2}
+\newcolumntype{a}{>{\columncolor{lightgray}}c}
+\centering
+    \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
+    \hline
+    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 cpu}} & \multicolumn{2}{|c|}{\textbf{2 cpu}} & \multicolumn{2}{|c|}{\textbf{4 cp}}\\[2ex]
+    \cline{2-9}
+     & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
+    \hline
+    Regresión logísitca & 105.24 seg & 42.22 seg & 111.0 seg & 51.53 seg & 103.14 seg & 61.47 seg & 100.4 seg & 61.38 seg \\[2ex]
+    \hline
+    SVM & 193.63 seg & 193.86 seg & 196.6 seg & 196.77 seg & 189.69 seg & 189.93 seg & 193.71 seg & 194.43 seg\\[2ex]
+    \hline
+    Gradient boosting & 195.0 seg & 195.56 seg & 191.7 seg & 191.95 seg & 193.6 seg & 193.6 seg & 191.18 seg & 192.0 seg\\[2ex]
+    \hline
+    Random forest & 205.79 seg & 68.96 seg & 157.65 seg & 67.66 seg & 132.0 seg & 75.85 seg & 133.0 seg & 79.75 seg\\[2ex]
+    \hline
+    \end{tabular}
+\end{adjustbox}
+\caption{Resultados de los tiempos de ejecución para el Kdd\_cup99 dataSet en la Raspberry}
+\label{tab:times_kddraspberry}
+\end{table}
+
+Como se puede observar en la tabla~\ref{tab:times_kddraspberry}, los tiempos de ejecución varian entre los diferentes modelos, siendo el de Regresión logística el que menos tiempo tarda en todos los casos.
+
+Un vez más, los tiempos de Regresión logísitca, Máquinas de soporte vectorial (SVM) y Gradient boosting apenas varían entre los diferentes niveles de estrés, esto se debe a las mismas razónes comentadas antes. En el caso de Máquinas de soporte vectorial y Gradient boosting, scikit-learn no admite multi-threading, por lo que a pesar de estresar una, dos o cuatro cpus siempre devolverán el mismo tiempo puesto que estos modelos solo pueden utilizar un único core para ejecutar.\\
+Regresión logística podría utilizar varios cores si se le indica mediante el parámetro n\_jobs. Pero dado que estamos en un problema de clasificación binaria este valor no tendrá ningún efecto al aumentar o disminuir el número de cpus estresadas como vimos en el apartado~\ref{subsubsec:lRegression}.
 
 En cuanto al modelo de Random forest, para poder entender los tiempos que devuelve, es necesario explicar primero como se comporta la Raspberry cuando varios procesos le piden más recursos de los que tiene y como afecta el parámetro n\_jobs a los tiempo de este modelo.
 
 Comencemos explicando como afecta el parámetro n\_jobs a los tiempos de ejecución. Como se ha visto anteriormente, Random forest admite el parámetro n\_jobs, que en este caso (a diferencia de Regresión logística) sí que afecta a como ejecuta el modelo independientemente de si es un problema de clasificación binaria o no. Por lo tanto para poder optimizar el proceso habrá que hacer que el parámetro n\_jobs sea igual al número de cores del dispositivo, que en este caso serán cuatro. 
 
-Con este parámetro ajustado hay que saber que el tiempo de Cpu que obtenemos del comando time es la suma de los tiempos que ha necesitado cada uno de los cores utilizados por el proceso para la ejecución. Esta es la razón por la que podemos ver como el tiempo en Idle es bastante mayor que el resto de casos, puesto que es en esta ocasión donde el programa está pudiendo hacer un uso completo de los cuatro cores, ya que no hay ningún otro proceso que necesite usarlos. Por lo tanto el Cpu time que tenemos en este nivel es en realidad la suma de los tiempos de ejecución de los cuatro cores. El tiempo que ha necesitado cada uno de los cores sería dividir 3min 4seg entre 4 con lo que obtendríamos 46 segundos por core. Sabiendo esto queda explicado por qué el nivel de Idle devuelve un valor tan alto y como esto, que a prioir puede parecer un poco contradictorio, se ajusta a lo esperado.
+Con este parámetro ajustado hay que saber que el tiempo de Cpu que obtenemos del comando \textit{time} es la suma de los tiempos que ha necesitado cada uno de los cores utilizados por el proceso para la ejecución. Esta es la razón por la que podemos ver como el tiempo en Idle es bastante mayor que el resto de casos, puesto que es en esta ocasión donde el programa está pudiendo hacer un uso completo de los cuatro cores, ya que no hay ningún otro proceso que necesite usarlos. Por lo tanto el Cpu time que tenemos en este nivel es en realidad la suma de los tiempos de ejecución de los cuatro cores. El tiempo que ha necesitado cada uno de los cores sería dividir 3min 4seg entre 4 con lo que obtendríamos 46 segundos por core. Sabiendo esto queda explicado por qué el nivel de Idle devuelve un valor tan alto y como esto, que a prioir puede parecer un poco contradictorio, se ajusta a lo esperado.
 
-Para el resto de casos, dado que ya intervienen otros procesos, habrá que saber como se comporta la Raspberry ante una mayor demanda de recursos. Lo primero que hay que saber es que el comando \textit{stress} estresará el número de cpus que se le pasan como argumento siempre y cuando pueda. En el momento en el que tenga que compartir Cpu con otros procesos, la Raspberry repartirá los recursos haciendo que \textit{stress} no utilice todas las cpus que se le ha comandado estresar para que el otro proceso también pueda ejecutar. Por ejemplo, cuando se realiza la prueba de nivel alto al modelo de Máquinas de soporte vectorial, si se comprueban los valores de cpu que utiliza cada uno de los procesos (por medio del comando htop de Linux), a pesar de que stress tiene cuatro procesos la suma de lo que utiliza la cpu cada uno de ellos será igual a un total de tres cores más o menos, es decir utilizan un 300\% de los recursos. Mientras que el proceso del modelo utiliza una cpu, un 100\%. Siendo el valor total de los recursos de los que dispone la Raspberry igual a 400\%, un 100\% para cada uno de los cores de la Raspberry.
+Para el resto de casos, dado que ya intervienen otros procesos, habrá que saber como se comporta la Raspberry ante una mayor demanda de recursos. Lo primero que hay que saber es que el comando \textit{stress} estresará el número de cpus que se le pasan como argumento siempre y cuando pueda. En el momento en el que tenga que compartir Cpu con otros procesos, la Raspberry repartirá los recursos haciendo que \textit{stress} no utilice todas las cpus que se le ha comandado estresar para que el otro proceso también pueda ejecutar. Por ejemplo, cuando se realiza la prueba de nivel alto de carga al modelo de Máquinas de soporte vectorial, si se comprueban los valores de cpu que utiliza cada uno de los procesos (por medio del comando \textit{htop} de Linux), a pesar de que se puede ver que stress tiene cuatro procesos, la suma de lo que utiliza la cpu cada uno de ellos será igual a un total de tres cores más o menos, es decir utilizan un 300\% de los recursos. Mientras que el proceso del modelo utiliza una cpu, un 100\%. Siendo el valor total de los recursos de los que dispone la Raspberry igual a 400\%, un 100\% para cada uno de los cores de la Raspberry.
 
-Otro ejemplo de esto puede ser el caso en el que se ejecuta Random forest, teniendo el parámetro de n\_jobs igual a cuatro para utilizar todos los cores disponibles, a la vez que stress para estresar las cuatro cpus. Si observamos mediante el comando htop los procesos, se podrá ver como se distribuyen los cores para que puedan ejecutar a la vez tanto los procesos de stress como los del modelo de aprendizaje. Por lo tanto stress utilizará en total dos cpus y Random forest hará lo mismo, a pesar de que a ambos se les indicó que utilizasen todas las cpus de la Raspberry. Este ejemplo se puede ver en la figura~\ref{figura:stress_rForest}.\\
+Otro ejemplo de esto puede ser el caso en el que se ejecuta el modelo de Random forest, teniendo el parámetro de n\_jobs igual a cuatro para utilizar todos los cores disponibles, a la vez que \textit{stress} para estresar las cuatro cpus. Si observamos mediante el comando \textit{htop} los procesos, se podrá ver como se distribuyen los cores para que puedan ejecutar a la vez tanto los procesos de \textit{stress} como los del modelo de aprendizaje. Por lo tanto \textit{stress} utilizará en total dos cpus y Random forest hará lo mismo, a pesar de que a ambos se les indicó que utilizasen todas las cpus de la Raspberry. Este ejemplo se puede ver en la Figura~\ref{figura:stress_rForest}, siendo la cpu total que utiliza Random forest la que se indica en el primer proceso que muestra \textit{htop} en la imagen. Al sumar el resto de procesos de Random forest su valor de cpu es igual al del primer proceso.\\
 
- \begin{figure}[H]
+ \begin{figure}[]
     \centering
-    \includegraphics[ width=16cm, keepaspectratio]{img/rFores_stress.png}
-    \caption{Ejecución Random forest con cuatro cpus estresadas}
+    \includegraphics[ width=16cm, keepaspectratio]{img/rForest_stress2.png}
+    \caption{Ejecución Random forest con cuatro cpus estresadas.}
     \label{figura:stress_rForest}
  \end{figure}
 
-En la figura~\ref{figura:stress_rForest} vemos que el proceso de Random forest está consumiendo el 196\% de cpu, prácticamente un 200\%. Mientras que si sumamos los porcentajes de los cuatro procesos de \textit{stress} obtendremos que se están consumiento en total un 190\%. Por lo que a pesar de lo que se ha comandado, la Raspberry dividirá los recursos para que ambos procesos puedan usar lo máximo posible.
+En la Figura~\ref{figura:stress_rForest} vemos que el primer proceso de Random forest está consumiendo el 200\% de cpu. Mientras que si sumamos los porcentajes de los cuatro procesos de \textit{stress} obtendremos que se están consumiento en total un 190\%, prácticamente un 200\%. Por lo que a pesar de lo que se ha comandado, la Raspberry dividirá los recursos para que ambos procesos puedan usar lo máximo posible.
 
-Sabiendo esto, los niveles de prueba medio y alto obtienen prácticamente los mismos tiempos puesto que al tratar de ejecutar a al vez tanto el proceso de stress como el del modelo se están pidiendo usar más cores de los que hay. En consecuencia la Raspberry tendrá que dividir los recursos de los que dispone equitativamente entre ambos procesos. Por lo que en el fondo stress estará estresando el mismo número de cpus tanto en el nivel medio como en el alto y al proceso del modelo le sucederá lo mismo, utilizará el mismo número de cores tanto en un caso como en el otro. En el nivel intemedio, donde se estresan dos cores, el modelo no podrá utilizar las cuatro cpus que se le indican con n\_jobs puesto que estaría superando el número de cores que tiene la Raspberry. De modo que la Raspberry dividirá los recursos haciendo que stress pueda ejecutar en dos cores, y por lo tanto el modelo de aprendizaje dispondrá únicamente de las otras dos cpus para su ejecución. Mientras que en el nivel más alto de carga la Raspberry dividirá las cuatro cpus para darle la mitad de ellas a la ejecución de \textit{stress} y la otra mitad al modelo, haciendo que ambas utilicen el máximo de cores posibles.
+Sabiendo esto, los niveles de prueba medio y alto para el modelo de Random forest, obtienen prácticamente los mismos tiempos puesto que al tratar de ejecutar a al vez tanto el proceso de \textit{stress} como el del modelo se están pidiendo usar más cores de los que hay. En consecuencia la Raspberry tendrá que dividir los recursos de los que dispone equitativamente entre ambos procesos. Por lo que en el fondo \textit{stress} estará estresando el mismo número de cpus tanto en el nivel medio como en el alto y al proceso del modelo le sucederá lo mismo, utilizará el mismo número de cores tanto en un caso como en el otro. En el nivel intemedio, donde se estresan dos cores, el modelo no podrá utilizar las cuatro cpus que se le indican con n\_jobs puesto que estaría superando el número de cores que tiene la Raspberry. De modo que la Raspberry dividirá los recursos haciendo que stress pueda ejecutar en dos cores, y por lo tanto el modelo de aprendizaje dispondrá únicamente de las otras dos cpus para su ejecución. Mientras que en el nivel más alto de carga la Raspberry dividirá las cuatro cpus para darle la mitad de ellas a la ejecución de \textit{stress} y la otra mitad al modelo, haciendo que ambas utilicen el máximo de cores posibles.
+
+Esta es la explicación para los tiempos del nivel medio y alto. El nivel bajo encontraremos que el modelo solo puede estar usando tres cores para dejarle el cuarto a \textit{stress}. Como hemos visto el tiempo de Cpu es el tiempo total que han usado las tres cpus, luego por cada core el proceso ha tardado unos 50 seg (el resultado de dividir 2min 30seg entre los tres cores). Por lo tanto el tiempo aumenta un poco del estado respecto al nivel Idle.
 
 Otro aspecto de las ejecuciónes en la Raspberry  que será relevante más adelante, es la frecuencia a la que ejecutan los core. Utilizando el comando \textit{lscpu} de Linux, se puede obtener información relevante sobre los cores como por ejemplo la frecuencia máxima y mínima a la que pueden ejecutar, que en el caso de la Raspberry la mínima será igual a 600MHz y la máxima 1500MHz. 
 
@@ -1383,29 +1562,105 @@ Para saber la frecuencia de cada uno de los cores en tiempo real se puede ejecut
 
 Mostrará las frecuencias de ejecución de los cores cada 0.1 segundos. Si utilizamos dicho comando para ver las frecuencias cuando la Raspberry está tanto Idle como estresada podremos ver que todas las cpus están sobre los 1500MHz. Por lo tanto todos los cores siempre están ejecutando a la máxima velocidad que pueden.
 
-\section{Experimentos en el portátil}
-\label{sec:experimentos_en_portatil}
-
-Las mismas pruebas que se realizaron en la Raspberry se llevaron a cabo en un portátil. De esta forma se podrán comparar los tiempos de ejecución en un dispositivo de mayor capacidad y sabremos cuanto dista el comportamiento de la Raspberry del de una máquina con mayor potencia.
-
-El portátil que se utilizó para estas pruebas tenía un total de ocho cpus físicas. Es por ello que, salvo el nivel Idle, los cores de los niveles bajo, medio y alto de carga computacional cambiaron para poner más o menos en la misma situación al portátil y a la Raspberry. Por lo tanto en el portátil el nivel bajo de carga será estresar dos de sus cpus, el nivel medio cuatro y el alto los ocho cores de los que dispone la máquina. 
-
-\subsection{Programa para las pruebas: pc\_test.ipynb}
-\label{subsec:programa_pruebas_pc}
-
-Para realizar las pruebas se ha creado un programa llamado \textit{pc\_test.ipynb} que al igual que el fichero \textit{raspberry\_test.ipynb} ejecuta cada uno de los modelos con los diferentes niveles de estrés y guarda los datos obtenidos en un nuevo fichero que crea el programa con el formato nombreDataSet\_pcMD.csv, siendo MD una vez más las siglas del modelo de aprendizaje automático. El programa generará un fichero diferente para cada modelo.
-
-Al igual que en \textit{raspberry\_test.ipynb} el dataSet que se quiera utilizar para entrenar debe de haber sido preprocesado (en caso de que lo necesite) y no debe de tener cabecera, sino dará error la ejecución.
-
-La función principal utilizará dos bucles anidados, tal y como se hacia en \textit{raspberry\_test.ipynb}, para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \textit{raspberry\_test.ipynb} ya que como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará (si es necesario) dos procesos, uno ejecutará stress (cuando se desee estresar alguna cpu) y el otro los modelos que se encuentran dentro de la carpeta \textit{"Modelos"}. Todos los ficheros que generan los modelos de aprendizaje son los mismos que en la Raspberry salvo el de Random Forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
-
-\subsection{Resultados kdd\_cup99}
-\label{subsec:resultados_pc}
-
-Los resultados de la ejecución del comando stress conforme a estos niveles se pueden observar en la tabla~\ref{tab:times_portatil}. Como se puede apreciar los tiempos que se obtienen en el portátil disminuyen bastante con respecto a los que conseguía la Raspberry. 
+Por otra parte los resultados del precisión para este dataSet se pueden observar en la Tabla~\ref{tab:acc_Kddraspberry}. Al igual que en el caso del dataSet de Occupancy se obtienen muy buenos resultados, estando prácicamente todos cerca del 100\% de Accurancy.
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-\begin{table}[h!]
+\begin{table}[]
+\begin{adjustbox}{width=\textwidth}
+\centering
+    \begin{tabular}{c  c  c  c  c  c}
+    \hline
+    Modelo & Accuracy trainning (\%) & Acuracy (\%) & & & \\
+    \cline{3-6}
+     &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
+     \hline
+     Regresión Logísitca & 99.4 & 99.4 & 99.4 & 99.4 & 99.4\\
+     SVM & 99.9 & 99.9 & 99.8 & 98.8 & 98.8\\
+     Gradient Boosting & 100.0 & 96.2 & 99.2 & 96.5 & 96.5\\
+     Random Forest & 100.0 & 96.8 & 96.8 & 98.8 & 98.4\\
+    \hline
+    \end{tabular}
+\end{adjustbox}
+\caption{Resultados de la precisión de los modelos para el Kdd\_cup99 dataSet en Raspberry}
+\label{tab:acc_Kddraspberry}
+\end{table}
+
+\subsection{Portátil}
+\label{subsec:pc_sinteticos}
+
+\subsubsection{Resultados Occupancy}
+\label{subsubsec:occ_pc}
+
+Los tiempos de ejecución que empleó el portátil para entrenar los diferentes modelos se encuentran en la Tabla~\ref{tab:times_Occpc}
+
+\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
+\begin{table}[]
+\begin{adjustbox}{width=\textwidth}
+\renewcommand{\arraystretch}{2}
+\newcolumntype{a}{>{\columncolor{lightgray}}c}
+\centering
+    \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
+    \hline
+    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 cpu}} & \multicolumn{2}{|c|}{\textbf{2 cpu}} & \multicolumn{2}{|c|}{\textbf{4 cp}}\\[2ex]
+    \cline{2-9}
+     & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
+    \hline
+    Regresión logísitca & 1.93 seg & 1.34 seg & 2.11 seg & 1.5 seg & 2.8 seg & 2.18 seg & 2.56 seg & 2.68 seg \\[2ex]
+    \hline
+    SVM & 2.0 seg & 2.0 seg & 2.3 seg & 2.31 seg & 3.41 seg & 3.42 seg & 8 seg & 8.79 seg\\[2ex]
+    \hline
+    Gradient boosting & 2.49 seg & 2.5 seg & 2.71 seg & 2.72 seg & 2.88 seg & 2.88 seg & 7.74 seg & 9.25 seg\\[2ex]
+    \hline
+    Random forest & 2.87 seg & 1.67 seg & 3.0 seg & 1.93 seg & 3.0 seg & 2.19 seg & 7.28 seg & 5.45 seg\\[2ex]
+    \hline
+    \end{tabular}
+\end{adjustbox}
+\caption{Resultados de los tiempos de ejecución para el Occupancy dataSet en el portátil}
+\label{tab:times_Occpc}
+\end{table}
+
+En esta ocasión, a diferencia del comportamiento de la Raspberry los tiempos van aumentando con las diferentes purebas. A pesar de que los tres primeros modelos solo pueden ejecutar en una cpu y por lo tanto no deberían de afectarles que hubiese más de un core estresado. Sin embargo, este incremento en los tiempos se puede deber a la frecuencia con la que ejecutan las cpus. En el portátil la frecuencia máxima a la que pueden ejecutar los cores es de 3600 MHz mientras que la mínima son 400 MHz. 
+
+Ejecutando el siguiente comando: 
+
+\begin{lstlisting}[language=bash, showstringspaces=false]
+  $ watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"
+\end{lstlisting}
+
+Se puede ver la frecuencia de ejecución de todos los cores cada 0.1 segundos. En esta ocasión al observar estas velocidades cuando se ejecutaban los algoritmos de aprendizaje automático se podía ver una variación en los valores dependiendo del nivel de estrés que se estuviese ejecutando. Luego esto explicaría porque en el caso del portátil los tiempos incrementan según aumentan el número de cores estresados. 
+
+Veamos a continuación cual es el Accuracy que consiguen los modelos con este dataSet en esta máquina.
+
+\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
+\begin{table}[]
+\begin{adjustbox}{width=\textwidth}
+\centering
+    \begin{tabular}{c  c  c  c  c  c}
+    \hline
+    Modelo & Accuracy trainning (\%) & Acuracy (\%) & & & \\
+    \cline{3-6}
+     &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
+     \hline
+     Regresión Logísitca & 99.0 & 98.8 & 98.9 & 98.8 & 98.94\\
+     SVM & 99.0 & 98.8 & 99.1 & 98.9 & 98.9\\
+     Gradient Boosting & 99.3 & 99.1 & 99.0 & 98.7 & 98.9\\
+     Random Forest & 100.0 & 99.3 & 99.2 & 99.2 & 99.1\\
+    \hline
+    \end{tabular}
+\end{adjustbox}
+\caption{Resultados de la precisión de los modelos para el Occupancy dataSet en el portátil}
+\label{tab:acc_Occpc}
+\end{table}
+
+En la Tabla~\ref{tab:acc_Occpc} se puede ver que en este caso también se consiguen unos modelos de gran precisión.
+
+\subsubsection{Resultados kdd\_cup99}
+\label{subsubsec:kdd_pc}
+
+Los resultados de la ejecución del comando stress conforme a estos niveles se pueden observar en la tabla~\ref{tab:times_kddportatil}. Como se puede apreciar los tiempos que se obtienen en el portátil disminuyen bastante con respecto a los que conseguía la Raspberry. 
+
+\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
+\begin{table}[]
 \begin{adjustbox}{width=\textwidth}
 \renewcommand{\arraystretch}{2}
 \newcolumntype{a}{>{\columncolor{lightgray}}c}
@@ -1420,34 +1675,66 @@ Los resultados de la ejecución del comando stress conforme a estos niveles se p
     \hline
     SVM & 31 seg & 31 seg & 43 seg & 43 seg & 58 seg & 58 seg & 1 min 22 seg & 1 min 32 seg\\[2ex]
     \hline
-    Gradient boosting & 41 seg & 41 seg & 54 seg & 54 seg & 1 min 27 seg & 1 min 27 seg & 1 min 29 seg & 1 min 41 seg\\[2ex]
+    Gradient boosting & 41 seg & 41 seg & 54 seg & 54 seg & 87 seg & 87 seg & 89 seg & 101 seg\\[2ex]
     \hline
-    Random forest & 1 min 16 seg & 13 seg & 1 min 5 seg & 15 seg & 58 seg & 19 seg & 54 seg & 23 seg\\[2ex]
+    Random forest & 76 seg & 13 seg & 65 seg & 15 seg & 58 seg & 19 seg & 54 seg & 23 seg\\[2ex]
     \hline
     \end{tabular}
 \end{adjustbox}
 \caption{Tiempos de generación de los modelos en el portátil para diferentes niveles de saturación}
-\label{tab:times_portatil}
+\label{tab:times_kddportatil}
 \end{table}
 
-Como se puede ver Random Forest es el modelo que más tiempo tarda cuando la máquina se encuentra en estado Idle. Esto se debe a las mismas razones dadas en la sección~\ref{subsec:resultados_raspberry}
+Según esta tabla, Random Forest es el modelo que más tiempo tarda cuando la máquina se encuentra en estado Idle y se mantienen el resto de pruebas sobre un minuto de ejecución. Esto se debe a las mismas razones dadas en la sección~\ref{subsubsec:kdd_raspberry}. El hecho de que los tiempos aumenten en los modelos monocore se deben a las mismas razones dadas en el dataSet de Occupancy.
 
-Otro aspecto destacable de los tiempos en el portátil es que estos aumentaban a medida que se estresaba un mayor número de cores a pesar de que los tres primeros procesos siguen siendo monocores. Esto se debe a la frecuencia con la que ejecutan las cpus. En el portátil la frecuencia máxima a la que pueden ejecutar los cores es de 3600 MHz mientras que la mínima son 400 MHz. 
 
-Ejecutando el siguiente comando: 
+Respecto a la percisión de los modelos generados podemos ver los resultados en la Tabla~\ref{tab:acc_Kddpc}
 
-\begin{lstlisting}[language=bash, showstringspaces=false]
-  $ watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"
-\end{lstlisting}
+\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
+\begin{table}[]
+\begin{adjustbox}{width=\textwidth}
+\centering
+    \begin{tabular}{c  c  c  c  c  c}
+    \hline
+    Modelo & Accuracy trainning (\%) & Acuracy (\%) & & & \\
+    \cline{3-6}
+     &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
+     \hline
+     Regresión Logísitca & 99.4 & 99.4 & 99.5 & 99.4 & 99.4\\
+     SVM & 99.9 & 99.8 & 99.8 & 98.8 & 98.9\\
+     Gradient Boosting & 100.0 & 96.2 & 99.2 & 99.4 & 98.4\\
+     Random Forest & 100.0 & 98.0 & 96.8 & 96.8 & 97.0\\
+    \hline
+    \end{tabular}
+\end{adjustbox}
+\caption{Resultados de la precisión de los modelos para el Kdd\_cup99 dataSet en Pc}
+\label{tab:acc_Kddpc}
+\end{table}
 
-Se puede ver la frecuencia de ejecución de todos los cores cada 0.1 segundos. En esta ocasión al observar estas velocidades cuando se ejecutaban los algoritmos de aprendizaje automático se podía ver una variación en los valores dependiendo del nivel de estrés que se estuviese ejecutando. Luego esto explicaría porque en el caso del portátil los tiempos incrementan según aumentan el número de cores estresados. 
+\section{Conclusiones datos sintéticos}
+\label{sec:conclusion_sinteticos}
 
-\section{Comparación Raspberry vs Portátil}
-\label{sec:raspberry_vs_portatil}
+Tras haber observado los resultados obtenidos en la ejecución de cada uno de los modelos en diferentes situaciones de estrés en ambos dispositivos con los dos dataSets diferentes, se ha podido comprobar qué a pesar de la menor capacidad de la Raspberry, esta es capaz de tener un comportamiento bastante bueno.
 
-Lo primero que puede llamar la atención de ambas tablas es que la Raspberry, para los mismos modelos y los mismos datos, tarda más en ejecutar que el portátil. Esto se debe a que habiendo observado las frecuencias tanto de la Raspberry como del portátil vemos que la máxima velocidad a la que pueden ir los cores en la Raspberry es a 1500 MHz mientras que el portátil tiene su máximo en 3600 MHz, más del doble que la Raspberry. Luego esto permite que los procesos en el portátil puedan terminar antes que en la Raspberry siendo uno de los factores por los que la Raspberry puede ser más lenta que el portátil, ya que los cores pueden ir a mayor velocidad.
+Donde más se nota la falta de recursos de la Raspberry es en los tiempos de ejecución. Para los mismos modelos y los mismos datos, tarda más en ejecutar la Raspberry que el portátil. Una de las razones por las que sucede esto es debido a las frecuencias tanto de la Raspberry como del portátil, observandolas vemos que la máxima velocidad a la que pueden ir los cores en la Raspberry es a 1500 MHz mientras que el portátil tiene su máximo en 3600 MHz, más del doble que la Raspberry. Luego esto permite que los procesos en el portátil puedan terminar antes que en la Raspberry siendo uno de los factores por los que la Raspberry puede ser más lenta que el portátil, ya que los cores pueden ir a mayor velocidad.
+
+Otro factor que puede estar ayudando a que la diferenciad de tiempos entre ambas máqinas sea mayor es, como cabe esperar, debido a que la Raspberry dispone de la mitad de cores que posee el portátil.
+
+Ambos aspectos son los que pueden hacer notoria la gran diferencia de tiempos de ejeución en ambas máquinas.
 
 Sin embargo, a parte de la diferencia de los tiempos, todos los modelos tanto entrenando en la Raspberry como en el portátil alcanzaban un Accuracy, Precision y Recall mayor al 90\% prácticamente siempre en todos los casos.
+
+\section{Experimentos con los datos sensados}
+\label{sec:exp_dSensados}
+
+\subsection{Raspberry}
+\label{subsec:rasp_sensdos}
+
+\subsection{Portátil}
+\label{subsec:pc_sensados}
+
+\subsection{Conclusiones datos sensados}
+\label{subsec:conclusiones_sensdos}
  
 \section{Incorporación de código en la memoria}
 
