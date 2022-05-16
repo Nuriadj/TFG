@@ -1266,6 +1266,12 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	***Now, say we have two models, say a linear regression model and a neural network. How can we say which model is better? We can do K-fold cross-validation and see which one proves better at predicting the test set points. But once we have used cross-validation to select the better performing model, we train that model (whether it be the linear regression or the neural network) on all the data. We don't use the actual model instances we trained during cross-validation for our final predictive model.***  
 
+	
+* 16/5/22  
+	
+	No he subido ni el código de los test de validación cruzada ni la carpeta de los Modelos con validación cruzada, para esperear a lo que me digan los tutores.  
+	
+	He generado el dataSet de 2h 40 min con los sensores de la Raspberry.  
 
 	
 	
