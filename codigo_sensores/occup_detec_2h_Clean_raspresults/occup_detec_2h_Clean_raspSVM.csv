@@ -1,0 +1,7 @@
+Support Vector Machine,Idle,1 stress,2 stress,4 stress
+Wall time (seconds),9.59,9.53,9.45,9.75
+Cpu time (seconds),9.7,9.59,9.52,9.62
+Trainning Accuracy (%),99.5,99.5,99.5,99.6
+Accuracy (%),99.6,99.7,99.6,99.6
+Precision (%),99.9,100.0,99.9,99.9
+Recall (%),99.3,99.4,99.4,99.3
