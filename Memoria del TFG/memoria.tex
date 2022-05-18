@@ -1168,15 +1168,24 @@ Con esta división y preparación de los datos, los cuatro modelos se pudieron g
 
 \subsection{Validación cruzada}
 
-Para comprobar mejor la calidad de los modelos se utilizó validación cruzada, es decir, que dentro del set de datos de entrenamiento (compuesto, una vez más, por el 70\% de ejemplos del set de datos original) se hace una subdivisión en otros cinco sets para entrenar y probar el modelo con cada uno de ellos. 
-Una vez realizada la validación cruzada se vuelve a probar la eficiencia del modelo haciendo que clasifique el 30\% de datos de la división original, son datos que nunca ha visto ni entrenado con ellos. El objetivo de realizar una validacion cruzada es garantizar que los resultados que obtengamos sean independientes de la partición entre datos de entrenamiento y datos de validación. Los resultados de esta prueba siguieron siendo muy buenos (el acierto seguía estando por encima del 90\% en todos los subgrupos de datos de entrenamiento). 
+Para comprobar mejor la calidad de los modelos se utilizó validación cruzada. Esto consiste en hacer que dentro del set de datos de entrenamiento (en este caso compuesto, una vez más, por el 70\% de ejemplos del set de datos original) se hace una subdivisión en otros cinco sets para observar la eficiencia que ha tenido el modelo para entrenar y probar el modelo con cada uno de estos subdataSets. 
+
+Para ello, se utilizan dos métodos el primero de ellos es \textit{KFold} que devuelve los índices por donde se va dividir los datos para obtener varios sets (el número de sets dependerá del valor que se le asigne al parámetro \textit{n\_splits}). La segunda función que se utiliza es \textit{cross\_val\_score} al que se la pasa el modelo que se quiere probar junto con los datos de entrenamiento y los índices obtenidos por \textit{KFold}. Esta función nos devolverá el Accuracy que ha conseguido cada uno de estos subdataSets.
+
+Una vez realizada la división se entrena con todo el dataSet de entrenamiento y se vuelve a comprobar la eficiencia (de ese modelo entrenado) con el 30\% de datos de la división original, los que nunca ha visto ni entrenado con ellos.
+
+El objetivo de realizar una validación cruzada es garantizar que los resultados que obtengamos sean independientes de la partición entre datos de entrenamiento y datos de validación. Es decir, poder daber si la precisión que obtenemos al hacer la predicción es real o se ha sobreajustado a un dataSet concreto.
+ 
+ Para utilizar validación cruzada se añadió a los ficheros de la carpeta \textit{"Modelos"} los métodos mencionados anteriormente. 
+ 
+ Los resultados de esta prueba siguieron siendo muy buenos (el acierto seguía estando por encima del 90\% en todos los subgrupos de datos de entrenamiento). 
 En cuanto a los tiempos de ejecución el modelo de regresión logística incrementó el tiempo de ejecución siendo de cinco segundos. Para el modelo de máquinas de soporte vectorial el tiempo es de seis segundos. Random forest tarda en entrenar unos doce segundos. Y por último, el que más tiempo tarda es gradient tree boosting con un tiempo de diez y seis segundos. 
 
 
 \section{DataSet: KddCup99}
 \label{subsec:dataset_kddcup99}
 
-Al realizar algunas pruebas para comprobar el comportamiento de la Raspberry ante diferentes situaciones de estrés (tal y como se explicará más adelante) los resultados obtenidos no encajaban del todo con lo esperado. Luego para tratar de comprender mejor lo que estaba pasando se decidió usar un dataset más grande que el anterior.
+Al realizar algunas pruebas para observar el comportamiento de la Raspberry ante diferentes situaciones de estrés (tal y como se explicará más adelante) los resultados obtenidos no encajaban del todo con lo esperado. Luego para tratar de comprender mejor lo que estaba pasando se decidió usar un dataset más grande que el anterior.
 
 El dataset elegido fue KDD Cup 1999 Datadata\cite{DataSetOccupancy}, obtenido una vez más desde la página web de Kaggle. Se utilizó tanto el fichero \textit{kddcup.data.gz} como \textit{kddcup.data\_10\_percent.gz}. Una vez descargados se descomprimen y se ejecuta un programa para tratar los datos que contienen y poder utilizarlos en la generación de los modelos de Machine Learning.
 
@@ -1190,7 +1199,7 @@ Para que este dataSet se pueda utilizar para entrenar a modelos de aprendizaje a
 Para leer los datos se utiliza la función \textit{read\_csv} de pandas. Este programa no solo se usará para leer un dataSet al completo, sino que también podremos leer otra porción diferente de líneas. Es por esto que para que el programa ejecute correctamente hay que pasarle un número como único argumento, cuyo valor puede estar entre cero o cien. Este valor representa el porcentaje de datos que se desea leer. Un ejemplo de ejecución de este fichero para que lea el 50\% de los datos de kddCup99 es:\\
 
 \begin{lstlisting}[language=bash]
-    $ ipython Prepare_kddcup.ipynb 50
+    $ ipython prepare_kddcup.ipynb 50
 \end{lstlisting}
 
 En el caso de \textit{kddcup.data} (que contiene más de un millón de líneas) interesa poder leer diferentes cantidades de datos del fichero puesto que tanto la Raspberry como el portátil no son capaces de leer este dataSet completo, los procesos morían antes de terminar. En el caso de la Raspberry el máximo de datos que es capaz de leer, sin que muera el proceso, es el cuarenta porciento del dataSet total mientras que el portátil llegaba al cincuenta porciento del total.
@@ -1228,7 +1237,7 @@ Una vez realizada la transformación de multiclase a clase binaria, se hace un p
 
 A parte de los dataSets anteriores se creó uno utilizando la información recopilada por lo sensores mediante el programa \textit{read\_sensors.ipynb}. Este dataSet, con medidas de temperatura, humedad, presión y luz, busca generar un modelo que nos permita saber si la habitación está ocupada o no en un determinado instante, al igual que sucedia con el dataSet de Occupancy. 
 
-Para ello durante quince minutos se estuvieron tomando las medidas en una habitación de forma controlada, es decir, sabiendo en cada instante si la habitación estaba ocupada o no. Durante diferentes periodos de tiempo la habitación estuvo ocupada o vacía. Cuando la habitación estaba vacía algunas veces se cerraba la persiana de la habitación para que también tomase medidas bajo esta nueva condición.
+Para ello durante varias horas se estuvieron tomando las medidas en una habitación de forma controlada, es decir, sabiendo en cada instante si la habitación estaba ocupada o no. Durante diferentes periodos de tiempo la habitación estuvo ocupada o vacía. Cuando la habitación estaba vacía algunas veces se cerraba la persiana de la habitación para que también tomase medidas bajo esta nueva condición.
 
 Una vez finalizado el tiempo que se deseaba hacer la prueba se paraba el programa \textit{read\_sensors.ipynb}, se abría el nuevo csv generado y se añadia al csv una nueva columna que representa el estado de la habitación en cada instante, asignando un uno cuando estaba ocupada y un cero en el caso contrario.
 
@@ -1305,7 +1314,7 @@ Un ejemplo de la gráfica que genera este programa se puede observar en la Figur
 
 \begin{figure}[]
   \centering
-  \includegraphics[width=11cm, keepaspectratio]{img/occup_detec_15m.png}
+  \includegraphics[width=11cm, keepaspectratio]{img/Data_occup_detec_2h_original.png}
   \caption{Ejemplo gráfica de las medidas de los sensores.}\label{fig:ejemplo_gráfica}
 \end{figure}
 
@@ -1364,7 +1373,7 @@ A continuación se desarrollará en mayor profundidad qué es lo que hace cada p
 \subsubsection{raspberry\_test.ipynb}
 \label{subsubsec:programa_pruebas_raspberry}
 
-La misión de este código es ejecutar cada uno de los modelos de aprendizaje automático (que se utilizan en este proyecto) con los diferentes niveles de saturación comentados anteriormente en la Raspberry. Para realizar esto se usan dos bucles anidados, el primero de ellos itera sobre los modelos que se desean poner a prueba. El segundo recorre una lista que contiene el número de cores que se desean estresar con cada uno de los modelos (ver código ~\ref{lst:funcion_principal_raspberry_test}). Si el valor sobre el que se está iterando de la lista es mayor que cero significa que se desea estresar cierto número de cpus, por lo tanto se llama a la función \textit{start\_stress} a la que se le pasa como argumento el número de cores a estresar y durante cuanto tiempo, con estos datos se encargará de crear un nuevo proceso para ejecutar el comando \textit{stress}.
+La misión de este código es ejecutar cada uno de los modelos de aprendizaje automático (que se utilizan en este proyecto) con los diferentes niveles de saturación comentados anteriormente en la Raspberry. Para realizar esto se usan dos bucles anidados, el primero de ellos itera sobre los modelos que se desean poner a prueba. El segundo recorre una lista que contiene el número de cores que se desean estresar con cada uno de los modelos, dichos bucles los podemos ver en el Código~\ref{lst:funcion_principal_raspberry_test}. Si el valor sobre el que se está iterando de la lista es mayor que cero significa que se desea estresar cierto número de cpus, por lo tanto se llama a la función \textit{start\_stress} a la que se le pasa como argumento el número de cores a estresar y durante cuanto tiempo, con estos datos se encargará de crear un nuevo proceso para ejecutar el comando \textit{stress}.
 
 Por otra parte, independientemente del nivel de saturación de la prueba, siempre se llamará a la función \textit{model} que creará un nuevo proceso para ejecutar, utilizando el comando \textit{time} de Linux, uno de los ficheros que se encuentran dentro de la carpeta \textit{"Modelos"}. Cada uno de los ficheros que se encuentran dentro de dicha carpeta generará uno de los modelos de aprendizaje automático que se han explicado en este proyecto. 
 
@@ -1406,15 +1415,15 @@ for i in range(4):
     \end{minted}
 \end{listing}
 
-Cuando se completa la generación del modelo para uno de los niveles, los resultados de Cpu time, Wall time, Accuracy trainning (que es el valor de Accuracy para los mismos datos con los que se ha entrenado el modelo), Accuracy, Presisión y Recall se guardan cada uno en su respectiva lista gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera una tabla mediante la función \textit{add\_data} con los resultados obtenidos en cada uno de los casos.
-Dicha tabla se guardará en un fichero que se encarga de crear este programa. Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión logísitca el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de soporte vectorial será nombreDataSet\_raspSVM.csv. En total el programa creará cuatro csv diferentes, un por cada modelo
+Cuando se completa la generación del modelo para uno de los niveles, los resultados de Cpu time, Wall time, Accuracy trainning, Accuracy, Presisión y Recall se guardan cada uno en su respectiva lista gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera un nuevo fichero csv, mediante la función \textit{add\_data}, con los resultados obtenidos en cada uno de los casos.
+Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión logísitca el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de soporte vectorial será nombreDataSet\_raspSVM.csv. En total el programa creará cuatro csv diferentes, un por cada modelo. Estos ficheros se guardarán en una nueva carpeta creada con el siguiente formato: nombreDataSet\_raspresults, esto se puede observar como se hace en el Código . Todos los ficheros se guardarán dentro de esta carpeta, para que los resultados de un mismo dataSet estén todos juntos.
 
-Los nuevos procesos, comentados anteriormente, se crean utilizando la función \textit{Popen} de la librería \textit{subprocess}. Nótese que en el método \textit{model} (a diferencia de \textit{start\_stress}) esta función tiene añadido al final un \textit{.communicate()} de esta forma se parará la ejecución principal hasta que el proceso de \textit{Popen} termine. Si una vez terminado dicho proceso \textit{stress} sigue ejecutando se matará para poder comandar otro \textit{stress} sin tener que esperar a que se cumpla el tiempo de ejecución que le pasamos como argumento como se puede ver en el Código~\ref{lst:funcion_principal_raspberry_test}.
+Los nuevos procesos, comentados anteriormente, se crean utilizando la función \textit{Popen} de la librería \textit{subprocess}. Nótese que en el método \textit{model} (a diferencia de \textit{start\_stress}) el método \textit{Popen} tiene añadido al final un \textit{.communicate()} de esta forma se parará la ejecución principal hasta que el proceso de \textit{Popen} termine. Si una vez terminado dicho proceso \textit{stress} sigue ejecutando se matará el proceso para poder comandar otro \textit{stress} sin tener que esperar a que se cumpla el tiempo de ejecución que le pasamos como argumento, esto se puede ver en el Código~\ref{lst:funcion_principal_raspberry_test}.
 
 \subsubsection{pc\_test.ipynb}
 \label{subsubsec:programa_pruebas_pc}
 
-Este código es prácticamente idéntico al de \textit{rasp\_test.pynb} salvo pequeñas diferencias. Una de ellas es que en este caso el fichero que generará tras la ejecución de cada modelo tendrá el siguiente formato: nombreDataSet\_pcMD.csv, siendo MD una vez más las siglas del modelo de aprendizaje automático. 
+Este código es prácticamente idéntico al de \textit{rasp\_test.pynb} salvo pequeñas diferencias. Una de ellas es que en este caso el fichero que generará tras la ejecución de cada modelo tendrá el siguiente formato: nombreDataSet\_pcMD.csv, siendo MD una vez más las siglas del modelo de aprendizaje automático. AL igual que en el caso anterior, se creará una nueva carpeta para guardar todos estos ficheros con el formato: nombreDataSet\_pcresults.
 
 La función principal también utilizará dos bucles anidados para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \textit{raspberry\_test.ipynb} ya que como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará (si es necesario) dos procesos, uno ejecutará stress (cuando se desee estresar alguna cpu) y el otro uno de los modelos que se encuentran dentro de la carpeta \textit{"Modelos"}. Todos los ficheros que generan los modelos de aprendizaje son los mismos que en la Raspberry salvo el de Random Forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
 
@@ -1440,7 +1449,7 @@ Los tiempos de ejecución para la generación de estos modelos se pueden ver en 
 \centering
     \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
     \hline
-    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 cpu}} & \multicolumn{2}{|c|}{\textbf{2 cpu}} & \multicolumn{2}{|c|}{\textbf{4 cp}}\\[2ex]
+    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 CPU}} & \multicolumn{2}{|c|}{\textbf{2 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}}\\[2ex]
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
@@ -1502,7 +1511,7 @@ Los resultados obtenidos para el veinte por ciento del data set de Kdd\_cup99 se
 \centering
     \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
     \hline
-    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 cpu}} & \multicolumn{2}{|c|}{\textbf{2 cpu}} & \multicolumn{2}{|c|}{\textbf{4 cp}}\\[2ex]
+    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 CPU estresada}} & \multicolumn{2}{|c|}{\textbf{2 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}}\\[2ex]
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
@@ -1601,7 +1610,7 @@ Los tiempos de ejecución que empleó el portátil para entrenar los diferentes 
 \centering
     \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
     \hline
-    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 cpu}} & \multicolumn{2}{|c|}{\textbf{2 cpu}} & \multicolumn{2}{|c|}{\textbf{4 cp}}\\[2ex]
+    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 CPU estresada}} & \multicolumn{2}{|c|}{\textbf{2 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}}\\[2ex]
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
@@ -1667,7 +1676,7 @@ Los resultados de la ejecución del comando stress conforme a estos niveles se p
 \centering
     \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
     \hline
-    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{2 cpu}} & \multicolumn{2}{|c|}{\textbf{4 cpu}} & \multicolumn{2}{|c|}{\textbf{8 cp}}\\[2ex]
+    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{2 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{8 CPUs estresadas}}\\[2ex]
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
@@ -1711,14 +1720,14 @@ Respecto a la percisión de los modelos generados podemos ver los resultados en 
 \label{tab:acc_Kddpc}
 \end{table}
 
-\section{Conclusiones datos sintéticos}
-\label{sec:conclusion_sinteticos}
+\subsection{Conclusiones datos sintéticos}
+\label{subsec:conclusion_sinteticos}
 
 Tras haber observado los resultados obtenidos en la ejecución de cada uno de los modelos en diferentes situaciones de estrés en ambos dispositivos con los dos dataSets diferentes, se ha podido comprobar qué a pesar de la menor capacidad de la Raspberry, esta es capaz de tener un comportamiento bastante bueno.
 
 Donde más se nota la falta de recursos de la Raspberry es en los tiempos de ejecución. Para los mismos modelos y los mismos datos, tarda más en ejecutar la Raspberry que el portátil. Una de las razones por las que sucede esto es debido a las frecuencias tanto de la Raspberry como del portátil, observandolas vemos que la máxima velocidad a la que pueden ir los cores en la Raspberry es a 1500 MHz mientras que el portátil tiene su máximo en 3600 MHz, más del doble que la Raspberry. Luego esto permite que los procesos en el portátil puedan terminar antes que en la Raspberry siendo uno de los factores por los que la Raspberry puede ser más lenta que el portátil, ya que los cores pueden ir a mayor velocidad.
 
-Otro factor que puede estar ayudando a que la diferenciad de tiempos entre ambas máqinas sea mayor es, como cabe esperar, debido a que la Raspberry dispone de la mitad de cores que posee el portátil.
+Otro factor que puede estar ayudando a que la diferencia de tiempos entre ambas máqinas sea mayor es, como cabe esperar, debido a que la Raspberry dispone de la mitad de cores que posee el portátil.
 
 Ambos aspectos son los que pueden hacer notoria la gran diferencia de tiempos de ejeución en ambas máquinas.
 
@@ -1728,13 +1737,15 @@ Sin embargo, a parte de la diferencia de los tiempos, todos los modelos tanto en
 \label{sec:exp_dSensados}
 
 \subsection{Raspberry}
-\label{subsec:rasp_sensdos}
+\label{subsec:rasp_sensados}
+
+Los resultados de los tiempos de ejecución para el dataSet generado por medio de los datos sensados se pueden ver en la Tabla
 
 \subsection{Portátil}
 \label{subsec:pc_sensados}
 
 \subsection{Conclusiones datos sensados}
-\label{subsec:conclusiones_sensdos}
+\label{subsec:conclusiones_sensados}
  
 \section{Incorporación de código en la memoria}
 
