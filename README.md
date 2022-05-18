@@ -1273,7 +1273,10 @@ Repositorio para ir subiendo todos los avances respecto a mi Tfg que vaya realiz
 	
 	He generado el dataSet de 2h 40 min con los sensores de la Raspberry.  
 
+
+* 18/5/22  
 	
+	* Limpio el Repo para poder compartirlo con los profes.  
 	
 	
 # **TO DO Memoria:**  
