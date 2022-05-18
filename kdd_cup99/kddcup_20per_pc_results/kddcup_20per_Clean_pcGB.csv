@@ -1,7 +1,0 @@
-Gradient Boosting,Idle,2 stress,4 stress,8 stress
-Wall time (seconds),41.25,54.22,66.08,103.78
-Cpu time (seconds),41.21,54.21,66.07,89.92
-Trainning Accuracy (%),100.0,99.9,99.9,99.9
-Accuracy (%),96.2,99.2,99.4,98.4
-Precision (%),99.5,99.3,99.5,99.6
-Recall (%),94.7,99.5,99.6,97.9

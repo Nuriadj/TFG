@@ -1,7 +1,0 @@
-Logistic Regression,Idle,1 stress,2 stress,4 stress
-Wall time (seconds),42.22,51.53,61.47,61.38
-Cpu time (seconds),105.24,111.06,103.14,100.4
-Trainning Accuracy (%),99.4,99.4,99.4,99.4
-Accuracy (%),99.4,99.4,99.4,99.4
-Precision (%),99.3,99.3,99.3,99.3
-Recall (%),99.8,99.8,99.7,99.8
