@@ -4,27 +4,150 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Title -->
-  <title>Corporate | Unify - Multipurpose Responsive Template</title>
+  <title>Machine Learning with Raspberry</title>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="@@autopath/favicon.ico">
+  <link rel="shortcut icon" href="favicon.ico">
 
   <!-- Font -->
   <link href="@@vars.themeFont" rel="stylesheet">
 
   <!-- CSS Implementing Plugins -->
   <!-- bundlecss:vendor [@@autopath] -->
-  <link rel="stylesheet" href="@@autopath/node_modules/bootstrap-icons/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="@@autopath/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css">
-  <link rel="stylesheet" href="@@autopath/node_modules/swiper/swiper-bundle.min.css">
+  <link href="../dist/assets/vendor/bootstrap-icons/font/bootstrap-icons.scss" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css">
+  <link rel="stylesheet" href="../dist/assets/vendor/swiper/swiper-bundle.min.css">
 
   <!-- CSS Unify Template -->
+
   <!-- bundlecss:theme [@@autopath] @@vars.version -->
-  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/theme.css"><link rel="stylesheet" href="assets/css/snippets.css">
 </head>
 
 <body>
-  <!-- ========== HEADER ========== --><!-- ========== END HEADER ========== -->
+  <!-- ========== HEADER ========== --><header id="header" class="navbar navbar-expand-lg navbar-end navbar-light navbar-absolute-top navbar-show-hide" data-hs-header-options="{
+          &quot;fixMoment&quot;: 0,
+          &quot;fixEffect&quot;: &quot;slide&quot;
+        }" hsheader="true">
+  <div class="container">
+    <nav class="js-mega-menu navbar-nav-wrap">
+      <!-- Default Logo -->
+      <a class="navbar-brand" href="index.html" aria-label="Unify">
+        <img class="navbar-brand-logo" src="assets/svg/logos/logo.svg" alt="Image Description">
+      </a>
+      <!-- End Default Logo -->
+
+      <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-default">
+          <i class="bi-list"></i>
+        </span>
+        <span class="navbar-toggler-toggled">
+          <i class="bi-x"></i>
+        </span>
+      </button>
+      <!-- End Toggler -->
+      
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="navbar-absolute-top-scroller">
+          <ul class="navbar-nav nav-pills">
+
+<!--Test Structure-->
+    <li class="nav-item">
+    <a href="#Arquitectura" class="nav-link">Test Structure</a>
+    </li>
+            
+<!-- End Test Strucutre -->
+
+<!-- Hardware Components -->
+<li class="nav-item">
+  <a href="#Hardware" class="nav-link">Hardware Components</a>
+</li>
+<!-- End Hardware Components -->
+
+<!-- Blog -->
+<li class="hs-has-mega-menu nav-item" data-hs-mega-menu-item-options="{
+      &quot;desktop&quot;: {
+        &quot;maxWidth&quot;: &quot;50rem&quot;
+      }
+    }">
+  <a id="blogMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle @@if(category=='blog'){active}" href="#" role="button" aria-expanded="false">Blog</a>
+
+  <!-- Mega Menu -->
+  <div class="hs-mega-menu dropdown-menu" aria-labelledby="blogMegaMenu" style="min-width: 12rem;">
+    <!-- Main Content -->
+    <div class="row">
+      <div class="col-lg d-none d-lg-block">
+        <div class="bg-light rounded-3 h-100 p-4">
+          <span class="d-block fs-4 fw-bold text-dark mb-3">Latest from the Blog</span>
+
+          <div class="row">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <!-- Card -->
+              <a class="d-block" href="documentation/index.html">
+                <img class="img-fluid rounded-2 mb-2" src="assets/svg/components/card-1.svg" alt="Image Description">
+
+                <span class="fs-4 fw-medium text-dark text-inherit">Documentation</span>
+                <p class="fs-6 text-body">Development guides for building projects with Unify</p>
+                <span class="link link-pointer">Learn more</span>
+              </a>
+              <!-- End Card -->
+            </div>
+            <!-- End Col -->
+
+            <div class="col-md-6">
+              <!-- Card -->
+              <a class="d-block" href="snippets/index.html">
+                <img class="img-fluid rounded-2 mb-2" src="assets/svg/components/card-2.svg" alt="Image Description">
+
+                <span class="fs-4 fw-medium text-dark text-inherit">Snippets</span>
+                <p class="fs-6 text-body">Move quickly with copy-to-clipboard feature</p>
+                <span class="link link-pointer">Learn more</span>
+              </a>
+              <!-- End Card -->
+            </div>
+            <!-- End Col -->
+          </div>
+          <!-- End Row -->
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="navbar-dropdown-menu-inner">
+          <span class="dropdown-header">Classic</span>
+          <a class="dropdown-item @@if(link=='blog-modern.html'){active}" href="@@autopath/blog-modern.html">Modern <span class="badge text-primary">New</span></a>
+          <a class="dropdown-item @@if(link=='blog-grid.html'){active}" href="@@autopath/blog-grid.html">Grid</a>
+          <a class="dropdown-item @@if(link=='blog-list.html'){active}" href="@@autopath/blog-list.html">List</a>
+          <a class="dropdown-item @@if(link=='blog-article.html'){active}" href="@@autopath/blog-article.html">Article <span class="badge text-primary">New</span></a>
+          <a class="dropdown-item @@if(link=='blog-author-profile.html'){active}" href="@@autopath/blog-author-profile.html">Author Profile</a>
+        </div>
+      </div>
+    </div>
+    <!-- End Main Content -->
+  </div>
+  <!-- End Mega Menu -->
+</li>
+<!-- End Blog -->
+
+<!-- Docs -->
+<li class="hs-has-mega-menu nav-item" data-hs-mega-menu-item-options="{
+      &quot;desktop&quot;: {
+        &quot;maxWidth&quot;: &quot;20rem&quot;
+      }
+    }">
+  <a id="docsMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle @@if(category=='docs'){active}" href="#" role="button" aria-expanded="false">Docs</a>
+</li>
+<!-- End Docs -->
+
+          </ul>
+        </div>
+      </div>
+      <!-- End Collapse -->
+    </nav>
+  </div>
+</header>
+<!-- ========== END HEADER ========== -->
 
   <!-- ========== MAIN CONTENT ========== -->
   <main id="content" role="main">
@@ -34,7 +157,7 @@
         <div class="mb-5">
             <h1 class="display-4 text-dark text-center mb-5">Machine Learning on devices with limited computing capacity</h1>
             <p class="fs-3">Nowadays Machine Learning and IoT has become some of the most developed and researched fields in technology. The amount of applications these could offer are infinite. </p>
-            <p class="fs-3">The need to use small devices for IoT applcations leads us to consider the Raspberry as an option to carry out these tasks. Its small size and its ability to interact with the enviroment through its sensors, makes it a perfect tool to develop a project of these characteristics. That is the reason why this research will evaluate this device to perform automatic learning tasks.</p> 
+            <p class="fs-3">The need to use small devices for IoT applcations leads us to consider the Raspberry as an option to carry out these tasks. Its small size and its ability to interact with the enviroment through its sensors makes it a perfect tool to develop a project of these characteristics. That is the reason why this research will evaluate this device to perform automatic learning tasks.</p> 
 
             <p class="fs-3"> In order to do this it is going to be generated through <a href="https://scikit-learn.org/stable/" class="link-primary"> scikit-learn </a>, four differents Machine Learning models under certain computational load conditions. The selected automatic learning models are: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" class="link-secondary">Logistic Regression</a>, <a href="https://scikit-learn.org/stable/modules/svm.html" class="link-secondary"> Support Vector Machine</a>, <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html" class="link-secondary">Gradient Boosting</a> and <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html" class="link-secondary"> Random Forest.</a></p></div>
         
@@ -46,12 +169,25 @@
     </div>
     <!-- End Hero -->
 
-    <!-- Icon Blocks -->
-    <div class="container">
+    <!-- Test Structure -->
+    <div id="Arquitectura" class="container">
     <h2 class="display-6 text-dark mb-5"> Test Structure </h2>
     <img class="img-fluid rounded-3" src="assets/img/960x540/arquitectura_general_english.png" alt="General Architecture for testing Machine Learning models.">
-      <div class="row">
-        <div class="col-sm-6 col-lg mb-5 mb-lg-0">
+
+    <p class="fs-3 mt-5"> As mentioned before, to test the potential of the Raspberry, four diferent kind of Machine Learning models are going to be trained and tested with differents dataSets.</p>
+    <p class="fs-3"> Each model will be subjected to four tests. The difference between those tests is the number of cores that are going to be stressed. The defined stress levels are: </p>
+    <ul class="mt-2 mb-5">
+        <li><p class="fs-3"><strong>Idle Level</strong>. The Raspberry is not subjected to any kind of extra stress.</p></li>
+        <li><p class="fs-3"><strong>Low Level</strong>. Only one of the cores of the machine is stressed.</p></li>
+        <li><p class="fs-3"><strong>Middle Level</strong>. Two of the cpus are going to be stressed.</p></li>
+        <li><p class="fs-3"><strong>High Level</strong>. All the cores of the Raspberry, which are four, will be exposed to higher computational load.</p></li>
+    </ul>
+    
+    <p class="fs-3"> From each of the test it is going to be obtained some relevant information that will allow us to evaluate the Raspberry as an optimal dispositive for Machine Learning applications or not. As it can be seen in the above imagen, the information of each model will be stored on its own file. </p>
+
+        <p class="fs-3"> Moreover, as it can be observed in this picture toocture, the models will also be trained and tested in a laptop. This is made to compare the Raspberry results with the ones of a more powerfull machine as it can be a laptop. This will enable us to understand better the Raspberrys behaviour. </p>
+        <div="" class="row">
+        <p></p><div class="col-sm-6 col-lg mb-5 mb-lg-0">
           <!-- Icon Block -->
           <div class="text-center">
             <div class="mb-3">
@@ -106,12 +242,16 @@
           <!-- End Icon Block -->
         </div>
         <!-- End Col -->
-      </div>
+      </div=""></div>
       <!-- End Row -->
-    </div>
-    <!-- End Icon Blocks -->
+    
+    <!-- End Test Structure -->
 
-    <!-- Features -->
+    <!-- Hardware -->
+<div id="Hardware" class="container">
+    <h2 class="display-6 text-dark content-space-t-3"> Hardware Components </h2>
+</div>
+<!-- End Hardware -->
     <div class="overflow-hidden">
       <div class="container content-space-2 content-space-lg-3">
         <div class="row align-items-lg-center">
@@ -155,7 +295,7 @@
         <!-- End Row -->
       </div>
     </div>
-    <!-- End Features -->
+    <!-- End Hardware -->
 
     <!-- Icon Blocks -->
     <div class="container">
@@ -341,7 +481,7 @@
           <!-- End Slide -->
 
           <div class="swiper-slide">
-            <img class="avatar avatar-lg avatar-4x3" src="@@autopath/assets/svg/brands/hubspot-dark.svg" alt="Logo">
+            <img class="avatar avatar-lg avatar-4x3" src="assets/svg/brands/hubspot-dark.svg" alt="Logo">
           </div>
           <!-- End Slide -->
         </div>
@@ -364,7 +504,7 @@
           <!-- Card -->
           <a class="card card-ghost card-transition-zoom h-100" href="@@autopath/blog-article.html">
             <div class="card-transition-zoom-item">
-              <img class="card-img" src="@@autopath/assets/img/580x480/img1.jpg" alt="Image Description">
+              <img class="card-img" src="assets/img/580x480/img1.jpg" alt="Image Description">
             </div>
 
             <div class="card-body">
@@ -384,7 +524,7 @@
           <!-- Card -->
           <a class="card card-ghost card-transition-zoom h-100" href="@@autopath/blog-article.html">
             <div class="card-pinned card-transition-zoom-item">
-              <img class="card-img" src="@@autopath/assets/img/580x480/img2.jpg" alt="Image Description">
+              <img class="card-img" src="assets/img/580x480/img2.jpg" alt="Image Description">
               <span class="badge bg-dark text-white card-pinned-top-end">Sponsored</span>
             </div>
 
@@ -437,18 +577,19 @@
   <!-- ========== END SECONDARY CONTENTS ========== -->
 
   <!-- JS Global Compulsory @@deleteLine:build -->
-  <script src="@@autopath/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- JS Implementing Plugins -->
   <!-- bundlejs:vendor [@@autopath] -->
-  <script src="@@autopath/assets/vendor/hs-header/dist/hs-header.min.js"></script>
-  <script src="@@autopath/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.js"></script>
-  <script src="@@autopath/assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
-  <script src="@@autopath/node_modules/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/hs-scrollspy/dist/hs-scrollspy.min.js"></script>
+  <script src="assets/vendor/hs-header/dist/hs-header.min.js"></script>
+  <script src="assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.js"></script>
+  <script src="assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
+  <script src="node_modules/swiper/swiper-bundle.min.js"></script>
 
   <!-- JS Unify -->
   <!-- bundlejs:theme [@@autopath] -->
-  <script src="@@autopath/assets/js/hs.core.js"></script>
+  <script src="assets/js/hs.core.js"></script>
 
   <!-- JS Plugins Init. -->
   <script>
