@@ -1,0 +1,8 @@
+Logistic Regression,Idle,1 stress,2 stress,4 stress
+Wall time (seconds),18.83,15.2,16.62,13.85
+Cpu time (seconds),17.79,26.8,24.19,17.69
+Mean Folds Accuracy (%),98.9,98.8,98.9,98.9
+Trainning Accuracy (%),98.9,98.8,98.9,98.9
+Accuracy (%),98.8,99.0,99.0,98.9
+Precision (%),95.4,96.2,96.3,95.7
+Recall (%),99.6,99.7,99.4,99.7

@@ -1,0 +1,8 @@
+Random Forest,Idle,1 stress,2 stress,4 stress
+Wall time (seconds),296.41,306.78,348.86,381.14
+Cpu time (seconds),1048.87,829.86,669.36,706.96
+Mean Folds Accuracy (%),100.0,100.0,100.0,100.0
+Trainning Accuracy (%),100.0,100.0,100.0,100.0
+Accuracy (%),97.5,97.9,96.9,98.6
+Precision (%),99.9,99.8,99.9,99.8
+Recall (%),96.3,97.0,95.3,98.1

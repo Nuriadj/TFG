@@ -1,0 +1,8 @@
+Support Vector Machine,Idle,1 stress,2 stress,4 stress
+Wall time (seconds),529.74,518.07,494.31,497.24
+Cpu time (seconds),528.55,517.1,494.24,495.47
+Mean Folds Accuracy (%),99.9,99.8,99.9,99.9
+Trainning Accuracy (%),99.9,99.9,99.9,99.9
+Accuracy (%),99.8,99.9,99.8,99.8
+Precision (%),99.8,99.9,99.8,99.8
+Recall (%),99.9,99.9,99.9,99.9
