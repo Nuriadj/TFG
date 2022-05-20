@@ -1,0 +1,8 @@
+Gradient Boosting,Idle,2 stress,4 stress,8 stress
+Wall time (seconds),7.54,8.14,10.45,21.47
+Cpu time (seconds),7.5,8.13,10.44,17.16
+Mean Folds Accuracy (%),99.1,99.0,99.0,99.0
+Trainning Accuracy (%),99.3,99.3,99.4,99.4
+Accuracy (%),99.0,98.9,98.8,99.0
+Precision (%),96.8,95.9,96.0,96.6
+Recall (%),99.2,99.6,98.9,99.0
