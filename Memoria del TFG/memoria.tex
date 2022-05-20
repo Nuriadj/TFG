@@ -1176,10 +1176,8 @@ Una vez realizada la división se entrena con todo el dataSet de entrenamiento y
 
 El objetivo de realizar una validación cruzada es garantizar que los resultados que obtengamos sean independientes de la partición entre datos de entrenamiento y datos de validación. Es decir, poder daber si la precisión que obtenemos al hacer la predicción es real o se ha sobreajustado a un dataSet concreto.
  
- Para utilizar validación cruzada se añadió a los ficheros de la carpeta \textit{"Modelos"} los métodos mencionados anteriormente. 
+ Para utilizar validación cruzada se añadió a los ficheros de la carpeta \textit{"Modelos"} los métodos mencionados anteriormente. Por lo que, además de los datos que ya mostraban estos ficheros por su salida, se añadirá un nuevo \textit{print} para obtener la media de las precisiones de cada una de las subdivisiones.
  
- Los resultados de esta prueba siguieron siendo muy buenos (el acierto seguía estando por encima del 90\% en todos los subgrupos de datos de entrenamiento). 
-En cuanto a los tiempos de ejecución el modelo de regresión logística incrementó el tiempo de ejecución siendo de cinco segundos. Para el modelo de máquinas de soporte vectorial el tiempo es de seis segundos. Random forest tarda en entrenar unos doce segundos. Y por último, el que más tiempo tarda es gradient tree boosting con un tiempo de diez y seis segundos. 
 
 
 \section{DataSet: KddCup99}
@@ -1255,9 +1253,9 @@ Este programa necesita usar la comunicación I2C para obtener los valores del se
     $ sudo env "PATH=$PATH" ipython read_sensors.ipynb miDataSet
 \end{lstlisting}
 
-Una vez ejecutado el programa, en la segunda celda de este, se preprararán los puertos para poder leer los datos. 
+En la segunda celda de este programa se puede ver como se preprararán los puertos para poder leer los datos. 
 
-A continuación se quedará ejecutando indefinidamente un bucle while, que es el que se encarga de guardar los datos sensados cada un segundo. Dicho bucle se puede ver en el Código~\ref{lst:firstloop_read_sensor}. Algo destacable es que al valor de la luz (proporcionada por el LDR) siempre se le resta uno. Esto se hace así para que los datos se puedan interpretar mejor, puesto que cuando hay luz a la Raspberry le llega un cero. De esta forma cuando haya luz se guarda un uno en el fichero en vez de un cero. 
+A continuación se quedará ejecutando indefinidamente un bucle while, que es el que se encarga de guardar los datos sensados cada un segundo. Dicho bucle se puede ver en el Código~\ref{lst:firstloop_read_sensor}. Algo destacable es que para obtener el valor de la luz (proporcionada por el LDR) siempre se le resta a uno el valor sensado. Esto se hace así para que los datos se puedan interpretar mejor, puesto que cuando hay luz a la Raspberry le llega un cero. De esta forma cuando haya luz se guarda un uno en el fichero en vez de un cero. 
 Este bucle estará continuamente mostrando por el terminal las medidas tomadas hasta que el usuario haga Ctr-C , de esta forma se indica que ya no se desean guardar más datos.
 
 \begin{listing}[]
@@ -1310,13 +1308,19 @@ for i in range(len(measures)):
     \end{minted}
 \end{listing}
 
-Un ejemplo de la gráfica que genera este programa se puede observar en la Figura~\ref{fig:ejemplo_gráfica}. Donde el eje x representan los minutos que han pasado desde que comenzó a ejecutarse el código.
+Mediante todo esto se obtuvo un nuevo dataSet denominado como occup\_detec\_2h.csv. A este dataSet se le añadió una nueva columna para indicar en qué instantes de tiempo la habitación estaba ocupada o vacía, y por ello se guardó con el siguiente nombre occup\_detec\_2h\_Clean.csv, para de esta forma indicar que el dataSet estaba listo para poder entrenar modelos con él.
+
+La gráfica generada por este dataSet se puede observar en la Figura~\ref{fig:ejemplo_gráfica}. Donde el eje x representa los minutos que han pasado desde que comenzó a ejecutarse el código.
 
 \begin{figure}[]
   \centering
   \includegraphics[width=11cm, keepaspectratio]{img/Data_occup_detec_2h_original.png}
   \caption{Ejemplo gráfica de las medidas de los sensores.}\label{fig:ejemplo_gráfica}
 \end{figure}
+
+Para la generación de este dataSet primero estuvo la habitación ocupada durante media hora. Pasada esa media hora la habitación estuvo vacía durante 40 minutos. Después volvió ha estar ocupada durante una hora entera, se vació una última vez durante 25 minutos para estar ocupada los 10 últimos minutos antes de finalizar la recogida de datos.
+
+Sabiendo en qué momentos ha estado ocupada o vacía y observando la Figura~\ref{fig:ejemplo_gráfica} se puede ver que los valores de los datos se diferencian entre el estado ocupado y vacío (a excepción de la presión que no varía), siendo la humedad la variable que más varía sus valores entre ambos estados. La temperatura varía algo menos, pero igualmente se puede ver un pequeño descenso cuando la habitación está vacía. 
 
 \cleardoublepage
 
@@ -1382,7 +1386,7 @@ Por otra parte, independientemente del nivel de saturación de la prueba, siempr
     \label{lst:funcion_principal_raspberry_test}
     \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
 #Hacer una version que ejecute de seguido los modelos solo (sin stress)
-t= 200
+t= 2000
 list_cpus= [0,1,2,4]
 dataSet= sys.argv[1]
 name_dataSet= dataSet.split("/")[-1].split(".csv")[0]
@@ -1390,6 +1394,7 @@ name_dataSet= dataSet.split("/")[-1].split(".csv")[0]
 lst_header= []
 lst_Wt= []
 lst_Ct= []
+lst_Af= []
 lst_TAc= []
 lst_Ac= []
 lst_Pr= []
@@ -1415,7 +1420,7 @@ for i in range(4):
     \end{minted}
 \end{listing}
 
-Cuando se completa la generación del modelo para uno de los niveles, los resultados de Cpu time, Wall time, Accuracy trainning, Accuracy, Presisión y Recall se guardan cada uno en su respectiva lista gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera un nuevo fichero csv, mediante la función \textit{add\_data}, con los resultados obtenidos en cada uno de los casos.
+Cuando se completa la generación del modelo para uno de los niveles, los resultados de Cpu time, Wall time, Mean Folds Accuracy, Accuracy trainning, Accuracy, Presisión y Recall se guardan cada uno en su respectiva lista gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera un nuevo fichero csv, mediante la función \textit{add\_data}, con los resultados obtenidos en cada uno de los casos.
 Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión logísitca el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de soporte vectorial será nombreDataSet\_raspSVM.csv. En total el programa creará cuatro csv diferentes, un por cada modelo. Estos ficheros se guardarán en una nueva carpeta creada con el siguiente formato: nombreDataSet\_raspresults, esto se puede observar como se hace en el Código . Todos los ficheros se guardarán dentro de esta carpeta, para que los resultados de un mismo dataSet estén todos juntos.
 
 Los nuevos procesos, comentados anteriormente, se crean utilizando la función \textit{Popen} de la librería \textit{subprocess}. Nótese que en el método \textit{model} (a diferencia de \textit{start\_stress}) el método \textit{Popen} tiene añadido al final un \textit{.communicate()} de esta forma se parará la ejecución principal hasta que el proceso de \textit{Popen} termine. Si una vez terminado dicho proceso \textit{stress} sigue ejecutando se matará el proceso para poder comandar otro \textit{stress} sin tener que esperar a que se cumpla el tiempo de ejecución que le pasamos como argumento, esto se puede ver en el Código~\ref{lst:funcion_principal_raspberry_test}.
@@ -1453,13 +1458,13 @@ Los tiempos de ejecución para la generación de estos modelos se pueden ver en 
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
-    Regresión logísitca & 10 seg & 9.35 seg & 13.29 seg & 10.58 seg & 12 seg & 10.47 seg & 10.78 seg & 10 seg \\[2ex]
+    Regresión logísitca & 17.79 seg & 18.83 seg & 26.8 seg & 15.2 seg & 24.19 seg & 16.62 seg & 17.69 seg & 13.85 seg \\[2ex]
     \hline
-    SVM & 11.8 seg & 11.6 seg & 11.9 seg & 11.88 seg & 11.85 seg & 11.8 seg & 11.6 seg & 11.75 seg\\[2ex]
+    SVM & 16.52 seg & 16.37 seg & 16.59 seg & 16.55 seg & 16.63 seg & 16.62 seg & 16.95 seg & 17.01 seg\\[2ex]
     \hline
-    Gradient boosting & 13 seg & 13 seg & 13.3 seg & 13.3 seg & 13 seg & 13 seg & 13 seg & 13 seg\\[2ex]
+    Gradient boosting & 28.61 seg & 28.74 seg & 28.4 seg & 28.38 seg & 28.3 seg & 28.31 seg & 28.51 seg & 28.66 seg\\[2ex]
     \hline
-    Random forest & 14.8 seg & 11.2 seg & 14 seg & 11 seg & 13 seg & 11.7 seg & 13.58 seg & 13 seg\\[2ex]
+    Random forest & 59.15 seg & 24.59 seg & 52.44 seg & 26.15 seg & 48.92 seg & 30.67 seg & 49.29 seg & 34.34 seg\\[2ex]
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1467,9 +1472,9 @@ Los tiempos de ejecución para la generación de estos modelos se pueden ver en 
 \label{tab:times_Occraspberry}
 \end{table}
 
-Los tiempos obtenidos para este dataSet no varían apenas entre los diferentes niveles de saturación, siendo el modelo de Regresión logítica el que menos tarda en entrenar en todos las pruebas. 
+Los tiempos obtenidos para este dataSet apenas varian entre los diferentes niveles de saturación (salvo el caso de Random Forest), siendo el modelo de Regresión logítica el que menos tarda en entrenar en todos las pruebas. 
 
-Para los modelos de Regresión logistica, Máquinas de soporte vectorial y Gradient boosting, es normal que no varíen apenas sus valores dado que tal y como se explicó en el Capítulo~\ref{chap:diseño} estos tres modelos son monocores, es decir, solo pueden ejecutar en una cpu. 
+Para los modelos de Regresión logistica, Máquinas de soporte vectorial y Gradient boosting, es normal que no varien apenas sus valores dado que tal y como se explicó en el Capítulo~\ref{chap:diseño} estos tres modelos son monocores, es decir, solo pueden ejecutar en una cpu. 
 
 Sin embargo el modelo de Random forest no terminaba de encajar del todo con lo espreado, es por ello que se decidió probar a ejecutar los modelos con un dataSet con mayor cantidad de datos. Con un dataSet de mayor tamaño se podrán observar mejor las razones por las que se devuelven estos tiempos.
 
@@ -1479,16 +1484,16 @@ En cuanto a la precisión (Accuracy) en cada uno de los modelos se obtienen los 
 \begin{table}[]
 \begin{adjustbox}{width=\textwidth}
 \centering
-    \begin{tabular}{c  c  c  c  c  c}
+    \begin{tabular}{c  c  c  c  c  c  c}
     \hline
-    Modelo & Accuracy trainning (\%) & Acuracy (\%) & & & \\
-    \cline{3-6}
-     &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
+    Modelo & Accuracy cv (\%) & Accuracy trainning (\%) & Acuracy (\%) & & & \\
+    \cline{4-7}
+     &   &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
      \hline
-     Regresión Logísitca & 98.9 & 98.9 & 98.8 & 98.9 & 98.9\\
-     SVM & 99.0 & 99.0 & 99.0 & 98.8 & 98.8\\
-     Gradient Boosting & 99.4 & 99.1 & 98.9 & 99.0 & 98.9\\
-     Random Forest & 100.0 & 99.2 & 99 & 99.2 & 99.1\\
+     Regresión Logísitca & 98.9 & 98.9 & 98.9 & 99.0 & 99.0 & 98.9\\
+     SVM & 98.9 & 99.0 & 98.9 & 99.0 & 98.8 & 99.2\\
+     Gradient Boosting & 99.0 & 99.4 & 98.9 & 99.1 & 98.7 & 98.9\\
+     Random Forest & 99.2 & 100.0 & 99.3 & 99.3 & 99.32 & 99.3\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1496,12 +1501,12 @@ En cuanto a la precisión (Accuracy) en cada uno de los modelos se obtienen los 
 \label{tab:acc_Occraspberry}
 \end{table}
 
-Como se puede ver en dicha tabla, en este caso la diferencia entre la precisión de los datos de entrenamiento y otros datos que no ha visto hasta entonces es muy similar. Luego los modelos que se están generando son bastente fiables puesto que todos están por encima del 90\% de precisión.
+Como se puede ver en dicha tabla, en este caso la diferencia entre la precisión de los datos de entrenamiento y otros datos que no ha visto hasta entonces es muy similar. Luego los modelos que se están generando son bastente fiables puesto que todos están por encima del 90\% de precisión. Y sabemos que no se están sobreajustando los modelos puesto que en la columna \textit{Accuracy cv}, que es la precisión que se obtiene de la validación cruzada, en todos los casos también es superior al 90\%. Este porcentaje se obtiene de la media de la fila \textit{Mean Folds Accuracy} de los csv con los datos generados en cada modelo.
 
 \subsubsection{Resultados kdd\_cup99}
 \label{subsubsec:kdd_raspberry}
 
-Los resultados obtenidos para el veinte por ciento del data set de Kdd\_cup99 se encuentran en la Tabla~\ref{tab:times_kddraspberry}. En esta ocasión los tiempos de ejecución aumentarán respecto al dataSet de Occupancy puesto que este dataSet tienen muchas más líneas con las que entrenar (hay más de cuatro millones de líneas de diferencia entre ambos dataSets).
+Los resultados obtenidos para el veinte por ciento del data set de Kdd\_cup99 se encuentran en la Tabla~\ref{tab:times_kddraspberry}. En esta ocasión los tiempos de ejecución aumentarán respecto al dataSet de Occupancy puesto que este dataSet tiene muchas más líneas con las que entrenar (hay más de cuatro millones de líneas de diferencia entre ambos dataSets).
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
@@ -1515,13 +1520,13 @@ Los resultados obtenidos para el veinte por ciento del data set de Kdd\_cup99 se
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
-    Regresión logísitca & 105.24 seg & 42.22 seg & 111.0 seg & 51.53 seg & 103.14 seg & 61.47 seg & 100.4 seg & 61.38 seg \\[2ex]
+    Regresión logísitca & 447.38 seg & 142.72 seg & 506.49 seg & 191.09 seg & 422.57 seg & 223.33 seg & 387.74 seg & 211.3 seg \\[2ex]
     \hline
-    SVM & 193.63 seg & 193.86 seg & 196.6 seg & 196.77 seg & 189.69 seg & 189.93 seg & 193.71 seg & 194.43 seg\\[2ex]
+    SVM & 528.55 seg & 529.74 seg & 517.1 seg & 518.07 seg & 494.24 seg & 494.31 seg & 495.47 seg & 497.24 seg\\[2ex]
     \hline
-    Gradient boosting & 195.0 seg & 195.56 seg & 191.7 seg & 191.95 seg & 193.6 seg & 193.6 seg & 191.18 seg & 192.0 seg\\[2ex]
+    Gradient boosting & 853.97 seg & 855.97 seg & 876.88 seg & 879.19 seg & 853.42 seg & 853.49 seg & 858.95 seg & 860.68 seg\\[2ex]
     \hline
-    Random forest & 205.79 seg & 68.96 seg & 157.65 seg & 67.66 seg & 132.0 seg & 75.85 seg & 133.0 seg & 79.75 seg\\[2ex]
+    Random forest & 1048.87 seg & 296.41 seg & 829.86 seg & 306.78 seg & 669.36 seg & 348.86 seg & 706.96 seg & 381.14 seg\\[2ex]
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1529,16 +1534,16 @@ Los resultados obtenidos para el veinte por ciento del data set de Kdd\_cup99 se
 \label{tab:times_kddraspberry}
 \end{table}
 
-Como se puede observar en la tabla~\ref{tab:times_kddraspberry}, los tiempos de ejecución varian entre los diferentes modelos, siendo el de Regresión logística el que menos tiempo tarda en todos los casos.
+Como se puede observar en la tabla~\ref{tab:times_kddraspberry}, los tiempos de ejecución varian entre los diferentes modelos, siendo el de Regresión logística el que menos tiempo tarda en todos los casos como ocurria con el dataSet de Occupancy.
 
 Un vez más, los tiempos de Regresión logísitca, Máquinas de soporte vectorial (SVM) y Gradient boosting apenas varían entre los diferentes niveles de estrés, esto se debe a las mismas razónes comentadas antes. En el caso de Máquinas de soporte vectorial y Gradient boosting, scikit-learn no admite multi-threading, por lo que a pesar de estresar una, dos o cuatro cpus siempre devolverán el mismo tiempo puesto que estos modelos solo pueden utilizar un único core para ejecutar.\\
-Regresión logística podría utilizar varios cores si se le indica mediante el parámetro n\_jobs. Pero dado que estamos en un problema de clasificación binaria este valor no tendrá ningún efecto al aumentar o disminuir el número de cpus estresadas como vimos en el apartado~\ref{subsubsec:lRegression}.
+Regresión logística podría utilizar varios cores si se le indica mediante el parámetro n\_jobs. Pero dado que estamos en un problema de clasificación binaria este valor no tendrá ningún efecto al aumentar o disminuir el número de cpus estresadas como vimos en el apartado~\ref{subsubsec:lRegression}. 
 
 En cuanto al modelo de Random forest, para poder entender los tiempos que devuelve, es necesario explicar primero como se comporta la Raspberry cuando varios procesos le piden más recursos de los que tiene y como afecta el parámetro n\_jobs a los tiempo de este modelo.
 
 Comencemos explicando como afecta el parámetro n\_jobs a los tiempos de ejecución. Como se ha visto anteriormente, Random forest admite el parámetro n\_jobs, que en este caso (a diferencia de Regresión logística) sí que afecta a como ejecuta el modelo independientemente de si es un problema de clasificación binaria o no. Por lo tanto para poder optimizar el proceso habrá que hacer que el parámetro n\_jobs sea igual al número de cores del dispositivo, que en este caso serán cuatro. 
 
-Con este parámetro ajustado hay que saber que el tiempo de Cpu que obtenemos del comando \textit{time} es la suma de los tiempos que ha necesitado cada uno de los cores utilizados por el proceso para la ejecución. Esta es la razón por la que podemos ver como el tiempo en Idle es bastante mayor que el resto de casos, puesto que es en esta ocasión donde el programa está pudiendo hacer un uso completo de los cuatro cores, ya que no hay ningún otro proceso que necesite usarlos. Por lo tanto el Cpu time que tenemos en este nivel es en realidad la suma de los tiempos de ejecución de los cuatro cores. El tiempo que ha necesitado cada uno de los cores sería dividir 3min 4seg entre 4 con lo que obtendríamos 46 segundos por core. Sabiendo esto queda explicado por qué el nivel de Idle devuelve un valor tan alto y como esto, que a prioir puede parecer un poco contradictorio, se ajusta a lo esperado.
+Con este parámetro ajustado hay que saber que el tiempo de Cpu que obtenemos del comando \textit{time} es la suma de los tiempos que ha necesitado cada uno de los cores utilizados por el proceso para la ejecución. Esta es la razón por la que podemos ver como el tiempo en Idle es bastante mayor que el resto de casos, puesto que es en esta ocasión donde el programa está pudiendo hacer un uso completo de los cuatro cores, ya que no hay ningún otro proceso que necesite usarlos. Por lo tanto el Cpu time que tenemos en este nivel es en realidad la suma de los tiempos de ejecución de los cuatro cores. El tiempo que ha necesitado cada uno de los cores sería dividir los 1048.87 entre 4 con lo que obtendríamos 262 segundos por core. Sabiendo esto queda explicado por qué el nivel de Idle devuelve un valor tan alto y como esto, que a prioir puede parecer un poco contradictorio, se ajusta a lo esperado.
 
 Para el resto de casos, dado que ya intervienen otros procesos, habrá que saber como se comporta la Raspberry ante una mayor demanda de recursos. Lo primero que hay que saber es que el comando \textit{stress} estresará el número de cpus que se le pasan como argumento siempre y cuando pueda. En el momento en el que tenga que compartir Cpu con otros procesos, la Raspberry repartirá los recursos haciendo que \textit{stress} no utilice todas las cpus que se le ha comandado estresar para que el otro proceso también pueda ejecutar. Por ejemplo, cuando se realiza la prueba de nivel alto de carga al modelo de Máquinas de soporte vectorial, si se comprueban los valores de cpu que utiliza cada uno de los procesos (por medio del comando \textit{htop} de Linux), a pesar de que se puede ver que stress tiene cuatro procesos, la suma de lo que utiliza la cpu cada uno de ellos será igual a un total de tres cores más o menos, es decir utilizan un 300\% de los recursos. Mientras que el proceso del modelo utiliza una cpu, un 100\%. Siendo el valor total de los recursos de los que dispone la Raspberry igual a 400\%, un 100\% para cada uno de los cores de la Raspberry.
 
@@ -1555,7 +1560,7 @@ En la Figura~\ref{figura:stress_rForest} vemos que el primer proceso de Random f
 
 Sabiendo esto, los niveles de prueba medio y alto para el modelo de Random forest, obtienen prácticamente los mismos tiempos puesto que al tratar de ejecutar a al vez tanto el proceso de \textit{stress} como el del modelo se están pidiendo usar más cores de los que hay. En consecuencia la Raspberry tendrá que dividir los recursos de los que dispone equitativamente entre ambos procesos. Por lo que en el fondo \textit{stress} estará estresando el mismo número de cpus tanto en el nivel medio como en el alto y al proceso del modelo le sucederá lo mismo, utilizará el mismo número de cores tanto en un caso como en el otro. En el nivel intemedio, donde se estresan dos cores, el modelo no podrá utilizar las cuatro cpus que se le indican con n\_jobs puesto que estaría superando el número de cores que tiene la Raspberry. De modo que la Raspberry dividirá los recursos haciendo que stress pueda ejecutar en dos cores, y por lo tanto el modelo de aprendizaje dispondrá únicamente de las otras dos cpus para su ejecución. Mientras que en el nivel más alto de carga la Raspberry dividirá las cuatro cpus para darle la mitad de ellas a la ejecución de \textit{stress} y la otra mitad al modelo, haciendo que ambas utilicen el máximo de cores posibles.
 
-Esta es la explicación para los tiempos del nivel medio y alto. El nivel bajo encontraremos que el modelo solo puede estar usando tres cores para dejarle el cuarto a \textit{stress}. Como hemos visto el tiempo de Cpu es el tiempo total que han usado las tres cpus, luego por cada core el proceso ha tardado unos 50 seg (el resultado de dividir 2min 30seg entre los tres cores). Por lo tanto el tiempo aumenta un poco del estado respecto al nivel Idle.
+Esta es la explicación para los tiempos del nivel medio y alto. El nivel bajo encontraremos que el modelo solo puede estar usando tres cores para dejarle el cuarto a \textit{stress}. Como hemos visto el tiempo de Cpu es el tiempo total que han usado las tres cpus, luego por cada core el proceso ha tardado unos 276 seg (el resultado de dividir 829.86 seg entre los tres cores). Por lo tanto el tiempo aumenta un poco del estado respecto al nivel Idle.
 
 Otro aspecto de las ejecuciónes en la Raspberry  que será relevante más adelante, es la frecuencia a la que ejecutan los core. Utilizando el comando \textit{lscpu} de Linux, se puede obtener información relevante sobre los cores como por ejemplo la frecuencia máxima y mínima a la que pueden ejecutar, que en el caso de la Raspberry la mínima será igual a 600MHz y la máxima 1500MHz. 
 
@@ -1571,22 +1576,22 @@ Para saber la frecuencia de cada uno de los cores en tiempo real se puede ejecut
 
 Mostrará las frecuencias de ejecución de los cores cada 0.1 segundos. Si utilizamos dicho comando para ver las frecuencias cuando la Raspberry está tanto Idle como estresada podremos ver que todas las cpus están sobre los 1500MHz. Por lo tanto todos los cores siempre están ejecutando a la máxima velocidad que pueden.
 
-Por otra parte los resultados del precisión para este dataSet se pueden observar en la Tabla~\ref{tab:acc_Kddraspberry}. Al igual que en el caso del dataSet de Occupancy se obtienen muy buenos resultados, estando prácicamente todos cerca del 100\% de Accurancy.
+Por otra parte los resultados del precisión para este dataSet se pueden observar en la Tabla~\ref{tab:acc_Kddraspberry}. Al igual que en el caso del Occupancy dataSet se obtienen muy buenos resultados, estando prácicamente todos cerca del 100\% de Accurancy, y sabiendo que no se están sobreajustando puesto que la precisión de la validación cruzada también es prácticamente el 100\% en todos los casos.
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
 \begin{adjustbox}{width=\textwidth}
 \centering
-    \begin{tabular}{c  c  c  c  c  c}
+    \begin{tabular}{c  c  c  c  c  c  c}
     \hline
-    Modelo & Accuracy trainning (\%) & Acuracy (\%) & & & \\
-    \cline{3-6}
-     &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
+    Modelo & Accuracy cv (\%) & Accuracy trainning (\%) & Acuracy (\%) & & & \\
+    \cline{4-7}
+     &  &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
      \hline
-     Regresión Logísitca & 99.4 & 99.4 & 99.4 & 99.4 & 99.4\\
-     SVM & 99.9 & 99.9 & 99.8 & 98.8 & 98.8\\
-     Gradient Boosting & 100.0 & 96.2 & 99.2 & 96.5 & 96.5\\
-     Random Forest & 100.0 & 96.8 & 96.8 & 98.8 & 98.4\\
+     Regresión Logísitca & 99.4 & 99.4 & 99.4 & 99.4 & 99.4 & 99.4\\
+     SVM & 99.9 & 99.9 & 99.9 & 99.8 & 98.8 & 98.8\\
+     Gradient Boosting & 99.9 & 100.0 & 96.2 & 99.2 & 96.5 & 96.5\\
+     Random Forest & 100.0 & 100.0 & 96.8 & 96.8 & 98.8 & 98.4\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1610,17 +1615,17 @@ Los tiempos de ejecución que empleó el portátil para entrenar los diferentes 
 \centering
     \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
     \hline
-    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 CPU estresada}} & \multicolumn{2}{|c|}{\textbf{2 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}}\\[2ex]
+    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{2 CPU estresada}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{8 CPUs estresadas}}\\[2ex]
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
-    Regresión logísitca & 1.93 seg & 1.34 seg & 2.11 seg & 1.5 seg & 2.8 seg & 2.18 seg & 2.56 seg & 2.68 seg \\[2ex]
+    Regresión logísitca & 2.31 seg & 1.9 seg & 2.56 seg & 1.615 seg & 2.63 seg & 1.71 seg & 5.53 seg & 3.5 seg \\[2ex]
     \hline
-    SVM & 2.0 seg & 2.0 seg & 2.3 seg & 2.31 seg & 3.41 seg & 3.42 seg & 8 seg & 8.79 seg\\[2ex]
+    SVM & 3.29 seg & 3.3 seg & 3.65 seg & 3.65 seg & 6.16 seg & 6.17 seg & 6.24 seg & 7.52 seg\\[2ex]
     \hline
-    Gradient boosting & 2.49 seg & 2.5 seg & 2.71 seg & 2.72 seg & 2.88 seg & 2.88 seg & 7.74 seg & 9.25 seg\\[2ex]
+    Gradient boosting & 7.5 seg & 7.54 seg & 8.13 seg & 8.14 seg & 10.44 seg & 10.45 seg & 17.16 seg & 21.47 seg\\[2ex]
     \hline
-    Random forest & 2.87 seg & 1.67 seg & 3.0 seg & 1.93 seg & 3.0 seg & 2.19 seg & 7.28 seg & 5.45 seg\\[2ex]
+    Random forest & 18.22 seg & 3.97 seg & 16.43 seg & 4.55 seg & 16.61 seg & 6.16 seg & 21.64 seg & 10.83 seg\\[2ex]
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1644,16 +1649,16 @@ Veamos a continuación cual es el Accuracy que consiguen los modelos con este da
 \begin{table}[]
 \begin{adjustbox}{width=\textwidth}
 \centering
-    \begin{tabular}{c  c  c  c  c  c}
+    \begin{tabular}{c  c  c  c  c  c  c}
     \hline
-    Modelo & Accuracy trainning (\%) & Acuracy (\%) & & & \\
-    \cline{3-6}
-     &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
+    Modelo & Accuracy cv (\%) & Accuracy trainning (\%) & Acuracy (\%) & & & \\
+    \cline{4-7}
+     &   &  Idle & 2 cpu & 4 cpu & 8 cpu \\
      \hline
-     Regresión Logísitca & 99.0 & 98.8 & 98.9 & 98.8 & 98.94\\
-     SVM & 99.0 & 98.8 & 99.1 & 98.9 & 98.9\\
-     Gradient Boosting & 99.3 & 99.1 & 99.0 & 98.7 & 98.9\\
-     Random Forest & 100.0 & 99.3 & 99.2 & 99.2 & 99.1\\
+     Regresión Logísitca & 98.9 & 99.0 & 98.8 & 98.9 & 98.8 & 98.94\\
+     SVM & 99.0 & 99.0 & 98.8 & 99.1 & 98.9 & 98.9\\
+     Gradient Boosting & 99.0 & 99.3 & 99.1 & 99.0 & 98.7 & 98.9\\
+     Random Forest & 99.2 & 100.0 & 99.3 & 99.2 & 99.2 & 99.1\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1661,7 +1666,7 @@ Veamos a continuación cual es el Accuracy que consiguen los modelos con este da
 \label{tab:acc_Occpc}
 \end{table}
 
-En la Tabla~\ref{tab:acc_Occpc} se puede ver que en este caso también se consiguen unos modelos de gran precisión.
+En la Tabla~\ref{tab:acc_Occpc} se puede ver que en este caso también se consiguen unos modelos de gran precisión tanto en la validación cruzada, como con los datos de entrenamiento además de en cada una de las diferentes pruebas.
 
 \subsubsection{Resultados kdd\_cup99}
 \label{subsubsec:kdd_pc}
@@ -1680,17 +1685,17 @@ Los resultados de la ejecución del comando stress conforme a estos niveles se p
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
-    Regresión logísitca & 18 seg & 7 seg & 21 seg & 8 seg & 29 seg & 13 seg & 48 seg & 27 seg \\[2ex]
+    Regresión logísitca & 67.95 seg & 20.28 seg & 99.58 seg & 29.96 seg & 126.63 seg & 44.05 seg & 168.25 seg & 77.76 seg \\[2ex]
     \hline
-    SVM & 31 seg & 31 seg & 43 seg & 43 seg & 58 seg & 58 seg & 1 min 22 seg & 1 min 32 seg\\[2ex]
+    SVM & 114.81 seg & 116.45 seg & 166.42 seg & 168.05 seg & 317.07 seg & 318.72 seg & 327.69 seg & 365.5 seg\\[2ex]
     \hline
-    Gradient boosting & 41 seg & 41 seg & 54 seg & 54 seg & 87 seg & 87 seg & 89 seg & 101 seg\\[2ex]
+    Gradient boosting & 176.09 seg & 177.74 seg & 232.99 seg & 234.63 seg & 268.3 seg & 270.03 seg & 390.09 seg & 429.31 seg\\[2ex]
     \hline
-    Random forest & 76 seg & 13 seg & 65 seg & 15 seg & 58 seg & 19 seg & 54 seg & 23 seg\\[2ex]
+    Random forest & 392.73 seg & 55.88 seg & 327.2 seg & 59.44 seg & 291.76 seg & 69.48 seg & 256.92 seg & 81.99 seg\\[2ex]
     \hline
     \end{tabular}
 \end{adjustbox}
-\caption{Tiempos de generación de los modelos en el portátil para diferentes niveles de saturación}
+\caption{Resultados de los tiempos de ejecución para el kdd\_cup99 dataSet en el portátil.}
 \label{tab:times_kddportatil}
 \end{table}
 
@@ -1703,16 +1708,16 @@ Respecto a la percisión de los modelos generados podemos ver los resultados en 
 \begin{table}[]
 \begin{adjustbox}{width=\textwidth}
 \centering
-    \begin{tabular}{c  c  c  c  c  c}
+    \begin{tabular}{c  c  c  c  c  c  c}
     \hline
-    Modelo & Accuracy trainning (\%) & Acuracy (\%) & & & \\
-    \cline{3-6}
-     &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
+    Modelo & Accuracy cv (\%) & Accuracy trainning (\%) & Acuracy (\%) & & & \\
+    \cline{4-7}
+     &  &   &  Idle & 2 cpu & 4 cpu & 8 cpu \\
      \hline
-     Regresión Logísitca & 99.4 & 99.4 & 99.5 & 99.4 & 99.4\\
-     SVM & 99.9 & 99.8 & 99.8 & 98.8 & 98.9\\
-     Gradient Boosting & 100.0 & 96.2 & 99.2 & 99.4 & 98.4\\
-     Random Forest & 100.0 & 98.0 & 96.8 & 96.8 & 97.0\\
+     Regresión Logísitca & 99.4 & 99.4 & 99.4 & 99.5 & 99.4 & 99.4\\
+     SVM & 99.9 & 99.9 & 99.8 & 99.8 & 98.8 & 98.9\\
+     Gradient Boosting & 99.9 & 100.0 & 96.2 & 99.2 & 99.4 & 98.4\\
+     Random Forest & 100.0 & 100.0 & 98.0 & 96.8 & 96.8 & 97.0\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1736,13 +1741,115 @@ Sin embargo, a parte de la diferencia de los tiempos, todos los modelos tanto en
 \section{Experimentos con los datos sensados}
 \label{sec:exp_dSensados}
 
+Tal y como se comentó en el apartado se generó un dataSet mediante los datos proporcionados por los sensores. El dataSet que que se utilizará para estas pruebas se denomina como occup\_detec\_2h\_Clean.csv, en total contiene 9745 líneas de datos que equivalen a unas dos horas y cuarenta minutos de recolección de datos.
+
 \subsection{Raspberry}
 \label{subsec:rasp_sensados}
 
-Los resultados de los tiempos de ejecución para el dataSet generado por medio de los datos sensados se pueden ver en la Tabla
+Los resultados de los tiempos de ejecución para el dataSet generado por medio de los datos sensados se pueden ver en la Tabla~\ref{tab:times_sensrasp}.
+
+\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
+\begin{table}[]
+\begin{adjustbox}{width=\textwidth}
+\renewcommand{\arraystretch}{2}
+\newcolumntype{a}{>{\columncolor{lightgray}}c}
+\centering
+    \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
+    \hline
+    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{2 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{8 CPUs estresadas}}\\[2ex]
+    \cline{2-9}
+     & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
+    \hline
+    Regresión logísitca & 10.73 seg & 9.51 seg & 19.39 seg & 12.52 seg & 18.73 seg & 13.77 seg & 17.4 seg & 13.38 seg \\[2ex]
+    \hline
+    SVM & 10.48 seg & 10.35 seg & 10.32 seg & 10.24 seg & 10.26 seg & 10.21 seg & 10.27 seg & 10.44 seg\\[2ex]
+    \hline
+    Gradient boosting & 17.28 seg & 17.17 seg & 17.15 seg & 17.1 seg & 17.11 seg & 17.08 seg & 17.07 seg & 17.14 seg\\[2ex]
+    \hline
+    Random forest & 42.58 seg & 20.21 seg & 38.37 seg & 21.2 seg & 35.41 seg & 23.93 seg & 36.78 seg & 27.68 seg\\[2ex]
+    \hline
+    \end{tabular}
+\end{adjustbox}
+\caption{Resultados de los tiempos de ejecución para dataSet sensado en la Raspberry.}
+\label{tab:times_sensrasp}
+\end{table}
+
+Mientras que la precisión obtenida por medio de este dataSet se encuentra en la Tabla~\ref{tab:acc_sensrasp}.
+
+\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
+\begin{table}[]
+\begin{adjustbox}{width=\textwidth}
+\centering
+    \begin{tabular}{c  c  c  c  c  c  c}
+    \hline
+    Modelo & Accuracy cv (\%) & Accuracy trainning (\%) & Acuracy (\%) & & & \\
+    \cline{4-7}
+     &  &   &  Idle & 2 cpu & 4 cpu & 8 cpu \\
+     \hline
+     Regresión Logísitca & 98.9 & 99.0 & 99.2 & 99.1 & 99.2 & 99.0\\
+     SVM & 99.5 & 99.6 & 99.5 & 99.5 & 98.6 & 98.5\\
+     Gradient Boosting & 99.9 & 100.0 & 99.9 & 99.8 & 99.5 & 98.9\\
+     Random Forest & 99.9 & 100.0 & 99.8 & 99.9 & 99.7 & 99.7\\
+    \hline
+    \end{tabular}
+\end{adjustbox}
+\caption{Resultados de la precisión de los modelos para dataSet sensado en la Raspberry.}
+\label{tab:acc_sensrasp}
+\end{table}
 
 \subsection{Portátil}
 \label{subsec:pc_sensados}
+
+Los resultados de los tiempos de ejecución para el dataSet generado por medio de los datos sensados se pueden ver en la Tabla~\ref{tab:times_senspc}.
+
+\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
+\begin{table}[]
+\begin{adjustbox}{width=\textwidth}
+\renewcommand{\arraystretch}{2}
+\newcolumntype{a}{>{\columncolor{lightgray}}c}
+\centering
+    \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
+    \hline
+    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{2 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{8 CPUs estresadas}}\\[2ex]
+    \cline{2-9}
+     & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
+    \hline
+    Regresión logísitca & 2.0 seg & 1.36 seg & 2.27 seg & 1.55 seg & 2.96 seg & 2.24 seg & 3.27 seg & 2.81 seg \\[2ex]
+    \hline
+    SVM & 1.65 seg & 1.66 seg & 1.77 seg & 1.78 seg & 2.71 seg & 2.72 seg & 2.8 seg & 3.23 seg\\[2ex]
+    \hline
+    Gradient boosting & 3.67 seg & 3.67 seg & 4.12 seg & 4.13 seg & 4.28 seg & 4.29 seg & 6.18 seg & 7.18 seg\\[2ex]
+    \hline
+    Random forest & 13.29 seg & 3.35 seg & 12.28 seg & 3.87 seg & 11.82 seg & 4.57 seg & 13.29 seg & 8.39 seg\\[2ex]
+    \hline
+    \end{tabular}
+\end{adjustbox}
+\caption{Resultados de los tiempos de ejecución para dataSet sensado en la Raspberry.}
+\label{tab:times_senspc}
+\end{table}
+
+Mientras que la precisión obtenida por medio de este dataSet se encuentra en la Tabla~\ref{tab:acc_senspc}.
+
+\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
+\begin{table}[]
+\begin{adjustbox}{width=\textwidth}
+\centering
+    \begin{tabular}{c  c  c  c  c  c  c}
+    \hline
+    Modelo & Accuracy cv (\%) & Accuracy trainning (\%) & Acuracy (\%) & & & \\
+    \cline{4-7}
+     &  &   &  Idle & 2 cpu & 4 cpu & 8 cpu \\
+     \hline
+     Regresión Logísitca & 99.0 & 99.0 & 99.0 & 99.0 & 99.1 & 99.8\\
+     SVM & 99.5 & 99.5 & 99.7 & 99.5 & 98.6 & 98.6\\
+     Gradient Boosting & 99.9 & 100.0 & 99.7 & 99.9 & 99.5 & 99.8\\
+     Random Forest & 99.9 & 100.0 & 99.5 & 99.8 & 99.7 & 99.5\\
+    \hline
+    \end{tabular}
+\end{adjustbox}
+\caption{Resultados de la precisión de los modelos para dataSet sensado en la Raspberry.}
+\label{tab:acc_senspc}
+\end{table}
 
 \subsection{Conclusiones datos sensados}
 \label{subsec:conclusiones_sensados}
