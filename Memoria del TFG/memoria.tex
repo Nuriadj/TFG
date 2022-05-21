@@ -1185,7 +1185,9 @@ El objetivo de realizar una validación cruzada es garantizar que los resultados
 
 Al realizar algunas pruebas para observar el comportamiento de la Raspberry ante diferentes situaciones de estrés (tal y como se explicará más adelante) los resultados obtenidos no encajaban del todo con lo esperado. Luego para tratar de comprender mejor lo que estaba pasando se decidió usar un dataset más grande que el anterior.
 
-El dataset elegido fue KDD Cup 1999 Datadata\cite{DataSetOccupancy}, obtenido una vez más desde la página web de Kaggle. Se utilizó tanto el fichero \textit{kddcup.data.gz} como \textit{kddcup.data\_10\_percent.gz}. Una vez descargados se descomprimen y se ejecuta un programa para tratar los datos que contienen y poder utilizarlos en la generación de los modelos de Machine Learning.
+El dataset elegido fue KDD Cup 1999 Data\cite{DataSetKddCup99}, obtenido una vez más desde la página web de Kaggle. Este data set se utilizó en el tercer concurso internacional de herramientas de descubrimiento de conocimientos y minería de datos, el objetivo del concurso era generar un modelo predictivo que fuese capaz de distinguir entre conexiones \textit{"malas"}, es decir, intrusiones o ataques y conexiones \textit{"buenas"}. Este set de datos contiene una gran variedad de intrusiones en un entorno de red militar. 
+
+De este data set se utilizó tanto el fichero \textit{kddcup.data.gz} como \textit{kddcup.data\_10\_percent.gz}. Una vez descargados se descomprimen y se ejecuta un programa para tratar los datos que contienen y poder utilizarlos en la generación de los modelos de Machine Learning.
 
 Al igual que en el dataSet de Room Occupancy para la generación de los modelos se utilizará el 70\% de los datos para entrenar y el 30\% para validar.
 
@@ -1255,7 +1257,7 @@ Este programa necesita usar la comunicación I2C para obtener los valores del se
 
 En la segunda celda de este programa se puede ver como se preprararán los puertos para poder leer los datos. 
 
-A continuación se quedará ejecutando indefinidamente un bucle while, que es el que se encarga de guardar los datos sensados cada un segundo. Dicho bucle se puede ver en el Código~\ref{lst:firstloop_read_sensor}. Algo destacable es que para obtener el valor de la luz (proporcionada por el LDR) siempre se le resta a uno el valor sensado. Esto se hace así para que los datos se puedan interpretar mejor, puesto que cuando hay luz a la Raspberry le llega un cero. De esta forma cuando haya luz se guarda un uno en el fichero en vez de un cero. 
+A continuación se quedará ejecutando indefinidamente un bucle while, que es el que se encarga de guardar los datos sensados cada segundo. Dicho bucle se puede ver en el Código~\ref{lst:firstloop_read_sensor}. Algo destacable es que para obtener el valor de la luz (proporcionada por el LDR) siempre se le resta a uno el valor sensado. Esto se hace así para que los datos se puedan interpretar mejor, puesto que cuando hay luz a la Raspberry le llega un cero. De esta forma cuando haya luz se guarda un uno en el fichero en vez de un cero. 
 Este bucle estará continuamente mostrando por el terminal las medidas tomadas hasta que el usuario haga Ctr-C , de esta forma se indica que ya no se desean guardar más datos.
 
 \begin{listing}[]
@@ -1318,9 +1320,9 @@ La gráfica generada por este dataSet se puede observar en la Figura~\ref{fig:ej
   \caption{Ejemplo gráfica de las medidas de los sensores.}\label{fig:ejemplo_gráfica}
 \end{figure}
 
-Para la generación de este dataSet primero estuvo la habitación ocupada durante media hora. Pasada esa media hora la habitación estuvo vacía durante 40 minutos. Después volvió ha estar ocupada durante una hora entera, se vació una última vez durante 25 minutos para estar ocupada los 10 últimos minutos antes de finalizar la recogida de datos.
+Para la generación de este dataSet primero estuvo la habitación ocupada durante media hora. Pasada esa media hora la habitación estuvo vacía durante 40 minutos. Después volvió a estar ocupada durante una hora entera, se vació una última vez durante 25 minutos para estar ocupada los 10 últimos minutos antes de finalizar la recogida de datos.
 
-Sabiendo en qué momentos ha estado ocupada o vacía y observando la Figura~\ref{fig:ejemplo_gráfica} se puede ver que los valores de los datos se diferencian entre el estado ocupado y vacío (a excepción de la presión que no varía), siendo la humedad la variable que más varía sus valores entre ambos estados. La temperatura varía algo menos, pero igualmente se puede ver un pequeño descenso cuando la habitación está vacía. 
+Sabiendo en qué momentos ha estado ocupada o vacía y observando la Figura~\ref{fig:ejemplo_gráfica} se puede ver que los valores de los datos varían entre el estado ocupado y vacío (a excepción de la presión que no cambia), siendo la humedad la variable donde más se diferencian los valores entre ambos estados. La temperatura varia algo menos, pero igualmente se puede ver un pequeño descenso cuando la habitación está vacía. 
 
 \cleardoublepage
 
@@ -1332,14 +1334,7 @@ Sabiendo en qué momentos ha estado ocupada o vacía y observando la Figura~\ref
 \chapter{Experimentos y validación}
 \label{chap:experimentos}
 
-\textbf{Atención}: Este capítulo se introdujo como requisito en 2019.
-
-\begin{comment}
-Describe los experimentos y casos de test que tuviste que implementar para validar tus resultados. 
-Incluye también los resultados de validación que permiten afirmar que tus resultados son correctos.
-\end{comment}
-
-En este capítulo comprobaremos la eficiencia de la Raspberry a la hora de generar los modelos comentados en el capítulo anterior para que se ajusten los dataSets mencionados anteriormente. Las pruebas consistirán en someter a la máquina a diferentes niveles de cargas computacionales para observar como lidia la Raspberry con la generación del modelo a la vez que con estas cargas.
+En este capítulo comprobaremos la eficiencia de la Raspberry a la hora de generar los modelos de aprendizaje automático para que se ajusten los dataSets mencionados en el capítulo anterior. Las pruebas consistirán en someter a la máquina a diferentes niveles de cargas computacionales para observar como lidia la Raspberry con la generación del modelo a la vez que con estas cargas.
 Además nos ayudaremos de un portátil para poder comparar los resultados de ambos dispositivos.
 
 \section{Estructura de los experimientos}
@@ -1347,15 +1342,15 @@ Además nos ayudaremos de un portátil para poder comparar los resultados de amb
 
 Para realizar los experimentos se definieron cuatro niveles de saturación, dependiendo del dispositivo en el que se ejecuten, las pruebas variarán un poco. 
 
-El primer nivel es el "Idle" en el que no se somete a la máquina a ningún tipo de carga extra, este es igual en ambos dispositivos. Salvo el primer nivel, el resto sí variarán ligeramente entre ambas máquinas.
+El primer nivel es el "Idle" en el que no se somete a la máquina a ningún tipo de carga extra, este es igual en ambos dispositivos. Salvo este primer nivel, el resto sí variarán ligeramente entre ambas máquinas.
 
 En el caso de la Raspberry el nivel bajo consiste en estresar una única cpu, el nivel medio dos cpus y por último en el nivel alto se estrasaban todas las cpus de la Raspberry, es decir, cuatro cpus. 
 
 Mientras que en el portátil, dado que este tiene un total de ocho cpus físicas, la cantidad de carga computacional a la que se somete este en los niveles bajo, medio y alto, cambia para poner más o menos en la misma situación a ambas máquinas. Por lo tanto en este caso el nivel bajo de carga será estresar dos de sus cpus, el nivel medio cuatro y el alto los ocho cores de los que dispone la máquina. De esta forma se podrán comparar los tiempos de ejecución en un dispositivo de mayor capacidad y sabremos cuanto dista el comportamiento de la Raspberry del de una máquina con mayor potencia.
 
-Cada uno de los códigos encargados de generar uno de los modelos se ejecutaban con estos cuatro niveles de carga. Para generar esta carga se usa el comando \textit{stress} que permite estresar, durante el tiempo que se le indique, el número de cpus que se comanden. 
+Cada uno de los códigos encargados de generar uno de los modelos se ejecutan con estos cuatro niveles de carga. Para generar esta carga se usa el comando \textit{stress} que permite estresar, durante el tiempo que se le indique, el número de cpus que se comanden. 
 
-Una de las medidas que se utiliza para comparar los diferentes niveles es el tiempo que tarda cada uno de los modelos en terminar de ejecutar. Para obtener dicho tiempo se utiliza el comando \textit{time} de Linux, con el que se ejecutaba cada modelo de la siguiente forma:\\
+Una de las medidas que se utilizan para comparar los diferentes niveles de estrés es el tiempo que tarda cada uno de los modelos en terminar de ejecutar. Para obtener dicho tiempo se utiliza el comando \textit{time} de Linux, con el que se ejecutaba cada modelo de la siguiente forma:\\
 
 \begin{lstlisting}[language=bash]
   $ time ipython modelo.ipynb
@@ -1366,9 +1361,9 @@ El comando \textit{time} devuelve tres valores. Uno de ellos es el tiempo de usu
 \subsection{Ejecución de los experimentos}
 \label{subsec:ejecucion_experimentos}
 
-Para realizar todas las pruebas, tal y como se han explicado, se creó un programa para cada una de las máquinas de forma que fuese más sencilla obtener los resultados de los experimentos. En el caso de la Raspberry este programa se denominó \textit{raspberry\_test.ipynb}. En el caso del portátil se nombró \textit{pc\_test.ipynb}. Dado que las puebas en ambos dispositivos son prácticamente las mismas, ambos programas ejecutan prácticamente lo mismo con pequeñas diferencias.
+Para realizar todas las pruebas, tal y como se han explicado, se creó un programa para cada una de las máquinas de forma que fuese más sencillo obtener los resultados de los experimentos. En el caso de la Raspberry este programa se denominó \textit{raspberry\_test.ipynb}. En el caso del portátil se nombró \textit{pc\_test.ipynb}. Dado que las puebas en ambos dispositivos son prácticamente las mismas, ambos programas ejecutan prácticamente lo mismo con pequeñas diferencias.
 
-Dichos programas necesitan como único argumento el data set con el que se desea hacer el experimento para que pueda realizar su función correctamente.
+Dichos programas necesitan como único argumento el dataSet con el que se desea hacer el experimento para que puedan realizar su función correctamente.
 Hay que tener en cuenta que este dataSet debe de estar limpio, es decir, que se le haya hecho un preprocesamiento para borrar características no deseadas o redundantes. Tampoco debe de tener cabecera. Si no se hace este preprocesamiento podrá dar error la ejecución.
 
 A continuación se desarrollará en mayor profundidad qué es lo que hace cada programa para realizar las pruebas.
@@ -1377,7 +1372,7 @@ A continuación se desarrollará en mayor profundidad qué es lo que hace cada p
 \subsubsection{raspberry\_test.ipynb}
 \label{subsubsec:programa_pruebas_raspberry}
 
-La misión de este código es ejecutar cada uno de los modelos de aprendizaje automático (que se utilizan en este proyecto) con los diferentes niveles de saturación comentados anteriormente en la Raspberry. Para realizar esto se usan dos bucles anidados, el primero de ellos itera sobre los modelos que se desean poner a prueba. El segundo recorre una lista que contiene el número de cores que se desean estresar con cada uno de los modelos, dichos bucles los podemos ver en el Código~\ref{lst:funcion_principal_raspberry_test}. Si el valor sobre el que se está iterando de la lista es mayor que cero significa que se desea estresar cierto número de cpus, por lo tanto se llama a la función \textit{start\_stress} a la que se le pasa como argumento el número de cores a estresar y durante cuanto tiempo, con estos datos se encargará de crear un nuevo proceso para ejecutar el comando \textit{stress}.
+La misión de este código es ejecutar cada uno de los modelos de aprendizaje automático (que se utilizan en este proyecto), con los diferentes niveles de saturación comentados anteriormente, en la Raspberry. Para realizar esto se usan dos bucles anidados, el primero de ellos itera sobre los modelos que se desean poner a prueba. El segundo recorre una lista que contiene el número de cores que se desean estresar con cada uno de los modelos, ambos bucles los podemos ver en el Código~\ref{lst:funcion_principal_raspberry_test}. Si el valor sobre el que se está iterando de la lista es mayor que cero significa que se desea estresar cierto número de cpus, por lo tanto se llama a la función \textit{start\_stress} a la que se le pasa como argumento el número de cores a estresar y durante cuanto tiempo, con estos datos se encargará de crear un nuevo proceso para ejecutar el comando \textit{stress}.
 
 Por otra parte, independientemente del nivel de saturación de la prueba, siempre se llamará a la función \textit{model} que creará un nuevo proceso para ejecutar, utilizando el comando \textit{time} de Linux, uno de los ficheros que se encuentran dentro de la carpeta \textit{"Modelos"}. Cada uno de los ficheros que se encuentran dentro de dicha carpeta generará uno de los modelos de aprendizaje automático que se han explicado en este proyecto. 
 
@@ -1385,11 +1380,16 @@ Por otra parte, independientemente del nivel de saturación de la prueba, siempr
     \caption{Función principal raspberry\_test.ipynb}{}
     \label{lst:funcion_principal_raspberry_test}
     \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
-#Hacer una version que ejecute de seguido los modelos solo (sin stress)
 t= 2000
 list_cpus= [0,1,2,4]
 dataSet= sys.argv[1]
 name_dataSet= dataSet.split("/")[-1].split(".csv")[0]
+folder_name= name_dataSet+"_raspresults"
+
+#Crear la carpeta
+if(os.path.exists("./"+folder_name)== False):
+    os.mkdir(folder_name)
+name_dataSet= "./"+folder_name+"/"+name_dataSet
 
 lst_header= []
 lst_Wt= []
@@ -1421,14 +1421,14 @@ for i in range(4):
 \end{listing}
 
 Cuando se completa la generación del modelo para uno de los niveles, los resultados de Cpu time, Wall time, Mean Folds Accuracy, Accuracy trainning, Accuracy, Presisión y Recall se guardan cada uno en su respectiva lista gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera un nuevo fichero csv, mediante la función \textit{add\_data}, con los resultados obtenidos en cada uno de los casos.
-Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión logísitca el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de soporte vectorial será nombreDataSet\_raspSVM.csv. En total el programa creará cuatro csv diferentes, un por cada modelo. Estos ficheros se guardarán en una nueva carpeta creada con el siguiente formato: nombreDataSet\_raspresults, esto se puede observar como se hace en el Código . Todos los ficheros se guardarán dentro de esta carpeta, para que los resultados de un mismo dataSet estén todos juntos.
+Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión logísitca el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de soporte vectorial será nombreDataSet\_raspSVM.csv. En total el programa creará cuatro csv diferentes, un por cada modelo. Estos ficheros se guardarán en una nueva carpeta creada con el siguiente formato: nombreDataSet\_raspresults, esto se puede observar como se hace en el Código~\ref{lst:funcion_principal_raspberry_test}. Todos los ficheros se guardarán dentro de esta carpeta, para que los resultados de un mismo dataSet estén todos juntos.
 
 Los nuevos procesos, comentados anteriormente, se crean utilizando la función \textit{Popen} de la librería \textit{subprocess}. Nótese que en el método \textit{model} (a diferencia de \textit{start\_stress}) el método \textit{Popen} tiene añadido al final un \textit{.communicate()} de esta forma se parará la ejecución principal hasta que el proceso de \textit{Popen} termine. Si una vez terminado dicho proceso \textit{stress} sigue ejecutando se matará el proceso para poder comandar otro \textit{stress} sin tener que esperar a que se cumpla el tiempo de ejecución que le pasamos como argumento, esto se puede ver en el Código~\ref{lst:funcion_principal_raspberry_test}.
 
 \subsubsection{pc\_test.ipynb}
 \label{subsubsec:programa_pruebas_pc}
 
-Este código es prácticamente idéntico al de \textit{rasp\_test.pynb} salvo pequeñas diferencias. Una de ellas es que en este caso el fichero que generará tras la ejecución de cada modelo tendrá el siguiente formato: nombreDataSet\_pcMD.csv, siendo MD una vez más las siglas del modelo de aprendizaje automático. AL igual que en el caso anterior, se creará una nueva carpeta para guardar todos estos ficheros con el formato: nombreDataSet\_pcresults.
+Este código es prácticamente idéntico al de \textit{rasp\_test.pynb} salvo pequeñas diferencias. Una de ellas es que en este caso el fichero que generará tras la ejecución de cada modelo tendrá el siguiente formato: nombreDataSet\_pcMD.csv, siendo MD una vez más las siglas del modelo de aprendizaje automático. Al igual que en el caso anterior, se creará una nueva carpeta para guardar todos estos ficheros con el formato: nombreDataSet\_pcresults.
 
 La función principal también utilizará dos bucles anidados para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \textit{raspberry\_test.ipynb} ya que como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará (si es necesario) dos procesos, uno ejecutará stress (cuando se desee estresar alguna cpu) y el otro uno de los modelos que se encuentran dentro de la carpeta \textit{"Modelos"}. Todos los ficheros que generan los modelos de aprendizaje son los mismos que en la Raspberry salvo el de Random Forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
 
@@ -1436,15 +1436,15 @@ La función principal también utilizará dos bucles anidados para iterar sobre 
 \section{Experimetos con datos sintéticos}
 \label{sec:exp_dSinteticos}
 
-Como se comentó en el Capitulo~\ref{chap:diseño} en este proyecto se han utilizado varios dataSets. Dos de estos son ficheros con datos sintéticos, es decir, que no se han generado a través de las medidas de los sensores utilizados en este trabajo. A continuación se explicará en mayor detalle los resultados obtenidos por ambos en cada una de las máquinas.
+Como se comentó en el Capitulo~\ref{chap:diseño} en este proyecto se han utilizado varios dataSets para realizar las pruebas. Dos de estos son ficheros con datos sintéticos, es decir, que no se han generado a través de las medidas de los sensores utilizados en este trabajo. A continuación se explicará en mayor detalle los resultados obtenidos por ambos en cada una de las máquinas.
 
 \subsection{Raspberry}
 \label{sub:rasp_sinteticos}
 
-\subsubsection{Resultados Occupancy dataSet}
+\subsubsection{Resultados Room Occupancy}
 \label{subsubsec:occ_raspberry}
 
-Los tiempos de ejecución para la generación de estos modelos se pueden ver en la Tabla~\ref{tab:times_Occraspberry}
+Los tiempos de cpu para la generación de estos modelos se pueden ver en la Tabla~\ref{tab:times_Occraspberry}
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
@@ -1490,7 +1490,7 @@ En cuanto a la precisión (Accuracy) en cada uno de los modelos se obtienen los 
     \cline{4-7}
      &   &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
      \hline
-     Regresión Logísitca & 98.9 & 98.9 & 98.9 & 99.0 & 99.0 & 98.9\\
+     Regresión Logísitca & 98.9 & 98.9 & 98.8 & 99.0 & 99.0 & 98.9\\
      SVM & 98.9 & 99.0 & 98.9 & 99.0 & 98.8 & 99.2\\
      Gradient Boosting & 99.0 & 99.4 & 98.9 & 99.1 & 98.7 & 98.9\\
      Random Forest & 99.2 & 100.0 & 99.3 & 99.3 & 99.32 & 99.3\\
@@ -1536,18 +1536,18 @@ Los resultados obtenidos para el veinte por ciento del data set de Kdd\_cup99 se
 
 Como se puede observar en la tabla~\ref{tab:times_kddraspberry}, los tiempos de ejecución varian entre los diferentes modelos, siendo el de Regresión logística el que menos tiempo tarda en todos los casos como ocurria con el dataSet de Occupancy.
 
-Un vez más, los tiempos de Regresión logísitca, Máquinas de soporte vectorial (SVM) y Gradient boosting apenas varían entre los diferentes niveles de estrés, esto se debe a las mismas razónes comentadas antes. En el caso de Máquinas de soporte vectorial y Gradient boosting, scikit-learn no admite multi-threading, por lo que a pesar de estresar una, dos o cuatro cpus siempre devolverán el mismo tiempo puesto que estos modelos solo pueden utilizar un único core para ejecutar.\\
+Un vez más, los tiempos de cpu de Regresión logísitca, Máquinas de soporte vectorial (SVM) y Gradient boosting apenas varían entre los diferentes niveles de estrés, esto se debe a las mismas razónes comentadas antes. En el caso de Máquinas de soporte vectorial y Gradient boosting, scikit-learn no admite multi-threading, por lo que a pesar de estresar una, dos o cuatro cpus siempre devolverán el mismo tiempo puesto que estos modelos solo pueden utilizar un único core para ejecutar.\\
 Regresión logística podría utilizar varios cores si se le indica mediante el parámetro n\_jobs. Pero dado que estamos en un problema de clasificación binaria este valor no tendrá ningún efecto al aumentar o disminuir el número de cpus estresadas como vimos en el apartado~\ref{subsubsec:lRegression}. 
 
-En cuanto al modelo de Random forest, para poder entender los tiempos que devuelve, es necesario explicar primero como se comporta la Raspberry cuando varios procesos le piden más recursos de los que tiene y como afecta el parámetro n\_jobs a los tiempo de este modelo.
+En cuanto al modelo de Random forest, para poder entender los tiempos que devuelve, es necesario explicar primero como se comporta la Raspberry cuando varios procesos le piden más recursos de los que tiene y como afecta el parámetro n\_jobs a los tiempos de este modelo.
 
 Comencemos explicando como afecta el parámetro n\_jobs a los tiempos de ejecución. Como se ha visto anteriormente, Random forest admite el parámetro n\_jobs, que en este caso (a diferencia de Regresión logística) sí que afecta a como ejecuta el modelo independientemente de si es un problema de clasificación binaria o no. Por lo tanto para poder optimizar el proceso habrá que hacer que el parámetro n\_jobs sea igual al número de cores del dispositivo, que en este caso serán cuatro. 
 
 Con este parámetro ajustado hay que saber que el tiempo de Cpu que obtenemos del comando \textit{time} es la suma de los tiempos que ha necesitado cada uno de los cores utilizados por el proceso para la ejecución. Esta es la razón por la que podemos ver como el tiempo en Idle es bastante mayor que el resto de casos, puesto que es en esta ocasión donde el programa está pudiendo hacer un uso completo de los cuatro cores, ya que no hay ningún otro proceso que necesite usarlos. Por lo tanto el Cpu time que tenemos en este nivel es en realidad la suma de los tiempos de ejecución de los cuatro cores. El tiempo que ha necesitado cada uno de los cores sería dividir los 1048.87 entre 4 con lo que obtendríamos 262 segundos por core. Sabiendo esto queda explicado por qué el nivel de Idle devuelve un valor tan alto y como esto, que a prioir puede parecer un poco contradictorio, se ajusta a lo esperado.
 
-Para el resto de casos, dado que ya intervienen otros procesos, habrá que saber como se comporta la Raspberry ante una mayor demanda de recursos. Lo primero que hay que saber es que el comando \textit{stress} estresará el número de cpus que se le pasan como argumento siempre y cuando pueda. En el momento en el que tenga que compartir Cpu con otros procesos, la Raspberry repartirá los recursos haciendo que \textit{stress} no utilice todas las cpus que se le ha comandado estresar para que el otro proceso también pueda ejecutar. Por ejemplo, cuando se realiza la prueba de nivel alto de carga al modelo de Máquinas de soporte vectorial, si se comprueban los valores de cpu que utiliza cada uno de los procesos (por medio del comando \textit{htop} de Linux), a pesar de que se puede ver que stress tiene cuatro procesos, la suma de lo que utiliza la cpu cada uno de ellos será igual a un total de tres cores más o menos, es decir utilizan un 300\% de los recursos. Mientras que el proceso del modelo utiliza una cpu, un 100\%. Siendo el valor total de los recursos de los que dispone la Raspberry igual a 400\%, un 100\% para cada uno de los cores de la Raspberry.
+Para el resto de casos, dado que ya intervienen otros procesos, habrá que conocer como se comporta la Raspberry ante una mayor demanda de recursos. Lo primero que hay que saber es que el comando \textit{stress} estresará el número de cpus que se le pasan como argumento siempre y cuando pueda. En el momento en el que tenga que compartir Cpu con otros procesos, la Raspberry repartirá los recursos haciendo que \textit{stress} no utilice todas las cpus que se le ha comandado estresar para que el otro proceso también pueda ejecutar. Por ejemplo, cuando se realiza la prueba de nivel alto de carga al modelo de Máquinas de soporte vectorial, si se comprueban los valores de cpu que utiliza cada uno de los procesos (por medio del comando \textit{htop} de Linux), a pesar de que se puede ver que stress tiene cuatro procesos, la suma de lo que utiliza la cpu cada uno de ellos será igual a un total de tres cores más o menos, es decir utilizan un 300\% de los recursos. Mientras que el proceso del modelo utiliza una cpu, un 100\%. Siendo el valor total de los recursos de los que dispone la Raspberry igual a 400\%, un 100\% para cada uno de los cores de la Raspberry.
 
-Otro ejemplo de esto puede ser el caso en el que se ejecuta el modelo de Random forest, teniendo el parámetro de n\_jobs igual a cuatro para utilizar todos los cores disponibles, a la vez que \textit{stress} para estresar las cuatro cpus. Si observamos mediante el comando \textit{htop} los procesos, se podrá ver como se distribuyen los cores para que puedan ejecutar a la vez tanto los procesos de \textit{stress} como los del modelo de aprendizaje. Por lo tanto \textit{stress} utilizará en total dos cpus y Random forest hará lo mismo, a pesar de que a ambos se les indicó que utilizasen todas las cpus de la Raspberry. Este ejemplo se puede ver en la Figura~\ref{figura:stress_rForest}, siendo la cpu total que utiliza Random forest la que se indica en el primer proceso que muestra \textit{htop} en la imagen. Al sumar el resto de procesos de Random forest su valor de cpu es igual al del primer proceso.\\
+Otro ejemplo de esto puede ser el caso en el que se ejecuta el modelo de Random forest, teniendo el parámetro de n\_jobs igual a cuatro, para utilizar todos los cores disponibles, a la vez que \textit{stress} para estresar las cuatro cpus. Si observamos mediante el comando \textit{htop} los procesos, se podrá ver como se distribuyen los cores para que puedan ejecutar a la vez tanto los procesos de \textit{stress} como los del modelo de aprendizaje. Por lo tanto \textit{stress} utilizará en total dos cpus y Random forest hará lo mismo, a pesar de que a ambos se les indicó que utilizasen todas las cpus de la Raspberry. Este ejemplo se puede ver en la Figura~\ref{figura:stress_rForest}, siendo la cpu total que utiliza Random forest la que se indica en el primer proceso que muestra \textit{htop} en la imagen. Al sumar el resto de procesos de Random forest su valor de cpu es igual al del primer proceso.\\
 
  \begin{figure}[]
     \centering
@@ -1556,13 +1556,13 @@ Otro ejemplo de esto puede ser el caso en el que se ejecuta el modelo de Random 
     \label{figura:stress_rForest}
  \end{figure}
 
-En la Figura~\ref{figura:stress_rForest} vemos que el primer proceso de Random forest está consumiendo el 200\% de cpu. Mientras que si sumamos los porcentajes de los cuatro procesos de \textit{stress} obtendremos que se están consumiento en total un 190\%, prácticamente un 200\%. Por lo que a pesar de lo que se ha comandado, la Raspberry dividirá los recursos para que ambos procesos puedan usar lo máximo posible.
+En la Figura~\ref{figura:stress_rForest} vemos que el primer proceso de Random forest está consumiendo el 200\% de cpu. Mientras que si sumamos los porcentajes de los cuatro procesos de \textit{stress} obtendremos que se están consumiento en total un 190\%, prácticamente un 200\%. Por lo que, a pesar de lo que se ha comandado, la Raspberry dividirá los recursos para que ambos procesos puedan usar lo máximo posible.
 
-Sabiendo esto, los niveles de prueba medio y alto para el modelo de Random forest, obtienen prácticamente los mismos tiempos puesto que al tratar de ejecutar a al vez tanto el proceso de \textit{stress} como el del modelo se están pidiendo usar más cores de los que hay. En consecuencia la Raspberry tendrá que dividir los recursos de los que dispone equitativamente entre ambos procesos. Por lo que en el fondo \textit{stress} estará estresando el mismo número de cpus tanto en el nivel medio como en el alto y al proceso del modelo le sucederá lo mismo, utilizará el mismo número de cores tanto en un caso como en el otro. En el nivel intemedio, donde se estresan dos cores, el modelo no podrá utilizar las cuatro cpus que se le indican con n\_jobs puesto que estaría superando el número de cores que tiene la Raspberry. De modo que la Raspberry dividirá los recursos haciendo que stress pueda ejecutar en dos cores, y por lo tanto el modelo de aprendizaje dispondrá únicamente de las otras dos cpus para su ejecución. Mientras que en el nivel más alto de carga la Raspberry dividirá las cuatro cpus para darle la mitad de ellas a la ejecución de \textit{stress} y la otra mitad al modelo, haciendo que ambas utilicen el máximo de cores posibles.
+Sabiendo esto, los niveles de prueba medio y alto para el modelo de Random forest obtienen prácticamente los mismos tiempos puesto que al tratar de ejecutar a al vez tanto el proceso de \textit{stress} como el del modelo se están pidiendo usar más cores de los que hay. En consecuencia la Raspberry tendrá que dividir los recursos de los que dispone equitativamente entre ambos procesos. Por lo que en el fondo \textit{stress} estará estresando el mismo número de cpus tanto en el nivel medio como en el alto y al proceso del modelo le sucederá lo mismo, utilizará el mismo número de cores tanto en un caso como en el otro. En el nivel intemedio, donde se estresan dos cores, el modelo no podrá utilizar las cuatro cpus que se le indican con n\_jobs puesto que estaría superando el número de cores que tiene la Raspberry. De modo que la Raspberry dividirá los recursos haciendo que stress pueda ejecutar en dos cores, y por lo tanto el modelo de aprendizaje dispondrá únicamente de las otras dos cpus para su ejecución. Mientras que en el nivel más alto de carga la Raspberry dividirá las cuatro cpus para darle la mitad de ellas a la ejecución de \textit{stress} y la otra mitad al modelo, haciendo que ambas utilicen el máximo de cores posibles.Esta es la explicación para los tiempos del nivel medio y alto. 
 
-Esta es la explicación para los tiempos del nivel medio y alto. El nivel bajo encontraremos que el modelo solo puede estar usando tres cores para dejarle el cuarto a \textit{stress}. Como hemos visto el tiempo de Cpu es el tiempo total que han usado las tres cpus, luego por cada core el proceso ha tardado unos 276 seg (el resultado de dividir 829.86 seg entre los tres cores). Por lo tanto el tiempo aumenta un poco del estado respecto al nivel Idle.
+En el nivel bajo encontraremos que el modelo solo puede estar usando tres cores para dejarle el cuarto a \textit{stress}. Como hemos visto el tiempo de Cpu es el tiempo total que han usado las tres cpus, luego por cada core el proceso ha tardado unos 276 seg (el resultado de dividir 829.86 seg entre los tres cores). Por lo tanto el tiempo aumenta un poco del estado respecto al nivel Idle.
 
-Otro aspecto de las ejecuciónes en la Raspberry  que será relevante más adelante, es la frecuencia a la que ejecutan los core. Utilizando el comando \textit{lscpu} de Linux, se puede obtener información relevante sobre los cores como por ejemplo la frecuencia máxima y mínima a la que pueden ejecutar, que en el caso de la Raspberry la mínima será igual a 600MHz y la máxima 1500MHz. 
+Otro aspecto de las ejecuciónes en la Raspberry  que será relevante más adelante, es la frecuencia a la que ejecutan los cores. Utilizando el comando \textit{lscpu} de Linux, se puede obtener información relevante sobre los cores como por ejemplo la frecuencia máxima y mínima a la que pueden ejecutar, que en el caso de la Raspberry la mínima será igual a 600MHz y la máxima 1500MHz. 
 
 Para saber la frecuencia de cada uno de los cores en tiempo real se puede ejecutar el comando:\\
 
@@ -1576,7 +1576,7 @@ Para saber la frecuencia de cada uno de los cores en tiempo real se puede ejecut
 
 Mostrará las frecuencias de ejecución de los cores cada 0.1 segundos. Si utilizamos dicho comando para ver las frecuencias cuando la Raspberry está tanto Idle como estresada podremos ver que todas las cpus están sobre los 1500MHz. Por lo tanto todos los cores siempre están ejecutando a la máxima velocidad que pueden.
 
-Por otra parte los resultados del precisión para este dataSet se pueden observar en la Tabla~\ref{tab:acc_Kddraspberry}. Al igual que en el caso del Occupancy dataSet se obtienen muy buenos resultados, estando prácicamente todos cerca del 100\% de Accurancy, y sabiendo que no se están sobreajustando puesto que la precisión de la validación cruzada también es prácticamente el 100\% en todos los casos.
+Por otra parte los resultados del precisión para este dataSet se pueden observar en la Tabla~\ref{tab:acc_Kddraspberry}. Al igual que en el caso del Room Occupancy dataSet se obtienen muy buenos resultados, estando prácicamente todos cerca del 100\% de Accurancy, y sabiendo que no se están sobreajustando puesto que la precisión de la validación cruzada también es prácticamente el 100\% en todos los casos.
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
@@ -1589,9 +1589,9 @@ Por otra parte los resultados del precisión para este dataSet se pueden observa
      &  &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
      \hline
      Regresión Logísitca & 99.4 & 99.4 & 99.4 & 99.4 & 99.4 & 99.4\\
-     SVM & 99.9 & 99.9 & 99.9 & 99.8 & 98.8 & 98.8\\
-     Gradient Boosting & 99.9 & 100.0 & 96.2 & 99.2 & 96.5 & 96.5\\
-     Random Forest & 100.0 & 100.0 & 96.8 & 96.8 & 98.8 & 98.4\\
+     SVM & 99.9 & 99.9 & 99.8 & 99.9 & 98.8 & 99.8\\
+     Gradient Boosting & 99.9 & 100.0 & 96.4 & 98.8 & 99.4 & 73.0\\
+     Random Forest & 100.0 & 100.0 & 97.5 & 97.9 & 96.9 & 98.6\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1602,10 +1602,10 @@ Por otra parte los resultados del precisión para este dataSet se pueden observa
 \subsection{Portátil}
 \label{subsec:pc_sinteticos}
 
-\subsubsection{Resultados Occupancy}
+\subsubsection{Resultados Room Occupancy}
 \label{subsubsec:occ_pc}
 
-Los tiempos de ejecución que empleó el portátil para entrenar los diferentes modelos se encuentran en la Tabla~\ref{tab:times_Occpc}
+Los tiempos de ejecución que empleó el portátil para entrenar los diferentes modelo con este dataSets se encuentran en la Tabla~\ref{tab:times_Occpc}
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
@@ -1633,7 +1633,7 @@ Los tiempos de ejecución que empleó el portátil para entrenar los diferentes 
 \label{tab:times_Occpc}
 \end{table}
 
-En esta ocasión, a diferencia del comportamiento de la Raspberry los tiempos van aumentando con las diferentes purebas. A pesar de que los tres primeros modelos solo pueden ejecutar en una cpu y por lo tanto no deberían de afectarles que hubiese más de un core estresado. Sin embargo, este incremento en los tiempos se puede deber a la frecuencia con la que ejecutan las cpus. En el portátil la frecuencia máxima a la que pueden ejecutar los cores es de 3600 MHz mientras que la mínima son 400 MHz. 
+En esta ocasión, a diferencia del comportamiento de la Raspberry los tiempos de cpu van aumentando con las diferentes pruebas, a pesar de que los tres primeros modelos solo pueden ejecutar en una cpu y por lo tanto no deberían de afectarles que hubiese más de un core estresado. Sin embargo, este incremento en los tiempos se puede deber a la frecuencia con la que ejecutan las cpus. En el portátil la frecuencia máxima a la que pueden ejecutar los cores es de 3600 MHz mientras que la mínima son 400 MHz. 
 
 Ejecutando el siguiente comando: 
 
@@ -1653,12 +1653,12 @@ Veamos a continuación cual es el Accuracy que consiguen los modelos con este da
     \hline
     Modelo & Accuracy cv (\%) & Accuracy trainning (\%) & Acuracy (\%) & & & \\
     \cline{4-7}
-     &   &  Idle & 2 cpu & 4 cpu & 8 cpu \\
+      &  &   &  Idle & 2 cpu & 4 cpu & 8 cpu \\
      \hline
-     Regresión Logísitca & 98.9 & 99.0 & 98.8 & 98.9 & 98.8 & 98.94\\
-     SVM & 99.0 & 99.0 & 98.8 & 99.1 & 98.9 & 98.9\\
-     Gradient Boosting & 99.0 & 99.3 & 99.1 & 99.0 & 98.7 & 98.9\\
-     Random Forest & 99.2 & 100.0 & 99.3 & 99.2 & 99.2 & 99.1\\
+     Regresión Logísitca & 98.9 & 99.0 & 98.9 & 98.9 & 98.7 & 99.0\\
+     SVM & 99.0 & 99.0 & 98.9 & 98.8 & 99.0 & 98.8\\
+     Gradient Boosting & 99.0 & 99.3 & 99.0 & 98.9 & 98.8 & 99.0\\
+     Random Forest & 99.2 & 100.0 & 99.2 & 99.3 & 99.1 & 99.2\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1699,10 +1699,10 @@ Los resultados de la ejecución del comando stress conforme a estos niveles se p
 \label{tab:times_kddportatil}
 \end{table}
 
-Según esta tabla, Random Forest es el modelo que más tiempo tarda cuando la máquina se encuentra en estado Idle y se mantienen el resto de pruebas sobre un minuto de ejecución. Esto se debe a las mismas razones dadas en la sección~\ref{subsubsec:kdd_raspberry}. El hecho de que los tiempos aumenten en los modelos monocore se deben a las mismas razones dadas en el dataSet de Occupancy.
+Según esta tabla, Random Forest es el modelo que más tiempo de cpu tarda cuando la máquina se encuentra en estado Idle y se mantienen el resto de pruebas sobre los 300 segundos de ejecución. Esto se debe a las mismas razones dadas en la sección~\ref{subsubsec:kdd_raspberry}. El hecho de que los tiempos aumenten en los modelos monocore se deben a las mismas razones dadas en el dataSet de Occupancy.
 
 
-Respecto a la percisión de los modelos generados podemos ver los resultados en la Tabla~\ref{tab:acc_Kddpc}
+Respecto a la percisión de los modelos generados podemos ver los resultados en la Tabla~\ref{tab:acc_Kddpc}. Que al igual que el resto de resultados obtenidos en el otro dataSet los datos no se sobreajustan y se están consiguiendo resultados de gran precisión en todas las pruebas.
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
@@ -1714,10 +1714,10 @@ Respecto a la percisión de los modelos generados podemos ver los resultados en 
     \cline{4-7}
      &  &   &  Idle & 2 cpu & 4 cpu & 8 cpu \\
      \hline
-     Regresión Logísitca & 99.4 & 99.4 & 99.4 & 99.5 & 99.4 & 99.4\\
-     SVM & 99.9 & 99.9 & 99.8 & 99.8 & 98.8 & 98.9\\
-     Gradient Boosting & 99.9 & 100.0 & 96.2 & 99.2 & 99.4 & 98.4\\
-     Random Forest & 100.0 & 100.0 & 98.0 & 96.8 & 96.8 & 97.0\\
+     Regresión Logísitca & 99.4 & 99.4 & 99.4 & 99.4 & 99.4 & 99.4\\
+     SVM & 99.9 & 99.9 & 99.9 & 99.8 & 99.8 & 99.9\\
+     Gradient Boosting & 99.9 & 100.0 & 96.4 & 96.5 & 99.3 & 99.3 \\
+     Random Forest & 100.0 & 100.0 & 99.7 & 97.4 & 99.7 & 96.8\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1728,7 +1728,7 @@ Respecto a la percisión de los modelos generados podemos ver los resultados en 
 \subsection{Conclusiones datos sintéticos}
 \label{subsec:conclusion_sinteticos}
 
-Tras haber observado los resultados obtenidos en la ejecución de cada uno de los modelos en diferentes situaciones de estrés en ambos dispositivos con los dos dataSets diferentes, se ha podido comprobar qué a pesar de la menor capacidad de la Raspberry, esta es capaz de tener un comportamiento bastante bueno.
+Tras haber observado los resultados obtenidos en la ejecución de cada uno de los modelos en diferentes situaciones de estrés en ambos dispositivos con los dos dataSets, se ha podido comprobar qué a pesar de la menor capacidad de la Raspberry, esta es capaz de tener un comportamiento bastante bueno.
 
 Donde más se nota la falta de recursos de la Raspberry es en los tiempos de ejecución. Para los mismos modelos y los mismos datos, tarda más en ejecutar la Raspberry que el portátil. Una de las razones por las que sucede esto es debido a las frecuencias tanto de la Raspberry como del portátil, observandolas vemos que la máxima velocidad a la que pueden ir los cores en la Raspberry es a 1500 MHz mientras que el portátil tiene su máximo en 3600 MHz, más del doble que la Raspberry. Luego esto permite que los procesos en el portátil puedan terminar antes que en la Raspberry siendo uno de los factores por los que la Raspberry puede ser más lenta que el portátil, ya que los cores pueden ir a mayor velocidad.
 
@@ -1741,7 +1741,7 @@ Sin embargo, a parte de la diferencia de los tiempos, todos los modelos tanto en
 \section{Experimentos con los datos sensados}
 \label{sec:exp_dSensados}
 
-Tal y como se comentó en el apartado se generó un dataSet mediante los datos proporcionados por los sensores. El dataSet que que se utilizará para estas pruebas se denomina como occup\_detec\_2h\_Clean.csv, en total contiene 9745 líneas de datos que equivalen a unas dos horas y cuarenta minutos de recolección de datos.
+Tal y como se comentó en el apartado~\ref{sec:mi_dataSet} se generó un dataSet mediante los datos proporcionados por los sensores. El dataSet que que se generó de esta forma se denomina como occup\_detec\_2h\_Clean.csv, en total contiene 9745 líneas de datos que equivalen a unas dos horas y cuarenta minutos de recolección de datos.
 
 \subsection{Raspberry}
 \label{subsec:rasp_sensados}
@@ -1774,6 +1774,8 @@ Los resultados de los tiempos de ejecución para el dataSet generado por medio d
 \label{tab:times_sensrasp}
 \end{table}
 
+Como se puede observar, se ontiene un comportamiento en los tiempos de cpu bastane similar a lo visto en los anteriores dataSets ejecutados en la Raspberry.
+
 Mientras que la precisión obtenida por medio de este dataSet se encuentra en la Tabla~\ref{tab:acc_sensrasp}.
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
@@ -1796,6 +1798,8 @@ Mientras que la precisión obtenida por medio de este dataSet se encuentra en la
 \caption{Resultados de la precisión de los modelos para dataSet sensado en la Raspberry.}
 \label{tab:acc_sensrasp}
 \end{table}
+
+A pesar de ser el dataSet con el menor número de muestras de todos los que se han visto en este proyecto, la precisión que alcanzan los modelos sigue siendo bastante alta.
 
 \subsection{Portátil}
 \label{subsec:pc_sensados}
