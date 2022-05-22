@@ -270,6 +270,7 @@
 <!--Results-->
 <div id="Results" class="container">
     <h2 class="display-6 text-dark content-space-t-3">Results</h2>
+    <p>Bellow are some charts that show the most relevant results of the tests.</p>
     <canvas id="myChart" width="100" height="50" style="display: block; box-sizing: border-box; height: 50px; width: 100px;"></canvas>
 </div>
 <!--End Results>
@@ -643,52 +644,76 @@
     new HSHeader('#header').init()
   })()
 </script>
-<script>var xValues = ["Idle","1 Cpu stressed","2 Cpu stressed","4 Cpu stressed"];
+<script>
+var xValues = ["Idle","1 Cpu stressed","2 Cpu stressed","4 Cpu stressed"];
 
 new Chart("myChart", {
-  type: "line",
+  type: "bar",
   data: {
     labels: xValues,
     datasets: [{
-      data: [17.79,26.8,24.19,17.69],
-      borderColor: "red",
+      label:['Logistic Regression', 'Support Machine Vector','Gradient Boosting','Random Forest'],
+      data: [-17.79,-26.8,-24.19,-17.69],
+      backgroundColor: "rgba(255,0,0,0.7)",
       label: 'Logistic Regression',
-      fill: false, 
-      tension: 0.4
     },{
-      data: [16.52,16.59,16.63,16.95],
-      borderColor: "green",
+      data: [-16.52,-16.59,-16.63,-16.95],
+      backgroundColor: "rgba(0,255,0,0.7)",
       label: 'Support Machine Vector',
-      fill: false,
-      tension: 0.4
     },{
-      data: [28.61,28.4,28.3,28.51],
-      borderColor: "blue",
+      data: [-28.61,-28.4,-28.3,-28.51],
+      backgroundColor: "rgba(0,0,255,0.7)",
       label: 'Gradient Boosting',
-      fill: false,
-      tension: 0.4
     },{
-      data: [59.15,52.44,48.92,49.29],
-      borderColor: "rgba(255,165,0,1)",
+      data: [-59.15,-52.44,-48.92,-49.29],
+      backgroundColor: "rgba(255,165,0,0.7)",
       label: 'Random Forest',
-      fill: false,
-      tension: 0.4
+
+    },{data: [2.31, 1.9, 2.56, 2.63, 5.53],
+      backgroundColor: "rgba(255,0,0,0.7)",
+      label: 'noSHOW',
+
+    },{
+      data: [3.29, 3.65, 6.16, 6.24],
+      backgroundColor: "rgba(0,255,0,0.7)",
+      label: 'noSHOW',
+
+    },{
+      data: [7.5, 8.13, 10.44, 17.16],
+      backgroundColor: "rgba(0,0,255,0.7)",
+      label: 'noSHOW',
+
+    },{
+      data: [18.22,16.43,16.61,21.64],
+      backgroundColor: "rgba(255,165,0,0.7)",
+      label: 'noSHOW',
     }]
   },
   options: {
-    legend: {display: false},
+    indexAxis: 'y',
+    legend: {
+        labels: {
+          filter: function(legendItem, chartData) {
+                if (legendItem.text.localeCompare('noSHOW')) {
+                    return false;
+                }
+            return true;
+            }
+        }
+    },
     responsive: true,
     interaction: {
           intersect: false,
     },
+    plugins: {
+      title: {
+        display: true,
+        text: 'Cpu times for Room Occupancy data set Raspberry | Laptop',
+      },
+      
+    },  
     scales: {
           x: {
-            display: true,
-            title: {
-              display: true
-            }
-          },
-          y: {
             display: true,
             title: {
               display: true,
