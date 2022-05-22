@@ -55,18 +55,19 @@
         <div class="navbar-absolute-top-scroller">
           <ul class="navbar-nav nav-pills">
 
-            <!--Test Structure-->
-                <li class="nav-item">
-                <a href="#Arquitectura" class="nav-link">Test Structure</a>
-                </li>
-                        
-            <!-- End Test Strucutre -->
             
             <!-- Hardware Components -->
             <li class="nav-item">
               <a href="#Hardware" class="nav-link">Hardware Components</a>
             </li>
             <!-- End Hardware Components -->
+
+            <!--Test Structure-->
+            <li class="nav-item">
+              <a href="#Arquitectura" class="nav-link">Test Structure</a>
+              </li>
+                      
+          <!-- End Test Strucutre -->
 
             <!-- DataSets-->
             <li class="nav-item">
@@ -117,8 +118,9 @@
             <p class="fs-3">Nowadays Machine Learning and IoT has become some of the most developed and researched fields in technology. The amount of applications these could offer are infinite. </p>
             <p class="fs-3">The need to use small devices for IoT applcations leads us to consider the Raspberry as an option to carry out these tasks. Its small size and its ability to interact with the enviroment through its sensors makes it a perfect tool to develop a project of these characteristics. That is the reason why this research will evaluate this device to perform automatic learning tasks.</p> 
 
-            <p class="fs-3"> In order to do this it is going to be generated through <a href="https://scikit-learn.org/stable/" class="link-primary"> scikit-learn </a>, four differents Machine Learning models under certain computational load conditions. The selected automatic learning models are: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" class="link-secondary">Logistic Regression</a>, <a href="https://scikit-learn.org/stable/modules/svm.html" class="link-secondary"> Support Vector Machine</a>, <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html" class="link-secondary">Gradient Boosting</a> and <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html" class="link-secondary"> Random Forest.</a></p></div>
-        
+            <p class="fs-3"> In order to do this it is going to be generated through <a href="https://scikit-learn.org/stable/" class="link-primary"> scikit-learn </a>, four differents Machine Learning models under certain computational load conditions. The selected automatic learning models are: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" class="link-secondary">Logistic Regression</a>, <a href="https://scikit-learn.org/stable/modules/svm.html" class="link-secondary"> Support Vector Machine</a>, <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html" class="link-secondary">Gradient Boosting</a> and <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html" class="link-secondary"> Random Forest.</a></p>
+            <p class="fs-3">These Machine Learning models are going to be subjected to different test in order to prove the capacity of the Raspberry to know if this dispositive is truely a good tool to develop and execute this kind of algorithms. The results of these tests are going to be compared with the results of the same automatic learning models but executed and tested in a more powerful machine. This will let us know how far is the performance of the Raspberry from a higher capacity machine. The achivement of all this is going to be explained later. </p>
+          </div>
 
         
         <!-- End Col -->
@@ -127,127 +129,128 @@
     </div>
     <!-- End Hero -->
 
+     <!-- Hardware -->
+<div id="Hardware" class="container content-space-t-3">
+  <h2 class="display-6 text-dark"> Hardware Components </h2>
+  <p>In order to develop this project the following hardware components were required.</p>
+  <!--Raspberry-->
+      <div class="row align-items-lg-center content-space-t-1">
+        <div class="col-md">
+            <div class="col-md">
+              <h4 class="text-center"> Raspberry Pi 4B </h4>
+                <p>                   <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/" class="link-primary"> Raspberry Pi 4B</a> is a low cost credit-card sized computer, the aim of which is to make informatics accesible to everyone. Its features makes it a good choice for implementing IoT applications but its lower computational capacity may not be sufficient to carry out such tasks. That is what we are trying to dicover through this research work.</p> 
+                <p></p>Some of it's components are:<p></p>
+                <li>40 GPIO pins</li>
+                <li>4 USB ports</li>
+                <li>2 micro HDMI ports</li>
+                <li>4GB of RAM</li>
+                <li>ARM Cortex-172 processor</li>
+            </div>
+            <!-- End Col -->
+        </div>
+        <!-- End Col -->
+          <div class="col-5">
+          <div class="mb-5">
+          <img class="img-fluid rounded-3" src="assets/img/my_images/raspberry_pi.jpg" alt="Raspberry Pi 4B">
+          </div>
+        </div>
+        <!-- End Col -->
+      </div>
+  <!--End Raspberry-->
+  <!--Sensors-->
+  
+<div class="row align-items-lg-center content-space-t-1">
+      <div class="col-md">
+          <div class="row">
+          <!--BME280-->
+              <div class="col-7">
+                  <h4 class="text-center">BME280 Sensor</h4>
+                  <p> Sensor developed by Bosh which provide information about temperature, atmosferic pressure and relative humidity.</p>
+              </div>
+  
+              <div class="col-5">
+                  <div class="mb-3 text-center">
+                  <img class="img-fluid rounded-3" src="assets/img/my_images/bme280.jpg" alt="BME280 sensor">
+                  </div>
+              </div>  
+          </div>
+          <!--End BME280-->
+          <div class="row">
+          <!--Light Sensor-->
+              <div class="col-7">
+                  <h4 class="text-center">LDR Sensor</h4>
+                  <p> This is a photoresistor so it will detect if there is light or not on its enviroment. To be able to use this with the Raspberry is necesary to connect a conversor to  it, in this project it is used the HW-103 conversor.</p>
+              </div>
+  
+              <div class="col-5">
+                  <div class="mb-3 text-center">
+                  <img class="img-fluid rounded-3" src="assets/img/my_images/LDR.jpg" alt="LDR sensor">
+                  </div>
+              </div>  
+              <!--End Light sesnor-->
+          </div>
+      </div>  
+  <!--Conexiones-->
+  <div class="col-4">
+      <img class="img-fluid rounded-3" src="assets/img/my_images/circuito.png" alt="Hardware conexions">
+  </div>
+  <!--End Conexiones-->
+  </div>
+<!--End Sensors-->
+<p></p>
+<!--Laptop-->
+<div class="row align-items-lg-center content-space-t-1">
+  <div class="col-md">
+      <div class="text-center">
+          <h4>Laptop</h4>
+          <p>In order to compare the Raspberry results with a higher capacity machine it is going to be used a Laptop. The laptop used is an HP 15s-fq1008ns with 8 cores in total. It has  Ubuntu 20.04 as Operative System. With this will have real knowledge of how well or badly the Raspberry is performing</p>
+  </div>
+</div></div>
+  
+</div>
+<!-- End Hardware -->
+
     <!-- Test Structure -->
-    <div id="Arquitectura" class="container">
+    <div id="Arquitectura" class="container content-space-t-3">
     <h2 class="display-6 text-dark mb-5"> Test Structure </h2>
     <img class="img-fluid rounded-3" src="assets/img/my_images/arquitectura_general_english.png" alt="General Architecture for testing Machine Learning models.">
 
     
 
     <p class="fs-3 mt-5"> As mentioned before, to test the potential of the Raspberry, four diferent kinds of Machine Learning models are going to be trained and tested with differents dataSets.</p>
-    <p class="fs-3"> Each model will be subjected to four tests. The difference between those tests is the number of cores that are going to be stressed. The defined stress levels are: </p>
+    <p class="fs-3"> Each model will be subjected to four tests. The difference between those tests is the number of cores that are going to be stressed. The laptop will also be subjected to these four tests to compare both results but with some modifications. As mentioned before the laptop has in total 8 cores, twice as many as the Raspberry has, so in order to put both machines in the same computational load situation, the number of stressed cpus change. </p>
+    <p class="fs-3"> The defined testing levels are: </p>
     <ul class="mt-2 mb-5">
-        <li><p class="fs-3"><strong>Idle Level</strong>. The Raspberry is not subjected to any kind of extra stress.</p></li>
-        <li><p class="fs-3"><strong>Low Level</strong>. Only one of the cores of the machine is stressed.</p></li>
-        <li><p class="fs-3"><strong>Middle Level</strong>. Two of the cpus are going to be stressed.</p></li>
-        <li><p class="fs-3"><strong>High Level</strong>. All the cores of the Raspberry, which are four, will be exposed to higher computational load.</p></li>
+        <li><p class="fs-3"><strong>Idle Level</strong>. The Raspberry or laptop is not subjected to any kind of extra stress.</p></li>
+        <li><p class="fs-3"><strong>Low Level</strong>. Only one of the cores of the Raspberry is stressed. While in the laptop two cores are stressed.</p></li>
+        <li><p class="fs-3"><strong>Middle Level</strong>. Two of the Raspberry cpus are going to be stressed, in the laptop four cores. In both machines there are stressed half of the total number of cores.</p></li>
+        <li><p class="fs-3"><strong>High Level</strong>. All the cores of the Raspberry, which are four, and laptop, which are eight, will be exposed to higher computational load.</p></li>
     </ul>
     
-    <p class="fs-3"> From each of the test it is going to be obtained some relevant information that will allow us to evaluate the Raspberry as an optimal dispositive for Machine Learning applications or not. As it can be seen in the above image, the information of each model will be stored on its own file. </p>
-
-        <p class="fs-3"> Moreover, as it can be observed in this picture too, the models will also be trained and tested in a laptop. This is made to compare the Raspberry results with the ones of a more powerfull machine as it can be a laptop. This enables us to understand better the Raspberrys behaviour. </p>
-        </div>
+    <p class="fs-3"> From each of the test it is going to be obtained some relevant information that will allow us to evaluate the Raspberry as an optimal dispositive for Machine Learning applications or not. The above image show the general architecture of the tests. As it can be seen in it, the information obtained from each model will be stored on its own file. </p>
+    </div>
       <!-- End Row -->
     
     <!-- End Test Structure -->
 
-    <!-- Hardware -->
-<div id="Hardware" class="container">
-    <h2 class="display-6 text-dark content-space-t-3"> Hardware Components </h2>
-    <!--Raspberry-->
-        <div class="row align-items-lg-center content-space-t-1">
-          <div class="col-md">
-              <div class="col-md">
-                <h4 class="text-center"> Raspberry Pi 4B </h4>
-                  <p>                   <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/" class="link-primary"> Raspberry Pi 4B</a> is a low cost credit-card sized computer, the aim of which is to make informatics accesible to everyone. Its features makes it a good choice for implementing IoT applications but its lower computational capacity may not be sufficient to carry out such tasks. That is what we are trying to dicover through this research work.</p> 
-                  <p></p>Some of it's components are:<p></p>
-                  <li>40 GPIO pins</li>
-                  <li>4 USB ports</li>
-                  <li>2 micro HDMI ports</li>
-                  <li>4GB of RAM</li>
-                  <li>ARM Cortex-172 processor</li>
-              </div>
-              <!-- End Col -->
-          </div>
-          <!-- End Col -->
-            <div class="col-5">
-            <div class="mb-5">
-            <img class="img-fluid rounded-3" src="assets/img/my_images/raspberry_pi.jpg" alt="Raspberry Pi 4B">
-            </div>
-          </div>
-          <!-- End Col -->
-        </div>
-    <!--End Raspberry-->
-    <!--Sensors-->
-    
-<div class="row align-items-lg-center content-space-t-1">
-        <div class="col-md">
-            <div class="row">
-            <!--BME280-->
-                <div class="col-7">
-                    <h4 class="text-center">BME280 Sensor</h4>
-                    <p> Sensor developed by Bosh which provide information about temperature, atmosferic pressure and relative humidity.</p>
-                </div>
-    
-                <div class="col-5">
-                    <div class="mb-3 text-center">
-                    <img class="img-fluid rounded-3" src="assets/img/my_images/bme280.jpg" alt="BME280 sensor">
-                    </div>
-                </div>  
-            </div>
-            <!--End BME280-->
-            <div class="row">
-            <!--Light Sensor-->
-                <div class="col-7">
-                    <h4 class="text-center">LDR Sensor</h4>
-                    <p> This is a photoresistor so it will detect if there is light or not on its enviroment. To be able to use this with the Raspberry is necesary to connect a conversor to  it, in this project it is used the HW-103 conversor.</p>
-                </div>
-    
-                <div class="col-5">
-                    <div class="mb-3 text-center">
-                    <img class="img-fluid rounded-3" src="assets/img/my_images/LDR.jpg" alt="LDR sensor">
-                    </div>
-                </div>  
-                <!--End Light sesnor-->
-            </div>
-        </div>  
-    <!--Conexiones-->
-    <div class="col-4">
-        <img class="img-fluid rounded-3" src="assets/img/my_images/circuito.png" alt="Hardware conexions">
-    </div>
-    <!--End Conexiones-->
-    </div>
-<!--End Sensors-->
-<p></p>
-<!--Laptop-->
-<div class="row align-items-lg-center content-space-t-1">
-    <div class="col-md">
-        <div class="text-center">
-            <h4>Laptop</h4>
-            <p>In order to compare the Raspberry results with a higher capacity machine it is going to be used a Laptop. The laptop used is an HP 15s-fq1008ns with the Ubuntu 20.04 Operative System, with 8 cores in total. </p>
-    </div>
-</div></div>
-    
-</div>
-<!-- End Hardware -->
-
 <!--DataSets-->
 <div id="dataSets" class="container">
     <h2 class="display-6 text-dark content-space-t-3"> DataSets</h2>
-    <p>A total of three different dataSets were used to train and test the models. Two of them composed of synthetic data and the last one was made with sensed data.  </p>
+    <p class="fs-3">A total of three different dataSets were used to train and test the models. Two of them composed of synthetic data and the last one was made with sensed data.  </p>
     <!--Occupancy-->
 <div class="content-space-t-1">
 <h4>Room Occupancy dataSet</h4>
 
-    <p>This dataSet, obtained from <a href="https://www.kaggle.com/datasets/kukuroo3/room-occupancy-detection-data-iot-sensor" class="link-primary"> Kaggle</a>, provides information about temperature, light, humidity, CO2. The last column of this dataSet provides information of the state of the room, if it is occupied or not. In total de dataSet has 20560 samples of an office room of 5.85mx3.50mx3.53m.</p>
-    <p> Trainning with this dataSet the models will be able to predict if the room is empty or if there is someone in it.</p>
+    <p class="fs-3">This data set, obtained from <a href="https://www.kaggle.com/datasets/kukuroo3/room-occupancy-detection-data-iot-sensor" class="link-primary"> Kaggle</a>, provides information about temperature, light, humidity, CO2. The last column of the dataSet provides information of the state of the room, if it is occupied or not. In total the dataSet has 20560 samples of an office room of 5.85mx3.50mx3.53m.</p>
+    <p class="fs-3"> The models trained with this dataSet will be able to predict if the room is empty or if there is someone in it.</p>
 
 </div>
 <!--End Occupancy>-->
 <!--Kdd_cup99-->    
     <div class="content-space-t-1">
         <h4>KDD Cup 1999 Data</h4>
-        <p>This data set was created to use it in The Third International Knowledge Discovery and Data Mining Tools Competition, to create a predictive model capable of distinguish between bad connections and good connections. This data set can be obtained from the <a href="https://www.kaggle.com/datasets/galaxyh/kdd-cup-1999-data" class="link-primary">Kaggle</a> web page.</p><p>This data set has a huge number of lines in this project we are going to use only the 20% of the total data set, which are about 988040 lines of samples. In order to use this data set in this project it is necessary to pre-process the data and remove data which may difficult the trainning of the model.</p>
+        <p class="fs-3">The kdd cup 199 data set was created to use it in The Third International Knowledge Discovery and Data Mining Tools Competition, to create a predictive model capable of distinguish between bad connections and good connections. This can be obtained from the <a href="https://www.kaggle.com/datasets/galaxyh/kdd-cup-1999-data" class="link-primary">Kaggle</a> web page.</p>
+        <p  class="fs-3">This data set has a huge number of total lines, in this project we are going to use only the 20% of the total data set, which are about 988040 lines of samples. In order to use this data set is necessary to pre-process the data and remove some lines or columns which may difficult the trainning of the model.</p>
     
     </div>
 <!--End Kdd_cup99-->
@@ -255,10 +258,10 @@
 <!--MydataSet-->
 <div class="content-space-t-1">
     <h4>Mi dataSet</h4>
-    <p>
+    <p class="fs-3">
         As seen before in this projects are used two sensors. With the data provided by these sensors it has been created a total new data set that will contain information of light, temperature, relative humidity and pressure. Storing this data and knowing if there are people in the room where the sensors are located, we can create another data set that will train a model to know by the sensors measures, if there is someone in the room or not. So this data set will allow us to train a model similar to the one that we can ontain using the Room Occupancy data set but with our own information.
     </p>
-    <p>In the next picture you can see an example of the sensor data recorded durin 2h 40min. The zones which have a gray background are the moments of time where there was someone in the room. </p>
+    <p class="fs-3">In the next picture you can see an example of the sensor data recorded durin 2h 40min. The zones which have a gray background are the moments of time where there was someone in the room. </p>
     <div class="mb-1 text-center">
         <img class="img-fluid" style="width:50%" src="assets/img/my_images/Data_occup_detec_2h.png" alt="Sensors values during 2h and 40min">
     </div>
@@ -270,7 +273,7 @@
 <!--Results-->
 <div id="Results" class="container">
     <h2 class="display-6 text-dark content-space-t-3">Results</h2>
-    <p>Bellow are some charts that show the most relevant results of the tests.</p>
+    <p class="fs-3">Bellow are some charts that show the most relevant results of the tests.</p>
     <canvas id="myChart" width="100" height="50" style="display: block; box-sizing: border-box; height: 50px; width: 100px;"></canvas>
 </div>
 <!--End Results>
@@ -645,7 +648,7 @@
   })()
 </script>
 <script>
-var xValues = ["Idle","1 Cpu stressed","2 Cpu stressed","4 Cpu stressed"];
+var xValues = ["Idle Level","Low Level","Medium Level","High Level"];
 
 new Chart("myChart", {
   type: "bar",
@@ -691,16 +694,6 @@ new Chart("myChart", {
   },
   options: {
     indexAxis: 'y',
-    legend: {
-        labels: {
-          filter: function(legendItem, chartData) {
-                if (legendItem.text.localeCompare('noSHOW')) {
-                    return false;
-                }
-            return true;
-            }
-        }
-    },
     responsive: true,
     interaction: {
           intersect: false,
@@ -710,17 +703,57 @@ new Chart("myChart", {
         display: true,
         text: 'Cpu times for Room Occupancy data set Raspberry | Laptop',
       },
-      
-    },  
+      legend: {
+        labels: {
+          filter: function(item, chartData) {
+            return !item.text.includes('noSHOW');
+          }
+        }
+      },
+
+      tooltip: {
+          callbacks: {
+              label: function(context) {
+                  let label = context.dataset.label || '';
+                  var color = context.dataset.backgroundColor;
+                  var true_label= "";
+                  var value= context.dataset.y;
+
+                  if(color === "rgba(255,0,0,0.7)"){
+                    true_label="Logisitc Regression"
+                  }
+                  else if(color === "rgba(0,255,0,0.7)"){
+                    true_label= "Support Vector Machine"
+                  }
+                  else if(color === "rgba(0,0,255,0.7)"){
+                    true_label= "Gradient Bosting"
+                  }
+                  else if(color === "rgba(255,165,0,0.7)"){
+                    true_label= "Random Forest"
+                  }
+                  label= true_label;
+
+                  if (label) {
+                      label += ': ';
+                  }
+                  if (context.parsed.y !== null) {
+                      label += Math.abs(context.parsed.x);
+                  }
+                  return label;
+              }
+            }     
+
+      },  
+    },
     scales: {
           x: {
-            display: true,
+            display:false,
             title: {
               display: true,
               text: 'Seconds'
             },
           }
-        }
+        },
     },
 });</script>
   
