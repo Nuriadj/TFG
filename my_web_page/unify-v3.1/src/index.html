@@ -15,7 +15,8 @@
   <!-- CSS Implementing Plugins -->
   <!-- bundlecss:vendor [@@autopath] -->
   <link href="../dist/assets/vendor/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css">
+  <!-- CSS Implementing Plugins -->
+<link rel="stylesheet" href="assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css">
   <link rel="stylesheet" href="../dist/assets/vendor/swiper/swiper-bundle.min.css">
 
   <!-- CSS Unify Template -->
@@ -25,9 +26,13 @@
 </head>
 
 <body>
-  <!-- ========== HEADER ========== --><header id="header" class="navbar navbar-expand-lg navbar-end navbar-light navbar-absolute-top navbar-show-hide navbar-scrolled" hsheader="true">
+  <!-- ========== HEADER ========== --><!-- ========== HEADER ========== -->
+<header id="header" class="navbar navbar-expand-lg navbar-end navbar-absolute-top navbar-light navbar-show-hide" data-hs-header-options="{
+          &quot;fixMoment&quot;: 500,
+          &quot;fixEffect&quot;: &quot;slide&quot;
+        }">
   <div class="container">
-    <nav class="js-mega-menu navbar-nav-wrap hs-menu-initialized hs-menu-horizontal">
+    <nav class="js-mega-menu navbar-nav-wrap">
       <!-- Default Logo -->
       <a class="navbar-brand" href="index.html" aria-label="Unify">
         <img class="navbar-brand-logo" src="assets/svg/logos/logo.svg" alt="Image Description">
@@ -99,6 +104,7 @@
     </nav>
   </div>
 </header>
+
 <!-- ========== END HEADER ========== -->
 
   <!-- ========== MAIN CONTENT ========== -->
@@ -480,32 +486,32 @@
       <!-- Swiper Slider -->
       <div class="js-swiper-clients swiper text-center swiper-initialized swiper-horizontal swiper-pointer-events">
         <div class="swiper-wrapper" id="swiper-wrapper-4d4bb10fa258c10da4" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-          <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 5" style="width: 222.75px; margin-right: 15px;">
+          <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 5" style="width: 162.75px; margin-right: 15px;">
             <img class="avatar avatar-lg avatar-4x3" src="assets/svg/brands/mailchimp-dark.svg" alt="Logo">
           </div>
           <!-- End Slide -->
 
-          <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 5" style="width: 222.75px; margin-right: 15px;">
+          <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 5" style="width: 162.75px; margin-right: 15px;">
             <img class="avatar avatar-lg avatar-4x3" src="assets/svg/brands/sass-dark.svg" alt="Logo">
           </div>
           <!-- End Slide -->
 
-          <div class="swiper-slide" role="group" aria-label="3 / 5" style="width: 222.75px; margin-right: 15px;">
+          <div class="swiper-slide" role="group" aria-label="3 / 5" style="width: 162.75px; margin-right: 15px;">
             <img class="avatar avatar-lg avatar-4x3" src="assets/svg/brands/forbes-dark.svg" alt="Logo">
           </div>
           <!-- End Slide -->
 
-          <div class="swiper-slide" role="group" aria-label="4 / 5" style="width: 222.75px; margin-right: 15px;">
+          <div class="swiper-slide" role="group" aria-label="4 / 5" style="width: 162.75px; margin-right: 15px;">
             <img class="avatar avatar-lg avatar-4x3" src="assets/svg/brands/gitlab-dark.svg" alt="Logo">
           </div>
           <!-- End Slide -->
 
-          <div class="swiper-slide" role="group" aria-label="5 / 5" style="width: 222.75px; margin-right: 15px;">
+          <div class="swiper-slide" role="group" aria-label="5 / 5" style="width: 162.75px; margin-right: 15px;">
             <img class="avatar avatar-lg avatar-4x3" src="assets/svg/brands/hubspot-dark.svg" alt="Logo">
           </div>
           <!-- End Slide -->
         </div>
-      <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+      <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
       <!-- End Swiper Slider -->
     </div>
     <!-- End Clients -->
@@ -602,55 +608,40 @@
   <!-- JS Implementing Plugins -->
   <!-- bundlejs:vendor [@@autopath] -->
 <script src="assets/vendor/hs-scrollspy/dist/hs-scrollspy.min.js"></script>
-  <script src="assets/vendor/hs-header/dist/hs-header.min.js"></script>
-  <script src="assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.js"></script>
+  
+  
   <script src="assets/vendor/hs-go-to/dist/hs-go-to.min.js"></script>
   <script src="../dist/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.js"></script>
+<script src="assets/vendor/hs-header/dist/hs-header.min.js"></script>
 
   <!-- JS Unify -->
   <!-- bundlejs:theme [@@autopath] -->
   <script src="assets/js/hs.core.js"></script>
 
   <!-- JS Plugins Init. -->
-  <script>
-    (function() {
-    // INITIALIZATION OF NAVBAR
+
+
+
+
+
+<script>
+  (function() {
+    // INITIALIZATION OF MEGA MENU
     // =======================================================
-     new HSHeader('#header').init()
-     });
+    const megaMenu = new HSMegaMenu('.js-mega-menu', {
+      desktop: {
+        position: 'left'
+      }
+    })
 
 
-      (function() {
-      // INITIALIZATION OF MEGA MENU
-      // =======================================================
-      const megaMenu = new HSMegaMenu('.js-mega-menu').init();
-      });
-
-
-      // INITIALIZATION OF GO TO
-      // =======================================================
-      new HSGoTo('.js-go-to')
-
-
-      // INITIALIZATION OF SWIPER
-      // =======================================================
-      var swiper = new Swiper('.js-swiper-clients',{
-        slidesPerView: 2,
-        breakpoints: {
-          380: {
-            slidesPerView: 3,
-            spaceBetween: 15,
-          },
-          768: {
-            slidesPerView: 4,
-            spaceBetween: 15,
-          },
-          1024: {
-            slidesPerView: 5,
-            spaceBetween: 15,
-          },
-        },
-      });  </script>
+    // INITIALIZATION OF HEADER
+    // =======================================================
+    new HSHeader('#header').init()
+  })()
+</script>
+  
 
 
 </body></html>
