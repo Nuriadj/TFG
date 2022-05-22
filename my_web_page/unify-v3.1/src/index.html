@@ -27,12 +27,12 @@
 
 <body>
   <!-- ========== HEADER ========== --><!-- ========== HEADER ========== -->
-<header id="header" class="navbar navbar-expand-lg navbar-end navbar-absolute-top navbar-light navbar-show-hide" data-hs-header-options="{
+<header id="header" class="navbar navbar-expand-lg navbar-end navbar-absolute-top navbar-light navbar-show-hide navbar-scrolled navbar-untransitioned" data-hs-header-options="{
           &quot;fixMoment&quot;: 500,
           &quot;fixEffect&quot;: &quot;slide&quot;
-        }">
+        }" hsheader="true">
   <div class="container">
-    <nav class="js-mega-menu navbar-nav-wrap">
+    <nav class="js-mega-menu navbar-nav-wrap hs-menu-initialized hs-menu-horizontal">
       <!-- Default Logo -->
       <a class="navbar-brand" href="index.html" aria-label="Unify">
         <img class="navbar-brand-logo" src="assets/svg/logos/logo.svg" alt="Image Description">
@@ -270,6 +270,7 @@
 <!--Results-->
 <div id="Results" class="container">
     <h2 class="display-6 text-dark content-space-t-3">Results</h2>
+    <canvas id="myChart" width="100" height="50" style="display: block; box-sizing: border-box; height: 50px; width: 100px;"></canvas>
 </div>
 <!--End Results>
 
@@ -614,6 +615,7 @@
   <script src="../dist/assets/vendor/swiper/swiper-bundle.min.js"></script>
 <script src="assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.js"></script>
 <script src="assets/vendor/hs-header/dist/hs-header.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 
   <!-- JS Unify -->
   <!-- bundlejs:theme [@@autopath] -->
@@ -641,6 +643,61 @@
     new HSHeader('#header').init()
   })()
 </script>
+<script>var xValues = ["Idle","1 Cpu stressed","2 Cpu stressed","4 Cpu stressed"];
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      data: [17.79,26.8,24.19,17.69],
+      borderColor: "red",
+      label: 'Logistic Regression',
+      fill: false, 
+      tension: 0.4
+    },{
+      data: [16.52,16.59,16.63,16.95],
+      borderColor: "green",
+      label: 'Support Machine Vector',
+      fill: false,
+      tension: 0.4
+    },{
+      data: [28.61,28.4,28.3,28.51],
+      borderColor: "blue",
+      label: 'Gradient Boosting',
+      fill: false,
+      tension: 0.4
+    },{
+      data: [59.15,52.44,48.92,49.29],
+      borderColor: "rgba(255,165,0,1)",
+      label: 'Random Forest',
+      fill: false,
+      tension: 0.4
+    }]
+  },
+  options: {
+    legend: {display: false},
+    responsive: true,
+    interaction: {
+          intersect: false,
+    },
+    scales: {
+          x: {
+            display: true,
+            title: {
+              display: true
+            }
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+              text: 'Seconds'
+            },
+          }
+        }
+    },
+});</script>
   
 
 
