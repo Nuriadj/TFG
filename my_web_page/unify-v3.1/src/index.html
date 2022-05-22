@@ -27,12 +27,12 @@
 
 <body>
   <!-- ========== HEADER ========== --><!-- ========== HEADER ========== -->
-<header id="header" class="navbar navbar-expand-lg navbar-end navbar-absolute-top navbar-light navbar-show-hide navbar-scrolled navbar-untransitioned" data-hs-header-options="{
+<header id="header" class="navbar navbar-expand-lg navbar-end navbar-absolute-top navbar-light navbar-show-hide" data-hs-header-options="{
           &quot;fixMoment&quot;: 500,
           &quot;fixEffect&quot;: &quot;slide&quot;
-        }" hsheader="true">
+        }">
   <div class="container">
-    <nav class="js-mega-menu navbar-nav-wrap hs-menu-initialized hs-menu-horizontal">
+    <nav class="js-mega-menu navbar-nav-wrap">
       <!-- Default Logo -->
       <a class="navbar-brand" href="index.html" aria-label="Unify">
         <img class="navbar-brand-logo" src="assets/svg/logos/logo.svg" alt="Image Description">
@@ -203,7 +203,7 @@
   <div class="col-md">
       <div class="text-center">
           <h4>Laptop</h4>
-          <p>In order to compare the Raspberry results with a higher capacity machine it is going to be used a Laptop. The laptop used is an HP 15s-fq1008ns with 8 cores in total. It has  Ubuntu 20.04 as Operative System. With this will have real knowledge of how well or badly the Raspberry is performing</p>
+          <p>In order to compare the Raspberry results with a higher capacity machine it is going to be used a Laptop. The laptop used is an HP 15s-fq1008ns with 8 cores in total. It has  Ubuntu 20.04 as Operative System. With this will have real knowledge of how well or badly the Raspberry is performing.</p>
   </div>
 </div></div>
   
@@ -249,7 +249,7 @@
 <!--Kdd_cup99-->    
     <div class="content-space-t-1">
         <h4>KDD Cup 1999 Data</h4>
-        <p class="fs-3">The kdd cup 199 data set was created to use it in The Third International Knowledge Discovery and Data Mining Tools Competition, to create a predictive model capable of distinguish between bad connections and good connections. This can be obtained from the <a href="https://www.kaggle.com/datasets/galaxyh/kdd-cup-1999-data" class="link-primary">Kaggle</a> web page.</p>
+        <p class="fs-3">The kdd cup 1999 data set was created to use it in The Third International Knowledge Discovery and Data Mining Tools Competition, to create a predictive model capable of distinguish between bad connections and good connections. This can be obtained from the <a href="https://www.kaggle.com/datasets/galaxyh/kdd-cup-1999-data" class="link-primary">Kaggle</a> web page.</p>
         <p  class="fs-3">This data set has a huge number of total lines, in this project we are going to use only the 20% of the total data set, which are about 988040 lines of samples. In order to use this data set is necessary to pre-process the data and remove some lines or columns which may difficult the trainning of the model.</p>
     
     </div>
@@ -647,6 +647,8 @@
     new HSHeader('#header').init()
   })()
 </script>
+
+
 <script>
 var xValues = ["Idle Level","Low Level","Medium Level","High Level"];
 
