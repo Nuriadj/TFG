@@ -1325,3 +1325,6 @@ Comentar en la memoria que dado que es un gran número de ejemplos no es necesar
 	- [x] Hacer script para ejecutar todos los modelos consecutivamente y guardar en un fichero los tiempos (hacerlo probando con el dataset de Ocuppancy para tardar menos).    
 
 	- Hacer una página web estática con los objetivos del proyecto, donde se indique donde está el código, resultados...A poder ser en inglés.   
+
+	
+	Generar GitHUb pages para este proyecto, una vez que quiera que sea público!!!
