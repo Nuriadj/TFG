@@ -394,6 +394,14 @@ la ayuda prestada\ldots
 %\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
 \markboth{RESUMEN}{RESUMEN} % encabezado
 
+Este Trabajo de Fin de Grado tiene como objetivo investigar las características y capacidades del dispositivo Raspberry Pi para poder desarrollar tareas de Machine Learning.
+
+Este conocimiento sería muy útil para poder desarrollar diferentes tipos de aplicaciones tanto para Machine Learning como de IoT pudiendo facilitar la implementación de casas y ciudades inteligentes (Smart cities) para crear ciudades más sostenibles, conectadas y optimizadas.
+
+...
+
+El proyecto está desarrollado de forma que cualquiera, con los componentes necesarios, pueda realizar las pruebas sin ningún tipo de dificultad.
+
 Aquí viene un resumen del proyecto.
 Ha de constar de tres o cuatro párrafos, donde se presente de manera clara y concisa de qué va el proyecto. 
 Han de quedar respondidas las siguientes preguntas:
@@ -458,6 +466,16 @@ As it is the translation of the ``Resumen'', which is supposed to be written at 
 \label{sec:intro}
 \pagenumbering{arabic} % para empezar la numeración de página con números
 
+Una de herraminetas más importantes que nos proporcionan los algoritmos a día de hoy es el Machine Learning (o Aprendizaje Automático en español), cuyo origen se encuentra en la Inteligencia Artificial. Por medio de una gran cantidad de datos, los ordenadores haciendo uso de estos algoritmos pueden llegar a identificar patrones y elaborar nuevas predicciones, sin ser específicamente programados para ello. Ofreciendo una gran variedad de oportunidad y posibilidades a la hora de aplicarlo.
+
+Dentro del mundo del Machine Learning se puede definir un subcampo de investigación denominado como Tiny Machine Learning, cuyo objetivo es utilizar los algoritmos de aprendizaje automático en dispositivos más baratos, y por lo tanto con recursos y energía mucho más limitados que una máquina estándar. Esto supone un reto puesto que el proceso de de entrenamiento de un modelo de ML es un proceso costoso a nivel de recursos, poniendo en aprieto a este tipo de disitivos, y más si además se pretende que dicho dispositvo también recoja y procese los datos antes de entrenar con ellos.
+
+...
+
+Es por ello que, en este trabajo se buscará comprobar la capacidad de uno de estos pequeños dispositivos para realizar este tipo de tares. Concretamente se utilizará el dispositivo Raspberry Pi 4B por ser uno de los más populares a día de hoy por su coste y posibilidades que ofrece.
+
+y este trabajo se quiere enfocar concretamente en el Tiny Machine Learning. Es uno de las partes del aprendizaje automático con más creciemiento tanto en tecnologías como en aplicaciones. La diferencia entre ML y TinyML es el dispositivo donde se ejecutan los algoritmos de Aprendizaje automático, siendo 
+
 En este capítulo se introduce el proyecto.
 Debería tener información general sobre el mismo, dando la información sobre el contexto en el que se ha desarrollado.
 
@@ -465,15 +483,6 @@ No te olvides de echarle un ojo a la página con los cinco errores de escritura 
 
 Aconsejo a todo el mundo que mire y se inspire en memorias pasadas.
 Las memorias de los proyectos que he llevado yo están (casi) todas almacenadas en mi web del GSyC\footnote{\url{https://gsyc.urjc.es/~grex/pfcs/}}.
-
-\section{Sección}
-\label{sec:seccion}
-
-Esto es una sección, que es una estructura menor que un capítulo. 
-
-Por cierto, a veces me comentáis que no os compila por las tildes.
-Eso es un problema de codificación.
-Al guardar el archivo, guardad la codificación de ``ISO-Latin-1'' a ``UTF-8'' (o viceversa) y funcionará.
 
 \subsection{Estilo}
 \label{subsec:estilo}
@@ -569,6 +578,16 @@ Lo mejor suele ser utilizar una lista no numerada, como sigue:
 \section{Planificación temporal}
 \label{sec:planificacion-temporal}
 
+\begin{comment}
+A inicios de este curso, cuando tuve que meditar sobre de qué tema queria realizar mi TFG me dí cuenta de que uno de los que más me habían gustado durante la carrera había sido Machine Learning, que justo había comenzado a verlo durante este primer cuatrimestre. Es un tema que me llama mucho la atención debido a la infinidad de aplicaciones que le veo y de la capacidad que hay detrás de todos esos algoritmos para poder facilitar y mejorar la vida de las personas.
+
+Sin embargo, no tenía del todo claro de qué forma enfocarlo. Fue entonces cuando descubrí que Katia junto con Felipe ofrecian un proyecto sobre este tema y no dudé en informarme sobre exactamente en qué estaba enfocado el trabajo. Después de contactar con Katia y proponerme varias perspectivas, me decanté por el enfoque de Tiny Machine Learning debido a que me llamaba la atención la posibilidad de poder observar las capacidades de la Raspberry para realizar este tipo de tareas ya que, como se verá en los siguientes capitulos, es un dispositivo económico con el que se podrian amplificar las utilidad de estas técnicas.
+
+Una vez acordado el tema lo primero que hice, a recomendación de Katia, fue informarme a cerca cómo se podian aplicar técnicas de Machine Learning en la Raspberry Pi, el dispositivo de capacidades reducidas qaue me habian propuesto utilizar en este trabajo. En Noviembre me entregaron una caja con todo el material necesario para montar y utilizar la Raspberry, con lo que el primer objetivo fue prepararla y comprobar que todo funcionase correctamente creando algoritmos simples como encender y apagar un led. Además esta caja también traia tres sensores diferentes para utilizar con la Raspberry, en concreto venía una fotoresistencia, un sensor de humedad y un sensor de temperatura, con los que realicé varias pruebas para verificar que funcionaban correctamente.
+
+A partir de este momento y tras la primera tutoría con ambos profesores comenzó el proceso de instalación y preparación del entorno para poder implementar algoritmos de aprendizaje automático, en el que se tuvieron que superar algunas dificultades. Con el entorno instalado se procedió a implementar y realizar las pruebas oportunas.
+\end{comment}
+
 Es conveniente que incluyas una descripción de lo que te ha llevado realizar el trabajo.
 Hay gente que añade un diagrama de GANTT.
 Lo importante es que quede claro cuánto tiempo has consumido en realizar el TFG/TFM 
@@ -581,16 +600,17 @@ fines de semana).
 Por último, en esta sección se introduce a alto nivel la organización del resto del documento
 y qué contenidos se van a encontrar en cada capítulo.
 
-    \begin{itemize}
-      \item En el primer capítulo se hace una breve introducción al proyecto, se describen los objetivos del mismo y se refleja la planificación temporal.
-      \item En el siguiente capítulo se describen las tecnologías utilizadas en el desarrollo de este TFM/TFG (Capítulo~\ref{chap:tecnologias}).
-      \item En el capítulo~\ref{chap:diseño} Se describe el proceso de desarrollo
-      de la herramienta \ldots
-      \item En el capítulo~\ref{chap:experimentos} Se presentan las principales pruebas realizadas
-      para validación de la plataforma/herramienta\ldots (o resultados de los experimentos
-      efectuados).
-      \item Por último, se presentan las conclusiones del proyecto así como los trabajos futuros que podrían derivarse de éste (Capítulo~\ref{chap:conclusiones}).
-    \end{itemize}
+l inicio de la memoria se puede leer un resumen de la misma que indica en qué consiste el trabajo desarrollado. A continuación se sitúan loas agradecimientos además de tres índices, el general, el de las figuras y por último el índice de fragmentos de código. Por último, se encuentran los 6 capítulos en los que se divide la memoria.
+
+\begin{itemize}
+
+    \item \textbf{Capítulo 1: Introducción.} En este capítulo se realiza una descripción general de en qué consiste el proyecto. Especificando cual es la estructura de la memoria.
+    \item \textbf{Capítulo~\ref{chap:tecnologias}: Estado del arte.} Aquí se expliccan todas las tecnologías utilizadas para el desarrollo del trabajo.
+    \item \textbf{Capítulo~\ref{chap:diseño}: Diseño e implementación.} Se describe de forma detallada la arquitectura general del proyecto, la configuración del entorno en la Raspberry para llevar a cabo la investigación, así como el código empleado para generar los modelos de aprendizaje y los data sets utilizados para entrenarlos.
+    \item \textbf{Capítulo~\ref{chap:experimentos}: Experimentos y validación}. Por una parte se explica en que consisten las pruebas realizadas tanto en la Raspberry como en el portátil, además de qué forma y qué código se utiliza para ejecutarlas. Por otra parte se exponen y se explican los resultados obtenidos para cada uno de los modelos generados por los diferentes datasets en cada una de las pruebas.
+    \item \textbf{Capítulo~\ref{chap:conclusiones}: Conclusiones}. Se exponen las conclusiones obtenidas gracias a esta investigación. Ademas de detallar posibles proyectos derivados de este proyecto.
+    \item \textbf{Capítulo~\ref{chap:anexo}: Anexo.} Se detallan algunas características y especificaciones para la instalación correcta del entorno.
+\end{itemize}
 
 \cleardoublepage
 
@@ -652,9 +672,9 @@ El objetivo princicpal de este trabajo de investigación es conocer si la Raspbe
 
  Machine Learning o aprendizaje automático, es una disciplina del campo de la Inteligencia Artificial que permite a las máquinas aprender sin ser explícitamente programadas para ello. Para aprender utilizan algoritmos que permiten a los ordenadores identificar los patrones que existen en grandes cantidades de datos y utilizar estos patrones para poder elaborar predicciones del futuro. 
  
- Los datos que se proporcionan al algoritmo normalmente son ficheros con varias filas y columnas. Cada fila representa un ejemplo de datos que se pasa al modelo para entrenar. Mientras que si posee varías columnas significa que hay varios valores que definen un ejemplo, se dice que estas columnas son las caracterísitcas del dataSet. 
+ Los datos que se proporcionan al algoritmo normalmente son ficheros con varias filas y columnas. Cada fila representa un ejemplo de datos que se pasa al modelo para entrenar. Mientras que si posee varías columnas significa que hay varios valores que definen un ejemplo, se dice que estas columnas son las caracterísitcas del dataset. 
  
- Un ejemplo de lo que contiene un dataSet es la tabla~\ref{tab:my_dataSet}, donde se proporciona información sobre cuando un niño va a jugar a la pelota o no. En este caso tendríamos tres características (previsión, temperatura y amigos), la columna jugar es la decisión que tome el niño ante los valores de esas caracterísitcas. Por lo tnato, cada fila define una situación diferente, es decir es un ejemplo de lo que puede suceder.
+ Un ejemplo de lo que contiene un dataset es la tabla~\ref{tab:my_dataSet}, donde se proporciona información sobre cuando un niño va a jugar a la pelota o no. En este caso tendríamos tres características (previsión, temperatura y amigos), la columna jugar es la decisión que tome el niño ante los valores de esas caracterísitcas. Por lo tnato, cada fila define una situación diferente, es decir es un ejemplo de lo que puede suceder.
  
  \begin{table}[]
      \centering
@@ -669,7 +689,7 @@ El objetivo princicpal de este trabajo de investigación es conocer si la Raspbe
            Nublado &  18 ºC & 4 & Si\\
            \hline
      \end{tabular}
-     \caption{Ejemplo de un dataSet}
+     \caption{Ejemplo de un dataset}
      \label{tab:my_dataSet}
  \end{table}
  
@@ -680,7 +700,7 @@ El objetivo princicpal de este trabajo de investigación es conocer si la Raspbe
     
     Si la salida es un valor numérico continuo, estaríamos ante un problema de regresión en el que se busca obtener la recta que mejor se ajusta a los datos de entrada para poder predecir otros valores. Si, en cambio, la salida es una etiqueta de clase, es decir un valor discreto, se correspondería a un problema de clasificación, en los que se busca estimar a qué clase pertenecen los datos de entrada. 
     
-    Un ejemplo de este último tipo se puede ver en la Figura~\ref{fig:a_supervisado}, donde cada una de las formas serían las entradas y las etiquetas de: triángulo, cuadrado o círculo serían la salidas, cada dato de entrada tiene asignada una de estas etiquetas. Todo esto formaría lo que se denomina dataSet que es el conjunto de datos que se pasan al modelo para entrenar y poder encontrar esas relaciones entre entradas y salidas. En este caso cuando al modelo se le pregunte a qué clase pertenece una figura (del mismo tipo que ha visto durante el entrenamiento), si es lo suficientemente robusto, debería de ser capaz de identificarlo como un cuadrado.
+    Un ejemplo de este último tipo se puede ver en la Figura~\ref{fig:a_supervisado}, donde cada una de las formas serían las entradas y las etiquetas de: triángulo, cuadrado o círculo serían la salidas, cada dato de entrada tiene asignada una de estas etiquetas. Todo esto formaría lo que se denomina dataset que es el conjunto de datos que se pasan al modelo para entrenar y poder encontrar esas relaciones entre entradas y salidas. En este caso cuando al modelo se le pregunte a qué clase pertenece una figura (del mismo tipo que ha visto durante el entrenamiento), si es lo suficientemente robusto, debería de ser capaz de identificarlo como un cuadrado.
     
     \begin{figure}[]
       \centering
@@ -790,14 +810,14 @@ Cuando se quiera, por ejemplo, estimar la clase a la que pertenece un dato cada 
   \caption{Ejemplo Random forest.}\label{fig:ejemplo_rforest}
 \end{figure}
 
-En la Figura~\ref{fig:ejemplo_rforest} podemos ver un ejemplo de Random forest, con el dataSet que se le pasa generará, en este caso, tres árboles de decisión a partir de subconjuntos aleatorios del dataSet original. Cuando se pretenda clasificar un nuevo dato cada árbol le asignará una clase a ese dato según lo que haya decidido. La clase que más se repite en este caso es la 2, luego esa será la clase a la que pertenezca el dato.
+En la Figura~\ref{fig:ejemplo_rforest} podemos ver un ejemplo de Random forest, con el dataset que se le pasa generará, en este caso, tres árboles de decisión a partir de subconjuntos aleatorios del dataset original. Cuando se pretenda clasificar un nuevo dato cada árbol le asignará una clase a ese dato según lo que haya decidido. La clase que más se repite en este caso es la 2, luego esa será la clase a la que pertenezca el dato.
 
 \section{IoT}
 \label{sec:IoT}
 
 Uno de los campos en los que son de gran importancia las técnicas de aperndizaje automático es en los proyectos de IoT (Internet of Things). El Internet de las cosas (o Internet of Things) es la interconexión de sensores y dispositivos, como por ejemplo pueden ser los electrodomésticos, termostátos, coches, ropa... Todos ellos se conectan a través de una red por medio de la cual pueden interaccionar entre ellos y compartir datos sin necesidad de que un humano intervenga, esta red puede ser por cable, WiFi, Bluetooth etc. 
 
-Los conectados generan una gran cantidad de datos que llegan a una plataforma IoT que recolecta, procesa y analiza dichos datos.Utilizando Machine Learning se puede generar, por medio de todos estos datos recopilados, nuevos modelos de aprendizaje automático cuyas predicciones se pueden usar para poder actuar sobre el entorno. Las posibles aplicaciones que ofrece esto son prácticamente infinitas, algunos ejemplos pueden ser:
+Los dispositivos conectados generan una gran cantidad de datos que llegan a una plataforma IoT que recolecta, procesa y analiza dichos datos.Utilizando Machine Learning se puede generar, por medio de todos estos datos recopilados, nuevos modelos de aprendizaje automático cuyas predicciones se pueden usar para poder actuar sobre el entorno. Las posibles aplicaciones que ofrece esto son prácticamente infinitas, algunos ejemplos pueden ser:
 
 \begin{itemize}
     \item Smart Homes. Permite que se puedan controlar varios de los dispositivos que hay comúnmente en los hogares haciendo que, por ejemplo, esté todo lo que necesite el usuario para cuando este llegue a casa.
@@ -810,19 +830,21 @@ Los conectados generan una gran cantidad de datos que llegan a una plataforma Io
 
 Raspberry Pi\footnote{\url{https://www.raspberrypi.org/}} es un ordenador de bajo coste y tamaño reducido desarrollado por Raspberry Pi Foundation. Este dispositivo se puede emplear en  multitud de aplicaciones pero su principal objetivo es hacer accesible la informática a todos los usuarios. A parte de poder realizar todas las tareas que se esperan de un ordenador, también puede interactuar con el entorno a través de sensores conectados a sus pines GPIO.
 
-El sistema operativo que ofrece es Raspbian Pi OS, una versión adaptada de Debian. Sin embargo permite utilizar otros sistemas.
+El sistema operativo que ofrece es Raspbian Pi OS, una versión adaptada de Debian. Sin embargo, permite poder utilizar otros sistemas.
 
 Desde su primer lanzamiento se han ido desarrollando y comercializado nuevos modelos. En este proyecto se utilizará la última versión de estos dispositivos denominado como Raspberry Pi 4 Modelo B con 4GB de RAM. Dicho modelo posee un total de 40 pines GPIO, 2 puertos micro HDMI y 4 puertos USB. Puede realizar conexiones inalámbricas ya que tiene Bluetooth 5.0 y Wi-Fi, aun que también puede utilizar Ethernet. Por último la alimentación viene dada por un cable USB de tipo C con el que puede alcanzar un total de 1.2 A.
 
-Dicho modelo posee un procesador ARM Cortex-172 con un total de cuatro cores físicos y cuatro lógicos. Otro detalle destacable de la Raspberry para el desarrollo de este trabajo es que posee una arquitectura SMP (Symmetric Multi-Processing), un tipo de arquitectura de computador en el que las unidades de procesamiento comparten una única memoria central, lo que permite que cualquier procesador trabaje en cualquier tarea sin importar su localización en memoria. 
+Dicho modelo posee un procesador ARM Cortex-A72 que soporta SIMD avanzado, un tipo de unidad de ejecución que se utiliza para ejecutar la misma instrucción a varios datos al mismo tiempo consiguiendo paralelismo a nivel de datos. En total tiene cuatro cores físicos y cuatro lógicos. 
 
-Actualmente es uno de los dispositivos más populares ya que brinda un sinfín de posibilidades a pesar de su pequeño tamaño. Específicamente dentro de el campo de aprendizaje automático e IoT se podrían desarrollar multitud de aplicaciones gracias a la interacción que tiene con el entorno por medio de los sensores y actuadores que se pueden conectar. Por ello, en este trabajo de investigación se busca examinar el rendimiento de este pequeño ordenador y comprobar hasta donde se podría llegar con él, dentro del campo del aprendizaje automático. 
+Otro detalle destacable de la Raspberry para el desarrollo de este trabajo es que posee una arquitectura SMP (Symmetric Multi-Processing), un tipo de arquitectura de computador en el que las unidades de procesamiento comparten una única memoria central, lo que permite que cualquier procesador trabaje en cualquier tarea sin importar su localización en memoria. 
+
+Actualmente es uno de los dispositivos más populares ya que brinda un sinfín de posibilidades a pesar de su pequeño tamaño. Específicamente dentro de el campo de aprendizaje automático e IoT, se podrían desarrollar multitud de aplicaciones gracias a la interacción que tiene con el entorno por medio de los sensores y actuadores que se pueden conectar. Por ello, en este trabajo de investigación se busca examinar el rendimiento de este pequeño ordenador y comprobar hasta donde se podría llegar con él, dentro del campo del aprendizaje automático. 
 
 
 \section{Sensores}
 \label{sec:sensores}
 
-En este proyecto también se utilizaron sensores para tomar medidas del entorno y generar nustro propio dataSet con el que entrenar los modelos de aprendizaje automático. En concreto se utilizaron dos: una fotoresistencia (LDR) y un sensor BME280, a continuación se darán más detalles de ambos sensores.
+En este proyecto también se utilizaron sensores para tomar medidas del entorno y generar nustro propio dataset con el que entrenar los modelos de aprendizaje automático. En concreto se utilizaron dos: una fotoresistencia (LDR) y un sensor BME280, a continuación se darán más detalles de ambos sensores.
 
 \subsection{Fotoresistencia}
 \label{subsec:fotoresistencia}
@@ -926,6 +948,17 @@ Proporciona análisis de código, un depurador gráfico, una consola de Python i
 \end{comment}
 
 
+\section{Dispositivo con capacidad de cómputo: HP Notebook 15s-fq1008ns}
+\label{sec:portatil}
+
+En este trabajo también se utilizará un dispositivo de mayor capacidades con el objetivo de poder observar la diferencia entre el comportamiento de este y el de la Raspberrry. Teniendo siempre como referencia la actuación del dispositivo de mayor capacidad podremos obtener un conocimiento más profundo sobre como de bien o mal está actuando la Raspberry. 
+
+La máquina que se va a utilizar para esto es un portátil HP Notebook 15s-fq1008ns. Este portátil posee un procesador Intel® Core™ i5-1035G1 cuya frecuencia base es de 1GHz, y que al igual que la Raspberry soporta SIMD. Además tiene un total de cuatro cpus físicas y ocho lógicas, siendo de 3.6GHz la frecuencia máxima a la que puede ir un núcleo. 
+
+Por otra parte, tiene una memoria SDRAM DDR4-2666 de 8 GB, varios puertos externos como un puerto HDMI, 1 USB 3.1 tipo C, 2 USB 3.1 tipo A, un Smart Pin CA y un combo de auriculares/micrófono. Para la alimentación tiene un adaptador de CA de 45W, que carga una bateria de 41Wh.
+
+Por defecto viene instalado el sistema operativo Windows 10, pero en este se le instaló Ubuntu 20.04 para poder utilizarlo como portátil de trabajo durante la carrera. 
+
 \section{Redacción de la memoria: LaTeX/Overleaf}
 \label{sec:redaccion_de_la_memoria}
 
@@ -973,40 +1006,15 @@ Para ello, y como se explicará en mayor detalle en los siguientes capítulos, p
 
 Como se explicó en la sección~\ref{sec:machine_learning} hay varios tipos de aprendizaje automático y dentro de cada clase existen aún más métodos para resolver un mismo problema de formas diferentes. En este proyecto utilizaremos algoritmos de aprendizaje supervisado para realizar problemas de clasificación binaria, es decir, solo existen dos clases a las que pueden pertenecer los datos. Concretamente (y como se puede ver en la Figura~\ref{fig:arquitectura}) se utilizarán cuatro algoritmos de Machine Learning que son: Regresión logística, Máquinas de soporte vectorial, Gradient boosting y Random forest.
 
-Aprovechando los puertos GPIO de los que está provista la Raspberry, en este proyecto también se utilizan un par de sensores para poder generar un nuevo dataSet con el que poder entrenar los modelos de aprendizaje automático. Estos dos sensores ue se utlizan son los que se mencionaron en el apartado~\ref{sec:sensores}
-.
-En la Figura~\ref{fig:esquema_sensores} se puede observar la estructura de como se lleva a cabo la recolección de información de los sensores por parte de la Raspeberry. Con todo conectado correctamente, se generará un nuevo fichero csv con los datos medidos durante el tiempo que el usuario haya estado ejecutando el programa que se puede ver en esta figura. Este dataSet podrá utilizarse para entrenar los modelos de aprendizaje. Además, mediante la información recogida se creará una figura que contiene los datos sensados en cada instante de tiempo.
+Aprovechando los puertos GPIO de los que está provista la Raspberry, en este proyecto también se utilizan un par de sensores para poder generar un nuevo dataset con el que poder entrenar los modelos de aprendizaje automático. Estos dos sensores que se utlizan son los que se mencionaron en el apartado~\ref{sec:sensores}.
+
+En la Figura~\ref{fig:esquema_sensores} se puede observar la estructura de como se lleva a cabo la recolección de información de los sensores por parte de la Raspeberry. Con todo conectado correctamente, se generará un nuevo fichero csv con los datos medidos durante el tiempo que el usuario haya estado ejecutando el programa que se puede ver en esta figura. Este dataset podrá utilizarse para entrenar los modelos de aprendizaje. Además, mediante la información recogida se creará una figura que contiene estos datos en cada instante de tiempo.
 
 \begin{figure}[]
   \centering
   \includegraphics[width=14cm, keepaspectratio]{img/esquema_sensores.png}
-  \caption{Estructura generación de un nuevo de dataSet}\label{fig:esquema_sensores}
+  \caption{Estructura de creación de un nuevo de dataset con la información de los sensores}\label{fig:esquema_sensores}
 \end{figure}
-
-Antes de adentrarnos en una explicación en mayor profundadidad de lo que se desarrolla en este proyecto
-
-\begin{comment}[]
-\begin{figure}
-  \centering
-  \includegraphics[width=9cm, keepaspectratio]{img/arquitectura.png}
-  \caption{Estructura del parser básico.}\label{fig:arquitectura}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[bb=0 0 800 600, width=12cm, keepaspectratio]{img/foro1}
-    \caption{Página con enlaces a hilos}\label{fig:_arquitectura}
-\end{figure}
-\end{comment}
- 
-\begin{comment}
-Recuerda que toda figura que añadas a tu memoria debe ser explicada.
-Sí, aunque te parezca evidente lo que se ve en la Figura~\ref{fig:arquitectura}, la figura en sí solamente es un apoyo a tu texto.
-Así que explica lo que se ve en la Figura, haciendo referencia a la misma tal y como ves aquí.
-Por ejemplo: En la Figura~\ref{fig:arquitectura} se puede ver que la estructura del \emph{parser} básico, que consta de seis componentes diferentes: los datos se obtienen de la red, y según el tipo de dato, se pasará a un \emph{parser} específico y bla, bla, bla\ldots
-
-Si utilizas una base de datos, no te olvides de incluir también un diagrama de entidad-relación.
-\end{comment}
 
 
 \section{Configuración del entorno}
@@ -1040,12 +1048,12 @@ En el caso del sensor BME280 se utiliza comunicación por I2C para poder leer la
 
 Para poder obtener los valores del LDR fue necesario instalar el paquete LGPIO, los detalles de su instalación se encuentran en el Anexo.
 
-Para la comunicación I2C hubo que instalar el paquete \textit{i2c-tools} en la Raspberry. Para poder utilizar este paquete es necesario tener permisos de root, sin embargo se dieron permisos a un usuario de forma que no tuviese que ser root para poder ejecutarlo\footnote{\url{https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html}}. Dentro del entorno de conda donde se desarrolla el proyecto se tuvieron que instalar además otros dos paquetes: \textit{smbus2} y \textit{RPi.bme280}. Finalizadas estas instalaciones podremos leer la información proporcionada por los sensores.
+Para la comunicación I2C hubo que instalar el paquete \texttt{i2c-tools} en la Raspberry. Para poder utilizar este paquete es necesario tener permisos de root, sin embargo se dieron permisos a un usuario de forma que no tuviese que ser root para poder ejecutarlo\footnote{\url{https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html}}. Dentro del entorno de conda donde se desarrolla el proyecto se tuvieron que instalar además otros dos paquetes: \texttt{smbus2} y \texttt{RPi.bme280}. Finalizadas estas instalaciones podremos leer la información proporcionada por los sensores.
 
 \section{Generación de los modelos de Aprendizaje automático}
 \label{sec:generacion_modelos}
 
-Como se ha mencionado anteriormente, en este proyecto se utilizarán un total de cuatro algoritmos de aprendizaje automático. Los programas que se encargan de generar estos modelos se encuentran dentro de la carpeta \textit{Modelos} de este proyecto. Hay un fichero por cada modelo que se desea entrenar y poner a prueba.
+Como se ha mencionado anteriormente, en este proyecto se utilizarán un total de cuatro algoritmos de aprendizaje automático. Los programas que se encargan de generar estos modelos se encuentran dentro de la carpeta \texttt{Modelos} de este proyecto. Hay un fichero por cada modelo que se desea entrenar y poner a prueba.
 
 Todos estos algortimos se han implementado utilizando la libreria de scikit-learn que proporciona todas las funcionalidades necesarias para ello. A la hora de ejecutarlos será necesario pasarles un único argumento que es el dataSet con el que se desea entrenar el modelo.
 
@@ -1056,11 +1064,11 @@ A continuación se verán cada uno de estos ficheros y se explicará brevemente 
 \item \subsubsection{lRegression.ipynb}
 \label{subsubsec:lRegression}
 
-Este fichero entrenará un modelo de Regresión logísitca para el dataSet que se le pase como argumento.
+Este fichero entrenará un modelo de Regresión logísitca para el dataset que se le pase como argumento.
 
 En scikit-learn, por medio de la función LogisticRegression\cite{LogisticRegressionDoc} que pertenece a la librería \textit{sklearn.linear\_model}, se puede generar este modelo de aprendizaje automático para entrenarlo y posteriormente predecir con él. 
 
-Entre los parámetros que se pueden asignar a esta función hay dos que son destacables. El primero de ellos es \textit{max\_iter}, máximo número de iteraciones que se permiten para encontrar la solución que converja, por defecto tiene un valor igual a 100. En el caso de \textit{lRegression.ipynb} se igualó el valor \textit{max\_iter} a 400, pues es el valor mínimo necesario para que consiga encontrar una solución para algunos de los dataSets que vermos más adelante.
+Entre los parámetros que se pueden asignar a esta función hay dos que son destacables. El primero de ellos es \textit{max\_iter}, máximo número de iteraciones que se permiten para encontrar la solución que converja, por defecto tiene un valor igual a 100. En el caso de \texttt{lRegression.ipynb} se igualó el valor \textit{max\_iter} a 400, pues es el valor mínimo necesario para que consiga encontrar una solución para algunos de los datasets que vermos más adelante.
 
 Por otra párte está el parámetro \textit{n\_jobs}, que permite declarar el número de cpus que se desean utilizar para paralelizar el proceso. Sin embargo, la asignación de este valor solo tiene efecto si se realiza una clasificación multiclase, de lo contrario utilizará un único core independientemente del valor asignado. Por lo que en este caso este parámetro no se utilizará.
 
@@ -1156,27 +1164,27 @@ Como se puede ver en el Código~\ref{lst:get_APR} para los valores de Precision 
 \section{DataSet: Room Occupacy}
 \label{sec:dataSet_Occupancy}
 
-Para realizar la clasificación en un inicio se utilizó el data set de Room Occupancy detection data\cite{DataSetOccupancy}, obtenido de Kaggle, que contiene unas 20560 muestras. Tal y como su nombre indica, este dataset proporcionará información sobre si una habitación se encuentra en un determinado instante ocupada o no. Cada ejemplo tiene las medidas de temperatura, humedad, CO2 y luz de una habitación de oficina de unos quince metros cuadrados. La última columna de cada fila indica la clase a la que pertenece la muestra. En este caso, al ser una clasificación binaria esta última columna solo puede tener dos valores, cero o uno. Si para un ejemplo contiene un uno significa que para esos valores sensados la habitación está ocupada. Si por el contrario hay un valor de cero la sala está vacia. 
+Para realizar la clasificación en un inicio se utilizó el data set de Room Occupancy detection data\cite{DataSetOccupancy}, obtenido de Kaggle, que contiene unas 20560 muestras. Tal y como su nombre indica, este dataset proporcionará información sobre si una habitación se encuentra en un determinado instante ocupada o no. Cada ejemplo tiene las medidas de temperatura, humedad, CO2 y luz de una habitación de oficina de unos quince metros cuadrados. La última columna de cada fila indica la clase a la que pertenece la muestra. En este caso, al ser una clasificación binaria esta última columna solo puede tener dos valores, cero o uno. Si para un ejemplo contiene un uno significa que para esos valores la habitación está ocupada. Si por el contrario hay un valor de cero la sala está vacia. 
 
 Para generar los modelos se dividió el set de datos en dos partes, una primera parte para entrenar (que contenía el 70\% de ejemplos del set de datos original) y otra para comprobar la eficiencia del modelo a la hora de clasificar si la estancia está ocupada o no, un set de datos de prueba. En esta segunda parte se utilizó el 30\% restante de muestras del set de datos original, que no se utilizaban en el entrenamiento y por lo tanto el modelo nunca los había visto, son totalmente nuevos para él.
 
 Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros sets de datos esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo al tener una gran número de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que hay una alta probabilidad de que el set de entrenamiento siempre tenga como mínimo la cantidad de muestras necesarias de ambas clases para entrenar correctamente. Aun así, la división se realizó de forma estratificada, para que hubiese la misma proporcion de datos de una clase u otra, que en el set de datos original. Y de esta forma nos aseguramos que a la hora de tanto entrenar, como de comprobar el modelo generado, se tengan ejemplos de ambas clases en la misma proporción que aparecen en el set de datos original.
 
-Con esta división y preparación de los datos, los cuatro modelos se pudieron generar sin problemas utilizando los programas que se encuentran dentro de la carpeta de \textit{"Modelos"}.  
+Con esta división y preparación de los datos, los cuatro modelos se pudieron generar sin problemas utilizando los programas que se encuentran dentro de la carpeta de \texttt{"Modelos"}.  
 
 
 
 \subsection{Validación cruzada}
 
-Para comprobar mejor la calidad de los modelos se utilizó validación cruzada. Esto consiste en hacer que dentro del set de datos de entrenamiento (en este caso compuesto, una vez más, por el 70\% de ejemplos del set de datos original) se hace una subdivisión en otros cinco sets para observar la eficiencia que ha tenido el modelo para entrenar y probar el modelo con cada uno de estos subdataSets. 
+Para comprobar mejor la calidad de los modelos se utilizó validación cruzada. Esto consiste en hacer que dentro del set de datos de entrenamiento (en este caso compuesto, una vez más, por el 70\% de ejemplos del set de datos original) se hace una subdivisión en otros cinco sets para observar la eficiencia que ha tenido el modelo para entrenar y probar el modelo con cada uno de estos subdatasets. 
 
-Para ello, se utilizan dos métodos el primero de ellos es \textit{KFold} que devuelve los índices por donde se va dividir los datos para obtener varios sets (el número de sets dependerá del valor que se le asigne al parámetro \textit{n\_splits}). La segunda función que se utiliza es \textit{cross\_val\_score} al que se la pasa el modelo que se quiere probar junto con los datos de entrenamiento y los índices obtenidos por \textit{KFold}. Esta función nos devolverá el Accuracy que ha conseguido cada uno de estos subdataSets.
+Para ello, se utilizan dos métodos el primero de ellos es \textit{KFold} que devuelve los índices por donde se va dividir los datos para obtener varios sets (el número de sets dependerá del valor que se le asigne al parámetro \textit{n\_splits}). La segunda función que se utiliza es \textit{cross\_val\_score} al que se la pasa el modelo que se quiere probar junto con los datos de entrenamiento y los índices obtenidos por \textit{KFold}. Esta función nos devolverá el Accuracy que ha conseguido cada uno de estos subdatasets.
 
-Una vez realizada la división se entrena con todo el dataSet de entrenamiento y se vuelve a comprobar la eficiencia (de ese modelo entrenado) con el 30\% de datos de la división original, los que nunca ha visto ni entrenado con ellos.
+Una vez realizada la división se entrena con todo el dataset de entrenamiento y se vuelve a comprobar la eficiencia (de ese modelo entrenado) con el 30\% de datos de la división original, los que nunca ha visto ni entrenado con ellos.
 
-El objetivo de realizar una validación cruzada es garantizar que los resultados que obtengamos sean independientes de la partición entre datos de entrenamiento y datos de validación. Es decir, poder daber si la precisión que obtenemos al hacer la predicción es real o se ha sobreajustado a un dataSet concreto.
+El objetivo de realizar una validación cruzada es garantizar que los resultados que obtengamos sean independientes de la partición entre datos de entrenamiento y datos de validación. Es decir, poder daber si la precisión que obtenemos al hacer la predicción es real o se ha sobreajustado a un dataset concreto.
  
- Para utilizar validación cruzada se añadió a los ficheros de la carpeta \textit{"Modelos"} los métodos mencionados anteriormente. Por lo que, además de los datos que ya mostraban estos ficheros por su salida, se añadirá un nuevo \textit{print} para obtener la media de las precisiones de cada una de las subdivisiones.
+ Para utilizar validación cruzada se añadió a los ficheros de la carpeta \texttt{"Modelos"} los métodos mencionados anteriormente. Por lo que, además de los datos que ya mostraban estos ficheros por su salida, se añadirá un nuevo \textit{print} para obtener la media de las precisiones de cada una de las subdivisiones.
  
 
 
@@ -1187,7 +1195,7 @@ Al realizar algunas pruebas para observar el comportamiento de la Raspberry ante
 
 El dataset elegido fue KDD Cup 1999 Data\cite{DataSetKddCup99}, obtenido una vez más desde la página web de Kaggle. Este data set se utilizó en el tercer concurso internacional de herramientas de descubrimiento de conocimientos y minería de datos, el objetivo del concurso era generar un modelo predictivo que fuese capaz de distinguir entre conexiones \textit{"malas"}, es decir, intrusiones o ataques y conexiones \textit{"buenas"}. Este set de datos contiene una gran variedad de intrusiones en un entorno de red militar. 
 
-De este data set se utilizó tanto el fichero \textit{kddcup.data.gz} como \textit{kddcup.data\_10\_percent.gz}. Una vez descargados se descomprimen y se ejecuta un programa para tratar los datos que contienen y poder utilizarlos en la generación de los modelos de Machine Learning.
+De este data set se utilizó tanto el fichero \texttt{kddcup.data.gz} como \texttt{kddcup.data\_10\_percent.gz}. Una vez descargados se descomprimen y se ejecuta un programa para tratar los datos que contienen y poder utilizarlos en la generación de los modelos de Machine Learning.
 
 Al igual que en el dataSet de Room Occupancy para la generación de los modelos se utilizará el 70\% de los datos para entrenar y el 30\% para validar.
 
@@ -1202,9 +1210,9 @@ Para leer los datos se utiliza la función \textit{read\_csv} de pandas. Este pr
     $ ipython prepare_kddcup.ipynb 50
 \end{lstlisting}
 
-En el caso de \textit{kddcup.data} (que contiene más de un millón de líneas) interesa poder leer diferentes cantidades de datos del fichero puesto que tanto la Raspberry como el portátil no son capaces de leer este dataSet completo, los procesos morían antes de terminar. En el caso de la Raspberry el máximo de datos que es capaz de leer, sin que muera el proceso, es el cuarenta porciento del dataSet total mientras que el portátil llegaba al cincuenta porciento del total.
+En el caso de \texttt{kddcup.data} (que contiene más de un millón de líneas) interesa poder leer diferentes cantidades de datos del fichero puesto que tanto la Raspberry como el portátil no son capaces de leer este dataSet completo, los procesos morían antes de terminar. En el caso de la Raspberry el máximo de datos que es capaz de leer, sin que muera el proceso, es el cuarenta porciento del dataSet total mientras que el portátil llegaba al cincuenta porciento del total.
 
-Para leer otro porcentaje del dataSet total, que no fuese únicamente el diez porciento, se utiliza una regla de tres. Sabiendo que el diez porciento del data set (el fichero \textit{kddcup.data\_10\_percent}) contenía 494020 líneas, se podía obtener aproximadamente tanto a cuantas líneas equivaldría otro porcentaje como la cantidad total de líneas que debía tener el dataSet completo.
+Para leer otro porcentaje del dataSet total, que no fuese únicamente el diez porciento, se utiliza una regla de tres. Sabiendo que el diez porciento del data set (el fichero \texttt{kddcup.data\_10\_percent}) contenía 494020 líneas, se podía obtener aproximadamente tanto a cuantas líneas equivaldría otro porcentaje como la cantidad total de líneas que debía tener el dataSet completo.
 
 La función \textit{random.sample} devuelve una lista que contiene valores numéricos aleatorios, para realizar esta función necesita que se le pasen dos argumentos. El primero de ellos es el valor máximo que puede aparecer en la lista, siendo el mínimo igual a cero. El segundo argumento es la longitud total de la lista, es decir, cuántos números aleatorios va a generar. Con este método se obtendrá una lista con valores aleatorios que se le asignará al parámetro skiprows de \textit{read\_csv}. Haciendo que todos esos datos, que representan números de líneas del fichero original, no se lean, consiguiendo hacer que se lea únicamente el porcentaje que ha pedido el usuario.
 
@@ -1235,18 +1243,18 @@ Una vez realizada la transformación de multiclase a clase binaria, se hace un p
 \section{Dataset: Mi dataSet}
 \label{sec:mi_dataSet}
 
-A parte de los dataSets anteriores se creó uno utilizando la información recopilada por lo sensores mediante el programa \textit{read\_sensors.ipynb}. Este dataSet, con medidas de temperatura, humedad, presión y luz, busca generar un modelo que nos permita saber si la habitación está ocupada o no en un determinado instante, al igual que sucedia con el dataSet de Occupancy. 
+A parte de los dataSets anteriores se creó uno utilizando la información recopilada por lo sensores mediante el programa \texttt{read\_sensors.ipynb}. Este dataSet, con medidas de temperatura, humedad, presión y luz, busca generar un modelo que nos permita saber si la habitación está ocupada o no en un determinado instante, al igual que sucedia con el dataSet de Occupancy. 
 
 Para ello durante varias horas se estuvieron tomando las medidas en una habitación de forma controlada, es decir, sabiendo en cada instante si la habitación estaba ocupada o no. Durante diferentes periodos de tiempo la habitación estuvo ocupada o vacía. Cuando la habitación estaba vacía algunas veces se cerraba la persiana de la habitación para que también tomase medidas bajo esta nueva condición.
 
-Una vez finalizado el tiempo que se deseaba hacer la prueba se paraba el programa \textit{read\_sensors.ipynb}, se abría el nuevo csv generado y se añadia al csv una nueva columna que representa el estado de la habitación en cada instante, asignando un uno cuando estaba ocupada y un cero en el caso contrario.
+Una vez finalizado el tiempo que se deseaba hacer la prueba se paraba el programa \texttt{read\_sensors.ipynb}, se abría el nuevo csv generado y se añadia al csv una nueva columna que representa el estado de la habitación en cada instante, asignando un uno cuando estaba ocupada y un cero en el caso contrario.
 
 \subsection{read\_sensors.ipynb}
 \label{subsec_read_sensors}
 
-Como se ha comentado anteriormente este programa es el encargado de tomar las medidas de los sensores conectados a la Raspberry, guardarlas y generar con ellas un nuevo csv y una imagen, que muestra de forma gráfica los valores sensados en cada instante de tiempo para que visualmente sea más fácil interpretar lo que ha pasado en ese periodo de tiempo. 
+Como se ha comentado anteriormente este programa es el encargado de tomar las medidas de los sensores conectados a la Raspberry, guardarlas y generar con ellas un nuevo csv y una imagen, que muestra de forma gráfica los valores obtenidos en cada instante de tiempo para que visualmente sea más fácil interpretar lo que ha pasado en ese periodo de tiempo. 
 
-Para que pueda ejecutar correctamente es necesario que se le pase como argumento el nombre con el que se desea guardar el dataSet que se va a generar. Este argumento también se utilizará para nombrar la gráfica que genera el programa con el siguiente formato: \textit{Dara\_graph\_miDataSet}, siendo miDataSet el string que se haya pasado como argumento.
+Para que pueda ejecutar correctamente es necesario que se le pase como argumento el nombre con el que se desea guardar el dataSet que se va a generar. Este argumento también se utilizará para nombrar la gráfica que genera el programa con el siguiente formato: \texttt{Dara\_graph\_miDataSet}, siendo miDataSet el string que se haya pasado como argumento.
 
 Este programa necesita usar la comunicación I2C para obtener los valores del sensor BME280 pero también necesitará acceder directamente a los pines por medio de la librería LGPIO. Para poder utilizar LGPIO es necesario ejecutar el programa con permisos de root pero manteniendo el entorno conda actual (pues es donde se encuentran todas las librerías instalaldas), es por ello que para ejecutarlo habrá que utilizar la siguiente línea de comando:  
 
@@ -1257,11 +1265,11 @@ Este programa necesita usar la comunicación I2C para obtener los valores del se
 
 En la segunda celda de este programa se puede ver como se preprararán los puertos para poder leer los datos. 
 
-A continuación se quedará ejecutando indefinidamente un bucle while, que es el que se encarga de guardar los datos sensados cada segundo. Dicho bucle se puede ver en el Código~\ref{lst:firstloop_read_sensor}. Algo destacable es que para obtener el valor de la luz (proporcionada por el LDR) siempre se le resta a uno el valor sensado. Esto se hace así para que los datos se puedan interpretar mejor, puesto que cuando hay luz a la Raspberry le llega un cero. De esta forma cuando haya luz se guarda un uno en el fichero en vez de un cero. 
+A continuación se quedará ejecutando indefinidamente un bucle while, que es el que se encarga de guardar los datos detectados por los sensores cada segundo. Dicho bucle se puede ver en el Código~\ref{lst:firstloop_read_sensor}. Algo destacable es que para obtener el valor de la luz (proporcionada por el LDR) siempre se le resta a uno el valor obtenido por el LDR. Esto se hace así para que los datos se puedan interpretar mejor, puesto que cuando hay luz a la Raspberry le llega un cero. De esta forma cuando haya luz se guarda un uno en el fichero en vez de un cero. 
 Este bucle estará continuamente mostrando por el terminal las medidas tomadas hasta que el usuario haga Ctr-C , de esta forma se indica que ya no se desean guardar más datos.
 
 \begin{listing}[]
-    \caption{Bucle que guarda los datos sensados.}{}
+    \caption{Bucle que guarda los datos detectados por los sensores.}{}
     \label{lst:firstloop_read_sensor}
     \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
 measures= [] #array que contiene los valores del sensor
@@ -1286,7 +1294,7 @@ except KeyboardInterrupt:
     \end{minted}
 \end{listing}
 
-Una vez que este bucle ha finalizado, se ejecuta otro que iterará sobre los datos guardados en la lista \textit{measures} para poder pintar esos valores en la gráfica que devuelve este programa. Dicho bucle se puede ver en el segmento de Código~\ref{lst:secondloop_read_sensor}. Hay dos cosas destacables de este trozo de código. La primera es que el valor de las presiones se divide entre diez. Esto se debe a que las presiones que devuelve el sensor BME280 son valores muy superiores a los que puede conseguir cualquiera de los otros sensores, por lo que en vez de devolver la medida en $hPa$ se divide entre diez para obtenerla en $KPa$ y de esta forma poder apreciar mejor los cambios sensados en todos los sensores.
+Una vez que este bucle ha finalizado, se ejecuta otro que iterará sobre los datos guardados en la lista \textit{measures} para poder pintar esos valores en la gráfica que devuelve este programa. Dicho bucle se puede ver en el segmento de Código~\ref{lst:secondloop_read_sensor}. Hay dos cosas destacables de este trozo de código. La primera es que el valor de las presiones se divide entre diez. Esto se debe a que las presiones que devuelve el sensor BME280 son valores muy superiores a los que puede conseguir cualquiera de los otros sensores, por lo que en vez de devolver la medida en $hPa$ se divide entre diez para obtenerla en $KPa$ y de esta forma poder apreciar mejor los cambios en los datos de todos los sensores.
 
 
 El segundo aspecto destacable es sobre el valor de la luz, que se multiplica por cincuenta. Al igual que en el caso de las presiones esto se hace para que el cambio de estado entre oscuridad y luz sea apreciable en la gráfica, de lo contrario el salto entre ceros y unos apenas se podrían ver.
@@ -1361,7 +1369,7 @@ El comando \textit{time} devuelve tres valores. Uno de ellos es el tiempo de usu
 \subsection{Ejecución de los experimentos}
 \label{subsec:ejecucion_experimentos}
 
-Para realizar todas las pruebas, tal y como se han explicado, se creó un programa para cada una de las máquinas de forma que fuese más sencillo obtener los resultados de los experimentos. En el caso de la Raspberry este programa se denominó \textit{raspberry\_test.ipynb}. En el caso del portátil se nombró \textit{pc\_test.ipynb}. Dado que las puebas en ambos dispositivos son prácticamente las mismas, ambos programas ejecutan prácticamente lo mismo con pequeñas diferencias.
+Para realizar todas las pruebas, tal y como se han explicado, se creó un programa para cada una de las máquinas de forma que fuese más sencillo obtener los resultados de los experimentos. En el caso de la Raspberry este programa se denominó \texttt{raspberry\_test.ipynb}. En el caso del portátil se nombró \texttt{pc\_test.ipynb}. Dado que las puebas en ambos dispositivos son prácticamente las mismas, ambos programas ejecutan prácticamente lo mismo con pequeñas diferencias.
 
 Dichos programas necesitan como único argumento el dataSet con el que se desea hacer el experimento para que puedan realizar su función correctamente.
 Hay que tener en cuenta que este dataSet debe de estar limpio, es decir, que se le haya hecho un preprocesamiento para borrar características no deseadas o redundantes. Tampoco debe de tener cabecera. Si no se hace este preprocesamiento podrá dar error la ejecución.
@@ -1374,7 +1382,7 @@ A continuación se desarrollará en mayor profundidad qué es lo que hace cada p
 
 La misión de este código es ejecutar cada uno de los modelos de aprendizaje automático (que se utilizan en este proyecto), con los diferentes niveles de saturación comentados anteriormente, en la Raspberry. Para realizar esto se usan dos bucles anidados, el primero de ellos itera sobre los modelos que se desean poner a prueba. El segundo recorre una lista que contiene el número de cores que se desean estresar con cada uno de los modelos, ambos bucles los podemos ver en el Código~\ref{lst:funcion_principal_raspberry_test}. Si el valor sobre el que se está iterando de la lista es mayor que cero significa que se desea estresar cierto número de cpus, por lo tanto se llama a la función \textit{start\_stress} a la que se le pasa como argumento el número de cores a estresar y durante cuanto tiempo, con estos datos se encargará de crear un nuevo proceso para ejecutar el comando \textit{stress}.
 
-Por otra parte, independientemente del nivel de saturación de la prueba, siempre se llamará a la función \textit{model} que creará un nuevo proceso para ejecutar, utilizando el comando \textit{time} de Linux, uno de los ficheros que se encuentran dentro de la carpeta \textit{"Modelos"}. Cada uno de los ficheros que se encuentran dentro de dicha carpeta generará uno de los modelos de aprendizaje automático que se han explicado en este proyecto. 
+Por otra parte, independientemente del nivel de saturación de la prueba, siempre se llamará a la función \textit{model} que creará un nuevo proceso para ejecutar, utilizando el comando \textit{time} de Linux, uno de los ficheros que se encuentran dentro de la carpeta \texttt{"Modelos"}. Cada uno de los ficheros que se encuentran dentro de dicha carpeta generará uno de los modelos de aprendizaje automático que se han explicado en este proyecto. 
 
 \begin{listing}[]
     \caption{Función principal raspberry\_test.ipynb}{}
@@ -1428,9 +1436,9 @@ Los nuevos procesos, comentados anteriormente, se crean utilizando la función \
 \subsubsection{pc\_test.ipynb}
 \label{subsubsec:programa_pruebas_pc}
 
-Este código es prácticamente idéntico al de \textit{rasp\_test.pynb} salvo pequeñas diferencias. Una de ellas es que en este caso el fichero que generará tras la ejecución de cada modelo tendrá el siguiente formato: nombreDataSet\_pcMD.csv, siendo MD una vez más las siglas del modelo de aprendizaje automático. Al igual que en el caso anterior, se creará una nueva carpeta para guardar todos estos ficheros con el formato: nombreDataSet\_pcresults.
+Este código es prácticamente idéntico al de \texttt{rasp\_test.pynb} salvo pequeñas diferencias. Una de ellas es que en este caso el fichero que generará tras la ejecución de cada modelo tendrá el siguiente formato: nombreDataSet\_pcMD.csv, siendo MD una vez más las siglas del modelo de aprendizaje automático. Al igual que en el caso anterior, se creará una nueva carpeta para guardar todos estos ficheros con el formato: nombreDataSet\_pcresults.
 
-La función principal también utilizará dos bucles anidados para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \textit{raspberry\_test.ipynb} ya que como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará (si es necesario) dos procesos, uno ejecutará stress (cuando se desee estresar alguna cpu) y el otro uno de los modelos que se encuentran dentro de la carpeta \textit{"Modelos"}. Todos los ficheros que generan los modelos de aprendizaje son los mismos que en la Raspberry salvo el de Random Forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
+La función principal también utilizará dos bucles anidados para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \texttt{raspberry\_test.ipynb} ya que como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará (si es necesario) dos procesos, uno ejecutará stress (cuando se desee estresar alguna cpu) y el otro uno de los modelos que se encuentran dentro de la carpeta \texttt{"Modelos"}. Todos los ficheros que generan los modelos de aprendizaje son los mismos que en la Raspberry salvo el de Random Forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
 
 
 \section{Experimetos con datos sintéticos}
@@ -1501,7 +1509,7 @@ En cuanto a la precisión (Accuracy) en cada uno de los modelos se obtienen los 
 \label{tab:acc_Occraspberry}
 \end{table}
 
-Como se puede ver en dicha tabla, en este caso la diferencia entre la precisión de los datos de entrenamiento y otros datos que no ha visto hasta entonces es muy similar. Luego los modelos que se están generando son bastente fiables puesto que todos están por encima del 90\% de precisión. Y sabemos que no se están sobreajustando los modelos puesto que en la columna \textit{Accuracy cv}, que es la precisión que se obtiene de la validación cruzada, en todos los casos también es superior al 90\%. Este porcentaje se obtiene de la media de la fila \textit{Mean Folds Accuracy} de los csv con los datos generados en cada modelo.
+Como se puede ver en dicha tabla, en este caso la diferencia entre la precisión de los datos de entrenamiento y otros datos que no ha visto hasta entonces es muy similar. Luego los modelos que se están generando son bastente fiables puesto que todos están por encima del 90\% de precisión. Y sabemos que no se están sobreajustando los modelos puesto que en la columna \texttt{Accuracy cv}, que es la precisión que se obtiene de la validación cruzada, en todos los casos también es superior al 90\%. Este porcentaje se obtiene de la media de la fila \texttt{Mean Folds Accuracy} de los csv con los datos generados en cada modelo.
 
 \subsubsection{Resultados kdd\_cup99}
 \label{subsubsec:kdd_raspberry}
@@ -1534,7 +1542,7 @@ Los resultados obtenidos para el veinte por ciento del data set de Kdd\_cup99 se
 \label{tab:times_kddraspberry}
 \end{table}
 
-Como se puede observar en la tabla~\ref{tab:times_kddraspberry}, los tiempos de ejecución varian entre los diferentes modelos, siendo el de Regresión logística el que menos tiempo tarda en todos los casos como ocurria con el dataSet de Occupancy.
+Como se puede observar en la tabla~\ref{tab:times_kddraspberry}, los tiempos de ejecución varian entre los diferentes modelos, siendo el de Regresión logística el modelo más rápido de todos, tal y como ocurria con el dataSet de Occupancy.
 
 Un vez más, los tiempos de cpu de Regresión logísitca, Máquinas de soporte vectorial (SVM) y Gradient boosting apenas varían entre los diferentes niveles de estrés, esto se debe a las mismas razónes comentadas antes. En el caso de Máquinas de soporte vectorial y Gradient boosting, scikit-learn no admite multi-threading, por lo que a pesar de estresar una, dos o cuatro cpus siempre devolverán el mismo tiempo puesto que estos modelos solo pueden utilizar un único core para ejecutar.\\
 Regresión logística podría utilizar varios cores si se le indica mediante el parámetro n\_jobs. Pero dado que estamos en un problema de clasificación binaria este valor no tendrá ningún efecto al aumentar o disminuir el número de cpus estresadas como vimos en el apartado~\ref{subsubsec:lRegression}. 
@@ -1562,7 +1570,9 @@ Sabiendo esto, los niveles de prueba medio y alto para el modelo de Random fores
 
 En el nivel bajo encontraremos que el modelo solo puede estar usando tres cores para dejarle el cuarto a \textit{stress}. Como hemos visto el tiempo de Cpu es el tiempo total que han usado las tres cpus, luego por cada core el proceso ha tardado unos 276 seg (el resultado de dividir 829.86 seg entre los tres cores). Por lo tanto el tiempo aumenta un poco del estado respecto al nivel Idle.
 
-Otro aspecto de las ejecuciónes en la Raspberry  que será relevante más adelante, es la frecuencia a la que ejecutan los cores. Utilizando el comando \textit{lscpu} de Linux, se puede obtener información relevante sobre los cores como por ejemplo la frecuencia máxima y mínima a la que pueden ejecutar, que en el caso de la Raspberry la mínima será igual a 600MHz y la máxima 1500MHz. 
+Algo destacable de los resultados obtenidos en este dataset (a diferencia del de Occuapncy) es que salvo en el nivel de Idle, el modelo de Gradient Boosting llega a ser más lento que el modelo de Random Forest, modelo que en el anteior dataser era condiferencia el que tardaba más tiempo de todos.
+
+Otro aspecto de las ejecuciones en la Raspberry  que será relevante más adelante, es la frecuencia a la que ejecutan los cores. Utilizando el comando \textit{lscpu} de Linux, se puede obtener información relevante sobre los cores como por ejemplo la frecuencia máxima y mínima a la que pueden ejecutar, que en el caso de la Raspberry la mínima será igual a 600MHz y la máxima 1500MHz. 
 
 Para saber la frecuencia de cada uno de los cores en tiempo real se puede ejecutar el comando:\\
 
@@ -1576,7 +1586,7 @@ Para saber la frecuencia de cada uno de los cores en tiempo real se puede ejecut
 
 Mostrará las frecuencias de ejecución de los cores cada 0.1 segundos. Si utilizamos dicho comando para ver las frecuencias cuando la Raspberry está tanto Idle como estresada podremos ver que todas las cpus están sobre los 1500MHz. Por lo tanto todos los cores siempre están ejecutando a la máxima velocidad que pueden.
 
-Por otra parte los resultados del precisión para este dataSet se pueden observar en la Tabla~\ref{tab:acc_Kddraspberry}. Al igual que en el caso del Room Occupancy dataSet se obtienen muy buenos resultados, estando prácicamente todos cerca del 100\% de Accurancy, y sabiendo que no se están sobreajustando puesto que la precisión de la validación cruzada también es prácticamente el 100\% en todos los casos.
+Por otra parte los resultados del precisión para este dataset se pueden observar en la Tabla~\ref{tab:acc_Kddraspberry}. Al igual que en el caso del Room Occupancy dataSet se obtienen muy buenos resultados, estando prácicamente todos cerca del 100\% de Accurancy, y sabiendo que no se están sobreajustando puesto que la precisión de la validación cruzada también es prácticamente el 100\% en todos los casos.
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
@@ -1599,13 +1609,15 @@ Por otra parte los resultados del precisión para este dataSet se pueden observa
 \label{tab:acc_Kddraspberry}
 \end{table}
 
+Por último añadir que con este dataset se hicieron varias pruebas con distintos valores de porcentajes del dataset total, obteniendo en todos ellos los mismos comportamientos lo único que variaba eran los tiempos totales de ejecución que para porcentajes más pequeños decrementaban y para mayores aumentaban.
+
 \subsection{Portátil}
 \label{subsec:pc_sinteticos}
 
 \subsubsection{Resultados Room Occupancy}
 \label{subsubsec:occ_pc}
 
-Los tiempos de ejecución que empleó el portátil para entrenar los diferentes modelo con este dataSets se encuentran en la Tabla~\ref{tab:times_Occpc}
+Los tiempos de ejecución que empleó el portátil para entrenar los diferentes modelos con este dataset se encuentran en la Tabla~\ref{tab:times_Occpc}
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
@@ -1643,7 +1655,7 @@ Ejecutando el siguiente comando:
 
 Se puede ver la frecuencia de ejecución de todos los cores cada 0.1 segundos. En esta ocasión al observar estas velocidades cuando se ejecutaban los algoritmos de aprendizaje automático se podía ver una variación en los valores dependiendo del nivel de estrés que se estuviese ejecutando. Luego esto explicaría porque en el caso del portátil los tiempos incrementan según aumentan el número de cores estresados. 
 
-Veamos a continuación cual es el Accuracy que consiguen los modelos con este dataSet en esta máquina.
+Veamos a continuación cual es el Accuracy que consiguen los modelos con este dataset en esta máquina.
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
@@ -1699,10 +1711,10 @@ Los resultados de la ejecución del comando stress conforme a estos niveles se p
 \label{tab:times_kddportatil}
 \end{table}
 
-Según esta tabla, Random Forest es el modelo que más tiempo de cpu tarda cuando la máquina se encuentra en estado Idle y se mantienen el resto de pruebas sobre los 300 segundos de ejecución. Esto se debe a las mismas razones dadas en la sección~\ref{subsubsec:kdd_raspberry}. El hecho de que los tiempos aumenten en los modelos monocore se deben a las mismas razones dadas en el dataSet de Occupancy.
+Según esta tabla, Random Forest es el modelo que más tiempo de cpu tarda cuando la máquina se encuentra en estado Idle y se mantienen el resto de pruebas sobre los 300 segundos de ejecución. Esto se debe a las mismas razones dadas en la sección~\ref{subsubsec:kdd_raspberry}. El hecho de que los tiempos aumenten en los modelos monocore se deben a las mismas razones dadas en el dataset de Occupancy.
 
 
-Respecto a la percisión de los modelos generados podemos ver los resultados en la Tabla~\ref{tab:acc_Kddpc}. Que al igual que el resto de resultados obtenidos en el otro dataSet los datos no se sobreajustan y se están consiguiendo resultados de gran precisión en todas las pruebas.
+Respecto a la percisión de los modelos generados podemos ver los resultados en la Tabla~\ref{tab:acc_Kddpc}. Que al igual que el resto de resultados obtenidos en el otro dataset los datos no se sobreajustan y se están consiguiendo resultados de gran precisión en todas las pruebas.
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
@@ -1728,9 +1740,9 @@ Respecto a la percisión de los modelos generados podemos ver los resultados en 
 \subsection{Conclusiones datos sintéticos}
 \label{subsec:conclusion_sinteticos}
 
-Tras haber observado los resultados obtenidos en la ejecución de cada uno de los modelos en diferentes situaciones de estrés en ambos dispositivos con los dos dataSets, se ha podido comprobar qué a pesar de la menor capacidad de la Raspberry, esta es capaz de tener un comportamiento bastante bueno.
+Tras haber observado los resultados obtenidos en la ejecución de cada uno de los modelos en diferentes situaciones de estrés en ambos dispositivos con los dos datasets, se ha podido comprobar qué a pesar de la menor capacidad de la Raspberry, esta es capaz de tener un comportamiento bastante bueno.
 
-Donde más se nota la falta de recursos de la Raspberry es en los tiempos de ejecución. Para los mismos modelos y los mismos datos, tarda más en ejecutar la Raspberry que el portátil. Una de las razones por las que sucede esto es debido a las frecuencias tanto de la Raspberry como del portátil, observandolas vemos que la máxima velocidad a la que pueden ir los cores en la Raspberry es a 1500 MHz mientras que el portátil tiene su máximo en 3600 MHz, más del doble que la Raspberry. Luego esto permite que los procesos en el portátil puedan terminar antes que en la Raspberry siendo uno de los factores por los que la Raspberry puede ser más lenta que el portátil, ya que los cores pueden ir a mayor velocidad.
+Donde más se nota la falta de recursos de la Raspberry es en los tiempos de ejecución. Para los mismos modelos y los mismos datos, tarda más en ejecutar la Raspberry que el portátil. Una de las razones por las que la Raspberry es más lenta que el portátil es debido a las frecuencias con las que ejecutan ambas máquinas. Observandolas vemos que la máxima velocidad a la que pueden ir los cores en la Raspberry es a 1500 MHz mientras que el portátil tiene su máximo en 3600 MHz, más del doble que la Raspberry. Luego esto permite que los procesos en el portátil puedan terminar antes que en la Raspberry siendo uno de los factores por los que la Raspberry puede ser más lenta que el portátil, ya que los cores pueden ir a mayor velocidad.
 
 Otro factor que puede estar ayudando a que la diferencia de tiempos entre ambas máqinas sea mayor es, como cabe esperar, debido a que la Raspberry dispone de la mitad de cores que posee el portátil.
 
@@ -1738,15 +1750,15 @@ Ambos aspectos son los que pueden hacer notoria la gran diferencia de tiempos de
 
 Sin embargo, a parte de la diferencia de los tiempos, todos los modelos tanto entrenando en la Raspberry como en el portátil alcanzaban un Accuracy, Precision y Recall mayor al 90\% prácticamente siempre en todos los casos.
 
-\section{Experimentos con los datos sensados}
+\section{Experimentos con los datos capturados por sensores}
 \label{sec:exp_dSensados}
 
-Tal y como se comentó en el apartado~\ref{sec:mi_dataSet} se generó un dataSet mediante los datos proporcionados por los sensores. El dataSet que que se generó de esta forma se denomina como occup\_detec\_2h\_Clean.csv, en total contiene 9745 líneas de datos que equivalen a unas dos horas y cuarenta minutos de recolección de datos.
+Tal y como se comentó en el apartado~\ref{sec:mi_dataSet} se generó un dataset mediante los datos proporcionados por los sensores. El dataset que que se generó de esta forma se denomina como occup\_detec\_2h\_Clean.csv, en total contiene 9745 líneas de datos que equivalen a unas dos horas y cuarenta minutos de recolección de datos.
 
 \subsection{Raspberry}
 \label{subsec:rasp_sensados}
 
-Los resultados de los tiempos de ejecución para el dataSet generado por medio de los datos sensados se pueden ver en la Tabla~\ref{tab:times_sensrasp}.
+Los resultados de los tiempos de ejecución para el dataset generado por medio de los datos, obtenidos de los sensores, se pueden ver en la Tabla~\ref{tab:times_sensrasp}.
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
@@ -1770,13 +1782,13 @@ Los resultados de los tiempos de ejecución para el dataSet generado por medio d
     \hline
     \end{tabular}
 \end{adjustbox}
-\caption{Resultados de los tiempos de ejecución para dataSet sensado en la Raspberry.}
+\caption{Resultados de los tiempos de ejecución para Mi dataSet en la Raspberry.}
 \label{tab:times_sensrasp}
 \end{table}
 
-Como se puede observar, se ontiene un comportamiento en los tiempos de cpu bastane similar a lo visto en los anteriores dataSets ejecutados en la Raspberry.
+Como se puede observar, se ontiene un comportamiento en los tiempos de cpu bastane similar a lo visto en los anteriores datasets ejecutados en la Raspberry.
 
-Mientras que la precisión obtenida por medio de este dataSet se encuentra en la Tabla~\ref{tab:acc_sensrasp}.
+Mientras que la precisión obtenida por medio de este dataset se encuentra en la Tabla~\ref{tab:acc_sensrasp}.
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
@@ -1795,16 +1807,16 @@ Mientras que la precisión obtenida por medio de este dataSet se encuentra en la
     \hline
     \end{tabular}
 \end{adjustbox}
-\caption{Resultados de la precisión de los modelos para dataSet sensado en la Raspberry.}
+\caption{Resultados de la precisión de los modelos para Mi dataSet en la Raspberry.}
 \label{tab:acc_sensrasp}
 \end{table}
 
-A pesar de ser el dataSet con el menor número de muestras de todos los que se han visto en este proyecto, la precisión que alcanzan los modelos sigue siendo bastante alta.
+A pesar de ser el dataset con el menor número de muestras de todos los que se han visto en este proyecto, la precisión que alcanzan los modelos sigue siendo bastante alta.
 
 \subsection{Portátil}
 \label{subsec:pc_sensados}
 
-Los resultados de los tiempos de ejecución para el dataSet generado por medio de los datos sensados se pueden ver en la Tabla~\ref{tab:times_senspc}.
+Los resultados de los tiempos de ejecución para el dataset generado por medio de los datos obtenidos de los sensores se pueden ver en la Tabla~\ref{tab:times_senspc}.
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
@@ -1828,11 +1840,11 @@ Los resultados de los tiempos de ejecución para el dataSet generado por medio d
     \hline
     \end{tabular}
 \end{adjustbox}
-\caption{Resultados de los tiempos de ejecución para dataSet sensado en la Raspberry.}
+\caption{Resultados de los tiempos de ejecución para Mi dataSet en la Raspberry.}
 \label{tab:times_senspc}
 \end{table}
 
-Mientras que la precisión obtenida por medio de este dataSet se encuentra en la Tabla~\ref{tab:acc_senspc}.
+Mientras que la precisión obtenida por medio de este dataset se encuentra en la Tabla~\ref{tab:acc_senspc}.
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
@@ -1851,12 +1863,43 @@ Mientras que la precisión obtenida por medio de este dataSet se encuentra en la
     \hline
     \end{tabular}
 \end{adjustbox}
-\caption{Resultados de la precisión de los modelos para dataSet sensado en la Raspberry.}
+\caption{Resultados de la precisión de los modelos para Mi dataSet en la Raspberry.}
 \label{tab:acc_senspc}
 \end{table}
 
-\subsection{Conclusiones datos sensados}
+\subsection{Conclusiones de los datos capturados por los sensores}
 \label{subsec:conclusiones_sensados}
+
+Con los resutltados obtenidos podemos llegar a las mismas conclusiones que en el caso de los datos sintéticos, a pesar de las limitaciones que tiene la Raspberry esta es capaz de llevar a cabo perfectamente las tareas encomendadas.
+
+Además, gracias a los resultados obtenidos podemos afirmar que la Raspberry tiene suficiente capacidad para poder ir reentrenando periodicamente los modelos. De forma que periodicamente se capturase durante cierto periodo de tiempo los datos proporcionados por los sensores, una vez terminado ese intervalo de tiempo se guardan los datos recogidos en memoria local y se vuelve a entrenar al modelo con ellos. Con cada reentrenamiento se conseguiría cada vez un comportamiento más preciso y por lo tanto mucho más fiable.
+
+Por lo tanto, sabiendo esto podemos conseguir hacer que la Raspberry adquiera datos, los almacene, procese y analice de forma completamente autónoma. Con esto se podrian implementar muchas aplicaciones totalmente autónomas en las que la Raspberry tomando medidas el entorno pueda reaccionar correctamente a él.
+
+\section{Conclusión final}
+\label{sec:conclusion_final}
+
+Como se ha expuesto a lo largo de esta memoria, el objteivo del trabajo era poder determinar si la Raspberry podia encargarse de realizar tareas de Machine Learning, de la misma forma que es capaz de hacerlo un dispositivo de mayor capacidad. Gracias a los resultados obtenidos en esta investigación se puede afirmar que la Raspberry Pi 4B tiene potencial suficiente como para poder trabajar con estos modelos.
+
+Y no solo entrenarlos o hacer pruebas con ellos, sino que también puede recoger datos y generar o reentrear modelos de forma totalmente autónoma, como se ha comentado anteriormente. Esto amplia aún más las posiblidades de este pequeño dispositivo.
+
+Luego, a pesar de las limitaciones notables de la Raspberry ésta no tiene nada que envidiar a un portátil, puesto que es capaz de cumplir perfectamente con los objetivos marcados aún siendo un dispositivo bastante más pequeño, de menor coste y, por supuesto, de menor capacidad.
+
+Esto abre un abanico de infinitas posibilidades en las que se puede utilizar la Raspberry como dispositivo para poder obtener información e interactuar con el entorno de manera intligente y completamente autónoma.
+
+\subsection{Conclusiones finales de cada uno de los modelos}
+
+Como conclusiones finales de cada uno de los modelos de Machine Learning ejecutado en ambas máquinas podemos mencionar los siguientes aspectos.
+
+El modelo de Regresión Logísitica es el modelo que más tarda en terminar la ejecución en comparación con el portátil, siendo un 85\% de media más lento que éste en condiciones normales (nivel Idle). A pesar de que es el modelo que más rápido ejecuta en el portátil, no sucede lo mismo en la Raspberry lo que hace que se termine convirtiendo en el modelo más lento en comparación con el resto. 
+
+Maquinas de Soporte Vectorial es el modelo más rápido en la Raspberry, ya que siempre tarda menos en ejecutar que el de RL pero no en el portátil. En relación con los tiempos del portátil, este modelo es un 79\% de media más lento que lo que tarda en ejecutar en la máquina de mayor capacidad.
+
+En cuanto al mododelo de Gradient Boosting es el tercer modelo más lento tanto en la Raspberry como en el portátil, siendo un 77\% de media más lento en la Raspberry en condiciones normales.
+
+Por último, Random Forest es para ambas máquinas el modelo más lento con diferencia. También es el modelo en el que el porcentaje de lentitud de la Raspberry es menor, teniendo una media de 67\%.
+
+Sin embargo, algo que tienen en común todos los modelos es la gran precisión con los que son capaces de predecir mantiendo siempre un Accuracy, Cross-validation, Recall y Precisión sobre el 90\%. Por lo que podemos confiar en que ante nuevas entradas de datos los modelos serían capaces de poder clasificar correctamente los datos.
  
 \section{Incorporación de código en la memoria}
 
@@ -1931,6 +1974,7 @@ como se muestra a continuación con un ejemplo real.
 \chapter{Conclusiones y trabajos futuros}
 \label{chap:conclusiones}
 
+En este capítulo se exponen las conclusiones finales de este tranajo de fin de grado, además de posibles aicaciones futuras.
 
 \section{Consecución de objetivos}
 \label{sec:consecucion-objetivos}
@@ -1950,7 +1994,7 @@ Para eso, en Linux tenemos aspell, que se ejecuta de la siguiente manera desde l
 \section{Aplicación de lo aprendido}
 \label{sec:aplicacion}
 
-Aquí viene lo que has aprendido durante el Grado/Máster y que has aplicado en el TFG/TFM. Una buena idea es poner las asignaturas más relacionadas y comentar en un párrafo los conocimientos y habilidades puestos en práctica.
+A continuación hago mención de algunas asignaturas que he cursado durante mi grado que me han permitido desarrollar y elaborar este Trabajo de Fin de Grado.
 
 \begin{enumerate}
     \item \textbf{Fundamentos de la programación}. Fue el primer contacto que tuve con el mundo de la programación, en la que pude aprender lo básico de la programación mediante Python.
@@ -1965,17 +2009,26 @@ Aquí viene lo que has aprendido durante el Grado/Máster y que has aplicado en 
 \section{Lecciones aprendidas}
 \label{sec:lecciones_aprendidas}
 
-Aquí viene lo que has aprendido en el Trabajo Fin de Grado/Máster.
+Gracias a este Trabajo de Fin de Grado he adquirido nuevos conocimientos, como son:
 
 \begin{enumerate}
-  \item Aquí viene uno.
-  \item Aquí viene otro.
-\end{enumerate}
+  \item Desarrollar diferentes tipos de modelos de aprendizaje automático utilizando la librería \texttt{scikit-learn}.
+  \item Saber como tratar diferentes tipos de dataset para facilitar y mejorar el entrenamiento de los modelos de Machine Learning.
+  \item He podido comprender mejor el funcionamiento interno de la Raspebrry.
+  \item Preparando la página web del proyecto he podido aprender los conocimientos básicos para poder crear una página web por medio de HTML y cómo utilizar GitHub Pages como servidor.
+\end{enumerate} 
 
 
 \section{Trabajos futuros}
 \label{sec:trabajos_futuros}
 
+Por medio de este trabajo hemos podido vislumbrar las capacidades que tiene la Raspberry para poder realizar tareas de Machine Learning. Sabiendo esto se podrían desarrollar infinitos proyectos aplicando estos algoritmos. A continuación se hace mención a posibles trabajos futuros que se podrían realizar con estos conocimientos:
+
+\begin{itemize}
+    \item Desarrollar una aplicaicón práctica de IoT utilizando la Raspberry como punto de recolección, procesado de datos y entrenamiento/reentrenamiento de los datos. Con las predicciones obtenidas de los modelos o bien se podría hacer que la Raspberry interactuase directamente con el entorno por medio de algunos actuadores o bien comunicar el resultado de la predicción a otros dispositivos IoT para ampliar el alcance y la repercusión de los datos obtenidos.
+    
+    \item 
+\end{itemize}
 Ningún proyecto ni software se termina, así que aquí vienen ideas y funcionalidades que estaría bien tener implementadas en el futuro.
 
 Es un apartado que sirve para dar ideas de cara a futuros TFGs/TFMs.
