@@ -394,13 +394,15 @@ la ayuda prestada\ldots
 %\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
 \markboth{RESUMEN}{RESUMEN} % encabezado
 
-Este Trabajo de Fin de Grado tiene como objetivo investigar las características y capacidades del dispositivo Raspberry Pi para poder desarrollar tareas de Machine Learning.
+Este Trabajo de Fin de Grado tiene como objetivo poder valorar el dispositivo de capacidades ruducidas, Raspberry Pi para poder determinar si tiene la potencia suficiente como para poder desarrollar tareas de Machine Learning. Este conocimiento sería muy útil para poder utilizar este dispositivo tan popular en diferentes tipos de aplicaciones tanto para Machine Learning como de IoT pudiendo facilitar, por ejemplo, la implementación de casas y ciudades inteligentes (Smart cities) para crear ciudades más sostenibles, conectadas y optimizadas, entre otras muchas aplicaciones que se le pueden dar a esto.
 
-Este conocimiento sería muy útil para poder desarrollar diferentes tipos de aplicaciones tanto para Machine Learning como de IoT pudiendo facilitar la implementación de casas y ciudades inteligentes (Smart cities) para crear ciudades más sostenibles, conectadas y optimizadas.
+Para ello, entre otras librerías, se utilizará \texttt{scikit-learn} para creación de los modelos. En total se crearán cuatro modelos diferentes de aprendizaje automático supervisado, que serán entrenados con tres datasets diferentes. Para poder validar la Raspberry como dispositivo capaz de realizar este tipo de tareas, se le someterá a varias pruebas durante el entrenamiento de los modelos. De estas pruebas se obtendrán resultados que nos ayudarán a valorar las capacidades de la Raspberry y dar una respuesta a la duda que se plantea en este proyecto. 
+
+Y no solo se pondrá a prueba su capacidad de entrenar modelos, sino que también se comprobará si es lo suficientemente potente como para poder generar su propio dataset, por medio de información recogida por los sensores. Y entrenar los modelos mencionados con este nuevo dataset.
 
 ...
 
-El proyecto está desarrollado de forma que cualquiera, con los componentes necesarios, pueda realizar las pruebas sin ningún tipo de dificultad.
+El proyecto está desarrollado de forma que cualquiera, con los componentes hardware necesarios, se pueda realizar las pruebas sin ningún tipo de dificultad.
 
 Aquí viene un resumen del proyecto.
 Ha de constar de tres o cuatro párrafos, donde se presente de manera clara y concisa de qué va el proyecto. 
@@ -466,15 +468,26 @@ As it is the translation of the ``Resumen'', which is supposed to be written at 
 \label{sec:intro}
 \pagenumbering{arabic} % para empezar la numeración de página con números
 
-Una de herraminetas más importantes que nos proporcionan los algoritmos a día de hoy es el Machine Learning (o Aprendizaje Automático en español), cuyo origen se encuentra en la Inteligencia Artificial. Por medio de una gran cantidad de datos, los ordenadores haciendo uso de estos algoritmos pueden llegar a identificar patrones y elaborar nuevas predicciones, sin ser específicamente programados para ello. Ofreciendo una gran variedad de oportunidad y posibilidades a la hora de aplicarlo.
+Una de las herraminetas más importantes que nos proporcionan las ciencias computacionales a día de hoy es el Machine Learning (o Aprendizaje Automático en español), cuyo origen se encuentra en la Inteligencia Artificial. Por medio de una gran cantidad de datos los ordenadores, haciendo uso del aprendizaje automático, pueden llegar a identificar patrones y elaborar nuevas predicciones, sin ser específicamente programados para ello. Ofreciendo una gran variedad de oportunidades y posibilidades a la hora de realizar aplicaciones por medio dme estos métodos. Muchas de estas aplicaciones las podemos observar en nuesto día a día como por ejemplo en las redes sociales, sugiriendonos contenido que puede ser de nuestro interés, en el correo electrónico para proteger la cuenta de correos sospechosos o fraudulentos, en los videojuegos para dar vida a los bots... Y por supuesto todo esto ayuda a desarrollar la tecnología de un futuro no tan lejano como pueden ser los coches autónomos o el desarrollo de robots más inteligentes.
 
-Dentro del mundo del Machine Learning se puede definir un subcampo de investigación denominado como Tiny Machine Learning, cuyo objetivo es utilizar los algoritmos de aprendizaje automático en dispositivos más baratos, y por lo tanto con recursos y energía mucho más limitados que una máquina estándar. Esto supone un reto puesto que el proceso de de entrenamiento de un modelo de ML es un proceso costoso a nivel de recursos, poniendo en aprieto a este tipo de disitivos, y más si además se pretende que dicho dispositvo también recoja y procese los datos antes de entrenar con ellos.
+Sin embargo, la gran cantidad de recursos y consumo de energía que necesitan estos modelos para poder realizar las predicciones provoca que no se pueda llegar a implementar estos algoritmos en cualquier dispositivo. Haciendo que muchas aplicaciones tengan que ser descartadas directamente por no cumplir ciertos requisitos mínimos para que un modelo de aprendizaje automático pueda ser entrenado. De este problema nace lo que se conoce como Tiny Machine Learning.
 
-...
+Dentro del mundo del Machine Learning se puede definir un subcampo de investigación denominado como Tiny Machine Learning, cuyo objetivo es utilizar los algoritmos de aprendizaje automático en dispositivos más baratos, y por lo tanto con recursos, capacidad de almacenamiento y energía mucho más limitados que una máquina estándar. Esto supone un reto puesto que el proceso de entrenamiento de un modelo de ML es un proceso costoso a nivel de recursos, poniendo en un aprieto a los disitivos que lo quieran ejecutar, y más si además se pretende que dicho dispositvo también recoja y procese los datos antes de entrenar con ellos para poder obtener una respuesta inmediata en vez de tener que esperar a que los datos se envien y procesen en la nube.
 
-Es por ello que, en este trabajo se buscará comprobar la capacidad de uno de estos pequeños dispositivos para realizar este tipo de tares. Concretamente se utilizará el dispositivo Raspberry Pi 4B por ser uno de los más populares a día de hoy por su coste y posibilidades que ofrece.
+Podemos encontrar aplicaciones de TinyML tan comunes como "OK Google" o "Alexa", además de otras aplicadas a diferentes campos como pueden ser la agricultura, por ejemplo detectando si hay alguna planta enferma, en el mantenimiento industrial, prediciendo anticipadamente fallos en las máquinas, o también en la atención médica, un ejemplo de esto es el proyecto "Solar Scare Mosquito" en el cual se detectan las condiciones de reproducción de los mosquitos, que pueden propagar enfermedades, y remueve el agua para evitar que se reproduzcan.
 
-y este trabajo se quiere enfocar concretamente en el Tiny Machine Learning. Es uno de las partes del aprendizaje automático con más creciemiento tanto en tecnologías como en aplicaciones. La diferencia entre ML y TinyML es el dispositivo donde se ejecutan los algoritmos de Aprendizaje automático, siendo 
+Luego el objetivo del TinyML es llevar los modelos de aprendizaje automátivo al extremo, utilizando dispositivos basados en microcontroladores alimentados por bateria para realizar tareas de ML con capacidad de respuesta en tiempo real. Pudiendonos beneficiar de su gran portabilidad, bajo consumo y mayor seguridad puesto que no es necesario enviar los datos a la nube, lo que puede ser muy relevante cuando se trabaja en aplicaciones de IoT.
+
+Los dispositivos de IoT permiten monitorear continuamente un entorno utilizando pequeños sensores. Estos dispositivos están conectados a una red por medio de la cual comparten continuamente la información obtenida. Añadiendo ML a un dispositivo de estas características permite detectar patrones en todos esos datos recogidos, pudiendo desarrollar una amplia gama de aplicaciones inteligentes y experiencias de usuario mejoradas. Dado que estos dispositivos son normalemente también de características reducidas, es clave el uso de técnicas de TinyML para su desarrollo.
+
+Actualmente hay unos 250 billones de dispositivos embebidos activos en el mundo. Estos dispositivos están continuamente recogiendo grandes cantidades de datos, por lo que procesar toda esa información en la nube representa todo un deafío. Tiny Machine Learning podria poner solución a toda esa cantidad de datos que se están "desperdiciando" al no poder se tratados ni procesados para poder crear nuevas aplicaciones en diferentes tipos de insutrias.
+
+Por lo que debido a la gran importancia que están adquiriendo todos estos elementos, es importante conocer qué dispositivos cumplen las caracterísitcas necesarias para poder desarrollar este tipo de tareas. Es por ello que en este TFG se comprobará la capacidad de uno de los dispositivos de capacidades reducidas más populares del mercado, la Raspberry Pi 4B. 
+
+Para ello y como veremos a lo largo de esta memoria se pondrá a prueba a la Raspberry tratando de generar diferentes modelos de aprendizaje automático, utilizando diversos datasets con diferentes cantidades de datos. Según su comportamiento podremos concluir si verdaderamente esta máquina esta preparada para realizar este tipo de tareas o no.
+
+Además se tratará de ir un paso más allá con este dispositivo, no solo generando modelos, sino también comprobando su capacidad de poder convertirse en un dispositivo IoT recogiendo información del entorno para tratarlo y posteriormente entrenar con todos esos datos.
+
 
 En este capítulo se introduce el proyecto.
 Debería tener información general sobre el mismo, dando la información sobre el contexto en el que se ha desarrollado.
@@ -483,64 +496,6 @@ No te olvides de echarle un ojo a la página con los cinco errores de escritura 
 
 Aconsejo a todo el mundo que mire y se inspire en memorias pasadas.
 Las memorias de los proyectos que he llevado yo están (casi) todas almacenadas en mi web del GSyC\footnote{\url{https://gsyc.urjc.es/~grex/pfcs/}}.
-
-\subsection{Estilo}
-\label{subsec:estilo}
-
-Recomiendo leer los consejos prácticos sobre escribir documentos científicos en \LaTeX \ de Diomidis Spinellis\footnote{\url{https://github.com/dspinellis/latex-advice}}.
-
-Lee sobre el uso de las comas\footnote{\url{http://narrativabreve.com/2015/02/opiniones-de-un-corrector-de-estilo-11-recetas-para-escribir-correctamente-la-coma.html}}. 
-Las comas en español no se ponen al tuntún.
-Y nunca, nunca entre el sujeto y el predicado (p.ej. en ``Yo, hago el TFG'' sobre la coma).
-La coma no debe separar el sujeto del predicado en una oración, pues se cortaría la secuencia natural del discurso.
-No se considera apropiado el uso de la llamada coma respiratoria o \emph{coma criminal}.
-Solamente se suele escribir una coma para marcar el lugar que queda cuando omitimos el verbo de una oración, pero es un caso que se da de manera muy infrecuente al escribir un texto científico (p.ej. ``El Real Madrid, campeón de Europa'').
-
-A continuación, viene una figura, la Figura~\ref{figura:foro_hilos}. 
-Observarás que el texto dentro de la referencia es el identificador de la figura (que se corresponden con el ``label'' dentro de la misma). 
-También habrás tomado nota de cómo se ponen las ``comillas dobles'' para que se muestren correctamente. 
-Nota que hay unas comillas de inicio (``) y otras de cierre (''), y que son diferentes.
-Volviendo a las referencias, nota que al compilar, la primera vez se crea un diccionario con las referencias, y en la segunda compilación se ``rellenan'' estas referencias. 
-Por eso hay que compilar dos veces tu memoria.
-Si no, no se crearán las referencias.
-
- \begin{figure}
-    \centering
-    \includegraphics[bb=0 0 800 600, width=12cm, keepaspectratio]{img/foro1}
-    \caption{Página con enlaces a hilos}
-    \label{figura:foro_hilos}
- \end{figure}
-
-A continuación un bloque ``verbatim'', que se utiliza para mostrar texto tal cual.
-Se puede utilizar para ofrecer el contenido de correos electrónicos, código, entre otras cosas.
-
-{\footnotesize
-\begin{verbatim}
-    From gaurav at gold-solutions.co.uk  Fri Jan 14 14:51:11 2005
-    From: gaurav at gold-solutions.co.uk (gaurav_gold)
-    Date: Fri Jan 14 19:25:51 2005
-    Subject: [Mailman-Users] mailman issues
-    Message-ID: <003c01c4fa40$1d99b4c0$94592252@gaurav7klgnyif>
-    Dear Sir/Madam,
-    How can people reply to the mailing list?  How do i turn off
-    this feature? How can i also enable a feature where if someone
-    replies the newsletter the email gets deleted?
-    Thanks
-    From msapiro at value.net  Fri Jan 14 19:48:51 2005
-    From: msapiro at value.net (Mark Sapiro)
-    Date: Fri Jan 14 19:49:04 2005
-    Subject: [Mailman-Users] mailman issues
-    In-Reply-To: <003c01c4fa40$1d99b4c0$94592252@gaurav7klgnyif>
-    Message-ID: <PC173020050114104851057801b04d55@msapiro>
-    gaurav_gold wrote:
-    >How can people reply to the mailing list?  How do i turn off
-    this feature? How can i also enable a feature where if someone
-    replies the newsletter the email gets deleted?
-    See the FAQ
-    >Mailman FAQ: http://www.python.org/cgi-bin/faqw-mm.py
-    article 3.11
-\end{verbatim}
-}
 
 %%-- Objetivos del  proyecto
 %%-- Si la sección anterior ha quedado muy extensa, se puede considerar convertir
@@ -553,7 +508,7 @@ Se puede utilizar para ofrecer el contenido de correos electrónicos, código, e
 \label{sec:objetivo-general} % identificador de subsección (no se muestra, es para poder referenciarla)
 
 
-El objetivo de este Trabajo de Fin de Grado es comprobar la capacidad y eficiencia de una Raspberry Pi 4B para entrenar modelos de aprendizaje automático.\\
+El objetivo de este Trabajo de Fin de Grado es evaluar la capacidad y eficiencia de la Raspberry Pi 4B para entrenar modelos de aprendizaje automático. Para ello se hará uso de diversos datasets con diferentes cantidades de datos para observar el comportamiento ante diferentes entradas de datos. Y de esta forma que podamos concluir si este dispositivo puede ser empleado para desarrollar tareas de Machine Learning e IoT o no.
 
 Aquí vendría el objetivo general en una frase:
 Mi Trabajo Fin de Grado/Master consiste en crear de una herramienta de análisis de los comentarios jocosos en repositorios de software libre alojados en la plataforma GitHub.
@@ -569,38 +524,40 @@ Los objetivos específicos se pueden entender como las tareas en las que se ha d
 Lo mejor suele ser utilizar una lista no numerada, como sigue:
 
     \begin{itemize}
-        \item Un objetivo específico.
-        \item Otro objetivo específico.
-        \item Tercer objetivo específico.
-        \item \ldots
+        \item Generar diferentes modelos de aprendizaje automático utilizando la Raspberry.
+        \item Poner a prueba los algoritmos que entrenan los modelos, de forma que se pueda comprobar el comportamiento de la Raspberry bajo diferentes condiciones.
+        \item Crear y poner a prueba los mismos modelos de aprendizaje automático, pero esta vez en un portátil.
+        \item Crear un dataset propio para entrenar los modelos, utilizando varios sesnores.
     \end{itemize}
 
 \section{Planificación temporal}
 \label{sec:planificacion-temporal}
 
-\begin{comment}
-A inicios de este curso, cuando tuve que meditar sobre de qué tema queria realizar mi TFG me dí cuenta de que uno de los que más me habían gustado durante la carrera había sido Machine Learning, que justo había comenzado a verlo durante este primer cuatrimestre. Es un tema que me llama mucho la atención debido a la infinidad de aplicaciones que le veo y de la capacidad que hay detrás de todos esos algoritmos para poder facilitar y mejorar la vida de las personas.
+A inicios de este curso, cuando tuve que meditar sobre de qué tema queria realizar mi TFG, me dí cuenta de que uno de los que más me habían gustado durante la carrera había sido Machine Learning, que justo había comenzado a verlo durante ese primer cuatrimestre. Es un tema que me llama mucho la atención debido a la infinidad de aplicaciones que le veo y de la capacidad que hay detrás de todos esos algoritmos para poder facilitar y mejorar la vida de las personas.
 
 Sin embargo, no tenía del todo claro de qué forma enfocarlo. Fue entonces cuando descubrí que Katia junto con Felipe ofrecian un proyecto sobre este tema y no dudé en informarme sobre exactamente en qué estaba enfocado el trabajo. Después de contactar con Katia y proponerme varias perspectivas, me decanté por el enfoque de Tiny Machine Learning debido a que me llamaba la atención la posibilidad de poder observar las capacidades de la Raspberry para realizar este tipo de tareas ya que, como se verá en los siguientes capitulos, es un dispositivo económico con el que se podrian amplificar las utilidad de estas técnicas.
 
-Una vez acordado el tema lo primero que hice, a recomendación de Katia, fue informarme a cerca cómo se podian aplicar técnicas de Machine Learning en la Raspberry Pi, el dispositivo de capacidades reducidas qaue me habian propuesto utilizar en este trabajo. En Noviembre me entregaron una caja con todo el material necesario para montar y utilizar la Raspberry, con lo que el primer objetivo fue prepararla y comprobar que todo funcionase correctamente creando algoritmos simples como encender y apagar un led. Además esta caja también traia tres sensores diferentes para utilizar con la Raspberry, en concreto venía una fotoresistencia, un sensor de humedad y un sensor de temperatura, con los que realicé varias pruebas para verificar que funcionaban correctamente.
+Una vez acordado el tema lo primero que hice, a recomendación de Katia, fue informarme a cerca cómo se podian aplicar técnicas de Machine Learning en la Raspberry Pi, el dispositivo de capacidades reducidas que me habian propuesto utilizar en este trabajo. En Noviembre me entregaron una caja con todo el material necesario para montar y utilizar la Raspberry, con lo que el primer objetivo fue prepararla y comprobar que todo funcionase correctamente creando por ejemplo algoritmos simples como encender y apagar un led. Además esta caja también traia tres sensores diferentes para utilizar con la Raspberry, en concreto venia una fotoresistencia, un sensor de humedad y un sensor de temperatura, con los que realicé varias pruebas para verificar que funcionaban correctamente.
 
 A partir de este momento y tras la primera tutoría con ambos profesores comenzó el proceso de instalación y preparación del entorno para poder implementar algoritmos de aprendizaje automático, en el que se tuvieron que superar algunas dificultades. Con el entorno instalado se procedió a implementar y realizar las pruebas oportunas.
-\end{comment}
 
-Es conveniente que incluyas una descripción de lo que te ha llevado realizar el trabajo.
-Hay gente que añade un diagrama de GANTT.
-Lo importante es que quede claro cuánto tiempo has consumido en realizar el TFG/TFM 
-(tiempo natural, p.ej., 6 meses) y a qué nivel de esfuerzo (p.ej., principalmente los 
-fines de semana).
+Primero se comenzó creando los modelos de aprendizaje automático, en un principio eran tres pero más adelante se añadió un nuevo modelo de aprendizaje. Una vez que el código de los modelos estaba implementado fue momento de comenzar a realizar las pruebas para observar sus comportamientos. Estas pruebas duraron varios meses puesto que no terminaba de quedar del todo claro cómo estaba reaccionando la Raspberry ante las diferentes pruebas, es por ello que durante este periodo se utilizaron diferentes datasets para seguir haciendo más pruebas y entender lo que estaba sucediendo.
+
+Una vez esclarecidas las dudas se trató de ir más allá haciendo que la Raspberry generase su propio dataset y entrenase con él. Este fue el último paso antes de centrarme completamente en la redacción de la memoria. A lo largo de los meses, además de seguir avanzando con la investigación, también trataba de ir redactando poco a poco la memoria.
+
+A pesar de que el desarrollo de este trabajo comenzó en Noviembre no fue hasta finalizar el primer cuatrimestre cuando le empecé a dedicar como mínimo hora y media o dos horas todos los días, salvo algunas escepciones. Siendo los fines de semana cuando le dedicaba más tiempo por no tener ninguna otra ocupación. En la Figura~\ref{fig:diagrama_gantt} se puede observar un diagrama de Gantt donde se puede visualizar mejor el desarrollo del proyecto.
+
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=17cm, keepaspectratio]{img/diagrama_GANTT.png}
+  \caption{Diagrama de Gantt donde se representa la planificación temporal llevada a cabo en este proyecto.}\label{fig:diagrama_gantt}
+\end{figure}
 
 \section{Estructura de la memoria}
 \label{sec:estructura}
 
-Por último, en esta sección se introduce a alto nivel la organización del resto del documento
-y qué contenidos se van a encontrar en cada capítulo.
-
-l inicio de la memoria se puede leer un resumen de la misma que indica en qué consiste el trabajo desarrollado. A continuación se sitúan loas agradecimientos además de tres índices, el general, el de las figuras y por último el índice de fragmentos de código. Por último, se encuentran los 6 capítulos en los que se divide la memoria.
+Al inicio de esta memoria se puede leer un resumen de la misma que indica en qué consiste el trabajo desarrollado. A continuación se sitúan los agradecimientos además de tres índices, el general, el de las figuras y por último el índice de fragmentos de código. Por último, se encuentran los 6 capítulos en los que se divide la memoria.
 
 \begin{itemize}
 
@@ -622,53 +579,12 @@ l inicio de la memoria se puede leer un resumen de la misma que indica en qué c
 \chapter{Estado del arte}               %% a.k.a "Tecnologías utilizadas"
 \label{chap:tecnologias}
 
-Descripción de las tecnologías que utilizas en tu trabajo. 
-Con dos o tres párrafos por cada tecnología, vale. 
-Se supone que aquí viene todo lo que no has hecho tú.
-
-Puedes citar libros, como el de Bonabeau et al., sobre procesos estigmérgicos~\cite{bonabeau:_swarm}. 
-Me encantan los procesos estigmérgicos.
-Deberías leer más sobre ellos.
-Pero quizás no ahora, que tenemos que terminar la memoria para sacarnos por fin el título.
-Nota que el \~ \ añade un espacio en blanco, pero no deja que exista un salto de línea. 
-Imprescindible ponerlo para las citas.
-
-Citar es importantísimo en textos científico-técnicos. 
-Porque no partimos de cero.
-Es más, partir de cero es de tontos; lo suyo es aprovecharse de lo ya existente para construir encima y hacer cosas más sofisticadas.
-¿Dónde puedo encontrar textos científicos que referenciar?
-Un buen sitio es Google Scholar\footnote{\url{http://scholar.google.com}}.
-Por ejemplo, si buscas por ``stigmergy libre software'' para encontrar trabajo sobre software libre y el concepto de \emph{estigmergia} (¿te he comentado que me gusta el concepto de estigmergia ya?), encontrarás un artículo que escribí hace tiempo cuyo título es ``Self-organized development in libre software: a model based on the stigmergy concept''.
-Si pulsas sobre las comillas dobles (entre la estrella y el ``citado por ...'', justo debajo del extracto del resumen del artículo, te saldrá una ventana emergente con cómo citar.
-Abajo a la derecha, aparece un enlace BibTeX.
-Púlsalo y encontrarás la referencia en formato BibTeX, tal que así:
-
-\clearpage
-{\footnotesize
-\begin{minted}{bibtex}
-@inproceedings{robles2005self,
-  title={Self-organized development in libre software:
-         a model based on the stigmergy concept},
-  author={Robles, Gregorio and Merelo, Juan Juli\'an 
-          and Gonz\'alez-Barahona, Jes\'us M.},
-  booktitle={ProSim'05},
-  year={2005}
-}
-\end{minted}
-}
-
-Copia el texto en BibTeX y pégalo en el fichero \texttt{memoria.bib}, que es donde están las referencias bibliográficas.
-Para incluir la referencia en el texto de la memoria, deberás citarlo, como hemos hecho antes con~\cite{bonabeau:_swarm}, lo que pasa es que en vez de el identificador de la cita anterior (bonabeau:\_swarm), tendrás que poner el nuevo (robles2005self).
-Compila el fichero \texttt{memoria.tex} (\texttt{pdflatex memoria.tex}), añade la bibliografía (\texttt{bibtex memoria.aux}) y vuelve a compilar \texttt{memoria.tex} (\texttt{pdflatex memoria.tex})\ldots y \emph{voilà} ¡tenemos una nueva cita~\cite{robles2005self}!
-
-También existe la posibilidad de poner notas al pie de página, por ejemplo, una para indicarte que visite la página del GSyC\footnote{\url{http://gsyc.es}}.
-
-En este apartado se reaizará una breve descripción del dispositivo principal, que es motivo de esta investigación. También se expondrá todo el software que se ha necesitado instalar para poder implementar los modelos y ponerlos a prueba.
+En este capítulo se describen todas las tecnologías utilizadas en el desarrollo de este proyecto.
 
 \section{Machine Learning}
 \label{sec:machine_learning}
 
-El objetivo princicpal de este trabajo de investigación es conocer si la Raspberry es un dispositivo lo suficientemente potente para realizar tareas de Machine learning es por ello que primero debemos tener claros estos conceptos para poder entender el proyecto.
+Para saber si la Raspberry es un dispoditivo lo suficientemente potente para realizar tareas de Machine Learning primero debemos tener claros estos conceptos para poder entender el proyecto.
 
  Machine Learning o aprendizaje automático, es una disciplina del campo de la Inteligencia Artificial que permite a las máquinas aprender sin ser explícitamente programadas para ello. Para aprender utilizan algoritmos que permiten a los ordenadores identificar los patrones que existen en grandes cantidades de datos y utilizar estos patrones para poder elaborar predicciones del futuro. 
  
