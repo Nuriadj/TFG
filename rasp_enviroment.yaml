@@ -1,0 +1,15 @@
+name: jupiter
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - ipython
+  - jupyter
+  - jupyterlab
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
+  - scikit-learn
+  - smbus2
+prefix: /home/nuria/miniforge3/envs/jupiter
