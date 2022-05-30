@@ -1,0 +1,14 @@
+name: tfg
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - ipython
+  - jupyter
+  - jupyterlab
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
+  - scikit-learn
+prefix: /home/nuriadj/anaconda3/envs/tfg
