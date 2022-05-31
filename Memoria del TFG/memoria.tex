@@ -962,7 +962,7 @@ Para la comunicación I2C hubo que instalar el paquete \texttt{i2c-tools} en la 
 \section{Generación de los modelos de Aprendizaje automático}
 \label{sec:generacion_modelos}
 
-Como se ha mencionado anteriormente, en este proyecto se utilizarán un total de cuatro algoritmos de aprendizaje automático. Los programas que se encargan de generar estos modelos se encuentran dentro de la carpeta \texttt{"Modelos"} de este proyecto. Hay un fichero por cada modelo que se desea entrenar y poner a prueba.
+Como se ha mencionado anteriormente, en este proyecto se utilizarán un total de cuatro algoritmos de aprendizaje automático. Los programas que se encargan de generar estos modelos se encuentran dentro de la carpeta \texttt{"Models"} de este proyecto. Hay un fichero por cada modelo que se desea entrenar y poner a prueba.
 
 Todos estos algoritmos se han implementado utilizando la librería de \texttt{scikit-learn} que proporciona todas las funcionalidades necesarias para ello. A la hora de ejecutarlos será necesario pasarles un único argumento que es el \textit{dataset} con el que se desea entrenar el modelo.
 
@@ -1079,7 +1079,7 @@ Para generar los modelos se dividió el set de datos en dos partes, una primera 
 
 Un aspecto importante a destacar de este set de datos es que hay una mayor cantidad de ejemplos de habitación no ocupada que de ocupada. En otros \textit{datasets} esto podría representar un problema ya que puede dar lugar a que al realizar esta división de forma aleatoria, el conjunto de datos de entrenamiento apenas tenga ejemplos de una de las clases. Sin embargo, al tener una gran número de ejemplos en el que ambas clases tienen una gran cantidad de muestras, como es este caso, una división aleatoria no representa ningún inconveniente dado que hay una alta probabilidad de que el set de entrenamiento siempre tenga como mínimo la cantidad de muestras necesarias de ambas clases para entrenar correctamente. Aun así, la división se realizó de forma estratificada, para que hubiese la misma proporción de datos de una clase u otra, que en el set de datos original. Y de esta forma nos aseguramos que a la hora de tanto entrenar, como de comprobar el modelo generado, se tengan ejemplos de ambas clases en la misma proporción que aparecen en el set de datos original.
 
-Con esta división y preparación de los datos, los cuatro modelos se pudieron generar sin problemas utilizando los programas que se encuentran dentro de la carpeta de \texttt{"Modelos"}.  
+Con esta división y preparación de los datos, los cuatro modelos se pudieron generar sin problemas utilizando los programas que se encuentran dentro de la carpeta de \texttt{"Models"}.  
 
 
 \subsection{Validación cruzada}
@@ -1092,7 +1092,7 @@ Una vez realizada la división se entrena con todo el \textit{dataset} de entren
 
 El objetivo de realizar una validación cruzada es garantizar que los resultados que obtengamos sean independientes de la partición entre datos de entrenamiento y datos de validación. Es decir, poder saber si la precisión que obtenemos al hacer la predicción es real o se ha sobreajustado a un \textit{dataset} concreto.
  
- Para utilizar validación cruzada se añadió a los ficheros de la carpeta \texttt{"Modelos"} los métodos mencionados anteriormente. Por lo que, además de los datos que ya mostraban estos ficheros por su salida, se añadirá un nuevo \textit{print} para obtener la media total de las precisiones de cada una de las subdivisiones, mostrándolo con la etiqueta \textit{"Mean Folds Accuracy"} por se la media del resultado obtenido en cada \textit{"Fold"}. En el Código~\ref{lst:get_CV} se puede ver las líneas añadidas al Código~\ref{lst:get_APR} para añadir esta funcionalidad.
+ Para utilizar validación cruzada se añadió a los ficheros de la carpeta \texttt{"Models"} los métodos mencionados anteriormente. Por lo que, además de los datos que ya mostraban estos ficheros por su salida, se añadirá un nuevo \textit{print} para obtener la media total de las precisiones de cada una de las subdivisiones, mostrándolo con la etiqueta \textit{"Mean Folds Accuracy"} por se la media del resultado obtenido en cada \textit{"Fold"}. En el Código~\ref{lst:get_CV} se puede ver las líneas añadidas al Código~\ref{lst:get_APR} para añadir esta funcionalidad.
  
  \begin{listing}[]
     \caption{Obtención de la precisión media de cada uno de los \textit{subdatasets} de la validación cruzada.}{}
@@ -1283,7 +1283,7 @@ En el caso de la Raspberry el nivel bajo consiste en estresar una única cpu, el
 
 Mientras que en el portátil, dado que este tiene un total de ocho cpus físicas, la cantidad de carga computacional a la que se somete en los niveles bajo, medio y alto, cambia para poner más o menos en la misma situación a ambas máquinas. Por lo tanto en este caso el nivel bajo de carga será estresar dos de sus cpus, el nivel medio cuatro y el alto los ocho cores de los que dispone la máquina. De esta forma se podrán comparar los tiempos de ejecución en un dispositivo de mayor capacidad y sabremos cuanto dista el comportamiento de la Raspberry del de una máquina con mayor potencia.
 
-Cada uno de los códigos encargados de generar uno de los modelos, es decir cada fichero que se encuentra dentro de la carpeta \texttt{Modelos}, se ejecuta con estos cuatro niveles de carga. Para generar esta carga se usa el comando \textit{stress} que permite estresar, durante el tiempo que se le indique, el número de cpus que se comanden. 
+Cada uno de los códigos encargados de generar uno de los modelos, es decir cada fichero que se encuentra dentro de la carpeta \texttt{Models}, se ejecuta con estos cuatro niveles de carga. Para generar esta carga se usa el comando \textit{stress} que permite estresar, durante el tiempo que se le indique, el número de cpus que se comanden. 
 
 Una de las medidas que se utilizan para comparar los diferentes niveles de estrés es el tiempo que tarda cada uno de los modelos en terminar de ejecutar. Para obtener dicho tiempo se utiliza el comando \textit{time} de Linux, con el que se ejecuta cada modelo de la siguiente forma:\\
 
@@ -1311,7 +1311,7 @@ A continuación se desarrollará en mayor profundidad qué es lo que hace cada p
 
 La misión de este código es ejecutar cada uno de los modelos de aprendizaje automático (que se utilizan en este proyecto), con los diferentes niveles de saturación comentados anteriormente, en la Raspberry. Para realizar esto se usan dos bucles anidados, el primero de ellos itera sobre los modelos que se desean poner a prueba. El segundo recorre una lista que contiene el número de cores que se desean estresar con cada uno de los modelos, ambos bucles los podemos ver en el Código~\ref{lst:funcion_principal_raspberry_test}. Si el valor sobre el que se está iterando de la lista es mayor que cero significa que se desea estresar cierto número de cpus, por lo tanto se llama a la función \textit{start\_stress} a la que se le pasa como argumento el número de procesadores a estresar y durante cuanto tiempo, con estos datos se encargará de crear un nuevo proceso para ejecutar el comando \textit{stress}.
 
-Por otra parte, independientemente del nivel de saturación de la prueba, siempre se llamará a la función \textit{model} que creará un nuevo proceso para ejecutar, utilizando el comando \textit{time} de Linux, uno de los ficheros que se encuentran dentro de la carpeta \texttt{"Modelos"}. Cada uno de los ficheros que se encuentran dentro de dicha carpeta generará uno de los modelos de aprendizaje automático que se han explicado en este proyecto. 
+Por otra parte, independientemente del nivel de saturación de la prueba, siempre se llamará a la función \textit{model} que creará un nuevo proceso para ejecutar, utilizando el comando \textit{time} de Linux, uno de los ficheros que se encuentran dentro de la carpeta \texttt{"Models"}. Cada uno de los ficheros que se encuentran dentro de dicha carpeta generará uno de los modelos de aprendizaje automático que se han explicado en este proyecto. 
 
 \begin{listing}[]
     \caption{Función principal raspberry\_test.ipynb}{}
@@ -1373,7 +1373,7 @@ Los nuevos procesos, comentados anteriormente, se crean utilizando la función \
 
 Este código es prácticamente idéntico al de \texttt{rasp\_test.pynb} salvo pequeñas diferencias. Una de ellas es que en este caso el fichero que generará tras la ejecución de cada modelo tendrá el siguiente formato: nombreDataSet\_pcMD.csv, siendo MD una vez más las siglas del modelo de aprendizaje automático. Al igual que en el caso anterior, se creará una nueva carpeta para guardar todos estos ficheros con el formato: nombreDataSet\_pcresults.
 
-La función principal también utilizará dos bucles anidados para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \texttt{raspberry\_test.ipynb} ya que, como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará (si es necesario) dos procesos, uno ejecutará stress (cuando se desee estresar alguna cpu) y el otro uno de los modelos que se encuentran dentro de la carpeta \texttt{"Modelos"}. Todos los ficheros que utilizan para generar los modelos de aprendizaje son los mismos que en la Raspberry salvo el de Random forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
+La función principal también utilizará dos bucles anidados para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \texttt{raspberry\_test.ipynb} ya que, como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará (si es necesario) dos procesos, uno ejecutará stress (cuando se desee estresar alguna cpu) y el otro uno de los modelos que se encuentran dentro de la carpeta \texttt{"Models"}. Todos los ficheros que utilizan para generar los modelos de aprendizaje son los mismos que en la Raspberry salvo el de Random forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
 
 
 \section{Experimentos con datos sintéticos}
@@ -1689,7 +1689,7 @@ Donde más se nota la falta de recursos de la Raspberry es en los tiempos de eje
 
 \begin{figure}[]
   \centering
-  \includegraphics[width=15cm, keepaspectratio]{img/per_occupancy.png}
+  \includegraphics[width=14cm, keepaspectratio]{img/per_occupancy.png}
   \caption{Porcentaje de lentitud de la Raspberry respecto al portátil para Room Occupancy.}
   \label{fig:per_occupancy}
 \end{figure}
