@@ -1,5 +1,4 @@
-#Trabajo de Fin de Grado
-##Nuria Díaz
+# Trabajo de Fin de Grado
 
 Respositorio con todo el contenido utilizado en el Trabajo de Fin de Grado.
 
