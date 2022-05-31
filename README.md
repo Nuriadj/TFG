@@ -16,6 +16,6 @@ La carpeta sensors también contiene:
 * Un ejemplo sencillo de como utilizar LGPIO [LDR_data_lgpio.py](https://github.com/Nuriadj/TFG/blob/main/sensors/LDR_data_lgpio.py)
 * Código para generar nuestro propio dataset [read_sensors.ipynb](https://github.com/Nuriadj/TFG/blob/main/sensors/read_sensors.ipynb)
 
-Por otra parte, la carpeta [Modelos](https://github.com/Nuriadj/TFG/tree/main/Modelos) contiene todos los códigos necesarios para generar cada uno de los modelos de aprendizaje automático que se utilizan en este proyecto.
+Por otra parte, la carpeta [Models](https://github.com/Nuriadj/TFG/tree/main/Models) contiene todos los códigos necesarios para generar cada uno de los modelos de aprendizaje automático que se utilizan en este proyecto.
 
 Los ficheros [pc_enviroment.yaml](https://github.com/Nuriadj/TFG/blob/main/pc_enviroment.yaml) y [rasp_enviroment.yaml](https://github.com/Nuriadj/TFG/blob/main/rasp_enviroment.yaml) sontienen una lista de todos los paquetes que se han isntalado en cada entorno de conda en cada una de las máquinas.
