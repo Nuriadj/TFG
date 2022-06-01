@@ -18,4 +18,4 @@ La carpeta sensors también contiene:
 
 Por otra parte, la carpeta [Models](https://github.com/Nuriadj/TFG/tree/main/Models) contiene todos los códigos necesarios para generar cada uno de los modelos de aprendizaje automático que se utilizan en este proyecto.
 
-Los ficheros [pc_enviroment.yaml](https://github.com/Nuriadj/TFG/blob/main/pc_enviroment.yaml) y [rasp_enviroment.yaml](https://github.com/Nuriadj/TFG/blob/main/rasp_enviroment.yaml) sontienen una lista de todos los paquetes que se han isntalado en cada entorno de conda en cada una de las máquinas.
+Los ficheros [pc_enviroment.yaml](https://github.com/Nuriadj/TFG/blob/main/pc_enviroment.yaml) y [rasp_enviroment.yaml](https://github.com/Nuriadj/TFG/blob/main/rasp_enviroment.yaml) contienen una lista de todos los paquetes que se han instalado en cada entorno de conda en cada una de las máquinas.
