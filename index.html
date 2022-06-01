@@ -144,10 +144,17 @@
         <div class="mb-5">
             <h1 class="display-4 text-dark text-center mb-5">Machine Learning on devices with limited computing capacity</h1>
             <p class="fs-3">Nowadays Machine Learning and IoT has become some of the most developed and researched fields in technology. The amount of applications these could offer are infinite. </p>
-            <p class="fs-3">The need to use small devices for IoT applications leads us to consider the Raspberry as an option to carry out these tasks. Its small size and its ability to interact with the enviroment through its sensors makes it a perfect tool to develop a project of these characteristics. That is the reason why this research will evaluate this device to perform automatic learning tasks.</p> 
+            <p class="fs-3">The need to use small devices for IoT applications leads us to consider the Raspberry as an option to carry out these tasks. 
+              Its small size and its ability to interact with the enviroment through its sensors makes it a perfect tool to develop a project of these characteristics. 
+              That is the reason why this research will evaluate this device to perform automatic learning tasks.</p> 
 
-            <p class="fs-3"> In order to do this it is going to be generated through <a href="https://scikit-learn.org/stable/" class="link-primary"> scikit-learn </a>, four differents Machine Learning models under certain computational load conditions. The selected automatic learning models are: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" class="link-secondary">Logistic Regression</a>, <a href="https://scikit-learn.org/stable/modules/svm.html" class="link-secondary"> Support Vector Machine</a>, <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html" class="link-secondary">Gradient Boosting</a> and <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html" class="link-secondary"> Random Forest.</a></p>
-            <p class="fs-3">These machine learning models are going to be subjected to different test in order to prove the capacity of the Raspberry to know if this dispositive is truely a good tool to develop and execute this kind of algorithms. The results of these tests are going to be compared with the results of the same automatic learning models but executed and tested in a more powerful machine. This will let us know how far is the performance of the Raspberry from a higher capacity machine. The achivement of all this is going to be explained later. </p>
+            <p class="fs-3"> In order to do this it is going to be generated through <a href="https://scikit-learn.org/stable/" class="link-primary"> scikit-learn </a>, four differents Machine Learning models under certain computational load conditions.
+               The selected automatic learning models are: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" class="link-secondary">Logistic Regression</a>, 
+               <a href="https://scikit-learn.org/stable/modules/svm.html" class="link-secondary"> Support Vector Machine</a>, <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html" class="link-secondary">Gradient Boosting</a> 
+               and <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html" class="link-secondary"> Random Forest.</a></p>
+            <p class="fs-3">These machine learning models are going to be subjected to different tests in order to prove the capacity of the Raspberry to know if this device is truely a good tool to develop and execute this kind of algorithms.
+               The results of these tests are going to be compared with the results of the same automatic learning models but executed and tested in a more powerful machine. 
+               This will let us know how far is the performance of the Raspberry from a higher capacity machine. The achivement of all this is going to be explained later. </p>
           </div>
 
         
@@ -166,7 +173,9 @@
         <div class="col-md">
             <div class="col-md">
               <h4 class="text-center"> Raspberry Pi 4B </h4>
-                <p>                   <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/" class="link-primary"> Raspberry Pi 4B</a> is a low cost credit-card sized computer, the aim of which is to make informatics accesible to everyone. Its features makes it a good choice for implementing IoT applications but its lower computational capacity may not be sufficient to carry out such tasks. That is what we are trying to dicover through this research work.</p> 
+                <p>                   <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/" class="link-primary"> Raspberry Pi 4B</a> is a low cost credit-card sized computer, 
+                  the aim of which is to make informatics accesible for everyone. Its features makes it a good choice for implementing IoT applications but its lower computational capacity may not be sufficient to carry out such tasks.
+                   That is what we are trying to dicover through this research work.</p> 
                 <p></p>Some of it's components are:<p></p>
                 <li>40 GPIO pins</li>
                 <li>4 USB ports</li>
@@ -255,7 +264,8 @@
         <li><p class="fs-3"><strong>High Level</strong>. All the cores of the Raspberry, which are four, and laptop, which are eight, will be exposed to higher computational load.</p></li>
     </ul>
     
-    <p class="fs-3"> From each of the test it is going to be obtained some relevant information that will allow us to evaluate the Raspberry as an optimal dispositive for Machine Learning applications or not. The above image show the general architecture of the tests. As it can be seen in it, the information obtained from each model will be stored on its own file. </p>
+    <p class="fs-3"> From each of the test it is going to be obtained some relevant information that will allow us to evaluate the Raspberry as an optimal dispositive for Machine Learning applications or not. 
+      The above image shows the general architecture of the tests. As it can be seen on it, the information obtained from each model will be stored on its own file. </p>
     </div>
       <!-- End Row -->
     
@@ -264,21 +274,24 @@
 <!--DataSets-->
 <div id="dataSets" class="container">
     <h2 class="display-6 text-dark content-space-t-3"> DataSets</h2>
-    <p class="fs-3">A total of three different dataSets were used to train and test the models. Two of them composed of synthetic data and the last one was made with sensed data.  </p>
+    <p class="fs-3">A total of three different datasets were used to train and test the models. Two of them composed of synthetic data and the last one was made with sensed data.  </p>
     <!--Occupancy-->
 <div class="content-space-t-1">
-<h4>Room Occupancy dataSet</h4>
+<h4>Room Occupancy DataSet</h4>
 
-    <p class="fs-3">This data set, obtained from <a href="https://www.kaggle.com/datasets/kukuroo3/room-occupancy-detection-data-iot-sensor" class="link-primary"> Kaggle</a>, provides information about temperature, light, humidity, CO2. The last column of the dataSet provides information of the state of the room, if it is occupied or not. In total the dataSet has 20560 samples of an office room of 5.85mx3.50mx3.53m.</p>
-    <p class="fs-3"> The models trained with this dataSet will be able to predict if the room is empty or if there is someone in it.</p>
+    <p class="fs-3">This dataset, obtained from <a href="https://www.kaggle.com/datasets/kukuroo3/room-occupancy-detection-data-iot-sensor" class="link-primary"> Kaggle</a>, provides information about temperature, light, humidity, CO2. 
+      The last column of the dataset provides information of the state of the room, if it is occupied or not. In total the dataset has 20560 samples of an office room of 5.85mx3.50mx3.53m.</p>
+    <p class="fs-3"> The models trained with this dataset will be able to predict if the room is empty or if there is someone in it.</p>
 
 </div>
 <!--End Occupancy>-->
 <!--Kdd_cup99-->    
     <div class="content-space-t-1">
         <h4>KDD Cup 1999 Data</h4>
-        <p class="fs-3">The kdd cup 1999 data set was created to use it in The Third International Knowledge Discovery and Data Mining Tools Competition, to create a predictive model capable of distinguish between bad connections and good connections. This can be obtained from the <a href="https://www.kaggle.com/datasets/galaxyh/kdd-cup-1999-data" class="link-primary">Kaggle</a> web page.</p>
-        <p  class="fs-3">This data set has a huge number of total lines, in this project we are going to use only the 20% of the total data set, which are about 988040 lines of samples. In order to use this data set is necessary to pre-process the data and remove some lines or columns which may difficult the trainning of the model.</p>
+        <p class="fs-3">The kdd cup 1999 dataset was created to use it in The Third International Knowledge Discovery and Data Mining Tools Competition, to create a predictive model capable of distinguish between bad connections and 
+          good connections. This can be obtained from the <a href="https://www.kaggle.com/datasets/galaxyh/kdd-cup-1999-data" class="link-primary">Kaggle</a> web page.</p>
+        <p  class="fs-3">This dataset has a huge number of total lines, in this project we are going to use only the 20% of the total data set, which are about 988040 lines of samples. 
+          In order to use this dataset is necessary to pre-process the data and remove some lines or columns which may difficult the trainning of the model.</p>
     
     </div>
 <!--End Kdd_cup99-->
@@ -287,9 +300,11 @@
 <div class="content-space-t-1">
     <h4>Mi dataSet</h4>
     <p class="fs-3">
-        As seen before in this projects are used two sensors. With the data provided by these sensors it has been created a total new data set that will contain information of light, temperature, relative humidity and pressure. Storing this data and knowing if there are people in the room where the sensors are located, we can create another data set that will train a model to know by the sensors measures, if there is someone in the room or not. So this data set will allow us to train a model similar to the one that we can ontain using the Room Occupancy data set but with our own information.
+        As seen before in this projects are used two sensors. With the data provided by these sensors it has been created a total new dataset that will contain information of light, temperature, relative humidity and pressure.
+         Storing this data and knowing if there are people in the room where the sensors are located, we can create another dataset that will train a model to know by the sensors measures, if there is someone in the room or not. 
+         So this dataset will allow us to train a model similar to the one that we can ontain using the Room Occupancy dataset but with our own information.
     </p>
-    <p class="fs-3">In the next picture you can see an example of the sensor data recorded durin 2h 40min. The zones which have a gray background are the moments of time where there was someone in the room. </p>
+    <p class="fs-3">In the next picture you can see an example of the sensor data recorded durin 2h 40min in a room of 8m<sup>2</sup>. The zones with gray background are the moments of time where there was someone in the room. </p>
     <div class="mb-1 text-center">
         <img class="img-fluid" style="width:50%" src="web_page/assets/img/my_images/Data_occup_detec_2h.png" alt="Sensors values during 2h and 40min">
     </div>
