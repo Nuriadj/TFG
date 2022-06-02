@@ -1284,7 +1284,9 @@ Una de las medidas que se utilizan para comparar los diferentes niveles de estr�
   $ time ipython modelo.ipynb
 \end{lstlisting}
 
-El comando \textit{time} devuelve tres valores. Uno de ellos es el tiempo de usuario, que es la cantidad de tiempo que se ha gastado el proceso en modo usuario. El \textit{Sys time} es el tiempo de cpu invertido en el kernel dentro del proceso. Con estos dos tiempos se puede obtener el \textit{Cpu time}, el tiempo total que ha utilizado la cpu para completar la ejecución del proceso. Por otra parte \textit{time} también proporciona el \textit{real time}, que es el tiempo que ha tardado en ejecutar el proceso como si lo hubiésemos cronometrado con un reloj, este tiempo es el mismo que el \textit{Wall time}. Es necesario entender esto para poder comprender los valores que nos devolverán los experimentos.
+El comando \textit{time} devuelve tres valores. Uno de ellos es el tiempo de usuario, que es la cantidad de tiempo que ha gastado el proceso en modo usuario. El \textit{Sys time} es el tiempo de cpu invertido en el kernel por el proceso. Con estos dos tiempos se puede obtener el \textit{Cpu time}, el tiempo total que ha utilizado la cpu para completar la ejecución del proceso. Por otra parte \textit{time} también proporciona el \textit{real time}, que es el tiempo que ha tardado en ejecutar el proceso como si lo hubiésemos cronometrado con un reloj, este tiempo es el mismo que el \textit{Wall time}. 
+
+Además, la relación que haya entre \textit{Cpu time} y \textit{Wall time} nos indicará si se están ejecutando procesos en paralelo o no. En el caso de que el \textit{Wall time} y el \textit{Cpu time} sean similares significará que no se están paralelizando los procesos. Mientras que si el \textit{Cpu time} es mayor que el \textit{Wall time} sí que se estarán ejecutando procesos en paralelo\cite{timeDoc}. Es necesario entender todo esto para poder comprender los valores que nos devolverán los experimentos.
 
 Esto junto con los valores de \textit{Accuracy}, \textit{Trainning Accuracy}, \textit{Precision}... Son los valores que se utilizarán en todas las pruebas para evaluar el comportamiento tanto de la Raspberry como de los modelos generados.
 
@@ -1351,7 +1353,7 @@ for i in range(4):
 \end{listing}
 
 Cuando se completa la generación del modelo para uno de los niveles, los resultados de \textit{Cpu time}, \textit{Wall time}, \textit{Mean Folds Accuracy}, \textit{Accuracy trainning}, \textit{Accuracy}, \textit{Presisión} y \textit{Recall} se guardan cada uno en su respectiva lista gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera un nuevo fichero csv, mediante la función \textit{add\_data}, con los resultados obtenidos en cada uno de los casos.
-Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión logística el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de soporte vectorial será nombreDataSet\_raspSVM.csv. En total el programa creará cuatro csv diferentes, uno por cada modelo. Estos ficheros se guardarán en una nueva carpeta creada con el siguiente formato: nombreDataSet\_raspresults, esto se puede observar como se hace en el Código~\ref{lst:funcion_principal_raspberry_test}. Todos los ficheros se guardarán dentro de esta carpeta, para que los resultados de un mismo dataSet estén todos juntos. En la Figura~\ref{fig:ejemplo_csv} se muestra un ejemplo del contenido de uno de estos csv generados, concretamente pertenece al modelo de Regresión logísitca.
+Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión logística el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de soporte vectorial será nombreDataSet\_raspSVM.csv. En total el programa creará cuatro csv diferentes, uno por cada modelo. Estos ficheros se guardarán en una nueva carpeta creada con el siguiente formato: nombreDataSet\_raspresults, esto se puede observar como se hace en el Código~\ref{lst:funcion_principal_raspberry_test}. Todos los ficheros se guardarán dentro de esta carpeta, para que los resultados de un mismo \textit{dataset} estén todos juntos. En la Figura~\ref{fig:ejemplo_csv} se muestra un ejemplo del contenido de uno de estos csv generados, concretamente pertenece al modelo de Regresión logísitca.
 
 \begin{figure}[]
   \centering
@@ -1414,7 +1416,7 @@ Para los modelos de Regresión logística, Máquinas de soporte vectorial y Grad
 
 Sin embargo, el modelo de \textit{Random forest} no terminaba de encajar del todo con lo esperado, que era observar que a medida que aumentase el número de cores estresados también aumentasen los tiempos de cpu. Es por ello que se decidió probar a ejecutar los modelos con un \textit{dataset} con mayor cantidad de datos. Con un \textit{dataset} de mayor tamaño se podrán observar mejor las razones por las que se devuelven estos tiempos.
 
-Por otra parte, podemos ver como los tiempos de \textit{Wall time} se mantienen iguales a pesar de someter a más carga a la Raspberry, a excepción de el modelo de \textit{Random forest} que es el único que va incrementando a medida que aumenta el nivel de la prueba. 
+Por otra parte, podemos ver como los tiempos de \textit{Wall time} se mantienen iguales, exceptuando el caso de Random forest, a pesar de someter a más carga a la Raspberry. Además para estos casos, son resultados muy similares a los del \textit{Cpu time}, una muestra más de que los procesos no están utilizando la ejecución en paralelo. En cuanto a \textit{Random forest}, es el único modelo en el que el \textit{Wall time} va incrementando a medida que aumenta el nivel de la prueba, pero aún así devuelve tiempos menores que el \textit{Cpu time} indicando que está aprovechando las ventajas de la ejecución paralela. 
 
 En cuanto a la precisión (\textit{Accuracy}) en cada uno de los modelos se obtienen los resultados de la Tabla~\ref{tab:acc_Occraspberry}
 
@@ -1502,7 +1504,7 @@ En el nivel bajo encontraremos que el modelo solo puede estar usando tres cores 
 
 Algo destacable de los resultados obtenidos en este \textit{dataset} (a diferencia del de Room Occupancy) es que salvo en el nivel de \textit{Idle}, el modelo de Gradient boosting llega a ser más lento que el modelo de Random forest, modelo que en el anterior \textit{dataset} era con diferencia el que tardaba más tiempo de todos.
 
-En cuanto al \textit{Wall time} obtenido vemos que por un lado Random forest aumenta su tiempo a medida que aumenta la carga computacional, mientras que tanto el modelo de SVM como de GB se mantienen más o menos constantes. Y  Regresión logística es el que más varía entre las diferentes pruebas.
+En cuanto al \textit{Wall time} obtenido vemos que por un lado Random forest aumenta su tiempo a medida que aumenta la carga computacional, igual que lo hacía en el anterior \textit{dataset}, pero siendo en cada caso los tiempos menores que el \textit{Cpu time}. Mientras que tanto el modelo de SVM como de GB se mantienen más o menos constantes e iguales al \textit{Cpu time}, inidcando que no se están ejecutando procesos en paralelo. Y por último, Regresión logística es el que más varía entre las diferentes pruebas, siendo siempre el \textit{Wall time} menor que el \textit{Cpu time}.
 
 Otro aspecto de las ejecuciones en la Raspberry  que será relevante más adelante, es la frecuencia a la que ejecutan los cores. Utilizando el comando \textit{lscpu} de Linux, se puede obtener información relevante sobre los cores como por ejemplo la frecuencia máxima y mínima a la que pueden ejecutar, que en el caso de la Raspberry la mínima será igual a $600MHz$ y la máxima $1500MHz$. 
 
@@ -1587,8 +1589,7 @@ Ejecutando el siguiente comando:
 
 Se puede ver la frecuencia de ejecución de todos los cores cada $0.1$ segundos. En esta ocasión, al observar estas velocidades cuando se ejecutaban los algoritmos de aprendizaje automático se podía ver una variación en los valores dependiendo del nivel de estrés que se estuviese ejecutando, a diferencia de lo que ocurría en la Raspberry que se mantenía siempre a la máxima frecuencia. Luego esto explicaría porque en el caso del portátil los tiempos incrementan según aumentan el número de cores estresados. 
 
-
-Por otra parte, el \textit{Wall time} tiene un comportamiento similar al de \textit{Cpu time} aumentando a medida que se incrementa el nivel de carga computacional en todos los modelos.
+Por otra parte, el \textit{Wall time} tiene un comportamiento similar al de \textit{Cpu time} aumentando a medida que se incrementa el nivel de carga computacional en todos los modelos. Sin embargo, en el caso de SVM y GB se puede ver que la diferencia entre el \textit{Cpu time} y \textit{Wall time} es muy pequeña, luego podemos seguir afirmando que se está usando un solo core a pesar de que todos los tiempos aumenten conforme más cpus se estresan.
 
 Veamos a continuación cual es el \textit{Accuracy} que consiguen los modelos con este \textit{dataset} en esta máquina.
 
@@ -1648,7 +1649,7 @@ Los resultados de la ejecución del comando \textit{stress} conforme a estos niv
 
 Según esta tabla, Random forest es el modelo que más tiempo de cpu tarda cuando la máquina se encuentra en estado \textit{Idle} y se mantienen el resto de pruebas sobre los $300$ segundos de ejecución. Esto se debe a las mismas razones dadas en la sección~\ref{subsubsec:kdd_raspberry}. El hecho de que los tiempos aumenten en los modelos \textit{monocore} se deben a las mismas razones que las comentadas en la ejecución del \textit{dataset} de Room Occupancy en el portátil~\ref{subsubsec:occ_pc}.
 
-Y al igual que en el anterior \textit{dataset}, el \textit{Wall time} aumenta conforme más cores se estresan.
+Y al igual que en el anterior \textit{dataset}, el \textit{Wall time} aumenta conforme más cores se estresan. Manteniendo es todos los casos las mismas relaciones con el \textit{Cpu time}.\\
 
 Respecto a la precisión de los modelos generados podemos ver los resultados en la Tabla~\ref{tab:acc_Kddpc}. Que al igual que el resto de resultados obtenidos en el anterior \textit{dataset} los datos no se sobreajustan y se están consiguiendo resultados de gran precisión en todas las pruebas.
 
@@ -1678,7 +1679,7 @@ Respecto a la precisión de los modelos generados podemos ver los resultados en 
 
 Tras haber observado los resultados obtenidos en la ejecución de cada uno de los modelos en diferentes situaciones de estrés en ambos dispositivos con los dos \textit{datasets}, se ha podido comprobar qué a pesar de la menor capacidad de la Raspberry, esta consigue un comportamiento bastante bueno.
 
-Donde más se nota la falta de recursos de la Raspberry es en los tiempos de ejecución. Para los mismos modelos y los mismos datos, tarda más en ejecutar la Raspberry que el portátil. En la Figura~\ref{fig:per_occupancy} se muestra utilizando porcentajes cuánto de lenta es la Raspberry respecto al portátil en cada uno de los niveles de estrés para el Room Occupancy DataSet.
+Donde más se nota la falta de recursos de la Raspberry es en los tiempos de ejecución. Para los mismos modelos y los mismos datos, tarda más en ejecutar la Raspberry que el portátil. En la Figura~\ref{fig:per_occupancy} se muestra utilizando porcentajes cuánto de lenta es la Raspberry respecto al portátil en cada uno de los niveles de estrés para el Room Occupancy DataSet, utilizando los tiempos de cpu.
 
 \begin{figure}[]
   \centering
@@ -1687,7 +1688,7 @@ Donde más se nota la falta de recursos de la Raspberry es en los tiempos de eje
   \label{fig:per_occupancy}
 \end{figure}
 
-En dicha figura podemos ver como a medida que el nivel de saturación aumenta (eje x) es menor el porcentaje de lentitud, con lo que cada vez es menor la diferencia entre los tiempos de ejecución de la Raspberry y del portátil. Siendo el modelo de RL en el que mayor diferencia hay entre ambas máquinas, a pesar de que este modelo es el que menos tarda en ejecutar en el portátil no sucede lo mismo en la Raspberry lo que hace que se termine convirtiendo en el modelo que peor se comporta en la Raspberry al compararlo con el Pc.
+En dicha figura podemos ver como a medida que el nivel de saturación aumenta (eje x) es menor el porcentaje de lentitud, con lo que cada vez es menor la diferencia entre los tiempos de ejecución de la Raspberry y del portátil. Siendo el modelo de RL en el que mayor diferencia hay entre ambas máquinas, a pesar de que este modelo es el que menos tarda en ejecutar en el portátil no sucede siempre lo mismo en la Raspberry lo que hace que se termine convirtiendo en el modelo que peor se comporta en la Raspberry al compararlo con el Pc.
 
 Por otra lado, es el modelo de Gradient boosting el que consigue estar por debajo del $50\%$ de lentitud. Cuando ambas máquinas están con todos los cores estresados, GB es solo un $40\%$ más lenta en la Raspberry que en el portátil.
 
@@ -1746,9 +1747,9 @@ Los resultados de los tiempos de ejecución para el \textit{dataset} generado po
 \label{tab:times_sensrasp}
 \end{table}
 
-Como se puede observar, se mantiene un comportamiento tanto en los tiempos de cpu como en \textit{Wall time} bastante similar a lo visto en los anteriores \textit{datasets} ejecutados en la Raspberry. Por un lado SVM y GB se mantiene prácticamente iguales en todas las pruebas. Y en RF en el nivel \textit{Idle} es cuando más tarda.
+Como se puede observar, se mantiene un comportamiento tanto en los tiempos de cpu como en \textit{Wall time} bastante similar a lo visto en los anteriores \textit{datasets} ejecutados en la Raspberry. Por un lado SVM y GB se mantiene prácticamente iguales en todas las pruebas. Y en RF en el nivel \textit{Idle} es cuando más tarda el \textit{Cpu time}, mientras que el \textit{Wall time} aumenta manteniendose siempre por debajo del \textit{Cpu time}.
 
-Mientras que la precisión obtenida por medio de este \textit{dataset} se encuentra en la Tabla~\ref{tab:acc_sensrasp}.
+Por otro lado, la precisión obtenida por medio de este \textit{dataset} se encuentra en la Tabla~\ref{tab:acc_sensrasp}.
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
@@ -1835,7 +1836,7 @@ Obteniendo como cabía esperar resultados de precisión muy buenos, y sabiendo q
 
 Con los resultados obtenidos podemos llegar a las mismas conclusiones que en el caso de los datos sintéticos, a pesar de las limitaciones que tiene la Raspberry esta es capaz de llevar a cabo perfectamente las tareas encomendadas.
 
-En este caso los porcentajes de lentitud de la Raspberry respecto del portátil se pueden ver en la Figura~\ref{fig:per_Mi}.
+En este caso los porcentajes de lentitud de la Raspberry respecto del portátil (utilizando los tiempos de cpu) se pueden ver en la Figura~\ref{fig:per_Mi}.
 
 \begin{figure}[]
   \centering
@@ -1844,7 +1845,7 @@ En este caso los porcentajes de lentitud de la Raspberry respecto del portátil 
   \label{fig:per_Mi}
 \end{figure}
 
-En esta ocasión, salvo en el caso \textit{Idle}, sigue siendo RL el modelo en el que hay más diferencia entre lo que tarda en ejecutar en la Raspberry y en el portátil, siendo en todos los casos como mínimo un $80\%$ más lenta. Mientras que el modelo de RF es el que tiene menor diferencia de tiempos.
+En esta ocasión, salvo en el caso \textit{Idle}, sigue siendo RL el modelo en el que hay más diferencia entre lo que tarda en ejecutar en la Raspberry y en el portátil, siendo en todos los casos como mínimo un $80\%$ más lenta. Mientras que el modelo de RF es el que tiene menor diferencia de tiempos de cpu.
 
 Además, gracias a los resultados obtenidos podemos afirmar que la Raspberry tiene suficiente capacidad para poder ir reentrenando periódicamente los modelos. De forma que, cada cierto intervalo de tiempo, se puede capturar durante un tiempo los datos proporcionados por los sensores. Una vez terminado ese periodo de tiempo se guardan los datos recogidos en memoria local y se vuelve a entrenar al modelo con ellos. Con cada reentrenamiento se conseguiría cada vez un comportamiento más preciso y por lo tanto mucho más fiable.
 
@@ -1866,13 +1867,13 @@ Esto abre un abanico de infinitas posibilidades en las que se puede utilizar la 
 
 Como conclusiones finales de cada uno de los modelos de machine learning ejecutados en ambas máquinas y utilizando las Figuras~\ref{fig:per_occupancy}, ~\ref{fig:per_kdd} y ~\ref{fig:per_Mi}, podemos mencionar los siguientes aspectos.
 
-El modelo de Regresión logística es el modelo que más tarda en terminar la ejecución en comparación con el portátil. Como ya mencionaba en secciones anteriores, a pesar de que es el modelo que más rápido ejecuta en el portátil, no sucede lo mismo en la Raspberry lo que hace que se termine convirtiendo en el modelo con mayor diferencia de tiempos entre una máquina y otra. 
+El modelo de Regresión logística es el modelo que más tarda en terminar la ejecución en comparación con el portátil. Como ya mencionaba en secciones anteriores, a pesar de que es el modelo que más rápido ejecuta en el portátil, no sucede lo mismo en la Raspberry lo que hace que se termine convirtiendo en el modelo con mayor diferencia de tiempos entre una máquina y otra. Por otra parte, a pesar de que en teoría solo puede utilizar un procesador para ejecutar, la diferencia que existe en algunos casos entre los tiempos de \textit{Wall time} y \textit{Cpu time} nos índica que podría estar utilizando paralelamente varios cores para ejecutar.
 
 Maquinas de soporte sectorial, es el modelo más rápido en la Raspberry, ya que siempre tarda menos en ejecutar que el de RL, pero no ocurre lo mismo en el portátil. Por ello es el segundo modelo con peor comportamiento respecto al portátil en prácticamente todos los casos, puesto que suele tener altos porcentajes de lentitud en comparación con el resto de modelos.
 
 En cuanto al modelo de Gradient boosting, es el tercer modelo más lento tanto en la Raspberry como en el portátil. Pero por otra parte es el segundo modelo que tiene mejor relación entre los tiempos del portátil y la Raspberry, puesto que en todas las gráficas de porcentajes siempre es el segundo con menor porcentaje.
 
-Por último, Random forest es para ambas máquinas el modelo más lento con diferencia. Y por ello también es el modelo en el que, por lo general, hay menor diferencia de tiempos entre la ejecución en una máquina u otra.
+Por último, Random forest es para ambas máquinas el modelo más lento con diferencia. Y por ello también es el modelo en el que, por lo general, hay menor diferencia de tiempos entre la ejecución en una máquina u otra. Sin embargo, es el único modelo se está beneficiando de poder utilizar paralelamente varias cpus, prueba de ello es que en todas las niveles de saturación el \textit{Wall time} es menor que el \textit{Cput time}.
 
 Pero sin duda algo que tienen en común todos los modelos es la gran precisión con los que son capaces de predecir, manteniendo siempre un \textit{Accuracy}, \textit{Cross-validation}, \textit{Recall} y \textit{Precision} sobre el $90\%$. Por lo que podemos confiar en que ante nuevas entradas de datos los modelos serían capaces de poder clasificar correctamente los datos.
  
