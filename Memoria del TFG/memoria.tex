@@ -231,7 +231,7 @@
 	pdfmenubar=true,	% Muestra menú en Adobe Acrobat
 	pdftitle={Título doc en ventana del visor o navegador},
 	pdfauthor={Nuria Díaz Jérica},
-	pdfcreator={ETSII/ETSIT, URJC},
+	pdfcreator={ETSIT, URJC},
 	pdfproducer={XeLaTeX},
 	pdfsubject={Topic1, Topic2, Topic3},
 	pdfnewwindow=true,              %links open in new window
@@ -516,7 +516,7 @@ Para realizar este proyecto se han definido los siguientes objetivos.
 \section{Planificación temporal}
 \label{sec:planificacion-temporal}
 
-A inicios de este curso, cuando tuve que meditar sobre de qué tema quería realizar mi TFG, me dí cuenta de que uno de los que más me habían gustado durante la carrera había sido machine learning, tema que justo había comenzado a ver durante ese primer cuatrimestre. Es un tema que me interesa mucho debido a la infinidad de aplicaciones en las que creo que puede ser muy ventajoso utilizar este conocimiento, además de la capacidad que hay detrás de todos esos algoritmos para poder facilitar y mejorar la vida de las personas.
+A inicios de este curso, cuando tuve que meditar sobre de qué tema quería realizar mi TFG, me di cuenta de que uno de los que más me habían gustado durante la carrera había sido machine learning, tema que justo había comenzado a ver durante ese primer cuatrimestre. Es un tema que me interesa mucho debido a la infinidad de aplicaciones en las que creo que puede ser muy ventajoso utilizar este conocimiento, además de la capacidad que hay detrás de todos esos algoritmos para poder facilitar y mejorar la vida de las personas.
 
 Sin embargo, no tenía del todo claro de qué forma enfocarlo. Fue entonces cuando descubrí que Katia junto con Felipe ofrecían un proyecto sobre este tema y no dudé en informarme sobre exactamente en qué estaba enfocado el trabajo. Después de contactar con Katia y proponerme varias perspectivas, me decanté por el enfoque de Tiny Machine Learning debido a que me llamaba la atención la posibilidad de poder observar las capacidades de la Raspberry para realizar este tipo de tareas ya que, como se verá en los siguientes capítulos, es un dispositivo económico con el que se podrían ampliar la áreas donde utilizar estas técnicas.
 
@@ -658,7 +658,7 @@ Durante la fase de entrenamiento el modelo ajusta los pesos mediante un método 
     \label{eq:desc_gradiente}
 \end{equation}
 
-Para calcular los pesos se utiliza el error que existe entre la salida predecida con los pesos estimados hasta ahora ($h_w(x^{(i)})$) y el valor real, es decir, la salida que verdaderamente corresponde a ese ejemplo ($y^{(i)}$). También es necesario definir el valor del ratio de aprendizaje ($\alpha$), si se le da un valor muy elevado puede llegar a no converger el modelo en ninguna solución. Esto se realiza para todos los valores de $j$, desde $j= 0$ hasta $j= d$, que es el número total de características.
+Para calcular los pesos se utiliza el error que existe entre la salida predicha con los pesos estimados hasta ahora ($h_w(x^{(i)})$) y el valor real, es decir, la salida que verdaderamente corresponde a ese ejemplo ($y^{(i)}$). También es necesario definir el valor del ratio de aprendizaje ($\alpha$), si se le da un valor muy elevado puede llegar a no converger el modelo en ninguna solución. Esto se realiza para todos los valores de $j$, desde $j= 0$ hasta $j= d$, que es el número total de características.
 
 Se dará por finalizada la fase de aprendizaje cuando se consiga que los valores de los pesos minimicen una función de coste:
 
@@ -763,29 +763,12 @@ Para que la Raspberry pueda obtener el valor que devuelve este sensor es necesar
 
 El sensor BME280\footnote{\url{https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/}}, desarrollado por Bosh, es un sensor creado especialmente para aplicaciones móviles y prendas de vestir donde el tamaño y el bajo consumo de energía son elementos claves. Integra en un mismo dispositivo tres sensores diferentes que proveen medidas de alta precisión. Los tres sensores que posee son: uno de temperatura, otro de presión atmosférica y por último, uno de humedad relativa. 
 
-El rango de la temperatura va desde los $-40\, \mbox{ºC}$ hasta los $85\, \mbox{ºC}$, con una precisión de $\pm 0.5\, \mbox{ºC}$. El sensor de presión tiene un rango de entre $300 hPa$ y $1100 hPa$. Por útlimo el rango de la humedad relativa va desde el 0 hasta el 100\%.
+El rango de la temperatura va desde los $-40\, \mbox{ºC}$ hasta los $85\, \mbox{ºC}$, con una precisión de $\pm 0.5\, \mbox{ºC}$. El sensor de presión tiene un rango de entre $300 hPa$ y $1100 hPa$. Por último el rango de la humedad relativa va desde el 0 hasta el 100\%.
 
 La comunicación con este sensor es muy sencilla ya que puede usar tanto I2C o SPI. Tiene una tensión de funcionamiento de $3.3V$. Y a pesar de que integra tres sensores diferentes su tamaño es pequeño, concretamente de $19x18 mm$.
 
 Este tipo de sensores se utilizan en aplicaciones como: monitorización del clima, automatización del hogar, sistemas de autopiloto para drones...Y se ajusta muy bien a las necesidades de este proyecto ya que tiene un consumo y tamaño muy pequeño, por lo que sería factible implementar una aplicación de IoT con él.
 
-
-\begin{comment}
-
-\begin{table}
- \begin{center}
-  \begin{tabular}{ | l | c | r |} % tenemos tres colummnas, la primera alineada a la izquierda (l), la segunda al centro (c) y la tercera a la derecha (r). El | indica que entre las columnas habrá una línea separadora.
-    \hline
-    Uno & 2 & 3 \\ \hline % el hline nos da una línea vertical
-    Cuatro & 5 & 6 \\ \hline
-    Siete & 8 & 9 \\
-    \hline
-  \end{tabular}
-  \caption{Ejemplo de tabla. Aquí viene una pequeña descripción (el \emph{caption}) del contenido de la tabla. Si la tabla no es autoexplicativa, siempre viene bien aclararla aquí.}
-  \label{tabla:ejemplo}
- \end{center}
-\end{table}
-\end{comment}
 
 \section{Sistema Operativo: Ubuntu 21.10} 
 \label{sec:sistema_operativo}
@@ -1005,7 +988,7 @@ Para esta explicación nos ayudaremos de la Figura~\ref{fig:explicacion_acc}. En
 \begin{figure}[]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/explicacion_acc.png}
-  \caption{Ejemplo de estimación de un modelo Machine Learning.}\label{fig:explicacion_acc}
+  \caption{Ejemplo de estimación de un modelo Machine learning.}\label{fig:explicacion_acc}
 \end{figure}
 
 El valor de \textit{accuracy} representa el porcentaje total de aciertos. Este dato se calcula por medio de la siguiente ecuación:
@@ -1171,7 +1154,7 @@ Como se ha comentado anteriormente este programa es el encargado de tomar las me
 
 Para que pueda ejecutar correctamente es necesario que se le pase como argumento el nombre con el que se desea guardar el \textit{dataset} que se va a generar. Este argumento también se utilizará para nombrar la gráfica que genera el programa con el siguiente formato: \texttt{Data\_graph\_miDataSet}, siendo miDataSet el string que se ha pasado como argumento.
 
-Este programa necesita usar la comunicación I2C para obtener los valores del sensor BME280 pero también necesitará acceder directamente a los pines por medio de la librería LGPIO. Para poder utilizar LGPIO es necesario ejecutar el programa con permisos de \textit{root} pero manteniendo el entorno conda actual (pues es donde se encuentran todas las librerías instalaldas), es por ello que para ejecutarlo habrá que utilizar la siguiente línea de comando:  
+Este programa necesita usar la comunicación I2C para obtener los valores del sensor BME280 pero también necesitará acceder directamente a los pines por medio de la librería LGPIO. Para poder utilizar LGPIO es necesario ejecutar el programa con permisos de \textit{root} pero manteniendo el entorno conda actual (pues es donde se encuentran todas las librerías instaladas), es por ello que para ejecutarlo habrá que utilizar la siguiente línea de comando:  
 
 
 \begin{lstlisting}[language=bash]
@@ -1272,7 +1255,7 @@ Para realizar los experimentos se definieron cuatro niveles de saturación, depe
 
 El primer nivel es el \textit{Idle} en el que no se somete a la máquina a ningún tipo de carga extra, esto es igual en ambos dispositivos. Salvo este primer nivel, el resto sí variarán ligeramente entre ambas máquinas.
 
-En el caso de la Raspberry el nivel bajo consiste en estresar una única cpu, el nivel medio dos cpus y por último en el nivel alto se estrasaban todas las cpus de la Raspberry, es decir, cuatro cpus. 
+En el caso de la Raspberry el nivel bajo consiste en estresar una única cpu, el nivel medio dos cpus y por último en el nivel alto se estresaban todas las cpus de la Raspberry, es decir, cuatro cpus. 
 
 Mientras que en el portátil, dado que este tiene un total de ocho cpus físicas, la cantidad de carga computacional a la que se somete en los niveles bajo, medio y alto, cambia para poner más o menos en la misma situación a ambas máquinas. Por lo tanto en este caso el nivel bajo de carga será estresar dos de sus cpus, el nivel medio cuatro y el alto los ocho cores de los que dispone la máquina. De esta forma se podrán comparar los tiempos de ejecución en un dispositivo de mayor capacidad y sabremos cuanto dista el comportamiento de la Raspberry del de una máquina con mayor potencia.
 
@@ -1293,7 +1276,7 @@ Esto junto con los valores de \textit{Accuracy}, \textit{Trainning Accuracy}, \t
 \subsection{Ejecución de los experimentos}
 \label{subsec:ejecucion_experimentos}
 
-Para realizar todas las pruebas, tal y como se ha explicado, se creó un programa para cada una de las máquinas de forma que fuese más sencillo obtener los resultados de los experimentos. En el caso de la Raspberry este programa se denominó \texttt{raspberry\_test.ipynb}. En el caso del portátil se nombró \texttt{pc\_test.ipynb}. Dado que las puebas en ambos dispositivos son prácticamente las mismas, ambos programas ejecutan prácticamente lo mismo con pequeñas diferencias.
+Para realizar todas las pruebas, tal y como se ha explicado, se creó un programa para cada una de las máquinas de forma que fuese más sencillo obtener los resultados de los experimentos. En el caso de la Raspberry este programa se denominó \texttt{raspberry\_test.ipynb}. En el caso del portátil se nombró \texttt{pc\_test.ipynb}. Dado que las pruebas en ambos dispositivos son prácticamente las mismas, ambos programas ejecutan prácticamente lo mismo con pequeñas diferencias.
 
 Dichos programas necesitan como único argumento el \textit{dataset} con el que se desea hacer el experimento para que puedan realizar su función correctamente.
 Hay que tener en cuenta que este \textit{dataset} debe de estar limpio, es decir, que se le haya hecho un preprocesamiento para borrar características no deseadas o redundantes. Tampoco debe de tener cabecera. Si no se hace este preprocesamiento podrá dar error la ejecución.
@@ -1353,7 +1336,7 @@ for i in range(4):
 \end{listing}
 
 Cuando se completa la generación del modelo para uno de los niveles, los resultados de \textit{Cpu time}, \textit{Wall time}, \textit{Mean Folds Accuracy}, \textit{Accuracy trainning}, \textit{Accuracy}, \textit{Presisión} y \textit{Recall} se guardan cada uno en su respectiva lista gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera un nuevo fichero csv, mediante la función \textit{add\_data}, con los resultados obtenidos en cada uno de los casos.
-Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión logística el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de soporte vectorial será nombreDataSet\_raspSVM.csv. En total el programa creará cuatro csv diferentes, uno por cada modelo. Estos ficheros se guardarán en una nueva carpeta creada con el siguiente formato: nombreDataSet\_raspresults, esto se puede observar como se hace en el Código~\ref{lst:funcion_principal_raspberry_test}. Todos los ficheros se guardarán dentro de esta carpeta, para que los resultados de un mismo \textit{dataset} estén todos juntos. En la Figura~\ref{fig:ejemplo_csv} se muestra un ejemplo del contenido de uno de estos csv generados, concretamente pertenece al modelo de Regresión logísitca.
+Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión logística el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de soporte vectorial será nombreDataSet\_raspSVM.csv. En total el programa creará cuatro csv diferentes, uno por cada modelo. Estos ficheros se guardarán en una nueva carpeta creada con el siguiente formato: nombreDataSet\_raspresults, esto se puede observar como se hace en el Código~\ref{lst:funcion_principal_raspberry_test}. Todos los ficheros se guardarán dentro de esta carpeta, para que los resultados de un mismo \textit{dataset} estén todos juntos. En la Figura~\ref{fig:ejemplo_csv} se muestra un ejemplo del contenido de uno de estos csv generados, concretamente pertenece al modelo de Regresión logística.
 
 \begin{figure}[]
   \centering
@@ -1396,7 +1379,7 @@ Los tiempos de cpu para la ejecución de estos modelos se pueden ver en la Tabla
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
-    Regresión logísitca & 17.79 seg & 18.83 seg & 26.8 seg & 15.2 seg & 24.19 seg & 16.62 seg & 17.69 seg & 13.85 seg \\[2ex]
+    Regresión logística & 17.79 seg & 18.83 seg & 26.8 seg & 15.2 seg & 24.19 seg & 16.62 seg & 17.69 seg & 13.85 seg \\[2ex]
     \hline
     SVM & 16.52 seg & 16.37 seg & 16.59 seg & 16.55 seg & 16.63 seg & 16.62 seg & 16.95 seg & 17.01 seg\\[2ex]
     \hline
@@ -1430,10 +1413,10 @@ En cuanto a la precisión (\textit{Accuracy}) en cada uno de los modelos se obti
     \cline{4-7}
      &   &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
      \hline
-     Regresión Logísitca & 98.9 & 98.9 & 98.8 & 99.0 & 99.0 & 98.9\\
+     Regresión logística & 98.9 & 98.9 & 98.8 & 99.0 & 99.0 & 98.9\\
      SVM & 98.9 & 99.0 & 98.9 & 99.0 & 98.8 & 99.2\\
-     Gradient Boosting & 99.0 & 99.4 & 98.9 & 99.1 & 98.7 & 98.9\\
-     Random Forest & 99.2 & 100.0 & 99.3 & 99.3 & 99.32 & 99.3\\
+     Gradient boosting & 99.0 & 99.4 & 98.9 & 99.1 & 98.7 & 98.9\\
+     Random forest & 99.2 & 100.0 & 99.3 & 99.3 & 99.32 & 99.3\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1504,7 +1487,7 @@ En el nivel bajo encontraremos que el modelo solo puede estar usando tres cores 
 
 Algo destacable de los resultados obtenidos en este \textit{dataset} (a diferencia del de Room Occupancy) es que salvo en el nivel de \textit{Idle}, el modelo de Gradient boosting llega a ser más lento que el modelo de Random forest, modelo que en el anterior \textit{dataset} era con diferencia el que tardaba más tiempo de todos.
 
-En cuanto al \textit{Wall time} obtenido vemos que por un lado Random forest aumenta su tiempo a medida que aumenta la carga computacional, igual que lo hacía en el anterior \textit{dataset}, pero siendo en cada caso los tiempos menores que el \textit{Cpu time}. Mientras que tanto el modelo de SVM como de GB se mantienen más o menos constantes e iguales al \textit{Cpu time}, inidcando que no se están ejecutando procesos en paralelo. Y por último, Regresión logística es el que más varía entre las diferentes pruebas, siendo siempre el \textit{Wall time} menor que el \textit{Cpu time}.
+En cuanto al \textit{Wall time} obtenido vemos que por un lado Random forest aumenta su tiempo a medida que aumenta la carga computacional, igual que lo hacía en el anterior \textit{dataset}, pero siendo en cada caso los tiempos menores que el \textit{Cpu time}. Mientras que tanto el modelo de SVM como de GB se mantienen más o menos constantes e iguales al \textit{Cpu time}, indicando que no se están ejecutando procesos en paralelo. Y por último, Regresión logística es el que más varía entre las diferentes pruebas, siendo siempre el \textit{Wall time} menor que el \textit{Cpu time}.
 
 Otro aspecto de las ejecuciones en la Raspberry  que será relevante más adelante, es la frecuencia a la que ejecutan los cores. Utilizando el comando \textit{lscpu} de Linux, se puede obtener información relevante sobre los cores como por ejemplo la frecuencia máxima y mínima a la que pueden ejecutar, que en el caso de la Raspberry la mínima será igual a $600MHz$ y la máxima $1500MHz$. 
 
@@ -1532,10 +1515,10 @@ Por otra parte los resultados de precisión para este \textit{dataset} se pueden
     \cline{4-7}
      &  &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
      \hline
-     Regresión Logística & 99.4 & 99.4 & 99.4 & 99.4 & 99.4 & 99.4\\
+     Regresión logística & 99.4 & 99.4 & 99.4 & 99.4 & 99.4 & 99.4\\
      SVM & 99.9 & 99.9 & 99.8 & 99.9 & 98.8 & 99.8\\
-     Gradient Boosting & 99.9 & 100.0 & 96.4 & 98.8 & 99.4 & 73.0\\
-     Random Forest & 100.0 & 100.0 & 97.5 & 97.9 & 96.9 & 98.6\\
+     Gradient boosting & 99.9 & 100.0 & 96.4 & 98.8 & 99.4 & 73.0\\
+     Random forest & 100.0 & 100.0 & 97.5 & 97.9 & 96.9 & 98.6\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1603,10 +1586,10 @@ Veamos a continuación cual es el \textit{Accuracy} que consiguen los modelos co
     \cline{4-7}
       &  &   &  Idle & 2 cpu & 4 cpu & 8 cpu \\
      \hline
-     Regresión Logística & 98.9 & 99.0 & 98.9 & 98.9 & 98.7 & 99.0\\
+     Regresión logística & 98.9 & 99.0 & 98.9 & 98.9 & 98.7 & 99.0\\
      SVM & 99.0 & 99.0 & 98.9 & 98.8 & 99.0 & 98.8\\
-     Gradient Boosting & 99.0 & 99.3 & 99.0 & 98.9 & 98.8 & 99.0\\
-     Random Forest & 99.2 & 100.0 & 99.2 & 99.3 & 99.1 & 99.2\\
+     Gradient boosting & 99.0 & 99.3 & 99.0 & 98.9 & 98.8 & 99.0\\
+     Random forest & 99.2 & 100.0 & 99.2 & 99.3 & 99.1 & 99.2\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1663,10 +1646,10 @@ Respecto a la precisión de los modelos generados podemos ver los resultados en 
     \cline{4-7}
      &  &   &  Idle & 2 cpu & 4 cpu & 8 cpu \\
      \hline
-     Regresión Logística & 99.4 & 99.4 & 99.4 & 99.4 & 99.4 & 99.4\\
+     Regresión logística & 99.4 & 99.4 & 99.4 & 99.4 & 99.4 & 99.4\\
      SVM & 99.9 & 99.9 & 99.9 & 99.8 & 99.8 & 99.9\\
-     Gradient Boosting & 99.9 & 100.0 & 96.4 & 96.5 & 99.3 & 99.3 \\
-     Random Forest & 100.0 & 100.0 & 99.7 & 97.4 & 99.7 & 96.8\\
+     Gradient boosting & 99.9 & 100.0 & 96.4 & 96.5 & 99.3 & 99.3 \\
+     Random forest & 100.0 & 100.0 & 99.7 & 97.4 & 99.7 & 96.8\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1747,7 +1730,7 @@ Los resultados de los tiempos de ejecución para el \textit{dataset} generado po
 \label{tab:times_sensrasp}
 \end{table}
 
-Como se puede observar, se mantiene un comportamiento tanto en los tiempos de cpu como en \textit{Wall time} bastante similar a lo visto en los anteriores \textit{datasets} ejecutados en la Raspberry. Por un lado SVM y GB se mantiene prácticamente iguales en todas las pruebas. Y en RF en el nivel \textit{Idle} es cuando más tarda el \textit{Cpu time}, mientras que el \textit{Wall time} aumenta manteniendose siempre por debajo del \textit{Cpu time}.
+Como se puede observar, se mantiene un comportamiento tanto en los tiempos de cpu como en \textit{Wall time} bastante similar a lo visto en los anteriores \textit{datasets} ejecutados en la Raspberry. Por un lado SVM y GB se mantiene prácticamente iguales en todas las pruebas. Y en RF en el nivel \textit{Idle} es cuando más tarda el \textit{Cpu time}, mientras que el \textit{Wall time} aumenta manteniéndose siempre por debajo del \textit{Cpu time}.
 
 Por otro lado, la precisión obtenida por medio de este \textit{dataset} se encuentra en la Tabla~\ref{tab:acc_sensrasp}.
 
@@ -1761,10 +1744,10 @@ Por otro lado, la precisión obtenida por medio de este \textit{dataset} se encu
     \cline{4-7}
      &  &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
      \hline
-     Regresión Logística & 98.9 & 99.0 & 99.2 & 99.1 & 99.2 & 99.0\\
+     Regresión logística & 98.9 & 99.0 & 99.2 & 99.1 & 99.2 & 99.0\\
      SVM & 99.5 & 99.6 & 99.5 & 99.5 & 98.6 & 98.5\\
-     Gradient Boosting & 99.9 & 100.0 & 99.9 & 99.8 & 99.5 & 98.9\\
-     Random Forest & 99.9 & 100.0 & 99.8 & 99.9 & 99.7 & 99.7\\
+     Gradient boosting & 99.9 & 100.0 & 99.9 & 99.8 & 99.5 & 98.9\\
+     Random forest & 99.9 & 100.0 & 99.8 & 99.9 & 99.7 & 99.7\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1818,10 +1801,10 @@ Mientras que la precisión obtenida por medio de este \textit{dataset} se encuen
     \cline{4-7}
      &  &   &  Idle & 2 cpu & 4 cpu & 8 cpu \\
      \hline
-     Regresión Logística & 99.0 & 99.0 & 99.0 & 99.0 & 99.1 & 99.8\\
+     Regresión logística & 99.0 & 99.0 & 99.0 & 99.0 & 99.1 & 99.8\\
      SVM & 99.5 & 99.5 & 99.7 & 99.5 & 98.6 & 98.6\\
-     Gradient Boosting & 99.9 & 100.0 & 99.7 & 99.9 & 99.5 & 99.8\\
-     Random Forest & 99.9 & 100.0 & 99.5 & 99.8 & 99.7 & 99.5\\
+     Gradient boosting & 99.9 & 100.0 & 99.7 & 99.9 & 99.5 & 99.8\\
+     Random forest & 99.9 & 100.0 & 99.5 & 99.8 & 99.7 & 99.5\\
     \hline
     \end{tabular}
 \end{adjustbox}
