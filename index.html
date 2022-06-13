@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Title -->
-  <title>Machine Learning with Raspberry</title>
+  <title>Machine learning with Raspberry Pi</title>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="web_page/favicon.ico">
@@ -152,9 +152,9 @@
                The selected automatic learning models are: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" class="link-secondary">Logistic Regression</a>, 
                <a href="https://scikit-learn.org/stable/modules/svm.html" class="link-secondary"> Support Vector Machine</a>, <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html" class="link-secondary">Gradient Boosting</a> 
                and <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html" class="link-secondary"> Random Forest.</a></p>
-            <p class="fs-3">These machine learning models are going to be subjected to different tests in order to prove the capacity of the Raspberry to know if this device is truely a good tool to develop and execute this kind of algorithms.
+            <p class="fs-3">These machine learning models are going to be subjected to different tests in order to prove the capacity of the Raspberry Pi to know if this device is truely a good tool to develop and execute this kind of algorithms.
                The results of these tests are going to be compared with the results of the same automatic learning models but executed and tested in a more powerful machine. 
-               This will let us know how far is the performance of the Raspberry from a higher capacity machine. The achivement of all this is going to be explained later. </p>
+               This will let us know how far is the performance of the Raspberry Pi from a higher capacity machine. The achivement of all this is going to be explained later. </p>
           </div>
 
         
@@ -216,7 +216,7 @@
           <!--Light Sensor-->
               <div class="col-7">
                   <h4 class="text-center">LDR Sensor</h4>
-                  <p> This is a photoresistor so it will detect if there is light or not on its enviroment. To be able to use this with the Raspberry is necesary to connect a conversor to  it, in this project it is used the HW-103 conversor.</p>
+                  <p> This is a photoresistor so it will detect if there is light or not on its enviroment. To be able to use this with the Raspberry Pi is necesary to connect a conversor to  it, in this project it is used the HW-103 conversor.</p>
               </div>
   
               <div class="col-5">
@@ -240,7 +240,7 @@
   <div class="col-md">
       <div class="text-center">
           <h4>HP 15s-fq1008ns Laptop</h4>
-          <p>In order to compare the Raspberry results with a higher capacity machine it is going to be used a Laptop. The laptop used is an HP 15s-fq1008ns with 8 cores in total. It has Ubuntu 20.04 as Operative System. With this will have real knowledge of how well or badly the Raspberry is performing.</p>
+          <p>In order to compare the Raspberry Pi results with a higher capacity machine it is going to be used a Laptop. The laptop used is an HP 15s-fq1008ns with 8 cores in total. It has Ubuntu 20.04 as Operative System. With this will have real knowledge of how well or badly the Raspberry Pi is performing.</p>
   </div>
 </div></div>
   
@@ -254,17 +254,17 @@
 
     
 
-    <p class="fs-3 mt-5"> As mentioned before, to test the potential of the Raspberry, four diferent kinds of Machine Learning models are going to be trained and tested with differents dataSets.</p>
+    <p class="fs-3 mt-5"> As mentioned before, to test the potential of the Raspberry Pi, four diferent kinds of Machine Learning models are going to be trained and tested with differents dataSets.</p>
     <p class="fs-3"> Each model will be subjected to four tests. The difference between those tests is the number of cores that are going to be stressed. The laptop will also be subjected to these four tests to compare both results but with some modifications. As mentioned before the laptop has in total 8 cores, twice as many as the Raspberry has, so in order to put both machines in the same computational load situation, the number of stressed cpus change. </p>
     <p class="fs-3"> The defined testing levels are: </p>
     <ul class="mt-2 mb-5">
-        <li><p class="fs-3"><strong>Idle Level</strong>. The Raspberry or laptop is not subjected to any kind of extra stress.</p></li>
-        <li><p class="fs-3"><strong>Low Level</strong>. Only one of the cores of the Raspberry is stressed. While in the laptop two cores are stressed.</p></li>
-        <li><p class="fs-3"><strong>Middle Level</strong>. Two of the Raspberry cpus are going to be stressed, in the laptop four cores. In both machines there are stressed half of the total number of cores.</p></li>
-        <li><p class="fs-3"><strong>High Level</strong>. All the cores of the Raspberry, which are four, and laptop, which are eight, will be exposed to higher computational load.</p></li>
+        <li><p class="fs-3"><strong>Idle Level</strong>. The Raspberry Pi or laptop is not subjected to any kind of extra stress.</p></li>
+        <li><p class="fs-3"><strong>Low Level</strong>. Only one of the cores of the Raspberry Pi is stressed. While in the laptop two cores are stressed.</p></li>
+        <li><p class="fs-3"><strong>Middle Level</strong>. Two of the Raspberry Pi cpus are going to be stressed, in the laptop four cores. In both machines there are stressed half of the total number of cores.</p></li>
+        <li><p class="fs-3"><strong>High Level</strong>. All the cores of the Raspberry Pi, which are four, and laptop, which are eight, will be exposed to higher computational load.</p></li>
     </ul>
     
-    <p class="fs-3"> From each of the test it is going to be obtained some relevant information that will allow us to evaluate the Raspberry as an optimal dispositive for Machine Learning applications or not. 
+    <p class="fs-3"> From each of the test it is going to be obtained some relevant information that will allow us to evaluate the Raspberry Pi as an optimal dispositive for Machine Learning applications or not. 
       The above image shows the general architecture of the tests. As it can be seen on it, the information obtained from each model will be stored on its own file. </p>
     </div>
       <!-- End Row -->
@@ -298,7 +298,7 @@
 
 <!--MydataSet-->
 <div class="content-space-t-1">
-    <h4>Mi dataSet</h4>
+    <h4>Raspberry Pi sensors dataSet</h4>
     <p class="fs-3">
         As seen before in this projects are used two sensors. With the data provided by these sensors it has been created a total new dataset that will contain information of light, temperature, relative humidity and pressure.
          Storing this data and knowing if there are people in the room where the sensors are located, we can create another dataset that will train a model to know by the sensors measures, if there is someone in the room or not. 
@@ -320,7 +320,7 @@
     
     <!--Common Legend-->
       <div class="flex-parent content-space-t-1">
-        <a class='box raspberry'></a>&nbsp;Raspberry&nbsp;&nbsp;&nbsp;&nbsp;<a class= "box pc"></a>&nbsp;PC
+        <a class='box raspberry'></a>&nbsp;Raspberry Pi&nbsp;&nbsp;&nbsp;&nbsp;<a class= "box pc"></a>&nbsp;PC
     </div>
     <!--End Common Legend-->
     
@@ -362,9 +362,9 @@
           </div>
         </div>
         <div class="carousel-item">
-          <h4>Mi dataSet</h4>
+          <h4>Raspberry Pi sensors dataSet</h4>
           <!--Results kdd_cup99-->
-          <p class="fs-3">Cpu times with the Mi dataSet</p>
+          <p class="fs-3">Cpu times with the Raspberry Pi sensors dataSet</p>
           <div>
             <div class="row">
               <div class="col-md-6"><canvas id="IdleMi" width="100" height="50" style="display: block; box-sizing: border-box; height: 50px; width: 100px;"></canvas></div>
@@ -390,7 +390,7 @@
 
     </div>
 
-    <p class="content-space-t-1">From this data we can find out what percentage the Raspberry is slower than the laptop.</p>
+    <p class="content-space-t-1">From this data we can find out what percentage the Raspberry Pi is slower than the laptop.</p>
 
     <!--Common Legend-->
     <div class="flex-parent content-space-t-1">
@@ -416,10 +416,10 @@
 <!--Conclusions-->
 <div id="Conclusions" class="container">
     <h2 class="display-6 text-dark content-space-t-3">Conclusions</h2>
-    <p class="fs-3">With the results obtained is clear that the Raspberry behaviour is worse than the performance of the laptop, it takes significantly longer to finish executing than the other machine. However
-      it has been able to complete the task assigned even in the worst cases. So we have seen that the Raspberry is more powerful than it appeared at first glace, even it has been able to obtain its own dataset 
+    <p class="fs-3">With the results obtained is clear that the Raspberry Pi behaviour is worse than the performance of the laptop, it takes significantly longer to finish executing than the other machine. However
+      it has been able to complete the task assigned even in the worst cases. So we have seen that the Raspberry Pi is more powerful than it appeared at first glace, even it has been able to obtain its own dataset 
       from the data of the sensors, an IoT device-like behaviour.</p>
-      <p class="fs-3">Thanks to the test carried out during this project we can conclude that the Raspberry can develop these kind of task without nothing to envy to the Laptop. We are talking about a device with a small size,
+      <p class="fs-3">Thanks to the test carried out during this project we can conclude that the Raspberry Pi can develop these kind of task without nothing to envy to the Laptop. We are talking about a device with a small size,
          able to interact with its surround and with lower power consumption, which can be easily implementend anywhere. Being a perfect candidate in which implement IoT and Machine Learning applications.</p>
       <p class="fs-3">For a deeper explanation you can see the memory of this project where all this is explained and
       a more detailed analysis is made of the results obtained. </p>      
@@ -492,7 +492,7 @@ new Chart("IdleOccupancy", {
   data: {
     labels: xValues,
     datasets: [{
-      label:"Raspberry",
+      label:"Raspberry Pi",
       data: [17.79,16.52,28.61,59.15],
       backgroundColor: "rgba(227,11,93,1)",
     },{
@@ -549,7 +549,7 @@ new Chart("LowOccupancy", {
   data: {
     labels: xValues,
     datasets: [{
-      label:"Raspberry",
+      label:"Raspberry Pi",
       data: [26.8,16.59,28.4,52.44],
       backgroundColor: "rgba(227,11,93,1)",
     },{
@@ -605,7 +605,7 @@ new Chart("LowOccupancy", {
     data: {
       labels: xValues,
       datasets: [{
-        label:"Raspberry",
+        label:"Raspberry Pi",
         data: [24.19,16.63,28.3,48.92],
         backgroundColor: "rgba(227,11,93,1)",
         },{
@@ -660,7 +660,7 @@ new Chart("LowOccupancy", {
     data: {
       labels: xValues,
       datasets: [{
-        label:"Raspberry",
+        label:"Raspberry Pi",
         data: [17.69,16.95,28.51,49.29],
         backgroundColor: "rgba(227,11,93,1)",
       },{
@@ -715,7 +715,7 @@ new Chart("LowOccupancy", {
     data: {
       labels: xValues,
       datasets: [{
-        label:"Raspberry",
+        label:"Raspberry Pi",
         data: [447.38,528.55,853.97,1048.87],
         backgroundColor: "rgba(227,11,93,1)",
       },{
@@ -772,7 +772,7 @@ new Chart("LowOccupancy", {
     data: {
       labels: xValues,
       datasets: [{
-        label:"Raspberry",
+        label:"Raspberry Pi",
         data: [506.49,517,876.88,829.86],
         backgroundColor: "rgba(227,11,93,1)",
       },{
@@ -828,7 +828,7 @@ new Chart("LowOccupancy", {
       data: {
         labels: xValues,
         datasets: [{
-          label:"Raspberry",
+          label:"Raspberry Pi",
           data: [422.57,494.24,853.42,669.36],
           backgroundColor: "rgba(227,11,93,1)",
           },{
@@ -883,7 +883,7 @@ new Chart("LowOccupancy", {
       data: {
         labels: xValues,
         datasets: [{
-          label:"Raspberry",
+          label:"Raspberry Pi",
           data: [387.74,495.47,858.95,706.96],
           backgroundColor: "rgba(227,11,93,1)",
         },{
@@ -938,7 +938,7 @@ new Chart("LowOccupancy", {
     data: {
       labels: xValues,
       datasets: [{
-        label:"Raspberry",
+        label:"Raspberry Pi",
         data: [10.73,10.48,17.28,42.58],
         backgroundColor: "rgba(227,11,93,1)",
       },{
@@ -995,7 +995,7 @@ new Chart("LowOccupancy", {
     data: {
       labels: xValues,
       datasets: [{
-        label:"Raspberry",
+        label:"Raspberry Pi",
         data: [19.39,10.32,17.15,38.37],
         backgroundColor: "rgba(227,11,93,1)",
       },{
@@ -1051,7 +1051,7 @@ new Chart("LowOccupancy", {
       data: {
         labels: xValues,
         datasets: [{
-          label:"Raspberry",
+          label:"Raspberry Pi",
           data: [18.73,10.26,17.11,35.41],
           backgroundColor: "rgba(227,11,93,1)",
           },{
@@ -1106,7 +1106,7 @@ new Chart("LowOccupancy", {
       data: {
         labels: xValues,
         datasets: [{
-          label:"Raspberry",
+          label:"Raspberry Pi",
           data: [17.4,10.27,17,36.78],
           backgroundColor: "rgba(227,11,93,1)",
         },{
@@ -1326,7 +1326,7 @@ new Chart("LowOccupancy", {
           plugins: {
             title: {
               display: true,
-              text: 'Mi DataSet',
+              text: 'Raspberry Pi sensors DataSet',
               color: '#444',
               font: {
                 size: 18
