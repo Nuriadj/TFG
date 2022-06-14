@@ -1417,31 +1417,40 @@ Como se comentó en el Capítulo~\ref{chap:diseño} en este proyecto se han util
 \subsubsection{Resultados Room Occupancy}
 \label{subsubsec:occ_raspberry}
 
-Los tiempos de CPU para la ejecución de estos modelos se pueden ver en la Tabla~\ref{tab:times_Occraspberry}
-
-\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-\begin{table}[]
+Los tiempos de CPU para la ejecución de estos modelos se pueden ver en la Tabla~\ref{tab:times_Occraspberry}\\
+\begin{table}[htb]
 \begin{adjustbox}{width=\textwidth}
-\renewcommand{\arraystretch}{2}
-\newcolumntype{a}{>{\columncolor{lightgray}}c}
+\renewcommand{\arraystretch}{1.5}
 \centering
-    \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
-    \hline
-    \rowcolor{lightgray}\multirow{2}{*}{{\textbf{Modelo}}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 CPU}} & \multicolumn{2}{|c|}{\textbf{2 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}}\\[2ex]
+    \begin{tabular}{ @{\extracolsep{5pt}}
+    >{\centering\arraybackslash}m{2cm}  
+    >{\raggedleft\arraybackslash}m{1.5cm} 
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    @{}}
+    \toprule
+    & \multicolumn{8}{c}{\textbf{Nivel de estrés}}\\
     \cline{2-9}
-     & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time\\[2ex]
+     & \multicolumn{2}{c}{\textbf{Idle}} & \multicolumn{2}{c}{\textbf{2 CPUs}} & \multicolumn{2}{c}{\textbf{4 CPUs}} & \multicolumn{2}{c}{\textbf{8 CPUs}}\\
+    \cline{2-3}\cline{4-5}\cline{6-7}\cline{8-9}
+    \textbf{Modelo} & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.)\\
+    \midrule
+    Regresión Logística & 17,79  & 18,83  & 26,8  & 15,2  & 24,19  & 16,62  & 17,69  & 13,85  \\
     \hline
-    Regresión Logística & 17,79 seg & 18,83 seg & 26,8 seg & 15,2 seg & 24,19 seg & 16,62 seg & 17,69 seg & 13,85 seg \\[2ex]
+    SVM & 16,52  & 16,37  & 16,59  & 16,55  & 16,63  & 16,62  & 16,95  & 17,01 \\
     \hline
-    SVM & 16,52 seg & 16,37 seg & 16,59 seg & 16,55 seg & 16,63 seg & 16,62 seg & 16,95 seg & 17,01 seg\\[2ex]
+    Gradient Boosting & 28,61  & 28,74  & 28,4  & 28,38  & 28,3  & 28,31  & 28,51  & 28,66 \\
     \hline
-    Gradient Boosting & 28,61 seg & 28,74 seg & 28,4 seg & 28,38 seg & 28,3 seg & 28,31 seg & 28,51 seg & 28,66 seg\\[2ex]
-    \hline
-    Random Forest & 59,15 seg & 24,59 seg & 52,44 seg & 26,15 seg & 48,92 seg & 30,67 seg & 49,29 seg & 34,34 seg\\[2ex]
+    Random Forest & 59,15  & 24,59  & 52,44  & 26,15  & 48,92  & 30,67  & 49,29  & 34,34 \\
     \hline
     \end{tabular}
 \end{adjustbox}
-\caption{Resultados de los tiempos de ejecución para el Room Occupancy dataSet}
+\caption{Resultados de los tiempos de ejecución para el Room Occupancy \textit{dataset} en la Raspberry Pi}
 \label{tab:times_Occraspberry}
 \end{table}
 
@@ -1453,10 +1462,8 @@ Sin embargo, el modelo de \textit{Random Forest} no terminaba de encajar del tod
 
 Por otra parte, podemos ver como los tiempos de \textit{Wall time} se mantienen iguales, exceptuando el caso de Random Forest, a pesar de someter a más carga a la Raspberry Pi. Además para estos casos, son resultados muy similares a los del \textit{CPU time}, una muestra más de que los procesos no están utilizando la ejecución en paralelo. En cuanto a \textit{Random Forest}, es el único modelo en el que el \textit{Wall time} va incrementando a medida que aumenta el nivel de la prueba, pero aún así devuelve tiempos menores que el \textit{CPU time} indicando que está aprovechando las ventajas de la ejecución paralela. 
 
-En cuanto a la precisión (\textit{Accuracy}) en cada uno de los modelos se obtienen los resultados de la Tabla~\ref{tab:acc_Occraspberry}
-
-\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-\begin{table}[]
+En cuanto a la precisión (\textit{Accuracy}) en cada uno de los modelos se obtienen los resultados de la Tabla~\ref{tab:acc_Occraspberry}\\
+\begin{table}[htb]
 \renewcommand{\arraystretch}{1.5}
 \begin{adjustbox}{width=\textwidth}
 \centering
@@ -1479,34 +1486,40 @@ En cuanto a la precisión (\textit{Accuracy}) en cada uno de los modelos se obti
 
 Como se puede ver en dicha tabla, en este caso, la diferencia entre la precisión de los datos de entrenamiento y otros datos que no ha visto hasta entonces es muy similar. Por lo tanto los modelos que se están generando son bastante fiables puesto que todos están por encima del $90\%$ de precisión. Y sabemos que no se están sobreajustando los modelos puesto que en la columna \texttt{Accuracy CV}, que es la precisión que se obtiene de la validación cruzada, en todos los casos también es superior al $90\%$. Este porcentaje se obtiene de la media de la fila \texttt{Mean Folds Accuracy} de los CSV con los datos generados en cada modelo.
 
-\subsubsection{Resultados KddCup99}
+\subsubsection{Resultados $20$\% KddCup99}
 \label{subsubsec:kdd_raspberry}
 
-Los resultados obtenidos para el veinte por ciento del \textit{dataset} de KddCup99 se encuentran en la Tabla~\ref{tab:times_kddraspberry}. En esta ocasión los tiempos de ejecución aumentarán respecto al \textit{dataset} de Room Occupancy puesto que este \textit{dataset} tiene muchas más líneas con las que entrenar (hay más de cuatro millones de líneas de diferencia entre ambos \textit{datasets}).
-
-\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-\begin{table}[]
+Los resultados obtenidos para el veinte por ciento del \textit{dataset} de KddCup99 se encuentran en la Tabla~\ref{tab:times_kddraspberry}. En esta ocasión los tiempos de ejecución aumentarán respecto al \textit{dataset} de Room Occupancy puesto que este \textit{dataset} tiene muchas más líneas con las que entrenar (hay más de cuatro millones de líneas de diferencia entre ambos \textit{datasets}).\\
+\begin{table}[htb]
 \begin{adjustbox}{width=\textwidth}
-\renewcommand{\arraystretch}{2}
-\newcolumntype{a}{>{\columncolor{lightgray}}c}
+\renewcommand{\arraystretch}{1.5}
 \centering
-    \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
-    \hline
-    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 CPU estresada}} & \multicolumn{2}{|c|}{\textbf{2 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}}\\[2ex]
+    \begin{tabular}{ @{\extracolsep{5pt}}
+    >{\centering\arraybackslash}m{2cm}  
+    >{\raggedleft\arraybackslash}m{1.5cm} 
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    @{}}
+    \toprule
+    & \multicolumn{8}{c}{\textbf{Nivel de estrés}}\\
     \cline{2-9}
-     & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time\\[2ex]
-    \hline
-    Regresión Logística & 447,38 seg & 142,72 seg & 506,49 seg & 191,09 seg & 422,57 seg & 223,33 seg & 387,74 seg & 211,3 seg \\[2ex]
-    \hline
-    SVM & 528,55 seg & 529,74 seg & 517,1 seg & 518,07 seg & 494,24 seg & 494,31 seg & 495,47 seg & 497,24 seg\\[2ex]
-    \hline
-    Gradient Boosting & 853,97 seg & 855,97 seg & 876,88 seg & 879,19 seg & 853,42 seg & 853,49 seg & 858,95 seg & 860,68 seg\\[2ex]
-    \hline
-    Random Forest & 1048,87 seg & 296,41 seg & 829,86 seg & 306,78 seg & 669,36 seg & 348,86 seg & 706,96 seg & 381,14 seg\\[2ex]
-    \hline
+     & \multicolumn{2}{c}{\textbf{Idle}} & \multicolumn{2}{c}{\textbf{2 CPUs}} & \multicolumn{2}{c}{\textbf{4 CPUs}} & \multicolumn{2}{c}{\textbf{8 CPUs}}\\
+    \cline{2-3}\cline{4-5}\cline{6-7}\cline{8-9}
+    \textbf{Modelo} & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.)\\
+    \midrule
+    Regresión Logística & 447,38  & 142,72  & 506,49  & 191,09  & 422,57  & 223,33  & 387,74  & 211,3  \\
+    SVM & 528,55  & 529,74  & 517,1  & 518,07  & 494,24  & 494,31  & 495,47  & 497,24 \\
+    Gradient Boosting & 853,97  & 855,97  & 876,88  & 879,19  & 853,42  & 853,49  & 858,95  & 860,68 \\
+    Random Forest & 1048,87  & 296,41  & 829,86  & 306,78  & 669,36  & 348,86  & 706,96  & 381,14 \\
+    \bottomrule
     \end{tabular}
 \end{adjustbox}
-\caption{Resultados de los tiempos de ejecución para el Kdd\_cup99 \textit{dataset} en la Raspberry Pi}
+\caption{Resultados de los tiempos de ejecución para el $20$\% Kdd\_cup99 \textit{dataset} en la Raspberry Pi}
 \label{tab:times_kddraspberry}
 \end{table}
 
@@ -1523,9 +1536,9 @@ Con este parámetro ajustado hay que tener en cuenta que el tiempo de CPU que ob
 
 Para el resto de casos, dado que ya intervienen otros procesos, habrá que conocer como se comporta la Raspberry Pi ante una mayor demanda de recursos. Lo primero que hay que saber es que el comando \textit{stress} estresará el número de CPUs que se le pasan como argumento siempre y cuando pueda. En el momento en el que tenga que compartir CPU con otros procesos, la Raspberry Pi repartirá los recursos haciendo que \textit{stress} no utilice todas las CPUs que se le ha comandado estresar para que el otro proceso también pueda ejecutar. Por ejemplo, cuando se realiza la prueba de nivel alto de carga al modelo de Máquinas de Vector Soporte, si se comprueban los valores de CPU que utiliza cada uno de los procesos (por medio del comando \textit{htop} de Linux), a pesar de que se puede ver que \textit{stress} tiene cuatro procesos, la suma de lo que utiliza la CPU cada uno de ellos será igual a un total de tres cores más o menos, es decir utilizan un $300\%$ de los recursos. Mientras que el proceso del modelo utiliza una CPU, un $100\%$. Siendo el valor total de los recursos de los que dispone la Raspberry Pi igual a $400\%$, un $100\%$ para cada uno de los cores de la Raspberry Pi.
 
-Otro ejemplo de esto puede ser el caso en el que se ejecuta el modelo de Random Forest, teniendo el parámetro de \textit{n\_jobs} igual a cuatro para utilizar todos los cores disponibles, a la vez que \textit{stress} para estresar las cuatro CPUs. Si observamos mediante el comando \textit{htop} los procesos, se podrá ver como se distribuyen los cores para que puedan ejecutar a la vez tanto los procesos de \textit{stress} como los del modelo de aprendizaje. Por lo tanto \textit{stress} utilizará en total dos CPUs y Random Forest hará lo mismo, a pesar de que a ambos se les indicó que utilizasen todas las CPUs de la Raspberry Pi. Este ejemplo se puede ver en la Figura~\ref{figura:stress_rForest}, siendo la CPU total que utiliza Random Forest la que se indica en el primer proceso que muestra \textit{htop} en la imagen. Al sumar el resto de procesos de RF su valor de CPU es igual al del primer proceso.\\
+Otro ejemplo de esto puede ser el caso en el que se ejecuta el modelo de Random Forest, teniendo el parámetro de \textit{n\_jobs} igual a cuatro para utilizar todos los cores disponibles, a la vez que \textit{stress} para estresar las cuatro CPUs. Si observamos mediante el comando \textit{htop} los procesos, se podrá ver como se distribuyen los cores para que puedan ejecutar a la vez tanto los procesos de \textit{stress} como los del modelo de aprendizaje. Por lo tanto \textit{stress} utilizará en total dos CPUs y Random Forest hará lo mismo, a pesar de que a ambos se les indicó que utilizasen todas las CPUs de la Raspberry Pi. Este ejemplo se puede ver en la Figura~\ref{figura:stress_rForest}, siendo la CPU total que utiliza Random Forest la que se indica en el primer proceso que muestra \textit{htop} en la imagen. Al sumar el resto de procesos de RF su valor de CPU es igual al del primer proceso.
 
- \begin{figure}[]
+ \begin{figure}[htb]
     \centering
     \includegraphics[ width=16cm, keepaspectratio]{img/rForest_stress2.png}
     \caption{Porcentaje de CPU utilizada por los procesos al ejecutar Random Forest con cuatro CPUs estresadas.}
@@ -1556,10 +1569,8 @@ Para saber la frecuencia de cada uno de los cores en tiempo real se puede ejecut
 
 Mostrará las frecuencias de ejecución de los cores cada $0,1$ segundos. Si utilizamos dicho comando para ver las frecuencias cuando la Raspberry Pi está tanto \textit{Idle} como estresada podremos ver que todas las CPUs están sobre los $1500MHz$. Por lo tanto todos los cores siempre están ejecutando a la máxima velocidad que pueden.
 
-Por otra parte los resultados de precisión para este \textit{dataset} se pueden observar en la Tabla~\ref{tab:acc_Kddraspberry}. Al igual que en el caso del Room Occupancy DataSet se obtienen muy buenos resultados, estando prácticamente todos cerca del $100\%$ de \textit{Accurancy}, y sabiendo que no se están sobreajustando puesto que la precisión de la validación cruzada también es prácticamente el $100\%$ en todos los casos.
-
-\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-\begin{table}[]
+Por otra parte los resultados de precisión para este \textit{dataset} se pueden observar en la Tabla~\ref{tab:acc_Kddraspberry}. Al igual que en el caso del Room Occupancy DataSet se obtienen muy buenos resultados, estando prácticamente todos cerca del $100\%$ de \textit{Accurancy}, y sabiendo que no se están sobreajustando puesto que la precisión de la validación cruzada también es prácticamente el $100\%$ en todos los casos.\\
+\begin{table}[htb]
 \renewcommand{\arraystretch}{1.5}
 \begin{adjustbox}{width=\textwidth}
 \centering
@@ -1576,7 +1587,7 @@ Por otra parte los resultados de precisión para este \textit{dataset} se pueden
     \hline
     \end{tabular}
 \end{adjustbox}
-\caption{Resultados de la precisión de los modelos para el Kdd\_cup99 \textit{dataset} en Raspberry Pi}
+\caption{Resultados de la precisión de los modelos para el $20$\% Kdd\_cup99 \textit{dataset} en Raspberry Pi}
 \label{tab:acc_Kddraspberry}
 \end{table}
 
@@ -1588,28 +1599,34 @@ Por último, añadir que con este set de datos se hicieron varias pruebas con di
 \subsubsection{Resultados Room Occupancy}
 \label{subsubsec:occ_pc}
 
-Los tiempos de ejecución que empleó el portátil para entrenar los diferentes modelos con este \textit{dataset} se encuentran en la Tabla~\ref{tab:times_Occpc}
-
-\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-\begin{table}[]
+Los tiempos de ejecución que empleó el portátil para entrenar los diferentes modelos con este \textit{dataset} se encuentran en la Tabla~\ref{tab:times_Occpc}\\
+\begin{table}[htb]
 \begin{adjustbox}{width=\textwidth}
-\renewcommand{\arraystretch}{2}
-\newcolumntype{a}{>{\columncolor{lightgray}}c}
+\renewcommand{\arraystretch}{1.5}
 \centering
-    \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
-    \hline
-    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{2 CPU estresada}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{8 CPUs estresadas}}\\[2ex]
+    \begin{tabular}{ @{\extracolsep{5pt}}
+    >{\centering\arraybackslash}m{2cm}  
+    >{\raggedleft\arraybackslash}m{1.5cm} 
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    @{}}
+    \toprule
+    & \multicolumn{8}{c}{\textbf{Nivel de estrés}}\\
     \cline{2-9}
-     & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time\\[2ex]
-    \hline
-    Regresión Logística & 2,31 seg & 1,9 seg & 2,56 seg & 1,615 seg & 2,63 seg & 1,71 seg & 5,53 seg & 3,5 seg \\[2ex]
-    \hline
-    SVM & 3,29 seg & 3,3 seg & 3,65 seg & 3,65 seg & 6,16 seg & 6,17 seg & 6,24 seg & 7,52 seg\\[2ex]
-    \hline
-    Gradient Boosting & 7,5 seg & 7,54 seg & 8,13 seg & 8,14 seg & 10,44 seg & 10,45 seg & 17,16 seg & 21,47 seg\\[2ex]
-    \hline
-    Random Forest & 18,22 seg & 3,97 seg & 16,43 seg & 4,55 seg & 16,61 seg & 6,16 seg & 21,64 seg & 10,83 seg\\[2ex]
-    \hline
+     & \multicolumn{2}{c}{\textbf{Idle}} & \multicolumn{2}{c}{\textbf{2 CPUs}} & \multicolumn{2}{c}{\textbf{4 CPUs}} & \multicolumn{2}{c}{\textbf{8 CPUs}}\\
+    \cline{2-3}\cline{4-5}\cline{6-7}\cline{8-9}
+    \textbf{Modelo} & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.)\\
+    \midrule
+    Regresión Logística & 2,31  & 1,9  & 2,56  & 1,615  & 2,63  & 1,71  & 5,53  & 3,5  \\
+    SVM & 3,29  & 3,3  & 3,65  & 3,65  & 6,16  & 6,17  & 6,24  & 7,52 \\
+    Gradient Boosting & 7,5  & 7,54  & 8,13  & 8,14  & 10,44  & 10,45  & 17,16  & 21,47 \\
+    Random Forest & 18,22  & 3,97  & 16,43  & 4,55  & 16,61  & 6,16  & 21,64  & 10,83 \\
+    \bottomrule
     \end{tabular}
 \end{adjustbox}
 \caption{Resultados de los tiempos de ejecución para el Room Occupancy \textit{dataset} en el portátil}
@@ -1624,14 +1641,12 @@ Ejecutando el siguiente comando:
   $ watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"
 \end{lstlisting}
 
-Se puede ver la frecuencia de ejecución de todos los cores cada $0.1$ segundos. En esta ocasión, al observar estas velocidades cuando se ejecutaban los algoritmos de aprendizaje automático se podía ver una variación en los valores dependiendo del nivel de estrés que se estuviese ejecutando, a diferencia de lo que ocurría en la Raspberry Pi que se mantenía siempre a la máxima frecuencia. Esto explicaría porque en el caso del portátil los tiempos incrementan según aumentan el número de cores estresados. 
+Se puede ver la frecuencia de ejecución de todos los cores cada $0,1$ segundos. En esta ocasión, al observar estas velocidades cuando se ejecutaban los algoritmos de aprendizaje automático se podía ver una variación en los valores dependiendo del nivel de estrés que se estuviese ejecutando, a diferencia de lo que ocurría en la Raspberry Pi que se mantenía siempre a la máxima frecuencia. Esto explicaría porque en el caso del portátil los tiempos incrementan según aumentan el número de cores estresados. 
 
 Por otra parte, el \textit{Wall time} tiene un comportamiento similar al de \textit{CPU time} aumentando a medida que se incrementa el nivel de carga computacional en todos los modelos. Sin embargo, en el caso de SVM y GB se puede ver que la diferencia entre el \textit{CPU time} y \textit{Wall time} es muy pequeña, por tanto podemos seguir afirmando que se está usando un solo core a pesar de que todos los tiempos aumenten conforme más CPUs se estresan.
 
-Veamos a continuación cual es el \textit{Accuracy} que consiguen los modelos con este \textit{dataset} en esta máquina.
-
-\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-\begin{table}[]
+Veamos a continuación cual es el \textit{Accuracy} que consiguen los modelos con este \textit{dataset} en esta máquina.\\
+\begin{table}[htb]
 \renewcommand{\arraystretch}{1.5}
 \begin{adjustbox}{width=\textwidth}
 \centering
@@ -1654,34 +1669,40 @@ Veamos a continuación cual es el \textit{Accuracy} que consiguen los modelos co
 
 En la Tabla~\ref{tab:acc_Occpc} se puede ver que en este caso también se consiguen unos modelos de gran precisión tanto en la validación cruzada, como con los datos de entrenamiento además de en cada una de las diferentes pruebas.
 
-\subsubsection{Resultados Kdd\_cup99}
+\subsubsection{Resultados $20$\% Kdd\_cup99}
 \label{subsubsec:kdd_pc}
 
-Los resultados de la ejecución del comando \textit{stress} conforme a estos niveles se pueden observar en la tabla~\ref{tab:times_kddportatil}. Como se puede apreciar los tiempos que se obtienen en el portátil disminuyen bastante con respecto a los que conseguía la Raspberry Pi. 
-
-\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-\begin{table}[]
+Los resultados de la ejecución del comando \textit{stress} conforme a estos niveles se pueden observar en la tabla~\ref{tab:times_kddportatil}. Como se puede apreciar los tiempos que se obtienen en el portátil disminuyen bastante con respecto a los que conseguía la Raspberry Pi.\\
+\begin{table}[htb]
 \begin{adjustbox}{width=\textwidth}
-\renewcommand{\arraystretch}{2}
-\newcolumntype{a}{>{\columncolor{lightgray}}c}
+\renewcommand{\arraystretch}{1.5}
 \centering
-    \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
-    \hline
-    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{2 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{8 CPUs estresadas}}\\[2ex]
+    \begin{tabular}{ @{\extracolsep{5pt}}
+    >{\centering\arraybackslash}m{2cm}  
+    >{\raggedleft\arraybackslash}m{1.5cm} 
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    @{}}
+    \toprule
+    & \multicolumn{8}{c}{\textbf{Nivel de estrés}}\\
     \cline{2-9}
-     & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time\\[2ex]
-    \hline
-    Regresión Logística & 67,95 seg & 20,28 seg & 99,58 seg & 29,96 seg & 126,63 seg & 44,05 seg & 168,25 seg & 77,76 seg \\[2ex]
-    \hline
-    SVM & 114,81 seg & 116,45 seg & 166,42 seg & 168,05 seg & 317,07 seg & 318,72 seg & 327,69 seg & 365,5 seg\\[2ex]
-    \hline
-    Gradient Boosting & 176,09 seg & 177,74 seg & 232,99 seg & 234,63 seg & 268,3 seg & 270,03 seg & 390,09 seg & 429,31 seg\\[2ex]
-    \hline
-    Random Forest & 392,73 seg & 55,88 seg & 327,2 seg & 59,44 seg & 291,76 seg & 69,48 seg & 256,92 seg & 81,99 seg\\[2ex]
-    \hline
+     & \multicolumn{2}{c}{\textbf{Idle}} & \multicolumn{2}{c}{\textbf{2 CPUs}} & \multicolumn{2}{c}{\textbf{4 CPUs}} & \multicolumn{2}{c}{\textbf{8 CPUs}}\\
+    \cline{2-3}\cline{4-5}\cline{6-7}\cline{8-9}
+    \textbf{Modelo} & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.)\\
+    \midrule
+    Regresión Logística & 67,95  & 20,28  & 99,58  & 29,96  & 126,63  & 44,05  & 168,25  & 77,76  \\
+    SVM & 114,81  & 116,45  & 166,42  & 168,05  & 317,07  & 318,72  & 327,69  & 365,5 \\
+    Gradient Boosting & 176,09  & 177,74  & 232,99  & 234,63  & 268,3  & 270,03  & 390,09  & 429,31 \\
+    Random Forest & 392,73  & 55,88  & 327,2  & 59,44  & 291,76  & 69,48  & 256,92  & 81,99 \\
+    \bottomrule
     \end{tabular}
 \end{adjustbox}
-\caption{Resultados de los tiempos de ejecución para el Kdd\_cup99 \textit{dataset} en el portátil.}
+\caption{Resultados de los tiempos de ejecución para el $20$\% Kdd\_cup99 \textit{dataset} en el portátil.}
 \label{tab:times_kddportatil}
 \end{table}
 
@@ -1689,10 +1710,8 @@ Según esta tabla, Random Forest es el modelo que más tiempo de CPU tarda cuand
 
 Y al igual que en el anterior \textit{dataset}, el \textit{Wall time} aumenta conforme más cores se estresan. Manteniendo es todos los casos las mismas relaciones con el \textit{CPU time}.\\
 
-Respecto a la precisión de los modelos generados podemos ver los resultados en la Tabla~\ref{tab:acc_Kddpc}. Que al igual que el resto de resultados obtenidos en el anterior \textit{dataset} los datos no se sobreajustan y se están consiguiendo resultados de gran precisión en todas las pruebas.
-
-\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-\begin{table}[]
+Respecto a la precisión de los modelos generados podemos ver los resultados en la Tabla~\ref{tab:acc_Kddpc}. Que al igual que el resto de resultados obtenidos en el anterior \textit{dataset} los datos no se sobreajustan y se están consiguiendo resultados de gran precisión en todas las pruebas.\\
+\begin{table}[htb]
 \renewcommand{\arraystretch}{1.5}
 \begin{adjustbox}{width=\textwidth}
 \centering
@@ -1709,7 +1728,7 @@ Respecto a la precisión de los modelos generados podemos ver los resultados en 
     \hline
     \end{tabular}
 \end{adjustbox}
-\caption{Resultados de la precisión de los modelos para el Kdd\_cup99 \textit{dataset} en el portátil}
+\caption{Resultados de la precisión de los modelos para el $20$\% Kdd\_cup99 \textit{dataset} en el portátil}
 \label{tab:acc_Kddpc}
 \end{table}
 
@@ -1720,7 +1739,7 @@ Tras haber observado los resultados obtenidos en la ejecución de cada uno de lo
 
 Donde más se nota la falta de recursos de la Raspberry Pi es en los tiempos de ejecución. Para los mismos modelos y los mismos datos, tarda más en ejecutar la Raspberry Pi que el portátil. En la Figura~\ref{fig:per_occupancy} se muestra utilizando porcentajes cuánto de lenta es la Raspberry Pi respecto al portátil en cada uno de los niveles de estrés para el Room Occupancy DataSet, utilizando los tiempos de CPU.
 
-\begin{figure}[]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=14cm, keepaspectratio]{img/per_occupancy.png}
   \caption{Porcentaje de lentitud de la Raspberry Pi respecto al portátil para Room Occupancy.}
@@ -1733,7 +1752,7 @@ Por otra lado, es el modelo de Gradient Boosting el que consigue estar por debaj
 
 De la misma forma, en la Figura~\ref{fig:per_kdd} se muestra estos mismos porcentajes pero esta vez para el caso del \textit{dataset} KddCup99.
 
-\begin{figure}[]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=14cm, keepaspectratio]{img/per_kdd.png}
   \caption{Porcentaje de lentitud de la Raspberry Pi respecto al portátil para KddCup99.}
@@ -1758,28 +1777,37 @@ Tal y como se comentó en el apartado~\ref{sec:mi_dataSet} se generó un \textit
 \subsection{Raspberry Pi}
 \label{subsec:rasp_sensados}
 
-Los resultados de los tiempos de ejecución para el \textit{dataset} generado por medio de los datos, obtenidos de los sensores, se pueden ver en la Tabla~\ref{tab:times_sensrasp}.
-
-\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-\begin{table}[]
+Los resultados de los tiempos de ejecución para el \textit{dataset} generado por medio de los datos, obtenidos de los sensores, se pueden ver en la Tabla~\ref{tab:times_sensrasp}.\\
+\begin{table}[htb]
 \begin{adjustbox}{width=\textwidth}
-\renewcommand{\arraystretch}{2}
-\newcolumntype{a}{>{\columncolor{lightgray}}c}
+\renewcommand{\arraystretch}{1.5}
 \centering
-    \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
-    \hline
-    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{1 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{2 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}}\\[2ex]
+    \begin{tabular}{ @{\extracolsep{5pt}}
+    >{\centering\arraybackslash}m{2cm}  
+    >{\raggedleft\arraybackslash}m{1.5cm} 
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    @{}}
+    \toprule
+    & \multicolumn{8}{c}{\textbf{Nivel de estrés}}\\
     \cline{2-9}
-     & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time & \cellcolor{myGray}CPU time & \cellcolor{myGray}Wall time\\[2ex]
-    \hline
-    Regresión Logística & 10,73 seg & 9,51 seg & 19,39 seg & 12,52 seg & 18,73 seg & 13,77 seg & 17,4 seg & 13,38 seg \\[2ex]
-    \hline
-    SVM & 10,48 seg & 10,35 seg & 10,32 seg & 10,24 seg & 10,26 seg & 10,21 seg & 10,27 seg & 10,44 seg\\[2ex]
-    \hline
-    Gradient Boosting & 17,28 seg & 17,17 seg & 17,15 seg & 17,1 seg & 17,11 seg & 17,08 seg & 17,07 seg & 17,14 seg\\[2ex]
-    \hline
-    Random Forest & 42,58 seg & 20,21 seg & 38,37 seg & 21,2 seg & 35,41 seg & 23,93 seg & 36,78 seg & 27,68 seg\\[2ex]
-    \hline
+     & \multicolumn{2}{c}{\textbf{Idle}} & \multicolumn{2}{c}{\textbf{2 CPUs}} & \multicolumn{2}{c}{\textbf{4 CPUs}} & \multicolumn{2}{c}{\textbf{8 CPUs}}\\
+    \cline{2-3}\cline{4-5}\cline{6-7}\cline{8-9}
+    \textbf{Modelo} & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.)\\
+    \midrule
+    Regresión Logística & 10,73  & 9,51  & 19,39  & 12,52  & 18,73  & 13,77  & 17,4  & 13,38  \\
+    
+    SVM & 10,48  & 10,35  & 10,32  & 10,24  & 10,26  & 10,21  & 10,27  & 10,44 \\
+   
+    Gradient Boosting & 17,28  & 17,17  & 17,15  & 17,1  & 17,11  & 17,08  & 17,07  & 17,14 \\
+   
+    Random Forest & 42,58  & 20,21  & 38,37  & 21,2  & 35,41  & 23,93  & 36,78  & 27,68 \\
+    \bottomrule
     \end{tabular}
 \end{adjustbox}
 \caption{Resultados de los tiempos de ejecución para el \textit{dataset} de Sensores Raspberry Pi en la Raspberry Pi.}
@@ -1788,10 +1816,8 @@ Los resultados de los tiempos de ejecución para el \textit{dataset} generado po
 
 Como se puede observar, se mantiene un comportamiento tanto en los tiempos de CPU como en \textit{Wall time} bastante similar a lo visto en los anteriores \textit{datasets} ejecutados en la Raspberry Pi. Por un lado SVM y GB se mantiene prácticamente iguales en todas las pruebas. Y en RF en el nivel \textit{Idle} es cuando más tarda el \textit{CPU time}, mientras que el \textit{Wall time} aumenta manteniéndose siempre por debajo del \textit{CPU time}.
 
-Por otro lado, la precisión obtenida por medio de este \textit{dataset} se encuentra en la Tabla~\ref{tab:acc_sensrasp}.
-
-\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-\begin{table}[]
+Por otro lado, la precisión obtenida por medio de este \textit{dataset} se encuentra en la Tabla~\ref{tab:acc_sensrasp}.\\
+\begin{table}[htb]
 \renewcommand{\arraystretch}{1.5}
 \begin{adjustbox}{width=\textwidth}
 \centering
@@ -1818,37 +1844,7 @@ A pesar de ser el \textit{dataset} con el menor número de muestras de todos los
 \label{subsec:pc_sensados}
 
 Los resultados de los tiempos de ejecución para el \textit{dataset} generado por medio de los datos obtenidos de los sensores se pueden ver en la Tabla~\ref{tab:times_senspc}.
-
-% % \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-% % \definecolor{myLightGray}{rgb}{0.8, 0.8, 0.8}
-% \begin{table}[]
-% \begin{adjustbox}{width=\textwidth}
-% \renewcommand{\arraystretch}{2}
-% % \newcolumntype{a}{>{\columncolor{myLightGray}}c}
-% \centering
-%     \begin{tabular}{  c  c  c  c  c  c  c  c  c }
-%     \hline
-%     \rowcolor{myLightGray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{2 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{8 CPUs estresadas}}\\[2ex]
-%     \cline{2-9}
-%      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
-%     \hline
-%     Regresión Logística & 2.0 seg & 1.36 seg & 2.27 seg & 1.55 seg & 2.96 seg & 2.24 seg & 3.27 seg & 2.81 seg \\[2ex]
-%     \hline
-%     SVM & 1.65 seg & 1.66 seg & 1.77 seg & 1.78 seg & 2.71 seg & 2.72 seg & 2.8 seg & 3.23 seg\\[2ex]
-%     \hline
-%     Gradient Boosting & 3.67 seg & 3.67 seg & 4.12 seg & 4.13 seg & 4.28 seg & 4.29 seg & 6.18 seg & 7.18 seg\\[2ex]
-%     \hline
-%     Random Forest & 13.29 seg & 3.35 seg & 12.28 seg & 3.87 seg & 11.82 seg & 4.57 seg & 13.29 seg & 8.39 seg\\[2ex]
-%     \hline
-%     \end{tabular}
-% \end{adjustbox}
-% \caption{Resultados de los tiempos de ejecución para el \textit{dataset} Sesnores Raspberry Pi en la Raspberry Pi.}
-% \label{tab:times_senspc}
-% \end{table}
-
-% \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-% \definecolor{myLightGray}{rgb}{0.8, 0.8, 0.8}
-\begin{table}[]
+\begin{table}[htb]
 \begin{adjustbox}{width=\textwidth}
 \renewcommand{\arraystretch}{1.5}
 % \newcolumntype{a}{>{\columncolor{myLightGray}}c}
@@ -1881,16 +1877,14 @@ Los resultados de los tiempos de ejecución para el \textit{dataset} generado po
     \bottomrule
     \end{tabular}
 \end{adjustbox}
-\caption{Resultados de los tiempos de ejecución para el \textit{dataset} Sesnores Raspberry Pi en el portátil.}
+\caption{Resultados de los tiempos de ejecución para el \textit{dataset} Sensores Raspberry Pi en el portátil.}
 \label{tab:times_senspc}
 \end{table}
 
-Que una vez más es muy similar al comportamiento que realizaban los tiempos en los anteriores \textit{datasets}. Incrementan a medida que aumentan el número de procesadores estresados.
+Una vez más es muy similar al comportamiento que realizaban los tiempos en los anteriores \textit{datasets}. Incrementan a medida que aumentan el número de procesadores estresados.
 
-Mientras que la precisión obtenida por medio de este \textit{dataset} se encuentra en la Tabla~\ref{tab:acc_senspc}.
-
-\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
-\begin{table}[]
+Mientras que la precisión obtenida por medio de este \textit{dataset} se encuentra en la Tabla~\ref{tab:acc_senspc}.\\
+\begin{table}[htb]
 \renewcommand{\arraystretch}{1.5}
 \begin{adjustbox}{width=\textwidth}
 \centering
