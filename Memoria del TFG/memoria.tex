@@ -491,17 +491,17 @@ Dentro del mundo del \textit{machine learning} (ML) se puede definir un subcampo
 
 Podemos encontrar aplicaciones de TinyML tan comunes como "OK Google" o "Alexa", además de otras aplicadas a diferentes campos como pueden ser la agricultura, por ejemplo, detectando si hay alguna planta enferma, en el mantenimiento industrial, prediciendo anticipadamente fallos en la maquinaria, o también en la atención médica, un ejemplo de esto es el proyecto "Solar Scare Mosquito"\footnote{\url{https://hackaday.io/project/174575-solar-scare-mosquito-20}} en el cual se detectan las condiciones de reproducción de los mosquitos, que pueden propagar enfermedades, haciendo que el propio dispositivo mueva el agua para evitar que se reproduzcan.
 
-\begin{figure}[]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/edge_computing.pdf}
   \caption{Estructura del procesamiento de los datos obtenidos por los dispositivos.}\label{fig:edge_computing}
 \end{figure}
 
-Luego, uno de los objetivos del TinyML es llevar los modelos de aprendizaje automático al extremo, es decir, a la zona de \textit{Edge computing}~\cite{Khan2019} que es el nivel más bajo donde se pueden procesar los datos, y por lo tanto, el más cercano al usuario. En la Figura~\ref{fig:edge_computing} podemos ver dónde se situa el \textit{Edge computing} respecto del resto de niveles donde se podrían procesar los datos. Para poder generar los modelos en esta zona se utilizan dispositivos basados en microcontroladores alimentados por batería, de forma que puedan realizar tareas de ML con capacidad de respuesta en tiempo real. Pudiendo beneficiarnos de la gran portabilidad, bajo consumo y mayor seguridad, dado que no es necesario enviar los datos a la nube, que ofrecen estas máquinas, lo que puede ser muy relevante cuando se trabaja en aplicaciones de IoT (Internet of Things)~\cite{Rose2015}. 
+Luego, uno de los objetivos del TinyML es llevar los modelos de aprendizaje automático al extremo, es decir, a la zona de \textit{Edge computing}~\cite{Khan2019} que es el nivel más bajo donde se pueden procesar los datos, y por lo tanto, el más cercano al usuario. En la Figura~\ref{fig:edge_computing} podemos ver dónde se sitúa el \textit{Edge computing} respecto del resto de niveles donde se podrían procesar los datos. Para poder generar los modelos en esta zona se utilizan dispositivos basados en microcontroladores alimentados por batería, de forma que puedan realizar tareas de ML con capacidad de respuesta en tiempo real. Pudiendo beneficiarnos de la gran portabilidad, bajo consumo y mayor seguridad, dado que no es necesario enviar los datos a la nube, que ofrecen estas máquinas, lo que puede ser muy relevante cuando se trabaja en aplicaciones de IoT (Internet of Things)~\cite{Rose2015}. 
 
 Los dispositivos de IoT permiten monitorear continuamente un entorno utilizando pequeños sensores. Estos dispositivos están conectados a una red por medio de la cual comparten continuamente la información obtenida. Añadir ML a un dispositivo de estas características permite detectar patrones en todos esos datos recogidos, pudiendo desarrollar una amplia gama de aplicaciones inteligentes y experiencias de usuario mejoradas. Dado que estos dispositivos son normalmente también de características reducidas, es clave el uso de técnicas de TinyML para su desarrollo.
 
-Actualmente hay unos 250 billones de dispositivos embebidos activos en el mundo. Estos dispositivos están continuamente recogiendo grandes cantidades de datos, por lo que procesar toda esa información en la nube representa todo un desafío. Tiny Machine Learning podría poner solución a toda esa cantidad de datos que se están "desperdiciando" al no ser tratados ni procesados, pudiendo crear nuevas aplicaciones en diferentes tipos de industrias.
+Actualmente hay unos 250 billones de dispositivos embebidos activos en el mundo. Estos dispositivos están continuamente recogiendo grandes cantidades de datos, por lo que procesar toda esa información en la nube representa todo un desafío. TinyML podría poner solución a toda esa cantidad de datos que se están "desperdiciando" al no ser tratados ni procesados, pudiendo crear nuevas aplicaciones en diferentes tipos de industrias.
 
 Por lo que debido a la gran importancia que están adquiriendo todos estos elementos, es importante conocer qué dispositivos cumplen las características necesarias para poder desarrollar este tipo de tareas. Es por ello que en este TFG se comprobarán las prestaciones de uno de los dispositivos de capacidades reducidas más populares del mercado, la Raspberry Pi 4B. 
 
@@ -517,7 +517,7 @@ Por lo que debido a la gran importancia que están adquiriendo todos estos eleme
 \label{sec:objetivo-general} % identificador de subsección (no se muestra, es para poder referenciarla)
 
 
-El objetivo de este TFG es evaluar la capacidad de cómputo y eficiencia de la Raspberry Pi 4B para entrenar modelos de aprendizaje automático. Para ello se hará uso de diversos \textit{datasets} con diferentes cantidades de datos para observar el comportamiento ante diferentes entradas de datos. Y de esta forma poder concluir si este dispositivo puede ser empleado para desarrollar tareas de Machine learning e IoT o no.
+El objetivo de este TFG es evaluar la capacidad de cómputo y eficiencia de la Raspberry Pi 4B para entrenar modelos de aprendizaje automático. Para ello se hará uso de diversos \textit{datasets} con diferentes cantidades de datos para observar su comportamiento ante diferentes entradas de datos. Y de esta forma poder concluir si este dispositivo puede ser empleado para desarrollar tareas de \textit{machine learning} e IoT o no.
 
 
 \subsection{Objetivos específicos}
@@ -537,9 +537,9 @@ Para realizar este proyecto se han definido los siguientes objetivos.
 
 A inicios de este curso, cuando tuve que meditar sobre qué tema quería realizar mi TFG, me di cuenta de que uno de los que más me habían gustado durante la carrera había sido \textit{machine learning}, tema que justo había comenzado a ver durante ese primer cuatrimestre. Es un tema que me interesa mucho debido a la infinidad de aplicaciones en las que creo que puede ser muy ventajoso utilizar este conocimiento, además de la capacidad que hay detrás de todos esos algoritmos para poder facilitar y mejorar la vida de las personas.
 
-Sin embargo, no tenía del todo claro de qué forma enfocarlo. Fue entonces cuando descubrí que Katia junto con Felipe ofrecían un proyecto sobre este tema y no dudé en informarme sobre exactamente en qué estaba enfocado el trabajo. Después de contactar con Katia y proponerme varias perspectivas, me decanté por el enfoque de Tiny Machine Learning debido a que me llamaba la atención la posibilidad de poder observar las capacidades de la Raspberry Pi para realizar este tipo de tareas ya que, como se verá en los siguientes capítulos, es un dispositivo económico con el que se podrían ampliar la áreas donde utilizar estas técnicas.
+Sin embargo, no tenía del todo claro de qué forma enfocarlo. Fue entonces cuando descubrí que Katia junto con Felipe ofrecían un proyecto sobre este tema y no dudé en informarme sobre exactamente en qué estaba enfocado el trabajo. Después de contactar con Katia y proponerme varias perspectivas, me decanté por el enfoque de \textit{tiny machine learning} debido a que me llamaba la atención la posibilidad de poder observar las capacidades de la Raspberry Pi para realizar este tipo de tareas ya que, como se verá en los siguientes capítulos, es un dispositivo económico con el que se podrían ampliar la áreas donde utilizar estas técnicas.
 
-Una vez acordado el tema lo primero que hice, a recomendación de Katia, fue informarme a cerca de cómo se podían aplicar técnicas de machine learning en la Raspberry Pi. En Noviembre me entregaron una caja con todo el material necesario para montar y utilizar la Raspberry Pi, con lo que el primer objetivo fue prepararla y comprobar que todo funcionase correctamente creando algoritmos simples, como por ejemplo encender y apagar un led conectado a esta máquina. Además, esta caja también traía tres sensores diferentes para utilizar con la Raspberry Pi, en concreto venia una fotoresistencia, un sensor de humedad y un sensor de temperatura, con los que realicé varias pruebas para verificar que funcionaban correctamente.
+Una vez acordado el tema lo primero que hice, a recomendación de Katia, fue informarme a cerca de cómo se podían aplicar técnicas de ML en la Raspberry Pi. En Noviembre me entregaron una caja con todo el material necesario para montar y utilizar la Raspberry Pi, con lo que el primer objetivo fue prepararla y comprobar que todo funcionase correctamente creando algoritmos simples, como por ejemplo encender y apagar un led conectado a esta máquina. Además, esta caja también traía tres sensores diferentes para utilizar con la Raspberry Pi, en concreto venia una fotoresistencia, un sensor de humedad y un sensor de temperatura, con los que realicé varias pruebas para verificar que funcionaban correctamente.
 
 A partir de este momento y tras la primera tutoría con ambos profesores comenzó el proceso de instalación y preparación del entorno para poder implementar algoritmos de aprendizaje automático, en el que se tuvieron que superar algunas dificultades. Con el entorno instalado se procedió a implementar y realizar las pruebas oportunas.
 
@@ -550,7 +550,7 @@ Una vez esclarecidas las dudas se trató de ir más allá haciendo que la Raspbe
 A pesar de que el desarrollo de este trabajo comenzó en Noviembre no fue hasta finalizar el primer cuatrimestre cuando le empecé a dedicar como mínimo hora y media o dos horas todos los días, salvo algunas excepciones. Siendo los fines de semana cuando le dedicaba aún más tiempo por no tener ninguna otra ocupación. En la Figura~\ref{fig:diagrama_gantt} se puede observar un diagrama de Gantt donde se puede visualizar mejor el desarrollo y duración de cada una de las etapas del proyecto.
 
 
-\begin{figure}[]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=17cm, keepaspectratio]{img/diagrama_GANTT.pdf}
   \caption{Diagrama de Gantt donde se representa la planificación temporal llevada a cabo en este proyecto.}\label{fig:diagrama_gantt}
@@ -591,9 +591,9 @@ En este capítulo se describen todas las tecnologías utilizadas en el desarroll
 \section{Machine Learning}
 \label{sec:machine_learning}
 
-Para saber si la Raspberry Pi es un dispositivo lo suficientemente potente para realizar tareas de machine learning primero debemos tener claros estos conceptos para poder entender el proyecto.
+Para saber si la Raspberry Pi es un dispositivo lo suficientemente potente para realizar tareas de \textit{machine learning} primero debemos tener claros estos conceptos para poder entender el proyecto.
 
- Machine learning o aprendizaje automático, es una disciplina del campo de la Inteligencia Artificial que permite a las máquinas aprender sin ser explícitamente programadas para ello. Para aprender utilizan algoritmos que permiten a los ordenadores identificar los patrones que existen en grandes cantidades de datos y utilizar estos patrones para poder elaborar predicciones del futuro. 
+ El \textit{machine learning} o aprendizaje automático, es una disciplina del campo de la Inteligencia Artificial que se centra en la construcción de programas software y sistemas de información capaces de mejorar la resolución de una tarea conforme ganan experiencia. Para aprender utilizan algoritmos que permiten a los ordenadores identificar los patrones que existen en grandes cantidades de datos y utilizar estos patrones para poder elaborar predicciones del futuro. 
  
  Los datos que se proporcionan al algoritmo normalmente son ficheros con varias filas y columnas. Cada fila representa un ejemplo de datos que se pasa al modelo para entrenar. Mientras que si poseen varias columnas significa que hay varios valores que definen un ejemplo, se dice que estas columnas son las características del \textit{dataset}. 
  
@@ -616,51 +616,51 @@ Para saber si la Raspberry Pi es un dispositivo lo suficientemente potente para 
      \label{tab:my_dataSet}
  \end{table}
  
- Los algoritmos de machine learning se pueden encuadrar, entre otras, en tres categorías~\cite{James2021}: 
+ Los algoritmos de ML se pueden encuadrar, entre otras, en tres categorías~\cite{James2021}: 
 
 \begin{itemize}
     \item \textbf{Aprendizaje supervisado}. En este tipo de aprendizaje se le proporciona al algoritmo un conjunto de datos de entrada con su salida correspondiente. De esta forma el programa puede "aprender" la relación que existe entre la salida y el conjunto de entradas. Dependiendo del tipo de salida podremos encontrar dos clases de modelos: modelos de regresión o de clasificación.
     
-    Si la salida es un valor numérico continuo, estaríamos ante un problema de regresión en el que se busca obtener la recta que mejor se ajusta a los datos de entrada para poder predecir otros valores. Si, en cambio, la salida es una etiqueta de clase, es decir un valor discreto, se correspondería a un problema de clasificación, en los que se busca estimar a qué clase pertenecen los datos de entrada. 
+    Si la salida es un valor numérico continuo, estaríamos ante un problema de regresión en el que se busca obtener el modelo que mejor se ajusta a los datos de entrada para poder predecir otros valores. Si, en cambio, la salida es una etiqueta de clase, es decir un valor discreto, se correspondería a un problema de clasificación, en los que se busca estimar a qué clase pertenecen los datos de entrada. 
     
-    Un ejemplo de este último tipo se puede ver en la Figura~\ref{fig:a_supervisado}, donde cada una de las formas serían las entradas y las etiquetas de: triángulo, cuadrado o círculo serían la salidas, cada dato de entrada tiene asignada una de estas etiquetas. Todo esto formaría lo que se denomina \textit{dataset} que es el conjunto de datos que se pasan al modelo para entrenar y poder encontrar esas relaciones entre entradas y salidas. En este caso cuando al modelo se le pregunte a qué clase pertenece una figura (del mismo tipo que ha visto durante el entrenamiento), si es lo suficientemente robusto, debería de ser capaz de identificarlo como un cuadrado.
+    Un ejemplo de este último tipo se puede ver en la Figura~\ref{fig:a_supervisado}, donde cada una de las formas serían las entradas y las etiquetas de: triángulo, cuadrado o círculo serían la salidas. Cada dato de entrada tiene asignada una de estas etiquetas. Todo esto formaría lo que se denomina \textit{dataset} que es el conjunto de datos que se pasan al modelo para entrenar y poder encontrar esas relaciones entre entradas y salidas. En este caso cuando al modelo se le pregunte a qué clase pertenece una figura (del mismo tipo que ha visto durante el entrenamiento), si es lo suficientemente robusto, debería de ser capaz de identificarlo como un cuadrado.
     
-    \begin{figure}[]
+    \begin{figure}[htb]
       \centering
       \includegraphics[width=12cm, keepaspectratio]{img/a_supervisado.png}
       \caption{Estructura aprendizaje supervisado para clasificación.}\label{fig:a_supervisado}
     \end{figure}
     
-    Existen multitud de modelos de machine learning que sirven para resolver problemas mediante aprendizaje supervisado, como por ejemplo algoritmos de Regresión logística, Árboles de decisión, Máquinas de soporte vectorial...
+    Existen multitud de modelos de \textit{machine learning} que sirven para resolver problemas mediante aprendizaje supervisado, como por ejemplo algoritmos de Regresión Logística, Árboles de Decisión, Máquinas de Vector Soporte...
     
     \item \textbf{Aprendizaje no supervisado}. Al algoritmo de aprendizaje se le proporciona únicamente el conjunto de datos de entrada, sin ningún tipo de dato de salida. El objetivo es que el método de aprendizaje utilizado detecte posibles patrones de interés en el conjunto de datos de entrada. 
     
-    \begin{figure}[]
+    \begin{figure}[htb]
       \centering
       \includegraphics[width=12cm, keepaspectratio]{img/a_no_supervisado.png}
       \caption{Estructura aprendizaje no supervisado para segmentación.}\label{fig:a_no_supervisado}
     \end{figure}
     
-    Hay principalmente dos tipos de tareas que estos algoritmos tratan de realizar. Una de ellas es el clustering (o segmentación), que sirve para encontrar diferentes grupos dentro de los datos de entrada. En la Figura~\ref{fig:a_no_supervisado} se muestra un ejemplo esquemático de la ejecución de un problema de este estilo, donde una vez más las entradas serían cada una de las formas pero en esta ocasión no están etiquetadas como veíamos en la Figura~\ref{fig:a_supervisado}. El modelo en esta ocasión, viendo las características de cada uno de los datos, los agrupará en diferentes clases.
+    Hay principalmente dos tipos de tareas que estos algoritmos tratan de realizar. Una de ellas es el \textit{clustering} (o segmentación), que sirve para encontrar diferentes grupos dentro de los datos de entrada. En la Figura~\ref{fig:a_no_supervisado} se muestra un ejemplo esquemático de la ejecución de un problema de este estilo, donde una vez más las entradas serían cada una de las formas pero en esta ocasión no están etiquetadas como veíamos en la Figura~\ref{fig:a_supervisado}. El modelo, viendo las características de cada uno de los datos, los agrupará en diferentes clases.
     
     La otra misión que puede tener este tipo de aprendizaje es reducir la dimensionalidad de los datos, es decir, reducir el número de características del conjunto de datos de entrada asumiendo que muchas de ellas son redundantes y por lo tanto no aportan información nueva.
     
-    Al igual que en aprendizaje supervisado existen varios algoritmos que buscan resolver estas tareas, como por ejemplo el método KNN, K-Means...
+    Al igual que en aprendizaje supervisado existen varios algoritmos que buscan resolver estas tareas, como por ejemplo el método \textit{k}-NN, \textit{k-means}...
     
     \item \textbf{Aprendizaje por refuerzo}. El algoritmo aprende a desarrollar la tarea que se le asigna en base a un esquema de recompensas y penalizaciones ante las decisiones que toma el programa en cada una de las iteraciones. Luego, por cada acción que realice el modelo recibirá una recompensa o una penalización, de esta forma podrá tener conocimiento de si ha tomado una buena o mala decisión. El objetivo es que llegue a realizar la tarea encomendada consiguiendo la mayor recompensa posible.
 \end{itemize}
 
-Gracias a que todos estos algoritmos pueden estar aprendiendo constantemente de nuevos datos consiguen ir perfeccionando su comportamiento, lo que hace que las técnicas de machine learning sean cada vez más importantes debido a la multitud de aplicaciones que se le pueden dentro de la robótica, los vehículos autónomos, diagnósticos médicos, markenting....
+Gracias a que todos estos algoritmos pueden estar aprendiendo constantemente de nuevos datos consiguen ir perfeccionando su comportamiento, lo que hace que las técnicas de ML sean cada vez más importantes debido a la multitud de aplicaciones que se le pueden dar dentro de la robótica, los vehículos autónomos, diagnósticos médicos, markenting....
 
 \subsection{Tiny Machine Learning}
 \label{subsec:tinyML}
 
-Tiny machine learning\cite{Warden2020,TinyML}, cuyo origen se encuentra en el machine learning, es la unión del aprendizaje automático con los dispositivos IoT. Es decir, consigue que dispositivos con menor capacidad de cómputo sean capaces de ejecutar algoritmos de machine learning. Es una disciplina emergente con la que se amplian la posibilidades de utilizar los algoritmos de machine learning en un mayor número de máquinas.
+\textit{Tiny machine learning}\cite{Warden2020,TinyML}, cuyo origen se encuentra en el \textit{machine learning}, es la unión del aprendizaje automático con los dispositivos IoT. Es decir, consigue que dispositivos con menor capacidad de cómputo sean capaces de ejecutar algoritmos de ML. Es una disciplina emergente con la que se amplían la posibilidades de utilizar los algoritmos de m\textit{achine learning} en un mayor número de máquinas.
 
-Tradicionalmente, los dispositivos IoT tenían que enviar los datos recogidos a la nube para procesarlos y poder generar el modelo de aprendizaje automático con la información proporcionada. Con TinyML conseguimos que estas tareas las realice el propio dispositivo IoT, sin necesidad de enviar nada a la nube. Gracias a esto conseguimos: 
+Tradicionalmente, los dispositivos IoT tenían que enviar los datos recogidos a la nube para procesarlos y poder generar el modelo de aprendizaje automático con la información proporcionada. Con TinyML conseguimos que estas tareas las realice el propio dispositivo IoT, sin necesidad de enviar nada a la nube. Gracias a esto adquirimos: 
 
 \begin{itemize}
-    \item Mayor privacidad y seguridad. Los datos no tienen que estar enviándose a ningún sitio, evitándo que puedan ser interceptados y usados de forma maliciosa.
+    \item Mayor privacidad y seguridad. Los datos no tienen que estar enviándose a ningún sitio, evitando que puedan ser interceptados y usados de forma maliciosa.
     \item Menor latencia. El tiempo de respuesta será menor puesto que todo el procesamiento se hace en el mismo dispositivo que tiene que responder. Esto es mucho más eficiente que tener que enviar la información y esperar hasta que otra máquina la procese y envíe la respuesta.
     \item Mayor eficiencia energética. Puesto que estar continuamente transmitiendo información (a través de cables o de forma inalámbrica)consume mucha energía.
 \end{itemize}
@@ -668,12 +668,12 @@ Tradicionalmente, los dispositivos IoT tenían que enviar los datos recogidos a 
 \section{Modelos de Aprendizaje Automático}
 \label{sec:modelos_aautomatico}
 
-Aunque existen muchos algoritmos para generar modelos de aprendizaje automático, en este proyecto vamos a utilizar concretamente cuatro, uno de Regresión logística, otro de Máquinas de soporte vectorial, Gradient boosting y un último de Random forest. Para ello se utilizará la librería de \texttt{scikit-learn}, que veremos más adelante.
+Aunque existen muchos algoritmos para generar modelos de aprendizaje automático, en este proyecto vamos a utilizar concretamente cuatro: Regresión Logística, Máquinas de Vector Soporte, Gradient Boosting y Random Forest. Para ello se utilizará la librería de \texttt{scikit-learn}, que veremos más adelante.
 
-\subsection{Regresión logística}
+\subsection{Regresión Logística}
 \label{subsec:regresion_logistica}
 
-Modelo de aprendizaje supervisado que realiza tareas de clasificación binaria, es decir solo existen dos posibles clases. Esta técnica busca una función acotada (normalmente entre 0 y 1) que divida los datos de ambas clases de forma bien diferenciada. Normalmente dicha función se denomina como logística o sigmoide y se define de la siguiente forma~\cite{Watt2020}:
+Modelo de aprendizaje supervisado que realiza tareas de clasificación binaria, es decir solo existen dos posibles clases. Esta técnica busca una función acotada (normalmente entre 0 y 1) que divida los datos de ambas clases de forma bien diferenciada. Normalmente dicha función se denomina como Logística o sigmoide y se define de la siguiente forma~\cite{Watt2020}:
 
 \begin{equation}
     h_w(x^{(i)}) = \frac{1}{1 + e^{\sum_{j=0}^{d} w_j x_j^{(i)} }}
@@ -699,18 +699,18 @@ Se dará por finalizada la fase de aprendizaje cuando se consiga que los valores
 \end{equation}
 
 
-\subsection{Máquinas de soporte vectorial}
-\label{subsec:maquitas_soporte_vectorial}
+\subsection{Máquinas de Vector Soporte}
+\label{subsec:maquinas_vector_soporte}
 
-Modelo de aprendizaje supervisado utilizado para resolver tareas de clasificación binaria, aunque existen máquinas de vector soporte para resolver problemas de regresión o de clasificación multiclase. Se basa en la generación de un hiperplano que separe de forma óptima los puntos de una clase respecto de otra~\cite{Duda2001}. Es decir, que exista la máxima distancia entre el hiperplano y los puntos más cercanos a este, los puntos más cercanos al hiperplano de separación se denominan como vectores soporte. Luego el hiperplano óptimo pasará justo por el medio de los vectores soporte de ambas clases.
+Modelo de aprendizaje supervisado utilizado para resolver tareas de clasificación binaria, aunque existen Máquinas de Vector Soporte para resolver problemas de regresión o de clasificación multiclase. Se basa en la generación de un hiperplano que separe de forma óptima los puntos de una clase respecto de otra~\cite{Duda2001}. Es decir, que exista la máxima distancia entre el hiperplano y los puntos más cercanos a este, los puntos más cercanos al hiperplano de separación se denominan como vectores soporte. Luego el hiperplano óptimo pasará justo por el medio de los vectores soporte de ambas clases.
 
-\begin{figure}[]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=11cm, keepaspectratio]{img/explicacion_SVM.pdf}
-  \caption{Ejemplo clasificación con Máquinas de soporte vectorial}\label{fig:explicacion_svm}
+  \caption{Ejemplo clasificación con Máquinas de Vector Soporte}\label{fig:explicacion_svm}
 \end{figure}
 
-En la Figura~\ref{fig:explicacion_svm} se puede ver un ejemplo de separación óptimo entre ambas clases, siendo los círculos rodeados en amarillo los vectores soporte. Todos tienen la máxima distancia posible con el hiperplano generado, que es capaz de separar perfectamente ambas clases. El hiperplano de separación se puede definir como una función lineal:
+En la Figura~\ref{fig:explicacion_svm} se puede ver un ejemplo de separación óptima entre ambas clases, siendo los círculos rodeados en amarillo los vectores soporte. Todos tienen la máxima distancia posible con el hiperplano generado, que es capaz de separar perfectamente ambas clases. El hiperplano de separación se puede definir como una función lineal:
 
 \begin{equation}
     h(x) = \sum_{i= 0}^{n} w_i x_i
@@ -718,15 +718,15 @@ En la Figura~\ref{fig:explicacion_svm} se puede ver un ejemplo de separación ó
 
 En esta ocasión también se utilizan unos pesos ($w$) para encontrar dicho hiperplano.
 
-Sin embargo, hay veces que puede llegar a ser imposible hallar un hiperplano que divida correctamente las clases. Ante estos casos la resolución del problema se encuentra en aumentar la dimensionalidad de los datos para comprobar si en esa nueva dimensión existe un hiperplano capaz de separarlos adecuadamente.
+Sin embargo, hay veces que puede llegar a ser imposible hallar un hiperplano que divida correctamente las clases. Ante estos casos la resolución del problema se encuentra en aumentar la dimensionalidad de los datos para comprobar si en esa nueva dimensión existe un hiperplano capaz de separarlos adecuadamente. Otra solución es relajar las condiciones de búsqueda de hiperplano de separación, de forma que se tolere que algunos puntos caigan en el lado incorrecto (\textit{hard-margin} vs. \textit{soft-margin}).
 
 
-\subsection{Gradient boosting}
+\subsection{Gradient Boosting}
 \label{subsec:gradient_boosting}
 
 Técnica de aprendizaje supervisado que se utiliza tanto para problemas de regresión como de clasificación. Se basa en la combinación de modelos predictivos débiles, normalmente árboles de decisión, para crear un modelo predictivo fuerte~\cite{James2021}. Los árboles de decisión son uno de los algoritmos más utilizados para la toma de decisiones debido a su sencilla implementación y fácil interpretación. Dado un conjunto de datos, se crean diagramas lógicos que sirven para representar una serie de condiciones sucesivas para resolver un problema. Por ejemplo, en la Figura~\ref{fig:ejemplo_adecision} hay representado un árbol de decisión que sirve para poder saber si podemos salir a la calle a correr, dependiendo de ciertas condiciones se hará una cosa u otra. 
 
-\begin{figure}[]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=16cm, keepaspectratio]{img/ejemplo_adecision.pdf}
   \caption{Ejemplo árbol de decisión.}\label{fig:ejemplo_adecision}
@@ -734,30 +734,30 @@ Técnica de aprendizaje supervisado que se utiliza tanto para problemas de regre
 
 En Gradient boosting se generan árboles de decisión de forma secuencial, haciendo que cada árbol corrija los errores del árbol anterior. De forma general suelen ser árboles de un máximo de tres niveles de profundidad.
 
-\subsection{Random forest}
+\subsection{Random Forest}
 \label{subsec:random_forest}
 
-Random forest se puede usar tanto en problemas de clasificación como de regresión. Este modelo utiliza un conjunto de árboles de decisión, que se generan de forma paralela, para realizar las predicciones. Cada uno de los árboles de decisión se entrena con un subconjunto aleatorio de los datos de entrenamiento~\cite{James2021}. 
+Random Forest se puede usar tanto en problemas de clasificación como de regresión. Este modelo utiliza un conjunto de árboles de decisión, que se generan de forma paralela, para realizar las predicciones. Cada uno de los árboles de decisión se entrena con un subconjunto aleatorio de los datos de entrenamiento~\cite{James2021}. 
 
 Cuando se quiera, por ejemplo, estimar la clase a la que pertenece un dato cada uno de los árboles "votará" por la clase a la que cree que el dato pertenece. La clase con mayoría de votos es la predicción final del modelo. Por lo tanto, aumentando el número de árboles de decisión se aumenta la precisión del modelo. Con lo que se consigue construir un modelo robusto a partir de varios modelos que no tienen por qué ser tan robustos.
 
-\begin{figure}[]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=14cm, keepaspectratio]{img/ejemplo_randomForest.png}
-  \caption{Ejemplo Random forest.}\label{fig:ejemplo_rforest}
+  \caption{Ejemplo Random Forest.}\label{fig:ejemplo_rforest}
 \end{figure}
 
-En la Figura~\ref{fig:ejemplo_rforest} podemos ver un ejemplo de Random forest. Con el \textit{dataset} que se le pasa generará, en este caso, tres árboles de decisión a partir de subconjuntos aleatorios del \textit{dataset} original. Cuando se pretenda clasificar un nuevo dato cada árbol le asignará una clase a ese dato según lo que haya decidido. La clase que más se repite en este ejemplo es la 2, luego esa será la clase a la que pertenezca el dato.
+En la Figura~\ref{fig:ejemplo_rforest} podemos ver un ejemplo de Random Forest. Con el \textit{dataset} que se le pasa generará, en este caso, tres árboles de decisión a partir de subconjuntos aleatorios del \textit{dataset} original. Cuando se pretenda clasificar un nuevo dato cada árbol le asignará una clase a ese dato según lo que haya decidido. La clase que más se repite en este ejemplo es la 2, luego esa será la clase a la que pertenezca el dato.
 
-\section{IoT}
+\section{Internet of Things (IoT)}
 \label{sec:IoT}
 
-Uno de los campos en los que son de gran importancia las técnicas de aprendizaje automático es en los proyectos de IoT (Internet of Things)~\cite{Rose2015}. El Internet de las cosas (o Internet of Things) es la interconexión de sensores y dispositivos, como por ejemplo pueden ser los electrodomésticos, termostatos, coches, ropa... Todos ellos se conectan a través de una red por medio de la cual pueden interaccionar entre ellos y compartir datos sin necesidad de que un humano intervenga, esta red puede ser por cable, WiFi, Bluetooth etc. 
+Uno de los campos en los que son de gran importancia las técnicas de aprendizaje automático es en los proyectos de IoT (Internet of Things)~\cite{Rose2015}. El Internet de las Cosas (o Internet of Things) es la interconexión de sensores y dispositivos, como por ejemplo pueden ser los electrodomésticos, termostatos, coches, ropa... Todos ellos se comunican a través de una red por medio de la cual pueden interaccionar entre ellos y compartir datos sin necesidad de que un humano intervenga, esta red puede ser por cable, WiFi, Bluetooth etc. 
 
-Los dispositivos conectados generan una gran cantidad de datos que llegan a una plataforma IoT que recolecta, procesa y analiza dichos datos. Utilizando machine learning se puede generar, por medio de todos estos datos recopilados, nuevos modelos de aprendizaje automático cuyas predicciones se pueden usar para poder actuar sobre el entorno. Las posibles aplicaciones que ofrece esto son prácticamente infinitas, algunos ejemplos pueden ser:
+Los dispositivos conectados generan una gran cantidad de datos que llegan a una plataforma IoT que recolecta, procesa y analiza dichos datos. Utilizando \textit{machine learning} se puede generar, por medio de todos estos datos recopilados, nuevos modelos de aprendizaje automático cuyas predicciones se pueden usar para poder actuar sobre el entorno. Las posibles aplicaciones que ofrece esto son prácticamente infinitas, algunos ejemplos pueden ser:
 
 \begin{itemize}
-    \item Smart Homes. Permite que se puedan controlar varios de los dispositivos que hay comúnmente en los hogares haciendo que, por ejemplo, esté listo todo lo que necesite el usuario para cuando llegue a casa.
+    \item \textit{Smart Homes}. Permite que se puedan controlar varios de los dispositivos que hay comúnmente en los hogares haciendo que, por ejemplo, esté listo todo lo que necesite el usuario para cuando llegue a casa.
     \item Telemedicina. Por medio de dispositivos que lleve puesto el paciente se puede tener un control sobre su estado de salud e incluso hacer diagnósticos anticipados.
     \item Vehículos autónomos. Los vehículos puedan estar conectados a la red de tráfico en tiempo real para poder evitar accidentes.
 \end{itemize}
@@ -767,9 +767,15 @@ Los dispositivos conectados generan una gran cantidad de datos que llegan a una 
 
 Raspberry Pi\footnote{\url{https://www.raspberrypi.org/}} es un ordenador de bajo coste y tamaño reducido desarrollado por Raspberry Pi Foundation. Este dispositivo se puede emplear en  multitud de aplicaciones pero su principal objetivo es hacer accesible la informática a todos los usuarios. A parte de poder realizar todas las tareas que se esperan de un ordenador, también puede interactuar con el entorno a través de sensores conectados a sus pines GPIO.
 
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=10cm, keepaspectratio]{img/real_raspberry.png}
+  \caption{Raspberry Pi 4 Modelo B.}\label{fig:raspberry_pi}
+\end{figure}
+
 El sistema operativo que ofrece es Raspbian Pi OS, una versión adaptada de Debian. Sin embargo, permite poder utilizar otros sistemas.
 
-Desde su primer lanzamiento se han ido desarrollando y comercializando nuevos modelos. En este proyecto se utilizará la última versión de estos dispositivos denominado como Raspberry Pi 4 Modelo B con 4GB de RAM. Dicho modelo posee un total de 40 pines GPIO, 2 puertos micro HDMI y 4 puertos USB. Puede realizar conexiones inalámbricas ya que tiene Bluetooth 5.0 y Wi-Fi, aunque también puede utilizar Ethernet. Por último, la alimentación viene dada por un cable USB de tipo C con el que puede alcanzar un total de 1.2 A.
+Desde su primer lanzamiento se han ido desarrollando y comercializando nuevos modelos. En este proyecto se utilizará la última versión de estos dispositivos denominado como Raspberry Pi 4 Modelo B con 4GB de RAM, en la Figura~\ref{fig:raspberry_pi} se puede ver como es este dispositivo. Dicho modelo posee un total de 40 pines GPIO, 2 puertos micro HDMI y 4 puertos USB. Puede realizar conexiones inalámbricas ya que tiene Bluetooth 5.0 y Wi-Fi, aunque también puede utilizar Ethernet. Por último, la alimentación viene dada por un cable USB de tipo C con el que puede alcanzar un total de 1.2 A.
 
 Dicho modelo posee un procesador ARM Cortex-A72 que soporta SIMD avanzado, un tipo de unidad de ejecución que se utiliza para ejecutar la misma instrucción sobre varios datos al mismo tiempo, consiguiendo paralelismo a nivel de datos. En total, la Raspberry Pi tiene cuatro cores físicos y cuatro lógicos. 
 
@@ -793,7 +799,7 @@ Para que la Raspberry Pi pueda obtener el valor que devuelve este sensor es nece
 \subsection{BME280}
 \label{subsec:bme280}
 
-El sensor BME280\footnote{\url{https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/}}, desarrollado por Bosh, es un sensor creado especialmente para aplicaciones móviles y prendas de vestir, donde el tamaño y el bajo consumo de energía son elementos claves. Integra en un mismo dispositivo tres sensores diferentes que proveen medidas de alta precisión. Los tres sensores que posee son: uno de temperatura, otro de presión atmosférica y por último, uno de humedad relativa. 
+El sensor BME280\footnote{\url{https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/}}, desarrollado por Bosch, es un sensor creado especialmente para aplicaciones móviles y prendas de vestir, donde el tamaño y el bajo consumo de energía son elementos claves. Integra en un mismo dispositivo tres sensores diferentes que proveen medidas de alta precisión. Los tres sensores que posee son: uno de temperatura, otro de presión atmosférica y por último, uno de humedad relativa. 
 
 El rango de la temperatura va desde los $-40\, \mbox{ºC}$ hasta los $85\, \mbox{ºC}$, con una precisión de $\pm 0.5\, \mbox{ºC}$. El sensor de presión tiene un rango de entre $300 hPa$ y $1100 hPa$. Por último el rango de la humedad relativa va desde el 0 hasta el 100\%.
 
@@ -809,8 +815,9 @@ El sistema operativo Ubuntu\footnote{\url{https://ubuntu.com/}} es una distribuc
 
 La primera versión de Ubuntu fue la 4.10 lanzada el 20 de Octubre de 2004. A partir de la versión 13.4 las versiones estables sin soporte a largo plazo se liberan cada seis meses, y Canonical proporciona soporte técnico y actualizaciones de seguridad durante 9 meses. Las versiones LTS (Long Term Support) ofrecen un soporte técnico durante 5 años a partir de la fecha de lanzamiento.
 
-La última versión fue lanzada el 14 de Octubre de 2021, que es la versión Ubuntu 21.10. Dicha versión utiliza el kernel 5.13, con cambios y mejoras para componentes que daban problemas. También tiene un nuevo instalador, escrito desde cero en Flutter, que facilita la instalación del sistema operativo. Una de las novedades más importantes es que actualiza su escritorio a GNOME 40. 
+La última versión fue lanzada el 14 de Octubre de 2021, que es la versión Ubuntu 21.10. Utiliza el kernel 5.13, con cambios y mejoras para componentes que daban problemas. También tiene un nuevo instalador, escrito desde cero en Flutter, que facilita la instalación del sistema operativo. Una de las novedades más importantes es que actualiza su escritorio a GNOME 40. 
 
+Esta versión es específica para el procesador ARM, compilada con 64-bits y será la versión que se utilizará en la Raspberry Pi, a pesar de que no sea lo más común utilizarlo en estos dispositivos. También esta será la versión del sistema operativo del portátil.
 
 \subsection{Gestor de paquetes: Miniforge}
 \label{subsec:gestor_de_paquetes}
@@ -833,7 +840,7 @@ Es un lenguaje de alto nivel (sencillo de leer y escribir debido a su similitud 
 
 Además, es multiplataforma y de código abierto, por lo tanto gratuito, lo que ha ayudado a que Python sea el lenguaje con mayor crecimiento y uno de los más utilizados en la actualidad.  
 
-Entre los campos en los que más se emplea este lenguaje se encuentra la inteligencia artificial, big data, machine learning y data science entre otros, ya que facilita la creación de códigos entendibles de rápido aprendizaje como los que son necesarios en este tipo de proyectos.
+Entre los campos en los que más se emplea este lenguaje se encuentra la Inteligencia Artificial, \textit{big data}, \textit{machine learning} y Ciencia de Datos entre otros, ya que facilita la creación de códigos entendibles de rápido aprendizaje como los que son necesarios en este tipo de proyectos.
 
 \subsection{Entorno de desarrollo: Jupyter-notebook}
 \label{subsec:entorno_de_desarrollo}
@@ -850,14 +857,14 @@ Para el desarrollo del proyecto se utilizaron varias librerías que permitiesen 
 
 \subsubsection{Scikit-learn}
 \label{subsubsec:Scikit-learn}
-Scikit-Learn\footnote{\url{https://scikit-learn.org/stable/}} es una librería, escrita principalmente en Python, que cuenta con algoritmos de clasificación, regresión, clustering y reducción de dimensionalidad. Fue inicialmente desarrollada por David Cournapeau como proyecto de Google Summer of code en 2007 y publicada tres años más tarde.
+Scikit-Learn\footnote{\url{https://scikit-learn.org/stable/}} es una librería, escrita principalmente en Python, que cuenta con algoritmos de clasificación, regresión, clustering y reducción de dimensionalidad. Fue inicialmente desarrollada por David Cournapeau como proyecto de Google Summer of Code en 2007 y publicada tres años más tarde.
 
 La gran variedad de algoritmos y utilidades de Scikit-learn la convierten en una herramienta muy eficaz para generar aplicaciones de aprendizaje automático.
 
 \subsubsection{Pandas}
 \label{subsubsec:Pandas}
 
-Pandas\footnote{\url{https://pandas.pydata.org/}} es una librería de Python de código abierto especializada en el manejo y análisis de estructuras de datos. Es muy útil en el ámbito de Data Science y Machine Learning, ya que ofrece unas estructuras muy poderosas y flexibles que facilitan la manipulación y tratamiento de datos.
+Pandas\footnote{\url{https://pandas.pydata.org/}} es una librería de Python de código abierto especializada en el manejo y análisis de estructuras de datos. Es muy útil en el ámbito de Data Science y \textit{machine learning}, ya que ofrece unas estructuras muy poderosas y flexibles que facilitan la manipulación y tratamiento de datos.
 
 Tiene todas las funcionalidades necesarias para el análisis de datos como pueden ser: cargar, modelar, analizar, manipular y preparar los datos.
 
@@ -883,14 +890,14 @@ Para el desarrollo de este trabajo se utilizó esta plataforma para tener un seg
 
 Además también se aprovechó una característica muy útil que tiene GitHub llamada \textit{GitHub Pages}, que te permite mostrar el proyecto en vivo en una página web estática sin necesidad de pagar por \textit{hosting}. Utiliza los archivos HTML, CSS y JavaScript que hay en el repositorio para crear el sitio web. De esta forma hice una página web donde hay un resumen en inglés de todo lo que se va a explicar a lo largo de esta memoria. 
 
-\section{Redacción de la memoria: LaTeX/Overleaf}
+\section{Redacción de la memoria: \LaTeX/Overleaf}
 \label{sec:redaccion_de_la_memoria}
 
-LaTeX es un sistema de composición tipográfica de alta calidad que incluye características especialmente diseñadas para la producción de documentación técnica y científica. Estas características, entre las que se encuentran la posibilidad de incluir expresiones matemáticas, fragmentos de código, tablas y referencias, junto con el hecho de que se distribuya como software libre, han hecho que LaTeX se convierta en el estándar de facto para la redacción y publicación de artículos académicos, tesis y todo tipo de documentos científico-técnicos. 
+\LaTeX es un sistema de composición tipográfica de alta calidad que incluye características especialmente diseñadas para la producción de documentación técnica y científica. Estas características, entre las que se encuentran la posibilidad de incluir expresiones matemáticas, fragmentos de código, tablas y referencias, junto con el hecho de que se distribuya como software libre, han hecho que \LaTeX se convierta en el estándar de facto para la redacción y publicación de artículos académicos, tesis y todo tipo de documentos científico-técnicos. 
 
-Por su parte, Overleaf es un editor LaTeX colaborativo basado en la nube. Lanzado originalmente en 2012, fue creado por dos matemáticos que se inspiraron en su propia experiencia en el ámbito académico para crear una solución satisfactoria para la escritura científica colaborativa.
+Por su parte, Overleaf es un editor \LaTeX colaborativo basado en la nube. Lanzado originalmente en 2012, fue creado por dos matemáticos que se inspiraron en su propia experiencia en el ámbito académico para crear una solución satisfactoria para la escritura científica colaborativa.
 
-Además de por su perfil colaborativo, Overleaf destaca porque, pese a que en LaTeX el escritor utiliza texto plano en lugar de texto formateado (como ocurre en otros procesadores de texto como Microsoft Word, LibreOffice Writer y Apple Pages), este puede visualizar en todo momento y paralelamente el texto formateado que resulta de la escritura del código fuente.
+Además de por su perfil colaborativo, Overleaf destaca porque, pese a que en \LaTeX el escritor utiliza texto plano en lugar de texto formateado (como ocurre en otros procesadores de texto como Microsoft Word, LibreOffice Writer y Apple Pages), este puede visualizar en todo momento y paralelamente el texto formateado que resulta de la escritura del código fuente.
 
 \cleardoublepage
 
@@ -912,13 +919,13 @@ Como ya se ha comentado anteriormente, las aplicaciones que utilizan machine lea
 Para ello, y como se explicará en mayor detalle en los siguientes capítulos, pondremos a prueba a la máquina con diferentes tests. En la Figura~\ref{fig:arquitectura} se puede visualizar un esquema general de en qué consisten dichas pruebas. Como se puede ver en esta figura los experimentos se llevarán a cabo tanto en la Raspberry Pi como en un portátil para poder comparar y comprender mejor los resultados obtenidos.
 
 
-\begin{figure}[]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=15cm, keepaspectratio]{img/arquitectura_general.png}
   \caption{Estructura de los experimentos}\label{fig:arquitectura}
 \end{figure}
 
-Como se explicó en la sección~\ref{sec:machine_learning} hay varios tipos de aprendizaje automático y dentro de cada clase existen aún más métodos para resolver un mismo problema de formas diferentes. En este proyecto utilizaremos algoritmos de aprendizaje supervisado para realizar problemas de clasificación binaria, es decir, solo existen dos clases a las que pueden pertenecer los datos. Concretamente (y como se puede ver en la Figura~\ref{fig:arquitectura}) se utilizarán cuatro algoritmos de machine learning que son: Regresión logística, Máquinas de soporte vectorial, Gradient boosting y Random forest.
+Como se explicó en la sección~\ref{sec:machine_learning} hay varios tipos de aprendizaje automático y dentro de cada clase existen aún más métodos para resolver un mismo problema de formas diferentes. En este proyecto utilizaremos algoritmos de aprendizaje supervisado para realizar problemas de clasificación binaria, es decir, solo existen dos clases a las que pueden pertenecer los datos. Concretamente (y como se puede ver en la Figura~\ref{fig:arquitectura}) se utilizarán cuatro algoritmos de machine learning que son: Regresión Logística, Máquinas de Vector Soporte, Gradient Boosting y Random Forest.
 
 Aprovechando los puertos GPIO de los que está provista la Raspberry Pi, en este proyecto también se utilizan un par de sensores para poder generar un nuevo \textit{dataset} con el que poder entrenar los modelos de aprendizaje automático. Estos dos sensores que se utilizan son los que se mencionaron en el apartado~\ref{sec:sensores}.
 
@@ -985,7 +992,7 @@ A continuación se nombrará y se explicará brevemente el contenido de cada uno
 \item \subsubsection{lRegression.ipynb}
 \label{subsubsec:lRegression}
 
-Este fichero entrenará un modelo de Regresión logística para el \textit{dataset} que se le pase como argumento.
+Este fichero entrenará un modelo de Regresión Logística para el \textit{dataset} que se le pase como argumento.
 
 En \texttt{scikit-learn}, por medio de la función LogisticRegression\cite{LogisticRegressionDoc} que pertenece a la librería \textit{sklearn.linear\_model}, se puede generar este modelo de aprendizaje automático para entrenarlo y posteriormente predecir con él. 
 
@@ -996,22 +1003,22 @@ Por otra parte está el parámetro \textit{n\_jobs}, que permite declarar el nú
 \item \subsubsection{svm.ipynb} 
 \label{subsubsub:svm}
 
-En esta ocasión este fichero creará un modelo de Máquinas de soporte vectorial. Para implementar este tipo de modelo de aprendizaje en \texttt{scikit-learn} se puede utilizar la función SVC \cite{SVMDocumentation}. En esta ocasión este método no soporta multiprcesamiento, por lo tanto la máquina que lo ejecute solo podrá usar un core tanto en el entrenamiento como en la predicción. 
+En esta ocasión este fichero creará un modelo de Máquinas de Vector Soporte. Para implementar este tipo de modelo de aprendizaje en \texttt{scikit-learn} se puede utilizar la función SVC \cite{SVMDocumentation}. En esta ocasión este método no soporta multiprcesamiento, por lo tanto la máquina que lo ejecute solo podrá usar un core tanto en el entrenamiento como en la predicción. 
 
 \item \subsubsection{gBoosting.ipynb} 
 \label{subsubsub:gBoosting}
 
-Con este fichero se implementa un modelo de Gradient boosting. En esta ocasión el método que crea este modelo es GradientBoostingClassifier\cite{GradientTreeBDoc}, que se encuentra dentro de la librería \textit{sklearn.esemble}. Al igual que para la función de máquinas de soporte vectorial, este modelo no soporta multiprocesamiento y por lo tanto solo se utilizará una cpu para entrenar y predecir con este modelo. 
+Con este fichero se implementa un modelo de Gradient Boosting. En esta ocasión el método que crea este modelo es GradientBoostingClassifier\cite{GradientTreeBDoc}, que se encuentra dentro de la librería \textit{sklearn.esemble}. Al igual que para la función de Máquinas de Vector Soporte, este modelo no soporta multiprocesamiento y por lo tanto solo se utilizará una cpu para entrenar y predecir con este modelo. 
 \item \subsubsection{rForest\_pc.ipynb // rForest\_pc.ipynb} 
 \label{subsubsub:rForest}
 
-Por último tendremos dos ficheros que crean un modelo basado en Random forest.
+Por último tendremos dos ficheros que crean un modelo basado en Random Forest.
 
 En \texttt{scikit-learn} utilizando la función RandomForestClassifier\cite{RandomForestDoc}, que también está dentro de la librería \textit{sklearn.esemble}, se puede generar un modelo de aprendizaje utilizando esta técnica.
 
 Para este método existe un parámetro destacable denominado \textit{n\_jobs}, que permite declarar el número de cpus que se desean utilizar para paralelizar el proceso. Para que se note el efecto de este parámetro es necesario que el conjunto de datos con el que se desea entrenar sea grande. De lo contrario el coste de distribuir los recursos entre el número de cores indicados es más elevado que ejecutarlo todo en una única cpu, y por lo tanto los tiempos de ejecución serían más elevados a mayor número definido en este parámetro.
 
-Por defecto si no se declara este parámetro utilizará un único core. Además se pueden asignar valores negativos, en caso de igualar \textit{n\_jobs} a $-1$ se utilizarán todos los cores disponibles en ese momento. De esta misma forma se utiliza este parámetro en Regresión logística cuando se busca entrenar un problema de clasificación multiclase.
+Por defecto si no se declara este parámetro utilizará un único core. Además se pueden asignar valores negativos, en caso de igualar \textit{n\_jobs} a $-1$ se utilizarán todos los cores disponibles en ese momento. De esta misma forma se utiliza este parámetro en Regresión Logística cuando se busca entrenar un problema de clasificación multiclase.
 
 En esta ocasión se han creado dos ficheros para generar este modelo, puesto que dependiendo de la máquina en la que se esté ejecutando este código el valor del parámetro \textit{n\_jobs} variará. 
 
@@ -1376,12 +1383,12 @@ for i in range(4):
 \end{listing}
 
 Cuando se completa la generación del modelo para uno de los niveles, los resultados de \textit{Cpu time}, \textit{Wall time}, \textit{Mean Folds Accuracy}, \textit{Accuracy trainning}, \textit{Accuracy}, \textit{Presisión} y \textit{Recall} se guardan cada uno en su respectiva lista gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera un nuevo fichero csv, mediante la función \textit{add\_data}, con los resultados obtenidos en cada uno de los casos.
-Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión logística el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de soporte vectorial será nombreDataSet\_raspSVM.csv. En total el programa creará cuatro csv diferentes, uno por cada modelo. Estos ficheros se guardarán en una nueva carpeta creada con el siguiente formato: nombreDataSet\_raspresults, esto se puede observar como se hace en el Código~\ref{lst:funcion_principal_raspberry_test}. Todos los ficheros se guardarán dentro de esta carpeta, para que los resultados de un mismo \textit{dataset} estén todos juntos. En la Figura~\ref{fig:ejemplo_csv} se muestra un ejemplo del contenido de uno de estos csv generados, concretamente pertenece al modelo de Regresión logística.
+Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión Logística el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de Vector Soporte será nombreDataSet\_raspSVM.csv. En total el programa creará cuatro csv diferentes, uno por cada modelo. Estos ficheros se guardarán en una nueva carpeta creada con el siguiente formato: nombreDataSet\_raspresults, esto se puede observar como se hace en el Código~\ref{lst:funcion_principal_raspberry_test}. Todos los ficheros se guardarán dentro de esta carpeta, para que los resultados de un mismo \textit{dataset} estén todos juntos. En la Figura~\ref{fig:ejemplo_csv} se muestra un ejemplo del contenido de uno de estos csv generados, concretamente pertenece al modelo de Regresión Logística.
 
 \begin{figure}[]
   \centering
   \includegraphics[width=16cm, keepaspectratio]{img/ejemplo_csv.png}
-  \caption{Ejemplo de csv generado con los resultados de cada prueba para el modelo de Regresión logística.}\label{fig:ejemplo_csv}
+  \caption{Ejemplo de csv generado con los resultados de cada prueba para el modelo de Regresión Logística.}\label{fig:ejemplo_csv}
 \end{figure}
 
 Los nuevos procesos, comentados anteriormente, se crean utilizando la función \textit{Popen} de la librería \textit{subprocess}. Nótese que en la función \textit{model} (a diferencia de \textit{start\_stress}) el método \textit{Popen} tiene añadido al final un \textit{.communicate()} de esta forma se parará la ejecución principal hasta que el proceso de \textit{Popen} termine. Si una vez terminado dicho proceso \textit{stress} sigue ejecutando se matará el proceso para poder comandar otro \textit{stress} sin tener que esperar a que se cumpla el tiempo de ejecución que le pasamos como argumento, esto se puede ver en el Código~\ref{lst:funcion_principal_raspberry_test}.
@@ -1391,7 +1398,7 @@ Los nuevos procesos, comentados anteriormente, se crean utilizando la función \
 
 Este código es prácticamente idéntico al de \texttt{rasp\_test.pynb} salvo pequeñas diferencias. Una de ellas es que en este caso el fichero que generará tras la ejecución de cada modelo tendrá el siguiente formato: nombreDataSet\_pcMD.csv, siendo MD una vez más las siglas del modelo de aprendizaje automático. Al igual que en el caso anterior, se creará una nueva carpeta para guardar todos estos ficheros con el formato: nombreDataSet\_pcresults.
 
-La función principal también utilizará dos bucles anidados para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \texttt{raspberry\_test.ipynb} ya que, como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará (si es necesario) dos procesos, uno ejecutará stress (cuando se desee estresar alguna cpu) y el otro uno de los modelos que se encuentran dentro de la carpeta \texttt{"Models"}. Todos los ficheros que utilizan para generar los modelos de aprendizaje son los mismos que en la Raspberry Pi salvo el de Random forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
+La función principal también utilizará dos bucles anidados para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \texttt{raspberry\_test.ipynb} ya que, como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará (si es necesario) dos procesos, uno ejecutará stress (cuando se desee estresar alguna cpu) y el otro uno de los modelos que se encuentran dentro de la carpeta \texttt{"Models"}. Todos los ficheros que utilizan para generar los modelos de aprendizaje son los mismos que en la Raspberry Pi salvo el de Random Forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
 
 
 \section{Experimentos con datos sintéticos}
@@ -1419,13 +1426,13 @@ Los tiempos de cpu para la ejecución de estos modelos se pueden ver en la Tabla
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
-    Regresión logística & 17.79 seg & 18.83 seg & 26.8 seg & 15.2 seg & 24.19 seg & 16.62 seg & 17.69 seg & 13.85 seg \\[2ex]
+    Regresión Logística & 17.79 seg & 18.83 seg & 26.8 seg & 15.2 seg & 24.19 seg & 16.62 seg & 17.69 seg & 13.85 seg \\[2ex]
     \hline
     SVM & 16.52 seg & 16.37 seg & 16.59 seg & 16.55 seg & 16.63 seg & 16.62 seg & 16.95 seg & 17.01 seg\\[2ex]
     \hline
-    Gradient boosting & 28.61 seg & 28.74 seg & 28.4 seg & 28.38 seg & 28.3 seg & 28.31 seg & 28.51 seg & 28.66 seg\\[2ex]
+    Gradient Boosting & 28.61 seg & 28.74 seg & 28.4 seg & 28.38 seg & 28.3 seg & 28.31 seg & 28.51 seg & 28.66 seg\\[2ex]
     \hline
-    Random forest & 59.15 seg & 24.59 seg & 52.44 seg & 26.15 seg & 48.92 seg & 30.67 seg & 49.29 seg & 34.34 seg\\[2ex]
+    Random Forest & 59.15 seg & 24.59 seg & 52.44 seg & 26.15 seg & 48.92 seg & 30.67 seg & 49.29 seg & 34.34 seg\\[2ex]
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1433,13 +1440,13 @@ Los tiempos de cpu para la ejecución de estos modelos se pueden ver en la Tabla
 \label{tab:times_Occraspberry}
 \end{table}
 
-Los tiempos obtenidos para este \textit{dataset} apenas varían entre los diferentes niveles de saturación (salvo el caso de Random forest), siendo el modelo de Regresión logística el que menos tarda en entrenar en todos las pruebas. 
+Los tiempos obtenidos para este \textit{dataset} apenas varían entre los diferentes niveles de saturación (salvo el caso de Random Forest), siendo el modelo de Regresión Logística el que menos tarda en entrenar en todos las pruebas. 
 
-Para los modelos de Regresión logística, Máquinas de soporte vectorial y Gradient boosting, es normal que no varíen apenas sus valores dado que tal y como se explicó en el Capítulo~\ref{chap:diseño} estos tres modelos son \textit{monocores}, es decir, solo pueden ejecutar en una cpu. 
+Para los modelos de Regresión Logística, Máquinas de Vector Soporte y Gradient Boosting, es normal que no varíen apenas sus valores dado que tal y como se explicó en el Capítulo~\ref{chap:diseño} estos tres modelos son \textit{monocores}, es decir, solo pueden ejecutar en una cpu. 
 
-Sin embargo, el modelo de \textit{Random forest} no terminaba de encajar del todo con lo esperado, que era observar que a medida que aumentase el número de cores estresados también aumentasen los tiempos de cpu. Es por ello que se decidió probar a ejecutar los modelos con un \textit{dataset} con mayor cantidad de datos. Con un \textit{dataset} de mayor tamaño se podrán observar mejor las razones por las que se devuelven estos tiempos.
+Sin embargo, el modelo de \textit{Random Forest} no terminaba de encajar del todo con lo esperado, que era observar que a medida que aumentase el número de cores estresados también aumentasen los tiempos de cpu. Es por ello que se decidió probar a ejecutar los modelos con un \textit{dataset} con mayor cantidad de datos. Con un \textit{dataset} de mayor tamaño se podrán observar mejor las razones por las que se devuelven estos tiempos.
 
-Por otra parte, podemos ver como los tiempos de \textit{Wall time} se mantienen iguales, exceptuando el caso de Random forest, a pesar de someter a más carga a la Raspberry Pi. Además para estos casos, son resultados muy similares a los del \textit{Cpu time}, una muestra más de que los procesos no están utilizando la ejecución en paralelo. En cuanto a \textit{Random forest}, es el único modelo en el que el \textit{Wall time} va incrementando a medida que aumenta el nivel de la prueba, pero aún así devuelve tiempos menores que el \textit{Cpu time} indicando que está aprovechando las ventajas de la ejecución paralela. 
+Por otra parte, podemos ver como los tiempos de \textit{Wall time} se mantienen iguales, exceptuando el caso de Random Forest, a pesar de someter a más carga a la Raspberry Pi. Además para estos casos, son resultados muy similares a los del \textit{Cpu time}, una muestra más de que los procesos no están utilizando la ejecución en paralelo. En cuanto a \textit{Random Forest}, es el único modelo en el que el \textit{Wall time} va incrementando a medida que aumenta el nivel de la prueba, pero aún así devuelve tiempos menores que el \textit{Cpu time} indicando que está aprovechando las ventajas de la ejecución paralela. 
 
 En cuanto a la precisión (\textit{Accuracy}) en cada uno de los modelos se obtienen los resultados de la Tabla~\ref{tab:acc_Occraspberry}
 
@@ -1453,10 +1460,10 @@ En cuanto a la precisión (\textit{Accuracy}) en cada uno de los modelos se obti
     \cline{4-7}
      &   &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
      \hline
-     Regresión logística & 98.9 & 98.9 & 98.8 & 99.0 & 99.0 & 98.9\\
+     Regresión Logística & 98.9 & 98.9 & 98.8 & 99.0 & 99.0 & 98.9\\
      SVM & 98.9 & 99.0 & 98.9 & 99.0 & 98.8 & 99.2\\
-     Gradient boosting & 99.0 & 99.4 & 98.9 & 99.1 & 98.7 & 98.9\\
-     Random forest & 99.2 & 100.0 & 99.3 & 99.3 & 99.32 & 99.3\\
+     Gradient Boosting & 99.0 & 99.4 & 98.9 & 99.1 & 98.7 & 98.9\\
+     Random Forest & 99.2 & 100.0 & 99.3 & 99.3 & 99.32 & 99.3\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1483,13 +1490,13 @@ Los resultados obtenidos para el veinte por ciento del \textit{dataset} de KddCu
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
-    Regresión logística & 447.38 seg & 142.72 seg & 506.49 seg & 191.09 seg & 422.57 seg & 223.33 seg & 387.74 seg & 211.3 seg \\[2ex]
+    Regresión Logística & 447.38 seg & 142.72 seg & 506.49 seg & 191.09 seg & 422.57 seg & 223.33 seg & 387.74 seg & 211.3 seg \\[2ex]
     \hline
     SVM & 528.55 seg & 529.74 seg & 517.1 seg & 518.07 seg & 494.24 seg & 494.31 seg & 495.47 seg & 497.24 seg\\[2ex]
     \hline
-    Gradient boosting & 853.97 seg & 855.97 seg & 876.88 seg & 879.19 seg & 853.42 seg & 853.49 seg & 858.95 seg & 860.68 seg\\[2ex]
+    Gradient Boosting & 853.97 seg & 855.97 seg & 876.88 seg & 879.19 seg & 853.42 seg & 853.49 seg & 858.95 seg & 860.68 seg\\[2ex]
     \hline
-    Random forest & 1048.87 seg & 296.41 seg & 829.86 seg & 306.78 seg & 669.36 seg & 348.86 seg & 706.96 seg & 381.14 seg\\[2ex]
+    Random Forest & 1048.87 seg & 296.41 seg & 829.86 seg & 306.78 seg & 669.36 seg & 348.86 seg & 706.96 seg & 381.14 seg\\[2ex]
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1497,37 +1504,37 @@ Los resultados obtenidos para el veinte por ciento del \textit{dataset} de KddCu
 \label{tab:times_kddraspberry}
 \end{table}
 
-Como se puede observar en la tabla~\ref{tab:times_kddraspberry}, los tiempos de ejecución varían entre los diferentes modelos, siendo el de Regresión logística el modelo más rápido de todos, tal y como ocurría con el \textit{dataset} de Room Occupancy.
+Como se puede observar en la tabla~\ref{tab:times_kddraspberry}, los tiempos de ejecución varían entre los diferentes modelos, siendo el de Regresión Logística el modelo más rápido de todos, tal y como ocurría con el \textit{dataset} de Room Occupancy.
 
-Un vez más, los tiempos de cpu de Regresión logística, Máquinas de soporte vectorial (SVM) y Gradient boosting apenas varían entre los diferentes niveles de estrés, esto se debe a las mismas razones comentadas antes. En el caso de Máquinas de soporte vectorial y Gradient boosting, \texttt{scikit-learn} no admite \textit{multi-threading}, por lo que a pesar de estresar una, dos o cuatro cpus siempre devolverán el mismo tiempo puesto que estos modelos solo pueden utilizar un único core para ejecutar.\\
-Regresión logística puede utilizar varios cores si se le indica mediante el parámetro \textit{n\_jobs}. Pero dado que estamos en un problema de clasificación binaria este valor no tendrá ningún efecto al aumentar o disminuir el número de cpus estresadas como se indicó en el apartado~\ref{subsubsec:lRegression}. 
+Un vez más, los tiempos de cpu de Regresión Logística, Máquinas de Vector Soporte (SVM) y Gradient Boosting apenas varían entre los diferentes niveles de estrés, esto se debe a las mismas razones comentadas antes. En el caso de Máquinas de Vector Soporte y Gradient Boosting, \texttt{scikit-learn} no admite \textit{multi-threading}, por lo que a pesar de estresar una, dos o cuatro cpus siempre devolverán el mismo tiempo puesto que estos modelos solo pueden utilizar un único core para ejecutar.\\
+Regresión Logística puede utilizar varios cores si se le indica mediante el parámetro \textit{n\_jobs}. Pero dado que estamos en un problema de clasificación binaria este valor no tendrá ningún efecto al aumentar o disminuir el número de cpus estresadas como se indicó en el apartado~\ref{subsubsec:lRegression}. 
 
-En cuanto al modelo de Random forest, para poder entender los tiempos que devuelve, es necesario explicar primero como se comporta la Raspberry Pi cuando varios procesos le piden más recursos de los que tiene y como afecta el parámetro \textit{n\_jobs} a los tiempos de este modelo.
+En cuanto al modelo de Random Forest, para poder entender los tiempos que devuelve, es necesario explicar primero como se comporta la Raspberry Pi cuando varios procesos le piden más recursos de los que tiene y como afecta el parámetro \textit{n\_jobs} a los tiempos de este modelo.
 
-Comencemos explicando como afecta el parámetro \textit{n\_jobs} a los tiempos de ejecución. Como se ha visto anteriormente, Random forest admite el parámetro \textit{n\_jobs}, que en este caso (a diferencia de Regresión logística) sí que afecta a como ejecuta el modelo independientemente de si es un problema de clasificación binaria o no. Por lo tanto para poder optimizar el proceso habrá que hacer que el parámetro \textit{n\_jobs} sea igual al número de cores del dispositivo, que en este caso serán cuatro. 
+Comencemos explicando como afecta el parámetro \textit{n\_jobs} a los tiempos de ejecución. Como se ha visto anteriormente, Random Forest admite el parámetro \textit{n\_jobs}, que en este caso (a diferencia de Regresión Logística) sí que afecta a como ejecuta el modelo independientemente de si es un problema de clasificación binaria o no. Por lo tanto para poder optimizar el proceso habrá que hacer que el parámetro \textit{n\_jobs} sea igual al número de cores del dispositivo, que en este caso serán cuatro. 
 
 Con este parámetro ajustado hay que tener en cuenta que el tiempo de cpu que obtenemos del comando \textit{time} es la suma de los tiempos que ha necesitado cada uno de los cores utilizados por el proceso para la ejecución. Esta es la razón por la que podemos ver como el tiempo en \textit{Idle} es bastante mayor que el resto de casos, puesto que es en esta ocasión donde el programa está pudiendo hacer un uso completo de los cuatro cores, ya que no hay ningún otro proceso que necesite usarlos. Por lo tanto el \textit{Cpu time} que tenemos en este nivel es en realidad la suma de los tiempos de ejecución de los cuatro procesadores. El tiempo que ha necesitado cada uno de los cores sería dividir los $1048.87$ segundos entre 4 con lo que obtendríamos $262$ segundos por core. Sabiendo esto, queda explicado por qué el nivel de \textit{Idle} devuelve un valor tan alto y como esto, que a \textit{priori} puede parecer un poco contradictorio, se ajusta a lo esperado.
 
-Para el resto de casos, dado que ya intervienen otros procesos, habrá que conocer como se comporta la Raspberry Pi ante una mayor demanda de recursos. Lo primero que hay que saber es que el comando \textit{stress} estresará el número de cpus que se le pasan como argumento siempre y cuando pueda. En el momento en el que tenga que compartir cpu con otros procesos, la Raspberry Pi repartirá los recursos haciendo que \textit{stress} no utilice todas las cpus que se le ha comandado estresar para que el otro proceso también pueda ejecutar. Por ejemplo, cuando se realiza la prueba de nivel alto de carga al modelo de Máquinas de soporte vectorial, si se comprueban los valores de cpu que utiliza cada uno de los procesos (por medio del comando \textit{htop} de Linux), a pesar de que se puede ver que \textit{stress} tiene cuatro procesos, la suma de lo que utiliza la cpu cada uno de ellos será igual a un total de tres cores más o menos, es decir utilizan un $300\%$ de los recursos. Mientras que el proceso del modelo utiliza una cpu, un $100\%$. Siendo el valor total de los recursos de los que dispone la Raspberry Pi igual a $400\%$, un $100\%$ para cada uno de los cores de la Raspberry Pi.
+Para el resto de casos, dado que ya intervienen otros procesos, habrá que conocer como se comporta la Raspberry Pi ante una mayor demanda de recursos. Lo primero que hay que saber es que el comando \textit{stress} estresará el número de cpus que se le pasan como argumento siempre y cuando pueda. En el momento en el que tenga que compartir cpu con otros procesos, la Raspberry Pi repartirá los recursos haciendo que \textit{stress} no utilice todas las cpus que se le ha comandado estresar para que el otro proceso también pueda ejecutar. Por ejemplo, cuando se realiza la prueba de nivel alto de carga al modelo de Máquinas de Vector Soporte, si se comprueban los valores de cpu que utiliza cada uno de los procesos (por medio del comando \textit{htop} de Linux), a pesar de que se puede ver que \textit{stress} tiene cuatro procesos, la suma de lo que utiliza la cpu cada uno de ellos será igual a un total de tres cores más o menos, es decir utilizan un $300\%$ de los recursos. Mientras que el proceso del modelo utiliza una cpu, un $100\%$. Siendo el valor total de los recursos de los que dispone la Raspberry Pi igual a $400\%$, un $100\%$ para cada uno de los cores de la Raspberry Pi.
 
-Otro ejemplo de esto puede ser el caso en el que se ejecuta el modelo de Random forest, teniendo el parámetro de \textit{n\_jobs} igual a cuatro para utilizar todos los cores disponibles, a la vez que \textit{stress} para estresar las cuatro cpus. Si observamos mediante el comando \textit{htop} los procesos, se podrá ver como se distribuyen los cores para que puedan ejecutar a la vez tanto los procesos de \textit{stress} como los del modelo de aprendizaje. Por lo tanto \textit{stress} utilizará en total dos cpus y Random forest hará lo mismo, a pesar de que a ambos se les indicó que utilizasen todas las cpus de la Raspberry Pi. Este ejemplo se puede ver en la Figura~\ref{figura:stress_rForest}, siendo la cpu total que utiliza Random forest la que se indica en el primer proceso que muestra \textit{htop} en la imagen. Al sumar el resto de procesos de RF su valor de cpu es igual al del primer proceso.\\
+Otro ejemplo de esto puede ser el caso en el que se ejecuta el modelo de Random Forest, teniendo el parámetro de \textit{n\_jobs} igual a cuatro para utilizar todos los cores disponibles, a la vez que \textit{stress} para estresar las cuatro cpus. Si observamos mediante el comando \textit{htop} los procesos, se podrá ver como se distribuyen los cores para que puedan ejecutar a la vez tanto los procesos de \textit{stress} como los del modelo de aprendizaje. Por lo tanto \textit{stress} utilizará en total dos cpus y Random Forest hará lo mismo, a pesar de que a ambos se les indicó que utilizasen todas las cpus de la Raspberry Pi. Este ejemplo se puede ver en la Figura~\ref{figura:stress_rForest}, siendo la cpu total que utiliza Random Forest la que se indica en el primer proceso que muestra \textit{htop} en la imagen. Al sumar el resto de procesos de RF su valor de cpu es igual al del primer proceso.\\
 
  \begin{figure}[]
     \centering
     \includegraphics[ width=16cm, keepaspectratio]{img/rForest_stress2.png}
-    \caption{Porcentaje de cpu utilizada por los procesos al ejecutar Random forest con cuatro cpus estresadas.}
+    \caption{Porcentaje de cpu utilizada por los procesos al ejecutar Random Forest con cuatro cpus estresadas.}
     \label{figura:stress_rForest}
  \end{figure}
 
 En la Figura~\ref{figura:stress_rForest} vemos que el primer proceso de RF está consumiendo el $200\%$ de cpu. Mientras que si sumamos los porcentajes de los cuatro procesos de \textit{stress} obtendremos que se están consumiendo en total un $190\%$, prácticamente un $200\%$. Por lo que, a pesar de lo que se ha comandado, la Raspberry Pi dividirá los recursos para que ambos procesos puedan usar lo máximo posible.
 
-Sabiendo esto, los niveles de prueba medio y alto para el modelo de Random forest obtienen prácticamente los mismos tiempos puesto que al tratar de ejecutar a la vez tanto el proceso de \textit{stress} como el del modelo, se están pidiendo usar más cores de los que hay. En consecuencia la Raspberry Pi tendrá que dividir los recursos de los que dispone equitativamente entre ambos procesos. Por lo que en el fondo \textit{stress} estará estresando el mismo número de cpus tanto en el nivel medio como en el alto. Y al proceso del modelo le sucederá lo mismo, utilizará el mismo número de procesadores tanto en un caso como en el otro. En el nivel intermedio, donde se estresan dos cores, el modelo no podrá utilizar las cuatro cpus que se le indican con \textit{n\_jobs} puesto que estaría superando el número de cores que posee la Raspberry Pi. De modo que la Raspberry Pi dividirá los recursos haciendo que \textit{stress} pueda ejecutar en dos cores, y por lo tanto el modelo de aprendizaje dispondrá únicamente de las otras dos cpus para su ejecución. Mientras que en el nivel más alto de carga la Raspberry Pi dividirá las cuatro cpus para darle la mitad de ellas a la ejecución de \textit{stress} y la otra mitad al modelo, haciendo que ambas utilicen el máximo de procesadores posibles. Esta es la explicación para los tiempos del nivel medio y alto. 
+Sabiendo esto, los niveles de prueba medio y alto para el modelo de Random Forest obtienen prácticamente los mismos tiempos puesto que al tratar de ejecutar a la vez tanto el proceso de \textit{stress} como el del modelo, se están pidiendo usar más cores de los que hay. En consecuencia la Raspberry Pi tendrá que dividir los recursos de los que dispone equitativamente entre ambos procesos. Por lo que en el fondo \textit{stress} estará estresando el mismo número de cpus tanto en el nivel medio como en el alto. Y al proceso del modelo le sucederá lo mismo, utilizará el mismo número de procesadores tanto en un caso como en el otro. En el nivel intermedio, donde se estresan dos cores, el modelo no podrá utilizar las cuatro cpus que se le indican con \textit{n\_jobs} puesto que estaría superando el número de cores que posee la Raspberry Pi. De modo que la Raspberry Pi dividirá los recursos haciendo que \textit{stress} pueda ejecutar en dos cores, y por lo tanto el modelo de aprendizaje dispondrá únicamente de las otras dos cpus para su ejecución. Mientras que en el nivel más alto de carga la Raspberry Pi dividirá las cuatro cpus para darle la mitad de ellas a la ejecución de \textit{stress} y la otra mitad al modelo, haciendo que ambas utilicen el máximo de procesadores posibles. Esta es la explicación para los tiempos del nivel medio y alto. 
 
 En el nivel bajo encontraremos que el modelo solo puede estar usando tres cores para dejarle el cuarto a \textit{stress}. Como hemos visto el tiempo de cpu es el tiempo total que han usado los tres procesadores, luego por cada core el proceso ha tardado unos $276$ seg (el resultado de dividir 829.86 seg entre los tres cores). Por lo tanto el tiempo aumenta un poco del estado respecto al nivel \textit{Idle}.
 
-Algo destacable de los resultados obtenidos en este \textit{dataset} (a diferencia del de Room Occupancy) es que salvo en el nivel de \textit{Idle}, el modelo de Gradient boosting llega a ser más lento que el modelo de Random forest, modelo que en el anterior \textit{dataset} era con diferencia el que tardaba más tiempo de todos.
+Algo destacable de los resultados obtenidos en este \textit{dataset} (a diferencia del de Room Occupancy) es que salvo en el nivel de \textit{Idle}, el modelo de Gradient Boosting llega a ser más lento que el modelo de Random Forest, modelo que en el anterior \textit{dataset} era con diferencia el que tardaba más tiempo de todos.
 
-En cuanto al \textit{Wall time} obtenido vemos que por un lado Random forest aumenta su tiempo a medida que aumenta la carga computacional, igual que lo hacía en el anterior \textit{dataset}, pero siendo en cada caso los tiempos menores que el \textit{Cpu time}. Mientras que tanto el modelo de SVM como de GB se mantienen más o menos constantes e iguales al \textit{Cpu time}, indicando que no se están ejecutando procesos en paralelo. Y por último, Regresión logística es el que más varía entre las diferentes pruebas, siendo siempre el \textit{Wall time} menor que el \textit{Cpu time}.
+En cuanto al \textit{Wall time} obtenido vemos que por un lado Random Forest aumenta su tiempo a medida que aumenta la carga computacional, igual que lo hacía en el anterior \textit{dataset}, pero siendo en cada caso los tiempos menores que el \textit{Cpu time}. Mientras que tanto el modelo de SVM como de GB se mantienen más o menos constantes e iguales al \textit{Cpu time}, indicando que no se están ejecutando procesos en paralelo. Y por último, Regresión Logística es el que más varía entre las diferentes pruebas, siendo siempre el \textit{Wall time} menor que el \textit{Cpu time}.
 
 Otro aspecto de las ejecuciones en la Raspberry Pi que será relevante más adelante, es la frecuencia a la que ejecutan los cores. Utilizando el comando \textit{lscpu} de Linux, se puede obtener información relevante sobre los cores como por ejemplo la frecuencia máxima y mínima a la que pueden ejecutar, que en el caso de la Raspberry Pi la mínima será igual a $600MHz$ y la máxima $1500MHz$. 
 
@@ -1555,10 +1562,10 @@ Por otra parte los resultados de precisión para este \textit{dataset} se pueden
     \cline{4-7}
      &  &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
      \hline
-     Regresión logística & 99.4 & 99.4 & 99.4 & 99.4 & 99.4 & 99.4\\
+     Regresión Logística & 99.4 & 99.4 & 99.4 & 99.4 & 99.4 & 99.4\\
      SVM & 99.9 & 99.9 & 99.8 & 99.9 & 98.8 & 99.8\\
-     Gradient boosting & 99.9 & 100.0 & 96.4 & 98.8 & 99.4 & 73.0\\
-     Random forest & 100.0 & 100.0 & 97.5 & 97.9 & 96.9 & 98.6\\
+     Gradient Boosting & 99.9 & 100.0 & 96.4 & 98.8 & 99.4 & 73.0\\
+     Random Forest & 100.0 & 100.0 & 97.5 & 97.9 & 96.9 & 98.6\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1566,7 +1573,7 @@ Por otra parte los resultados de precisión para este \textit{dataset} se pueden
 \label{tab:acc_Kddraspberry}
 \end{table}
 
-Por último, añadir que con este set de datos se hicieron varias pruebas con distintas cantidades (porcentajes) de datos procedentes del \textit{dataset} total, obteniendo en todos ellos los mismos comportamientos. Lo único que variaba eran los tiempos totales de ejecución que para porcentajes más pequeños decrementaban y para mayores aumentaban. La única diferencia notable que se encontró al realizar las pruebas para \textit{datasets} de porcentajes pequeños (que contenían menos del $10\%$ de los datos totales) era que el modelo de \textit{Gradient boosting} y Regresión logística tenían prácticamente los mismos tiempos de ejecución en los diferentes niveles de saturación.
+Por último, añadir que con este set de datos se hicieron varias pruebas con distintas cantidades (porcentajes) de datos procedentes del \textit{dataset} total, obteniendo en todos ellos los mismos comportamientos. Lo único que variaba eran los tiempos totales de ejecución que para porcentajes más pequeños decrementaban y para mayores aumentaban. La única diferencia notable que se encontró al realizar las pruebas para \textit{datasets} de porcentajes pequeños (que contenían menos del $10\%$ de los datos totales) era que el modelo de \textit{Gradient Boosting} y Regresión Logística tenían prácticamente los mismos tiempos de ejecución en los diferentes niveles de saturación.
 
 \subsection{Portátil}
 \label{subsec:pc_sinteticos}
@@ -1588,13 +1595,13 @@ Los tiempos de ejecución que empleó el portátil para entrenar los diferentes 
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
-    Regresión logística & 2.31 seg & 1.9 seg & 2.56 seg & 1.615 seg & 2.63 seg & 1.71 seg & 5.53 seg & 3.5 seg \\[2ex]
+    Regresión Logística & 2.31 seg & 1.9 seg & 2.56 seg & 1.615 seg & 2.63 seg & 1.71 seg & 5.53 seg & 3.5 seg \\[2ex]
     \hline
     SVM & 3.29 seg & 3.3 seg & 3.65 seg & 3.65 seg & 6.16 seg & 6.17 seg & 6.24 seg & 7.52 seg\\[2ex]
     \hline
-    Gradient boosting & 7.5 seg & 7.54 seg & 8.13 seg & 8.14 seg & 10.44 seg & 10.45 seg & 17.16 seg & 21.47 seg\\[2ex]
+    Gradient Boosting & 7.5 seg & 7.54 seg & 8.13 seg & 8.14 seg & 10.44 seg & 10.45 seg & 17.16 seg & 21.47 seg\\[2ex]
     \hline
-    Random forest & 18.22 seg & 3.97 seg & 16.43 seg & 4.55 seg & 16.61 seg & 6.16 seg & 21.64 seg & 10.83 seg\\[2ex]
+    Random Forest & 18.22 seg & 3.97 seg & 16.43 seg & 4.55 seg & 16.61 seg & 6.16 seg & 21.64 seg & 10.83 seg\\[2ex]
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1626,10 +1633,10 @@ Veamos a continuación cual es el \textit{Accuracy} que consiguen los modelos co
     \cline{4-7}
       &  &   &  Idle & 2 cpu & 4 cpu & 8 cpu \\
      \hline
-     Regresión logística & 98.9 & 99.0 & 98.9 & 98.9 & 98.7 & 99.0\\
+     Regresión Logística & 98.9 & 99.0 & 98.9 & 98.9 & 98.7 & 99.0\\
      SVM & 99.0 & 99.0 & 98.9 & 98.8 & 99.0 & 98.8\\
-     Gradient boosting & 99.0 & 99.3 & 99.0 & 98.9 & 98.8 & 99.0\\
-     Random forest & 99.2 & 100.0 & 99.2 & 99.3 & 99.1 & 99.2\\
+     Gradient Boosting & 99.0 & 99.3 & 99.0 & 98.9 & 98.8 & 99.0\\
+     Random Forest & 99.2 & 100.0 & 99.2 & 99.3 & 99.1 & 99.2\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1656,13 +1663,13 @@ Los resultados de la ejecución del comando \textit{stress} conforme a estos niv
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
-    Regresión logística & 67.95 seg & 20.28 seg & 99.58 seg & 29.96 seg & 126.63 seg & 44.05 seg & 168.25 seg & 77.76 seg \\[2ex]
+    Regresión Logística & 67.95 seg & 20.28 seg & 99.58 seg & 29.96 seg & 126.63 seg & 44.05 seg & 168.25 seg & 77.76 seg \\[2ex]
     \hline
     SVM & 114.81 seg & 116.45 seg & 166.42 seg & 168.05 seg & 317.07 seg & 318.72 seg & 327.69 seg & 365.5 seg\\[2ex]
     \hline
-    Gradient boosting & 176.09 seg & 177.74 seg & 232.99 seg & 234.63 seg & 268.3 seg & 270.03 seg & 390.09 seg & 429.31 seg\\[2ex]
+    Gradient Boosting & 176.09 seg & 177.74 seg & 232.99 seg & 234.63 seg & 268.3 seg & 270.03 seg & 390.09 seg & 429.31 seg\\[2ex]
     \hline
-    Random forest & 392.73 seg & 55.88 seg & 327.2 seg & 59.44 seg & 291.76 seg & 69.48 seg & 256.92 seg & 81.99 seg\\[2ex]
+    Random Forest & 392.73 seg & 55.88 seg & 327.2 seg & 59.44 seg & 291.76 seg & 69.48 seg & 256.92 seg & 81.99 seg\\[2ex]
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1670,7 +1677,7 @@ Los resultados de la ejecución del comando \textit{stress} conforme a estos niv
 \label{tab:times_kddportatil}
 \end{table}
 
-Según esta tabla, Random forest es el modelo que más tiempo de cpu tarda cuando la máquina se encuentra en estado \textit{Idle} y se mantienen el resto de pruebas sobre los $300$ segundos de ejecución. Esto se debe a las mismas razones dadas en la sección~\ref{subsubsec:kdd_raspberry}. El hecho de que los tiempos aumenten en los modelos \textit{monocore} se deben a las mismas razones que las comentadas en la ejecución del \textit{dataset} de Room Occupancy en el portátil~\ref{subsubsec:occ_pc}.
+Según esta tabla, Random Forest es el modelo que más tiempo de cpu tarda cuando la máquina se encuentra en estado \textit{Idle} y se mantienen el resto de pruebas sobre los $300$ segundos de ejecución. Esto se debe a las mismas razones dadas en la sección~\ref{subsubsec:kdd_raspberry}. El hecho de que los tiempos aumenten en los modelos \textit{monocore} se deben a las mismas razones que las comentadas en la ejecución del \textit{dataset} de Room Occupancy en el portátil~\ref{subsubsec:occ_pc}.
 
 Y al igual que en el anterior \textit{dataset}, el \textit{Wall time} aumenta conforme más cores se estresan. Manteniendo es todos los casos las mismas relaciones con el \textit{Cpu time}.\\
 
@@ -1686,10 +1693,10 @@ Respecto a la precisión de los modelos generados podemos ver los resultados en 
     \cline{4-7}
      &  &   &  Idle & 2 cpu & 4 cpu & 8 cpu \\
      \hline
-     Regresión logística & 99.4 & 99.4 & 99.4 & 99.4 & 99.4 & 99.4\\
+     Regresión Logística & 99.4 & 99.4 & 99.4 & 99.4 & 99.4 & 99.4\\
      SVM & 99.9 & 99.9 & 99.9 & 99.8 & 99.8 & 99.9\\
-     Gradient boosting & 99.9 & 100.0 & 96.4 & 96.5 & 99.3 & 99.3 \\
-     Random forest & 100.0 & 100.0 & 99.7 & 97.4 & 99.7 & 96.8\\
+     Gradient Boosting & 99.9 & 100.0 & 96.4 & 96.5 & 99.3 & 99.3 \\
+     Random Forest & 100.0 & 100.0 & 99.7 & 97.4 & 99.7 & 96.8\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1713,7 +1720,7 @@ Donde más se nota la falta de recursos de la Raspberry Pi es en los tiempos de 
 
 En dicha figura podemos ver como a medida que el nivel de saturación aumenta (eje x) es menor el porcentaje de lentitud, con lo que cada vez es menor la diferencia entre los tiempos de ejecución de la Raspberry Pi y del portátil. Siendo el modelo de RL en el que mayor diferencia hay entre ambas máquinas, a pesar de que este modelo es el que menos tarda en ejecutar en el portátil no sucede siempre lo mismo en la Raspberry Pi lo que hace que se termine convirtiendo en el modelo que peor se comporta en la Raspberry Pi al compararlo con el Pc.
 
-Por otra lado, es el modelo de Gradient boosting el que consigue estar por debajo del $50\%$ de lentitud. Cuando ambas máquinas están con todos los cores estresados, GB es solo un $40\%$ más lenta en la Raspberry Pi que en el portátil.
+Por otra lado, es el modelo de Gradient Boosting el que consigue estar por debajo del $50\%$ de lentitud. Cuando ambas máquinas están con todos los cores estresados, GB es solo un $40\%$ más lenta en la Raspberry Pi que en el portátil.
 
 De la misma forma, en la Figura~\ref{fig:per_kdd} se muestra estos mismos porcentajes pero esta vez para el caso del \textit{dataset} KddCup99.
 
@@ -1756,13 +1763,13 @@ Los resultados de los tiempos de ejecución para el \textit{dataset} generado po
     \cline{2-9}
      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
     \hline
-    Regresión logística & 10.73 seg & 9.51 seg & 19.39 seg & 12.52 seg & 18.73 seg & 13.77 seg & 17.4 seg & 13.38 seg \\[2ex]
+    Regresión Logística & 10.73 seg & 9.51 seg & 19.39 seg & 12.52 seg & 18.73 seg & 13.77 seg & 17.4 seg & 13.38 seg \\[2ex]
     \hline
     SVM & 10.48 seg & 10.35 seg & 10.32 seg & 10.24 seg & 10.26 seg & 10.21 seg & 10.27 seg & 10.44 seg\\[2ex]
     \hline
-    Gradient boosting & 17.28 seg & 17.17 seg & 17.15 seg & 17.1 seg & 17.11 seg & 17.08 seg & 17.07 seg & 17.14 seg\\[2ex]
+    Gradient Boosting & 17.28 seg & 17.17 seg & 17.15 seg & 17.1 seg & 17.11 seg & 17.08 seg & 17.07 seg & 17.14 seg\\[2ex]
     \hline
-    Random forest & 42.58 seg & 20.21 seg & 38.37 seg & 21.2 seg & 35.41 seg & 23.93 seg & 36.78 seg & 27.68 seg\\[2ex]
+    Random Forest & 42.58 seg & 20.21 seg & 38.37 seg & 21.2 seg & 35.41 seg & 23.93 seg & 36.78 seg & 27.68 seg\\[2ex]
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1784,10 +1791,10 @@ Por otro lado, la precisión obtenida por medio de este \textit{dataset} se encu
     \cline{4-7}
      &  &   &  Idle & 1 cpu & 2 cpu & 4 cpu \\
      \hline
-     Regresión logística & 98.9 & 99.0 & 99.2 & 99.1 & 99.2 & 99.0\\
+     Regresión Logística & 98.9 & 99.0 & 99.2 & 99.1 & 99.2 & 99.0\\
      SVM & 99.5 & 99.6 & 99.5 & 99.5 & 98.6 & 98.5\\
-     Gradient boosting & 99.9 & 100.0 & 99.9 & 99.8 & 99.5 & 98.9\\
-     Random forest & 99.9 & 100.0 & 99.8 & 99.9 & 99.7 & 99.7\\
+     Gradient Boosting & 99.9 & 100.0 & 99.9 & 99.8 & 99.5 & 98.9\\
+     Random Forest & 99.9 & 100.0 & 99.8 & 99.9 & 99.7 & 99.7\\
     \hline
     \end{tabular}
 \end{adjustbox}
@@ -1815,13 +1822,13 @@ Los resultados de los tiempos de ejecución para el \textit{dataset} generado po
 %     \cline{2-9}
 %      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
 %     \hline
-%     Regresión logística & 2.0 seg & 1.36 seg & 2.27 seg & 1.55 seg & 2.96 seg & 2.24 seg & 3.27 seg & 2.81 seg \\[2ex]
+%     Regresión Logística & 2.0 seg & 1.36 seg & 2.27 seg & 1.55 seg & 2.96 seg & 2.24 seg & 3.27 seg & 2.81 seg \\[2ex]
 %     \hline
 %     SVM & 1.65 seg & 1.66 seg & 1.77 seg & 1.78 seg & 2.71 seg & 2.72 seg & 2.8 seg & 3.23 seg\\[2ex]
 %     \hline
-%     Gradient boosting & 3.67 seg & 3.67 seg & 4.12 seg & 4.13 seg & 4.28 seg & 4.29 seg & 6.18 seg & 7.18 seg\\[2ex]
+%     Gradient Boosting & 3.67 seg & 3.67 seg & 4.12 seg & 4.13 seg & 4.28 seg & 4.29 seg & 6.18 seg & 7.18 seg\\[2ex]
 %     \hline
-%     Random forest & 13.29 seg & 3.35 seg & 12.28 seg & 3.87 seg & 11.82 seg & 4.57 seg & 13.29 seg & 8.39 seg\\[2ex]
+%     Random Forest & 13.29 seg & 3.35 seg & 12.28 seg & 3.87 seg & 11.82 seg & 4.57 seg & 13.29 seg & 8.39 seg\\[2ex]
 %     \hline
 %     \end{tabular}
 % \end{adjustbox}
@@ -1854,13 +1861,13 @@ Los resultados de los tiempos de ejecución para el \textit{dataset} generado po
     \cline{2-3}\cline{4-5}\cline{6-7}\cline{8-9}
     \textbf{Modelo} & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.)\\%[2ex]
     \midrule
-    Regresión logística & 2.0  & 1.36  & 2.27  & 1.55  & 2.96  & 2.24  & 3.27  & 2.81  \\%[2ex]
+    Regresión Logística & 2.0  & 1.36  & 2.27  & 1.55  & 2.96  & 2.24  & 3.27  & 2.81  \\%[2ex]
     
     SVM & 1.65  & 1.66  & 1.77  & 1.78  & 2.71  & 2.72  & 2.8  & 3.23 \\%[2ex]
     
-    Gradient boosting & 3.67  & 3.67  & 4.12  & 4.13  & 4.28  & 4.29  & 6.18  & 7.18 \\%[2ex]
+    Gradient Boosting & 3.67  & 3.67  & 4.12  & 4.13  & 4.28  & 4.29  & 6.18  & 7.18 \\%[2ex]
     
-    Random forest & 13.29  & 3.35  & 12.28  & 3.87  & 11.82  & 4.57  & 13.29  & 8.39 \\%[2ex]
+    Random Forest & 13.29  & 3.35  & 12.28  & 3.87  & 11.82  & 4.57  & 13.29  & 8.39 \\%[2ex]
     \bottomrule
     \end{tabular}
 \end{adjustbox}
@@ -1883,10 +1890,10 @@ Mientras que la precisión obtenida por medio de este \textit{dataset} se encuen
     \cline{4-7}
      &  &   &  Idle & 2 cpu & 4 cpu & 8 cpu \\
      \midrule
-     Regresión logística & 99.0 & 99.0 & 99.0 & 99.0 & 99.1 & 99.8\\
+     Regresión Logística & 99.0 & 99.0 & 99.0 & 99.0 & 99.1 & 99.8\\
      SVM & 99.5 & 99.5 & 99.7 & 99.5 & 98.6 & 98.6\\
-     Gradient boosting & 99.9 & 100.0 & 99.7 & 99.9 & 99.5 & 99.8\\
-     Random forest & 99.9 & 100.0 & 99.5 & 99.8 & 99.7 & 99.5\\
+     Gradient Boosting & 99.9 & 100.0 & 99.7 & 99.9 & 99.5 & 99.8\\
+     Random Forest & 99.9 & 100.0 & 99.5 & 99.8 & 99.7 & 99.5\\
     \bottomrule
     \end{tabular}
 \end{adjustbox}
@@ -1926,19 +1933,19 @@ Y no solo entrenarlos o hacer pruebas con ellos, sino que también puede recoger
 
 Luego, a pesar de las limitaciones notables de la Raspberry Pi ésta no tiene nada que envidiar a un portátil, puesto que es capaz de cumplir perfectamente con los objetivos marcados aún siendo un dispositivo bastante más pequeño, de menor coste y, por supuesto, de menor capacidad.
 
-Esto abre un abanico de infinitas posibilidades en las que se puede utilizar la Raspberry Pi como dispositivo para obtener información e interactuar con el entorno de manera inteligente y completamente autónoma. Concretamente dentro del mundo de IoT y Tiny Machine Learning, puesto que cumple todos los requisitos necesarios como para poder utilizarla para implementar una tarea de ese estilo.
+Esto abre un abanico de infinitas posibilidades en las que se puede utilizar la Raspberry Pi como dispositivo para obtener información e interactuar con el entorno de manera inteligente y completamente autónoma. Concretamente dentro del mundo de IoT y \textit{tiny machine learning}, puesto que cumple todos los requisitos necesarios como para poder utilizarla para implementar una tarea de ese estilo.
 
 \subsection{Conclusiones finales de cada uno de los modelos}
 
 Como conclusiones finales de cada uno de los modelos de machine learning ejecutados en ambas máquinas y utilizando las Figuras~\ref{fig:per_occupancy}, ~\ref{fig:per_kdd} y ~\ref{fig:per_Mi}, podemos mencionar los siguientes aspectos.
 
-El modelo de Regresión logística es el modelo que más tarda en terminar la ejecución en comparación con el portátil. Como ya mencionaba en secciones anteriores, a pesar de que es el modelo que más rápido ejecuta en el portátil, no sucede lo mismo en la Raspberry Pi lo que hace que se termine convirtiendo en el modelo con mayor diferencia de tiempos entre una máquina y otra. Por otra parte, a pesar de que en teoría solo puede utilizar un procesador para ejecutar, la diferencia que existe en algunos casos entre los tiempos de \textit{Wall time} y \textit{Cpu time} nos índica que podría estar utilizando paralelamente varios cores para ejecutar.
+El modelo de Regresión Logística es el modelo que más tarda en terminar la ejecución en comparación con el portátil. Como ya mencionaba en secciones anteriores, a pesar de que es el modelo que más rápido ejecuta en el portátil, no sucede lo mismo en la Raspberry Pi lo que hace que se termine convirtiendo en el modelo con mayor diferencia de tiempos entre una máquina y otra. Por otra parte, a pesar de que en teoría solo puede utilizar un procesador para ejecutar, la diferencia que existe en algunos casos entre los tiempos de \textit{Wall time} y \textit{Cpu time} nos índica que podría estar utilizando paralelamente varios cores para ejecutar.
 
-Maquinas de soporte sectorial, es el modelo más rápido en la Raspberry Pi, ya que siempre tarda menos en ejecutar que el de RL, pero no ocurre lo mismo en el portátil. Por ello es el segundo modelo con peor comportamiento respecto al portátil en prácticamente todos los casos, puesto que suele tener altos porcentajes de lentitud en comparación con el resto de modelos.
+Maquinas de Vector Soporte, es el modelo más rápido en la Raspberry Pi, ya que siempre tarda menos en ejecutar que el de RL, pero no ocurre lo mismo en el portátil. Por ello es el segundo modelo con peor comportamiento respecto al portátil en prácticamente todos los casos, puesto que suele tener altos porcentajes de lentitud en comparación con el resto de modelos.
 
-En cuanto al modelo de Gradient boosting, es el tercer modelo más lento tanto en la Raspberry Pi como en el portátil. Pero por otra parte es el segundo modelo que tiene mejor relación entre los tiempos del portátil y la Raspberry Pi, puesto que en todas las gráficas de porcentajes siempre es el segundo con menor porcentaje.
+En cuanto al modelo de Gradient Boosting, es el tercer modelo más lento tanto en la Raspberry Pi como en el portátil. Pero por otra parte es el segundo modelo que tiene mejor relación entre los tiempos del portátil y la Raspberry Pi, puesto que en todas las gráficas de porcentajes siempre es el segundo con menor porcentaje.
 
-Por último, Random forest es para ambas máquinas el modelo más lento con diferencia. Y por ello también es el modelo en el que, por lo general, hay menor diferencia de tiempos entre la ejecución en una máquina u otra. Sin embargo, es el único modelo se está beneficiando de poder utilizar paralelamente varias cpus, prueba de ello es que en todas las niveles de saturación el \textit{Wall time} es menor que el \textit{Cput time}.
+Por último, Random Forest es para ambas máquinas el modelo más lento con diferencia. Y por ello también es el modelo en el que, por lo general, hay menor diferencia de tiempos entre la ejecución en una máquina u otra. Sin embargo, es el único modelo se está beneficiando de poder utilizar paralelamente varias cpus, prueba de ello es que en todas las niveles de saturación el \textit{Wall time} es menor que el \textit{Cput time}.
 
 Pero sin duda algo que tienen en común todos los modelos es la gran precisión con los que son capaces de predecir, manteniendo siempre un \textit{Accuracy}, \textit{Cross-validation}, \textit{Recall} y \textit{Precision} sobre el $90\%$. Por lo que podemos confiar en que ante nuevas entradas de datos los modelos serían capaces de poder clasificar correctamente los datos.
  
