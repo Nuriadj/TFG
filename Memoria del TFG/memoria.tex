@@ -46,6 +46,13 @@
 
 %%-- Geometría principal (dejar activada la siguiente línea en la versión final)
 \usepackage[a4paper, left=2.5cm, right=2.5cm, top=3cm, bottom=3cm]{geometry}
+
+%% Ruptura de página y línea
+\sloppy
+\clubpenalty= 10000
+\widowpenalty=10000
+\brokenpenalty=10000
+
 %%-- Activar esta línea y comentar la anterior en modo borrador, para comentarios al margen
 %\usepackage[a4paper, left=2.5cm, right=2.5cm, top=3cm, bottom=3cm, marginparwidth=60pt]{geometry}
 \usepackage{multirow}
@@ -401,11 +408,11 @@ Por último, y como no, quiero dar las gracias a mis tutores, Katia y Felipe que
 
 Este TFG tiene como objetivo utilizar un dispositivo con capacidades de cómputo reducidas, como es el caso de la Raspberry Pi, para poder estudiar el comportamiento de los modelos de aprendizaje automático a la hora de entrenarlos bajo estas condiciones. 
 
-Normalmente estos dispositivos, con menores capacidades, se utilizan para realizar la inferencia de los datos, dejando el entrenamiento de los modelos a otras máquinas de mayor capacidad, ya que esta fase requiere utilizar muchos más recursos que la deducción. Conociendo el comportamiento de la Raspberry Pi a la hora de entrenar los modelos, se podrá ampliar el uso de este dispositivo tan popular en diferentes tipos de aplicaciones tanto de machine learning como de IoT pudiendo facilitar, por ejemplo, la implementación de casas y ciudades inteligentes (\textit{Smart Cities}) creando ciudades más sostenibles, conectadas y optimizadas, entre otras muchas aplicaciones.
+Normalmente estos dispositivos, con menores capacidades, se utilizan para realizar la inferencia de los datos, dejando el entrenamiento de los modelos a otras máquinas de mayor capacidad, ya que esta fase requiere utilizar muchos más recursos que la deducción. Conociendo el comportamiento de la Raspberry Pi a la hora de entrenar los modelos, se podrá ampliar el uso de este dispositivo tan popular en diferentes tipos de aplicaciones tanto de \textit{machine learning} como de IoT pudiendo facilitar, por ejemplo, la implementación de casas y ciudades inteligentes (\textit{Smart Cities}) creando ciudades más sostenibles, conectadas y optimizadas, entre otras muchas aplicaciones.
 
-Para ello, se utilizará la librería \texttt{scikit-learn} para crear los modelos de \textit{machine learning}. En total se crearán cuatro modelos diferentes de aprendizaje automático supervisado, cada uno será entrenado con varios \textit{datasets}. Para poder evaluar mejor el comportamiento de la Raspberry Pi, se realizarán varias pruebas sometiendo a esta máquina a diferentes condiciones computacionales. De estas pruebas se obtendrán resultados que nos ayudarán a valorar las capacidades de la Raspberry Pi para poder entrenar los modelos de aprendizaje automático.
+Utilizando la librería \texttt{scikit-learn} se crearán cuatro modelos de \textit{machine learning} de aprendizaje automático supervisado, cada uno será entrenado con varios \textit{datasets}. Para poder evaluar mejor la Raspberry Pi, se realizarán varias pruebas sometiendo a esta máquina a diferentes cargas computacionales. De estas pruebas se obtendrán resultados que nos ayudarán a valorar las capacidades de la Raspberry Pi para poder entrenar los modelos de aprendizaje automático.
 
-En paralelo se realizarán pruebas a los mismos modelos en un dispositivo de mayores capacidades, para poder comparar ambos comportamientos y determinar el rendimiento de la Raspberry Pi. Una vez realizadas estas pruebas a continuación se comprobará el funcionamiento de los mismos modelos de \textit{machine learning} para datos capturados directamente por los sensores conectados al dispositivo, pPara seguir valorando la capacidad y el comportamiento de la Raspberry Pi al realizar tareas de este estilo.
+En paralelo se realizarán pruebas a los mismos modelos en un dispositivo de mayores capacidades, para poder comparar el comportamientos de ambas máquinas. Una vez realizadas estas pruebas se comprobará el funcionamiento de los mismos modelos de \textit{machine learning} para datos capturados directamente por los sensores conectados al dispositivo, con el objetivo de valorar el rendimiento de la Raspberry Pi para realizar tareas de este estilo.
 
 Finalmente, habiendo obtenido los resultados de todas estas pruebas se realizará una evaluación de todos estos resultados para poder concluir si la Raspberry Pi, a pesar de sus limitaciones computacionales, es realmente eficiente y capaz de poder desempeñar bien todo el trabajo que se le ha asignado en este TFG.
 
@@ -419,17 +426,17 @@ El proyecto está desarrollado para que cualquier persona, con los componentes h
 %\addcontentsline{toc}{chapter}{Summary} % si queremos que aparezca en el índice
 \markboth{SUMMARY}{SUMMARY} % encabezado
 
-The goal of this Final Degree Project is using a device with reduced capacities, such as the Raspberry Pi, to study the training behaviour of the machine learning models under this conditions. 
+The goal of this Final Degree Project is using a device with reduced capacities, such as the Raspberry Pi, to study the behaviour of training machine learning models under these conditions. 
 
-Typically these devices, with lesser capabilities, are used to perform the inference of the data, leaving the training of the models to other machines of higher capacities, as this phase requires more resources than the deduction. Knowing the behaviour of the Raspberry Pi to train the models, it will be possible to expand the use of this popular device for different types of machine learning or IoT applications, as for example for making easier the implementation of smart homes and cities creating more sustainable, connected and optimised cities, among many other applications.
+Typically, these devices with lesser capabilities are used to perform inference from data, leaving model training to more powerful machines with higher capacities, as this phase requires more resources than mere deduction. Discovering the behaviour of Raspberry Pi to train models, it will be possible to expand the use of this popular device for different types of machine learning or IoT applications, as for example to facilitate the implementation of smart homes and cities, creating more sustainable, connected and optimised environments, among many other applications.
 
-To achieve this, it's going to be used the \texttt{scikit-learn} Python is used to create the machine learning models. In total there are going to be created four differents supervised machine learning models, each one will be trained with several \textit{datasets}. To be able to better evaluate the Raspberry Pi performance, some test will be carried out by subjecting the device to different computational conditions. These test will provide results that will help us to evaluate the capabilities of the Raspberry Pi to train the machine learning models.
+To achieve this, the \texttt{scikit-learn} Python package is used to create the machine learning models. In total, four different supervised machine learning models are created, each one trained with several \textit{datasets}. To better evaluate the Raspberry Pi performance, several empirical tests will be carried out in this device under different computational stress conditions. These tests will provide results that  help us evaluate the capabilities of Raspberry Pi to train machine learning models.
 
-In parallel, the same models will be tested on a device with higher capacities, in order to compare both behaviours and determine the performance of the Raspberry Pi.
+In parallel, the same models will be tested on a device with higher capacities, in order to compare both behaviours and determine the relative performance of Raspberry Pi.
 
-Once all the test have been carried out, the next step is to evaluate the performance of the machine learning models using a new \textit{dataset} which contains the data captured by the sensors that are connected to the device. The objective of this is to keep evaluating the capacity and behaviour of the Raspberry Pi when it has to carry out this kind of tasks.
+Once all the tests have been carried out, the next step is to evaluate the performance of the machine learning models using a new \textit{dataset}, which contains data captured by sensors directly connected to this device. The goal here is to assess the capacity and behaviour of the Raspberry Pi while executing this kind of tasks.
 
-Finally, having all the results of all these tests an evaluation of all the results obtained will be carried out in order to conclude whether the Raspberry Pi, despite its computational limitations, is really efficient and capable of performing well all the work assigned in this final degree project.
+Finally, all results from these tests will be coalesced to conclude whether the Raspberry Pi, despite its computational limitations, is really efficient and capable of performing all assigned works in this Final Degree Project acceptably.
 
 The project is developed in such a way that anyone, with the necessary hardware components, can reproduce the tests without any difficulty.
 
@@ -474,11 +481,11 @@ The project is developed in such a way that anyone, with the necessary hardware 
 \label{sec:intro}
 \pagenumbering{arabic} % para empezar la numeración de página con números
 
-Una de las herramientas más importantes que nos proporcionan las ciencias computacionales a día de hoy es el \textit{machine learning} (o aprendizaje automático en español), cuyo origen se encuentra en la inteligencia artificial. 
+Una de las herramientas más importantes que nos proporcionan las ciencias computacionales a día de hoy es el \textit{machine learning} (o aprendizaje automático en español)~\cite{Flach2012}, cuyo origen se encuentra en la inteligencia artificial~\cite{Russell2020}. 
 
 Por medio de una gran cantidad de datos, los ordenadores, haciendo uso del aprendizaje automático, pueden llegar a identificar patrones y elaborar nuevas predicciones, sin ser específicamente programados para ello. Ofreciendo una gran variedad de oportunidades y posibilidades a la hora de realizar aplicaciones utilizando estos métodos. Muchas de estas aplicaciones las podemos observar en nuestro día a día, como por ejemplo en las redes sociales, sugiriéndonos contenido que puede ser de nuestro interés, en el correo electrónico para proteger la cuenta de correos sospechosos o fraudulentos, en los videojuegos para dar vida a los \textit{bots}... Y por supuesto todo esto ayuda a desarrollar la tecnología de un futuro no tan lejano como pueden ser los coches autónomos o robots más inteligentes.
 
-Sin embargo, la gran cantidad de recursos y consumo de energía que necesitan estos modelos para poder entrenar provoca que no se pueda llegar a implementar estos algoritmos en cualquier dispositivo. Haciendo que su uso, en dispositivos de menor capacidad, quede normalmente restringido a realizar únicamente predicciones mediante un modelo que haya sido entrenado en otra máquina de mayor capacidad. Por lo que muchas aplicaciones tienen que ser descartadas directamente en este tipo de dispositivos por no cumplir ciertos requisitos mínimos como para que un modelo de aprendizaje automático pueda ser entrenado. De este problema nace lo que se conoce como \textit{tiny machine learning} (TinyML)\cite{TinyML}.
+Sin embargo, la gran cantidad de recursos y consumo de energía que necesitan estos modelos para poder entrenar provoca que no se pueda llegar a implementar estos algoritmos en cualquier dispositivo. Haciendo que su uso, en dispositivos de menor capacidad, quede normalmente restringido a realizar únicamente predicciones mediante un modelo que haya sido entrenado en otra máquina de mayor capacidad. Por lo que muchas aplicaciones tienen que ser descartadas directamente en este tipo de dispositivos por no cumplir ciertos requisitos mínimos como para que un modelo de aprendizaje automático pueda ser entrenado. De este problema nace lo que se conoce como \textit{tiny machine learning} (TinyML)\cite{Warden2020,TinyML}.
 
 Dentro del mundo del \textit{machine learning} (ML) se puede definir un subcampo de investigación denominado \textit{tiny machine learning}, cuyo objetivo es utilizar los algoritmos de aprendizaje automático en dispositivos más baratos, y por lo tanto con recursos, capacidad de almacenamiento y energía mucho más limitados que una máquina estándar. Esto supone un reto puesto que el proceso de entrenamiento de un modelo de ML es un proceso costoso a nivel de recursos, poniendo en un aprieto a los dispositivos que lo quieran ejecutar, y más si además se pretende que dicho dispositivo también recoja y procese los datos antes de entrenar con ellos para poder obtener una respuesta inmediata en vez de tener que esperar a que los datos se envíen y procesen en la nube.
 
@@ -490,7 +497,7 @@ Podemos encontrar aplicaciones de TinyML tan comunes como "OK Google" o "Alexa",
   \caption{Estructura del procesamiento de los datos obtenidos por los dispositivos.}\label{fig:edge_computing}
 \end{figure}
 
-Luego, uno de los objetivos del TinyML es llevar los modelos de aprendizaje automático al extremo, es decir, a la zona de \textit{Edge computing} que es el nivel más bajo donde se pueden procesar los datos, y por lo tanto, el más cercano al usuario. En la Figura~\ref{fig:edge_computing} podemos ver dónde se situa el \textit{Edge computing} respecto del resto de niveles donde se podrían procesar los datos. Para poder generar los modelos en esta zona se utilizan dispositivos basados en microcontroladores alimentados por batería, de forma que puedan realizar tareas de ML con capacidad de respuesta en tiempo real. Pudiendo beneficiarnos de la gran portabilidad, bajo consumo y mayor seguridad, dado que no es necesario enviar los datos a la nube, que ofrecen estas máquinas, lo que puede ser muy relevante cuando se trabaja en aplicaciones de IoT (Internet of Things). 
+Luego, uno de los objetivos del TinyML es llevar los modelos de aprendizaje automático al extremo, es decir, a la zona de \textit{Edge computing}~\cite{Khan2019} que es el nivel más bajo donde se pueden procesar los datos, y por lo tanto, el más cercano al usuario. En la Figura~\ref{fig:edge_computing} podemos ver dónde se situa el \textit{Edge computing} respecto del resto de niveles donde se podrían procesar los datos. Para poder generar los modelos en esta zona se utilizan dispositivos basados en microcontroladores alimentados por batería, de forma que puedan realizar tareas de ML con capacidad de respuesta en tiempo real. Pudiendo beneficiarnos de la gran portabilidad, bajo consumo y mayor seguridad, dado que no es necesario enviar los datos a la nube, que ofrecen estas máquinas, lo que puede ser muy relevante cuando se trabaja en aplicaciones de IoT (Internet of Things)~\cite{Rose2015}. 
 
 Los dispositivos de IoT permiten monitorear continuamente un entorno utilizando pequeños sensores. Estos dispositivos están conectados a una red por medio de la cual comparten continuamente la información obtenida. Añadir ML a un dispositivo de estas características permite detectar patrones en todos esos datos recogidos, pudiendo desarrollar una amplia gama de aplicaciones inteligentes y experiencias de usuario mejoradas. Dado que estos dispositivos son normalmente también de características reducidas, es clave el uso de técnicas de TinyML para su desarrollo.
 
@@ -609,7 +616,7 @@ Para saber si la Raspberry Pi es un dispositivo lo suficientemente potente para 
      \label{tab:my_dataSet}
  \end{table}
  
- Los algoritmos de machine learning se dividen en tres categorías: 
+ Los algoritmos de machine learning se pueden encuadrar, entre otras, en tres categorías~\cite{James2021}: 
 
 \begin{itemize}
     \item \textbf{Aprendizaje supervisado}. En este tipo de aprendizaje se le proporciona al algoritmo un conjunto de datos de entrada con su salida correspondiente. De esta forma el programa puede "aprender" la relación que existe entre la salida y el conjunto de entradas. Dependiendo del tipo de salida podremos encontrar dos clases de modelos: modelos de regresión o de clasificación.
@@ -648,7 +655,7 @@ Gracias a que todos estos algoritmos pueden estar aprendiendo constantemente de 
 \subsection{Tiny Machine Learning}
 \label{subsec:tinyML}
 
-Tiny machine learning\cite{TinyML}, cuyo origen se encuentra en el machine learning, es la unión del aprendizaje automático con los dispositivos IoT. Es decir, consigue que dispositivos con menor capacidad de cómputo sean capaces de ejecutar algoritmos de machine learning. Es una disciplina emergente con la que se amplian la posibilidades de utilizar los algoritmos de machine learning en un mayor número de máquinas.
+Tiny machine learning\cite{Warden2020,TinyML}, cuyo origen se encuentra en el machine learning, es la unión del aprendizaje automático con los dispositivos IoT. Es decir, consigue que dispositivos con menor capacidad de cómputo sean capaces de ejecutar algoritmos de machine learning. Es una disciplina emergente con la que se amplian la posibilidades de utilizar los algoritmos de machine learning en un mayor número de máquinas.
 
 Tradicionalmente, los dispositivos IoT tenían que enviar los datos recogidos a la nube para procesarlos y poder generar el modelo de aprendizaje automático con la información proporcionada. Con TinyML conseguimos que estas tareas las realice el propio dispositivo IoT, sin necesidad de enviar nada a la nube. Gracias a esto conseguimos: 
 
@@ -666,7 +673,7 @@ Aunque existen muchos algoritmos para generar modelos de aprendizaje automático
 \subsection{Regresión logística}
 \label{subsec:regresion_logistica}
 
-Modelo de aprendizaje supervisado que realiza tareas de clasificación binaria, es decir solo existen dos posibles clases. Esta técnica busca una función acotada (normalmente entre 0 y 1) que divida los datos de ambas clases de forma bien diferenciada. Normalmente dicha función se denomina como logística o sigmoide y se define de la siguiente forma:
+Modelo de aprendizaje supervisado que realiza tareas de clasificación binaria, es decir solo existen dos posibles clases. Esta técnica busca una función acotada (normalmente entre 0 y 1) que divida los datos de ambas clases de forma bien diferenciada. Normalmente dicha función se denomina como logística o sigmoide y se define de la siguiente forma~\cite{Watt2020}:
 
 \begin{equation}
     h_w(x^{(i)}) = \frac{1}{1 + e^{\sum_{j=0}^{d} w_j x_j^{(i)} }}
@@ -695,7 +702,7 @@ Se dará por finalizada la fase de aprendizaje cuando se consiga que los valores
 \subsection{Máquinas de soporte vectorial}
 \label{subsec:maquitas_soporte_vectorial}
 
-Modelo de aprendizaje supervisado utilizado para resolver tareas de clasificación binaria, aunque existen máquinas de vector soporte para resolver problemas de regresión o de clasificación multiclase. Se basa en la generación de un hiperplano que separe de forma óptima los puntos de una clase respecto de otra. Es decir, que exista la máxima distancia entre el hiperplano y los puntos más cercanos a este, los puntos más cercanos al hiperplano de separación se denominan como vectores soporte. Luego el hiperplano óptimo pasará justo por el medio de los vectores soporte de ambas clases.
+Modelo de aprendizaje supervisado utilizado para resolver tareas de clasificación binaria, aunque existen máquinas de vector soporte para resolver problemas de regresión o de clasificación multiclase. Se basa en la generación de un hiperplano que separe de forma óptima los puntos de una clase respecto de otra~\cite{Duda2001}. Es decir, que exista la máxima distancia entre el hiperplano y los puntos más cercanos a este, los puntos más cercanos al hiperplano de separación se denominan como vectores soporte. Luego el hiperplano óptimo pasará justo por el medio de los vectores soporte de ambas clases.
 
 \begin{figure}[]
   \centering
@@ -717,7 +724,7 @@ Sin embargo, hay veces que puede llegar a ser imposible hallar un hiperplano que
 \subsection{Gradient boosting}
 \label{subsec:gradient_boosting}
 
-Técnica de aprendizaje supervisado que se utiliza tanto para problemas de regresión como de clasificación. Se basa en la combinación de modelos predictivos débiles, normalmente árboles de decisión, para crear un modelo predictivo fuerte. Los árboles de decisión son uno de los algoritmos más utilizados para la toma de decisiones debido a su sencilla implementación y fácil interpretación. Dado un conjunto de datos, se crean diagramas lógicos que sirven para representar una serie de condiciones sucesivas para resolver un problema. Por ejemplo, en la Figura~\ref{fig:ejemplo_adecision} hay representado un árbol de decisión que sirve para poder saber si podemos salir a la calle a correr, dependiendo de ciertas condiciones se hará una cosa u otra. 
+Técnica de aprendizaje supervisado que se utiliza tanto para problemas de regresión como de clasificación. Se basa en la combinación de modelos predictivos débiles, normalmente árboles de decisión, para crear un modelo predictivo fuerte~\cite{James2021}. Los árboles de decisión son uno de los algoritmos más utilizados para la toma de decisiones debido a su sencilla implementación y fácil interpretación. Dado un conjunto de datos, se crean diagramas lógicos que sirven para representar una serie de condiciones sucesivas para resolver un problema. Por ejemplo, en la Figura~\ref{fig:ejemplo_adecision} hay representado un árbol de decisión que sirve para poder saber si podemos salir a la calle a correr, dependiendo de ciertas condiciones se hará una cosa u otra. 
 
 \begin{figure}[]
   \centering
@@ -730,7 +737,7 @@ En Gradient boosting se generan árboles de decisión de forma secuencial, hacie
 \subsection{Random forest}
 \label{subsec:random_forest}
 
-Random forest se puede usar tanto en problemas de clasificación como de regresión. Este modelo utiliza un conjunto de árboles de decisión, que se generan de forma paralela, para realizar las predicciones. Cada uno de los árboles de decisión se entrena con un subconjunto aleatorio de los datos de entrenamiento. 
+Random forest se puede usar tanto en problemas de clasificación como de regresión. Este modelo utiliza un conjunto de árboles de decisión, que se generan de forma paralela, para realizar las predicciones. Cada uno de los árboles de decisión se entrena con un subconjunto aleatorio de los datos de entrenamiento~\cite{James2021}. 
 
 Cuando se quiera, por ejemplo, estimar la clase a la que pertenece un dato cada uno de los árboles "votará" por la clase a la que cree que el dato pertenece. La clase con mayoría de votos es la predicción final del modelo. Por lo tanto, aumentando el número de árboles de decisión se aumenta la precisión del modelo. Con lo que se consigue construir un modelo robusto a partir de varios modelos que no tienen por qué ser tan robustos.
 
@@ -745,7 +752,7 @@ En la Figura~\ref{fig:ejemplo_rforest} podemos ver un ejemplo de Random forest. 
 \section{IoT}
 \label{sec:IoT}
 
-Uno de los campos en los que son de gran importancia las técnicas de aprendizaje automático es en los proyectos de IoT (Internet of Things). El Internet de las cosas (o Internet of Things) es la interconexión de sensores y dispositivos, como por ejemplo pueden ser los electrodomésticos, termostatos, coches, ropa... Todos ellos se conectan a través de una red por medio de la cual pueden interaccionar entre ellos y compartir datos sin necesidad de que un humano intervenga, esta red puede ser por cable, WiFi, Bluetooth etc. 
+Uno de los campos en los que son de gran importancia las técnicas de aprendizaje automático es en los proyectos de IoT (Internet of Things)~\cite{Rose2015}. El Internet de las cosas (o Internet of Things) es la interconexión de sensores y dispositivos, como por ejemplo pueden ser los electrodomésticos, termostatos, coches, ropa... Todos ellos se conectan a través de una red por medio de la cual pueden interaccionar entre ellos y compartir datos sin necesidad de que un humano intervenga, esta red puede ser por cable, WiFi, Bluetooth etc. 
 
 Los dispositivos conectados generan una gran cantidad de datos que llegan a una plataforma IoT que recolecta, procesa y analiza dichos datos. Utilizando machine learning se puede generar, por medio de todos estos datos recopilados, nuevos modelos de aprendizaje automático cuyas predicciones se pueden usar para poder actuar sobre el entorno. Las posibles aplicaciones que ofrece esto son prácticamente infinitas, algunos ejemplos pueden ser:
 
@@ -768,7 +775,7 @@ Dicho modelo posee un procesador ARM Cortex-A72 que soporta SIMD avanzado, un ti
 
 Otro detalle destacable de la Raspberry Pi para el desarrollo de este trabajo es que posee una arquitectura SMP (Symmetric Multi-Processing), un tipo de arquitectura de computador en el que las unidades de procesamiento comparten una única memoria central, lo que permite que cualquier procesador trabaje en cualquier tarea sin importar su localización en memoria. 
 
-Actualmente es uno de los dispositivos más populares ya que brinda un sinfín de posibilidades a pesar de su pequeño tamaño. Específicamente dentro del campo de aprendizaje automático e IoT, se podrían desarrollar multitud de aplicaciones gracias a la interacción que tiene con el entorno por medio de los sensores y actuadores que se le pueden conectar. Por ello, en este trabajo de investigación se busca examinar el rendimiento de este pequeño ordenador y comprobar hasta donde se podría llegar con él, dentro del campo del aprendizaje automático. 
+Actualmente es uno de los dispositivos más populares ya que brinda un sinfín de posibilidades a pesar de su pequeño tamaño. Específicamente dentro del campo de aprendizaje automático e IoT, se podrían desarrollar multitud de aplicaciones gracias a la interacción que tiene con el entorno por medio de los sensores y actuadores que se le pueden conectar. Por ello, en este trabajo de investigación se busca examinar el rendimiento de este pequeño ordenador y comprobar hasta donde se podría llegar con él, dentro del campo del aprendizaje automático~\cite{Garcia-Martin2019}. 
 
 
 \section{Sensores}
@@ -1131,7 +1138,7 @@ Al igual que en el \textit{dataset} de Room Occupancy para la generación de los
 \subsection{Preprocesamiento de KddCup99}
 \label{subsec:preprocesamiento_kddcup}
 
-Para que este \textit{dataset} se pueda utilizar para entrenar a modelos de aprendizaje automático de clasificación binaria, es necesario realizar un preprocesamiento a los datos que contiene. De esto se encarga el programa \textit{prepare\_kddcup.ipynb}. Este fichero permite leer las líneas de este \textit{dataset}, procesar y guardar los datos en un nuevo fichero para que puedan usarlos los modelos.
+Para que este \textit{dataset} se pueda utilizar para entrenar a modelos de aprendizaje automático de clasificación binaria, es necesario realizar un preprocesamiento a los datos que contiene~\cite{Pyle1999,Dasu2003}. De esto se encarga el programa \textit{prepare\_kddcup.ipynb}. Este fichero permite leer las líneas de este \textit{dataset}, procesar y guardar los datos en un nuevo fichero para que puedan usarlos los modelos.
 
 Para leer los datos se utiliza la función \textit{read\_csv} de \texttt{pandas}. Este programa no solo se utilizará para leer un \textit{dataset} al completo, sino que también podremos leer otra porción diferente de líneas. Es por esto que para que el programa ejecute correctamente hay que pasarle un número como único argumento, cuyo valor puede estar entre cero y cien. Este valor representa el porcentaje de datos que se desea leer. Un ejemplo de ejecución de este fichero para que lea el $50\%$ de los datos de kddCup99 es:\\
 
@@ -1795,50 +1802,92 @@ A pesar de ser el \textit{dataset} con el menor número de muestras de todos los
 
 Los resultados de los tiempos de ejecución para el \textit{dataset} generado por medio de los datos obtenidos de los sensores se pueden ver en la Tabla~\ref{tab:times_senspc}.
 
-\definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
+% % \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
+% % \definecolor{myLightGray}{rgb}{0.8, 0.8, 0.8}
+% \begin{table}[]
+% \begin{adjustbox}{width=\textwidth}
+% \renewcommand{\arraystretch}{2}
+% % \newcolumntype{a}{>{\columncolor{myLightGray}}c}
+% \centering
+%     \begin{tabular}{  c  c  c  c  c  c  c  c  c }
+%     \hline
+%     \rowcolor{myLightGray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{2 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{8 CPUs estresadas}}\\[2ex]
+%     \cline{2-9}
+%      & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
+%     \hline
+%     Regresión logística & 2.0 seg & 1.36 seg & 2.27 seg & 1.55 seg & 2.96 seg & 2.24 seg & 3.27 seg & 2.81 seg \\[2ex]
+%     \hline
+%     SVM & 1.65 seg & 1.66 seg & 1.77 seg & 1.78 seg & 2.71 seg & 2.72 seg & 2.8 seg & 3.23 seg\\[2ex]
+%     \hline
+%     Gradient boosting & 3.67 seg & 3.67 seg & 4.12 seg & 4.13 seg & 4.28 seg & 4.29 seg & 6.18 seg & 7.18 seg\\[2ex]
+%     \hline
+%     Random forest & 13.29 seg & 3.35 seg & 12.28 seg & 3.87 seg & 11.82 seg & 4.57 seg & 13.29 seg & 8.39 seg\\[2ex]
+%     \hline
+%     \end{tabular}
+% \end{adjustbox}
+% \caption{Resultados de los tiempos de ejecución para el \textit{dataset} Sesnores Raspberry Pi en la Raspberry Pi.}
+% \label{tab:times_senspc}
+% \end{table}
+
+% \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
+% \definecolor{myLightGray}{rgb}{0.8, 0.8, 0.8}
 \begin{table}[]
 \begin{adjustbox}{width=\textwidth}
-\renewcommand{\arraystretch}{2}
-\newcolumntype{a}{>{\columncolor{lightgray}}c}
+\renewcommand{\arraystretch}{1.5}
+% \newcolumntype{a}{>{\columncolor{myLightGray}}c}
 \centering
-    \begin{tabular}{ | a | c | c | c | c | c | c | c | c |}
-    \hline
-    \rowcolor{lightgray}\multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{|c|}{\textbf{Idle}} & \multicolumn{2}{|c|}{\textbf{2 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{4 CPUs estresadas}} & \multicolumn{2}{|c|}{\textbf{8 CPUs estresadas}}\\[2ex]
+    \begin{tabular}{ @{\extracolsep{5pt}}
+    >{\centering\arraybackslash}m{2cm}  
+    >{\raggedleft\arraybackslash}m{1.5cm} 
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    >{\raggedleft\arraybackslash}m{1.5cm}
+    @{}}
+    \toprule
+    & \multicolumn{8}{c}{\textbf{Nivel de estrés}}\\
     \cline{2-9}
-     & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time & \cellcolor{myGray}Cpu time & \cellcolor{myGray}Wall time\\[2ex]
-    \hline
-    Regresión logística & 2.0 seg & 1.36 seg & 2.27 seg & 1.55 seg & 2.96 seg & 2.24 seg & 3.27 seg & 2.81 seg \\[2ex]
-    \hline
-    SVM & 1.65 seg & 1.66 seg & 1.77 seg & 1.78 seg & 2.71 seg & 2.72 seg & 2.8 seg & 3.23 seg\\[2ex]
-    \hline
-    Gradient boosting & 3.67 seg & 3.67 seg & 4.12 seg & 4.13 seg & 4.28 seg & 4.29 seg & 6.18 seg & 7.18 seg\\[2ex]
-    \hline
-    Random forest & 13.29 seg & 3.35 seg & 12.28 seg & 3.87 seg & 11.82 seg & 4.57 seg & 13.29 seg & 8.39 seg\\[2ex]
-    \hline
+     & \multicolumn{2}{c}{\textbf{Idle}} & \multicolumn{2}{c}{\textbf{2 CPUs}} & \multicolumn{2}{c}{\textbf{4 CPUs}} & \multicolumn{2}{c}{\textbf{8 CPUs}}\\%[2ex]
+    \cline{2-3}\cline{4-5}\cline{6-7}\cline{8-9}
+    \textbf{Modelo} & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.)\\%[2ex]
+    \midrule
+    Regresión logística & 2.0  & 1.36  & 2.27  & 1.55  & 2.96  & 2.24  & 3.27  & 2.81  \\%[2ex]
+    
+    SVM & 1.65  & 1.66  & 1.77  & 1.78  & 2.71  & 2.72  & 2.8  & 3.23 \\%[2ex]
+    
+    Gradient boosting & 3.67  & 3.67  & 4.12  & 4.13  & 4.28  & 4.29  & 6.18  & 7.18 \\%[2ex]
+    
+    Random forest & 13.29  & 3.35  & 12.28  & 3.87  & 11.82  & 4.57  & 13.29  & 8.39 \\%[2ex]
+    \bottomrule
     \end{tabular}
 \end{adjustbox}
 \caption{Resultados de los tiempos de ejecución para el \textit{dataset} Sesnores Raspberry Pi en la Raspberry Pi.}
 \label{tab:times_senspc}
 \end{table}
+
 Que una vez más es muy similar al comportamiento que realizaban los tiempos en los anteriores \textit{datasets}. Incrementan a medida que aumentan el número de procesadores estresados.
 
 Mientras que la precisión obtenida por medio de este \textit{dataset} se encuentra en la Tabla~\ref{tab:acc_senspc}.
 
 \definecolor{myGray}{rgb}{0.9, 0.9, 0.9}
 \begin{table}[]
+\renewcommand{\arraystretch}{1.5}
 \begin{adjustbox}{width=\textwidth}
 \centering
     \begin{tabular}{c  c  c  c  c  c  c}
-    \hline
-    Modelo & Accuracy cv (\%) & Accuracy trainning (\%) & Acuracy (\%) & & & \\
+    \toprule
+    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Acuracy (\%)} \\
     \cline{4-7}
      &  &   &  Idle & 2 cpu & 4 cpu & 8 cpu \\
-     \hline
+     \midrule
      Regresión logística & 99.0 & 99.0 & 99.0 & 99.0 & 99.1 & 99.8\\
      SVM & 99.5 & 99.5 & 99.7 & 99.5 & 98.6 & 98.6\\
      Gradient boosting & 99.9 & 100.0 & 99.7 & 99.9 & 99.5 & 99.8\\
      Random forest & 99.9 & 100.0 & 99.5 & 99.8 & 99.7 & 99.5\\
-    \hline
+    \bottomrule
     \end{tabular}
 \end{adjustbox}
 \caption{Resultados de la precisión de los modelos para el \textit{dataset} Sensores Raspberry Pi en la Raspberry Pi.}
