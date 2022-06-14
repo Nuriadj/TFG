@@ -681,7 +681,7 @@ Modelo de aprendizaje supervisado que realiza tareas de clasificación binaria, 
 
 Esta expresión devolverá un valor entre cero y uno. Según lo próximo que este el valor a cero o uno pertenecerá a una clase u otra. 
 
-Los parámetros representados por $w$ son los pesos, unos valores numéricos que utiliza la función para realizar la predicción. Cada peso está multiplicando a una característica, representada mediante $x_j$. Luego, para conocer a qué clase pertenece el ejemplo $x^{(i)}$ habrá que aplicar la fórmula anterior, por lo que se tendrá que realizar el sumatorio de todos los pesos multiplicados por sus respectivas características (desde la cero hasta la d-ésima). 
+Los parámetros representados por $w$ son los pesos, unos valores numéricos que utiliza la función para realizar la predicción. Cada peso está multiplicando a una característica, representada mediante $x_j$. Por tanto, para conocer a qué clase pertenece el ejemplo $x^{(i)}$ habrá que aplicar la fórmula anterior, por lo que se tendrá que realizar el sumatorio de todos los pesos multiplicados por sus respectivas características (desde la cero hasta la d-ésima). 
 
 Durante la fase de entrenamiento el modelo ajusta los pesos mediante un método de optimización, a fin de que las predicciones que se realicen mediante ellos tengan el mínimo error posible. Para obtener los valores óptimos de los pesos se utiliza el método de descenso por gradiente, mediante el cual se irán actualizando los valores de los pesos conforme vaya entrenando con más ejemplos. La función de descenso por gradiente se define en la ecuación~\ref{eq:desc_gradiente}.
 
@@ -702,7 +702,7 @@ Se dará por finalizada la fase de aprendizaje cuando se consiga que los valores
 \subsection{Máquinas de Vector Soporte}
 \label{subsec:maquinas_vector_soporte}
 
-Modelo de aprendizaje supervisado utilizado para resolver tareas de clasificación binaria, aunque existen Máquinas de Vector Soporte para resolver problemas de regresión o de clasificación multiclase. Se basa en la generación de un hiperplano que separe de forma óptima los puntos de una clase respecto de otra~\cite{Duda2001}. Es decir, que exista la máxima distancia entre el hiperplano y los puntos más cercanos a este, los puntos más cercanos al hiperplano de separación se denominan como vectores soporte. Luego el hiperplano óptimo pasará justo por el medio de los vectores soporte de ambas clases.
+Modelo de aprendizaje supervisado utilizado para resolver tareas de clasificación binaria, aunque existen Máquinas de Vector Soporte para resolver problemas de regresión o de clasificación multiclase. Se basa en la generación de un hiperplano que separe de forma óptima los puntos de una clase respecto de otra~\cite{Duda2001}. Es decir, que exista la máxima distancia entre el hiperplano y los puntos más cercanos a este, los puntos más cercanos al hiperplano de separación se denominan como vectores soporte. Así pues, el hiperplano óptimo pasará justo por el medio de los vectores soporte de ambas clases.
 
 \begin{figure}[htb]
   \centering
@@ -747,7 +747,7 @@ Cuando se quiera, por ejemplo, estimar la clase a la que pertenece un dato cada 
   \caption{Ejemplo Random Forest.}\label{fig:ejemplo_rforest}
 \end{figure}
 
-En la Figura~\ref{fig:ejemplo_rforest} podemos ver un ejemplo de Random Forest. Con el \textit{dataset} que se le pasa generará, en este caso, tres árboles de decisión a partir de subconjuntos aleatorios del \textit{dataset} original. Cuando se pretenda clasificar un nuevo dato cada árbol le asignará una clase a ese dato según lo que haya decidido. La clase que más se repite en este ejemplo es la 2, luego esa será la clase a la que pertenezca el dato.
+En la Figura~\ref{fig:ejemplo_rforest} podemos ver un ejemplo de Random Forest. Con el \textit{dataset} que se le pasa generará, en este caso, tres árboles de decisión a partir de subconjuntos aleatorios del \textit{dataset} original. Cuando se pretenda clasificar un nuevo dato cada árbol le asignará una clase a ese dato según lo que haya decidido. La clase que más se repite en este ejemplo es la 2, por lo tanto esa será la clase a la que pertenezca el dato.
 
 \section{Internet of Things (IoT)}
 \label{sec:IoT}
@@ -792,7 +792,7 @@ En este proyecto también se utilizaron sensores para tomar medidas del entorno 
 \subsection{Fotoresistencia}
 \label{subsec:fotoresistencia}
 
-Esta resistencia, también denominada como LDR por sus siglas en inglés Light Dependent Resistor, varía su resistencia dependiendo de la cantidad de luz que incida sobre su superficie. Funciona gracias al principio de la fotoconductividad que es un fenómeno óptico en el que la conductividad del material aumenta cuando la luz es absorbida. Luego cuando la luz cae sobre la resistencia los electrones son excitados lo que provoca que empiece a fluir cada vez más corriente a través del dispositivo, por lo que la resistencia del dispositivo disminuye. Por lo tanto, cuando el LDR recibe luz, su resistencia será más baja y cuando esté a oscuras la resistencia será más alta. La resistencia del LDR está en torno a los $5 k\Omega$
+Esta resistencia, también denominada como LDR por sus siglas en inglés Light Dependent Resistor, varía su resistencia dependiendo de la cantidad de luz que incida sobre su superficie. Funciona gracias al principio de la fotoconductividad que es un fenómeno óptico en el que la conductividad del material aumenta cuando la luz es absorbida. Así pues, cuando la luz cae sobre la resistencia los electrones son excitados lo que provoca que empiece a fluir cada vez más corriente a través del dispositivo, por lo que la resistencia del dispositivo disminuye. Por lo tanto, cuando el LDR recibe luz, su resistencia será más baja y cuando esté a oscuras la resistencia será más alta. La resistencia del LDR está en torno a los $5 k\Omega$
 
 Para que la Raspberry Pi pueda obtener el valor que devuelve este sensor es necesario utilizar un conversor. En este caso utilizaremos el HW-103, que al conectarlo a la Raspberry Pi y a el sensor podremos conseguir una señal digital. Cuando a la Raspberry Pi le llegue un cero significará que hay luz mientras que si lee un uno es que no hay luz.
 
@@ -945,7 +945,7 @@ Para poder desarrollar correctamente este trabajo es necesario preparar adecuada
 
 El primer paso para esto fue montar adecuadamente la Raspberry Pi conforme las instrucciones de Okdo\footnote{\url{https://www.okdo.com/getstarted/}}, empresa de la que procede el kit con el hardware utilizado en el proyecto.
 
-Una vez está listo el hardware, hay que instalar el software necesario para la generación de modelos de machine learning.
+Una vez está listo el hardware, hay que instalar el software necesario para la generación de modelos de \textit{machine learning}.
 Comenzando por cambiar el sistema operativo, en vez de utilizar el que viene por defecto, Raspbian Pi OS, se instaló Ubuntu 21.10\footnote{\url{https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4}} para poder instalar Python 3.9, que es la versión necesaria para desarrollar los algoritmos de este proyecto.
 
 A continuación se instaló Miniforge, por medio del cual se crea un entorno virtual donde se instalaron todos los paquetes necesarios para el proyecto como son \texttt{scikit-learn}, \texttt{Pandas}, \texttt{jupyter-notebook}... Estos paquetes permitirán desarrollar modelos de aprendizaje automático. Para mayor detalle de los paquetes instalados, en los ficheros \\\textit{rasp\_enviroment.yaml} y \textit{pc\_enviroment.yaml} se encuentran listados los paquetes que se instalaron en cada uno de los entornos creados en cada máquina.
@@ -1028,12 +1028,12 @@ Estos ficheros imprimirán por el terminal cuatro valores diferentes que se util
 
 A continuación se detalla qué significa cada uno de esto valores. Para ello se ha definido la siguiente terminología: TP es el número de verdaderos positivos, TN verdaderos negativos, FP falsos positivos y FN falsos negativos. Siendo los valores positivos los que pertenecen a una clase y los negativos la clase contraria. En este caso diremos que los valores positivos serán los que pertenecen a la clase uno y los negativos los que pertenece a la clase cero. 
 
-Para esta explicación nos ayudaremos de la Figura~\ref{fig:explicacion_acc}. En la cual tenemos en total dieciocho datos, diez pertenecen a la clase de los positivos (mitad izquierda de la figura) y ocho que son de la clase negativa. Los círculos grises representan donde ha colocado el modelo de machine learning cada dato. Como vemos ha asignado cuatro como negativos pero en realidad son positivos (zona azul claro) y tres como positivos pero pertenecen realmente a los negativos (zona verde claro).
+Para esta explicación nos ayudaremos de la Figura~\ref{fig:explicacion_acc}. En la cual tenemos en total dieciocho datos, diez pertenecen a la clase de los positivos (mitad izquierda de la figura) y ocho que son de la clase negativa. Los círculos grises representan donde ha colocado el modelo de ML cada dato. Como vemos ha asignado cuatro como negativos pero en realidad son positivos (zona azul claro) y tres como positivos pero pertenecen realmente a los negativos (zona verde claro).
 
 \begin{figure}[htb]
   \centering
   \includegraphics[width=12cm, keepaspectratio]{img/explicacion_acc.png}
-  \caption{Ejemplo de estimación de un modelo Machine learning.}\label{fig:explicacion_acc}
+  \caption{Ejemplo de estimación de un modelo \textit{machine learning}.}\label{fig:explicacion_acc}
 \end{figure}
 
 El valor de \textit{accuracy} representa el porcentaje total de aciertos. Este dato se calcula por medio de la siguiente ecuación:
@@ -1134,11 +1134,11 @@ print(\"Mean Folds Accuracy: \",\"{:.1f}\".format(acc_folds.mean()*100),\"%\")
 \section{DataSet: KddCup99}
 \label{subsec:dataset_kddcup99}
 
-Al realizar algunas pruebas para observar el comportamiento de la Raspberry Pi ante diferentes situaciones de estrés (tal y como se explicará más adelante) los resultados obtenidos no encajaban del todo con lo esperado. Luego para tratar de comprender mejor lo que estaba pasando se decidió usar un \textit{dataset} más grande que el anterior.
+Al realizar algunas pruebas para observar el comportamiento de la Raspberry Pi ante diferentes situaciones de estrés (tal y como se explicará más adelante) los resultados obtenidos no encajaban del todo con lo esperado. Para tratar de comprender mejor lo que estaba pasando se decidió usar un \textit{dataset} más grande que el anterior.
 
 El \textit{dataset} elegido fue KDD Cup 1999 Data\cite{DataSetKddCup99}, obtenido una vez más desde la página web de Kaggle. Este \textit{dataset} se utilizó en el tercer concurso internacional de herramientas de descubrimiento de conocimientos y minería de datos, el objetivo del concurso era generar un modelo predictivo que fuese capaz de distinguir entre conexiones \textit{"malas"}, es decir, intrusiones o ataques, y conexiones \textit{"buenas"}. Este set de datos contiene una gran variedad de intrusiones en un entorno de red militar. 
 
-De este \textit{dataset} se utilizó tanto el fichero \texttt{kddcup.data.gz} como \\\texttt{kddcup.data\_10\_percent.gz}. Una vez descargados se descomprimen y se ejecuta un programa, llamado \textit{prepare\_kddcup.ipynb}, para tratar los datos que contienen y poder utilizarlos en la generación de los modelos de machine learning.
+De este \textit{dataset} se utilizó tanto el fichero \texttt{kddcup.data.gz} como \\\texttt{kddcup.data\_10\_percent.gz}. Una vez descargados se descomprimen y se ejecuta un programa, llamado \textit{prepare\_kddcup.ipynb}, para tratar los datos que contienen y poder utilizarlos en la generación de los modelos de ML.
 
 Al igual que en el \textit{dataset} de Room Occupancy para la generación de los modelos se utilizará el $70\%$ de los datos para entrenar y el $30\%$ para validar.
 
@@ -1328,7 +1328,7 @@ Esto junto con los valores de \textit{Accuracy}, \textit{Trainning Accuracy}, \t
 \subsection{Ejecución de los experimentos}
 \label{subsec:ejecucion_experimentos}
 
-Para realizar todas las pruebas, tal y como se ha explicado, se creó un programa para cada una de las máquinas de forma que fuese más sencillo obtener los resultados de los experimentos. En el caso de la Raspberry Pi este programa se denominó \texttt{raspberry\_test.ipynb}. En el caso del portátil se nombró \texttt{pc\_test.ipynb}. Dado que las pruebas en ambos dispositivos son prácticamente las mismas, ambos programas ejecutan prácticamente lo mismo con pequeñas diferencias.
+Para realizar todas las pruebas, tal y como se ha explicado, se creó un programa para cada una de las máquinas de forma que fuese más sencillo obtener los resultados de los experimentos. En el caso de la Raspberry Pi este programa se denominó \texttt{raspberry\_test.ipynb}. En el caso del portátil se nombró \texttt{pc\_test.ipynb}. Dado que las pruebas en ambos dispositivos son prácticamente las mismas, sólo existen pequeñas diferencias entre ambos programas.
 
 Dichos programas necesitan como único argumento el \textit{dataset} con el que se desea hacer el experimento para que puedan realizar su función correctamente.
 Hay que tener en cuenta que este \textit{dataset} debe de estar limpio, es decir, que se le haya hecho un preprocesamiento para borrar características no deseadas o redundantes. Tampoco debe de tener cabecera. Si no se hace este preprocesamiento podrá dar error la ejecución.
@@ -1388,7 +1388,7 @@ for i in range(4):
 \end{listing}
 
 Cuando se completa la generación del modelo para uno de los niveles, los resultados de \textit{CPU time}, \textit{Wall time}, \textit{Mean Folds Accuracy}, \textit{Accuracy trainning}, \textit{Accuracy}, \textit{Presisión} y \textit{Recall} se guardan cada uno en su respectiva lista gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera un nuevo fichero CSV, mediante la función \textit{add\_data}, con los resultados obtenidos en cada uno de los casos.
-Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión Logística el nombre será nombreDataSet\_raspRL.csv, o en el caso de Máquinas de Vector Soporte será nombreDataSet\_raspSVM.csv. En total el programa creará cuatro CSV diferentes, uno por cada modelo. Estos ficheros se guardarán en una nueva carpeta creada con el siguiente formato: nombreDataSet\_raspresults, esto se puede observar como se hace en el Código~\ref{lst:funcion_principal_raspberry_test}. Todos los ficheros se guardarán dentro de esta carpeta, para que los resultados de un mismo \textit{dataset} estén todos juntos. En la Figura~\ref{fig:ejemplo_csv} se muestra un ejemplo del contenido de uno de estos CSV generados, concretamente pertenece al modelo de Regresión Logística.
+Este fichero tendrá por nombre el siguiente formato: \texttt{nombreDataSet\_raspMD.csv}, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión Logística el nombre será \texttt{nombreDataSet\_raspRL.csv}, o en el caso de Máquinas de Vector Soporte será \texttt{nombreDataSet\_raspSVM.csv}. En total el programa creará cuatro CSV diferentes, uno por cada modelo. Estos ficheros se guardarán en una nueva carpeta creada con el siguiente formato: nombreDataSet\_raspresults, esto se puede observar como se hace en el Código~\ref{lst:funcion_principal_raspberry_test}. Todos los ficheros se guardarán dentro de esta carpeta, para que los resultados de un mismo \textit{dataset} estén todos juntos. En la Figura~\ref{fig:ejemplo_csv} se muestra un ejemplo del contenido de uno de estos CSV generados, concretamente pertenece al modelo de Regresión Logística.
 
 \begin{figure}[]
   \centering
@@ -1396,12 +1396,12 @@ Este fichero tendrá por nombre el siguiente formato: nombreDataSet\_raspMD.csv,
   \caption{Ejemplo de CSV generado con los resultados de cada prueba para el modelo de Regresión Logística.}\label{fig:ejemplo_csv}
 \end{figure}
 
-Los nuevos procesos, comentados anteriormente, se crean utilizando la función \textit{Popen} de la librería \textit{subprocess}. Nótese que en la función \textit{model} (a diferencia de \textit{start\_stress}) el método \textit{Popen} tiene añadido al final un \textit{.communicate()} de esta forma se parará la ejecución principal hasta que el proceso de \textit{Popen} termine. Si una vez terminado dicho proceso \textit{stress} sigue ejecutando se matará el proceso para poder comandar otro \textit{stress} sin tener que esperar a que se cumpla el tiempo de ejecución que le pasamos como argumento, esto se puede ver en el Código~\ref{lst:funcion_principal_raspberry_test}.
+Los nuevos procesos, comentados anteriormente, se crean utilizando la clase de objetos \textit{Popen} de la librería \textit{subprocess}. Nótese que en la función \textit{model} (a diferencia de \textit{start\_stress}) el método \textit{Popen} tiene añadido al final un \textit{.communicate()} de esta forma se parará la ejecución principal hasta que el proceso de \textit{Popen} termine. Si una vez terminado dicho proceso \textit{stress} sigue ejecutando se matará el proceso para poder comandar otro \textit{stress} sin tener que esperar a que se cumpla el tiempo de ejecución que le pasamos como argumento, esto se puede ver en el Código~\ref{lst:funcion_principal_raspberry_test}.
 
 \subsubsection{pc\_test.ipynb}
 \label{subsubsec:programa_pruebas_pc}
 
-Este código es prácticamente idéntico al de \texttt{rasp\_test.pynb} salvo pequeñas diferencias. Una de ellas es que en este caso el fichero que generará tras la ejecución de cada modelo tendrá el siguiente formato: nombreDataSet\_pcMD.csv, siendo MD una vez más las siglas del modelo de aprendizaje automático. Al igual que en el caso anterior, se creará una nueva carpeta para guardar todos estos ficheros con el formato: nombreDataSet\_pcresults.
+Este código es prácticamente idéntico al de \texttt{rasp\_test.pynb} salvo pequeñas diferencias. Una de ellas es que en este caso el fichero que generará tras la ejecución de cada modelo tendrá el siguiente formato: \texttt{nombreDataSet\_pcMD.csv}, siendo MD una vez más las siglas del modelo de aprendizaje automático. Al igual que en el caso anterior, se creará una nueva carpeta para guardar todos estos ficheros con el formato: nombreDataSet\_pcresults.
 
 La función principal también utilizará dos bucles anidados para iterar sobre los modelos de aprendizaje con los que se desean experimentar y el número de cores que se van a estresar en cada prueba. En este caso la lista denominada como \textit{num\_cores} variará respecto a la que se declaró en \texttt{raspberry\_test.ipynb} ya que, como se ha comentado antes, en esta ocasión tendremos que saturar otras cantidades de cores. Este programa creará (si es necesario) dos procesos, uno ejecutará stress (cuando se desee estresar alguna CPU) y el otro uno de los modelos que se encuentran dentro de la carpeta \texttt{"Models"}. Todos los ficheros que utilizan para generar los modelos de aprendizaje son los mismos que en la Raspberry Pi salvo el de Random Forest que tiene un fichero específico para el portátil puesto que en este caso, el parámetro \textit{n\_jobs} tendrá que ser igual a ocho, para que el modelo pueda disponer de todos los cores que tiene el portátil. 
 
@@ -1476,7 +1476,7 @@ En cuanto a la precisión (\textit{Accuracy}) en cada uno de los modelos se obti
 \label{tab:acc_Occraspberry}
 \end{table}
 
-Como se puede ver en dicha tabla, en este caso, la diferencia entre la precisión de los datos de entrenamiento y otros datos que no ha visto hasta entonces es muy similar. Luego los modelos que se están generando son bastante fiables puesto que todos están por encima del $90\%$ de precisión. Y sabemos que no se están sobreajustando los modelos puesto que en la columna \texttt{Accuracy CV}, que es la precisión que se obtiene de la validación cruzada, en todos los casos también es superior al $90\%$. Este porcentaje se obtiene de la media de la fila \texttt{Mean Folds Accuracy} de los CSV con los datos generados en cada modelo.
+Como se puede ver en dicha tabla, en este caso, la diferencia entre la precisión de los datos de entrenamiento y otros datos que no ha visto hasta entonces es muy similar. Por lo tanto los modelos que se están generando son bastante fiables puesto que todos están por encima del $90\%$ de precisión. Y sabemos que no se están sobreajustando los modelos puesto que en la columna \texttt{Accuracy CV}, que es la precisión que se obtiene de la validación cruzada, en todos los casos también es superior al $90\%$. Este porcentaje se obtiene de la media de la fila \texttt{Mean Folds Accuracy} de los CSV con los datos generados en cada modelo.
 
 \subsubsection{Resultados KddCup99}
 \label{subsubsec:kdd_raspberry}
@@ -1518,7 +1518,7 @@ En cuanto al modelo de Random Forest, para poder entender los tiempos que devuel
 
 Comencemos explicando como afecta el parámetro \textit{n\_jobs} a los tiempos de ejecución. Como se ha visto anteriormente, Random Forest admite el parámetro \textit{n\_jobs}, que en este caso (a diferencia de Regresión Logística) sí que afecta a como ejecuta el modelo independientemente de si es un problema de clasificación binaria o no. Por lo tanto para poder optimizar el proceso habrá que hacer que el parámetro \textit{n\_jobs} sea igual al número de cores del dispositivo, que en este caso serán cuatro. 
 
-Con este parámetro ajustado hay que tener en cuenta que el tiempo de CPU que obtenemos del comando \textit{time} es la suma de los tiempos que ha necesitado cada uno de los cores utilizados por el proceso para la ejecución. Esta es la razón por la que podemos ver como el tiempo en \textit{Idle} es bastante mayor que el resto de casos, puesto que es en esta ocasión donde el programa está pudiendo hacer un uso completo de los cuatro cores, ya que no hay ningún otro proceso que necesite usarlos. Por lo tanto el \textit{CPU time} que tenemos en este nivel es en realidad la suma de los tiempos de ejecución de los cuatro procesadores. El tiempo que ha necesitado cada uno de los cores sería dividir los $1048.87$ segundos entre 4 con lo que obtendríamos $262$ segundos por core. Sabiendo esto, queda explicado por qué el nivel de \textit{Idle} devuelve un valor tan alto y como esto, que a \textit{priori} puede parecer un poco contradictorio, se ajusta a lo esperado.
+Con este parámetro ajustado hay que tener en cuenta que el tiempo de CPU que obtenemos del comando \textit{time} es la suma de los tiempos que ha necesitado cada uno de los cores utilizados por el proceso para la ejecución. Esta es la razón por la que podemos ver como el tiempo en \textit{Idle} es bastante mayor que el resto de casos, puesto que es en esta ocasión donde el programa está pudiendo hacer un uso completo de los cuatro cores, ya que no hay ningún otro proceso que necesite usarlos. Por lo tanto el \textit{CPU time} que tenemos en este nivel es en realidad la suma de los tiempos de ejecución de los cuatro procesadores. El tiempo que ha necesitado cada uno de los cores sería dividir los $1.048,87$ segundos entre 4 con lo que obtendríamos $262$ segundos por core. Sabiendo esto, queda explicado por qué el nivel de \textit{Idle} devuelve un valor tan alto y como esto, que a \textit{priori} puede parecer un poco contradictorio, se ajusta a lo esperado.
 
 Para el resto de casos, dado que ya intervienen otros procesos, habrá que conocer como se comporta la Raspberry Pi ante una mayor demanda de recursos. Lo primero que hay que saber es que el comando \textit{stress} estresará el número de CPUs que se le pasan como argumento siempre y cuando pueda. En el momento en el que tenga que compartir CPU con otros procesos, la Raspberry Pi repartirá los recursos haciendo que \textit{stress} no utilice todas las CPUs que se le ha comandado estresar para que el otro proceso también pueda ejecutar. Por ejemplo, cuando se realiza la prueba de nivel alto de carga al modelo de Máquinas de Vector Soporte, si se comprueban los valores de CPU que utiliza cada uno de los procesos (por medio del comando \textit{htop} de Linux), a pesar de que se puede ver que \textit{stress} tiene cuatro procesos, la suma de lo que utiliza la CPU cada uno de ellos será igual a un total de tres cores más o menos, es decir utilizan un $300\%$ de los recursos. Mientras que el proceso del modelo utiliza una CPU, un $100\%$. Siendo el valor total de los recursos de los que dispone la Raspberry Pi igual a $400\%$, un $100\%$ para cada uno de los cores de la Raspberry Pi.
 
@@ -1541,7 +1541,7 @@ Algo destacable de los resultados obtenidos en este \textit{dataset} (a diferenc
 
 En cuanto al \textit{Wall time} obtenido vemos que por un lado Random Forest aumenta su tiempo a medida que aumenta la carga computacional, igual que lo hacía en el anterior \textit{dataset}, pero siendo en cada caso los tiempos menores que el \textit{CPU time}. Mientras que tanto el modelo de SVM como de GB se mantienen más o menos constantes e iguales al \textit{CPU time}, indicando que no se están ejecutando procesos en paralelo. Y por último, Regresión Logística es el que más varía entre las diferentes pruebas, siendo siempre el \textit{Wall time} menor que el \textit{CPU time}.
 
-Otro aspecto de las ejecuciones en la Raspberry Pi que será relevante más adelante, es la frecuencia a la que ejecutan los cores. Utilizando el comando \textit{lscpu} de Linux, se puede obtener información relevante sobre los cores como por ejemplo la frecuencia máxima y mínima a la que pueden ejecutar, que en el caso de la Raspberry Pi la mínima será igual a $600MHz$ y la máxima $1500MHz$. 
+Otro aspecto de las ejecuciones en la Raspberry Pi que será relevante más adelante, es la frecuencia a la que ejecutan los cores. Utilizando el comando \textit{lscpu} de Linux, se puede obtener información relevante sobre los cores como por ejemplo la frecuencia máxima y mínima a la que pueden ejecutar, que en el caso de la Raspberry Pi la mínima será igual a $600MHz$ y la máxima $1.500MHz$. 
 
 Para saber la frecuencia de cada uno de los cores en tiempo real se puede ejecutar el comando:\\
 
@@ -1553,7 +1553,7 @@ Para saber la frecuencia de cada uno de los cores en tiempo real se puede ejecut
    sudo cat /sys/devices/system/cpu/cpu3/cpufreq/cpuinfo_cur_freq"
 \end{lstlisting}
 
-Mostrará las frecuencias de ejecución de los cores cada $0.1$ segundos. Si utilizamos dicho comando para ver las frecuencias cuando la Raspberry Pi está tanto \textit{Idle} como estresada podremos ver que todas las CPUs están sobre los $1500MHz$. Por lo tanto todos los cores siempre están ejecutando a la máxima velocidad que pueden.
+Mostrará las frecuencias de ejecución de los cores cada $0,1$ segundos. Si utilizamos dicho comando para ver las frecuencias cuando la Raspberry Pi está tanto \textit{Idle} como estresada podremos ver que todas las CPUs están sobre los $1500MHz$. Por lo tanto todos los cores siempre están ejecutando a la máxima velocidad que pueden.
 
 Por otra parte los resultados de precisión para este \textit{dataset} se pueden observar en la Tabla~\ref{tab:acc_Kddraspberry}. Al igual que en el caso del Room Occupancy DataSet se obtienen muy buenos resultados, estando prácticamente todos cerca del $100\%$ de \textit{Accurancy}, y sabiendo que no se están sobreajustando puesto que la precisión de la validación cruzada también es prácticamente el $100\%$ en todos los casos.
 
@@ -1614,7 +1614,7 @@ Los tiempos de ejecución que empleó el portátil para entrenar los diferentes 
 \label{tab:times_Occpc}
 \end{table}
 
-En esta ocasión, a diferencia del comportamiento de la Raspberry Pi los tiempos de CPU van aumentando con las diferentes pruebas, a pesar de que los tres primeros modelos solo pueden ejecutar en una CPU y por lo tanto no deberían de afectarles que hubiese más de un core estresado. Sin embargo, este incremento en los tiempos se puede deber a la frecuencia con la que ejecutan las CPUs. En el portátil la frecuencia máxima a la que pueden ejecutar los cores es de $3600MHz$ mientras que la mínima son $400MHz$. 
+En esta ocasión, a diferencia del comportamiento de la Raspberry Pi los tiempos de CPU van aumentando con las diferentes pruebas, a pesar de que los tres primeros modelos solo pueden ejecutar en una CPU y por lo tanto no deberían de afectarles que hubiese más de un core estresado. Sin embargo, este incremento en los tiempos se puede deber a la frecuencia con la que ejecutan las CPUs. En el portátil la frecuencia máxima a la que pueden ejecutar los cores es de $3.600MHz$ mientras que la mínima son $400MHz$. 
 
 Ejecutando el siguiente comando: 
 
@@ -1622,9 +1622,9 @@ Ejecutando el siguiente comando:
   $ watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"
 \end{lstlisting}
 
-Se puede ver la frecuencia de ejecución de todos los cores cada $0.1$ segundos. En esta ocasión, al observar estas velocidades cuando se ejecutaban los algoritmos de aprendizaje automático se podía ver una variación en los valores dependiendo del nivel de estrés que se estuviese ejecutando, a diferencia de lo que ocurría en la Raspberry Pi que se mantenía siempre a la máxima frecuencia. Luego esto explicaría porque en el caso del portátil los tiempos incrementan según aumentan el número de cores estresados. 
+Se puede ver la frecuencia de ejecución de todos los cores cada $0.1$ segundos. En esta ocasión, al observar estas velocidades cuando se ejecutaban los algoritmos de aprendizaje automático se podía ver una variación en los valores dependiendo del nivel de estrés que se estuviese ejecutando, a diferencia de lo que ocurría en la Raspberry Pi que se mantenía siempre a la máxima frecuencia. Esto explicaría porque en el caso del portátil los tiempos incrementan según aumentan el número de cores estresados. 
 
-Por otra parte, el \textit{Wall time} tiene un comportamiento similar al de \textit{CPU time} aumentando a medida que se incrementa el nivel de carga computacional en todos los modelos. Sin embargo, en el caso de SVM y GB se puede ver que la diferencia entre el \textit{CPU time} y \textit{Wall time} es muy pequeña, luego podemos seguir afirmando que se está usando un solo core a pesar de que todos los tiempos aumenten conforme más CPUs se estresan.
+Por otra parte, el \textit{Wall time} tiene un comportamiento similar al de \textit{CPU time} aumentando a medida que se incrementa el nivel de carga computacional en todos los modelos. Sin embargo, en el caso de SVM y GB se puede ver que la diferencia entre el \textit{CPU time} y \textit{Wall time} es muy pequeña, por tanto podemos seguir afirmando que se está usando un solo core a pesar de que todos los tiempos aumenten conforme más CPUs se estresan.
 
 Veamos a continuación cual es el \textit{Accuracy} que consiguen los modelos con este \textit{dataset} en esta máquina.
 
@@ -1738,7 +1738,7 @@ De la misma forma, en la Figura~\ref{fig:per_kdd} se muestra estos mismos porcen
 
 Al igual que antes los porcentajes van decrementando a medida que mayor cantidad de CPUs hay estresadas. En este caso sigue siendo el modelo de RL el que peor comportamiento realiza en comparación con el portátil. Mientras que esta vez, es el modelo de SVM el que consigue que su porcentaje de lentitud sea menor del $40\%$ para los dos últimos niveles y por lo tanto los tiempos en ambos casos son los que menos se diferencian con los del portátil.
 
-Una de las razones por las que la Raspberry Pi es más lenta que el portátil es debido a las frecuencias con las que ejecutan ambas máquinas. Observándolas vemos que la máxima velocidad a la que pueden ir los cores en la Raspberry Pi es a $1500MHz$ mientras que el portátil tiene su máximo en $3600MHz$, más del doble que la Raspberry Pi. Luego esto permite que los procesos en el portátil puedan terminar antes que en la Raspberry Pi siendo uno de los factores por los que la Raspberry Pi puede ser más lenta que el portátil, ya que los cores pueden ir a mayor velocidad.
+Una de las razones por las que la Raspberry Pi es más lenta que el portátil es debido a las frecuencias con las que ejecutan ambas máquinas. Observándolas vemos que la máxima velocidad a la que pueden ir los cores en la Raspberry Pi es a $1.500MHz$ mientras que el portátil tiene su máximo en $3600MHz$, más del doble que la Raspberry Pi. Esto permite que los procesos en el portátil puedan terminar antes que en la Raspberry Pi siendo uno de los factores por los que la Raspberry Pi puede ser más lenta que el portátil, ya que los cores pueden ir a mayor velocidad.
 
 Otro factor que puede estar ayudando a que la diferencia de tiempos entre ambas máquinas sea mayor es, como cabe esperar, debido a que la Raspberry Pi dispone de la mitad de cores que posee el portátil.
 
@@ -1932,7 +1932,7 @@ Sabiendo esto podemos conseguir que la Raspberry Pi adquiera datos, los almacene
 \section{Conclusión final}
 \label{sec:conclusion_final}
 
-Como se ha expuesto a lo largo de esta memoria, el objetivo de este trabajo era poder determinar si la Raspberry Pi podía encargarse de realizar tareas de machine learning, de la misma forma que es capaz de hacerlo un dispositivo de mayor capacidad. Gracias a los resultados obtenidos en esta investigación se puede afirmar que la Raspberry Pi 4B tiene potencial suficiente como para poder trabajar con estos modelos.
+Como se ha expuesto a lo largo de esta memoria, el objetivo de este trabajo era poder determinar si la Raspberry Pi podía encargarse de realizar tareas de \textit{machine learning}, de la misma forma que es capaz de hacerlo un dispositivo de mayor capacidad. Gracias a los resultados obtenidos en esta investigación se puede afirmar que la Raspberry Pi 4B tiene potencial suficiente como para poder trabajar con estos modelos.
 
 Y no solo entrenarlos o hacer pruebas con ellos, sino que también puede recoger datos y generar o reentrear modelos de forma totalmente autónoma, como se ha comentado anteriormente. 
 
@@ -1942,7 +1942,7 @@ Esto abre un abanico de infinitas posibilidades en las que se puede utilizar la 
 
 \subsection{Conclusiones finales de cada uno de los modelos}
 
-Como conclusiones finales de cada uno de los modelos de machine learning ejecutados en ambas máquinas y utilizando las Figuras~\ref{fig:per_occupancy}, ~\ref{fig:per_kdd} y ~\ref{fig:per_Mi}, podemos mencionar los siguientes aspectos.
+Como conclusiones finales de cada uno de los modelos de ML ejecutados en ambas máquinas y utilizando las Figuras~\ref{fig:per_occupancy}, ~\ref{fig:per_kdd} y ~\ref{fig:per_Mi}, podemos mencionar los siguientes aspectos.
 
 El modelo de Regresión Logística es el modelo que más tarda en terminar la ejecución en comparación con el portátil. Como ya mencionaba en secciones anteriores, a pesar de que es el modelo que más rápido ejecuta en el portátil, no sucede lo mismo en la Raspberry Pi lo que hace que se termine convirtiendo en el modelo con mayor diferencia de tiempos entre una máquina y otra. Por otra parte, a pesar de que en teoría solo puede utilizar un procesador para ejecutar, la diferencia que existe en algunos casos entre los tiempos de \textit{Wall time} y \textit{CPU time} nos índica que podría estar utilizando paralelamente varios cores para ejecutar.
 
@@ -1974,7 +1974,7 @@ En este proyecto se establecieron varios objetivos en la sección~\ref{sec:objet
 
 Por ello, en este apartado se verá si se han cumplido dichos objetivos y de qué manera.
 
-El primero de ellos era poder implementar diferentes modelos de Machine learning en la Raspberry Pi. Esto queda resuelto en la sección~\ref{sec:generacion_modelos} donde se explica de qué forma se han implementado los diferentes códigos para poder entrenar los cuatro modelos especificados en la sección~\ref{sec:modelos_aautomatico}.
+El primero de ellos era poder implementar diferentes modelos de \textit{machine learning} en la Raspberry Pi. Esto queda resuelto en la sección~\ref{sec:generacion_modelos} donde se explica de qué forma se han implementado los diferentes códigos para poder entrenar los cuatro modelos especificados en la sección~\ref{sec:modelos_aautomatico}.
 
 En el Capítulo~\ref{chap:experimentos} lo primero que se explica es en que van a consistir las distintas pruebas para poder evaluar a la Raspberry Pi. En la sección~\ref{subsec:ejecucion_experimentos} se detalla como se ha implementado el código encargado de ejecutar las diferentes pruebas, tanto en la Raspberry Pi como en el dispositivo de mayor capacidad.
 
@@ -2004,7 +2004,7 @@ Gracias a este TFG he adquirido nuevos conocimientos que detallo a continuación
 
 \begin{enumerate}
   \item Desarrollar diferentes tipos de modelos de aprendizaje automático utilizando la librería \texttt{scikit-learn}.
-  \item Saber como tratar diferentes tipos de \textit{dataset} para facilitar y mejorar el entrenamiento de los modelos de Machine learning.
+  \item Saber como tratar diferentes tipos de \textit{dataset} para facilitar y mejorar el entrenamiento de los modelos de \textit{machine learning}.
   \item Poder comprender mejor el funcionamiento interno de la Raspberry Pi.
   \item Preparando la página web del proyecto he aprendido los conocimientos básicos para poder crear una página web por medio de HTML y cómo utilizar GitHub Pages como servidor.
 \end{enumerate} 
@@ -2013,7 +2013,7 @@ Gracias a este TFG he adquirido nuevos conocimientos que detallo a continuación
 \section{Trabajos futuros}
 \label{sec:trabajos_futuros}
 
-Por medio de este trabajo hemos podido vislumbrar las capacidades que tiene la Raspberry Pi para poder realizar tareas de machine learning. Sabiendo esto se podrían desarrollar infinitos proyectos aplicando estos algoritmos. A continuación se hace mención a posibles trabajos futuros que se pueden realizar con estos conocimientos:
+Por medio de este trabajo hemos podido vislumbrar las capacidades que tiene la Raspberry Pi para poder realizar tareas de \textit{machine learning}. Sabiendo esto se podrían desarrollar infinitos proyectos aplicando estos algoritmos. A continuación se hace mención a posibles trabajos futuros que se pueden realizar con estos conocimientos:
 
 \begin{itemize}
     \item Desarrollar una aplicación práctica de IoT utilizando la Raspberry Pi como punto de recolección, procesado de datos y entrenamiento/reentrenamiento de los datos. Con las predicciones obtenidas de los modelos, o bien se podría hacer que la Raspberry Pi interactuase directamente con el entorno por medio de algunos actuadores, o bien comunicar el resultado de la predicción a otros dispositivos IoT para ampliar el alcance y la repercusión de los datos obtenidos.
