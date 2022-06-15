@@ -151,7 +151,7 @@
                The selected automatic learning models are: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" class="link-secondary">Logistic Regression</a>, 
                <a href="https://scikit-learn.org/stable/modules/svm.html" class="link-secondary"> Support Vector Machine</a>, <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html" class="link-secondary">Gradient Boosting</a> 
                and <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html" class="link-secondary"> Random Forest.</a></p>
-            <p class="fs-3">These machine learning models are going to be subjected to different tests in order to prove the capacity of the Raspberry Pi to know if this device is truely a good tool to develop and execute this kind of algorithms.
+            <p class="fs-3">When the different tests are caried out we would know if the Raspberry Pi is truely a good tool to develop and execute this kind of algorithms.
                The results of these tests are going to be compared with the results of the same automatic learning models but executed and tested in a more powerful machine. 
                This will let us know how far is the performance of the Raspberry Pi from a higher capacity machine. The achivement of all this is going to be explained later. </p>
           </div>
@@ -201,7 +201,7 @@
           <!--BME280-->
               <div class="col-7">
                   <h4 class="text-center">BME280 Sensor</h4>
-                  <p> Sensor developed by Bosh which provide information about temperature, atmosferic pressure and relative humidity.</p>
+                  <p> Sensor developed by Bosch which provide information about temperature, atmosferic pressure and relative humidity.</p>
               </div>
   
               <div class="col-5">
@@ -239,7 +239,9 @@
   <div class="col-md">
       <div class="text-center">
           <h4>HP 15s-fq1008ns Laptop</h4>
-          <p>In order to compare the Raspberry Pi results with a higher capacity machine it is going to be used a Laptop. The laptop used is an HP 15s-fq1008ns with 8 cores in total. It has Ubuntu 20.04 as Operative System. With this will have real knowledge of how well or badly the Raspberry Pi is performing.</p>
+          <p>In order to compare the Raspberry Pi results with a higher capacity machine it is going to be used a Laptop. 
+            The laptop used is an HP 15s-fq1008ns with 8 cores in total. 
+            It has Ubuntu 20.04 as Operative System. With this will have real knowledge of the Raspberry Pi performance.</p>
   </div>
 </div></div>
   
@@ -253,8 +255,11 @@
 
     
 
-    <p class="fs-3 mt-5"> As mentioned before, to test the potential of the Raspberry Pi, four diferent kinds of Machine Learning models are going to be trained and tested with differents dataSets.</p>
-    <p class="fs-3"> Each model will be subjected to four tests. The difference between those tests is the number of cores that are going to be stressed. The laptop will also be subjected to these four tests to compare both results but with some modifications. As mentioned before the laptop has in total 8 cores, twice as many as the Raspberry has, so in order to put both machines in the same computational load situation, the number of stressed cpus change. </p>
+    <p class="fs-3 mt-5"> As mentioned before, to test the potential of the Raspberry Pi, four diferent kinds of machine learning models are going to be trained and tested with differents dataSets.</p>
+    <p class="fs-3"> Each model will have to carry out four tests. 
+      The difference between those tests is the number of cores that are going to be stressed. 
+      The laptop will also have to pass these four tests to compare both results but with some modifications. 
+      As mentioned before the laptop has in total 8 cores, twice as many as the Raspberry has, so in order to put both machines in the same computational load situation, the number of stressed cpus change. </p>
     <p class="fs-3"> The defined testing levels are: </p>
     <ul class="mt-2 mb-5">
         <li><p class="fs-3"><strong>Idle Level</strong>. The Raspberry Pi or laptop is not subjected to any kind of extra stress.</p></li>
@@ -263,8 +268,10 @@
         <li><p class="fs-3"><strong>High Level</strong>. All the cores of the Raspberry Pi, which are four, and laptop, which are eight, will be exposed to higher computational load.</p></li>
     </ul>
     
-    <p class="fs-3"> From each of the test it is going to be obtained some relevant information that will allow us to evaluate the Raspberry Pi as an optimal dispositive for Machine Learning applications or not. 
-      The above image shows the general architecture of the tests. As it can be seen on it, the information obtained from each model will be stored on its own file. </p>
+    <p class="fs-3"> From each of the tests it is going to be obtained some relevant information that will allow us to evaluate the Raspberry Pi 
+      as an optimal dispositive for machine learning applications or not. 
+      The above image shows the general architecture of the tests. As it can be seen on it, 
+      the information obtained from each model will be stored on its own file. </p>
     </div>
       <!-- End Row -->
     
@@ -273,13 +280,14 @@
 <!--DataSets-->
 <div id="dataSets" class="container">
     <h2 class="display-6 text-dark content-space-t-3"> DataSets</h2>
-    <p class="fs-3">A total of three different datasets were used to train and test the models. Two of them composed of synthetic data and the last one was made with sensed data.  </p>
+    <p class="fs-3">A total of three different datasets were used to train and test the models. Two of them holds synthetic data and 
+      the last one was made with sensed data.  </p>
     <!--Occupancy-->
 <div class="content-space-t-1">
 <h4>Room Occupancy DataSet</h4>
 
     <p class="fs-3">This dataset, obtained from <a href="https://www.kaggle.com/datasets/kukuroo3/room-occupancy-detection-data-iot-sensor" class="link-primary"> Kaggle</a>, provides information about temperature, light, humidity and CO2. 
-      The last column of the dataset provides information of the state of the room, if it is occupied or not. In total, the dataset has 20560 samples of an office room of 5.85mx3.50mx3.53m.</p>
+      The last column of the dataset provides information of the state of the room, if it is occupied or not. In total, the dataset has 20.560 samples of an office room of 5.85mx3.50mx3.53m.</p>
     <p class="fs-3"> The models trained with this dataset will be able to predict if the room is empty or if there is someone in it.</p>
 
 </div>
@@ -289,7 +297,8 @@
         <h4>KDD Cup 1999 Data</h4>
         <p class="fs-3">The Kdd Cup 1999 dataset was created to use it in The Third International Knowledge Discovery and Data Mining Tools Competition, to create a predictive model capable of distinguish between bad connections and 
           good connections. This can be obtained from the <a href="https://www.kaggle.com/datasets/galaxyh/kdd-cup-1999-data" class="link-primary">Kaggle</a> web page.</p>
-        <p  class="fs-3">This dataset has a huge number of total lines, in this project we are going to use only the 20% of the total data set, which are about 988040 lines of samples. 
+        <p  class="fs-3">This dataset has a huge number of total lines which are about 988.040 lines of samples, 
+          in this project we are going to use only the 20% of the total dataset. 
           In order to use this dataset is necessary to pre-process the data and remove some lines or columns which may difficult the trainning of the model.</p>
     
     </div>
@@ -419,7 +428,9 @@
       from the data of the sensors, an IoT device-like behaviour.</p>
       <p class="fs-3">Thanks to the test carried out during this project we can conclude that the Raspberry Pi can develop these kind of task without nothing to envy to the Laptop. We are talking about a device with a small size,
          able to interact with its surround and with lower power consumption, which can be easily implementend anywhere. Being a perfect candidate in which implement IoT and Machine Learning applications.</p>
-      <p class="fs-3">For a deeper explanation you can see the memory of this project where all this is explained and
+      <p class="fs-3">Furthermore, the Raspberry Pi is a cheap option, which can do a really good job training models, if we don't want to expend
+        too much money in one or more powerfull machines, as long as we don't mind sacrifing a little more time in the trainning process.</p>
+         <p class="fs-3">For a deeper explanation you can see the memory of this project where all this is explained and
       a more detailed analysis is made of the results obtained. </p>      
 </div>
 <!--End Conclusions--> 
