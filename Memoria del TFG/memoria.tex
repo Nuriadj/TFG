@@ -409,13 +409,13 @@ Por último, y como no, quiero dar las gracias a mis tutores, Katia y Felipe que
 
 Este TFG tiene como objetivo utilizar un dispositivo con capacidades de cómputo reducidas, como es el caso de la Raspberry Pi, para poder estudiar el comportamiento de los modelos de aprendizaje automático a la hora de entrenarlos bajo estas condiciones. 
 
-Normalmente estos dispositivos, con menores capacidades, se utilizan para realizar la inferencia de los datos, dejando el entrenamiento de los modelos a otras máquinas de mayor capacidad, ya que esta fase requiere utilizar muchos más recursos que la deducción. Conociendo el comportamiento de la Raspberry Pi a la hora de entrenar los modelos, se podrá ampliar el uso de este dispositivo tan popular en diferentes tipos de aplicaciones tanto de \textit{machine learning} como de IoT pudiendo facilitar, por ejemplo, la implementación de casas y ciudades inteligentes (\textit{Smart Cities}) creando ciudades más sostenibles, conectadas y optimizadas, entre otras muchas aplicaciones.
+Normalmente estos dispositivos, con menores capacidades, se utilizan para realizar la inferencia de los datos, dejando el entrenamiento de los modelos a otras máquinas de mayor capacidad, ya que esta fase requiere utilizar muchos más recursos que la deducción. Conociendo el comportamiento de la Raspberry Pi a la hora de entrenar los modelos, se podrá ampliar el uso de este dispositivo tan popular en diferentes tipos de aplicaciones tanto de \textit{machine learning} como de IoT pudiendo facilitar, por ejemplo, la implementación de casas y ciudades inteligentes (\textit{Smart Cities}) creando espacios más sostenibles, conectados y optimizados, entre otras muchas aplicaciones.
 
 Utilizando la librería \texttt{scikit-learn} se crearán cuatro modelos de \textit{machine learning} de aprendizaje automático supervisado, cada uno será entrenado con varios \textit{datasets}. Para poder evaluar mejor la Raspberry Pi, se realizarán varias pruebas sometiendo a esta máquina a diferentes cargas computacionales. De estas pruebas se obtendrán resultados que nos ayudarán a valorar las capacidades de la Raspberry Pi para poder entrenar los modelos de aprendizaje automático.
 
 En paralelo se realizarán pruebas a los mismos modelos en un dispositivo de mayores capacidades, para poder comparar el comportamientos de ambas máquinas. Una vez realizadas estas pruebas se comprobará el funcionamiento de los mismos modelos de \textit{machine learning} para datos capturados directamente por los sensores conectados al dispositivo, con el objetivo de valorar el rendimiento de la Raspberry Pi para realizar tareas de este estilo.
 
-Finalmente, habiendo obtenido los resultados de todas estas pruebas se realizará una evaluación de todos estos resultados para poder concluir si la Raspberry Pi, a pesar de sus limitaciones computacionales, es realmente eficiente y capaz de poder desempeñar bien todo el trabajo que se le ha asignado en este TFG.
+Finalmente, habiendo obtenido los resultados de todas estas pruebas se hará una evaluación de todos estos resultados para poder concluir si la Raspberry Pi, a pesar de sus limitaciones computacionales, es realmente eficiente y capaz de poder desempeñar bien todo el trabajo que se le ha asignado en este TFG.
 
 El proyecto está desarrollado para que cualquier persona, con los componentes hardware necesarios, pueda reproducir las pruebas sin ningún tipo de dificultad.
 
@@ -504,7 +504,7 @@ Los dispositivos de IoT permiten monitorear continuamente un entorno utilizando 
 
 Actualmente hay unos 250 billones de dispositivos embebidos activos en el mundo. Estos dispositivos están continuamente recogiendo grandes cantidades de datos, por lo que procesar toda esa información en la nube representa todo un desafío. TinyML podría poner solución a toda esa cantidad de datos que se están "desperdiciando" al no ser tratados ni procesados, pudiendo crear nuevas aplicaciones en diferentes tipos de industrias.
 
-Por lo que debido a la gran importancia que están adquiriendo todos estos elementos, es importante conocer qué dispositivos cumplen las características necesarias para poder desarrollar este tipo de tareas. Es por ello que en este TFG se comprobarán las prestaciones de uno de los dispositivos de capacidades reducidas más populares del mercado, la Raspberry Pi 4B. 
+Por lo que, debido a la gran importancia que están adquiriendo todos estos elementos, es importante conocer qué dispositivos cumplen las características necesarias para poder desarrollar este tipo de tareas. Es por ello que en este TFG se comprobarán las prestaciones de uno de los dispositivos de capacidades reducidas más populares del mercado, la Raspberry Pi 4B. 
 
 
 %%-- Objetivos del  proyecto
@@ -538,18 +538,17 @@ Para realizar este proyecto se han definido los siguientes objetivos.
 
 A inicios de este curso, cuando tuve que meditar sobre qué tema quería realizar mi TFG, me di cuenta de que uno de los que más me habían gustado durante la carrera había sido \textit{machine learning}, tema que justo había comenzado a ver durante ese primer cuatrimestre. Es un tema que me interesa mucho debido a la infinidad de aplicaciones en las que creo que puede ser muy ventajoso utilizar este conocimiento, además de la capacidad que hay detrás de todos esos algoritmos para poder facilitar y mejorar la vida de las personas.
 
-Sin embargo, no tenía del todo claro de qué forma enfocarlo. Fue entonces cuando descubrí que Katia junto con Felipe ofrecían un proyecto sobre este tema y no dudé en informarme sobre exactamente en qué estaba enfocado el trabajo. Después de contactar con Katia y proponerme varias perspectivas, me decanté por el enfoque de \textit{tiny machine learning} debido a que me llamaba la atención la posibilidad de poder observar las capacidades de la Raspberry Pi para realizar este tipo de tareas ya que, como se verá en los siguientes capítulos, es un dispositivo económico con el que se podrían ampliar la áreas donde utilizar estas técnicas.
+Sin embargo, no tenía del todo claro de qué forma enfocarlo. Fue entonces cuando descubrí que Katia junto con Felipe ofrecían un proyecto sobre este tema y no dudé en informarme sobre exactamente en qué estaba enfocado el trabajo. Después de contactar con Katia y proponerme varias perspectivas, me decanté por el enfoque de \textit{tiny machine learning} debido a que me llamaba la atención la posibilidad de poder observar las capacidades de la Raspberry Pi para realizar este tipo de tareas ya que, como se verá en los siguientes capítulos, es un dispositivo económico con el que se podrían ampliar las áreas donde utilizar estas técnicas.
 
-Una vez acordado el tema lo primero que hice, a recomendación de Katia, fue informarme a cerca de cómo se podían aplicar técnicas de ML en la Raspberry Pi. En Noviembre me entregaron una caja con todo el material necesario para montar y utilizar la Raspberry Pi, con lo que el primer objetivo fue prepararla y comprobar que todo funcionase correctamente creando algoritmos simples, como por ejemplo encender y apagar un led conectado a esta máquina. Además, esta caja también traía tres sensores diferentes para utilizar con la Raspberry Pi, en concreto venia una fotoresistencia, un sensor de humedad y un sensor de temperatura, con los que realicé varias pruebas para verificar que funcionaban correctamente.
+Una vez acordado el tema lo primero que hice, a recomendación de Katia, fue informarme a cerca de cómo se podían aplicar técnicas de ML en la Raspberry Pi. En Noviembre me entregaron una caja con todo el material necesario para montar y utilizar la Raspberry Pi, con lo que el primer objetivo fue prepararla y comprobar que todo funcionase correctamente creando algoritmos simples, como por ejemplo encender y apagar un led conectado a esta máquina. Además, esta caja también traía tres sensores diferentes para utilizar con la Raspberry Pi, en concreto venía una fotoresistencia, un sensor de humedad y un sensor de temperatura, con los que realicé varias pruebas para verificar que funcionaban correctamente.
 
 A partir de este momento y tras la primera tutoría con ambos profesores comenzó el proceso de instalación y preparación del entorno para poder implementar algoritmos de aprendizaje automático, en el que se tuvieron que superar algunas dificultades. Con el entorno instalado se procedió a implementar y realizar las pruebas oportunas.
 
-Primero se comenzó creando los modelos de aprendizaje automático, en un principio eran tres pero más adelante se añadió un nuevo modelo de aprendizaje. Una vez que el código de los modelos estaba implementado fue momento de comenzar a realizar las pruebas para observar sus comportamientos. Estas pruebas duraron varios meses puesto que no terminaba de quedar del todo claro cómo estaba reaccionando la Raspberry Pi ante las diferentes pruebas, es por ello que durante este periodo se utilizaron diferentes \textit{datasets} para seguir haciendo más pruebas y entender lo que estaba sucediendo.
+Primero se comenzó creando los modelos de aprendizaje automático, en un principio eran tres pero más adelante se añadió un nuevo modelo de aprendizaje. Una vez que el código de los modelos estaba implementado fue momento de comenzar a realizar las pruebas para observar sus comportamientos. Estas pruebas duraron varios meses puesto que no terminaba de quedar del todo claro cómo estaba reaccionando la Raspberry Pi ante ellas, es por ello que durante este periodo se utilizaron diferentes \textit{datasets} para seguir evaluando la máquina y entender lo que estaba sucediendo.
 
 Una vez esclarecidas las dudas se trató de ir más allá haciendo que la Raspberry Pi generase su propio \textit{dataset} y entrenase con él. Este fue el último paso antes de centrarme completamente en la redacción de la memoria. A lo largo de los meses, además de seguir avanzando con la investigación, también trataba de ir redactando poco a poco la memoria.
 
 A pesar de que el desarrollo de este trabajo comenzó en Noviembre no fue hasta finalizar el primer cuatrimestre cuando le empecé a dedicar como mínimo hora y media o dos horas todos los días, salvo algunas excepciones. Siendo los fines de semana cuando le dedicaba aún más tiempo por no tener ninguna otra ocupación. En la Figura~\ref{fig:diagrama_gantt} se puede observar un diagrama de Gantt donde se puede visualizar mejor el desarrollo y duración de cada una de las etapas del proyecto.
-
 
 \begin{figure}[htb]
   \centering
@@ -575,7 +574,7 @@ Al inicio de esta memoria se puede leer un resumen de la misma que indica en qu�
 \section{Enlaces de interés}
 \label{sec:enlaces_interes}
 
-En la siguiente URL:  \url{https://nuriadj.github.io/TFG/} se puede encontrar un resumen general en inglés de todo aplicado y desarrollado en este trabajo. Además desde ese enlace también se puede acceder al repositorio de \textit{GitHub} que contiene este proyecto así como al propio pdf de la memoria.
+En la siguiente URL:  \url{https://nuriadj.github.io/TFG/} se puede encontrar un resumen general en inglés de todo lo aplicado y desarrollado en este trabajo. Además desde ese enlace también se puede acceder al repositorio de \textit{GitHub} que contiene este proyecto así como al propio PDF de la memoria.
 
 \cleardoublepage
 
@@ -587,7 +586,7 @@ En la siguiente URL:  \url{https://nuriadj.github.io/TFG/} se puede encontrar un
 \chapter{Estado del arte}               %% a.k.a "Tecnologías utilizadas"
 \label{chap:tecnologias}
 
-En este capítulo se describen todas las tecnologías utilizadas en el desarrollo de este proyecto.
+En este capítulo se describen todas las tecnologías utilizadas en el desarrollo de este TFG.
 
 \section{Machine learning}
 \label{sec:machine_learning}
@@ -620,7 +619,7 @@ Para saber si la Raspberry Pi es un dispositivo lo suficientemente potente para 
 \begin{itemize}
     \item \textbf{Aprendizaje supervisado}. En este tipo de aprendizaje se le proporciona al algoritmo un conjunto de datos de entrada con su salida correspondiente. De esta forma el programa puede "aprender" la relación que existe entre la salida y el conjunto de entradas. Dependiendo del tipo de salida podremos encontrar dos clases de modelos: modelos de regresión o de clasificación.
     
-    Si la salida es un valor numérico continuo, estaríamos ante un problema de regresión en el que se busca obtener el modelo que mejor se ajusta a los datos de entrada para poder predecir otros valores. Si, en cambio, la salida es una etiqueta de clase, es decir un valor discreto, se correspondería a un problema de clasificación, en los que se busca estimar a qué clase pertenecen los datos de entrada. 
+    Si la salida es un valor numérico continuo, estaríamos ante un problema de regresión en el que se busca obtener el modelo que mejor se ajusta a los datos de entrada para poder predecir otros valores. Si, en cambio, la salida es una etiqueta de clase, es decir un valor discreto, se correspondería a un problema de clasificación, en el que se busca estimar a qué clase pertenecen los datos de entrada. 
     
     Un ejemplo de este último tipo se puede ver en la Figura~\ref{fig:a_supervisado}, donde cada una de las formas serían las entradas y las etiquetas de: triángulo, cuadrado o círculo serían la salidas. Cada dato de entrada tiene asignada una de estas etiquetas. Todo esto formaría lo que se denomina \textit{dataset} que es el conjunto de datos que se pasan al modelo para entrenar y poder encontrar esas relaciones entre entradas y salidas. En este caso cuando al modelo se le pregunte a qué clase pertenece una figura (del mismo tipo que ha visto durante el entrenamiento), si es lo suficientemente robusto, debería de ser capaz de identificarlo como un cuadrado.
     
@@ -664,7 +663,7 @@ Tradicionalmente, los dispositivos IoT tenían que enviar los datos recogidos a 
     \item Mayor eficiencia energética. Puesto que estar continuamente transmitiendo información (a través de cables o de forma inalámbrica)consume mucha energía.
 \end{itemize}
 
-\section{Modelos de Aprendizaje Automático}
+\section{Modelos de aprendizaje automático}
 \label{sec:modelos_aautomatico}
 
 Aunque existen muchos algoritmos para generar modelos de aprendizaje automático, en este proyecto vamos a utilizar concretamente cuatro: Regresión Logística (RL), Máquinas de Vector Soporte (SVM), Gradient Boosting (GB) y Random Forest (RF). Para ello se utilizará la librería de \texttt{scikit-learn}, que veremos más adelante.
@@ -746,7 +745,7 @@ Cuando se quiera, por ejemplo, estimar la clase a la que pertenece un dato cada 
   \caption{Ejemplo Random Forest.}\label{fig:ejemplo_rforest}
 \end{figure}
 
-En la Figura~\ref{fig:ejemplo_rforest} podemos ver un ejemplo de Random Forest. Con el \textit{dataset} que se le pasa generará, en este caso, tres árboles de decisión a partir de subconjuntos aleatorios del \textit{dataset} original. Cuando se pretenda clasificar un nuevo dato cada árbol le asignará una clase a ese dato según lo que haya decidido. La clase que más se repite en este ejemplo es la 2, por lo tanto esa será la clase a la que pertenezca el dato.
+En la Figura~\ref{fig:ejemplo_rforest} podemos ver un ejemplo de Random Forest (RF). Con el \textit{dataset} que se le pasa generará, en este caso, tres árboles de decisión a partir de subconjuntos aleatorios del \textit{dataset} original. Cuando se pretenda clasificar un nuevo dato cada árbol le asignará una clase a ese dato según lo que haya decidido. La clase que más se repite en este ejemplo es la 2, por lo tanto esa será la clase a la que pertenezca el dato.
 
 \section{Internet of Things (IoT)}
 \label{sec:IoT}
@@ -758,7 +757,7 @@ Los dispositivos conectados generan una gran cantidad de datos que llegan a una 
 \begin{itemize}
     \item \textit{Smart Homes}. Permite que se puedan controlar varios de los dispositivos que hay comúnmente en los hogares haciendo que, por ejemplo, esté listo todo lo que necesite el usuario para cuando llegue a casa.
     \item Telemedicina. Por medio de dispositivos que lleve puesto el paciente se puede tener un control sobre su estado de salud e incluso hacer diagnósticos anticipados.
-    \item Vehículos autónomos. Los vehículos puedan estar conectados a la red de tráfico en tiempo real para poder evitar accidentes.
+    \item Vehículos autónomos. Los vehículos pueden estar conectados a la red de tráfico en tiempo real para poder evitar accidentes.
 \end{itemize}
 
 \section{Dispositivo con capacidad de cómputo limitada: Raspberry Pi 4 Modelo B}
@@ -774,7 +773,7 @@ Raspberry Pi\footnote{\url{https://www.raspberrypi.org/}} es un ordenador de baj
 
 El sistema operativo que ofrece es Raspbian Pi OS, una versión adaptada de Debian. Sin embargo, permite poder utilizar otros sistemas.
 
-Desde su primer lanzamiento se han ido desarrollando y comercializando nuevos modelos. En este proyecto se utilizará la última versión de estos dispositivos denominado como Raspberry Pi 4 Modelo B con 4GB de RAM, en la Figura~\ref{fig:raspberry_pi} se puede ver como es este dispositivo. Dicho modelo posee un total de 40 pines GPIO, 2 puertos micro HDMI y 4 puertos USB. Puede realizar conexiones inalámbricas ya que tiene Bluetooth 5.0 y Wi-Fi, aunque también puede utilizar Ethernet. Por último, la alimentación viene dada por un cable USB de tipo C con el que puede alcanzar un total de 1.2 A.
+Desde su primer lanzamiento se han ido desarrollando y comercializando nuevos modelos. En este proyecto se utilizará la última versión de estos dispositivos denominado como Raspberry Pi 4 Modelo B con 4GB de RAM, en la Figura~\ref{fig:raspberry_pi} se puede ver como es este dispositivo. Dicho modelo posee un total de $40$ pines GPIO, 2 puertos micro HDMI y 4 puertos USB. Puede realizar conexiones inalámbricas ya que tiene Bluetooth $5.0$ y Wi-Fi, aunque también puede utilizar Ethernet. Por último, la alimentación viene dada por un cable USB de tipo C con el que puede alcanzar un total de $1,2$ A.
 
 Posee un procesador ARM Cortex-A72 que soporta SIMD avanzado, un tipo de unidad de ejecución que se utiliza para ejecutar la misma instrucción sobre varios datos al mismo tiempo, consiguiendo paralelismo a nivel de datos. En total, la Raspberry Pi tiene cuatro cores físicos y cuatro lógicos. 
 
@@ -800,9 +799,9 @@ Para que la Raspberry Pi pueda obtener el valor que devuelve este sensor es nece
 
 El sensor BME280\footnote{\url{https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/}}, desarrollado por Bosch, es un sensor creado especialmente para aplicaciones móviles y prendas de vestir, donde el tamaño y el bajo consumo de energía son elementos claves. Integra en un mismo dispositivo tres sensores diferentes que proveen medidas de alta precisión. Los tres sensores que posee son: uno de temperatura, otro de presión atmosférica y por último, uno de humedad relativa. 
 
-El rango de la temperatura va desde los $-40\, \mbox{ºC}$ hasta los $85\, \mbox{ºC}$, con una precisión de $\pm 0.5\, \mbox{ºC}$. El sensor de presión tiene un rango de entre $300 hPa$ y $1100 hPa$. Por último el rango de la humedad relativa va desde el 0 hasta el 100\%.
+El rango de la temperatura va desde los $-40\, \mbox{ºC}$ hasta los $85\, \mbox{ºC}$, con una precisión de $\pm 0.5\, \mbox{ºC}$. El sensor de presión tiene un rango de entre $300 hPa$ y $1.100 hPa$. Por último el rango de la humedad relativa va desde el 0 hasta el 100\%.
 
-La comunicación con este sensor es muy sencilla ya que puede usar tanto I2C o SPI. Tiene una tensión de funcionamiento de $3.3V$. Y a pesar de que integra tres sensores diferentes su tamaño es pequeño, concretamente de $19x18 mm$.
+La comunicación con este sensor es muy sencilla ya que puede usar tanto I2C o SPI. Tiene una tensión de funcionamiento de $3,3V$. Y a pesar de que integra tres sensores diferentes su tamaño es pequeño, concretamente de $19x18 mm$.
 
 Este tipo de sensores se utilizan en aplicaciones como: monitorización del clima, automatización del hogar, sistemas de autopiloto para drones...Y se ajusta muy bien a las necesidades de este proyecto ya que tiene un consumo y tamaño muy pequeño, por lo que sería factible implementar una aplicación de IoT con él.
 
@@ -814,9 +813,9 @@ El sistema operativo Ubuntu\footnote{\url{https://ubuntu.com/}} es una distribuc
 
 La primera versión de Ubuntu fue la 4.10 lanzada el 20 de Octubre de 2004. A partir de la versión 13.4 las versiones estables sin soporte a largo plazo se liberan cada seis meses, y Canonical proporciona soporte técnico y actualizaciones de seguridad durante 9 meses. Las versiones LTS (Long Term Support) ofrecen un soporte técnico durante 5 años a partir de la fecha de lanzamiento.
 
-La última versión fue lanzada el 14 de Octubre de 2021, que es la versión Ubuntu 21.10. Utiliza el kernel 5.13, con cambios y mejoras para componentes que daban problemas. También tiene un nuevo instalador, escrito desde cero en Flutter, que facilita la instalación del sistema operativo. Una de las novedades más importantes es que actualiza su escritorio a GNOME 40. 
+La última versión fue lanzada el 14 de Octubre de 2021, que es la versión Ubuntu 21.10. Utiliza el kernel 5.13, con cambios y mejoras para componentes que daban problemas. También tiene un nuevo instalador, escrito desde cero en Flutter, que facilita la instalación del sistema operativo. Una de las novedades más importantes es que actualiza su escritorio a GNOME $40$. 
 
-Es una versión es específica para el procesador ARM, compilada con 64-bits y será la versión que se utilizará en la Raspberry Pi, a pesar de que no sea lo más común utilizarlo en estos dispositivos. También esta será la versión del sistema operativo del portátil.
+Es una versión específica para el procesador ARM, compilada con 64-bits y será la versión que se utilizará en la Raspberry Pi, a pesar de que no sea lo más común utilizarlo en estos dispositivos. También esta será la versión del sistema operativo del portátil.
 
 \subsection{Gestor de paquetes: Miniforge}
 \label{subsec:gestor_de_paquetes}
@@ -848,7 +847,7 @@ Jupyter-notebook es una aplicación web lanzada en 2015, de código abierto desa
 
 Estas celdas pueden contener código, texto en formato Markdown, fórmulas matemáticas y ecuaciones, o también contenido multimedia. Cada celda se puede ejecutar para visualizar los datos y ver los resultados de salida. Los documentos creados en Jupyter pueden exportarse en otros formatos como PDF, Python o HTML. Además, se puede utilizar tanto remotamente como en local.
 
-Los dos componentes principales de Jupyter Notebook son un conjunto de núcleos (intérpretes) y el Dashboard, donde se visualizan las salidas de cada celda. Es compatible con 49 núcleos que permiten trabajar en diferentes lenguajes como R, Julia, C++ o Java. Sin embargo, el kernel que utiliza por defecto es IPython para programar con Python. 
+Los dos componentes principales de Jupyter Notebook son un conjunto de núcleos (intérpretes) y el Dashboard, donde se visualizan las salidas de cada celda. Es compatible con $49$ núcleos que permiten trabajar en diferentes lenguajes como R, Julia, C++ o Java. Sin embargo, el kernel que utiliza por defecto es IPython para programar con Python. 
 
 \subsection{Librerías}
 \label{subsec:Librerías}
@@ -873,9 +872,9 @@ Tiene todas las funcionalidades necesarias para el análisis de datos como puede
 
 En este trabajo también se utilizará un dispositivo de mayor capacidades con el objetivo de poder observar la diferencia entre el comportamiento de este y el de la Raspberry Pi. Teniendo siempre como referencia la actuación del dispositivo de mayor capacidad podremos obtener un conocimiento más profundo sobre como de bien o mal está actuando la Raspberry Pi. 
 
-La máquina que se va a utilizar para esto es un portátil HP Notebook 15s-fq1008ns. Este portátil posee un procesador Intel® Core™ i5-1035G1 cuya frecuencia base es de 1GHz, y que al igual que la Raspberry Pi soporta SIMD y también tiene arquitectura SMP. Además tiene un total de ocho CPUs físicas y cuatro lógicas, siendo de 3.6GHz la frecuencia máxima a la que puede ir un núcleo. 
+La máquina que se va a utilizar para esto es un portátil HP Notebook 15s-fq1008ns. Este portátil posee un procesador Intel® Core™ i5-1035G1 cuya frecuencia base es de 1GHz, y que al igual que la Raspberry Pi soporta SIMD y también tiene arquitectura SMP. Además tiene un total de ocho CPUs físicas y cuatro lógicas, siendo de $3,6$GHz la frecuencia máxima a la que puede ir un núcleo. 
 
-Por otra parte, tiene una memoria SDRAM DDR4-2666 de 8 GB, varios puertos externos como un puerto HDMI, 1 USB 3.1 tipo C, 2 USB 3.1 tipo A, un Smart Pin CA y un combo de auriculares/micrófono. Para la alimentación tiene un adaptador de CA de 45W, que carga una batería de 41Wh. 
+Por otra parte, tiene una memoria SDRAM DDR4-2666 de 8 GB, varios puertos externos como un puerto HDMI, 1 USB 3.1 tipo C, 2 USB 3.1 tipo A, un Smart Pin CA y un combo de auriculares/micrófono. Para la alimentación tiene un adaptador de CA de $45$W, que carga una batería de $41$Wh. 
 
 Por defecto viene instalado el sistema operativo Windows 10, pero en este se instaló Ubuntu 20.04 para poder utilizarlo como portátil de trabajo durante la carrera. 
 
@@ -915,7 +914,7 @@ En este capítulo se realiza una descripción detallada sobre la arquitectura de
 
 Como ya se ha comentado anteriormente, las aplicaciones que utilizan ML e IoT son cada vez de mayor relevancia. Por ello se desea comprobar el rendimiento de la Raspberry Pi para realizar este tipo de tareas, puesto que su pequeño tamaño, bajo coste y capacidad de interacción con el entorno hacen que sea una buena opción para algoritmos con estos fines. Sin embargo, posee menos recursos que un ordenador común, lo que puede suponer un gran inconveniente para realizar estas tareas. 
 
-Para ello, y como se explicará en mayor detalle en los siguientes capítulos, pondremos a prueba a la máquina con diferentes tests. En la Figura~\ref{fig:arquitectura} se puede visualizar un esquema general de en qué consisten dichas pruebas. Como se puede ver en esta figura los experimentos se llevarán a cabo tanto en la Raspberry Pi como en un portátil para poder comparar y comprender mejor los resultados obtenidos.
+Para ello, y como se explicará en mayor detalle en los siguientes capítulos, pondremos a prueba a la máquina con diferentes tests. En la Figura~\ref{fig:arquitectura} se puede visualizar un esquema general de en qué consisten dichas pruebas. Como se puede ver en esta figura, los experimentos se llevarán a cabo tanto en la Raspberry Pi como en un portátil para poder comparar y comprender mejor los resultados obtenidos.
 
 
 \begin{figure}[htb]
@@ -1007,7 +1006,8 @@ En esta ocasión este fichero creará un modelo de Máquinas de Vector Soporte. 
 \item \subsubsection{gBoosting.ipynb} 
 \label{subsubsub:gBoosting}
 
-Con este fichero se implementa un modelo de Gradient Boosting. En esta ocasión el método que crea este modelo es GradientBoostingClassifier\cite{GradientTreeBDoc}, que se encuentra dentro de la librería \textit{sklearn.esemble}. Al igual que para la función de Máquinas de Vector Soporte, este modelo no soporta multiprocesamiento y por lo tanto solo se utilizará una CPU para entrenar y predecir con este modelo. 
+Con este fichero se implementa un modelo de Gradient Boosting. En esta ocasión el método que crea este modelo es GradientBoostingClassifier\cite{GradientTreeBDoc}, que se encuentra dentro de la librería \textit{sklearn.esemble}. Al igual que para la función de Máquinas de Vector Soporte, este modelo no soporta multiprocesamiento y por lo tanto solo se utilizará una CPU para entrenar y predecir. 
+
 \item \subsubsection{rForest\_pc.ipynb // rForest\_pc.ipynb} 
 \label{subsubsub:rForest}
 
@@ -1064,7 +1064,7 @@ Según la Figura~\ref{fig:explicacion_acc} se dividirán el número de datos den
 
 Gracias a la librería \textit{metrics} de \texttt{scikit-learn} se pueden obtener estos valores por medio de las funciones \textit{accuracy\_score}, \textit{precision\_score} y \textit{recall\_score}. 
 
-Pero para obtener estos valores es necesario ejecutar primero la función \textit{predict} a la que se le pasa como argumento el set de datos del que se desea realizar una predicción. Al ejecutarlo devolverá las salidas que ha estimado el modelo para cada una de las entradas, esto se puede ver en el Código~\ref{lst:get_APR}. Esta salida se les pasa como segundo a las funciones mencionadas antes, y como primer argumento necesitan las salidas verdaderas de los datos con los que se ha hecho la predicción. 
+Pero para obtener estos valores es necesario ejecutar primero la función \textit{predict} a la que se le pasa como argumento el set de datos del que se desea realizar una predicción. Al ejecutarlo devolverá las salidas que ha estimado el modelo para cada una de las entradas, esto se puede ver en el Código~\ref{lst:get_APR}. Esta salida se les pasa como segundo argumento a las funciones mencionadas antes, y como primer argumento necesitan las salidas verdaderas de los datos con los que se ha hecho la predicción. 
 
 Salvo en el caso de \textit{trainning accuracy}, habrá que utilizar las predicciones hechas sobre las entradas del \textit{dataset} que se utilizan para probar el modelo. Para el \textit{accuracy trainning} necesitaremos las predicciones de los datos con los que ha entrenado el propio modelo.
 
@@ -1116,7 +1116,7 @@ Una vez realizada la división se entrena con todo el \textit{dataset} de entren
 
 El objetivo de realizar una validación cruzada es garantizar que los resultados que obtengamos sean independientes de la partición entre datos de entrenamiento y datos de validación. Es decir, poder saber si la precisión que obtenemos al hacer la predicción es real o se ha sobreajustado a un \textit{dataset} concreto.
  
- Para utilizar validación cruzada se añadió a los ficheros de la carpeta \texttt{"Models"} los métodos mencionados anteriormente. Por lo que, además de los datos que ya mostraban estos ficheros por su salida, se añadirá un nuevo \textit{print} para obtener la media total de las precisiones de cada una de las subdivisiones, mostrándolo con la etiqueta \textit{"Mean Folds Accuracy"} por ser la media del resultado obtenido en cada \textit{"Fold"}. En el Código~\ref{lst:get_CV} se pueden ver las líneas añadidas al Código~\ref{lst:get_APR} para incluir esta funcionalidad.
+ Para utilizar la validación cruzada se añadió a los ficheros de la carpeta \texttt{"Models"} los métodos mencionados anteriormente. Por lo que, además de los datos que ya mostraban estos ficheros por su salida, se añadirá un nuevo \textit{print} para obtener la media total de las precisiones de cada una de las subdivisiones, mostrándolo con la etiqueta \textit{"Mean Folds Accuracy"} por ser la media del resultado obtenido en cada \textit{"Fold"}. En el Código~\ref{lst:get_CV} se pueden ver las líneas añadidas al Código~\ref{lst:get_APR} para incluir esta funcionalidad.
  
  \begin{listing}[htb]
     \caption{Obtención de la precisión media de cada uno de los \textit{subdatasets} de la validación cruzada.}{}
@@ -1139,7 +1139,7 @@ Al realizar algunas pruebas para observar el comportamiento de la Raspberry Pi a
 
 El \textit{dataset} elegido fue KDD Cup 1999 Data\cite{DataSetKddCup99}, obtenido una vez más desde la página web de Kaggle. Este \textit{dataset} se utilizó en el tercer concurso internacional de herramientas de descubrimiento de conocimientos y minería de datos, el objetivo del concurso era generar un modelo predictivo que fuese capaz de distinguir entre conexiones \textit{"malas"}, es decir, intrusiones o ataques, y conexiones \textit{"buenas"}. Este set de datos contiene una gran variedad de intrusiones en un entorno de red militar. 
 
-De este \textit{dataset} se utilizó tanto el fichero \texttt{kddcup.data.gz} como \\\texttt{kddcup.data\_10\_percent.gz}. Una vez descargados se descomprimen y se ejecuta un programa, llamado \texttt{prepare\_kddcup.ipynb}, para tratar los datos que contienen y poder utilizarlos en la generación de los modelos de ML.
+De este \textit{dataset} se utilizó tanto el fichero \texttt{kddcup.data.gz} como \\\texttt{kddcup.data\_10\_percent.gz}. Una vez descargados se descomprimen y se ejecuta un programa, llamado \texttt{prepare\_kddcup.ipynb}, para tratar los datos que contienen y poder utilizarlos en el entrenamiento de los modelos de ML.
 
 Al igual que en el \textit{dataset} de Room Occupancy para la generación de los modelos se utilizará el $70\%$ de los datos para entrenar y el $30\%$ para validar.
 
@@ -1280,7 +1280,7 @@ La gráfica generada por este \textit{dataset} se puede observar en la Figura~\r
 
 Para la generación de este set de datos se utilizó una habitación de unos ocho metros cuadrados, donde primero estuvo ocupada durante media hora. Pasada esa media hora la habitación estuvo vacía durante 40 minutos. Después volvió a estar ocupada durante una hora entera, se vació una última vez durante 25 minutos para estar ocupada los 10 últimos minutos antes de finalizar la recogida de datos.
 
-Sabiendo en qué momentos ha estado ocupada o vacía y observando la Figura~\ref{fig:ejemplo_gráfica} se puede ver que los valores de los datos varían entre el estado ocupado y vacío (a excepción de la presión que no cambia), siendo la humedad la variable donde más se diferencian los valores entre ambos estados. La temperatura varia algo menos, pero igualmente se puede ver un pequeño descenso cuando la habitación está vacía. En la Figura~\ref{fig:graf_temp} podemos ver en mayor detalle el valor de la temperatura en cada instante de tiempo.
+Sabiendo en qué momentos ha estado ocupada o vacía y observando la Figura~\ref{fig:ejemplo_gráfica} se puede ver que los valores de los datos varían entre el estado ocupado y vacío (a excepción de la presión que no cambia), siendo la humedad la variable donde más se diferencian los valores entre ambos estados. La temperatura varía algo menos, pero igualmente se puede ver un pequeño descenso cuando la habitación está vacía. En la Figura~\ref{fig:graf_temp} podemos ver en mayor detalle el valor de la temperatura en cada instante de tiempo.
 
 \begin{figure}[htb]
   \centering
@@ -1331,7 +1331,7 @@ Esto junto con los valores de \textit{Accuracy}, \textit{Trainning Accuracy}, \t
 
 Para realizar todas las pruebas, tal y como se ha explicado, se creó un programa para cada una de las máquinas de forma que fuese más sencillo obtener los resultados de los experimentos. En el caso de la Raspberry Pi este programa se denominó \texttt{raspberry\_test.ipynb}. En el caso del portátil se nombró \texttt{pc\_test.ipynb}. Dado que las pruebas en ambos dispositivos son prácticamente las mismas, sólo existen pequeñas diferencias entre ambos programas.
 
-Dichos programas necesitan como único argumento el \textit{dataset} con el que se desea hacer el experimento para que puedan realizar su función correctamente.
+Dichos programas necesitan como único argumento el \textit{dataset} con el que se desea hacer el experimento.
 Hay que tener en cuenta que este \textit{dataset} debe de estar limpio, es decir, que se le haya hecho un preprocesamiento para borrar características no deseadas o redundantes. Tampoco debe de tener cabecera. Si no se hace este preprocesamiento podrá dar error la ejecución.
 
 A continuación se desarrollará en mayor profundidad qué es lo que hace cada programa para realizar las pruebas.
@@ -1471,7 +1471,7 @@ En cuanto a la precisión (\textit{Accuracy}) en cada uno de los modelos se obti
 \centering
     \begin{tabular}{c  c  c  c  c  c  c}
     \hline
-    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Acuracy (\%)} \\
+    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
     \cline{4-7}
      &   &   &  Idle & 1 CPU & 2 CPUs & 4 CPUs \\
      \hline
@@ -1579,7 +1579,7 @@ Por otra parte los resultados de precisión para este \textit{dataset} se pueden
 \centering
     \begin{tabular}{c  c  c  c  c  c  c}
     \hline
-    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Acuracy (\%)} \\
+    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
     \cline{4-7}
      &  &   &  Idle & 1 CPU & 2 CPUs & 4 CPUs \\
      \hline
@@ -1655,7 +1655,7 @@ Veamos a continuación cual es el \textit{Accuracy} que consiguen los modelos co
 \centering
     \begin{tabular}{c  c  c  c  c  c  c}
     \hline
-    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Acuracy (\%)} \\
+    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
     \cline{4-7}
       &  &   &  Idle & 2 CPUs & 4 CPUs & 8 CPUs \\
      \hline
@@ -1721,7 +1721,7 @@ Respecto a la precisión de los modelos generados podemos ver los resultados en 
 \centering
     \begin{tabular}{c  c  c  c  c  c  c}
     \hline
-    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Acuracy (\%)} \\
+    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
     \cline{4-7}
      &  &   &  Idle & 2 CPUs & 4 CPUs & 8 CPUs \\
      \hline
@@ -1835,7 +1835,7 @@ Por otro lado, la precisión obtenida por medio de este \textit{dataset} se encu
 \centering
     \begin{tabular}{c  c  c  c  c  c  c}
     \hline
-    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Acuracy (\%)} \\
+    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
     \cline{4-7}
      &  &   &  Idle & 1 CPU & 2 CPUs & 4 CPUs \\
      \hline
@@ -1902,7 +1902,7 @@ Mientras que la precisión obtenida por medio de este \textit{dataset} se encuen
 \centering
     \begin{tabular}{c  c  c  c  c  c  c}
     \toprule
-    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Acuracy (\%)} \\
+    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
     \cline{4-7}
      &  &   &  Idle & 2 CPUs & 4 CPUs & 8 CPUs \\
      \midrule
@@ -1978,7 +1978,7 @@ Como conclusiones finales de cada uno de los modelos de ML ejecutados en ambas m
 \label{tab:mean_per}
 \end{table}
 
-Como se puede observar en la Tabla~\ref{tab:mean_per}, el modelo de Regresión Logística es el modelo que más tarda en terminar la ejecución en comparación con el portátil. Haciendo la media de los porcentajes de los tres \textit{datasets} obtenemos que es un $80\%$ más lento en la Raspberry Pi. Como ya mencionaba en secciones anteriores, a pesar que es el modelo más rápido al ejecutar en el portátil, no sucede lo mismo en la Raspberry Pi, lo que contribuye a que se termine convirtiendo en el modelo con mayor diferencia de tiempos entre una máquina y otra. Por otra parte, en teoría solo puede utilizar un procesador para ejecutar, sin embargo la diferencia que existe en algunos casos entre los tiempos de \textit{Wall time} y \textit{CPU time} nos índica que podría estar utilizando paralelamente varios cores para ejecutar, y por lo tanto ser esta la causa por la que es de los modelos que menos tardan en entrenar.
+Como se puede observar en la Tabla~\ref{tab:mean_per}, el modelo de Regresión Logística es el modelo que más tarda en terminar la ejecución en comparación con el portátil. Haciendo la media de los porcentajes de los tres \textit{datasets} obtenemos que es un $80\%$ más lento en la Raspberry Pi. Como ya mencionaba en secciones anteriores, aunque es el modelo más rápido al ejecutar en el portátil, no sucede lo mismo en la Raspberry Pi, lo que contribuye a que se termine convirtiendo en el modelo con mayor diferencia de tiempos entre una máquina y otra. Por otra parte, en teoría solo puede utilizar un procesador para ejecutar, sin embargo la diferencia que existe en algunos casos entre los tiempos de \textit{Wall time} y \textit{CPU time} nos índica que podría estar utilizando paralelamente varios cores para ejecutar, y por lo tanto ser esta la causa por la que es de los modelos que menos tardan en entrenar.
 
 Maquinas de Vector Soporte, es el modelo más rápido en la Raspberry Pi, ya que siempre tarda menos en ejecutar que el de RL (salvo en el \textit{dataset} de KddCup99), pero no ocurre lo mismo en el portátil donde siempre suele ser el segundo modelo más rápido. También es el segundo modelo con peor comportamiento respecto al portátil en prácticamente todos los casos, puesto que suele tener altos porcentajes de lentitud en comparación con el resto. La media de los porcentajes de cada \textit{dataset} es de un $67\%$.
 
@@ -1991,7 +1991,7 @@ No obstante algo que tienen en común todos los modelos en ambas máquinas es la
 Habiendo analizado los resultados de cada modelo se puede estimar cuál es mejor utilizar en determinadas situaciones. En el caso de querer que el comportamiento de la Raspberry Pi sea lo más similar posible al del portátil, Random Forest sería el modelo que sin duda habría que implementar. De la misma forma, este modelo sería una muy buena opción si se busca un \textit{Wall time} pequeño puesto que aunque no es el modelo que tiene los valores más bajos para este tiempo mantiene una buena relación con el comportamiento del portátil (teniendo el porcentaje de lentitud más bajo de todos los modelos).
 
 Mientras que si lo que buscamos es que el tiempo de CPU no sea demasiado elevado en la Raspberry Pi pero que no difieran demasiado de los del portátil, una muy buena opción sería utilizar Máquinas de Vector Soporte.
-Y si lo que se busca es ante todo rapidez en la ejecución en la Raspberry, se podría utilizar el modelo de Regresión Logísitica en el caso del que \textit{dataset} que se vaya a utilizar posea muchas muestras. De lo contrario compensaría más utilizar el modelo SVM como se ha podido comprobar en los \textit{datasets} de Room Occupancy y Sensores Raspberry Pi (Tabla~\ref{tab:times_Occraspberry} y Tabla~\ref{tab:times_sensrasp})
+Y si lo que se busca es ante todo rapidez en la ejecución en la Raspberry Pi, se podría utilizar el modelo de Regresión Logísitica en el caso del que \textit{dataset} que se vaya a utilizar posea muchas muestras. De lo contrario compensaría más utilizar el modelo SVM como se ha podido comprobar en los \textit{datasets} de Room Occupancy y Sensores Raspberry Pi (Tabla~\ref{tab:times_Occraspberry} y Tabla~\ref{tab:times_sensrasp})
  
 \cleardoublepage
 
