@@ -666,7 +666,7 @@ Tradicionalmente, los dispositivos IoT tenían que enviar los datos recogidos a 
 \section{Modelos de aprendizaje automático}
 \label{sec:modelos_aautomatico}
 
-Aunque existen muchos algoritmos para generar modelos de aprendizaje automático, en este proyecto vamos a utilizar concretamente cuatro: Regresión Logística (RL), Máquinas de Vector Soporte (SVM), Gradient Boosting (GB) y Random Forest (RF). Para ello se utilizará la librería de \texttt{scikit-learn}, que veremos más adelante.
+Aunque existen muchos algoritmos para generar modelos de aprendizaje automático, en este proyecto vamos a utilizar concretamente cuatro: Regresión Logística (LR), Máquinas de Vector Soporte (SVM), Gradient Boosting (GB) y Random Forest (RF). Para ello se utilizará la librería de \texttt{scikit-learn}, que veremos más adelante.
 
 \subsection{Regresión Logística}
 \label{subsec:regresion_logistica}
@@ -919,11 +919,11 @@ Para ello, y como se explicará en mayor detalle en los siguientes capítulos, p
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=15cm, keepaspectratio]{img/arquitectura_general.png}
+  \includegraphics[width=15cm, keepaspectratio]{img/arquitectura_general.pdf}
   \caption{Estructura de los experimentos}\label{fig:arquitectura}
 \end{figure}
 
-Como se explicó en la sección~\ref{sec:machine_learning} hay varios tipos de aprendizaje automático y dentro de cada clase existen aún más métodos para resolver un mismo problema de formas diferentes. En este proyecto utilizaremos algoritmos de aprendizaje supervisado para realizar problemas de clasificación binaria, es decir, solo existen dos clases a las que pueden pertenecer los datos. Concretamente (y como se puede ver en la Figura~\ref{fig:arquitectura}) se utilizarán cuatro algoritmos de \textit{machine learning} que son: Regresión Logística (RL), Máquinas de Vector Soporte (SVM), Gradient Boosting (GB) y Random Forest (RF).
+Como se explicó en la sección~\ref{sec:machine_learning} hay varios tipos de aprendizaje automático y dentro de cada clase existen aún más métodos para resolver un mismo problema de formas diferentes. En este proyecto utilizaremos algoritmos de aprendizaje supervisado para realizar problemas de clasificación binaria, es decir, solo existen dos clases a las que pueden pertenecer los datos. Concretamente (y como se puede ver en la Figura~\ref{fig:arquitectura}) se utilizarán cuatro algoritmos de \textit{machine learning} que son: Regresión Logística (LR), Máquinas de Vector Soporte (SVM), Gradient Boosting (GB) y Random Forest (RF).
 
 Aprovechando los puertos GPIO de los que está provista la Raspberry Pi, en este proyecto también se utilizan un par de sensores para poder generar un nuevo \textit{dataset} con el que poder entrenar los modelos de aprendizaje automático. Estos dos sensores que se utilizan son los que se mencionaron en el apartado~\ref{sec:sensores}.
 
@@ -1393,7 +1393,7 @@ Este fichero tendrá por nombre el siguiente formato: \texttt{nombreDataSet\_ras
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=11cm, keepaspectratio]{img/ejemplo_csv3.png}
+  \includegraphics[width=11cm, keepaspectratio]{img/ejemplo_csv.png}
   \caption{Ejemplo de CSV generado con los resultados de cada prueba para el modelo de Regresión Logística.}\label{fig:ejemplo_csv}
 \end{figure}
 
@@ -1542,7 +1542,7 @@ Otro ejemplo de esto puede ser el caso en el que se ejecuta el modelo de Random 
 
  \begin{figure}[htb]
     \centering
-    \includegraphics[ width=16cm, keepaspectratio]{img/rForest_stress2.png}
+    \includegraphics[ width=16cm, keepaspectratio]{img/rForest_stress.png}
     \caption{Porcentaje de CPU utilizada por los procesos al ejecutar Random Forest con cuatro CPUs estresadas.}
     \label{figura:stress_rForest}
  \end{figure}
@@ -1750,9 +1750,9 @@ Donde más se nota la falta de recursos de la Raspberry Pi es en los tiempos de 
   \label{fig:per_occupancy}
 \end{figure}
 
-En dicha figura podemos ver como a medida que el nivel de saturación aumenta (eje x) es menor el porcentaje de lentitud, con lo que cada vez es menor la diferencia entre los tiempos de ejecución de la Raspberry Pi y del portátil. Siendo el modelo de RL en el que mayor diferencia hay entre ambas máquinas. Aunque este modelo es el que menos tarda en ejecutar en el portátil no sucede siempre lo mismo en la Raspberry Pi lo que hace que se termine convirtiendo en el modelo que peor se comporta en la Raspberry Pi al compararlo con el portátil, siendo en media un $85\%$ más lento en la Raspberry Pi que en el portátil.
+En dicha figura podemos ver como a medida que el nivel de saturación aumenta (eje x) es menor el porcentaje de lentitud, con lo que cada vez es menor la diferencia entre los tiempos de ejecución de la Raspberry Pi y del portátil. Siendo el modelo de LR en el que mayor diferencia hay entre ambas máquinas. Aunque este modelo es el que menos tarda en ejecutar en el portátil no sucede siempre lo mismo en la Raspberry Pi lo que hace que se termine convirtiendo en el modelo que peor se comporta en la Raspberry Pi al compararlo con el portátil, siendo en media un $85\%$ más lento en la Raspberry Pi que en el portátil.
 
-Mientras que en el caso de SVM la Raspberry Pi es $70\%$ (en media) más lenta. Además observando la Tabla~\ref{tab:times_Occraspberry} podemos ver que es el modelo que más rápido entrena en todos los niveles de estrés, a pesar de ser \textit{monocore} obtiene el mejor rendimiento de todos. Mientras que en el portátil es el segundo modelo con mejores tiempos en todos los casos, después de RL (Tabla \ref{tab:times_Occpc}).
+Mientras que en el caso de SVM la Raspberry Pi es $70\%$ (en media) más lenta. Además observando la Tabla~\ref{tab:times_Occraspberry} podemos ver que es el modelo que más rápido entrena en todos los niveles de estrés, a pesar de ser \textit{monocore} obtiene el mejor rendimiento de todos. Mientras que en el portátil es el segundo modelo con mejores tiempos en todos los casos, después de LR (Tabla \ref{tab:times_Occpc}).
 
 El modelo de Gradient Boosting es el único que consigue estar en algún momento por debajo del $50\%$ de lentitud. Cuando ambas máquinas están con todos los cores estresados, GB es solo un $40\%$ más lento en la Raspberry Pi que en el portátil. El porcentaje medio de lentitud de este modelo es de $62\%$, es decir, que solo es un $62\%$ más lento en la Raspberry Pi que en el portátil, obteniendo la mejor relación de tiempos entre ambas máquinas de todos los modelos, a pesar de que en ninguna de ellas sea de los modelos más rápidos.
 
@@ -1767,7 +1767,7 @@ De la misma forma, en la Figura~\ref{fig:per_kdd} se muestra estos mismos porcen
   \label{fig:per_kdd}
 \end{figure}
 
-Al igual que antes los porcentajes van decrementando a medida que más CPUs están estresadas. En este caso sigue siendo el modelo de RL el que peor comportamiento realiza en comparación con el portátil, obteniendo un porcentaje de lentitud medio del $72,75\%$. Pese a que en este caso es el modelo más rápido para todos los niveles tanto en la Raspberry Pi como en el portátil (Tabla~\ref{tab:times_kddraspberry} y Tabla~\ref{tab:times_kddportatil}), sin embargo la diferencia de tiempos entre ambas máquinas es muy grande, de unos $300$ segundos, lo que hace que este porcentaje sea tan alto.
+Al igual que antes los porcentajes van decrementando a medida que más CPUs están estresadas. En este caso sigue siendo el modelo de LR el que peor comportamiento realiza en comparación con el portátil, obteniendo un porcentaje de lentitud medio del $72,75\%$. Pese a que en este caso es el modelo más rápido para todos los niveles tanto en la Raspberry Pi como en el portátil (Tabla~\ref{tab:times_kddraspberry} y Tabla~\ref{tab:times_kddportatil}), sin embargo la diferencia de tiempos entre ambas máquinas es muy grande, de unos $300$ segundos, lo que hace que este porcentaje sea tan alto.
 
 Por otra parte, esta vez es el modelo de SVM el que en la Raspberry Pi es un $54\%$ de media más lento que el portátil, consiguiendo que su porcentaje de lentitud sea menor del $40\%$ para los dos últimos niveles. Por lo que, para este \textit{dataset}, es el modelo en el que los tiempos de ejecución son más similares en ambas máquinas, siendo en ambos casos el segundo modelo más rápido para todos los niveles de estrés.
 
@@ -1933,7 +1933,7 @@ En este caso los porcentajes de lentitud de la Raspberry Pi respecto del portát
   \label{fig:per_Mi}
 \end{figure}
 
-En esta ocasión, salvo en el caso \textit{Idle}, sigue siendo RL el modelo en el que hay más diferencia entre lo que tarda en ejecutar en la Raspberry Pi y en el portátil, tardando la Raspberry Pi un $83\%$ más que el portátil. En esta ocasión tanto en el portátil como en la Raspberry Pi es el segundo modelo más rápido. Siendo superado por SVM, que es el que menos tarda en todos los niveles de estrés en los dos dispositivos. A pesar de que es de los modelos donde hay mayor diferencia de tiempos entre ambas máquinas, por eso su porcentaje medio de lentitud es del $78\%$.
+En esta ocasión, salvo en el caso \textit{Idle}, sigue siendo LR el modelo en el que hay más diferencia entre lo que tarda en ejecutar en la Raspberry Pi y en el portátil, tardando la Raspberry Pi un $83\%$ más que el portátil. En esta ocasión tanto en el portátil como en la Raspberry Pi es el segundo modelo más rápido. Siendo superado por SVM, que es el que menos tarda en todos los niveles de estrés en los dos dispositivos. A pesar de que es de los modelos donde hay mayor diferencia de tiempos entre ambas máquinas, por eso su porcentaje medio de lentitud es del $78\%$.
 
 Por otro lado GB, al igual que en \textit{datasets} anteriores, es el segundo modelo más lento en los dos dispositivos, es un $73\%$ más lento en la Raspberry Pi. Mientras que una vez más, es el modelo de RF el que tiene menor diferencia de tiempos de CPU con un porcentaje de lentitud del $66\%$, a pesar de ser el modelo más lento de todos.
 
@@ -1980,11 +1980,11 @@ Como conclusiones finales de cada uno de los modelos de ML ejecutados en ambas m
 
 Como se puede observar en la Tabla~\ref{tab:mean_per}, el modelo de Regresión Logística es el modelo que más tarda en terminar la ejecución en comparación con el portátil. Haciendo la media de los porcentajes de los tres \textit{datasets} obtenemos que es un $80\%$ más lento en la Raspberry Pi. Como ya mencionaba en secciones anteriores, aunque es el modelo más rápido al ejecutar en el portátil, no sucede lo mismo en la Raspberry Pi, lo que contribuye a que se termine convirtiendo en el modelo con mayor diferencia de tiempos entre una máquina y otra. Por otra parte, en teoría solo puede utilizar un procesador para ejecutar, sin embargo la diferencia que existe en algunos casos entre los tiempos de \textit{Wall time} y \textit{CPU time} nos índica que podría estar utilizando paralelamente varios cores para ejecutar, y por lo tanto ser esta la causa por la que es de los modelos que menos tardan en entrenar.
 
-Maquinas de Vector Soporte, es el modelo más rápido en la Raspberry Pi, ya que siempre tarda menos en ejecutar que el de RL (salvo en el \textit{dataset} de KddCup99), pero no ocurre lo mismo en el portátil donde siempre suele ser el segundo modelo más rápido. También es el segundo modelo con peor comportamiento respecto al portátil en prácticamente todos los casos, puesto que suele tener altos porcentajes de lentitud en comparación con el resto. La media de los porcentajes de cada \textit{dataset} es de un $67\%$.
+Maquinas de Vector Soporte, es el modelo más rápido en la Raspberry Pi, ya que siempre tarda menos en ejecutar que el de LR (salvo en el \textit{dataset} de KddCup99), pero no ocurre lo mismo en el portátil donde siempre suele ser el segundo modelo más rápido. También es el segundo modelo con peor comportamiento respecto al portátil en prácticamente todos los casos, puesto que suele tener altos porcentajes de lentitud en comparación con el resto. La media de los porcentajes de cada \textit{dataset} es de un $67\%$.
 
 En cuanto al modelo de Gradient Boosting, es el tercer modelo más lento tanto en la Raspberry Pi como en el portátil. Pero por otra parte es el tercer modelo que tiene mejor relación entre los tiempos del portátil y la Raspberry Pi, puesto que la media de los porcentajes de los tres \textit{datasets} es de $68,6\%$. A pesar de ser este porcentaje algo mayor que el que se obtenía en SVM sabemos que este modelo se comportará más o menos de la misma forma ante diferentes tipos de \textit{datasets}, y no como SVM que cuando el \textit{dataset} tenga muchas muestras, como sucede en KddCup99, puede obtener comportamientos mucho más similares entre ambas máquinas.
 
-Por último, Random Forest es para ambas máquinas el modelo más lento con diferencia. Y por ello también es el modelo en el que hay menor diferencia de tiempos entre la ejecución en una máquina u otra, siendo el porcentaje medio del $63\%$. Pero es el segundo modelo más rápido según el \textit{Wall time} después de RL. También es uno de los dos modelos que se está beneficiando de poder utilizar paralelamente varias CPUs, prueba de ello es que en todas las niveles de saturación el \textit{Wall time} es menor que el \textit{CPU time}.
+Por último, Random Forest es para ambas máquinas el modelo más lento con diferencia. Y por ello también es el modelo en el que hay menor diferencia de tiempos entre la ejecución en una máquina u otra, siendo el porcentaje medio del $63\%$. Pero es el segundo modelo más rápido según el \textit{Wall time} después de LR. También es uno de los dos modelos que se está beneficiando de poder utilizar paralelamente varias CPUs, prueba de ello es que en todas las niveles de saturación el \textit{Wall time} es menor que el \textit{CPU time}.
 
 No obstante algo que tienen en común todos los modelos en ambas máquinas es la gran precisión con los que son capaces de predecir, manteniendo siempre un \textit{Accuracy}, \textit{Cross-validation}, \textit{Recall} y \textit{Precision} sobre el $90\%$. Por lo que podemos confiar en que ante nuevas entradas de datos los modelos serían capaces de poder clasificar correctamente los datos.
 
