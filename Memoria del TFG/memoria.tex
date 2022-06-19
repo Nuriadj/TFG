@@ -1171,7 +1171,7 @@ total= 4940200 # numero de lineas aproximado del fichero kddcup.data
 per_lines= int((float(sys.argv[1])*total)/100)
 #Leer dataSet
 rm_lines= sorted(random.sample(range(total),total-per_lines))
-dataset = pd.read_csv('/home/nuriadj/Documents/TFG/kdd_cup99/kddcup.data', skiprows=rm_lines)
+dataset = pd.read_csv('./kddcup.data', skiprows=rm_lines)
 print("Reading: %2.f" % round((len(dataset)*100)/total,2),"% of the csv")
 
 #Conversión multiclase a binaria
@@ -1437,7 +1437,7 @@ Los tiempos de CPU para la ejecución de estos modelos se pueden ver en la Tabla
     \toprule
     & \multicolumn{8}{c}{\textbf{Nivel de estrés}}\\
     \cline{2-9}
-     & \multicolumn{2}{c}{\textbf{Idle}} & \multicolumn{2}{c}{\textbf{2 CPUs}} & \multicolumn{2}{c}{\textbf{4 CPUs}} & \multicolumn{2}{c}{\textbf{8 CPUs}}\\
+     & \multicolumn{2}{c}{\textbf{Idle}} & \multicolumn{2}{c}{\textbf{1 CPUs}} & \multicolumn{2}{c}{\textbf{2 CPUs}} & \multicolumn{2}{c}{\textbf{4 CPUs}}\\
     \cline{2-3}\cline{4-5}\cline{6-7}\cline{8-9}
     \textbf{Modelo} & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.)\\
     \midrule
@@ -1510,7 +1510,7 @@ Los resultados obtenidos para el veinte por ciento del \textit{dataset} de KddCu
     \toprule
     & \multicolumn{8}{c}{\textbf{Nivel de estrés}}\\
     \cline{2-9}
-     & \multicolumn{2}{c}{\textbf{Idle}} & \multicolumn{2}{c}{\textbf{2 CPUs}} & \multicolumn{2}{c}{\textbf{4 CPUs}} & \multicolumn{2}{c}{\textbf{8 CPUs}}\\
+     & \multicolumn{2}{c}{\textbf{Idle}} & \multicolumn{2}{c}{\textbf{1 CPUs}} & \multicolumn{2}{c}{\textbf{2 CPUs}} & \multicolumn{2}{c}{\textbf{4 CPUs}}\\
     \cline{2-3}\cline{4-5}\cline{6-7}\cline{8-9}
     \textbf{Modelo} & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.)\\
     \midrule
@@ -1808,7 +1808,7 @@ Los resultados de los tiempos de ejecución para el \textit{dataset} generado po
     \toprule
     & \multicolumn{8}{c}{\textbf{Nivel de estrés}}\\
     \cline{2-9}
-     & \multicolumn{2}{c}{\textbf{Idle}} & \multicolumn{2}{c}{\textbf{2 CPUs}} & \multicolumn{2}{c}{\textbf{4 CPUs}} & \multicolumn{2}{c}{\textbf{8 CPUs}}\\
+     & \multicolumn{2}{c}{\textbf{Idle}} & \multicolumn{2}{c}{\textbf{1 CPUs}} & \multicolumn{2}{c}{\textbf{2 CPUs}} & \multicolumn{2}{c}{\textbf{4 CPUs}}\\
     \cline{2-3}\cline{4-5}\cline{6-7}\cline{8-9}
     \textbf{Modelo} & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.) & CPU time (seg.) & Wall time (seg.)\\
     \midrule
