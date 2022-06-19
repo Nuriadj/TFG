@@ -1023,7 +1023,7 @@ En esta ocasión se han creado dos ficheros para generar este modelo, puesto que
 
 \end{itemize}
 
-Estos ficheros imprimirán por el terminal cuatro valores diferentes que se utilizan para valorar la eficiencia del entrenamiento. Dichos valores son: \textit{accuracy}, \textit{accuracy trainning}, \textit{precision} y \textit{recall}. 
+Estos ficheros imprimirán por el terminal cuatro valores diferentes que se utilizan para valorar la eficiencia del entrenamiento. Dichos valores son: \textit{Accuracy}, \textit{Trainning accuracy}, \textit{Precision} y \textit{Recall}. 
 
 A continuación se detalla qué significa cada uno de esto valores. Para ello se ha definido la siguiente terminología: TP es el número de verdaderos positivos, TN verdaderos negativos, FP falsos positivos y FN falsos negativos. Siendo los valores positivos los que pertenecen a una clase y los negativos la clase contraria. En este caso diremos que los valores positivos serán los que pertenecen a la clase uno y los negativos los que pertenece a la clase cero. 
 
@@ -1045,7 +1045,7 @@ El \textit{Trainning accuracy} es igual que el \textit{Accuracy}, lo único que 
 
 \textit{Precision} es el porcentaje que se obtiene al dividir el número de positivos que ha acertado (en este caso el valor positivo, o lo que es igual, la clase uno) entre todos los positivos que se han asignado (sean correctos o no). 
 
-Cuanto más alto sea este valor de \textit{precision} menor error habrá cometido al asignar erróneamente la clase uno. Dicho valor viene dado por:
+Cuanto más alto sea este valor de \textit{Precision} menor error habrá cometido al asignar erróneamente la clase uno. Dicho valor viene dado por:
 
 \begin{equation}
 \label{eqn:accuracy} 
@@ -1054,7 +1054,7 @@ Cuanto más alto sea este valor de \textit{precision} menor error habrá cometid
 
 Utilizando el ejemplo de la Figura~\ref{fig:explicacion_acc}, será dividir seis (que es el número de datos dentro de el color verde oscuro) entre la suma de esos más los que están en el color verde claro.
 
-Por último, para obtener el valor de \textit{recall} se dividen el número de verdaderos positivos entre la suma de los verdaderos positivos más los que son positivo y ha asignado como negativos. Es decir, se divide el número de veces que se ha asignado la clase uno entre la suma del número verdadero de datos que pertenecen a la clase uno más el número de veces que se ha estimado la clase cero pero en realidad los datos pertenecían a la clase uno. Siendo la fórmula por medio de la cual obtenemos este valor la siguiente:
+Por último, para obtener el valor de \textit{Recall} se dividen el número de verdaderos positivos entre la suma de los verdaderos positivos más los que son positivo y ha asignado como negativos. Es decir, se divide el número de veces que se ha asignado la clase uno entre la suma del número verdadero de datos que pertenecen a la clase uno más el número de veces que se ha estimado la clase cero pero en realidad los datos pertenecían a la clase uno. Siendo la fórmula por medio de la cual obtenemos este valor la siguiente:
 
 \begin{equation}
  \boxed{\mbox{Recall} = \frac{TP}{(TP + FN)}}
@@ -1066,10 +1066,10 @@ Gracias a la librería \textit{metrics} de \texttt{scikit-learn} se pueden obten
 
 Pero para obtener estos valores es necesario ejecutar primero la función \textit{predict} a la que se le pasa como argumento el set de datos del que se desea realizar una predicción. Al ejecutarlo devolverá las salidas que ha estimado el modelo para cada una de las entradas, esto se puede ver en el Código~\ref{lst:get_APR}. Esta salida se les pasa como segundo argumento a las funciones mencionadas antes, y como primer argumento necesitan las salidas verdaderas de los datos con los que se ha hecho la predicción. 
 
-Salvo en el caso de \textit{trainning accuracy}, habrá que utilizar las predicciones hechas sobre las entradas del \textit{dataset} que se utilizan para probar el modelo. Para el \textit{accuracy trainning} necesitaremos las predicciones de los datos con los que ha entrenado el propio modelo.
+Salvo en el caso de \textit{Trainning accuracy}, habrá que utilizar las predicciones hechas sobre las entradas del \textit{dataset} que se utilizan para probar el modelo. Para el \textit{Trainning accuracy} necesitaremos las predicciones de los datos con los que ha entrenado el propio modelo.
 
 \begin{listing}[htb]
-    \caption{Obtención de los valores de Accuracy, Trainning accuracy, Precision y Recall.}{}
+    \caption{Obtención de los valores de \textit{Accuracy}, \textit{Trainning accuracy}, \textit{Precision} y \textit{Recall}.}{}
     \label{lst:get_APR}
     \begin{minted}[breaklines, fontsize=\footnotesize, baselinestretch=1]{python}
 occup_pred_train= l_regr.predict(x_scaled)
@@ -1388,7 +1388,7 @@ for i in range(4):
     \end{minted}
 \end{listing}
 
-Cuando se completa la generación del modelo para uno de los niveles, los resultados de \textit{CPU time}, \textit{Wall time}, \textit{Mean Folds Accuracy}, \textit{Accuracy trainning}, \textit{Accuracy}, \textit{Precision} y \textit{Recall} se guardan cada uno en su respectiva lista gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera un nuevo fichero CSV, mediante la función \textit{add\_data}, con los resultados obtenidos en cada uno de los casos.
+Cuando se completa la generación del modelo para uno de los niveles, los resultados de \textit{CPU time}, \textit{Wall time}, \textit{Mean Folds Accuracy}, \textit{Trainning accuracy}, \textit{Accuracy}, \textit{Precision} y \textit{Recall} se guardan cada uno en su respectiva lista gracias a una función del programa llamada \textit{get\_data}. Una vez que uno de los modelos ha completado todas las pruebas se genera un nuevo fichero CSV, mediante la función \textit{add\_data}, con los resultados obtenidos en cada uno de los casos.
 Este fichero tendrá por nombre el siguiente formato: \texttt{nombreDataSet\_raspMD.csv}, donde MD son las siglas del modelo que se ha ejecutado. Por ejemplo, en el caso de Regresión Logística el nombre será \texttt{nombreDataSet\_raspLR.csv}, o en el caso de Máquinas de Vector Soporte será \texttt{nombreDataSet\_raspSVM.csv}. En total el programa creará cuatro CSV diferentes, uno por cada modelo. Estos ficheros se guardarán en una nueva carpeta creada con el siguiente formato: \texttt{nombreDataSet\_raspresults}, esto se puede observar como se hace en el Código~\ref{lst:funcion_principal_raspberry_test}. Todos los ficheros se guardarán dentro de esta carpeta, para que los resultados de un mismo \textit{dataset} estén todos juntos. En la Figura~\ref{fig:ejemplo_csv} se muestra un ejemplo del contenido de uno de estos CSV generados, concretamente pertenece al modelo de Regresión Logística.
 
 \begin{figure}[htb]
@@ -1471,7 +1471,7 @@ En cuanto a la precisión (\textit{Accuracy}) en cada uno de los modelos se obti
 \centering
     \begin{tabular}{c  c  c  c  c  c  c}
     \hline
-    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
+    Modelo & CV Accuracy (\%) & Trainning accuracy (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
     \cline{4-7}
      &   &   &  Idle & 1 CPU & 2 CPUs & 4 CPUs \\
      \hline
@@ -1486,7 +1486,7 @@ En cuanto a la precisión (\textit{Accuracy}) en cada uno de los modelos se obti
 \label{tab:acc_Occraspberry}
 \end{table}
 
-Como se puede ver en dicha tabla, en este caso, la diferencia entre la precisión de los datos de entrenamiento y otros datos que no ha visto hasta entonces es muy similar. Por lo tanto los modelos que se están generando son bastante fiables puesto que todos están por encima del $90\%$ de precisión. Y sabemos que no se están sobreajustando puesto que en la columna \texttt{Accuracy CV}, que es la precisión que se obtiene de la validación cruzada, en todos los casos también es superior al $90\%$. Este porcentaje se obtiene de la media de la fila \texttt{Mean Folds Accuracy} de los CSV con los datos generados en cada modelo.
+Como se puede ver en dicha tabla, en este caso, la diferencia entre la precisión de los datos de entrenamiento y otros datos que no ha visto hasta entonces es muy similar. Por lo tanto los modelos que se están generando son bastante fiables puesto que todos están por encima del $90\%$ de precisión. Y sabemos que no se están sobreajustando puesto que en la columna \texttt{CV Accuracy}, que es la precisión que se obtiene de la validación cruzada, en todos los casos también es superior al $90\%$. Este porcentaje se obtiene de la media de la fila \texttt{Mean Folds Accuracy} de los CSV con los datos generados en cada modelo.
 
 \subsubsection{Resultados $20\%$ KddCup99}
 \label{subsubsec:kdd_raspberry}
@@ -1579,7 +1579,7 @@ Por otra parte los resultados de precisión para este \textit{dataset} se pueden
 \centering
     \begin{tabular}{c  c  c  c  c  c  c}
     \hline
-    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
+    Modelo & CV Accuracy (\%) & Trainning accuracy (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
     \cline{4-7}
      &  &   &  Idle & 1 CPU & 2 CPUs & 4 CPUs \\
      \hline
@@ -1655,7 +1655,7 @@ Veamos a continuación cual es el \textit{Accuracy} que consiguen los modelos co
 \centering
     \begin{tabular}{c  c  c  c  c  c  c}
     \hline
-    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
+    Modelo & CV Accuracy (\%) & Trainning accuracy (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
     \cline{4-7}
       &  &   &  Idle & 2 CPUs & 4 CPUs & 8 CPUs \\
      \hline
@@ -1721,7 +1721,7 @@ Respecto a la precisión de los modelos generados podemos ver los resultados en 
 \centering
     \begin{tabular}{c  c  c  c  c  c  c}
     \hline
-    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
+    Modelo & CV Accuracy (\%) & Trainning accuracy (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
     \cline{4-7}
      &  &   &  Idle & 2 CPUs & 4 CPUs & 8 CPUs \\
      \hline
@@ -1835,7 +1835,7 @@ Por otro lado, la precisión obtenida por medio de este \textit{dataset} se encu
 \centering
     \begin{tabular}{c  c  c  c  c  c  c}
     \hline
-    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
+    Modelo & CV Accuracy (\%) & Trainning accuracy (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
     \cline{4-7}
      &  &   &  Idle & 1 CPU & 2 CPUs & 4 CPUs \\
      \hline
@@ -1902,7 +1902,7 @@ Mientras que la precisión obtenida por medio de este \textit{dataset} se encuen
 \centering
     \begin{tabular}{c  c  c  c  c  c  c}
     \toprule
-    Modelo & Accuracy CV (\%) & Accuracy trainning (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
+    Modelo & CV Accuracy (\%) & Trainning accuracy (\%) & \multicolumn{4}{c}{Accuracy (\%)} \\
     \cline{4-7}
      &  &   &  Idle & 2 CPUs & 4 CPUs & 8 CPUs \\
      \midrule
