@@ -954,7 +954,7 @@ Además se instaló \textit{stress}\footnote{\url{https://linux.die.net/man/1/st
     $ stress -c 4 -t 120s
 \end{lstlisting}
 
-Utilizando \textit{-c} se indíca el número de CPUs que se desean estresar, que en el ejemplo anterior serán cuatro. Mientras que con \textit{-t} se indica el tiempo que van a estar los cores estresados en segundos, que en este caso son $120$ segundos.
+Utilizando \textit{-c} se indica el número de CPUs que se desean estresar, que en el ejemplo anterior serán cuatro. Mientras que con \textit{-t} se indica el tiempo que van a estar los cores estresados en segundos, que en este caso son $120$ segundos.
 
 En el Anexo (Capítulo~\ref{chap:anexo}) de esta memoria se podrá encontrar en mayor detalle las dificultades y las soluciones a los problemas hallados a la hora de realizar todo lo comentado en este apartado.
 
@@ -1001,7 +1001,7 @@ Por otra parte está el parámetro \textit{n\_jobs}, que permite declarar el nú
 \item \subsubsection{svm.ipynb} 
 \label{subsubsub:svm}
 
-En esta ocasión este fichero creará un modelo de Máquinas de Vector Soporte. Para implementar este tipo de modelo de aprendizaje en \texttt{scikit-learn} se puede utilizar la función SVC \cite{SVMDocumentation}. En esta ocasión este método no soporta multiprcesamiento, por lo tanto la máquina que lo ejecute solo podrá usar un core tanto en el entrenamiento como en la predicción. 
+En esta ocasión este fichero creará un modelo de Máquinas de Vector Soporte. Para implementar este tipo de modelo de aprendizaje en \texttt{scikit-learn} se puede utilizar la función SVC \cite{SVMDocumentation}. En esta ocasión este método no soporta multiprocesamiento, por lo tanto la máquina que lo ejecute solo podrá usar un core tanto en el entrenamiento como en la predicción. 
 
 \item \subsubsection{gBoosting.ipynb} 
 \label{subsubsub:gBoosting}
@@ -1035,7 +1035,7 @@ Para esta explicación nos ayudaremos de la Figura~\ref{fig:explicacion_acc}. En
   \caption{Ejemplo de estimación de un modelo \textit{machine learning}.}\label{fig:explicacion_acc}
 \end{figure}
 
-El valor de \textit{accuracy} representa el porcentaje total de aciertos. Este dato se calcula por medio de la siguiente ecuación:
+El valor de \textit{Accuracy} representa el porcentaje total de aciertos. Este dato se calcula por medio de la siguiente ecuación:
 
 \begin{equation}
  \boxed{\mbox{Accuracy} = \frac{(TP + TN)}{(TP + TN + FP + FN)}}
@@ -1739,7 +1739,7 @@ Respecto a la precisión de los modelos generados podemos ver los resultados en 
 \subsection{Conclusiones datos sintéticos}
 \label{subsec:conclusion_sinteticos}
 
-Tras haber observado los resultados obtenidos en la ejecución de cada uno de los modelos en diferentes situaciones de estrés en ambos dispositivos con los dos \textit{datasets}, se ha podido comprobar qué a pesar de la menor capacidad de la Raspberry Pi, esta consigue un comportamiento bastante bueno.
+Tras haber observado los resultados obtenidos en la ejecución de cada uno de los modelos en diferentes situaciones de estrés en ambos dispositivos con los dos \textit{datasets}, se ha podido comprobar que a pesar de la menor capacidad de la Raspberry Pi, esta consigue un comportamiento bastante bueno.
 
 Donde más se nota la falta de recursos de la Raspberry Pi es en los tiempos de ejecución. Para los mismos modelos y los mismos datos, tarda más en ejecutar la Raspberry Pi que el portátil. En la Figura~\ref{fig:per_occupancy} se muestra utilizando porcentajes cuánto de lenta es la Raspberry Pi respecto al portátil en cada uno de los niveles de estrés para el Room Occupancy Dataset, utilizando los tiempos de CPU.
 
@@ -1991,7 +1991,7 @@ No obstante algo que tienen en común todos los modelos en ambas máquinas es la
 Habiendo analizado los resultados de cada modelo se puede estimar cuál es mejor utilizar en determinadas situaciones. En el caso de querer que el comportamiento de la Raspberry Pi sea lo más similar posible al del portátil, Random Forest sería el modelo que sin duda habría que implementar. De la misma forma, este modelo sería una muy buena opción si se busca un \textit{Wall time} pequeño puesto que aunque no es el modelo que tiene los valores más bajos para este tiempo mantiene una buena relación con el comportamiento del portátil (teniendo el porcentaje de lentitud más bajo de todos los modelos).
 
 Mientras que si lo que buscamos es que el tiempo de CPU no sea demasiado elevado en la Raspberry Pi pero que no difieran demasiado de los del portátil, una muy buena opción sería utilizar Máquinas de Vector Soporte.
-Y si lo que se busca es ante todo rapidez en la ejecución en la Raspberry Pi, se podría utilizar el modelo de Regresión Logísitica en el caso del que \textit{dataset} que se vaya a utilizar posea muchas muestras. De lo contrario compensaría más utilizar el modelo SVM como se ha podido comprobar en los \textit{datasets} de Room Occupancy y Sensores Raspberry Pi (Tabla~\ref{tab:times_Occraspberry} y Tabla~\ref{tab:times_sensrasp})
+Y si lo que se busca es ante todo rapidez en la ejecución en la Raspberry Pi, se podría utilizar el modelo de Regresión Logística en el caso del que \textit{dataset} que se vaya a utilizar posea muchas muestras. De lo contrario compensaría más utilizar el modelo SVM como se ha podido comprobar en los \textit{datasets} de Room Occupancy y Sensores Raspberry Pi (Tabla~\ref{tab:times_Occraspberry} y Tabla~\ref{tab:times_sensrasp})
  
 \cleardoublepage
 
