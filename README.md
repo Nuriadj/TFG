@@ -1,5 +1,9 @@
 # Entrenamiento y Aplicación de Modelos de Aprendizaje Automático en Dispositivos con Capacidad de Cómputo Limitada
 ### Trabajo de Fin de Grado
+#### Grado en Ingenería de Robótica Software
+**Autora: Nuria Díaz Jérica**  
+**Tutora: Katia Leal Algara**  
+**Cotutor: Felipe Ortega Soto**  
 
 Respositorio con todo el contenido utilizado en el Trabajo de Fin de Grado.
 
